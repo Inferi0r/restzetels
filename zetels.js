@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Function to handle AJAX request and data population
   function fetchDataAndPopulateTable() {
     // Make an AJAX request to the PHP script to fetch the data
-    fetch('/get_data.php?source=votes')
+    fetch('/get_data.php?source=last_update') // Use the correct data source
       .then((response) => response.json())
       .then((data) => {
         // Check if the response data is an object with the 'parties' property
