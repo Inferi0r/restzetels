@@ -1,109 +1,56 @@
-// Wait for the DOM to finish loading before executing JavaScript
-document.addEventListener('DOMContentLoaded', function () {
-    // Function to populate the table with the fetched data
-    function populateTable(data) {
-        var tableBody = document.getElementById('data-table').getElementsByTagName('tbody')[0];
+// This is your votes.js
+document.addEventListener("DOMContentLoaded", function () {
+    const fetchData = async () => {
+        try {
+            const response = await fetch("https://restzetels.td.co.nl/get_data.php?source=votes");
+            const responseData = await response.json();
 
-        // Check if the data is an array
-        if (!Array.isArray(data) || data.length === 0) {
-            console.error('Invalid data format or empty data.');
-            return;
+            console.log('Response Data:', responseData); // Log the entire response data
+
+            const { updated, turnout } = responseData;
+            console.log('Updated:', updated); // Log the updated timestamp
+            console.log('Turnout:', turnout); // Log the turnout object
+
+            document.getElementById("lastUpdate").textContent = new Date(updated * 1000).toLocaleString();
+            document.getElementById("currentTurnout").textContent = turnout.current;
+            document.getElementById("lastTurnout").textContent = turnout.previous;
+
+            populateResults(responseData.parties);
+        } catch (err) {
+            console.error(err);
         }
+    };
 
-        // Get the table headers
-        var tableHeaders = document.querySelectorAll('#data-table th[data-field]');
+    const populateResults = (parties) => {
+        const tableBody = document.getElementById("results");
 
-        // Define the hardcoded data for the "Party" column
-        var partiesData = [
-            "VVD", "PVV", "CDA", "D66", "GL", "SP", "PvdA", "CU", "PvdD", "50PLUS",
-            "SGP", "DENK", "FVD", "BIJ1", "JA21", "COORANJE", "VOLT", "NIDA", "PIRATEN",
-            "LIBERP", "JONG", "SPLINTER", "BBB", "NLBETER", "HENKKROL", "OPRECHT",
-            "JEZUSLFT", "TROTS", "UBUNTU", "BLANCOZV", "PVDE", "DFP", "VSN", "WIJZNL",
-            "MODERNNL", "GROENEN", "PVDR", "OVERIG"
-        ];
+        tableBody.innerHTML = ""; // Clear the table body
 
-        // Loop through the data and create table rows
-        data.forEach(function (item, index) {
-            var newRow = document.createElement('tr');
+        // Loop through each party in the data
+        parties.forEach((party) => {
+            // Create new row and cells
+            const row = document.createElement("tr");
+            const nameCell = document.createElement("td");
+            const votesCell = document.createElement("td");
+            const percentCell = document.createElement("td");
+            const seatsCell = document.createElement("td");
 
-            // Add the hardcoded Party data
-            var partyCell = document.createElement('td');
-            partyCell.textContent = partiesData[index];
-            newRow.appendChild(partyCell);
+            // Set the text for each cell
+            nameCell.textContent = party.name;
+            votesCell.textContent = party.results.current.votes;
+            percentCell.textContent = party.results.current.percentage;
+            seatsCell.textContent = party.results.current.seats;
 
-            // Loop through the table headers and extract corresponding data
-            for (var i = 0; i < tableHeaders.length; i++) {
-                var field = tableHeaders[i].getAttribute('data-field');
-                var cellValue = getNestedValue(item, field);
+            // Append the cells to the row
+            row.appendChild(nameCell);
+            row.appendChild(votesCell);
+            row.appendChild(percentCell);
+            row.appendChild(seatsCell);
 
-                var newCell = document.createElement('td');
-                newCell.textContent = cellValue;
-                newRow.appendChild(newCell);
-            }
-
-            tableBody.appendChild(newRow);
+            // Append the row to the table body
+            tableBody.appendChild(row);
         });
-    }
+    };
 
-    // Function to get the value from nested object based on a dot-separated key
-    function getNestedValue(obj, key) {
-        var keys = key.split('.');
-        var value = obj;
-        for (var i = 0; i < keys.length; i++) {
-            value = value[keys[i]];
-            if (value === undefined) {
-                return '';
-            }
-        }
-        return value;
-    }
-
-    // Function to populate the update fields
-    function populateUpdateFields(data) {
-        document.getElementById('lastUpdate').textContent = new Date(data.updated * 1000).toLocaleString();
-        document.getElementById('currentTurnout').textContent = data.turnout.current;
-        document.getElementById('previousTurnout').textContent = data.turnout.previous;
-    }
-
-    // Function to handle AJAX request and data population
-    function fetchData() {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', '/get_data.php?source=votes', true); // Use the relative URL with 'source' parameter
-        xhr.setRequestHeader('Content-type', 'application/json');
-
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                try {
-                    var responseData = JSON.parse(xhr.responseText);
-
-                    // Check if the response data is an object with the 'parties' property
-                    if (!responseData || !responseData.parties || !Array.isArray(responseData.parties)) {
-                        console.error('Invalid response data:', responseData);
-                        return;
-                    }
-
-                    // Call the populateTable function to update the table
-                    populateTable(responseData.parties);
-
-                    // Call the populateUpdateFields function to update the fields
-                    populateUpdateFields(responseData);
-                } catch (error) {
-                    console.error('Error parsing JSON data:', error);
-                }
-            } else {
-                // Handle error if AJAX request fails
-                console.error('Error fetching data:', xhr.statusText);
-            }
-        };
-
-        xhr.onerror = function () {
-            // Handle error if there's an issue with the AJAX request
-            console.error('Error fetching data.');
-        };
-
-        xhr.send();
-    }
-
-    // Call the fetchData function to populate the table
     fetchData();
 });
