@@ -2,9 +2,6 @@
 
 // Wait for the DOM to finish loading before executing JavaScript
 document.addEventListener('DOMContentLoaded', function () {
-    // Object to store party data by key
-    let parties = {};
-  
     // Function to populate the table with the fetched data
     function populateTable(data) {
       var tableBody = document.getElementById('data-table').getElementsByTagName('tbody')[0];
@@ -21,13 +18,23 @@ document.addEventListener('DOMContentLoaded', function () {
   
         // Create cells for Label and Results Current Votes
         var labelCell = document.createElement('td');
-        labelCell.textContent = parties[item.key].label; // Using the party key to access the label from the parties object
-        newRow.appendChild(labelCell);
-  
         var resultsCurrentVotesCell = document.createElement('td');
-        resultsCurrentVotesCell.textContent = item.results.current.votes;
-        newRow.appendChild(resultsCurrentVotesCell);
   
+        // Check if the necessary properties exist before accessing them
+        if (item.key in parties) {
+          labelCell.textContent = parties[item.key].label;
+        } else {
+          labelCell.textContent = 'N/A'; // Use a fallback value if the label is not available
+        }
+  
+        if ('results' in item && 'current' in item.results && 'votes' in item.results.current) {
+          resultsCurrentVotesCell.textContent = item.results.current.votes;
+        } else {
+          resultsCurrentVotesCell.textContent = 'N/A'; // Use a fallback value if the votes data is not available
+        }
+  
+        newRow.appendChild(labelCell);
+        newRow.appendChild(resultsCurrentVotesCell);
         tableBody.appendChild(newRow);
       });
     }
@@ -45,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
           }
   
           // Transform parties array into an object keyed by party key
-          parties = data.parties.reduce((obj, party) => {
+          var parties = data.parties.reduce((obj, party) => {
             obj[party.key] = party;
             return obj;
           }, {});
