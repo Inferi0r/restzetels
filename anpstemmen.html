@@ -4,13 +4,6 @@
     <title>ANP Stemmen</title>
     <!-- Add your stylesheets here -->
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Align tables side by side */
-        #party-table, #data-table {
-            display: inline-block;
-            vertical-align: top;
-        }
-    </style>
 </head>
 <body>
     <nav>
@@ -27,57 +20,6 @@
     <p>Laatste opkomst: <span id="previousTurnout"></span></p>
     <h1>ANP Stemmen per partij (17 maart 2021)</h1>
   
-    <div class="table-container">
-    <!-- Hardcoded party table -->
-    <table id="party-table">
-        <thead>
-            <tr>
-                <th class="double-height">Party</th>
-            </tr>
-        </thead>
-        <tbody>
-        <tbody>
-            <tr><td>VVD</td></tr>
-            <tr><td>PVV</td></tr>
-            <tr><td>CDA</td></tr>
-            <tr><td>D66</td></tr>
-            <tr><td>GL</td></tr>
-            <tr><td>SP</td></tr>
-            <tr><td>PvdA</td></tr>
-            <tr><td>CU</td></tr>
-            <tr><td>PvdD</td></tr>
-            <tr><td>50PLUS</td></tr>
-            <tr><td>SGP</td></tr>
-            <tr><td>DENK</td></tr>
-            <tr><td>FvD</td></tr>
-            <tr><td>BIJ1</td></tr>
-            <tr><td>JA21</td></tr>
-            <tr><td>CODE ORANJE</td></tr>
-            <tr><td>BBB</td></tr>
-            <tr><td>NIDA</td></tr>
-            <tr><td>LP</td></tr>
-            <tr><td>LHK</td></tr>
-            <tr><td>JONG</td></tr>
-            <tr><td>UBUNTU CONNECTED FRONT</td></tr>
-            <tr><td>Piratenpartij</td></tr>
-            <tr><td>NLBeter</td></tr>
-            <tr><td>Lijst Henk Krol</td></tr>
-            <tr><td>OPRECHT</td></tr>
-            <tr><td>Wij zijn Nederland</td></tr>
-            <tr><td>Modern Nederland</td></tr>
-            <tr><td>Volt</td></tr>
-            <tr><td>JEZUS LEEFT</td></tr>
-            <tr><td>blank</td></tr>
-            <tr><td>Trots op Nederland</td></tr>
-            <tr><td>Partij voor de Republiek</td></tr>
-            <tr><td>De Groenen</td></tr>
-            <tr><td>Partij voor de Kinderbelangen</td></tr>
-            <tr><td>de Feestpartij</td></tr>
-            <tr><td>Oprecht Recht</td></tr>
-            <tr><td>Nederland Groot</td></tr>            
-        </tbody>
-    </table>
-    
     <!-- Dynamic data table -->
     <table id="data-table">
         <thead>
@@ -101,7 +43,7 @@
             <!-- Table rows will be populated dynamically by script.js -->
         </tbody>
     </table>
-</div>
+
     <!-- Add your script.js file here -->
     <script src="votes.js"></script>
 </body>

@@ -4,31 +4,14 @@ body {
   margin: 20px;
 }
 
-h1 {
+h1, h2 {
   text-align: center;
 }
 
 table {
   border-collapse: collapse;
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-
-#party-table {
-  width: 20%;  /* Adjust this value as necessary */
-  display: inline-block;
-  vertical-align: top;
-  margin-right: 1px; /* Add space between the tables */
-}
-
-#data-table {
-  width: 80%;  /* Adjust this value as necessary */
-  display: inline-block;
-  vertical-align: top;
-  margin-left: auto;
-  margin-right: auto;
+  width: 80%; /* Adjust as necessary */
+  margin: 0 auto; /* Centers the table horizontally */
 }
 
 th, td {
@@ -69,15 +52,4 @@ nav ul li a:hover {
 
 nav ul li a.active {
   color: red;
-}
-
-.table-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: start;
-}
-
-th.double-height {
-  height: 2em; /* adjust this value as necessary */
 }
