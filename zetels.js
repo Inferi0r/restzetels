@@ -7,8 +7,34 @@ document.addEventListener('DOMContentLoaded', function () {
   
     // Function to populate the table with the fetched data
     function populateTable(data) {
-      // The rest of the code remains unchanged from the previous "zetels.js" code
-      // ...
+      var tableBody = document.getElementById('data-table').getElementsByTagName('tbody')[0];
+  
+      // Check if the data is an array
+      if (!Array.isArray(data) || data.length === 0) {
+        console.error('Invalid data format or empty data.');
+        return;
+      }
+  
+      // Loop through the data and create table rows
+      data.forEach(function (item) {
+        var newRow = document.createElement('tr');
+  
+        // Create cells for Label and Results Current Votes
+        var labelCell = document.createElement('td');
+        labelCell.textContent = parties[item.key].label; // Using the party key to access the label from the parties object
+        newRow.appendChild(labelCell);
+  
+        var resultsCurrentVotesCell = document.createElement('td');
+        resultsCurrentVotesCell.textContent = item.results.current.votes;
+        newRow.appendChild(resultsCurrentVotesCell);
+  
+        // If you want to include the color cell (optional)
+        // var partyColorCell = document.createElement('td');
+        // partyColorCell.style.backgroundColor = parties[item.key].color;
+        // newRow.appendChild(partyColorCell);
+  
+        tableBody.appendChild(newRow);
+      });
     }
   
     // Function to populate the update fields
