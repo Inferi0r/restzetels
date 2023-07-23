@@ -17,11 +17,11 @@ table {
   width: 20%;  /* Adjust this value as necessary */
   display: inline-block;
   vertical-align: top;
-  margin-right: 2px; /* Add space between the tables */
+  margin-right: 1px; /* Add space between the tables */
 }
 
 #data-table {
-  width: 75%;  /* Adjust this value as necessary */
+  width: 80%;  /* Adjust this value as necessary */
   display: inline-block;
   vertical-align: top;
 }
