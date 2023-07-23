@@ -16,32 +16,40 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to populate the table with the fetched data
     function populateTable(data) {
-        var table = document.getElementById('data-table');
+        var tbody = document.querySelector('#data-table tbody');
 
-        // Check if the data is an array
-        if (!Array.isArray(data) || data.length === 0) {
-            console.error('Invalid data format or empty data.');
-            return;
+        // Clear any existing rows
+        while (tbody.firstChild) {
+            tbody.firstChild.remove();
         }
 
-        // Create table headers
-        var headers = Object.keys(data[0]);
-        var thead = table.createTHead();
-        var headerRow = thead.insertRow();
-        for (var h of headers) {
-            var th = document.createElement('th');
-            th.textContent = h;
-            headerRow.appendChild(th);
-        }
+        // Construct a map from party keys to labels
+        var partyMap = {};
+        data.parties.forEach(function(party) {
+            partyMap[party.key] = party.label;
+        });
 
-        // Create table rows
-        var tbody = table.createTBody();
-        data.forEach(function (item) {
-            var row = tbody.insertRow();
-            headers.forEach(function (header) {
-                var cell = row.insertCell();
-                cell.textContent = getNestedValue(item, header);
+        // Populate table with views
+        data.views.forEach(function(item) {
+            var row = document.createElement('tr');
+
+            // Include 'label', 'status', and 'updated' properties
+            ['label', 'status', 'updated'].forEach(function(property) {
+                var cell = document.createElement('td');
+                cell.textContent = item[property];
+                row.appendChild(cell);
             });
+
+            // Translate 'topPartiesCurrent' and 'topPartiesPrevious' to party labels
+            ['topPartiesCurrent', 'topPartiesPrevious'].forEach(function(property) {
+                var cell = document.createElement('td');
+                cell.textContent = item[property].map(function(partyKey) {
+                    return partyMap[partyKey];
+                }).join(', ');
+                row.appendChild(cell);
+            });
+
+            tbody.appendChild(row);
         });
     }
 
@@ -55,12 +63,6 @@ document.addEventListener('DOMContentLoaded', function () {
             if (xhr.status === 200) {
                 try {
                     var responseData = JSON.parse(xhr.responseText);
-
-                    // Check if the response data is an array
-                    if (!responseData || !Array.isArray(responseData)) {
-                        console.error('Invalid response data:', responseData);
-                        return;
-                    }
 
                     // Call the populateTable function to update the table
                     populateTable(responseData);
