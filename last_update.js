@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded', function () {
         data.views.forEach(function(item) {
             var row = document.createElement('tr');
 
-            // Include 'label', 'status', and 'updated' properties
-            ['label', 'status', 'updated'].forEach(function(property) {
+            // Include 'key', 'label', 'status', 'updated', 'cbsCode', and 'type' properties
+            ['key', 'label', 'status', 'updated', 'cbsCode', 'type'].forEach(function(property) {
                 var cell = document.createElement('td');
                 cell.textContent = item[property];
                 row.appendChild(cell);
