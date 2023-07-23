@@ -1,4 +1,4 @@
-// Wait for the page to load before executing JavaScript
+// Wait for the DOM to finish loading before executing JavaScript
 document.addEventListener('DOMContentLoaded', function () {
     // Function to populate the table with the fetched data
     function populateTable(data) {
