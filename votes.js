@@ -35,17 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
         data.forEach(function (item) {
             var newRow = document.createElement('tr');
 
-            // Loop through the table headers and extract corresponding data
-            for (var i = 0; i < tableHeaders.length; i++) {
-                var field = tableHeaders[i].getAttribute('data-field');
-                var cellValue = getNestedValue(item, field);
-
-                var newCell = document.createElement('td');
-                newCell.textContent = cellValue;
-                newRow.appendChild(newCell);
-            }
-
-            // If this row is for a party, add party label and color columns
+            // If this row is for a party, create party label and color cells first
             if (parties.hasOwnProperty(item.key)) {
                 let partyLabelCell = document.createElement('td');
                 partyLabelCell.textContent = parties[item.key].label;
@@ -54,6 +44,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 let partyColorCell = document.createElement('td');
                 partyColorCell.style.backgroundColor = parties[item.key].color;
                 newRow.appendChild(partyColorCell);
+            }
+
+            // Loop through the table headers and extract corresponding data
+            for (var i = 0; i < tableHeaders.length; i++) {
+                var field = tableHeaders[i].getAttribute('data-field');
+                var cellValue = getNestedValue(item, field);
+
+                var newCell = document.createElement('td');
+                newCell.textContent = cellValue;
+                newRow.appendChild(newCell);
             }
 
             tableBody.appendChild(newRow);
