@@ -31,11 +31,13 @@ async function getData() {
   const body = table.createTBody();
   votesData.parties.forEach((party) => {
     const row = body.insertRow();
-    const partyCell = row.insertCell();
+    const partyCell = document.createElement('th');
     const votesCell = row.insertCell();
     partyCell.textContent = keyToLabel.get(party.key);
     votesCell.textContent = party.results.current.votes;
-  });
+    row.appendChild(partyCell);
+    row.appendChild(votesCell);
+});
 
   // Append table to document body (or another desired element)
   document.getElementById('tableContainer').appendChild(table);
