@@ -71,5 +71,5 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchDataAndPopulateTable();
   
     setInterval(fetchDataAndPopulateTable, 60000); // Update every minute
-  });
+  }); 
   
