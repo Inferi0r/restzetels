@@ -2,6 +2,9 @@
 
 // Wait for the DOM to finish loading before executing JavaScript
 document.addEventListener('DOMContentLoaded', function () {
+    // Object to store party data by key
+    let parties = {};
+  
     // Function to populate the table with the fetched data
     function populateTable(data) {
       var tableBody = document.getElementById('data-table').getElementsByTagName('tbody')[0];
@@ -16,53 +19,49 @@ document.addEventListener('DOMContentLoaded', function () {
       data.forEach(function (item) {
         var newRow = document.createElement('tr');
   
-        // Create cells for Label, Results Current Votes, and party colors
+        // Create cells for Label and Results Current Votes
         var labelCell = document.createElement('td');
-        var resultsCurrentVotesCell = document.createElement('td');
-        var partyColorCell = document.createElement('td');
-  
-        // Check if the necessary properties exist before accessing them
-        if (item.key in parties) {
-          labelCell.textContent = parties[item.key].label;
-          partyColorCell.style.backgroundColor = parties[item.key].color;
-        } else {
-          labelCell.textContent = 'N/A'; // Use a fallback value if the label is not available
-          partyColorCell.style.backgroundColor = 'transparent'; // Use a fallback color if party color is not available
-        }
-  
-        if ('results' in item && 'current' in item.results && 'votes' in item.results.current) {
-          resultsCurrentVotesCell.textContent = item.results.current.votes;
-        } else {
-          resultsCurrentVotesCell.textContent = 'N/A'; // Use a fallback value if the votes data is not available
-        }
-  
+        labelCell.textContent = parties[item.key].label; // Using the party key to access the label from the parties object
         newRow.appendChild(labelCell);
+  
+        var resultsCurrentVotesCell = document.createElement('td');
+        resultsCurrentVotesCell.textContent = item.results.current.votes;
         newRow.appendChild(resultsCurrentVotesCell);
-        newRow.appendChild(partyColorCell);
+  
         tableBody.appendChild(newRow);
       });
     }
   
+    // Function to populate the update fields
+    function populateUpdateFields(data) {
+      // The rest of the code remains unchanged from the previous "zetels.js" code
+      // ...
+    }
+  
     // Function to handle AJAX request and data population
     function fetchDataAndPopulateTable() {
-      // Make an AJAX request to the PHP script to fetch the data
+      // Fetch the parties data from "votes.js" first
+      // Transform parties array into an object keyed by party key
+      parties = votes.parties.reduce((obj, party) => {
+        obj[party.key] = party;
+        return obj;
+      }, {});
+  
+      // Make an AJAX request to the PHP script to fetch the "Results Current Votes" data
       fetch('/get_data.php?source=votes')
         .then((response) => response.json())
         .then((data) => {
-          // Check if the response data is an object with the 'parties' property
+          // Check if the data is an object with the 'parties' property
           if (!data || !data.parties || !Array.isArray(data.parties)) {
             console.error('Invalid response data:', data);
             return;
           }
   
-          // Transform parties array into an object keyed by party key
-          var parties = data.parties.reduce((obj, party) => {
-            obj[party.key] = party;
-            return obj;
-          }, {});
-  
           // Call the populateTable function to update the table
           populateTable(data.parties);
+  
+          // Call the populateUpdateFields function to update the fields (if required)
+          // populateUpdateFields(data);
         })
         .catch((error) => console.error('Error fetching data:', error));
     }
@@ -71,5 +70,5 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchDataAndPopulateTable();
   
     setInterval(fetchDataAndPopulateTable, 60000); // Update every minute
-  }); 
+  });
   
