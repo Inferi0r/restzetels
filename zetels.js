@@ -1,71 +1,45 @@
-// Wait for the DOM to finish loading before executing JavaScript
-document.addEventListener('DOMContentLoaded', function () {
-  // Object to store party data by key
-  let parties = {};
+// Fetch data from get_data.php
+async function fetchData(source) {
+  const response = await fetch(`get_data.php?source=${source}`);
+  const data = await response.json();
+  return data;
+}
 
-  // Function to populate the table with the fetched data
-  function populateTable(data) {
-    var tableBody = document.getElementById('data-table').getElementsByTagName('tbody')[0];
+// Get data from both sources
+async function getData() {
+  const votesData = await fetchData('votes');
+  const updateData = await fetchData('last_update');
 
-    // Check if the data is an array
-    if (!Array.isArray(data) || data.length === 0) {
-      console.error('Invalid data format or empty data.');
-      return;
-    }
+  // Map keys to party labels
+  const keyToLabel = new Map();
+  updateData.parties.forEach((party) => {
+    keyToLabel.set(party.key, party.label);
+  });
 
-    // Loop through the data and create table rows
-    data.forEach(function (item) {
-      var newRow = document.createElement('tr');
+  // Create table
+  const table = document.createElement('table');
 
-      // Create cells for Label and Results Current Votes
-      var labelCell = document.createElement('td');
-      var resultsCurrentVotesCell = document.createElement('td');
+  // Create table header
+  const header = table.createTHead();
+  const headerRow = header.insertRow();
+  const partyHeader = headerRow.insertCell();
+  const votesHeader = headerRow.insertCell();
+  partyHeader.textContent = 'Partij';
+  votesHeader.textContent = 'Stemmen';
 
-      // Check if the necessary properties exist before accessing them
-      if (item.key in parties) {
-        labelCell.textContent = parties[item.key].label;
-      } else {
-        labelCell.textContent = 'N/A'; // Use a fallback value if the label is not available
-      }
+  // Add table rows
+  const body = table.createTBody();
+  votesData.parties.forEach((party) => {
+    const row = body.insertRow();
+    const partyCell = row.insertCell();
+    const votesCell = row.insertCell();
+    partyCell.textContent = keyToLabel.get(party.key);
+    votesCell.textContent = party.results.current.votes;
+  });
 
-      if ('results' in item && 'current' in item.results && 'votes' in item.results.current) {
-        resultsCurrentVotesCell.textContent = item.results.current.votes;
-      } else {
-        resultsCurrentVotesCell.textContent = 'N/A'; // Use a fallback value if the votes data is not available
-      }
+  // Append table to document body (or another desired element)
+  document.getElementById('tableContainer').appendChild(table);
+}
 
-      newRow.appendChild(labelCell);
-      newRow.appendChild(resultsCurrentVotesCell);
-      tableBody.appendChild(newRow);
-    });
-  }
-
-  // Function to handle AJAX request and data population
-  function fetchDataAndPopulateTable() {
-    // Make an AJAX request to the PHP script to fetch the data
-    fetch('/get_data.php?source=last_update') // Use the correct data source
-      .then((response) => response.json())
-      .then((data) => {
-        // Check if the response data is an object with the 'parties' property
-        if (!data || !data.parties || !Array.isArray(data.parties)) {
-          console.error('Invalid response data:', data);
-          return;
-        }
-
-        // Transform parties array into an object keyed by party key
-        parties = data.parties.reduce((obj, party) => {
-          obj[party.key] = party;
-          return obj;
-        }, {});
-
-        // Call the populateTable function to update the table
-        populateTable(data.parties);
-      })
-      .catch((error) => console.error('Error fetching data:', error));
-  }
-
-  // Call the fetchDataAndPopulateTable function when the DOM is fully loaded
-  fetchDataAndPopulateTable();
-
-  setInterval(fetchDataAndPopulateTable, 60000); // Update every minute
-});
+// Get data when DOM is fully loaded
+document.addEventListener('DOMContentLoaded', getData);
