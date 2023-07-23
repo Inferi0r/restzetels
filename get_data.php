@@ -1,11 +1,7 @@
 <?php
 try {
-    // Check if the current request is made using HTTPS
-    $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
-
-    // Replace this with your data source URL or PHP code to fetch the JSON data
-    // Use the appropriate protocol based on the current request (http or https)
-    $dataUrl = $protocol . '://d2vz64kg7un9ye.cloudfront.net/data/500.json';
+    // Use HTTPS for fetching the JSON data
+    $dataUrl = 'https://d2vz64kg7un9ye.cloudfront.net/data/500.json';
     $jsonData = file_get_contents($dataUrl);
 
     // Check if JSON data is fetched successfully

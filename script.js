@@ -59,11 +59,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Function to handle AJAX request and data population
-    //function fetchData() {
-     //   var xhr = new XMLHttpRequest();
-     //   xhr.open('GET', 'https://arcovink.synology.me:8444/get_data.php', true);
-     //   xhr.setRequestHeader('Content-type', 'application/json');
-
     function fetchData() {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', '/get_data.php', true); // Use the relative URL
