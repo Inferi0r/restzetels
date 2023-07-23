@@ -1,62 +1,99 @@
-// Function to populate the table dynamically with data fetched from get_data.php
-function populateTable(data) {
-    const tableBody = document.querySelector('#data-table tbody');
-    
-    // Clear existing table data
-    tableBody.innerHTML = '';
+// Wait for the DOM to finish loading before executing JavaScript
+document.addEventListener('DOMContentLoaded', function () {
+    // Function to populate the table with the fetched data
+    function populateTable(data) {
+        var tableBody = document.getElementById('data-table').getElementsByTagName('tbody')[0];
 
-    // Loop through the data and create rows
-    data.forEach((item) => {
-        const row = document.createElement('tr');
+        // Check if the data is an array
+        if (!Array.isArray(data) || data.length === 0) {
+            console.error('Invalid data format or empty data.');
+            return;
+        }
 
-        // Hardcoded Party data (add more parties if needed)
-        const partyCell = document.createElement('td');
-        partyCell.textContent = getPartyName(item.key); // Function to get the party name based on the key
-        row.appendChild(partyCell);
+        // Get the table headers
+        var tableHeaders = document.querySelectorAll('#data-table th[data-field]');
 
-        // Loop through other columns and create cells
-        Object.keys(item.results.previous).forEach((key) => {
-            const cell = document.createElement('td');
-            cell.textContent = item.results.previous[key];
-            row.appendChild(cell);
+        // Define the hardcoded data for the "Party" column
+        var partiesData = [
+            "VVD", "PVV", "CDA", "D66", "GL", "SP", "PvdA", "CU", "PvdD", "50PLUS",
+            "SGP", "DENK", "FVD", "BIJ1", "JA21", "COORANJE", "VOLT", "NIDA", "PIRATEN",
+            "LIBERP", "JONG", "SPLINTER", "BBB", "NLBETER", "HENKKROL", "OPRECHT",
+            "JEZUSLFT", "TROTS", "UBUNTU", "BLANCOZV", "PVDE", "DFP", "VSN", "WIJZNL",
+            "MODERNNL", "GROENEN", "PVDR", "OVERIG"
+        ];
+
+        // Loop through the data and create table rows
+        data.forEach(function (item, index) {
+            var newRow = document.createElement('tr');
+
+            // Add the hardcoded Party data
+            var partyCell = document.createElement('td');
+            partyCell.textContent = partiesData[index];
+            newRow.appendChild(partyCell);
+
+            // Loop through the table headers and extract corresponding data
+            for (var i = 0; i < tableHeaders.length; i++) {
+                var field = tableHeaders[i].getAttribute('data-field');
+                var cellValue = getNestedValue(item, field);
+
+                var newCell = document.createElement('td');
+                newCell.textContent = cellValue;
+                newRow.appendChild(newCell);
+            }
+
+            tableBody.appendChild(newRow);
         });
+    }
 
-        Object.keys(item.results.current).forEach((key) => {
-            const cell = document.createElement('td');
-            cell.textContent = item.results.current[key];
-            row.appendChild(cell);
-        });
+    // Function to get the value from nested object based on a dot-separated key
+    function getNestedValue(obj, key) {
+        var keys = key.split('.');
+        var value = obj;
+        for (var i = 0; i < keys.length; i++) {
+            value = value[keys[i]];
+            if (value === undefined) {
+                return '';
+            }
+        }
+        return value;
+    }
 
-        Object.keys(item.results.diff).forEach((key) => {
-            const cell = document.createElement('td');
-            cell.textContent = item.results.diff[key];
-            row.appendChild(cell);
-        });
+    // Function to handle AJAX request and data population
+    function fetchData() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://arcovink.synology.me:8444/get_data.php', true);
+        xhr.setRequestHeader('Content-type', 'application/json');
 
-        // Append the row to the table
-        tableBody.appendChild(row);
-    });
-}
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                try {
+                    var responseData = JSON.parse(xhr.responseText);
 
-// Function to get the party name based on the key (hardcoded party names)
-function getPartyName(key) {
-    const parties = {
-        0: "VVD",
-        1: "PVV",
-        2: "CDA",
-        // Add more parties here...
-    };
+                    // Check if the response data is an object with the 'parties' property
+                    if (!responseData || !responseData.parties || !Array.isArray(responseData.parties)) {
+                        console.error('Invalid response data:', responseData);
+                        return;
+                    }
 
-    return parties[key] || "Unknown Party";
-}
+                    // Call the populateTable function to update the table
+                    populateTable(responseData.parties);
+                } catch (error) {
+                    console.error('Error parsing JSON data:', error);
+                }
+            } else {
+                // Handle error if AJAX request fails
+                console.error('Error fetching data:', xhr.statusText);
+            }
+        };
 
-// Function to fetch data from get_data.php
-function fetchData() {
-    fetch('https://arcovink.synology.me:8444/get_data.php')
-        .then((response) => response.json())
-        .then((data) => populateTable(data))
-        .catch((error) => console.error('Error fetching data:', error));
-}
+        xhr.onerror = function () {
+            // Handle error if there's an issue with the AJAX request
+            console.error('Error fetching data.');
+        };
 
-// Fetch data when the page loads
-fetchData();
+        xhr.send();
+    }
+
+    // Call the fetchData function to populate the table
+    fetchData();
+});
