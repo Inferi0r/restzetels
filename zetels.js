@@ -28,11 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
         resultsCurrentVotesCell.textContent = item.results.current.votes;
         newRow.appendChild(resultsCurrentVotesCell);
   
-        // If you want to include the color cell (optional)
-        // var partyColorCell = document.createElement('td');
-        // partyColorCell.style.backgroundColor = parties[item.key].color;
-        // newRow.appendChild(partyColorCell);
-  
         tableBody.appendChild(newRow);
       });
     }
