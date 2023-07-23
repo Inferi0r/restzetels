@@ -35,17 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
         data.forEach(function (item) {
             var newRow = document.createElement('tr');
 
-            // If this row is for a party, create party label and color cells first
-            if (parties.hasOwnProperty(item.key)) {
-                let partyLabelCell = document.createElement('td');
-                partyLabelCell.textContent = parties[item.key].label;
-                newRow.appendChild(partyLabelCell);
-
-                let partyColorCell = document.createElement('td');
-                partyColorCell.style.backgroundColor = parties[item.key].color;
-                newRow.appendChild(partyColorCell);
-            }
-
             // Loop through the table headers and extract corresponding data
             for (var i = 0; i < tableHeaders.length; i++) {
                 var field = tableHeaders[i].getAttribute('data-field');
@@ -54,6 +43,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 var newCell = document.createElement('td');
                 newCell.textContent = cellValue;
                 newRow.appendChild(newCell);
+            }
+
+            // If this row is for a party, create party label and color cells after the key cell
+            if (parties.hasOwnProperty(item.key)) {
+                let partyLabelCell = document.createElement('td');
+                partyLabelCell.textContent = parties[item.key].label;
+                newRow.insertBefore(partyLabelCell, newRow.children[1]); // Place the label cell at 2nd column
+
+                let partyColorCell = document.createElement('td');
+                partyColorCell.style.backgroundColor = parties[item.key].color;
+                newRow.insertBefore(partyColorCell, newRow.children[2]); // Place the color cell at 3rd column
             }
 
             tableBody.appendChild(newRow);
