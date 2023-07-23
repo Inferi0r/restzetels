@@ -32,36 +32,26 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   
-    // Function to populate the update fields
-    function populateUpdateFields(data) {
-      // The rest of the code remains unchanged from the previous "zetels.js" code
-      // ...
-    }
-  
     // Function to handle AJAX request and data population
     function fetchDataAndPopulateTable() {
-      // Fetch the parties data from "votes.js" first
-      // Transform parties array into an object keyed by party key
-      parties = votes.parties.reduce((obj, party) => {
-        obj[party.key] = party;
-        return obj;
-      }, {});
-  
-      // Make an AJAX request to the PHP script to fetch the "Results Current Votes" data
+      // Make an AJAX request to the PHP script to fetch the data
       fetch('/get_data.php?source=votes')
         .then((response) => response.json())
         .then((data) => {
-          // Check if the data is an object with the 'parties' property
+          // Check if the response data is an object with the 'parties' property
           if (!data || !data.parties || !Array.isArray(data.parties)) {
             console.error('Invalid response data:', data);
             return;
           }
   
+          // Transform parties array into an object keyed by party key
+          parties = data.parties.reduce((obj, party) => {
+            obj[party.key] = party;
+            return obj;
+          }, {});
+  
           // Call the populateTable function to update the table
           populateTable(data.parties);
-  
-          // Call the populateUpdateFields function to update the fields (if required)
-          // populateUpdateFields(data);
         })
         .catch((error) => console.error('Error fetching data:', error));
     }
