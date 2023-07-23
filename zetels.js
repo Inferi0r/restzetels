@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var resultsCurrentVotesCell = document.createElement('td');
 
       // Check if the necessary properties exist before accessing them
-      if (item.key in parties && parties[item.key].label) {
+      if (item.key in parties) {
         labelCell.textContent = parties[item.key].label;
       } else {
         labelCell.textContent = 'N/A'; // Use a fallback value if the label is not available
