@@ -1,5 +1,3 @@
-/ zetels.js
-
 // Wait for the DOM to finish loading before executing JavaScript
 document.addEventListener('DOMContentLoaded', function () {
   // Object to store party data by key
