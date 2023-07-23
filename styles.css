@@ -72,3 +72,7 @@ nav ul li a.active {
   justify-content: flex-start;
   align-items: start;
 }
+
+th.double-height {
+  height: 2em; /* adjust this value as necessary */
+}
