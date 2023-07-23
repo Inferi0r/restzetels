@@ -88,4 +88,4 @@ document.addEventListener('DOMContentLoaded', function () {
   fetchPartiesData();
 
   setInterval(fetchDataAndPopulateTable, 60000); // Update every minute
-});
+}); 
