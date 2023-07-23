@@ -40,26 +40,30 @@ document.addEventListener('DOMContentLoaded', function () {
   
     // Function to handle AJAX request and data population
     function fetchDataAndPopulateTable() {
+      // Fetch the parties data from "votes.js" first
       // Transform parties array into an object keyed by party key
       parties = votes.parties.reduce((obj, party) => {
         obj[party.key] = party;
         return obj;
       }, {});
   
-      // Fetch the votes data from "votes.js"
-      var responseData = votes;
+      // Make an AJAX request to the PHP script to fetch the "Results Current Votes" data
+      fetch('/get_data.php?source=votes')
+        .then((response) => response.json())
+        .then((data) => {
+          // Check if the data is an object with the 'parties' property
+          if (!data || !data.parties || !Array.isArray(data.parties)) {
+            console.error('Invalid response data:', data);
+            return;
+          }
   
-      // Check if the response data is an object with the 'parties' property
-      if (!responseData || !responseData.parties || !Array.isArray(responseData.parties)) {
-        console.error('Invalid response data:', responseData);
-        return;
-      }
+          // Call the populateTable function to update the table
+          populateTable(data.parties);
   
-      // Call the populateTable function to update the table
-      populateTable(responseData.parties);
-  
-      // Call the populateUpdateFields function to update the fields
-      populateUpdateFields(responseData);
+          // Call the populateUpdateFields function to update the fields (if required)
+          // populateUpdateFields(data);
+        })
+        .catch((error) => console.error('Error fetching data:', error));
     }
   
     // Call the fetchDataAndPopulateTable function when the DOM is fully loaded
