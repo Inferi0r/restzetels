@@ -58,11 +58,18 @@ document.addEventListener('DOMContentLoaded', function () {
         return value;
     }
 
+    // Function to populate the update fields
+    function populateUpdateFields(data) {
+        document.getElementById('lastUpdate').textContent = new Date(data.updated * 1000).toLocaleString();
+        document.getElementById('currentTurnout').textContent = data.turnout.current;
+        document.getElementById('previousTurnout').textContent = data.turnout.previous;
+    }
+
     // Function to handle AJAX request and data population
-      function fetchData() {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', '/get_data.php?source=votes', true); // Use the relative URL with 'source' parameter
-            xhr.setRequestHeader('Content-type', 'application/json');   
+    function fetchData() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/get_data.php?source=votes', true); // Use the relative URL with 'source' parameter
+        xhr.setRequestHeader('Content-type', 'application/json');
 
         xhr.onload = function () {
             if (xhr.status === 200) {
@@ -77,6 +84,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     // Call the populateTable function to update the table
                     populateTable(responseData.parties);
+
+                    // Call the populateUpdateFields function to update the fields
+                    populateUpdateFields(responseData);
                 } catch (error) {
                     console.error('Error parsing JSON data:', error);
                 }
