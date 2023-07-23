@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to populate the table with the fetched data
     function populateTable(data) {
-        var tbody = document.querySelector('#data-table tbody');
+        var tbody = document.querySelector('#anp_updates-table tbody');
 
         // Clear any existing rows
         while (tbody.firstChild) {

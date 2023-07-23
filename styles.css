@@ -11,6 +11,9 @@ h1 {
 table {
   border-collapse: collapse;
   width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 #party-table {
@@ -24,6 +27,8 @@ table {
   width: 80%;  /* Adjust this value as necessary */
   display: inline-block;
   vertical-align: top;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 th, td {
