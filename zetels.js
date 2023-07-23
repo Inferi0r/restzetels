@@ -16,15 +16,18 @@ document.addEventListener('DOMContentLoaded', function () {
       data.forEach(function (item) {
         var newRow = document.createElement('tr');
   
-        // Create cells for Label and Results Current Votes
+        // Create cells for Label, Results Current Votes, and party colors
         var labelCell = document.createElement('td');
         var resultsCurrentVotesCell = document.createElement('td');
+        var partyColorCell = document.createElement('td');
   
         // Check if the necessary properties exist before accessing them
         if (item.key in parties) {
           labelCell.textContent = parties[item.key].label;
+          partyColorCell.style.backgroundColor = parties[item.key].color;
         } else {
           labelCell.textContent = 'N/A'; // Use a fallback value if the label is not available
+          partyColorCell.style.backgroundColor = 'transparent'; // Use a fallback color if party color is not available
         }
   
         if ('results' in item && 'current' in item.results && 'votes' in item.results.current) {
@@ -35,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
         newRow.appendChild(labelCell);
         newRow.appendChild(resultsCurrentVotesCell);
+        newRow.appendChild(partyColorCell);
         tableBody.appendChild(newRow);
       });
     }
