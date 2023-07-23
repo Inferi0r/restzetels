@@ -5,6 +5,30 @@ document.addEventListener('DOMContentLoaded', function () {
   // Object to store party data by key
   let parties = {};
 
+  // Function to fetch the parties data
+  function fetchPartiesData() {
+    // Make an AJAX request to the PHP script to fetch the parties data
+    fetch('/get_data.php?source=last_update')
+      .then((response) => response.json())
+      .then((data) => {
+        // Check if the response data is valid and contains the 'parties' property
+        if (!data || !data.parties || !Array.isArray(data.parties)) {
+          console.error('Invalid parties data:', data);
+          return;
+        }
+
+        // Transform parties array into an object keyed by party key
+        parties = data.parties.reduce((obj, party) => {
+          obj[party.key] = party;
+          return obj;
+        }, {});
+
+        // Once the parties data is fetched, proceed to fetch and populate the main table data
+        fetchDataAndPopulateTable();
+      })
+      .catch((error) => console.error('Error fetching parties data:', error));
+  }
+
   // Function to populate the table with the fetched data
   function populateTable(data) {
     var tableBody = document.getElementById('data-table').getElementsByTagName('tbody')[0];
@@ -44,21 +68,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Function to handle AJAX request and data population
   function fetchDataAndPopulateTable() {
-    // Make an AJAX request to the PHP script to fetch the data
+    // Make an AJAX request to the PHP script to fetch the main table data
     fetch('/get_data.php?source=votes')
       .then((response) => response.json())
       .then((data) => {
-        // Check if the response data is an object with the 'parties' property
+        // Check if the response data is valid and contains the 'parties' property
         if (!data || !data.parties || !Array.isArray(data.parties)) {
           console.error('Invalid response data:', data);
           return;
         }
-
-        // Transform parties array into an object keyed by party key
-        parties = data.parties.reduce((obj, party) => {
-          obj[party.key] = party;
-          return obj;
-        }, {});
 
         // Call the populateTable function to update the table
         populateTable(data.parties);
@@ -66,8 +84,8 @@ document.addEventListener('DOMContentLoaded', function () {
       .catch((error) => console.error('Error fetching data:', error));
   }
 
-  // Call the fetchDataAndPopulateTable function when the DOM is fully loaded
-  fetchDataAndPopulateTable();
+  // Call the fetchPartiesData function to fetch the parties data first
+  fetchPartiesData();
 
   setInterval(fetchDataAndPopulateTable, 60000); // Update every minute
 });
