@@ -59,10 +59,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Function to handle AJAX request and data population
-    function fetchData() {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', '/get_data.php?source=500', true); // for 500.json
-        xhr.setRequestHeader('Content-type', 'application/json');    
+      function fetchData() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/get_data.php?source=500', true); // Use the relative URL with 'source' parameter
+            xhr.setRequestHeader('Content-type', 'application/json');   
 
         xhr.onload = function () {
             if (xhr.status === 200) {

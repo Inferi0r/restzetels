@@ -6,11 +6,6 @@ try {
         'index' => 'https://d2vz64kg7un9ye.cloudfront.net/data/index.json'
     ];
 
-    // Check if the source parameter is passed and is valid
-    if (!isset($_GET['source']) || !array_key_exists($_GET['source'], $dataSources)) {
-        throw new Exception('Invalid data source.');
-    }
-
     // Get the URL of the requested data source
     $dataUrl = $dataSources[$_GET['source']];
 
