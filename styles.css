@@ -1,77 +1,24 @@
-/* Global Styles */
+/* Add your CSS styles here */
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  /* Table Styles */
-  #table-container {
-    overflow-x: auto;
-  }
-  
-  #results-table {
-    width: 100%;
-    border-collapse: collapse;
-    border: 1px solid #ccc;
-  }
-  
-  #results-table th,
-  #results-table td {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #ccc;
-  }
-  
-  #results-table th {
-    background-color: #f2f2f2;
-  }
-  
-  #results-table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  /* Header Styles */
-  header {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 15px;
-  }
-  
-  header h1 {
-    margin: 0;
-  }
-  
-  /* Footer Styles */
-  footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-  }
-  
-  footer p {
-    margin: 0;
-  }
-  
-  /* Additional Styles (Optional) */
-  .container {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-  }
-  
-  .container,
-  header,
-  footer {
-    margin-bottom: 20px;
-  }
-  
-  
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}

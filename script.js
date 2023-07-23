@@ -5,25 +5,19 @@ document.addEventListener('DOMContentLoaded', function () {
         var tableBody = document.getElementById('data-table').getElementsByTagName('tbody')[0];
 
         // Check if the data is an array
-        if (!Array.isArray(data)) {
-            console.error('Data is not an array:', data);
-            return;
-        }
-
-        // Check if the data array is not empty
-        if (data.length === 0) {
-            console.warn('Data array is empty.');
+        if (!Array.isArray(data) || data.length === 0) {
+            console.error('Invalid data format or empty data.');
             return;
         }
 
         // Loop through the data and create table rows
-        data.forEach(function (row) {
+        data.forEach(function (item) {
             var newRow = document.createElement('tr');
             newRow.innerHTML = `
-                <td>${row['Key']}</td>
-                <td>${row['Results Previous Votes']}</td>
-                <td>${row['Results Previous Percentage']}</td>
-                <td>${row['Results Previous Seats']}</td>
+                <td>${item.key}</td>
+                <td>${item.results.previous.votes}</td>
+                <td>${item.results.previous.percentage}</td>
+                <td>${item.results.previous.seats}</td>
                 <!-- Add other table cells here -->
             `;
             tableBody.appendChild(newRow);
@@ -33,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to handle AJAX request and data population
     function fetchData() {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'get_data.php', true);
+        xhr.open('GET', 'https://arcovink.synology.me:8444/get_data.php', true);
         xhr.setRequestHeader('Content-type', 'application/json');
 
         xhr.onload = function () {
@@ -41,14 +35,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 try {
                     var responseData = JSON.parse(xhr.responseText);
 
-                    // Check if the response data is an array
-                    if (!Array.isArray(responseData)) {
-                        console.error('Response data is not an array:', responseData);
+                    // Check if the response data is an object with the 'parties' property
+                    if (!responseData || !responseData.parties || !Array.isArray(responseData.parties)) {
+                        console.error('Invalid response data:', responseData);
                         return;
                     }
 
                     // Call the populateTable function to update the table
-                    populateTable(responseData);
+                    populateTable(responseData.parties);
                 } catch (error) {
                     console.error('Error parsing JSON data:', error);
                 }
