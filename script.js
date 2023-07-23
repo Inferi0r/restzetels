@@ -10,18 +10,38 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
+        // Get the table headers
+        var tableHeaders = document.querySelectorAll('#data-table th[data-field]');
+
         // Loop through the data and create table rows
         data.forEach(function (item) {
             var newRow = document.createElement('tr');
-            newRow.innerHTML = `
-                <td>${item.key}</td>
-                <td>${item.results.previous.votes}</td>
-                <td>${item.results.previous.percentage}</td>
-                <td>${item.results.previous.seats}</td>
-                <!-- Add other table cells here -->
-            `;
+
+            // Loop through the table headers and extract corresponding data
+            for (var i = 0; i < tableHeaders.length; i++) {
+                var field = tableHeaders[i].getAttribute('data-field');
+                var cellValue = getNestedValue(item, field);
+
+                var newCell = document.createElement('td');
+                newCell.textContent = cellValue;
+                newRow.appendChild(newCell);
+            }
+
             tableBody.appendChild(newRow);
         });
+    }
+
+    // Function to get the value from nested object based on a dot-separated key
+    function getNestedValue(obj, key) {
+        var keys = key.split('.');
+        var value = obj;
+        for (var i = 0; i < keys.length; i++) {
+            value = value[keys[i]];
+            if (value === undefined) {
+                return '';
+            }
+        }
+        return value;
     }
 
     // Function to handle AJAX request and data population
