@@ -65,3 +65,10 @@ nav ul li a:hover {
 nav ul li a.active {
   color: red;
 }
+
+.table-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: start;
+}
