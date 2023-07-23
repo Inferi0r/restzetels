@@ -1,47 +1,46 @@
-// Fetch data from get_data.php
-async function fetchData(source) {
-  const response = await fetch(`get_data.php?source=${source}`);
-  const data = await response.json();
-  return data;
+const keyToLabel = new Map();
+let votesData;
+
+function createTable() {
+    // Create table
+    const table = document.createElement('table');
+    const thead = table.createTHead();
+    const tbody = table.createTBody();
+    const headerRow = thead.insertRow();
+
+    // Create header
+    const header1 = document.createElement('th');
+    const header2 = document.createElement('th');
+    header1.textContent = "Partij";
+    header2.textContent = "Stemmen";
+    headerRow.appendChild(header1);
+    headerRow.appendChild(header2);
+
+    // Populate table with data
+    votesData.parties.forEach((party) => {
+        const row = tbody.insertRow();
+        const partyCell = row.insertCell();
+        const votesCell = row.insertCell();
+        partyCell.textContent = keyToLabel.get(party.key);
+        votesCell.textContent = party.results.current.votes;
+    });
+
+    document.getElementById('tableContainer').appendChild(table);
 }
 
-// Get data from both sources
-async function getData() {
-  const votesData = await fetchData('votes');
-  const updateData = await fetchData('last_update');
+// Fetch label data
+fetch('get_data.php?source=last_update')
+    .then(response => response.json())
+    .then(data => {
+        data.parties.forEach(party => {
+            keyToLabel.set(party.key, party.label);
+        });
 
-  // Map keys to party labels
-  const keyToLabel = new Map();
-  updateData.parties.forEach((party) => {
-    keyToLabel.set(party.key, party.label);
-  });
-
-  // Create table
-  const table = document.createElement('table');
-
-  // Create table header
-  const header = table.createTHead();
-  const headerRow = header.insertRow();
-  const partyHeader = headerRow.insertCell();
-  const votesHeader = headerRow.insertCell();
-  partyHeader.textContent = 'Partij';
-  votesHeader.textContent = 'Stemmen';
-
-  // Add table rows
-  const body = table.createTBody();
-  votesData.parties.forEach((party) => {
-    const row = body.insertRow();
-    const partyCell = document.createElement('th');
-    const votesCell = row.insertCell();
-    partyCell.textContent = keyToLabel.get(party.key);
-    votesCell.textContent = party.results.current.votes;
-    row.appendChild(partyCell);
-    row.appendChild(votesCell);
-});
-
-  // Append table to document body (or another desired element)
-  document.getElementById('tableContainer').appendChild(table);
-}
-
-// Get data when DOM is fully loaded
-document.addEventListener('DOMContentLoaded', getData);
+        // Fetch votes data
+        fetch('get_data.php?source=votes')
+            .then(response => response.json())
+            .then(data => {
+                votesData = data;
+                createTable();
+            });
+    });
