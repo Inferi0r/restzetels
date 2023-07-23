@@ -15,13 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
         var tableHeaders = document.querySelectorAll('#data-table th[data-field]');
 
         // Loop through the data and create table rows
-        data.forEach(function (item, index) {
+        data.forEach(function (item) {
             var newRow = document.createElement('tr');
-
-            // Add the hardcoded Party data
-            var partyCell = document.createElement('td');
-            partyCell.textContent = item.key;
-            newRow.appendChild(partyCell);
 
             // Loop through the table headers and extract corresponding data
             for (var i = 0; i < tableHeaders.length; i++) {

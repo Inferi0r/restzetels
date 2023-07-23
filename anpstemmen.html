@@ -19,12 +19,29 @@
     <p>Huidige opkomst: <span id="currentTurnout"></span></p>
     <p>Laatste opkomst: <span id="previousTurnout"></span></p>
     <h1>ANP Stemmen per partij (17 maart 2021)</h1>
+    
+    <!-- Hardcoded party table -->
+    <table id="party-table">
+        <thead>
+            <tr>
+                <th>Party</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>VVD</td></tr>
+            <tr><td>PVV</td></tr>
+            <tr><td>CDA</td></tr>
+            <tr><td>D66</td></tr>
+            <tr><td>GL</td></tr>
+            <!-- Add remaining parties here -->
+            <!-- ... -->
+        </tbody>
+    </table>
+    
+    <!-- Dynamic data table -->
     <table id="data-table">
         <thead>
             <tr>
-                <!-- Define the hardcoded Party column -->
-                <th>Party</th>
-                <!-- Define all other table headers here -->
                 <th data-field="key">Key</th>
                 <th data-field="results.previous.votes">Results Previous Votes</th>
                 <th data-field="results.previous.percentage">Results Previous Percentage</th>
