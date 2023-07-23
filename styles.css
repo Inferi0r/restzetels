@@ -17,7 +17,7 @@ table {
   width: 20%;  /* Adjust this value as necessary */
   display: inline-block;
   vertical-align: top;
-  margin-right: 15px; /* Add space between the tables */
+  margin-right: 2px; /* Add space between the tables */
 }
 
 #data-table {
