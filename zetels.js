@@ -4,6 +4,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   // Object to store party data by key
   let parties = {};
+  let votesData = {}; // Object to store the 'Results Current Votes' data by party key
 
   // Function to populate the table with the fetched data
   function populateTable(data) {
@@ -30,25 +31,37 @@ document.addEventListener('DOMContentLoaded', function () {
         labelCell.textContent = 'N/A'; // Use a fallback value if the label is not available
       }
 
+      // Store the 'Results Current Votes' data in the votesData object using the party key as the key
       if ('results' in item && 'current' in item.results && 'votes' in item.results.current) {
-        resultsCurrentVotesCell.textContent = item.results.current.votes;
+        votesData[item.key] = item.results.current.votes;
       } else {
-        resultsCurrentVotesCell.textContent = 'N/A'; // Use a fallback value if the votes data is not available
+        votesData[item.key] = 'N/A'; // Use a fallback value if the votes data is not available
       }
 
       newRow.appendChild(labelCell);
-      newRow.appendChild(resultsCurrentVotesCell);
       tableBody.appendChild(newRow);
+    });
+
+    // After the first loop, add the 'Results Current Votes' data to the existing rows
+    data.forEach(function (item) {
+      var partyKey = item.key;
+      var row = tableBody.querySelector('tr[data-party="' + partyKey + '"]');
+
+      if (row && partyKey in votesData) {
+        var resultsCurrentVotesCell = document.createElement('td');
+        resultsCurrentVotesCell.textContent = votesData[partyKey];
+        row.appendChild(resultsCurrentVotesCell);
+      }
     });
   }
 
   // Function to handle AJAX request and data population
   function fetchDataAndPopulateTable() {
-    // Make an AJAX request to the PHP script to fetch the data
+    // Make an AJAX request to the PHP script to fetch the main table data
     fetch('/get_data.php?source=votes')
       .then((response) => response.json())
       .then((data) => {
-        // Check if the response data is an object with the 'parties' property
+        // Check if the response data is valid and contains the 'parties' property
         if (!data || !data.parties || !Array.isArray(data.parties)) {
           console.error('Invalid response data:', data);
           return;
@@ -66,8 +79,8 @@ document.addEventListener('DOMContentLoaded', function () {
       .catch((error) => console.error('Error fetching data:', error));
   }
 
-  // Call the fetchDataAndPopulateTable function when the DOM is fully loaded
-  fetchDataAndPopulateTable();
+  // Call the fetchPartiesData function to fetch the parties data first
+  fetchPartiesData();
 
   setInterval(fetchDataAndPopulateTable, 60000); // Update every minute
 });
