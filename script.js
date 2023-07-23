@@ -4,6 +4,18 @@ document.addEventListener('DOMContentLoaded', function () {
     function populateTable(data) {
         var tableBody = document.getElementById('data-table').getElementsByTagName('tbody')[0];
 
+        // Check if the data is an array
+        if (!Array.isArray(data)) {
+            console.error('Data is not an array:', data);
+            return;
+        }
+
+        // Check if the data array is not empty
+        if (data.length === 0) {
+            console.warn('Data array is empty.');
+            return;
+        }
+
         // Loop through the data and create table rows
         data.forEach(function (row) {
             var newRow = document.createElement('tr');
@@ -26,8 +38,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
         xhr.onload = function () {
             if (xhr.status === 200) {
-                var responseData = JSON.parse(xhr.responseText);
-                populateTable(responseData);
+                try {
+                    var responseData = JSON.parse(xhr.responseText);
+
+                    // Check if the response data is an array
+                    if (!Array.isArray(responseData)) {
+                        console.error('Response data is not an array:', responseData);
+                        return;
+                    }
+
+                    // Call the populateTable function to update the table
+                    populateTable(responseData);
+                } catch (error) {
+                    console.error('Error parsing JSON data:', error);
+                }
             } else {
                 // Handle error if AJAX request fails
                 console.error('Error fetching data:', xhr.statusText);
