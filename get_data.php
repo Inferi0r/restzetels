@@ -2,8 +2,8 @@
 try {
     // Define the data sources
     $dataSources = [
-        '500' => 'https://d2vz64kg7un9ye.cloudfront.net/data/500.json',
-        'index' => 'https://d2vz64kg7un9ye.cloudfront.net/data/index.json'
+        'votes' => 'https://d2vz64kg7un9ye.cloudfront.net/data/500.json',
+        'last_update' => 'https://d2vz64kg7un9ye.cloudfront.net/data/index.json'
     ];
 
     // Get the URL of the requested data source
