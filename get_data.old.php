@@ -1,20 +1,7 @@
 <?php
 try {
-    // Define the data sources
-    $dataSources = [
-        '500' => 'https://d2vz64kg7un9ye.cloudfront.net/data/500.json',
-        'index' => 'https://d2vz64kg7un9ye.cloudfront.net/data/index.json'
-    ];
-
-    // Check if the source parameter is passed and is valid
-    if (!isset($_GET['source']) || !array_key_exists($_GET['source'], $dataSources)) {
-        throw new Exception('Invalid data source.');
-    }
-
-    // Get the URL of the requested data source
-    $dataUrl = $dataSources[$_GET['source']];
-
-    // Fetch the JSON data
+    // Use HTTPS for fetching the JSON data
+    $dataUrl = 'https://d2vz64kg7un9ye.cloudfront.net/data/500.json';
     $jsonData = file_get_contents($dataUrl);
 
     // Check if JSON data is fetched successfully
@@ -40,3 +27,6 @@ try {
     echo $errorMessage;
 }
 ?>
+
+
+
