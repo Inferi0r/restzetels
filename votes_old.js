@@ -1,23 +1,6 @@
 // Wait for the DOM to finish loading before executing JavaScript
 document.addEventListener('DOMContentLoaded', function () {
 
-    // Object to store party data by key
-    let parties = {};
-
-    // Fetch parties data from index.json
-    fetch('/get_data.php?source=last_update')
-    .then(response => response.json())
-    .then(data => {
-        // Transform parties array into an object keyed by party key
-        parties = data.parties.reduce((obj, party) => {
-        obj[party.key] = party;
-        return obj;
-        }, {});
-        // Fetch the votes data
-        fetchData();
-    })
-    .catch(error => console.error('Error fetching index data:', error));
-
     // Function to populate the table with the fetched data
     function populateTable(data) {
         var tableBody = document.getElementById('data-table').getElementsByTagName('tbody')[0];
@@ -43,17 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 var newCell = document.createElement('td');
                 newCell.textContent = cellValue;
                 newRow.appendChild(newCell);
-            }
-
-            // If this row is for a party, add party label and color columns
-            if (parties.hasOwnProperty(item.key)) {
-                let partyLabelCell = document.createElement('td');
-                partyLabelCell.textContent = parties[item.key].label;
-                newRow.appendChild(partyLabelCell);
-
-                let partyColorCell = document.createElement('td');
-                partyColorCell.style.backgroundColor = parties[item.key].color;
-                newRow.appendChild(partyColorCell);
             }
 
             tableBody.appendChild(newRow);
@@ -118,6 +90,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         xhr.send();
     }
+
+    // Call the fetchData function to populate the table
+    fetchData();
 
     setInterval(fetchData, 60000); // Update every minute
 });
