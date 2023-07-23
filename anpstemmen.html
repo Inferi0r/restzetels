@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ANP Stemmen</title>
+    <!-- Add your stylesheets here -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Zetels</a></li>
+            <li><a href="stemcijfers.html">Stemcijfers</a></li>
+            <li><a class="active" href="anpstemmen.html">ANP Stemmen</a></li>
+            <li><a href="anpupdates.html">ANP Updates</a></li>
+        </ul>
+    </nav>
+    <h1>Stemmen per partij 17 maart 2021</h1>
+    <table id="data-table">
+        <thead>
+            <tr>
+                <!-- Define the hardcoded Party column -->
+                <th>Party</th>
+                <!-- Define all other table headers here -->
+                <th data-field="key">Key</th>
+                <th data-field="results.previous.votes">Results Previous Votes</th>
+                <th data-field="results.previous.percentage">Results Previous Percentage</th>
+                <th data-field="results.previous.seats">Results Previous Seats</th>
+                <th data-field="results.current.votes">Results Current Votes</th>
+                <th data-field="results.current.percentage">Results Current Percentage</th>
+                <th data-field="results.current.seats">Results Current Seats</th>
+                <th data-field="results.diff.votes">Results Diff Votes</th>
+                <th data-field="results.diff.percentage">Results Diff Percentage</th>
+                <th data-field="results.diff.seats">Results Diff Seats</th>
+                <!-- Add other table headers here -->
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Table rows will be populated dynamically by script.js -->
+        </tbody>
+    </table>
+    <!-- Add your script.js file here -->
+    <script src="script.js"></script>
+</body>
+</html>
