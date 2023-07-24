@@ -1,50 +1,102 @@
-// Wait for the DOM to finish loading before executing JavaScript
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
+    // Function to construct a map from view keys to labels
+    function createViewMap(views) {
+        let viewMap = new Map();
+        views.forEach(view => {
+            viewMap.set(view.key, view.label);
+        });
+        return viewMap;
+    }
 
-    // Function to get the value from a nested object based on a dot-separated key
-    function getNestedValue(obj, key) {
-        var keys = key.split('.');
-        var value = obj;
-        for (var i = 0; i < keys.length; i++) {
-            value = value[keys[i]];
-            if (value === undefined) {
-                return '';
-            }
-        }
-        return value;
+    // Function to construct a map from party keys to labels
+    function createPartyMap(parties) {
+        let partyMap = new Map();
+        parties.forEach(party => {
+            partyMap.set(party.key, party.label);
+        });
+        return partyMap;
+    }
+
+    // Function to create a map from type codes to labels
+    function createTypeMap() {
+        return new Map([
+            [0, 'Gemeente'],
+            [1, 'Provincie'],
+            [2, 'Rijk']
+        ]);
+    }
+
+    // Function to create a table
+    function createTable() {
+        const table = document.createElement('table');
+        const thead = table.createTHead();
+        const tbody = table.createTBody();
+        const headerRow = thead.insertRow();
+
+        const headers = [
+            "Key",
+            "Type",
+            "Cbscode",
+            "Label",
+            "Status",
+            "Updated",
+            "Parent",
+            "Top Parties Current",
+            "Top Parties Previous"
+        ];
+
+        headers.forEach(header => {
+            const th = document.createElement("th");
+            const text = document.createTextNode(header);
+            th.appendChild(text);
+            headerRow.appendChild(th);
+        });
+
+        return {table, tbody};
     }
 
     // Function to populate the table with the fetched data
-    function populateTable(data) {
-        var tbody = document.querySelector('#anp_updates-table tbody');
-
-        // Clear any existing rows
-        while (tbody.firstChild) {
-            tbody.firstChild.remove();
-        }
-
-        // Construct a map from party keys to labels
-        var partyMap = {};
-        data.parties.forEach(function(party) {
-            partyMap[party.key] = party.label;
-        });
+    function populateTable(data, tbody) {
+        const partyMap = createPartyMap(data.parties);
+        const viewMap = createViewMap(data.views);
+        const typeMap = createTypeMap();
 
         // Populate table with views
-        data.views.forEach(function(item) {
-            var row = document.createElement('tr');
+        data.views.forEach(function (item) {
+            const row = document.createElement('tr');
 
-            // Include 'key', 'type', 'cbsCode', 'label', 'status', 'updated', 'parent' properties in this order
-            ['key', 'type', 'cbsCode', 'label', 'status', 'updated', 'parent'].forEach(function(property) {
-                var cell = document.createElement('td');
-                cell.textContent = item[property];
+            // Include 'key' property
+            const keyCell = document.createElement('td');
+            keyCell.textContent = item['key'];
+            row.appendChild(keyCell);
+
+            // Translate 'type' to its label
+            const typeCell = document.createElement('td');
+            typeCell.textContent = typeMap.get(item['type']);
+            row.appendChild(typeCell);
+
+            // Include 'cbsCode', 'label', 'status', 'updated' properties in this order
+            ['cbsCode', 'label', 'status', 'updated'].forEach(function (property) {
+                const cell = document.createElement('td');
+                if (property === 'updated') {
+                    const date = new Date(item[property] * 1000);
+                    cell.textContent = date.toLocaleString('nl-NL');
+                } else {
+                    cell.textContent = item[property];
+                }
                 row.appendChild(cell);
             });
 
+            // Translate 'parent' to its label
+            const parentCell = document.createElement('td');
+            parentCell.textContent = item['parent'] ? viewMap.get(item['parent']) : null;
+            row.appendChild(parentCell);
+
             // Translate 'topPartiesCurrent' and 'topPartiesPrevious' to party labels
-            ['topPartiesCurrent', 'topPartiesPrevious'].forEach(function(property) {
-                var cell = document.createElement('td');
-                cell.textContent = item[property].map(function(partyKey) {
-                    return partyMap[partyKey];
+            ['topPartiesCurrent', 'topPartiesPrevious'].forEach(function (property) {
+                const cell = document.createElement('td');
+                cell.textContent = item[property].map(function (partyKey) {
+                    return partyMap.get(partyKey);
                 }).join(', ');
                 row.appendChild(cell);
             });
@@ -53,34 +105,22 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Function to handle AJAX request and data population
-    function fetchData() {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', '/get_data.php?source=last_update', true); // Use the relative URL with 'source' parameter
-        xhr.setRequestHeader('Content-type', 'application/json');
+    // Function to handle data fetch and population
+    async function fetchData() {
+        try {
+            const response = await fetch('/get_data.php?source=last_update');
+            const data = await response.json();
 
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                try {
-                    var responseData = JSON.parse(xhr.responseText);
+            const {table, tbody} = createTable();
 
-                    // Call the populateTable function to update the table
-                    populateTable(responseData);
-                } catch (error) {
-                    console.error('Error parsing JSON data:', error);
-                }
-            } else {
-                // Handle error if AJAX request fails
-                console.error('Error fetching data:', xhr.statusText);
-            }
-        };
+            // Append table to the container
+            document.getElementById('tableContainer').appendChild(table);
 
-        xhr.onerror = function () {
-            // Handle error if there's an issue with the AJAX request
-            console.error('Error fetching data.');
-        };
-
-        xhr.send();
+            // Call the populateTable function to update the table
+            populateTable(data, tbody);
+        } catch (error) {
+            console.error('Error fetching or parsing data:', error);
+        }
     }
 
     // Call the fetchData function to populate the table

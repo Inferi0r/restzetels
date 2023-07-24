@@ -16,34 +16,12 @@
     </nav>
     <p>Laatste update: <span id="lastUpdate"></span></p>
     <p>Huidige opkomst: <span id="currentTurnout"></span></p>
-    <p>Laatste opkomst: <span id="previousTurnout"></span></p>
+    <p>Vorige opkomst: <span id="previousTurnout"></span></p>
     <h1>ANP Stemmen per partij (17 maart 2021)</h1>
-  
-    <!-- Dynamic data table -->
-    <table id="data-table">
-        <thead>
-            <tr>
-                <th data-field="key">Key</th>
-                <th>Label</th>
-                <th>Color</th> 
-                <th data-field="results.previous.votes">Results Previous Votes</th>
-                <th data-field="results.previous.percentage">Results Previous Percentage</th>
-                <th data-field="results.previous.seats">Results Previous Seats</th>
-                <th data-field="results.current.votes">Results Current Votes</th>
-                <th data-field="results.current.percentage">Results Current Percentage</th>
-                <th data-field="results.current.seats">Results Current Seats</th>
-                <th data-field="results.diff.votes">Results Diff Votes</th>
-                <th data-field="results.diff.percentage">Results Diff Percentage</th>
-                <th data-field="results.diff.seats">Results Diff Seats</th>
-                <!-- Add other table headers here -->
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Table rows will be populated dynamically by script.js -->
-        </tbody>
-    </table>
 
-    <!-- Add your script.js file here -->
+    <div id="tableContainer"></div>
+
+    <!-- Add your JavaScript file here -->
     <script src="votes.js"></script>
 </body>
 </html>
