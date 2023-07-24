@@ -34,7 +34,8 @@ let highestRestzetelsIndex = null;
 let highestRestzetelsValue = 0;
 
 // Populate table for zetelverdeling with data and calculate total seats
-let totalSeats = 0;
+let totalSeats = 0;  // Add this line if you need to calculate totalSeats
+
 votesData.parties.forEach((party, index) => {
     const votes = parseInt(party.results.current.votes);
     const seats = Math.floor(votes / kiesdeler);
@@ -54,9 +55,15 @@ votesData.parties.forEach((party, index) => {
     listCell.textContent = index + 1;
     partyCell.textContent = keyToLabel.get(party.key);
     seatsCell.textContent = seats;
-    restzetelsCell.textContent = index === highestRestzetelsIndex ? 1 : 0;
-    totalSeats += seats;
+    totalSeats += seats;  // Remove this line if you don't need to calculate totalSeats
 });
+
+votesData.parties.forEach((party, index) => {
+    const row = zetelverdelingTbody.rows[index];
+    const restzetelsCell = row.cells[3];  // Assuming restzetels is the 4th column
+    restzetelsCell.textContent = index === highestRestzetelsIndex ? 1 : 0;
+});
+
 
 // Create container for zetelverdeling table
 const zetelverdelingContainer = document.createElement('div');
@@ -84,12 +91,15 @@ const calculationDataHeaderRow = calculationDataTable.createTHead().insertRow();
 const calculationDataHeader1 = document.createElement('th');
 const calculationDataHeader2 = document.createElement('th');
 const calculationDataHeader3 = document.createElement('th');
+const calculationDataHeader4 = document.createElement('th'); // Add new header cell
 calculationDataHeader1.textContent = "Lijst";
 calculationDataHeader2.textContent = "Partij";
 calculationDataHeader3.textContent = "Stemgemiddelde 1e restzetel";
+calculationDataHeader4.textContent = "Stemgemiddelde 2e restzetel"; // Add text to new header cell
 calculationDataHeaderRow.appendChild(calculationDataHeader1);
 calculationDataHeaderRow.appendChild(calculationDataHeader2);
 calculationDataHeaderRow.appendChild(calculationDataHeader3);
+calculationDataHeaderRow.appendChild(calculationDataHeader4); // Add new header cell to header row
 
 // Populate table with calculation data
 votesData.parties.forEach((party, index) => {
@@ -100,9 +110,11 @@ votesData.parties.forEach((party, index) => {
         const listCell = row.insertCell();
         const partyCell = row.insertCell();
         const average1Cell = row.insertCell(); 
+        const average2Cell = row.insertCell(); // Add new table cell
         listCell.textContent = index + 1;
         partyCell.textContent = keyToLabel.get(party.key);
-        average1Cell.textContent = Math.round(votes / (seats + 1)).toLocaleString('nl-NL'); 
+        average1Cell.textContent = Math.round(votes / (seats + 1)).toLocaleString('nl-NL');
+        average2Cell.textContent = Math.round(votes / (seats + 1)).toLocaleString('nl-NL'); // Add calculated value to new table cell
     }
 });
   
