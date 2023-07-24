@@ -20,7 +20,7 @@ const zetelverdelingHeader2 = document.createElement('th');
 const zetelverdelingHeader3 = document.createElement('th');
 zetelverdelingHeader1.textContent = "Lijst";
 zetelverdelingHeader2.textContent = "Partij";
-zetelverdelingHeader3.textContent = "Zetels";
+zetelverdelingHeader3.textContent = "Volle zetels met kiesdeler";
 zetelverdelingHeaderRow.appendChild(zetelverdelingHeader1);
 zetelverdelingHeaderRow.appendChild(zetelverdelingHeader2);
 zetelverdelingHeaderRow.appendChild(zetelverdelingHeader3);
