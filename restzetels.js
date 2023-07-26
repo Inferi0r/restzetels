@@ -1,23 +1,16 @@
-let keyToLabel = new Map();
-let votesData = null;
-let total_restSeats = null;
-
 fetch('get_data.php?source=last_update')
     .then(response => response.json())
-    .then(data => {
-        data.parties.forEach(party => keyToLabel.set(party.key, party.label));
-        return fetch('get_data.php?source=votes');
-    })
-    .then(response => response.json())
-    .then(data => {
-        votesData = data;
-        createVoteAverageTable();
-        createRestSeatsTable();
-    });
+    .then(data => fetch('get_data.php?source=votes')
+        .then(response => response.json())
+        .then(votesData => {
+            let keyToLabel = new Map();
+            data.parties.forEach(party => keyToLabel.set(party.key, party.label));
+            
+            let total_restSeats = createVoteAverageTable(votesData, keyToLabel);
+            createRestSeatsTable(votesData, keyToLabel, total_restSeats);
+        }));
 
-function createVoteAverageTable() {
-    let tableData = [];
-
+function calculateFullAndRestSeats(votesData) {
     let totalVotes = 0;
     votesData.parties.forEach(party => {
         totalVotes += parseInt(party.results.current.votes);
@@ -29,17 +22,15 @@ function createVoteAverageTable() {
         let fullSeats = Math.floor(party.results.current.votes / kiesdeler);
         party.fullSeats = fullSeats; 
         party.restSeats = new Map(); 
-        if(fullSeats > 0) {
-            tableData.push({
-                'Lijst': party.key,
-                'Partij': keyToLabel.get(party.key)
-            });
-        }
     });
 
     let total_fullSeats = votesData.parties.reduce((acc, party) => acc + party.fullSeats, 0);
-    total_restSeats = 150 - total_fullSeats;
+    let total_restSeats = 150 - total_fullSeats;
 
+    return { votesData, total_restSeats };
+}
+
+function assignRestSeats({ votesData, total_restSeats }) {
     for (let i = 1; i <= total_restSeats; i++) {
         let maxVoteAverage = 0;
         let partyWithMaxVoteAverage = null;
@@ -60,45 +51,40 @@ function createVoteAverageTable() {
         }
     }
 
-    tableData.forEach(rowData => {
-        let party = votesData.parties.find(p => p.key === rowData.Lijst);
-        for (let i = 1; i <= total_restSeats; i++) {
-            let restSeatsCount = Array.from(party.restSeats.values()).reduce((a, b) => a + b, 0);
-            rowData[`Stemgemiddelde voor ${i}e restzetel`] = Math.round(party.results.current.votes / (party.fullSeats + restSeatsCount + 1));
+    return votesData;
+}
+
+function createVoteAverageTableData(votesData, keyToLabel, total_restSeats) {
+    let tableData = [];
+
+    votesData.parties.forEach(party => {
+        if(party.fullSeats > 0) {
+            let rowData = {
+                'Lijst': party.key + 1,
+                'Partij': keyToLabel.get(party.key)
+            };
+
+            for (let i = 1; i <= total_restSeats; i++) {
+                let restSeatsCount = Array.from(party.restSeats.values()).reduce((a, b) => a + b, 0);
+                rowData[`Stemgemiddelde voor ${i}e restzetel`] = Math.round(party.results.current.votes / (party.fullSeats + restSeatsCount + 1));
+            }
+
+            tableData.push(rowData);
         }
     });
 
-    let table = document.createElement('table');
-    let thead = document.createElement('thead');
-    let headerRow = document.createElement('tr');
-    ['Lijst', 'Partij'].concat(
-        Array.from({length: total_restSeats}, (_, i) => `Stemgemiddelde voor ${i+1}e restzetel`)
-    ).forEach(headerText => {
-        let header = document.createElement('th');
-        header.appendChild(document.createTextNode(headerText));
-        headerRow.appendChild(header);
-    });
-    thead.appendChild(headerRow);
-    table.appendChild(thead);
-
-    let tbody = document.createElement('tbody');
-    tableData.forEach(rowData => {
-        let row = document.createElement('tr');
-        Object.keys(rowData).forEach(key => {
-            if (!key.startsWith('Restzetel')) {
-                let cell = document.createElement('td');
-                cell.appendChild(document.createTextNode(rowData[key]));
-                row.appendChild(cell);
-            }
-        });
-        tbody.appendChild(row);
-    });
-    table.appendChild(tbody);
-
-    document.getElementById('voteAverageContainer').appendChild(table);
+    return tableData;
 }
 
-function createRestSeatsTable() {
+function createVoteAverageTable(votesData, keyToLabel) {
+    let { votesData: updatedData, total_restSeats } = calculateFullAndRestSeats(votesData);
+    updatedData = assignRestSeats({ votesData: updatedData, total_restSeats });
+    let tableData = createVoteAverageTableData(updatedData, keyToLabel, total_restSeats);
+    renderTable('voteAverageContainer', tableData, total_restSeats);
+    return total_restSeats;
+}        
+
+function createRestSeatsTable(votesData, keyToLabel, total_restSeats) {
     let restSeatsTableData = [];
     for (let i = 1; i <= total_restSeats; i++) {
         let party = votesData.parties.find(p => p.restSeats.get(i) === 1);
@@ -110,29 +96,27 @@ function createRestSeatsTable() {
         }
     }
 
-    let table = document.createElement('table');
-    let thead = document.createElement('thead');
-    let headerRow = document.createElement('tr');
-    ['Restzetel', 'Partij'].forEach(headerText => {
-        let header = document.createElement('th');
-        header.appendChild(document.createTextNode(headerText));
-        headerRow.appendChild(header);
-    });
-    thead.appendChild(headerRow);
-    table.appendChild(thead);
+    renderTable('restSeatContainer', restSeatsTableData);
+}
 
-    let tbody = document.createElement('tbody');
-    restSeatsTableData.forEach(rowData => {
-        let row = document.createElement('tr');
-        Object.values(rowData).forEach(cellData => {
-            let cell = document.createElement('td');
-            cell.appendChild(document.createTextNode(cellData));
-            row.appendChild(cell);
-        });
-        tbody.appendChild(row);
-    });
-    table.appendChild(tbody);
+function renderTable(containerId, data) {
+    const columns = Object.keys(data[0]);
+    const header = columns.map(colName => `<th>${colName}</th>`).join("");
+    const rows = data.map(rowData => {
+        const cells = Object.values(rowData).map(cellData => `<td>${cellData}</td>`).join("");
+        return `<tr>${cells}</tr>`;
+    }).join("");
 
-    document.getElementById('restSeatContainer').innerHTML = '';
-    document.getElementById('restSeatContainer').appendChild(table);
+    const table = `
+        <table>
+            <thead>
+                <tr>${header}</tr>
+            </thead>
+            <tbody>
+                ${rows}
+            </tbody>
+        </table>
+    `;
+
+    document.getElementById(containerId).innerHTML = table;
 }
