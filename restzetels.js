@@ -1,15 +1,3 @@
-fetch('get_data.php?source=last_update')
-    .then(response => response.json())
-    .then(data => fetch('get_data.php?source=votes')
-        .then(response => response.json())
-        .then(votesData => {
-            let keyToLabel = new Map();
-            data.parties.forEach(party => keyToLabel.set(party.key, party.label));
-            
-            let total_restSeats = createVoteAverageTable(votesData, keyToLabel);
-            createRestSeatsTable(votesData, keyToLabel, total_restSeats);
-        }));
-
 function calculateFullAndRestSeats(votesData) {
     let totalVotes = 0;
     votesData.parties.forEach(party => {
@@ -66,7 +54,7 @@ function createVoteAverageTableData(votesData, keyToLabel, total_restSeats) {
 
             for (let i = 1; i <= total_restSeats; i++) {
                 let restSeatsCount = Array.from(party.restSeats.values()).reduce((a, b) => a + b, 0);
-                rowData[`Stemgemiddelde voor ${i}e restzetel`] = Math.round(party.results.current.votes / (party.fullSeats + restSeatsCount + 1));
+                rowData[`${i}e`] = Math.round(party.results.current.votes / (party.fullSeats + restSeatsCount + 1));
             }
 
             tableData.push(rowData);
@@ -99,6 +87,43 @@ function createRestSeatsTable(votesData, keyToLabel, total_restSeats) {
     renderTable('restSeatContainer', restSeatsTableData);
 }
 
+function createSeatsSummaryTable(votesData, keyToLabel) {
+    let seatsSummaryTableData = [];
+
+    let totalFullSeats = 0;
+    let totalRestSeats = 0;
+
+    votesData.parties.forEach(party => {
+        let partyName = keyToLabel.get(party.key);
+
+        if(partyName !== 'OVERIG') {
+            let fullSeats = party.fullSeats;
+            let restSeatsCount = Array.from(party.restSeats.values()).reduce((a, b) => a + b, 0);
+
+            totalFullSeats += fullSeats;
+            totalRestSeats += restSeatsCount;
+
+            seatsSummaryTableData.push({
+                'Lijst': party.key + 1,
+                'Partij': partyName,
+                'Volle zetels': fullSeats,
+                'Rest zetels': restSeatsCount,
+                'Totaal zetels': fullSeats + restSeatsCount
+            });
+        }
+    });
+
+    seatsSummaryTableData.push({
+        'Lijst': '',
+        'Partij': 'Totaal',
+        'Volle zetels': totalFullSeats,
+        'Rest zetels': totalRestSeats,
+        'Totaal zetels': totalFullSeats + totalRestSeats
+    });
+
+    renderTable('seatsSummaryContainer', seatsSummaryTableData);
+}
+
 function renderTable(containerId, data) {
     const columns = Object.keys(data[0]);
     const header = columns.map(colName => `<th>${colName}</th>`).join("");
@@ -120,3 +145,16 @@ function renderTable(containerId, data) {
 
     document.getElementById(containerId).innerHTML = table;
 }
+
+fetch('get_data.php?source=last_update')
+    .then(response => response.json())
+    .then(data => fetch('get_data.php?source=votes')
+        .then(response => response.json())
+        .then(votesData => {
+            let keyToLabel = new Map();
+            data.parties.forEach(party => keyToLabel.set(party.key, party.label));
+            
+            let total_restSeats = createVoteAverageTable(votesData, keyToLabel);
+            createRestSeatsTable(votesData, keyToLabel, total_restSeats);
+            createSeatsSummaryTable(votesData, keyToLabel);
+        }));
