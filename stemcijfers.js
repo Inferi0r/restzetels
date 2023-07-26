@@ -58,7 +58,7 @@ function createTable() {
 }
 
 // Fetch label data
-fetch('get_data.php?source=last_update')
+fetch('http://localhost:8888/get_data.php?source=last_update')
     .then(response => response.json())
     .then(data => {
         data.parties.forEach(party => {
@@ -66,7 +66,7 @@ fetch('get_data.php?source=last_update')
         });
 
         // Fetch votes data
-        fetch('get_data.php?source=votes')
+        fetch('http://localhost:8888/get_data.php?source=votes')
             .then(response => response.json())
             .then(data => {
                 votesData = data;
