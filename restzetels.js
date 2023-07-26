@@ -53,7 +53,10 @@ function createVoteAverageTableData(votesData, keyToLabel, total_restSeats) {
             };
 
             for (let i = 1; i <= total_restSeats; i++) {
-                let restSeatsCount = Array.from(party.restSeats.values()).reduce((a, b) => a + b, 0);
+                let restSeatsCount = Array.from(party.restSeats.keys())
+                    .filter(key => key < i)
+                    .reduce((a, key) => a + party.restSeats.get(key), 0);
+
                 rowData[`${i}e`] = Math.round(party.results.current.votes / (party.fullSeats + restSeatsCount + 1));
             }
 
