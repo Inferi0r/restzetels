@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 
     // Function to construct a map from party keys to labels
+    // Note: Adjust this function based on the new structure of your parties data
     function createPartyMap(parties) {
         let partyMap = new Map();
         parties.forEach(party => {
@@ -42,7 +43,8 @@ document.addEventListener('DOMContentLoaded', async function () {
             "Updated",
             "Parent",
             "Top Parties Current",
-            "Top Parties Previous"
+            "Source",
+            "Count Status"
         ];
 
         headers.forEach(header => {
@@ -57,7 +59,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // Function to populate the table with the fetched data
     function populateTable(data, tbody) {
-        const partyMap = createPartyMap(data.parties);
+        const partyMap = createPartyMap(data.parties); // Adjust this line based on your new parties data
         const viewMap = createViewMap(data.views);
         const typeMap = createTypeMap();
 
@@ -92,14 +94,22 @@ document.addEventListener('DOMContentLoaded', async function () {
             parentCell.textContent = item['parent'] ? viewMap.get(item['parent']) : null;
             row.appendChild(parentCell);
 
-            // Translate 'topPartiesCurrent' and 'topPartiesPrevious' to party labels
-            ['topPartiesCurrent', 'topPartiesPrevious'].forEach(function (property) {
-                const cell = document.createElement('td');
-                cell.textContent = item[property].map(function (partyKey) {
-                    return partyMap.get(partyKey);
-                }).join(', ');
-                row.appendChild(cell);
-            });
+            // Translate 'topPartiesCurrent' to party labels
+            const topPartiesCurrentCell = document.createElement('td');
+            topPartiesCurrentCell.textContent = item['topPartiesCurrent'].map(function (partyKey) {
+                return partyMap.get(partyKey);
+            }).join(', ');
+            row.appendChild(topPartiesCurrentCell);
+
+            // Handle 'source' property
+            const sourceCell = document.createElement('td');
+            sourceCell.textContent = item['source'];
+            row.appendChild(sourceCell);
+
+            // Handle 'countStatus' property
+            const countStatusCell = document.createElement('td');
+            countStatusCell.textContent = `Total: ${item.countStatus.total}, Completed: ${item.countStatus.completed}`;
+            row.appendChild(countStatusCell);
 
             tbody.appendChild(row);
         });
