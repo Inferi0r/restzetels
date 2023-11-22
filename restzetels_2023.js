@@ -168,10 +168,10 @@ function calculateVotesShortAndSurplus(votesData) {
     averageVotesForNextSeatPerParty.forEach((averageVotesForNextSeat, partyKey) => {
         if (averageVotesForNextSeat < maxAverageForLastRestSeat) {
             const partyData = votesData.parties.find(party => party.key === partyKey);
-            const currentNumberOfTotalSeatsWithRestSeat = partyData.fullSeats + Array.from(partyData.restSeats.values()).reduce((a, b) => a + b, 0) + 1;
-            const votesNeeded = (maxAverageForLastRestSeat - averageVotesForNextSeat) * currentNumberOfTotalSeatsWithRestSeat;
+            const currentNumberOfTotalSeatsWithRestSeat = partyData.fullSeats + Array.from(partyData.restSeats.values()).reduce((a, b) => a + b, 0);
+            const votesNeeded = (maxAverageForLastRestSeat - averageVotesForNextSeat) * (currentNumberOfTotalSeatsWithRestSeat + 1);
 
-            const surplusVotes = (currentNumberOfTotalSeatsWithRestSeat * maxAverageForLastRestSeat) - partyData.results.current.votes;
+            const surplusVotes = partyData.results.current.votes - (currentNumberOfTotalSeatsWithRestSeat * maxAverageForLastRestSeat);
 
             surplusVotesData.set(partyKey, surplusVotes);
             votesShortData.set(partyKey, votesNeeded);
