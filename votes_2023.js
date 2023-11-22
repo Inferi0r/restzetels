@@ -1,4 +1,5 @@
 function loadDataFor2023() {
+
     // Clear existing content
     document.getElementById('statsTableContainer').innerHTML = '';
     document.getElementById('tableContainer').innerHTML = '';
@@ -138,7 +139,3 @@ function loadDataFor2023() {
             showLastUpdatedLocalRegion(lastUpdateData);
         });
 }
-
-loadDataFor2023();
-
-
