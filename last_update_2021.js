@@ -110,7 +110,7 @@ function loadDataFor2021() {
     // Function to handle data fetch and population
     async function fetchData() {
         try {
-            const response = await fetch('/https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-dfe06282-d717-451e-9dca-8bb52f669564/default/get-json-files?year=2021&source=last_update');
+            const response = await fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-dfe06282-d717-451e-9dca-8bb52f669564/default/get-json-files?year=2021&source=last_update');
             const data = await response.json();
 
             const {table, tbody} = createTable();
