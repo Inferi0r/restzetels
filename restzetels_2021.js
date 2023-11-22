@@ -83,6 +83,20 @@ function createVoteAverageTable(votesData, keyToLabel) {
     let { votesData: updatedData, total_restSeats } = calculateFullAndRestSeats(votesData);
     updatedData = assignRestSeats({ votesData: updatedData, total_restSeats });
     let tableData = createVoteAverageTableData(updatedData, keyToLabel, total_restSeats);
+    // Find the highest value in each column
+    let maxValues = {};
+    for (let i = 1; i <= total_restSeats; i++) {
+        maxValues[`${i}e`] = Math.max(...tableData.map(row => row[`${i}e`]));
+    }
+    // Add a class to the cells with the highest value
+    tableData.forEach(rowData => {
+        for (let i = 1; i <= total_restSeats; i++) {
+            if (rowData[`${i}e`] === maxValues[`${i}e`]) {
+                rowData[`${i}e`] = `<div class='highest-value'>${rowData[`${i}e`]}</div>`;
+            }
+        }
+    });
+
     renderTable('voteAverageContainer', tableData, total_restSeats);
     return total_restSeats;
 }
