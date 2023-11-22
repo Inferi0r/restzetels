@@ -72,11 +72,12 @@ function assignRestSeats({ votesData, total_restSeats }) {
 
 function createVoteAverageTableData(votesData, keyToLabel, total_restSeats) {
     let tableData = [];
+    let listNumber = 1;
 
     votesData.parties.forEach(party => {
         if(party.fullSeats > 0) {
             let rowData = {
-                'Lijst': party.key + 1,
+                'Lijst': listNumber++, // Increment list number
                 'Partij': keyToLabel.get(party.key)
             };
 
@@ -185,6 +186,7 @@ function createSeatsSummaryTable(votesData, keyToLabel) {
     let { votesShortData, surplusVotesData } = calculateVotesShortAndSurplus(votesData);
 
     let seatsSummaryTableData = [];
+    let listNumber = 1;
     let totalFullSeats = 0;
     let totalRestSeats = 0;
 
@@ -202,7 +204,7 @@ function createSeatsSummaryTable(votesData, keyToLabel) {
             let surplusVotes = surplusVotesData.get(party.key);
 
             seatsSummaryTableData.push({
-                'Lijst': party.key + 1,
+                'Lijst': listNumber++, // Increment list number
                 'Partij': partyName,
                 'Volle zetels': fullSeats,
                 'Rest zetels': restSeatsCount,
