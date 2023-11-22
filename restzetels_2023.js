@@ -132,8 +132,9 @@ function createRestSeatsTable(votesData, keyToLabel, total_restSeats) {
     renderTable('restSeatContainer', restSeatsTableData);
 }
 
-function calculateVotesShortForNextSeat(votesData) {
+function calculateVotesShortAndSurplus(votesData) {
     let votesShortData = new Map();
+    let surplusVotesData = new Map();
 
     const total_restSeats = 150 - votesData.parties.reduce((acc, party) => acc + party.fullSeats, 0);
     const total_votes = votesData.parties.reduce((acc, party) => acc + parseInt(party.results.current.votes), 0);
@@ -169,45 +170,19 @@ function calculateVotesShortForNextSeat(votesData) {
             const currentNumberOfTotalSeatsWithRestSeat = partyData.fullSeats + Array.from(partyData.restSeats.values()).reduce((a, b) => a + b, 0) + 1;
             const votesNeeded = (maxAverageForLastRestSeat - averageVotesForNextSeat) * currentNumberOfTotalSeatsWithRestSeat;
 
+            const surplusVotes = (currentNumberOfTotalSeatsWithRestSeat * maxAverageForLastRestSeat) - partyData.results.current.votes;
+
+            surplusVotesData.set(partyKey, surplusVotes);
             votesShortData.set(partyKey, votesNeeded);
         }
     });
 
-    return votesShortData;
+    return {votesShortData, surplusVotesData};
 }
 
-function createSeatsSummaryTable(votesData, keyToLabel, total_restSeats) {
-    let totalVotes = votesData.parties.reduce((acc, party) => acc + parseInt(party.results.current.votes), 0);
-    let kiesdeler = Math.floor(totalVotes / 150);
-    let finalRestSeatAverage = 0;
-    let partyWithFinalRestSeat;
 
-    // Find the party with the final rest seat
-    votesData.parties.forEach(party => {
-        let restSeatCount = Array.from(party.restSeats.values()).reduce((a, b) => a + b, 0);
-        if (party.restSeats.get(total_restSeats)) {
-            finalRestSeatAverage = Math.round(party.results.current.votes / (party.fullSeats + restSeatCount + 1));
-            partyWithFinalRestSeat = party;
-        }
-    });
-
-    // Calculate surplus and shortage for each party
-    votesData.parties.forEach(party => {
-        if (party.fullSeats > 0) {
-            let surplusVotes = party.results.current.votes - ((party.fullSeats + party.restSeats.size) * finalRestSeatAverage);
-            party.surplusVotes = surplusVotes >= 0 ? surplusVotes : 0;
-            party.shortVotes = 0; // Full seat parties do not have short votes for next seat
-        } else {
-            party.surplusVotes = party.results.current.votes; // All votes are surplus for parties without full seats
-            party.shortVotes = kiesdeler - party.results.current.votes; // Short votes for the first seat
-        }
-    });
-}
-
-function createSeatsSummaryTable(votesData, keyToLabel, total_restSeats) {
-    // Calculate totalVotes within the function
-    let totalVotes = votesData.parties.reduce((acc, party) => acc + parseInt(party.results.current.votes), 0);
-    let votesShortData = calculateVotesShortForNextSeat(votesData);
+function createSeatsSummaryTable(votesData, keyToLabel) {
+    let { votesShortData, surplusVotesData } = calculateVotesShortAndSurplus(votesData);
 
     let seatsSummaryTableData = [];
     let totalFullSeats = 0;
@@ -224,6 +199,7 @@ function createSeatsSummaryTable(votesData, keyToLabel, total_restSeats) {
 
             // let surplusVotes = party.surplusVotes || party.results.current.votes; // Use surplusVotes from party or total votes if not calculated
             let votesShort = votesShortData.get(party.key);
+            let surplusVotes = surplusVotesData.get(party.key);
 
             seatsSummaryTableData.push({
                 'Lijst': party.key + 1,
@@ -231,8 +207,8 @@ function createSeatsSummaryTable(votesData, keyToLabel, total_restSeats) {
                 'Volle zetels': fullSeats,
                 'Rest zetels': restSeatsCount,
                 'Totaal zetels': fullSeats + restSeatsCount,
-                // 'Surplus votes': surplusVotes.toLocaleString('nl-NL'),
-                'Votes short next seat': typeof votesShort === 'number' ? votesShort.toLocaleString('nl-NL') : votesShort
+                'Surplus votes': typeof surplusVotes === 'number' ? surplusVotes.toLocaleString('nl-NL') : '-',
+                'Votes short next seat': typeof votesShort === 'number' ? votesShort.toLocaleString('nl-NL') : '-'
             });
         }
     });
