@@ -14,8 +14,8 @@ function calculateFullAndRestSeats(votesData) {
 
     votesData.parties.forEach(party => {
         let fullSeats = Math.floor(party.results.current.votes / kiesdeler);
-        party.fullSeats = fullSeats; 
-        party.restSeats = new Map(); 
+        party.fullSeats = fullSeats;
+        party.restSeats = new Map();
     });
 
     let total_fullSeats = votesData.parties.reduce((acc, party) => acc + party.fullSeats, 0);
@@ -32,11 +32,11 @@ function assignRestSeats({ votesData, total_restSeats }) {
         votesData.parties.forEach(party => {
             if(party.fullSeats > 0) {
                 let restSeatsCount = Array.from(party.restSeats.values()).reduce((a, b) => a + b, 0);
-                
+
                 if (party.key === 3) {
                 console.log(`Rest Seats Count for party key 3: ${restSeatsCount}`);
                 }
-                
+
                 let voteAverage = Math.round(party.results.current.votes / (party.fullSeats + restSeatsCount + 1));
                 if(voteAverage > maxVoteAverage) {
                     maxVoteAverage = voteAverage;
@@ -85,7 +85,7 @@ function createVoteAverageTable(votesData, keyToLabel) {
     let tableData = createVoteAverageTableData(updatedData, keyToLabel, total_restSeats);
     renderTable('voteAverageContainer', tableData, total_restSeats);
     return total_restSeats;
-}        
+}
 
 function createRestSeatsTable(votesData, keyToLabel, total_restSeats) {
     let restSeatsTableData = [];
@@ -111,7 +111,7 @@ function calculateSurplusVotes(votesData, total_restSeats) {
         let originalFullSeats = party.fullSeats;
         let originalRestSeats = Array.from(party.restSeats.values()).reduce((a, b) => a + b, 0);
         let originalTotalSeats = originalFullSeats + originalRestSeats;
-        
+
         for (let surplusVotes = 0; surplusVotes <= originalVotes; surplusVotes++) {
             party.results.current.votes = originalVotes - surplusVotes;
 
@@ -175,7 +175,7 @@ function createSeatsSummaryTable(votesData, keyToLabel, total_restSeats) {
 
    // let surplusVotesData = calculateSurplusVotes(votesData, total_restSeats);
   //  let votesShortData = calculateVotesShortForNextSeat(votesData, total_restSeats);
-    
+
 
     votesData.parties.forEach(party => {
         let partyName = keyToLabel.get(party.key);
@@ -183,7 +183,7 @@ function createSeatsSummaryTable(votesData, keyToLabel, total_restSeats) {
         if(partyName !== 'OVERIG') {
             let fullSeats = party.fullSeats;
             let restSeatsCount = Array.from(party.restSeats.values()).reduce((a, b) => a + b, 0);
- /*       
+ /*
             let surplusVotes = surplusVotesData.get(party.key);
             let votesShort = votesShortData.get(party.key);
 
@@ -194,7 +194,7 @@ function createSeatsSummaryTable(votesData, keyToLabel, total_restSeats) {
 */
             totalFullSeats += fullSeats;
             totalRestSeats += restSeatsCount;
-    
+
             seatsSummaryTableData.push({
                 'Lijst': party.key + 1,
                 'Partij': partyName,
@@ -246,14 +246,14 @@ function renderTable(containerId, data) {
     document.getElementById(containerId).innerHTML = table;
 }
 
-fetch('get_data_2021.php?source=last_update')
+fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-dfe06282-d717-451e-9dca-8bb52f669564/default/get-json-files?year=2021&source=last_update')
     .then(response => response.json())
-    .then(data => fetch('get_data_2021.php?source=votes')
+    .then(data => fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-dfe06282-d717-451e-9dca-8bb52f669564/default/get-json-files?year=2021&source=votes')
         .then(response => response.json())
         .then(votesData => {
             let keyToLabel = new Map();
             data.parties.forEach(party => keyToLabel.set(party.key, party.label));
-            
+
             let total_restSeats = createVoteAverageTable(votesData, keyToLabel);
             createRestSeatsTable(votesData, keyToLabel, total_restSeats);
             createSeatsSummaryTable(votesData, keyToLabel);

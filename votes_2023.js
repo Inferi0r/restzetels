@@ -70,10 +70,10 @@ function loadDataFor2023() {
             header.textContent = headerText;
             headerRow.appendChild(header);
         });
-    
+
         votesData.parties.forEach((party) => {
             const row = tbody.insertRow();
-    
+
             const cellsData = [
                 party.key,
                 keyToLabel.get(party.key),
@@ -87,13 +87,13 @@ function loadDataFor2023() {
                 party.results.diff.percentage,
                 Number(party.results.diff.seats).toLocaleString('nl-NL')
             ];
-    
+
             cellsData.forEach(cellData => {
                 const cell = row.insertCell();
                 cell.textContent = cellData;
             });
         });
-    
+
         return table;
     }
 
@@ -111,7 +111,7 @@ function loadDataFor2023() {
             });
 
             // Fetch votes data
-            fetch('get_data_2023.php?source=votes')
+            fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-dfe06282-d717-451e-9dca-8bb52f669564/default/get-json-files?year=2023&source=votes')
                 .then(response => response.json())
                 .then(data => {
                     votesData = data;

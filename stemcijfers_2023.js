@@ -69,7 +69,7 @@ function createTable() {
             });
 
             // Fetch votes data
-            fetch('get_data_2023.php?source=votes')
+            fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-dfe06282-d717-451e-9dca-8bb52f669564/default/get-json-files?year=2023&source=votes')
                 .then(response => response.json())
                 .then(data => {
                     votesData = data;

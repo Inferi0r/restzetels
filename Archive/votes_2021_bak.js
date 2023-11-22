@@ -61,14 +61,14 @@ function updateFields() {
     document.getElementById('previousTurnout').textContent = votesData.turnout.previous;
 }
 
-fetch('get_data_2021.php?source=last_update')
+fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-dfe06282-d717-451e-9dca-8bb52f669564/default/get-json-files?year=2021&source=last_update')
     .then(response => response.json())
     .then(data => {
         data.parties.forEach(party => {
             keyToLabel.set(party.key, party.label);
         });
 
-        fetch('get_data_2021.php?source=votes')
+        fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-dfe06282-d717-451e-9dca-8bb52f669564/default/get-json-files?year=2021&source=votes')
             .then(response => response.json())
             .then(data => {
                 votesData = data;

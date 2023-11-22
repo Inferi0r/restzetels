@@ -62,10 +62,10 @@ function loadDataFor2021() {
             header.textContent = headerText;
             headerRow.appendChild(header);
         });
-    
+
         votesData.parties.forEach((party) => {
             const row = tbody.insertRow();
-    
+
             const cellsData = [
                 party.key,
                 keyToLabel.get(party.key),
@@ -79,13 +79,13 @@ function loadDataFor2021() {
                 party.results.diff.percentage,
                 Number(party.results.diff.seats).toLocaleString('nl-NL')
             ];
-    
+
             cellsData.forEach(cellData => {
                 const cell = row.insertCell();
                 cell.textContent = cellData;
             });
         });
-    
+
         return table;
     }
 
@@ -95,14 +95,14 @@ function loadDataFor2021() {
         // ... update other fields if needed ...
     }
 
-    fetch('get_data_2021.php?source=last_update')
+    fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-dfe06282-d717-451e-9dca-8bb52f669564/default/get-json-files?year=2021&source=last_update')
         .then(response => response.json())
         .then(data => {
             data.parties.forEach(party => {
                 keyToLabel.set(party.key, party.label);
             });
 
-            fetch('get_data_2021.php?source=votes')
+            fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-dfe06282-d717-451e-9dca-8bb52f669564/default/get-json-files?year=2021&source=votes')
                 .then(response => response.json())
                 .then(data => {
                     votesData = data;
