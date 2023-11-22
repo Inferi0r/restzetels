@@ -169,7 +169,11 @@ function calculateVotesShortForNextSeat(votesData) {
 
     averageVotesForNextSeatPerParty.forEach((averageVotesForNextSeat, partyKey) => {
         if (averageVotesForNextSeat < maxAverageForLastRestSeat) {
-            votesShortData.set(partyKey, maxAverageForLastRestSeat - averageVotesForNextSeat);
+            const partyData = votesData.parties.find(party => party.key === partyKey);
+            const currentNumberOfTotalSeatsWithRestSeat = partyData.fullSeats + Array.from(partyData.restSeats.values()).reduce((a, b) => a + b, 0) + 1;
+            const votesNeeded = (maxAverageForLastRestSeat - averageVotesForNextSeat) * currentNumberOfTotalSeatsWithRestSeat;
+
+            votesShortData.set(partyKey, votesNeeded);
         }
     });
 
