@@ -100,7 +100,7 @@ function loadDataFor2023() {
         try {
             const partyLabelsResponse = await fetch('partylabels_2023.json');
             const partyLabelsData = await partyLabelsResponse.json();
-            const partyLabels = new Map(partyLabelsData.map(p => [p.key, p.labelLong]));
+            const partyLabels = new Map(partyLabelsData.map(p => [p.key, p.labelShort]));
 
             const response = await fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2023&source=last_update');
             const data = await response.json();

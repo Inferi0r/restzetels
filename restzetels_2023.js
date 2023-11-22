@@ -4,6 +4,22 @@ function loadDataFor2023() {
     document.getElementById('restSeatContainer').innerHTML = '';
     document.getElementById('voteAverageContainer').innerHTML = '';
 
+    // Fetch party labels from partylabels_2023.json
+    fetch('partylabels_2023.json')
+        .then(response => response.json())
+        .then(partyLabelsData => {
+            const keyToLabel = new Map(partyLabelsData.map(p => [p.key, p.labelShort])); // Map keys to labelShort
+
+            // Fetch the votes data
+            fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2023&source=votes')
+                .then(response => response.json())
+                .then(votesData => {
+                    let total_restSeats = createVoteAverageTable(votesData, keyToLabel);
+                    createRestSeatsTable(votesData, keyToLabel, total_restSeats);
+                    createSeatsSummaryTable(votesData, keyToLabel, total_restSeats);
+                });
+        });
+
 function calculateFullAndRestSeats(votesData) {
     let totalVotes = 0;
     votesData.parties.forEach(party => {
@@ -211,17 +227,5 @@ function renderTable(containerId, data) {
 
     document.getElementById(containerId).innerHTML = table;
 }
-
-fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2021&source=last_update')
-    .then(response => response.json())
-    .then(data => fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2021&source=votes')
-        .then(response => response.json())
-        .then(votesData => {
-            let keyToLabel = new Map();
-            data.parties.forEach(party => keyToLabel.set(party.key, party.label));
-
-            let total_restSeats = createVoteAverageTable(votesData, keyToLabel);
-            createRestSeatsTable(votesData, keyToLabel, total_restSeats);
-            createSeatsSummaryTable(votesData, keyToLabel);
-        }));
 }
+loadDataFor2023();

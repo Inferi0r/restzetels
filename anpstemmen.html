@@ -18,6 +18,8 @@
     </nav>
 
     <p>Laatste update: <span id="lastUpdate"></span></p>
+    <!-- New element for showing the last updated region and timestamp -->
+    <p id="lastUpdateContainer"></p>
     <h2>Statistieken</h2>
     <div id="statsTableContainer"></div>
     <h2>ANP Stemmen per partij</h2>
@@ -35,7 +37,7 @@
                 loadDataFor2023(); // This function should be defined in last_update_2023.js
             }
         }
-    
+
         document.getElementById('yearToggle').addEventListener('click', function() {
             const toggle = document.getElementById('yearToggle');
             if (toggle.textContent.includes('2023')) {
@@ -50,9 +52,6 @@
         // Load 2023 data by default
         loadYearData('2023');
     </script>
-    
-    
-    
 </body>
 </html>
 
