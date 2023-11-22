@@ -13,7 +13,7 @@
                 <li><a href="anpstemmen.html">ANP Stemmen</a></li>
                 <li><a href="anpupdates.html">ANP Updates</a></li>
             </div>
-            <li id="yearToggle" class="year-toggle">Verkiezingen 2021</li>
+            <li id="yearToggle" class="year-toggle">Verkiezingen 2023</li>
         </ul>
     </nav>
     <h1>Zetelverdeling</h1>
@@ -36,7 +36,7 @@
                 loadDataFor2023(); // This function should be defined in last_update_2023.js
             }
         }
-    
+
         document.getElementById('yearToggle').addEventListener('click', function() {
             const toggle = document.getElementById('yearToggle');
             if (toggle.textContent.includes('2023')) {
@@ -47,13 +47,13 @@
                 loadYearData('2023');
             }
         });
-    
+
         // Load 2023 data by default
-        loadYearData('2021');
+        loadYearData('2023');
     </script>
-    
-    
-    
+
+
+
 </body>
 </html>
 
