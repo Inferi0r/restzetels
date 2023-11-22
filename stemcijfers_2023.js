@@ -60,20 +60,20 @@ function createTable() {
     document.getElementById('tableContainer').appendChild(table);
 }
 
-// Fetch label data
-fetch('get_data_2021.php?source=last_update')
-    .then(response => response.json())
-    .then(data => {
-        data.parties.forEach(party => {
-            keyToLabel.set(party.key, party.label);
-        });
-
-        // Fetch votes data
-        fetch('get_data_2023.php?source=votes')
-            .then(response => response.json())
-            .then(data => {
-                votesData = data;
-                createTable();
+    // Fetch label data from partylabels_2023.json
+    fetch('partylabels_2023.json')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(party => {
+                keyToLabel.set(party.key, party.labelLong); // Use labelLong here
             });
-    });
+
+            // Fetch votes data
+            fetch('get_data_2023.php?source=votes')
+                .then(response => response.json())
+                .then(data => {
+                    votesData = data;
+                    createTable();
+                });
+        });
 }

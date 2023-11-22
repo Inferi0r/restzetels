@@ -103,13 +103,14 @@ function loadDataFor2023() {
         // ... update other fields if needed ...
     }
 
-    fetch('get_data_2021.php?source=last_update')
+    fetch('partylabels_2023.json')
         .then(response => response.json())
         .then(data => {
-            data.parties.forEach(party => {
-                keyToLabel.set(party.key, party.label);
+            data.forEach(party => {
+                keyToLabel.set(party.key, party.labelShort); // Use labelLong here
             });
 
+            // Fetch votes data
             fetch('get_data_2023.php?source=votes')
                 .then(response => response.json())
                 .then(data => {
