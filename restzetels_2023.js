@@ -143,6 +143,7 @@ function calculateVotesShortForNextSeat(votesData) {
     //get number of average votes for each party for restSeat after last rest seat received
 
     const averageVotesForNextSeatPerParty = new Map();
+    let maxAverageForLastRestSeat = 0;
 
     votesData.parties.forEach(party => {
 
