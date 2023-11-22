@@ -3,14 +3,6 @@ function loadDataFor2023() {
     document.getElementById('statsTableContainer').innerHTML = '';
     document.getElementById('tableContainer').innerHTML = '';
 
-    function showLastUpdatedLocalRegion(data) {
-        const localRegion = data.views.find(view => view.type === 0);
-        if (localRegion) {
-            const timestamp = new Date(localRegion.updated * 1000).toLocaleString();
-            document.getElementById('lastUpdatedLocalRegion').textContent = `Laatste Gemeente: ${localRegion.label} (${timestamp})`;
-        }
-    }
-
     let votesData = {};
     const keyToLabel = new Map();
 
@@ -129,16 +121,7 @@ function loadDataFor2023() {
                     document.getElementById('tableContainer').appendChild(mainTable);
                     updateFields();
                 });
-
-            });
-    // Fetch last update data
-    fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2023&source=last_update')
-        .then(response => response.json())
-        .then(lastUpdateData => {
-            showLastUpdatedLocalRegion(lastUpdateData);
         });
 }
-
-loadDataFor2023();
 
 
