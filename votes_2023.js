@@ -8,7 +8,7 @@ function loadDataFor2023() {
         const localRegion = data.views.find(view => view.type === 0);
         if (localRegion) {
             const timestamp = new Date(localRegion.updated * 1000).toLocaleString();
-            document.getElementById('lastUpdatedLocalRegion').textContent = `Laatste Gemeente: ${localRegion.label} (${timestamp})`;
+            document.getElementById('lastUpdatedLocalRegion').textContent = `Laatste gemeente: ${localRegion.label} (${timestamp})`;
         }
     }
 

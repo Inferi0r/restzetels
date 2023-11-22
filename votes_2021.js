@@ -3,6 +3,14 @@ function loadDataFor2021() {
     document.getElementById('statsTableContainer').innerHTML = '';
     document.getElementById('tableContainer').innerHTML = '';
 
+    function showLastUpdatedLocalRegion(data) {
+        const localRegion = data.views.find(view => view.type === 0);
+        if (localRegion) {
+            const timestamp = new Date(localRegion.updated * 1000).toLocaleString();
+            document.getElementById('lastUpdatedLocalRegion').textContent = `Laatste gemeente: ${localRegion.label} (${timestamp})`;
+        }
+    }
+
     let votesData = {};
     const keyToLabel = new Map();
 
@@ -98,21 +106,28 @@ function loadDataFor2021() {
     fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2021&source=last_update')
         .then(response => response.json())
         .then(data => {
+            // Process the last updated local region
+            showLastUpdatedLocalRegion(data);
+
             data.parties.forEach(party => {
                 keyToLabel.set(party.key, party.label);
             });
 
-            fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2021&source=votes')
-                .then(response => response.json())
-                .then(data => {
-                    votesData = data;
-                    const statsTable = createStatsTable();
-                    const mainTable = createMainTable();
-                    document.getElementById('statsTableContainer').appendChild(statsTable);
-                    document.getElementById('tableContainer').appendChild(mainTable);
-                    updateFields();
-                });
+            // Fetch votes data
+            return fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2021&source=votes');
+        })
+        .then(response => response.json())
+        .then(data => {
+            votesData = data;
+            const statsTable = createStatsTable();
+            const mainTable = createMainTable();
+            document.getElementById('statsTableContainer').appendChild(statsTable);
+            document.getElementById('tableContainer').appendChild(mainTable);
+            updateFields();
         });
+
+    // ... other code ...
 }
+
 
 
