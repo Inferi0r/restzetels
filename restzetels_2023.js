@@ -209,8 +209,8 @@ function createSeatsSummaryTable(votesData, keyToLabel) {
                 'Volle zetels': fullSeats,
                 'Rest zetels': restSeatsCount,
                 'Totaal zetels': fullSeats + restSeatsCount,
-                'Surplus votes': typeof surplusVotes === 'number' ? surplusVotes.toLocaleString('nl-NL') : '-',
-                'Votes short next seat': typeof votesShort === 'number' ? votesShort.toLocaleString('nl-NL') : '-'
+                'Stemmen over': typeof surplusVotes === 'number' ? surplusVotes.toLocaleString('nl-NL') : '-',
+                'Stemmen tekort': typeof votesShort === 'number' ? votesShort.toLocaleString('nl-NL') : '-'
             });
         }
     });
