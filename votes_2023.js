@@ -2,7 +2,6 @@ function loadDataFor2023() {
     // Clear existing content
     document.getElementById('statsTableContainer').innerHTML = '';
     document.getElementById('tableContainer').innerHTML = '';
-    document.getElementById('lastUpdateContainer').innerHTML = ''; // Add a container for the last update
 
     let votesData = {};
     const keyToLabel = new Map();
@@ -104,24 +103,18 @@ function loadDataFor2023() {
         // ... update other fields if needed ...
     }
 
-   // Function to show the last updated region and timestamp
-    function showLastUpdatedRegion(data) {
-        const lastUpdatedRegion = data.views[0];
-        const timestamp = new Date(lastUpdatedRegion.updated * 1000).toLocaleString('nl-NL');
-        document.getElementById('lastUpdateContainer').textContent = `Laatste Regio: ${lastUpdatedRegion.label}, Timestamp: ${timestamp}`;
-    }
-
-    // Fetch party labels and votes data
     fetch('partylabels_2023.json')
         .then(response => response.json())
         .then(data => {
             data.forEach(party => {
-                keyToLabel.set(party.key, party.labelShort);
+                keyToLabel.set(party.key, party.labelShort); // Use labelLong here
             });
 
+            // Fetch votes data
             fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2023&source=votes')
                 .then(response => response.json())
-                .then(votesData => {
+                .then(data => {
+                    votesData = data;
                     const statsTable = createStatsTable();
                     const mainTable = createMainTable();
                     document.getElementById('statsTableContainer').appendChild(statsTable);
@@ -129,13 +122,6 @@ function loadDataFor2023() {
                     updateFields();
                 });
         });
-
-    // Fetch last update data
-    fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2023&source=last_update')
-        .then(response => response.json())
-        .then(lastUpdateData => {
-            showLastUpdatedRegion(lastUpdateData);
-        });
 }
 
-loadDataFor2023();
+
