@@ -132,6 +132,49 @@ function createRestSeatsTable(votesData, keyToLabel, total_restSeats) {
     renderTable('restSeatContainer', restSeatsTableData);
 }
 
+function calculateVotesShortForNextSeat(votesData) {
+    let votesShortData = new Map();
+
+    const total_restSeats = 150 - votesData.parties.reduce((acc, party) => acc + party.fullSeats, 0);
+    const total_votes = votesData.parties.reduce((acc, party) => acc + parseInt(party.results.current.votes), 0);
+    const votes_per_seat = Math.floor(total_votes / 150);
+
+    //calculate number of average votes required for last rest seat for each party
+    //get number of average votes for each party for restSeat after last rest seat received
+
+    const averageVotesForNextSeatPerParty = new Map();
+
+    votesData.parties.forEach(party => {
+
+        //if part.fullSeats == 0 then votesShort = votes_per_seat - party.results.current.votes
+        if (party.fullSeats === 0) {
+            votesShortData.set(party.key, votes_per_seat - party.results.current.votes);
+        } else {
+            const currentNumberOfTotalSeats = party.fullSeats + Array.from(party.restSeats.values()).reduce((a, b) => a + b, 0);
+            const averageVotesForNextSeat = Math.floor(party.results.current.votes / (currentNumberOfTotalSeats + 1));
+
+            if (party.restSeats.get(total_restSeats) === 1) {
+                maxAverageForLastRestSeat = Math.floor(party.results.current.votes / currentNumberOfTotalSeats);
+                averageVotesForNextSeatPerParty.set(party.key, maxAverageForLastRestSeat);
+            } else {
+                averageVotesForNextSeatPerParty.set(party.key, averageVotesForNextSeat);
+            }
+        }
+    });
+
+    averageVotesForNextSeatPerParty.forEach((averageVotesForNextSeat, partyKey) => {
+        if (averageVotesForNextSeat < maxAverageForLastRestSeat) {
+            const partyData = votesData.parties.find(party => party.key === partyKey);
+            const currentNumberOfTotalSeatsWithRestSeat = partyData.fullSeats + Array.from(partyData.restSeats.values()).reduce((a, b) => a + b, 0) + 1;
+            const votesNeeded = (maxAverageForLastRestSeat - averageVotesForNextSeat) * currentNumberOfTotalSeatsWithRestSeat;
+
+            votesShortData.set(partyKey, votesNeeded);
+        }
+    });
+
+    return votesShortData;
+}
+
 function createSeatsSummaryTable(votesData, keyToLabel, total_restSeats) {
     let totalVotes = votesData.parties.reduce((acc, party) => acc + parseInt(party.results.current.votes), 0);
     let kiesdeler = Math.floor(totalVotes / 150);
@@ -163,7 +206,7 @@ function createSeatsSummaryTable(votesData, keyToLabel, total_restSeats) {
 function createSeatsSummaryTable(votesData, keyToLabel, total_restSeats) {
     // Calculate totalVotes within the function
     let totalVotes = votesData.parties.reduce((acc, party) => acc + parseInt(party.results.current.votes), 0);
-    let kiesdeler = Math.floor(totalVotes / 150);
+    let votesShortData = calculateVotesShortForNextSeat(votesData);
 
     let seatsSummaryTableData = [];
     let totalFullSeats = 0;
@@ -178,8 +221,8 @@ function createSeatsSummaryTable(votesData, keyToLabel, total_restSeats) {
             totalFullSeats += fullSeats;
             totalRestSeats += restSeatsCount;
 
-            let surplusVotes = party.surplusVotes || party.results.current.votes; // Use surplusVotes from party or total votes if not calculated
-            let votesShort = (party.shortVotes !== undefined) ? party.shortVotes : (fullSeats > 0 ? 'N/A' : kiesdeler - party.results.current.votes); // Use shortVotes from party or calculate if not present
+            // let surplusVotes = party.surplusVotes || party.results.current.votes; // Use surplusVotes from party or total votes if not calculated
+            let votesShort = votesShortData.get(party.key);
 
             seatsSummaryTableData.push({
                 'Lijst': party.key + 1,
@@ -187,7 +230,7 @@ function createSeatsSummaryTable(votesData, keyToLabel, total_restSeats) {
                 'Volle zetels': fullSeats,
                 'Rest zetels': restSeatsCount,
                 'Totaal zetels': fullSeats + restSeatsCount,
-                'Surplus votes': surplusVotes.toLocaleString('nl-NL'),
+                // 'Surplus votes': surplusVotes.toLocaleString('nl-NL'),
                 'Votes short next seat': typeof votesShort === 'number' ? votesShort.toLocaleString('nl-NL') : votesShort
             });
         }
@@ -207,6 +250,9 @@ function createSeatsSummaryTable(votesData, keyToLabel, total_restSeats) {
 
 
 function renderTable(containerId, data) {
+    if (data.length == 0)
+        return;
+
     const columns = Object.keys(data[0]);
     const header = columns.map(colName => `<th>${colName}</th>`).join("");
     const rows = data.map(rowData => {
