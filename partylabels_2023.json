@@ -1,136 +1,164 @@
-window._parties = [{
-    "key": "192ea5b",
-    "color": "#1f78b4",
-    "labelLong": "VVD",
-    "labelShort": "VVD"
-}, {
-    "key": "aaef150",
-    "color": "#a1d99b",
-    "labelLong": "D66",
-    "labelShort": "D66"
-}, {
-    "key": "d2081fb",
-    "color": "#cd181d",
-    "labelLong": "GroenLinks-PvdA",
-    "labelShort": "GL-PvdA"
-}, {
-    "key": "3502be6",
-    "color": "#6baed6",
-    "labelLong": "PVV",
-    "labelShort": "PVV"
-}, {
-    "key": "cb3c7ff",
-    "color": "#d9f0a3",
-    "labelLong": "CDA",
-    "labelShort": "CDA"
-}, {
-    "key": "353cb7a",
-    "color": "#fc9272",
-    "labelLong": "SP",
-    "labelShort": "SP"
-}, {
-    "key": "ee554e5",
-    "color": "#cc4c02",
-    "labelLong": "Forum voor Democratie",
-    "labelShort": "FvD"
-}, {
-    "key": "4404431",
-    "color": "#006d2c",
-    "labelLong": "Partij voor de Dieren",
-    "labelShort": "PVDD"
-}, {
-    "key": "24b1544",
-    "color": "#9ecae1",
-    "labelLong": "ChristenUnie",
-    "labelShort": "ChristenUnie"
-}, {
-    "key": "e991c96",
-    "color": "#6a3d9a",
-    "labelLong": "Volt",
-    "labelShort": "Volt"
-}, {
-    "key": "4e45852",
-    "color": "#cab2d6",
-    "labelLong": "JA21",
-    "labelShort": "JA21"
-}, {
-    "key": "416db4f",
-    "color": "#ff7f00",
-    "labelLong": "SGP",
-    "labelShort": "SGP"
-}, {
-    "key": "5fc64fc",
-    "color": "#3AC0C2",
-    "labelLong": "Denk",
-    "labelShort": "Denk"
-}, {
-    "key": "59ffa67",
-    "color": null,
-    "labelLong": "50Plus",
-    "labelShort": "50Plus"
-}, {
-    "key": "2bb225f",
-    "color": "#96cf55",
-    "labelLong": "BBB",
-    "labelShort": "BBB"
-}, {
-    "key": "888e23c",
-    "color": null,
-    "labelLong": "Bij1",
-    "labelShort": "Bij1"
-}, {
-    "key": "ccfec7f",
-    "color": null,
-    "labelLong": "Piratenpartij - De Groenen",
-    "labelShort": "Piraten"
-}, {
-    "key": "55b244b",
-    "color": null,
-    "labelLong": "BVNL",
-    "labelShort": "BVNL"
-}, {
-    "key": "d8ad437",
-    "color": "#F7C106",
-    "labelLong": "Nieuw Sociaal Contract",
-    "labelShort": "NSC"
-}, {
-    "key": "a9d65d8",
-    "color": null,
-    "labelLong": "Splinter",
-    "labelShort": "Splinter"
-}, {
-    "key": "eec36b3",
-    "color": null,
-    "labelLong": "Libertaire Partij",
-    "labelShort": "LP"
-}, {
-    "key": "0e33445",
-    "color": null,
-    "labelLong": "LEF - Voor de Nieuwe Generatie",
-    "labelShort": "LEF"
-}, {
-    "key": "20ac7b1",
-    "color": null,
-    "labelLong": "Samen voor Nederland",
-    "labelShort": "SAMEN"
-}, {
-    "key": "65cc06c",
-    "color": null,
-    "labelLong": "Overige 2021",
-    "labelShort": "OVERIG"
-}, {
-    "key": "3552087",
-    "color": null,
-    "labelLong": "Nederland met een PLAN",
-    "labelShort": "NLPLAN"
-}, {
-    "key": "3d07fd9",
-    "color": null,
-    "labelLong": "PartijvdSport",
-    "labelShort": "PvdSport"
-}, {
-    "key": "cd62176",
-    "color": null,
-    "labelLong": "Politieke Partij voor Basisinkomen",
-    "labelShort": "PvBasisinkomen"
-}];
+[
+    {
+        "key": "192ea5b",
+        "color": "#1f78b4",
+        "labelLong": "VVD",
+        "labelShort": "VVD"
+    },
+    {
+        "key": "aaef150",
+        "color": "#a1d99b",
+        "labelLong": "D66",
+        "labelShort": "D66"
+    },
+    {
+        "key": "d2081fb",
+        "color": "#cd181d",
+        "labelLong": "GroenLinks-PvdA",
+        "labelShort": "GL-PvdA"
+    },
+    {
+        "key": "3502be6",
+        "color": "#6baed6",
+        "labelLong": "PVV",
+        "labelShort": "PVV"
+    },
+    {
+        "key": "cb3c7ff",
+        "color": "#d9f0a3",
+        "labelLong": "CDA",
+        "labelShort": "CDA"
+    },
+    {
+        "key": "353cb7a",
+        "color": "#fc9272",
+        "labelLong": "SP",
+        "labelShort": "SP"
+    },
+    {
+        "key": "ee554e5",
+        "color": "#cc4c02",
+        "labelLong": "Forum voor Democratie",
+        "labelShort": "FvD"
+    },
+    {
+        "key": "4404431",
+        "color": "#006d2c",
+        "labelLong": "Partij voor de Dieren",
+        "labelShort": "PVDD"
+    },
+    {
+        "key": "24b1544",
+        "color": "#9ecae1",
+        "labelLong": "ChristenUnie",
+        "labelShort": "ChristenUnie"
+    },
+    {
+        "key": "e991c96",
+        "color": "#6a3d9a",
+        "labelLong": "Volt",
+        "labelShort": "Volt"
+    },
+    {
+        "key": "4e45852",
+        "color": "#cab2d6",
+        "labelLong": "JA21",
+        "labelShort": "JA21"
+    },
+    {
+        "key": "416db4f",
+        "color": "#ff7f00",
+        "labelLong": "SGP",
+        "labelShort": "SGP"
+    },
+    {
+        "key": "5fc64fc",
+        "color": "#3AC0C2",
+        "labelLong": "Denk",
+        "labelShort": "Denk"
+    },
+    {
+        "key": "59ffa67",
+        "color": null,
+        "labelLong": "50Plus",
+        "labelShort": "50Plus"
+    },
+    {
+        "key": "2bb225f",
+        "color": "#96cf55",
+        "labelLong": "BBB",
+        "labelShort": "BBB"
+    },
+    {
+        "key": "888e23c",
+        "color": null,
+        "labelLong": "Bij1",
+        "labelShort": "Bij1"
+    },
+    {
+        "key": "ccfec7f",
+        "color": null,
+        "labelLong": "Piratenpartij - De Groenen",
+        "labelShort": "Piraten"
+    },
+    {
+        "key": "55b244b",
+        "color": null,
+        "labelLong": "BVNL",
+        "labelShort": "BVNL"
+    },
+    {
+        "key": "d8ad437",
+        "color": "#F7C106",
+        "labelLong": "Nieuw Sociaal Contract",
+        "labelShort": "NSC"
+    },
+    {
+        "key": "a9d65d8",
+        "color": null,
+        "labelLong": "Splinter",
+        "labelShort": "Splinter"
+    },
+    {
+        "key": "eec36b3",
+        "color": null,
+        "labelLong": "Libertaire Partij",
+        "labelShort": "LP"
+    },
+    {
+        "key": "0e33445",
+        "color": null,
+        "labelLong": "LEF - Voor de Nieuwe Generatie",
+        "labelShort": "LEF"
+    },
+    {
+        "key": "20ac7b1",
+        "color": null,
+        "labelLong": "Samen voor Nederland",
+        "labelShort": "SAMEN"
+    },
+    {
+        "key": "65cc06c",
+        "color": null,
+        "labelLong": "Overige 2021",
+        "labelShort": "OVERIG"
+    },
+    {
+        "key": "3552087",
+        "color": null,
+        "labelLong": "Nederland met een PLAN",
+        "labelShort": "NLPLAN"
+    },
+    {
+        "key": "3d07fd9",
+        "color": null,
+        "labelLong": "PartijvdSport",
+        "labelShort": "PvdSport"
+    },
+    {
+        "key": "cd62176",
+        "color": null,
+        "labelLong": "Politieke Partij voor Basisinkomen",
+        "labelShort": "PvBasisinkomen"
+    }
+]
