@@ -25,20 +25,20 @@ function loadDataFor2023() {
         // Row for current data
         const currentRow = tbody.insertRow();
         currentRow.insertCell().textContent = "22 november 2023";
-        currentRow.insertCell().textContent = votesData.voters.current;
+        currentRow.insertCell().textContent = Number(votesData.voters.current).toLocaleString('nl-NL');
         currentRow.insertCell().textContent = votesData.turnout.current;
-        currentRow.insertCell().textContent = votesData.turnoutCount.current;
-        currentRow.insertCell().textContent = votesData.invalid.current;
-        currentRow.insertCell().textContent = votesData.blank.current;
+        currentRow.insertCell().textContent = Number(votesData.turnoutCount.current).toLocaleString('nl-NL');
+        currentRow.insertCell().textContent = Number(votesData.invalid.current).toLocaleString('nl-NL');
+        currentRow.insertCell().textContent = Number(votesData.blank.current).toLocaleString('nl-NL');
 
         // Row for previous data
         const previousRow = tbody.insertRow();
         previousRow.insertCell().textContent = "17 maart 2021";
-        previousRow.insertCell().textContent = votesData.voters.previous;
+        previousRow.insertCell().textContent = Number(votesData.voters.previous).toLocaleString('nl-NL');
         previousRow.insertCell().textContent = votesData.turnout.previous;
-        previousRow.insertCell().textContent = votesData.turnoutCount.previous;
-        previousRow.insertCell().textContent = votesData.invalid.previous;
-        previousRow.insertCell().textContent = votesData.blank.previous;
+        previousRow.insertCell().textContent = Number(votesData.turnoutCount.previous).toLocaleString('nl-NL');
+        previousRow.insertCell().textContent = Number(votesData.invalid.previous).toLocaleString('nl-NL');
+        previousRow.insertCell().textContent = Number(votesData.blank.previous).toLocaleString('nl-NL');
 
         return table;
     }
