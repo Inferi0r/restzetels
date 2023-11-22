@@ -1,3 +1,6 @@
+function loadDataFor2023() {
+    // Clear existing content
+    document.getElementById('tableContainer').innerHTML = '';
 const keyToLabel = new Map();
 let votesData;
 
@@ -58,7 +61,7 @@ function createTable() {
 }
 
 // Fetch label data
-fetch('get_data.php?source=last_update')
+fetch('get_data_2021.php?source=last_update')
     .then(response => response.json())
     .then(data => {
         data.parties.forEach(party => {
@@ -66,10 +69,11 @@ fetch('get_data.php?source=last_update')
         });
 
         // Fetch votes data
-        fetch('get_data.php?source=votes')
+        fetch('get_data_2023.php?source=votes')
             .then(response => response.json())
             .then(data => {
                 votesData = data;
                 createTable();
             });
     });
+}

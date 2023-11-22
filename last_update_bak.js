@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Function to handle data fetch and population
     async function fetchData() {
         try {
-            const response = await fetch('/get_data.php?source=last_update');
+            const response = await fetch('/get_data_2021.php?source=last_update');
             const data = await response.json();
 
             const {table, tbody} = createTable();

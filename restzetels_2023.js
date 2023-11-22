@@ -1,3 +1,9 @@
+function loadDataFor2023() {
+    // Clear existing content
+    document.getElementById('seatsSummaryContainer').innerHTML = '';
+    document.getElementById('restSeatContainer').innerHTML = '';
+    document.getElementById('voteAverageContainer').innerHTML = '';
+
 function calculateFullAndRestSeats(votesData) {
     let totalVotes = 0;
     votesData.parties.forEach(party => {
@@ -240,9 +246,9 @@ function renderTable(containerId, data) {
     document.getElementById(containerId).innerHTML = table;
 }
 
-fetch('get_data.php?source=last_update')
+fetch('get_data_2021.php?source=last_update')
     .then(response => response.json())
-    .then(data => fetch('get_data.php?source=votes')
+    .then(data => fetch('get_data_2021.php?source=votes')
         .then(response => response.json())
         .then(votesData => {
             let keyToLabel = new Map();
@@ -252,4 +258,4 @@ fetch('get_data.php?source=last_update')
             createRestSeatsTable(votesData, keyToLabel, total_restSeats);
             createSeatsSummaryTable(votesData, keyToLabel);
         }));
-        
+}        

@@ -1,4 +1,5 @@
-/* Add your CSS styles here */
+/* Existing styles */
+
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
@@ -10,8 +11,8 @@ h1, h2 {
 
 table {
   border-collapse: collapse;
-  width: 80%; /* Adjust as necessary */
-  margin: 0 auto; /* Centers the table horizontally */
+  width: 80%;
+  margin: 0 auto;
 }
 
 th, td {
@@ -31,8 +32,22 @@ nav {
 
 nav ul {
   list-style-type: none;
-  text-align: center;
+  margin: 0;
   padding: 0;
+  display: flex;        /* Use flexbox */
+  justify-content: space-between; /* Space between the main items */
+  align-items: center;  /* Align items vertically */
+}
+
+.nav-center {
+  display: flex;        /* Use flexbox for the centered items */
+  justify-content: center; /* Center these items */
+  flex-grow: 1;         /* Allow this container to grow */
+}
+
+.nav-center li {
+  display: inline;
+  margin: 0 20px;
 }
 
 nav ul li {
@@ -52,4 +67,19 @@ nav ul li a:hover {
 
 nav ul li a.active {
   color: red;
+}
+
+/* Style for year toggle in the navigation bar */
+.year-toggle {
+  cursor: pointer;
+  font-size: 20px;
+  margin-left: auto; /* Pushes the toggle to the right */
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #e7e7e7;
+}
+
+.year-toggle:hover {
+  background-color: #ddd;
 }

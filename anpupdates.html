@@ -2,24 +2,54 @@
 <html>
 <head>
     <title>ANP Updates</title>
-    <!-- Add your stylesheets here -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="index.html">Zetels</a></li>
-            <li><a href="stemcijfers.html">Stemcijfers</a></li>
-            <li><a href="anpstemmen.html">ANP Stemmen</a></li>
-            <li><a class="active" href="anpupdates.html">ANP Updates</a></li>
+            <div class="nav-center">
+                <li><a href="index.html">Zetels</a></li>
+                <li><a href="stemcijfers.html">Stemcijfers</a></li>
+                <li><a href="anpstemmen.html">ANP Stemmen</a></li>
+                <li><a class="active" href="anpupdates.html">ANP Updates</a></li>
+            </div>
+            <li id="yearToggle" class="year-toggle">Verkiezingen 2023</li>
         </ul>
     </nav>
     <h1>ANP updates landelijk/ provincie/ gemeente</h1>
 
-    <!-- Div where the table will be inserted -->
     <div id="tableContainer"></div>
 
-    <!-- Add your JavaScript here -->
-    <script src="last_update.js"></script>
+    <!-- Include the scripts -->
+   <script src="last_update_2021.js"></script>
+   <script src="last_update_2023.js"></script>
+
+    <script>
+        function loadYearData(year) {
+            if (year === '2021') {
+                loadDataFor2021(); // This function should be defined in last_update_2021.js
+            } else {
+                loadDataFor2023(); // This function should be defined in last_update_2023.js
+            }
+        }
+    
+        document.getElementById('yearToggle').addEventListener('click', function() {
+            const toggle = document.getElementById('yearToggle');
+            if (toggle.textContent.includes('2023')) {
+                toggle.textContent = 'Verkiezingen 2021';
+                loadYearData('2021');
+            } else {
+                toggle.textContent = 'Verkiezingen 2023';
+                loadYearData('2023');
+            }
+        });
+    
+        // Load 2023 data by default
+        loadYearData('2023');
+    </script>
+    
+    
+    
 </body>
 </html>
+

@@ -2,17 +2,18 @@
 <html>
 <head>
     <title>Zetelverdeling</title>
-    <!-- Add your stylesheets here -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <nav>
         <ul>
-            <li><a class="active" href="index.html">Zetels (2021)</a></li>
-            <li><a href="stemcijfers.html">Stemcijfers (2021)</a></li>
-            <li><a href="anpstemmen.html">ANP Stemmen (2021)</a></li>
-            <li><a href="anpupdates.html">ANP Updates (2021)</a></li>
-            <li><a href="anpupdates_2023.html">ANP Updates (2023)</a></li>
+            <div class="nav-center">
+                <li><a class="active" href="index.html">Zetels</a></li>
+                <li><a href="stemcijfers.html">Stemcijfers</a></li>
+                <li><a href="anpstemmen.html">ANP Stemmen</a></li>
+                <li><a href="anpupdates.html">ANP Updates</a></li>
+            </div>
+            <li id="yearToggle" class="year-toggle">Verkiezingen 2023</li>
         </ul>
     </nav>
     <h1>Zetelverdeling</h1>
@@ -23,7 +24,36 @@
     <h2>Stemgemiddelde per restzetel</h2>
     <div id="voteAverageContainer"></div>
 
-    <!-- Add your JavaScript file here -->
-    <script src="restzetels.js"></script>  
+    <!-- Include the scripts -->
+   <script src="restzetels_2021.js"></script>
+   <script src="restzetels_2023.js"></script>
+
+    <script>
+        function loadYearData(year) {
+            if (year === '2021') {
+                loadDataFor2021(); // This function should be defined in last_update_2021.js
+            } else {
+                loadDataFor2023(); // This function should be defined in last_update_2023.js
+            }
+        }
+    
+        document.getElementById('yearToggle').addEventListener('click', function() {
+            const toggle = document.getElementById('yearToggle');
+            if (toggle.textContent.includes('2023')) {
+                toggle.textContent = 'Verkiezingen 2021';
+                loadYearData('2021');
+            } else {
+                toggle.textContent = 'Verkiezingen 2023';
+                loadYearData('2023');
+            }
+        });
+    
+        // Load 2023 data by default
+        loadYearData('2023');
+    </script>
+    
+    
+    
 </body>
 </html>
+

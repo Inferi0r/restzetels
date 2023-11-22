@@ -1,3 +1,5 @@
+function loadDataFor2021() {
+    document.getElementById('tableContainer').innerHTML = ''; // Clear existing content
 let votesData = {};
 const keyToLabel = new Map();
 
@@ -59,14 +61,14 @@ function updateFields() {
     document.getElementById('previousTurnout').textContent = votesData.turnout.previous;
 }
 
-fetch('get_data.php?source=last_update')
+fetch('get_data_2021.php?source=last_update')
     .then(response => response.json())
     .then(data => {
         data.parties.forEach(party => {
             keyToLabel.set(party.key, party.label);
         });
 
-        fetch('get_data.php?source=votes')
+        fetch('get_data_2021.php?source=votes')
             .then(response => response.json())
             .then(data => {
                 votesData = data;
@@ -75,3 +77,4 @@ fetch('get_data.php?source=last_update')
                 updateFields();
             });
     });
+}

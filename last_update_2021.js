@@ -1,5 +1,5 @@
 // Wrap the existing logic in a function
-function loadDataFor2023() {
+function loadDataFor2021() {
     document.getElementById('tableContainer').innerHTML = ''; // Clear existing content
     // Function to construct a map from view keys to labels
     function createViewMap(views) {
@@ -8,6 +8,15 @@ function loadDataFor2023() {
             viewMap.set(view.key, view.label);
         });
         return viewMap;
+    }
+
+    // Function to construct a map from party keys to labels
+    function createPartyMap(parties) {
+        let partyMap = new Map();
+        parties.forEach(party => {
+            partyMap.set(party.key, party.label);
+        });
+        return partyMap;
     }
 
     // Function to create a map from type codes to labels
@@ -35,9 +44,7 @@ function loadDataFor2023() {
             "Updated",
             "Parent",
             "Top Parties Current",
-            "Top Parties Previous",
-            "Source",
-            "Count Status"
+            "Top Parties Previous"
         ];
 
         headers.forEach(header => {
@@ -52,6 +59,7 @@ function loadDataFor2023() {
 
     // Function to populate the table with the fetched data
     function populateTable(data, tbody) {
+        const partyMap = createPartyMap(data.parties);
         const viewMap = createViewMap(data.views);
         const typeMap = createTypeMap();
 
@@ -86,25 +94,14 @@ function loadDataFor2023() {
             parentCell.textContent = item['parent'] ? viewMap.get(item['parent']) : null;
             row.appendChild(parentCell);
 
-            // Handle 'topPartiesCurrent' property
-            const topPartiesCurrentCell = document.createElement('td');
-            topPartiesCurrentCell.textContent = item['topPartiesCurrent'].join(', ');
-            row.appendChild(topPartiesCurrentCell);
-
-            // Handle 'topPartiesPrevious' property
-            const topPartiesPreviousCell = document.createElement('td');
-            topPartiesPreviousCell.textContent = item['topPartiesPrevious'].join(', ');
-            row.appendChild(topPartiesPreviousCell);
-
-            // Handle 'source' property
-            const sourceCell = document.createElement('td');
-            sourceCell.textContent = item['source'];
-            row.appendChild(sourceCell);
-
-            // Handle 'countStatus' property
-            const countStatusCell = document.createElement('td');
-            countStatusCell.textContent = `Total: ${item.countStatus.total}, Completed: ${item.countStatus.completed}`;
-            row.appendChild(countStatusCell);
+            // Translate 'topPartiesCurrent' and 'topPartiesPrevious' to party labels
+            ['topPartiesCurrent', 'topPartiesPrevious'].forEach(function (property) {
+                const cell = document.createElement('td');
+                cell.textContent = item[property].map(function (partyKey) {
+                    return partyMap.get(partyKey);
+                }).join(', ');
+                row.appendChild(cell);
+            });
 
             tbody.appendChild(row);
         });
@@ -113,7 +110,7 @@ function loadDataFor2023() {
     // Function to handle data fetch and population
     async function fetchData() {
         try {
-            const response = await fetch('/get_data_2023.php?source=last_update');
+            const response = await fetch('/get_data_2021.php?source=last_update');
             const data = await response.json();
 
             const {table, tbody} = createTable();
@@ -132,4 +129,4 @@ function loadDataFor2023() {
     fetchData();
 }
 // Original event listener, now calling the new function
-//document.addEventListener('DOMContentLoaded', loadDataFor2023);
+//document.addEventListener('DOMContentLoaded', loadDataFor2021);
