@@ -61,7 +61,7 @@ function createTable() {
 }
 
 // Fetch label data
-fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-dfe06282-d717-451e-9dca-8bb52f669564/default/get-json-files?year=2021&source=last_update')
+fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2021&source=last_update')
     .then(response => response.json())
     .then(data => {
         data.parties.forEach(party => {
@@ -69,7 +69,7 @@ fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-dfe06282-d717-45
         });
 
         // Fetch votes data
-        fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-dfe06282-d717-451e-9dca-8bb52f669564/default/get-json-files?year=2021&source=votes')
+        fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2021&source=votes')
             .then(response => response.json())
             .then(data => {
                 votesData = data;
