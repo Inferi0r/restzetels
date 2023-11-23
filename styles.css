@@ -9,14 +9,18 @@ h1, h2 {
 
 table {
   border-collapse: collapse;
-  width: 80%;
-  margin: 0 auto;
+  width: auto; /* Adjusted from 80% to auto */
+  margin-left: auto; /* Center the table */
+  margin-right: auto; /* Center the table */
+  display: table; /* Ensure the table is still displayed as a table */
+  max-width: 100%; /* This ensures tables don't overflow their container */
 }
 
 th, td {
   border: 1px solid #ccc;
   padding: 8px;
   text-align: left;
+  white-space: nowrap; /* Prevent text from wrapping */
 }
 
 th {
@@ -84,6 +88,20 @@ nav ul li a.active {
 .highest-value {
   background-color: rgb(145, 184, 145);
 }
+
+.flex-container {
+  display: flex;
+  justify-content: space-around; /* This will space the two items evenly */
+  align-items: start; /* Aligns items to the start of the flex container */
+  margin: 0 auto;
+  max-width: 1200px; /* Adjust this value based on your layout needs */
+}
+
+.flex-item {
+  flex: 1; /* Each flex item will take up equal space */
+  padding: 10px; /* Optional, for some spacing around each flex item */
+}
+
 
 #latestRestSeatImpactContainer {
   text-align: center; /* Center the text */
