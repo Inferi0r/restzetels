@@ -24,14 +24,14 @@ function loadDataFor2023() {
     fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2023&source=last_update')
     .then(response => response.json())
     .then(lastUpdateData => {
-        showLastUpdatedLocalRegion(lastUpdateData);
+        showLastUpdatedLocalRegion2(lastUpdateData);
     });
 
-function showLastUpdatedLocalRegion(data) {
+function showLastUpdatedLocalRegion2(data) {
     const localRegion = data.views.find(view => view.type === 0);
     if (localRegion) {
         const timestamp = new Date(localRegion.updated * 1000).toLocaleString();
-        document.getElementById('lastUpdatedLocalRegion').textContent = `Laatste update: ${timestamp} (${localRegion.label})`;
+        document.getElementById('lastUpdatedLocalRegion2').textContent = `Laatste update: ${timestamp} (${localRegion.label})`;
     }
 }
 
