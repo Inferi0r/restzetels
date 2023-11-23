@@ -84,3 +84,16 @@ nav ul li a.active {
 .highest-value {
   background-color: rgb(145, 184, 145);
 }
+
+#latestRestSeatImpactContainer {
+  text-align: center; /* Center the text */
+  background-color: #f0f0f0; /* Light grey background */
+  color: #333333; /* Darker text color for contrast */
+  padding: 10px; /* Some padding around the text */
+  margin-top: 20px; /* Space from the top element */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Shadow effect */
+  border-radius: 5px; /* Slightly rounded corners */
+  max-width: 600px; /* Maximum width */
+  margin-left: auto; /* Together with margin-right, centers the div */
+  margin-right: auto;
+}

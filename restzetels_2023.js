@@ -3,7 +3,8 @@ function loadDataFor2023() {
     document.getElementById('seatsSummaryContainer').innerHTML = '';
     document.getElementById('restSeatContainer').innerHTML = '';
     document.getElementById('voteAverageContainer').innerHTML = '';
-
+    document.getElementById('latestRestSeatImpactContainer').innerHTML = '';
+    
     // Fetch party labels from partylabels_2023.json
     fetch('partylabels_2023.json')
         .then(response => response.json())
@@ -17,6 +18,7 @@ function loadDataFor2023() {
                     let total_restSeats = createVoteAverageTable(votesData, keyToLabel);
                     createRestSeatsTable(votesData, keyToLabel, total_restSeats);
                     createSeatsSummaryTable(votesData, keyToLabel, total_restSeats);
+                    showLatestRestSeatImpact(votesData, keyToLabel);
                 });
         });
 
@@ -226,7 +228,36 @@ function createSeatsSummaryTable(votesData, keyToLabel) {
     renderTable('seatsSummaryContainer', seatsSummaryTableData);
 }
 
+function showLatestRestSeatImpact(votesData, keyToLabel) {
+    // Find the party receiving the latest rest seat
+    let latestRestSeatParty = null;
+    let highestRestSeatNumber = 0;
+    votesData.parties.forEach(party => {
+        party.restSeats.forEach((value, key) => {
+            if (key > highestRestSeatNumber) {
+                highestRestSeatNumber = key;
+                latestRestSeatParty = party;
+            }
+        });
+    });
+    let partyLastrestSeat = keyToLabel.get(latestRestSeatParty.key);
 
+    // Find the party with the lowest number in the "Stemmen tekort" column
+    let { votesShortData } = calculateVotesShortAndSurplus(votesData);
+    let lowestVotesShort = Number.MAX_SAFE_INTEGER;
+    let partyLackingVotes = '';
+
+    votesShortData.forEach((votesShort, key) => {
+        if (votesShort < lowestVotesShort && votesShort != null) {
+            lowestVotesShort = votesShort;
+            partyLackingVotes = keyToLabel.get(key);
+        }
+    });
+
+    // Construct and display the message
+    let message = `Laatste restzetel gaat naar: <span style="font-weight: bold; color: green;">${partyLastrestSeat}</span>, dit gaat ten koste van: <span style="font-weight: bold; color: red;">${partyLackingVotes}</span>`;
+    document.getElementById('latestRestSeatImpactContainer').innerHTML = message;
+}
 
 function renderTable(containerId, data) {
     if (data.length == 0)
@@ -253,4 +284,5 @@ function renderTable(containerId, data) {
     document.getElementById(containerId).innerHTML = table;
 }
 }
+
 loadDataFor2023();
