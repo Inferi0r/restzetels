@@ -205,6 +205,10 @@ function createSeatsSummaryTable(votesData, keyToLabel) {
     let totalFullSeats = 0;
     let totalRestSeats = 0;
 
+    // Calculate total votes if not already present in votesData
+    let totalVotes = votesData.totalVotes || votesData.parties.reduce((acc, party) => acc + parseInt(party.results.current.votes), 0);
+    const kiesdeler = Math.floor(totalVotes / 150);
+
     votesData.parties.forEach(party => {
         let partyName = keyToLabel.get(party.key);
 
@@ -214,17 +218,24 @@ function createSeatsSummaryTable(votesData, keyToLabel) {
             totalFullSeats += fullSeats;
             totalRestSeats += restSeatsCount;
 
-            // let surplusVotes = party.surplusVotes || party.results.current.votes; // Use surplusVotes from party or total votes if not calculated
+            let surplusVotes;
+            if (fullSeats === 1 && restSeatsCount === 0 && !isNaN(party.results.current.votes)) {
+                // For parties with exactly 1 full seat and no rest seats
+                surplusVotes = Math.max(party.results.current.votes - kiesdeler, 0); // Ensure no negative values
+            } else {
+                // For other parties
+                surplusVotes = surplusVotesData.get(party.key);
+            }
+
             let votesShort = votesShortData.get(party.key);
-            let surplusVotes = surplusVotesData.get(party.key);
 
             seatsSummaryTableData.push({
-                'Lijst': listNumber++, // Increment list number
+                'Lijst': listNumber++,
                 'Partij': partyName,
                 'Volle zetels': fullSeats,
                 'Rest zetels': restSeatsCount,
                 'Totaal zetels': fullSeats + restSeatsCount,
-                'Stemmen over': typeof surplusVotes === 'number' ? surplusVotes.toLocaleString('nl-NL') : '-',
+                'Stemmen over': typeof surplusVotes === 'number' && !isNaN(surplusVotes) ? surplusVotes.toLocaleString('nl-NL') : '-',
                 'Stemmen tekort': typeof votesShort === 'number' ? votesShort.toLocaleString('nl-NL') : '-'
             });
         }
