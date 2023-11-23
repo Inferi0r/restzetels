@@ -97,3 +97,11 @@ nav ul li a.active {
   margin-left: auto; /* Together with margin-right, centers the div */
   margin-right: auto;
 }
+
+#lastUpdatedLocalRegion {
+  text-align: center; /* Center the text */
+  margin-left: auto; /* Together with margin-right, centers the div */
+  margin-right: auto;
+  color: #555; /* Dark grey color */
+  font-style: italic; /* Cursive text */
+}

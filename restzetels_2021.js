@@ -315,4 +315,3 @@ fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44
             showLatestRestSeatImpact(votesData, keyToLabel);
         }));
 }
-
