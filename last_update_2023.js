@@ -19,6 +19,13 @@ function loadDataFor2023() {
         ]);
     }
 
+    function createStatusMap() {
+        return new Map([
+            [0, 'In Afwachting'],
+            [2, 'Gedeeltelijk'],
+            [4, 'Compleet']
+        ]);
+    }
     // Function to create a table
     function createTable() {
         const table = document.createElement('table');
@@ -54,6 +61,7 @@ function loadDataFor2023() {
     function populateTable(data, tbody, partyLabels) {
         const viewMap = createViewMap(data.views);
         const typeMap = createTypeMap();
+        const statusMap = createStatusMap();
 
         data.views.forEach(function (item) {
             const row = document.createElement('tr');
@@ -65,6 +73,9 @@ function loadDataFor2023() {
                     cell.textContent = date.toLocaleString('nl-NL');
                 } else if (property === 'type') {
                     cell.textContent = typeMap.get(item[property]);
+                } else if (property === 'status') {
+                    // Gebruik de statusMap voor de 'status' property
+                    cell.textContent = statusMap.get(item[property]) || item[property];
                 } else {
                     cell.textContent = item[property];
                 }
