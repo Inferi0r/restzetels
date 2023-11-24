@@ -140,3 +140,8 @@ nav ul li a.active {
   background-color: #f2f2f2; /* Same background as the header */
   font-weight: bold; /* Optional: if you want the text to be bold like the header */
 }
+
+.sort-icon {
+  font-size: 0.8em; /* Adjust size as needed */
+  margin-left: 5px; /* Spacing between header text and icon */
+}

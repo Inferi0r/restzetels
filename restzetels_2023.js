@@ -32,6 +32,7 @@ function loadDataFor2023() {
         showCompletedRegionsCount(lastUpdateData);
     });
 
+
 function showCompletedRegionsCount(lastUpdateData) {
     const totalRegionsData = lastUpdateData.views.find(view => view.type === 2); // Assuming type 2 is the correct type for total regions data
     if (totalRegionsData && totalRegionsData.countStatus) {
@@ -283,7 +284,6 @@ function createSeatsSummaryTable(votesData, keyToLabel) {
     renderTable('seatsSummaryContainer', seatsSummaryTableData);
 }
 
-
 function showLatestRestSeatImpact(votesData, keyToLabel) {
     // Find the party receiving the latest rest seat
     let latestRestSeatParty = null;
@@ -315,19 +315,52 @@ function showLatestRestSeatImpact(votesData, keyToLabel) {
     document.getElementById('latestRestSeatImpactContainer').innerHTML = message;
 }
 
+let sortStates = {};
+
+function sortTableData(data, column, defaultOrder = 'asc', excludeLastRow = false) {
+    // Initialize sort state for the column if not already set
+    if (!sortStates[column]) {
+        sortStates[column] = defaultOrder;
+    } else if (sortStates[column] === 'asc') {
+        sortStates[column] = 'desc';
+    } else {
+        sortStates[column] = 'asc';
+    }
+
+    let dataToSort = excludeLastRow ? data.slice(0, -1) : [...data];
+
+    // Sort the data
+    dataToSort.sort((a, b) => {
+        if (a[column] < b[column]) {
+            return sortStates[column] === 'asc' ? -1 : 1;
+        }
+        if (a[column] > b[column]) {
+            return sortStates[column] === 'asc' ? 1 : -1;
+        }
+        return 0;
+    });
+
+    if (excludeLastRow) {
+        // Re-add the summary row at the end
+        return [...dataToSort, data[data.length - 1]];
+    }
+    return dataToSort;
+}
+
+
 function renderTable(containerId, data) {
     if (data.length === 0) return;
 
     const columns = Object.keys(data[0]);
-    const header = columns.map(colName => `<th>${colName}</th>`).join("");
+    const header = columns.map(colName => `<th data-column="${colName}">${colName}</th>`).join("");
+
     const rows = data.map((rowData, index) => {
         const cells = Object.values(rowData).map(cellData => `<td>${cellData}</td>`).join("");
-        // Apply the 'total-row' class to the last row
         const rowClass = index === data.length - 1 ? 'total-row' : '';
         return `<tr class="${rowClass}">${cells}</tr>`;
     }).join("");
 
-    const table = `
+    const tableHTML = `
         <table>
             <thead>
                 <tr>${header}</tr>
@@ -338,8 +371,20 @@ function renderTable(containerId, data) {
         </table>
     `;
 
-    document.getElementById(containerId).innerHTML = table;
+    document.getElementById(containerId).innerHTML = tableHTML;
+
+    document.querySelectorAll(`#${containerId} th`).forEach(th => {
+        th.addEventListener('click', () => {
+            const column = th.getAttribute('data-column');
+            const excludeLastRow = containerId === 'seatsSummaryContainer';
+            const sortedData = sortTableData(data, column, 'asc', excludeLastRow);
+            renderTable(containerId, sortedData);
+        });
+    });
 }
+
+
+
 
 
 }
