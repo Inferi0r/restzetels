@@ -251,10 +251,10 @@ function createSeatsSummaryTable(votesData, keyToLabel) {
                 surplusVotes = parseInt(party.results.current.votes);
             } else {
                 // For other parties, use the surplus votes as calculated earlier
-                surplusVotes = surplusVotesData.get(party.key);
+                surplusVotes = Math.ceil(surplusVotesData.get(party.key));
             }
     
-            let votesShort = votesShortData.get(party.key);
+            let votesShort = Math.ceil(votesShortData.get(party.key));
     
             let rowData = {
                 'Lijst': listNumber++,
