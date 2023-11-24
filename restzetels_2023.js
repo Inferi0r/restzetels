@@ -340,10 +340,19 @@ function sortTableData(data, column, defaultOrder = 'asc', excludeLastRow = fals
     // Clone and sort the array
     let dataToSort = excludeLastRow ? data.slice(0, -1) : [...data];
     dataToSort.sort((a, b) => {
-        if (a[column] < b[column]) {
+        let valueA = a[column];
+        let valueB = b[column];
+
+        // Parse string to number for specific columns
+        if (column === 'Stemmen over' || column === 'Stemmen tekort') {
+            valueA = parseInt(valueA.replace(/[\.,]/g, ''), 10); // Replace comma/dot and parse to int
+            valueB = parseInt(valueB.replace(/[\.,]/g, ''), 10);
+        }
+
+        if (valueA < valueB) {
             return sortStates[column] === 'asc' ? -1 : 1;
         }
-        if (a[column] > b[column]) {
+        if (valueA > valueB) {
             return sortStates[column] === 'asc' ? 1 : -1;
         }
         return 0;
@@ -351,6 +360,7 @@ function sortTableData(data, column, defaultOrder = 'asc', excludeLastRow = fals
 
     return excludeLastRow ? [...dataToSort, data[data.length - 1]] : dataToSort;
 }
+
 
 
 
