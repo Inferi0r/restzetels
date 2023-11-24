@@ -25,8 +25,19 @@ function loadDataFor2023() {
     .then(response => response.json())
     .then(lastUpdateData => {
         showLastUpdatedLocalRegion2(lastUpdateData);
+        showCompletedRegionsCount(lastUpdateData);
     });
 
+function showCompletedRegionsCount(lastUpdateData) {
+    const totalRegionsData = lastUpdateData.views.find(view => view.type === 2); // Assuming type 2 is the correct type for total regions data
+    if (totalRegionsData && totalRegionsData.countStatus) {
+        const completed = totalRegionsData.countStatus.completed;
+        const total = totalRegionsData.countStatus.total;
+        document.getElementById('completedRegionsCount').innerHTML = `<b>${completed}</b> / <b>${total}</b> kiesregio's compleet`;
+    }
+        
+}
+    
 function showLastUpdatedLocalRegion2(data) {
     const localRegion = data.views.find(view => view.type === 0);
     if (localRegion) {

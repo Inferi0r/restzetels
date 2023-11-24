@@ -88,20 +88,13 @@ nav ul li a.active {
 .highest-value {
   background-color: rgb(145, 184, 145);
 }
-
-.flex-container {
+.status-container {
   display: flex;
-  justify-content: space-around; /* This will space the two items evenly */
-  align-items: start; /* Aligns items to the start of the flex container */
-  margin: 0 auto;
-  max-width: 1200px; /* Adjust this value based on your layout needs */
+  justify-content: space-between; /* Aligns items to start and end of the container */
+  align-items: center; /* Vertically align items in the middle */
+  padding: 10px;
+  margin-bottom: 20px;
 }
-
-.flex-item {
-  flex: 1; /* Each flex item will take up equal space */
-  padding: 10px; /* Optional, for some spacing around each flex item */
-}
-
 
 #latestRestSeatImpactContainer {
   text-align: center; /* Center the text */
@@ -116,10 +109,34 @@ nav ul li a.active {
   margin-right: auto;
 }
 
+#completedRegionsCount {
+  text-align: right; /* Align text to the right */
+  background-color: #e0f7fa; /* Light blue background for completion status */
+  color: #0d47a1; /* Dark blue text color */
+  padding: 10px;
+  margin-top: 20px; /* Space from the top element */
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Consistent shadow effect with the rest of the page */
+  max-width: 300px; /* Maximum width */
+}
+
 #lastUpdatedLocalRegion2 {
   text-align: center; /* Center the text */
   margin-left: auto; /* Together with margin-right, centers the div */
   margin-right: auto;
   color: #555; /* Dark grey color */
   font-style: italic; /* Cursive text */
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-around; /* This will space the two items evenly */
+  align-items: start; /* Aligns items to the start of the flex container */
+  margin: 0 auto;
+  max-width: 1200px; /* Adjust this value based on your layout needs */
+}
+
+.flex-item {
+  flex: 1; /* Each flex item will take up equal space */
+  padding: 10px; /* Optional, for some spacing around each flex item */
 }
