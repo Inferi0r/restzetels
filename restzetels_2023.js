@@ -109,7 +109,6 @@ function createVoteAverageTableData(votesData, keyToLabel, total_restSeats) {
     votesData.parties.forEach(party => {
         if(party.fullSeats > 0) {
             let rowData = {
-                'Lijst': listNumber++, // Increment list number
                 'Partij': keyToLabel.get(party.key)
             };
 
