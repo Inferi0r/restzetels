@@ -8,6 +8,7 @@ function loadDataFor2023() {
     // Global variable to hold party labels
     let globalPartyLabelsData = [];
 
+
     // Fetch party labels from partylabels_2023.json
     fetch('partylabels_2023.json')
         .then(response => response.json())
@@ -225,6 +226,7 @@ function calculateVotesShortAndSurplus(votesData) {
 }
 
 
+
 function createSeatsSummaryTable(votesData, keyToLabel) {
     let { votesShortData, surplusVotesData } = calculateVotesShortAndSurplus(votesData);
 
@@ -240,21 +242,13 @@ function createSeatsSummaryTable(votesData, keyToLabel) {
         const partyLabelData = globalPartyLabelsData.find(p => p.key === party.key);
         let partyName = partyLabelData ? partyLabelData.labelLong : "Onbekend";
     
-        if(partyName !== 'OVERIG') {
+        if (partyName !== 'OVERIG') {
             let fullSeats = party.fullSeats;
             let restSeatsCount = Array.from(party.restSeats.values()).reduce((a, b) => a + b, 0);
             totalFullSeats += fullSeats;
             totalRestSeats += restSeatsCount;
     
-            let surplusVotes;
-            if (fullSeats === 0 && restSeatsCount === 0) {
-                // For parties with 0 seats, use the full number of votes
-                surplusVotes = parseInt(party.results.current.votes);
-            } else {
-                // For other parties, use the surplus votes as calculated earlier
-                surplusVotes = Math.ceil(surplusVotesData.get(party.key));
-            }
-    
+            let surplusVotes = fullSeats === 0 && restSeatsCount === 0 ? parseInt(party.results.current.votes) : Math.ceil(surplusVotesData.get(party.key));
             let votesShort = Math.ceil(votesShortData.get(party.key));
     
             let rowData = {
@@ -270,7 +264,6 @@ function createSeatsSummaryTable(votesData, keyToLabel) {
             seatsSummaryTableData.push(rowData);
         }
     });
-    
 
     // Add the total row without the first cell
     seatsSummaryTableData.push({
@@ -281,8 +274,37 @@ function createSeatsSummaryTable(votesData, keyToLabel) {
         'Totaal zetels': totalFullSeats + totalRestSeats
     });
 
+    // Set the initial sort states
+    sortStates['Totaal zetels'] = 'desc';
+    sortStates['Stemmen tekort'] = 'asc';
+
+    // Custom function to sort based on two columns
+    function customSort(data) {
+        return data.slice(0, -1).sort((a, b) => {
+            // Convert formatted numbers back to integers for comparison
+            let aVotesShort = parseInt(a['Stemmen tekort'].replace(/\./g, ''), 10);
+            let bVotesShort = parseInt(b['Stemmen tekort'].replace(/\./g, ''), 10);
+
+            // Primary sort on 'Totaal zetels'
+            if (a['Totaal zetels'] > b['Totaal zetels']) return -1;
+            if (a['Totaal zetels'] < b['Totaal zetels']) return 1;
+
+            // Secondary sort on 'Stemmen tekort'
+            if (aVotesShort < bVotesShort) return -1;
+            if (aVotesShort > bVotesShort) return 1;
+
+            return 0;
+        }).concat(data[data.length - 1]); // Re-add the summary row at the end
+    }
+
+    // Apply the custom sorting and render the table
+    seatsSummaryTableData = customSort(seatsSummaryTableData);
     renderTable('seatsSummaryContainer', seatsSummaryTableData);
 }
+
+
+
+
 
 function showLatestRestSeatImpact(votesData, keyToLabel) {
     // Find the party receiving the latest rest seat
