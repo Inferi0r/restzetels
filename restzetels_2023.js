@@ -317,8 +317,18 @@ function showLatestRestSeatImpact(votesData, keyToLabel) {
 
 let sortStates = {};
 
+
+
+
 function sortTableData(data, column, defaultOrder = 'asc', excludeLastRow = false) {
-    // Initialize sort state for the column if not already set
+    // Reset sort states for all columns except the current one
+    Object.keys(sortStates).forEach(key => {
+        if (key !== column) {
+            sortStates[key] = null;
+        }
+    });
+
+    // Set or toggle the sort state for the current column
     if (!sortStates[column]) {
         sortStates[column] = defaultOrder;
     } else if (sortStates[column] === 'asc') {
@@ -327,9 +337,8 @@ function sortTableData(data, column, defaultOrder = 'asc', excludeLastRow = fals
         sortStates[column] = 'asc';
     }
 
+    // Clone and sort the array
     let dataToSort = excludeLastRow ? data.slice(0, -1) : [...data];
-
-    // Sort the data
     dataToSort.sort((a, b) => {
         if (a[column] < b[column]) {
             return sortStates[column] === 'asc' ? -1 : 1;
@@ -340,19 +349,26 @@ function sortTableData(data, column, defaultOrder = 'asc', excludeLastRow = fals
         return 0;
     });
 
-    if (excludeLastRow) {
-        // Re-add the summary row at the end
-        return [...dataToSort, data[data.length - 1]];
-    }
-    return dataToSort;
+    return excludeLastRow ? [...dataToSort, data[data.length - 1]] : dataToSort;
 }
+
 
 
 function renderTable(containerId, data) {
     if (data.length === 0) return;
 
     const columns = Object.keys(data[0]);
-    const header = columns.map(colName => `<th data-column="${colName}">${colName}</th>`).join("");
+    const header = columns.map(colName => {
+        // Use Unicode characters for sorting icons
+        let sortIcon = '';
+        if (sortStates[colName] === 'asc') {
+            sortIcon = '&#9650;'; // Unicode for triangle pointing up
+        } else if (sortStates[colName] === 'desc') {
+            sortIcon = '&#9660;'; // Unicode for triangle pointing down
+        }
+
+        return `<th data-column="${colName}">${colName} <span class="sort-icon">${sortIcon}</span></th>`;
+    }).join("");
 
     const rows = data.map((rowData, index) => {
         const cells = Object.values(rowData).map(cellData => `<td>${cellData}</td>`).join("");
@@ -382,6 +398,9 @@ function renderTable(containerId, data) {
         });
     });
 }
+
+
+
 
 
 
