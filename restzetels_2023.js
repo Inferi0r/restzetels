@@ -242,7 +242,7 @@ function createSeatsSummaryTable(votesData, keyToLabel) {
         const partyLabelData = globalPartyLabelsData.find(p => p.key === party.key);
         let partyName = partyLabelData ? partyLabelData.labelLong : "Onbekend";
     
-        if (partyName !== 'OVERIG') {
+        if (!partyName.toUpperCase().includes('OVERIG')) {
             let fullSeats = party.fullSeats;
             let restSeatsCount = Array.from(party.restSeats.values()).reduce((a, b) => a + b, 0);
             totalFullSeats += fullSeats;
