@@ -5,11 +5,15 @@ function loadDataFor2023() {
     document.getElementById('voteAverageContainer').innerHTML = '';
     document.getElementById('latestRestSeatImpactContainer').innerHTML = '';
 
+    // Global variable to hold party labels
+    let globalPartyLabelsData = [];
+
     // Fetch party labels from partylabels_2023.json
     fetch('partylabels_2023.json')
         .then(response => response.json())
         .then(partyLabelsData => {
-            const keyToLabel = new Map(partyLabelsData.map(p => [p.key, p.labelShort])); // Map keys to labelShort
+            globalPartyLabelsData = partyLabelsData; // Store data globally
+            const keyToLabel = new Map(partyLabelsData.map(p => [p.key, p.labelShort]));
 
             // Fetch the votes data
             fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2023&source=votes')
@@ -233,7 +237,8 @@ function createSeatsSummaryTable(votesData, keyToLabel) {
     const kiesdeler = Math.floor(totalVotes / 150);
 
     votesData.parties.forEach(party => {
-        let partyName = keyToLabel.get(party.key);
+        const partyLabelData = globalPartyLabelsData.find(p => p.key === party.key);
+        let partyName = partyLabelData ? partyLabelData.labelLong : "Onbekend"; // Use labelLong from the global data
 
         if(partyName !== 'OVERIG') {
             let fullSeats = party.fullSeats;
