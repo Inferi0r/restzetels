@@ -1,3 +1,4 @@
+
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
@@ -88,36 +89,29 @@ nav ul li a.active {
 .highest-value {
   background-color: rgb(145, 184, 145);
 }
-.status-container {
-  display: flex;
-  justify-content: space-between; /* Aligns items to start and end of the container */
-  align-items: center; /* Vertically align items in the middle */
-  padding: 10px;
-  margin-bottom: 20px;
+
+#completedRegionsCount {
+  text-align: center; /* Align text to the right */
+  background-color: #e0f7fa; /* Light blue background for a completion status-like appearance */
+  color: #0d47a1; /* Dark blue text color */
+  padding: 10px; /* Padding around the text */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Shadow effect for depth */
+  max-width: 250px; /* Maximum width of the container */
+  margin-top: 18px; /* Space from the top element */
+  margin-left: auto; /* Auto margin for horizontal centering */
 }
 
 #latestRestSeatImpactContainer {
-  text-align: center; /* Center the text */
+  text-align: center; /* Center the text within the container */
   background-color: #f0f0f0; /* Light grey background */
   color: #333333; /* Darker text color for contrast */
-  padding: 10px; /* Some padding around the text */
-  margin-top: 20px; /* Space from the top element */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Shadow effect */
-  border-radius: 5px; /* Slightly rounded corners */
-  max-width: 600px; /* Maximum width */
-  margin-left: auto; /* Together with margin-right, centers the div */
-  margin-right: auto;
-}
-
-#completedRegionsCount {
-  text-align: right; /* Align text to the right */
-  background-color: #e0f7fa; /* Light blue background for completion status */
-  color: #0d47a1; /* Dark blue text color */
-  padding: 10px;
-  margin-top: 20px; /* Space from the top element */
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Consistent shadow effect with the rest of the page */
-  max-width: 300px; /* Maximum width */
+  padding: 10px; /* Padding around the text */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Shadow effect for depth */
+  border-radius: 5px; /* Rounded corners for a softer look */
+  max-width: 500px; /* Maximum width of the container */
+  margin-left: auto; /* Auto margin for horizontal centering */
+  margin-right: auto; /* Auto margin for horizontal centering */
 }
 
 #lastUpdatedLocalRegion2 {
