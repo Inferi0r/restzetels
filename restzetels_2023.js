@@ -4,7 +4,7 @@ function loadDataFor2023() {
     document.getElementById('restSeatContainer').innerHTML = '';
     document.getElementById('voteAverageContainer').innerHTML = '';
     document.getElementById('latestRestSeatImpactContainer').innerHTML = '';
-    
+
     // Fetch party labels from partylabels_2023.json
     fetch('partylabels_2023.json')
         .then(response => response.json())
@@ -169,10 +169,10 @@ function calculateVotesShortAndSurplus(votesData) {
             votesShortData.set(party.key, votes_per_seat - party.results.current.votes);
         } else {
             const currentNumberOfTotalSeats = party.fullSeats + Array.from(party.restSeats.values()).reduce((a, b) => a + b, 0);
-            const averageVotesForNextSeat = Math.floor(party.results.current.votes / (currentNumberOfTotalSeats + 1));
+            const averageVotesForNextSeat = party.results.current.votes / (currentNumberOfTotalSeats + 1);
 
             if (party.restSeats.get(total_restSeats) === 1) {
-                maxAverageForLastRestSeat = Math.floor(party.results.current.votes / currentNumberOfTotalSeats);
+                maxAverageForLastRestSeat = party.results.current.votes / currentNumberOfTotalSeats;
                 averageVotesForNextSeatPerParty.set(party.key, maxAverageForLastRestSeat);
             } else {
                 averageVotesForNextSeatPerParty.set(party.key, averageVotesForNextSeat);
@@ -181,15 +181,25 @@ function calculateVotesShortAndSurplus(votesData) {
     });
 
     averageVotesForNextSeatPerParty.forEach((averageVotesForNextSeat, partyKey) => {
-        if (averageVotesForNextSeat < maxAverageForLastRestSeat) {
-            const partyData = votesData.parties.find(party => party.key === partyKey);
-            const currentNumberOfTotalSeatsWithRestSeat = partyData.fullSeats + Array.from(partyData.restSeats.values()).reduce((a, b) => a + b, 0);
-            const votesNeeded = (maxAverageForLastRestSeat - averageVotesForNextSeat) * (currentNumberOfTotalSeatsWithRestSeat + 1);
+        const partyData = votesData.parties.find(party => party.key === partyKey);
+        const currentNumberOfTotalSeatsWithRestSeat = partyData.fullSeats + Array.from(partyData.restSeats.values()).reduce((a, b) => a + b, 0);
 
+        if (averageVotesForNextSeat < maxAverageForLastRestSeat) {
+
+            const votesNeeded = (maxAverageForLastRestSeat - averageVotesForNextSeat) * (currentNumberOfTotalSeatsWithRestSeat + 1);
             const surplusVotes = partyData.results.current.votes - (currentNumberOfTotalSeatsWithRestSeat * maxAverageForLastRestSeat);
 
             surplusVotesData.set(partyKey, surplusVotes);
             votesShortData.set(partyKey, votesNeeded);
+        } else {
+
+            //get second highest value from averageVotesForNextSeatPerParty
+            const secondHighestAverageVotesForNextSeat = Array.from(averageVotesForNextSeatPerParty.values()).sort((a, b) => b - a)[1];
+            const averageVotesForCurrentLastSeat = (partyData.results.current.votes / currentNumberOfTotalSeatsWithRestSeat);
+
+            const surplusVotes = Math.floor((averageVotesForCurrentLastSeat - secondHighestAverageVotesForNextSeat) * currentNumberOfTotalSeatsWithRestSeat);
+
+            surplusVotesData.set(partyKey, surplusVotes);
         }
     });
 
@@ -235,8 +245,8 @@ function createSeatsSummaryTable(votesData, keyToLabel) {
                 'Volle zetels': fullSeats,
                 'Rest zetels': restSeatsCount,
                 'Totaal zetels': fullSeats + restSeatsCount,
-                'Stemmen over': typeof surplusVotes === 'number' && !isNaN(surplusVotes) ? surplusVotes.toLocaleString('nl-NL') : '-',
-                'Stemmen tekort': typeof votesShort === 'number' ? votesShort.toLocaleString('nl-NL') : '-'
+                'Stemmen over': typeof surplusVotes === 'number' && !isNaN(surplusVotes) ? Math.ceil(surplusVotes).toLocaleString('nl-NL') : '-',
+                'Stemmen tekort': typeof votesShort === 'number' ? Math.ceil(votesShort).toLocaleString('nl-NL') : '-'
             });
         }
     });
