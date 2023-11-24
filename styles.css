@@ -136,7 +136,7 @@ nav ul li a.active {
   padding: 10px; /* Optional, for some spacing around each flex item */
 }
 
-.total-row {
+#seatsSummaryContainer .total-row {
   background-color: #f2f2f2; /* Same background as the header */
   font-weight: bold; /* Optional: if you want the text to be bold like the header */
 }
