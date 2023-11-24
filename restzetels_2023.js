@@ -154,7 +154,7 @@ function calculateVotesShortAndSurplus(votesData) {
 
     const total_restSeats = 150 - votesData.parties.reduce((acc, party) => acc + party.fullSeats, 0);
     const total_votes = votesData.parties.reduce((acc, party) => acc + parseInt(party.results.current.votes), 0);
-    const votes_per_seat = Math.floor(total_votes / 150);
+    const votes_per_seat = total_votes / 150;
 
     //calculate number of average votes required for last rest seat for each party
     //get number of average votes for each party for restSeat after last rest seat received
@@ -198,8 +198,10 @@ function calculateVotesShortAndSurplus(votesData) {
             const averageVotesForCurrentLastSeat = (partyData.results.current.votes / currentNumberOfTotalSeatsWithRestSeat);
 
             const surplusVotes = Math.floor((averageVotesForCurrentLastSeat - secondHighestAverageVotesForNextSeat) * currentNumberOfTotalSeatsWithRestSeat);
+            const votesNeed = Math.ceil((secondHighestAverageVotesForNextSeat + 1) * (currentNumberOfTotalSeatsWithRestSeat + 1)) - partyData.results.current.votes;
 
             surplusVotesData.set(partyKey, surplusVotes);
+            votesShortData.set(partyKey, votesNeed);
         }
     });
 
