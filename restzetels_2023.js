@@ -232,13 +232,12 @@ function createSeatsSummaryTable(votesData, keyToLabel) {
     let totalFullSeats = 0;
     let totalRestSeats = 0;
 
-    // Calculate total votes if not already present in votesData
     let totalVotes = votesData.totalVotes || votesData.parties.reduce((acc, party) => acc + parseInt(party.results.current.votes), 0);
     const kiesdeler = Math.floor(totalVotes / 150);
 
     votesData.parties.forEach(party => {
         const partyLabelData = globalPartyLabelsData.find(p => p.key === party.key);
-        let partyName = partyLabelData ? partyLabelData.labelLong : "Onbekend"; // Use labelLong from the global data
+        let partyName = partyLabelData ? partyLabelData.labelLong : "Onbekend";
 
         if(partyName !== 'OVERIG') {
             let fullSeats = party.fullSeats;
@@ -246,29 +245,24 @@ function createSeatsSummaryTable(votesData, keyToLabel) {
             totalFullSeats += fullSeats;
             totalRestSeats += restSeatsCount;
 
-            let surplusVotes;
-            if (fullSeats === 1 && restSeatsCount === 0 && !isNaN(party.results.current.votes)) {
-                // For parties with exactly 1 full seat and no rest seats
-                surplusVotes = Math.max(party.results.current.votes - kiesdeler, 0); // Ensure no negative values
-            } else {
-                // For other parties
-                surplusVotes = surplusVotesData.get(party.key);
-            }
-
+            let surplusVotes = surplusVotesData.get(party.key);
             let votesShort = votesShortData.get(party.key);
 
-            seatsSummaryTableData.push({
+            let rowData = {
                 'Lijst': listNumber++,
                 'Partij': partyName,
                 'Volle zetels': fullSeats,
                 'Rest zetels': restSeatsCount,
                 'Totaal zetels': fullSeats + restSeatsCount,
-                'Stemmen over': typeof surplusVotes === 'number' && !isNaN(surplusVotes) ? Math.ceil(surplusVotes).toLocaleString('nl-NL') : '-',
-                'Stemmen tekort': typeof votesShort === 'number' ? Math.ceil(votesShort).toLocaleString('nl-NL') : '-'
-            });
+                'Stemmen over': typeof surplusVotes === 'number' && !isNaN(surplusVotes) ? surplusVotes.toLocaleString('nl-NL') : '-',
+                'Stemmen tekort': typeof votesShort === 'number' ? votesShort.toLocaleString('nl-NL') : '-'
+            };
+
+            seatsSummaryTableData.push(rowData);
         }
     });
 
+    // Add the total row without the first cell
     seatsSummaryTableData.push({
         'Lijst': '',
         'Partij': 'Totaal',
@@ -279,6 +273,7 @@ function createSeatsSummaryTable(votesData, keyToLabel) {
 
     renderTable('seatsSummaryContainer', seatsSummaryTableData);
 }
+
 
 function showLatestRestSeatImpact(votesData, keyToLabel) {
     // Find the party receiving the latest rest seat
@@ -312,14 +307,15 @@ function showLatestRestSeatImpact(votesData, keyToLabel) {
 }
 
 function renderTable(containerId, data) {
-    if (data.length == 0)
-        return;
+    if (data.length === 0) return;
 
     const columns = Object.keys(data[0]);
     const header = columns.map(colName => `<th>${colName}</th>`).join("");
-    const rows = data.map(rowData => {
+    const rows = data.map((rowData, index) => {
         const cells = Object.values(rowData).map(cellData => `<td>${cellData}</td>`).join("");
-        return `<tr>${cells}</tr>`;
+        // Apply the 'total-row' class to the last row
+        const rowClass = index === data.length - 1 ? 'total-row' : '';
+        return `<tr class="${rowClass}">${cells}</tr>`;
     }).join("");
 
     const table = `
@@ -335,6 +331,7 @@ function renderTable(containerId, data) {
 
     document.getElementById(containerId).innerHTML = table;
 }
-}
 
+
+}
 loadDataFor2023();
