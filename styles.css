@@ -94,7 +94,7 @@ nav ul li a.active {
   text-align: center; /* Align text to the right */
   background-color: #e0f7fa; /* Light blue background for a completion status-like appearance */
   color: #0d47a1; /* Dark blue text color */
-  padding: 10px; /* Padding around the text */
+  padding: 10px 0px; /* Reduced horizontal padding */
   border-radius: 5px; /* Rounded corners */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Shadow effect for depth */
   max-width: 250px; /* Maximum width of the container */
@@ -106,10 +106,11 @@ nav ul li a.active {
   text-align: center; /* Center the text within the container */
   background-color: #f0f0f0; /* Light grey background */
   color: #333333; /* Darker text color for contrast */
-  padding: 10px; /* Padding around the text */
+  padding: 10px 0px; /* Reduced horizontal padding */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Shadow effect for depth */
   border-radius: 5px; /* Rounded corners for a softer look */
   max-width: 500px; /* Maximum width of the container */
+  margin-top: 10px; /* Space from the top element */
   margin-left: auto; /* Auto margin for horizontal centering */
   margin-right: auto; /* Auto margin for horizontal centering */
 }
