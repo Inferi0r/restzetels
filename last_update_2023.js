@@ -36,15 +36,15 @@ function loadDataFor2023() {
         const headers = [
             "Key",
             "Type",
-            "Cbscode",
+            "CBS Code",
             "Label",
             "Status",
-            "Updated",
+            "Laatste Update",
             "Parent",
-            "Top Parties Current",
-            "Top Parties Previous",
-            "Source",
-            "Count Status"
+            "Grootste partijen (huidig)",
+            "Grootste partijen (vorige)",
+            "Bron",
+            "Status"
         ];
 
         headers.forEach(header => {
