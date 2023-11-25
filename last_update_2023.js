@@ -21,9 +21,9 @@ function loadDataFor2023() {
 
     function createStatusMap() {
         return new Map([
-            [0, 'In Afwachting'],
-            [2, 'Gedeeltelijk'],
-            [4, 'Compleet']
+            [0, 'Nulstand'],
+            [2, 'Tussenstand'],
+            [4, 'Eindstand']
         ]);
     }
     // Function to create a table
