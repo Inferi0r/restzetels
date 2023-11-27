@@ -101,10 +101,11 @@ function formatDate(dateTime) {
             minute: '2-digit',
             second: '2-digit',
         };
-        return dateObj.toLocaleString('nl-NL', options).replace(/(\d{2})-(\d{2})-(\d{4}) (\d{2}:\d{2}:\d{2})/, '$2-$1-$3 $4');
+        return dateObj.toLocaleString('nl-NL', options).replace(/(\d{2})-(\d{2})-(\d{4}) (\d{2}:\d{2}:\d{2})/, '$1-$2-$3 $4');
     }
     return '';
 }
+
 
 function createAndPopulateTable(data) {
     // Sort the data by "Laatste Update" in descending order
