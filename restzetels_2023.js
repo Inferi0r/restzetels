@@ -4,6 +4,8 @@ function loadDataFor2023() {
     document.getElementById('restSeatContainer').innerHTML = '';
     document.getElementById('voteAverageContainer').innerHTML = '';
     document.getElementById('latestRestSeatImpactContainer').innerHTML = '';
+    document.getElementById('latestUpdateFromNos').textContent = '';
+    //document.getElementById('latestUpdateFromANP').textContent = '';
 
     // Global variable to hold party labels
     let globalPartyLabelsData = [];
@@ -29,8 +31,14 @@ function loadDataFor2023() {
     fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2023&source=last_update')
     .then(response => response.json())
     .then(lastUpdateData => {
-        showLastUpdatedLocalRegion2(lastUpdateData);
+        showLatestUpdateFromANP(lastUpdateData);
         showCompletedRegionsCount(lastUpdateData);
+    });
+
+    fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2023&source=nos')
+    .then(response => response.json())
+    .then(nosData => {
+        showLatestUpdateFromNos(nosData);
     });
 
 
@@ -44,11 +52,28 @@ function showCompletedRegionsCount(lastUpdateData) {
         
 }
     
-function showLastUpdatedLocalRegion2(data) {
+/*
+function showLatestUpdateFromANP(data) {
     const localRegion = data.views.find(view => view.type === 0);
     if (localRegion) {
         const timestamp = new Date(localRegion.updated * 1000).toLocaleString();
-        document.getElementById('lastUpdatedLocalRegion2').textContent = `Laatste update: ${timestamp} (${localRegion.label})`;
+        document.getElementById('latestUpdateFromANP').textContent = `Laatste update: ${timestamp} (${localRegion.label})`;
+    }
+}
+*/
+
+function showLatestUpdateFromNos(nosData) {
+    if (nosData && nosData.gemeentes && nosData.gemeentes.length > 0) {
+        const sortedGemeentes = nosData.gemeentes.sort((a, b) => 
+            new Date(b.publicatie_datum_tijd) - new Date(a.publicatie_datum_tijd)
+        );
+
+        const latestEntry = sortedGemeentes[0];
+        const timestamp = new Date(latestEntry.publicatie_datum_tijd).toLocaleString();
+        const localRegionName = latestEntry.gemeente.naam;
+        const status = latestEntry.status; // Extracting the status
+
+        document.getElementById('latestUpdateFromNos').textContent = `Laatste update: ${timestamp} uit ${localRegionName} (${status})`;
     }
 }
 

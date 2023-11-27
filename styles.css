@@ -115,12 +115,12 @@ nav ul li a.active {
   margin-right: auto; /* Auto margin for horizontal centering */
 }
 
-#lastUpdatedLocalRegion2 {
-  text-align: center; /* Center the text */
-  margin-left: auto; /* Together with margin-right, centers the div */
+.updateInfo {
+  text-align: center;
+  margin-left: auto;
   margin-right: auto;
-  color: #555; /* Dark grey color */
-  font-style: italic; /* Cursive text */
+  color: #555;
+  font-style: italic;
 }
 
 .flex-container {
