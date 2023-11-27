@@ -69,17 +69,22 @@ function loadDataFor2023() {
 
         // Populate table body
         votesData.parties.forEach(party => {
-            const row = tbody.insertRow();
-
-            // Use the mapping to display the list number
-            const listNumberCell = row.insertCell();
-            listNumberCell.textContent = partyKeyToListNumber.get(party.key);
-
-            const partyNameCell = row.insertCell();
-            partyNameCell.textContent = keyToLabel.get(party.key);
-
-            const votesCell = row.insertCell();
-            votesCell.textContent = parseInt(party.results.current.votes).toLocaleString('nl-NL');
+            const partyName = keyToLabel.get(party.key);
+    
+            // Check if the party name contains 'OVERIG' or 'overig'
+            if (!partyName.toUpperCase().includes('OVERIG')) {
+                const row = tbody.insertRow();
+    
+                // Use the mapping to display the list number
+                const listNumberCell = row.insertCell();
+                listNumberCell.textContent = partyKeyToListNumber.get(party.key);
+    
+                const partyNameCell = row.insertCell();
+                partyNameCell.textContent = partyName;
+    
+                const votesCell = row.insertCell();
+                votesCell.textContent = parseInt(party.results.current.votes).toLocaleString('nl-NL');
+            }
         });
 
         document.getElementById('tableContainer').appendChild(table);
