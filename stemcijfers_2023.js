@@ -8,7 +8,7 @@ function loadDataFor2023() {
     function sortTableData(data, sortColumn, sortOrder = 'asc', lastSortedColumn = 'votes') {
         return data.sort((a, b) => {
             let valueA, valueB;
-
+    
             if (lastSortedColumn === 'lijst') {
                 valueA = partyKeyToListNumber.get(a.key);
                 valueB = partyKeyToListNumber.get(b.key);
@@ -18,11 +18,15 @@ function loadDataFor2023() {
             } else if (sortColumn === 'key' && keyToLabel.size > 0) {
                 valueA = keyToLabel.get(a.key);
                 valueB = keyToLabel.get(b.key);
+            } else if (sortColumn === 'percentage') {
+                // Parse the percentage value into a float for sorting
+                valueA = parseFloat(a.results.current.percentage.replace(',', '.'));
+                valueB = parseFloat(b.results.current.percentage.replace(',', '.'));
             } else {
                 valueA = a[sortColumn];
                 valueB = b[sortColumn];
             }
-
+    
             if (lastSortedColumn === 'lijst') {
                 return sortOrder === 'asc' ? valueA - valueB : valueB - valueA;
             } else {
@@ -32,6 +36,7 @@ function loadDataFor2023() {
             }
         });
     }
+    
 
     function createTable(sortColumn = 'votes', sortOrder = 'desc', lastSortedColumn = 'votes') {
         document.getElementById('tableContainer').innerHTML = '';
@@ -44,7 +49,8 @@ function loadDataFor2023() {
         const headers = {
             'Lijst': { dataProperty: 'key', sortIdentifier: 'lijst' },
             'Partij': { dataProperty: 'key', sortIdentifier: 'partij' },
-            'Stemcijfers ANP': { dataProperty: 'votes', sortIdentifier: 'votes' }
+            'Stemcijfer': { dataProperty: 'votes', sortIdentifier: 'votes' },
+            'Percentage': { dataProperty: 'percentage', sortIdentifier: 'percentage' } // New column
         };
 
         Object.entries(headers).forEach(([headerText, { dataProperty, sortIdentifier }]) => {
@@ -67,23 +73,26 @@ function loadDataFor2023() {
 
         votesData.parties = sortTableData(votesData.parties, sortColumn, sortOrder, lastSortedColumn);
 
-        // Populate table body
         votesData.parties.forEach(party => {
             const partyName = keyToLabel.get(party.key);
-    
+        
             // Check if the party name contains 'OVERIG' or 'overig'
             if (!partyName.toUpperCase().includes('OVERIG')) {
                 const row = tbody.insertRow();
-    
+        
                 // Use the mapping to display the list number
                 const listNumberCell = row.insertCell();
                 listNumberCell.textContent = partyKeyToListNumber.get(party.key);
-    
+        
                 const partyNameCell = row.insertCell();
                 partyNameCell.textContent = partyName;
-    
+        
                 const votesCell = row.insertCell();
                 votesCell.textContent = parseInt(party.results.current.votes).toLocaleString('nl-NL');
+        
+                // Create a cell for the percentage
+                const percentageCell = row.insertCell();
+                percentageCell.textContent = party.results.current.percentage;
             }
         });
 
