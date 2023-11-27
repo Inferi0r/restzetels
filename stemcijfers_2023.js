@@ -12,22 +12,37 @@ function loadDataFor2023() {
             if (lastSortedColumn === 'lijst') {
                 valueA = partyKeyToListNumber.get(a.key);
                 valueB = partyKeyToListNumber.get(b.key);
-            } else if (sortColumn === 'votes') {
+            } else if (sortColumn === 'votes' || sortColumn === 'voteDiff') {
+                // Handle vote counts
                 valueA = parseInt(a.results.current.votes);
                 valueB = parseInt(b.results.current.votes);
+                if (sortColumn === 'voteDiff') {
+                    valueA = parseInt(a.results.diff.votes);
+                    valueB = parseInt(b.results.diff.votes);
+                }
             } else if (sortColumn === 'key' && keyToLabel.size > 0) {
                 valueA = keyToLabel.get(a.key);
                 valueB = keyToLabel.get(b.key);
-            } else if (sortColumn === 'percentage') {
-                // Parse the percentage value into a float for sorting
+            } else if (sortColumn === 'percentage' || sortColumn === 'percentageDiff') {
+                // Handle percentages
                 valueA = parseFloat(a.results.current.percentage.replace(',', '.'));
                 valueB = parseFloat(b.results.current.percentage.replace(',', '.'));
+                if (sortColumn === 'percentageDiff') {
+                    // Special handling for percentage difference
+                    let diffA = a.results.diff.votes;
+                    let diffB = b.results.diff.votes;
+                    let votesA = a.results.current.votes;
+                    let votesB = b.results.current.votes;
+                    valueA = diffA === '~' ? -Infinity : parseFloat((parseInt(diffA) / parseInt(votesA) * 100).toFixed(1));
+                    valueB = diffB === '~' ? -Infinity : parseFloat((parseInt(diffB) / parseInt(votesB) * 100).toFixed(1));
+                }
             } else {
                 valueA = a[sortColumn];
                 valueB = b[sortColumn];
             }
     
-            if (lastSortedColumn === 'lijst') {
+            // Compare logic
+            if (['lijst', 'votes', 'voteDiff', 'percentageDiff'].includes(sortColumn)) {
                 return sortOrder === 'asc' ? valueA - valueB : valueB - valueA;
             } else {
                 valueA = valueA ? valueA.toString() : '';
@@ -36,6 +51,8 @@ function loadDataFor2023() {
             }
         });
     }
+    
+    
     
 
     function createTable(sortColumn = 'votes', sortOrder = 'desc', lastSortedColumn = 'votes') {
@@ -50,7 +67,9 @@ function loadDataFor2023() {
             'Lijst': { dataProperty: 'key', sortIdentifier: 'lijst' },
             'Partij': { dataProperty: 'key', sortIdentifier: 'partij' },
             'Stemcijfer': { dataProperty: 'votes', sortIdentifier: 'votes' },
-            'Percentage': { dataProperty: 'percentage', sortIdentifier: 'percentage' } // New column
+            'Percentage': { dataProperty: 'percentage', sortIdentifier: 'percentage' },
+            '# Verschil': { dataProperty: 'voteDiff', sortIdentifier: 'voteDiff' },
+            '% Verschil': { dataProperty: 'percentageDiff', sortIdentifier: 'percentageDiff' }
         };
 
         Object.entries(headers).forEach(([headerText, { dataProperty, sortIdentifier }]) => {
@@ -75,6 +94,17 @@ function loadDataFor2023() {
 
         votesData.parties.forEach(party => {
             const partyName = keyToLabel.get(party.key);
+
+            const voteDiff = party.results.diff.votes;
+            
+            const currentVotes = parseInt(party.results.current.votes);
+            const previousVotes = parseInt(party.results.previous.votes);
+            if (previousVotes === 0 && currentVotes > 0) {
+                percentageDiff = '~';
+            } else {
+                const voteDifference = currentVotes - previousVotes;
+                percentageDiff = (voteDifference / previousVotes * 100).toFixed(1).replace('.', ',');
+            }
         
             // Check if the party name contains 'OVERIG' or 'overig'
             if (!partyName.toUpperCase().includes('OVERIG')) {
@@ -93,6 +123,12 @@ function loadDataFor2023() {
                 // Create a cell for the percentage
                 const percentageCell = row.insertCell();
                 percentageCell.textContent = party.results.current.percentage;
+
+                const voteDiffCell = row.insertCell();
+                voteDiffCell.textContent = parseInt(voteDiff).toLocaleString('nl-NL');
+    
+                const percentageDiffCell = row.insertCell();
+                percentageDiffCell.textContent = percentageDiff;
             }
         });
 
@@ -127,7 +163,7 @@ function loadDataFor2023() {
         .then(data => {
             data.forEach((party, index) => {
                 keyToLabel.set(party.key, party.labelLong);
-                partyKeyToListNumber.set(party.key, index + 1); // Assign list numbers starting from 1
+                partyKeyToListNumber.set(party.key, index + 1);
             });
 
             // Fetch votes data
