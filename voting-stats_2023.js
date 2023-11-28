@@ -2,18 +2,47 @@ function loadDataFor2023() {
 
     // Clear existing content
     document.getElementById('statsTableContainer').innerHTML = '';
+    document.getElementById('lastUpdateANP').textContent = ''; // Clearing out lastUpdateANP
+    document.getElementById('lastUpdatedLocalRegionANP').textContent = ''; // Clearing out lastUpdatedLocalRegionANP
+    document.getElementById('latestUpdateFromNos').textContent = '';
 
-    function updateFields() {
-        // Update additional fields (e.g., last update)
-        document.getElementById('lastUpdate').textContent = new Date(votesData.updated * 1000).toLocaleString();
-        // ... update other fields if needed ...
+    function LastUpdateANP() {
+        if (votesData && votesData.updated) {
+            document.getElementById('lastUpdateANP').textContent = "Laatste update ANP: " + new Date(votesData.updated * 1000).toLocaleString();
+        }
     }
 
-    function showLastUpdatedLocalRegion(data) {
+    function LastUpdateLocalRegionANP(data) {
+        // Define the status mapping
+        const statusMapping = new Map([
+            [0, 'Nulstand'],
+            [2, 'Tussenstand'],
+            [4, 'Eindstand']
+        ]);
+    
         const localRegion = data.views.find(view => view.type === 0);
         if (localRegion) {
             const timestamp = new Date(localRegion.updated * 1000).toLocaleString();
-            document.getElementById('lastUpdatedLocalRegion').textContent = `Laatste gemeente: ${localRegion.label} (${timestamp})`;
+            const status = localRegion.status; // Extracting the status
+            const statusText = statusMapping.get(status) || 'Onbekend'; // Get the status text, default to 'Onbekend'
+    
+            document.getElementById('lastUpdatedLocalRegionANP').textContent = `Laatste gemeente via ANP: ${timestamp} uit ${localRegion.label} (${statusText})`;
+        }
+    }
+    
+
+    function showLatestUpdateFromNos(nosData) {
+        if (nosData && nosData.gemeentes && nosData.gemeentes.length > 0) {
+            const sortedGemeentes = nosData.gemeentes.sort((a, b) => 
+                new Date(b.publicatie_datum_tijd) - new Date(a.publicatie_datum_tijd)
+            );
+    
+            const latestEntry = sortedGemeentes[0];
+            const timestamp = new Date(latestEntry.publicatie_datum_tijd).toLocaleString();
+            const localRegionName = latestEntry.gemeente.naam;
+            const status = latestEntry.status; // Extracting the status
+    
+            document.getElementById('latestUpdateFromNos').textContent = `Laatste gemeente via NOS: ${timestamp} uit ${localRegionName} (${status})`;
         }
     }
 
@@ -71,15 +100,21 @@ function loadDataFor2023() {
                     votesData = data;
                     const statsTable = createStatsTable();
                     document.getElementById('statsTableContainer').appendChild(statsTable);
-                    updateFields();
+                    LastUpdateANP();
                 });
 
         });
 
-    // Fetch last update data
     fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2023&source=last_update')
         .then(response => response.json())
         .then(lastUpdateData => {
-            showLastUpdatedLocalRegion(lastUpdateData);
+            LastUpdateANP(lastUpdateData);
+            LastUpdateLocalRegionANP(lastUpdateData);
         });
+    
+    fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2023&source=nos')
+        .then(response => response.json())
+        .then(nosData => {
+            showLatestUpdateFromNos(nosData);
+        });    
 }
