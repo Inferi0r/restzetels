@@ -42,15 +42,22 @@ function loadDataFor2023() {
     });
 
 
-function showCompletedRegionsCount(lastUpdateData) {
-    const totalRegionsData = lastUpdateData.views.find(view => view.type === 2); // Assuming type 2 is the correct type for total regions data
-    if (totalRegionsData && totalRegionsData.countStatus) {
-        const completed = totalRegionsData.countStatus.completed;
-        const total = totalRegionsData.countStatus.total;
-        document.getElementById('completedRegionsCount').innerHTML = `<b>${completed}</b> / <b>${total}</b> kiesregio's compleet`;
+    function showCompletedRegionsCount(lastUpdateData) {
+        const totalRegionsData = lastUpdateData.views.find(view => view.type === 2); // Assuming type 2 is the correct type for total regions data
+        if (totalRegionsData && totalRegionsData.countStatus) {
+            const completed = totalRegionsData.countStatus.completed;
+            const total = totalRegionsData.countStatus.total;
+    
+            if (completed === null && total === null) {
+                // Both completed and total are null, so display "Alle kiesregio's compleet"
+                document.getElementById('completedRegionsCount').innerHTML = "Alle kiesregio's compleet";
+            } else {
+                // Display the count of completed regions out of total
+                document.getElementById('completedRegionsCount').innerHTML = `<b>${completed}</b> / <b>${total}</b> kiesregio's compleet`;
+            }
+        }
     }
-        
-}
+    
     
 /*
 function showLatestUpdateFromANP(data) {
