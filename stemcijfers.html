@@ -19,13 +19,17 @@
             <div class="nav-center">
                 <li><a href="index.html">Zetels</a></li>
                 <li><a class="active" href="stemcijfers.html">Stemcijfers</a></li>
-                <li><a href="anpstemmen.html">ANP Stemmen</a></li>
                 <li><a href="anpupdates.html">ANP Updates</a></li>
                 <li><a href="nosupdates.html">NOS Updates</a></li>
             </div>
             <li id="yearToggle" class="year-toggle">Verkiezingen 2023</li>
         </ul>
     </nav>
+    <div class="updateInfo"><p>Laatste update ANP: <span id="lastUpdate"></span></p></div>
+    <p id="lastUpdatedLocalRegion" class="updateInfo"></p> 
+    <h2>Statistieken</h2>
+    <div id="statsTableContainer"></div>
+
     <h1>ANP stemmen</h1>
 
     <div id="tableContainer"></div>
@@ -33,6 +37,8 @@
     <!-- Include the scripts -->
    <script src="stemcijfers_2021.js"></script>
    <script src="stemcijfers_2023.js"></script>
+   <script src="voting-stats_2021.js"></script>
+   <script src="voting-stats_2023.js"></script>
 
     <script>
         function loadYearData(year) {

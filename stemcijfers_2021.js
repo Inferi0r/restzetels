@@ -57,7 +57,7 @@ function createTable() {
     kiesdelerLabelCell.textContent = "Kiesdeler:";
     kiesdelerCell.textContent = Math.floor(totalVotes / 150).toLocaleString('nl-NL');
 
-    document.getElementById('tableContainer').appendChild(table);
+   // document.getElementById('tableContainer').appendChild(table);
 }
 
 // Fetch label data
@@ -77,3 +77,5 @@ fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44
             });
     });
 }
+
+loadDataFor2021();
