@@ -28,6 +28,14 @@ function loadDataFor2023() {
         return `${numerator}/${denominator}`;
     }
 
+    function createFractionHTML(numerator, denominator) {
+        return `
+            <div style="display: inline-block; text-align: center; font-size: smaller;">
+                <span style="display: block; border-bottom: 1px solid; padding-bottom: 2px;">${numerator}</span>
+                <span style="display: block; padding-top: 2px;">${denominator}</span>
+            </div>`;
+    }
+    
     function sortTableData(data, sortColumn, sortOrder = 'asc', lastSortedColumn = 'votes') {
         return data.sort((a, b) => {
             let valueA, valueB;
@@ -217,7 +225,18 @@ function loadDataFor2023() {
         const kiesdelerValue = votesData.kiesdeler;
         const kiesdelerWhole = Math.trunc(kiesdelerValue); // Get the whole part
         const kiesdelerFraction = decimalToFraction(kiesdelerValue % 1); // Get the fractional part
-        kiesdelerCell.textContent = `${kiesdelerWhole} ${kiesdelerFraction}`;
+
+        // Split the fraction into numerator and denominator
+        const [numerator, denominator] = kiesdelerFraction.split('/');
+        // Generate the HTML for the fraction
+        const kiesdelerFractionHTML = createFractionHTML(numerator, denominator);
+
+        // Wrap the whole part (formatted with toLocaleString) and the fraction in a container div for vertical alignment
+        kiesdelerCell.innerHTML = `
+            <div style="display: flex; align-items: center; justify-content: flex-start; height: 100%;">
+                <span style="margin-right: 5px;">${kiesdelerWhole.toLocaleString('nl-NL')}</span>
+                ${kiesdelerFractionHTML}
+            </div>`;
 
     }
 
