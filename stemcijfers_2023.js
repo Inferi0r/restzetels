@@ -6,6 +6,7 @@ function loadDataFor2023() {
     let votesData;
     let partyKeyToListNumber = new Map();
     let nosVotesMap = new Map();
+    let kiesraadVotesMap = new Map(); // New map
 
     function sortTableData(data, sortColumn, sortOrder = 'asc', lastSortedColumn = 'votes') {
         return data.sort((a, b) => {
@@ -26,6 +27,11 @@ function loadDataFor2023() {
                 const partyShortNOSLabelB = keyToNOSLabel.get(b.key);
                 valueA = parseInt(nosVotesMap.get(partyShortNOSLabelA) || 0);
                 valueB = parseInt(nosVotesMap.get(partyShortNOSLabelB) || 0);
+            } else if (sortColumn === 'kiesraadVotes') {
+                const listNumberA = partyKeyToListNumber.get(a.key);
+                const listNumberB = partyKeyToListNumber.get(b.key);
+                valueA = parseInt(kiesraadVotesMap.get(listNumberA) || 0);
+                valueB = parseInt(kiesraadVotesMap.get(listNumberB) || 0);
             } else if (sortColumn === 'key' && keyToLabel.size > 0) {
                 valueA = keyToLabel.get(a.key);
                 valueB = keyToLabel.get(b.key);
@@ -48,7 +54,7 @@ function loadDataFor2023() {
             }
     
             // Compare logic
-            if (['lijst', 'votes', 'voteDiff', 'percentageDiff', 'nosVotes'].includes(sortColumn)) {
+            if (['lijst', 'votes', 'voteDiff', 'percentageDiff', 'nosVotes', 'kiesraadVotes'].includes(sortColumn)) {
                 return sortOrder === 'asc' ? valueA - valueB : valueB - valueA;
             } else {
                 valueA = valueA ? valueA.toString() : '';
@@ -73,7 +79,8 @@ function loadDataFor2023() {
             'Lijst': { dataProperty: 'key', sortIdentifier: 'lijst' },
             'Partij': { dataProperty: 'key', sortIdentifier: 'partij' },
             'Stemcijfer ANP': { dataProperty: 'votes', sortIdentifier: 'votes' },
-            'Stemcijfer NOS': { dataProperty: 'nosVotes', sortIdentifier: 'nosVotes' }, // New column
+            'Stemcijfer NOS': { dataProperty: 'nosVotes', sortIdentifier: 'nosVotes' },
+            'Stemcijfer Kiesraad': { dataProperty: 'kiesraadVotes', sortIdentifier: 'kiesraadVotes' }, // New column
             'Percentage': { dataProperty: 'percentage', sortIdentifier: 'percentage' },
             '# Verschil': { dataProperty: 'voteDiff', sortIdentifier: 'voteDiff' },
             '% Verschil': { dataProperty: 'percentageDiff', sortIdentifier: 'percentageDiff' }
@@ -133,6 +140,11 @@ function loadDataFor2023() {
                 const nosVotesCell = row.insertCell();
                 nosVotesCell.textContent = nosVotes.toLocaleString('nl-NL');
 
+                const kiesraadVotesCell = row.insertCell(); // New cell for Stemcijfer Kiesraad
+                const listNumber = partyKeyToListNumber.get(party.key); // Get the list number using the party key
+                const kiesraadVotes = kiesraadVotesMap.get(listNumber); // Use list number to get Kiesraad votes
+                kiesraadVotesCell.textContent = kiesraadVotes ? kiesraadVotes.toLocaleString('nl-NL') : '';
+            
                 const percentageCell = row.insertCell();
                 percentageCell.textContent = party.results.current.percentage;
 
@@ -153,13 +165,27 @@ function loadDataFor2023() {
         whitespaceCell.colSpan = 3;
         whitespaceCell.innerHTML = "&nbsp;";
 
+        const totalANPVotes = votesData.parties.reduce((total, party) => total + parseInt(party.results.current.votes), 0);
+        const totalNOSVotes = Array.from(nosVotesMap.values()).reduce((total, votes) => total + votes, 0);
+        const totalKiesraadVotes = Array.from(kiesraadVotesMap.values()).reduce((total, votes) => total + votes, 0);
+
         // Create total row
         const totalRow = tbody.insertRow();
         const totalLabelCell = totalRow.insertCell();
-        const totalCell = totalRow.insertCell();
         totalLabelCell.colSpan = 2;
         totalLabelCell.textContent = "Totaal aantal geldige stemmen op lijsten:";
-        totalCell.textContent = votesData.totalVotes.toLocaleString('nl-NL');
+
+        // ANP votes total
+        const totalANPCell = totalRow.insertCell();
+        totalANPCell.textContent = totalANPVotes.toLocaleString('nl-NL');
+
+        // NOS votes total
+        const totalNOSCell = totalRow.insertCell();
+        totalNOSCell.textContent = totalNOSVotes.toLocaleString('nl-NL');
+
+        // Kiesraad votes total
+        const totalKiesraadCell = totalRow.insertCell();
+        totalKiesraadCell.textContent = totalKiesraadVotes.toLocaleString('nl-NL');
 
         // Create Kiesdeler row
         const kiesdelerRow = tbody.insertRow();
@@ -178,7 +204,7 @@ function loadDataFor2023() {
             keyToNOSLabel.set(party.key, party.labelShortNOS); // For NOS votes
             partyKeyToListNumber.set(party.key, index + 1);
         });
-
+    
         // Fetch NOS votes data
         return fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2023&source=nos');
     })
@@ -189,20 +215,33 @@ function loadDataFor2023() {
             const nosKey = party.partij.short_name; // Adjust as needed for mapping
             nosVotesMap.set(nosKey, party.huidig.stemmen);
         });
-
+    
+        // After processing NOS data, fetch Kiesraad votes data
+        return fetch('votes-kiesraad_2023.js'); // Ensure the file path is correct
+    })
+    .then(response => response.json())
+    .then(kiesraadData => {
+        // Process Kiesraad data
+        kiesraadData.forEach(item => {
+            kiesraadVotesMap.set(item.lijstnummer, item.votes);
+        });
+    
+        // After processing Kiesraad data, fetch ANP votes data
         return fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2023&source=votes');
     })
     .then(response => response.json())
     .then(anpData => {
+        // Process ANP data
         votesData = anpData;
         votesData.totalVotes = votesData.parties.reduce((total, party) => total + parseInt(party.results.current.votes), 0);
         votesData.kiesdeler = Math.floor(votesData.totalVotes / 150);
-
-        createTable();
+    
+        createTable(); // This will now create the table with the Kiesraad data included
     })
     .catch(error => {
         console.error('Error:', error);
     });
+    
 
 }
 

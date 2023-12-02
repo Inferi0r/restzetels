@@ -161,13 +161,6 @@
         "labelShortNOS": "SAMEN"
     },
     {
-        "key": "65cc06c",
-        "color": null,
-        "labelLong": "Overige 2021",
-        "labelShort": "OVERIG",
-        "labelShortNOS": "OVERIG"
-    },
-    {
         "key": "3552087",
         "color": null,
         "labelLong": "Nederland met een PLAN",
@@ -187,5 +180,12 @@
         "labelLong": "Politieke Partij voor Basisinkomen",
         "labelShort": "PvBasisinkomen",
         "labelShortNOS": "PPBINK"
+    },
+    {
+        "key": "65cc06c",
+        "color": null,
+        "labelLong": "Overige 2021",
+        "labelShort": "OVERIG",
+        "labelShortNOS": "OVERIG"
     }
 ]
