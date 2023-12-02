@@ -2,8 +2,10 @@ function loadDataFor2023() {
     // Clear existing content
     document.getElementById('tableContainer').innerHTML = '';
     const keyToLabel = new Map();
+    const keyToNOSLabel = new Map(); // New map for NOS labels
     let votesData;
     let partyKeyToListNumber = new Map();
+    let nosVotesMap = new Map();
 
     function sortTableData(data, sortColumn, sortOrder = 'asc', lastSortedColumn = 'votes') {
         return data.sort((a, b) => {
@@ -13,13 +15,17 @@ function loadDataFor2023() {
                 valueA = partyKeyToListNumber.get(a.key);
                 valueB = partyKeyToListNumber.get(b.key);
             } else if (sortColumn === 'votes' || sortColumn === 'voteDiff') {
-                // Handle vote counts
                 valueA = parseInt(a.results.current.votes);
                 valueB = parseInt(b.results.current.votes);
                 if (sortColumn === 'voteDiff') {
                     valueA = parseInt(a.results.diff.votes);
                     valueB = parseInt(b.results.diff.votes);
                 }
+            } else if (sortColumn === 'nosVotes') {
+                const partyShortNOSLabelA = keyToNOSLabel.get(a.key);
+                const partyShortNOSLabelB = keyToNOSLabel.get(b.key);
+                valueA = parseInt(nosVotesMap.get(partyShortNOSLabelA) || 0);
+                valueB = parseInt(nosVotesMap.get(partyShortNOSLabelB) || 0);
             } else if (sortColumn === 'key' && keyToLabel.size > 0) {
                 valueA = keyToLabel.get(a.key);
                 valueB = keyToLabel.get(b.key);
@@ -33,8 +39,8 @@ function loadDataFor2023() {
                     let diffB = b.results.diff.votes;
                     let votesA = a.results.current.votes;
                     let votesB = b.results.current.votes;
-                    valueA = diffA === '~' ? -Infinity : parseFloat((parseInt(diffA) / parseInt(votesA) * 100).toFixed(1));
-                    valueB = diffB === '~' ? -Infinity : parseFloat((parseInt(diffB) / parseInt(votesB) * 100).toFixed(1));
+                    valueA = diffA === '∞' ? -Infinity : parseFloat((parseInt(diffA) / parseInt(votesA) * 100).toFixed(1));
+                    valueB = diffB === '∞' ? -Infinity : parseFloat((parseInt(diffB) / parseInt(votesB) * 100).toFixed(1));
                 }
             } else {
                 valueA = a[sortColumn];
@@ -42,7 +48,7 @@ function loadDataFor2023() {
             }
     
             // Compare logic
-            if (['lijst', 'votes', 'voteDiff', 'percentageDiff'].includes(sortColumn)) {
+            if (['lijst', 'votes', 'voteDiff', 'percentageDiff', 'nosVotes'].includes(sortColumn)) {
                 return sortOrder === 'asc' ? valueA - valueB : valueB - valueA;
             } else {
                 valueA = valueA ? valueA.toString() : '';
@@ -66,7 +72,8 @@ function loadDataFor2023() {
         const headers = {
             'Lijst': { dataProperty: 'key', sortIdentifier: 'lijst' },
             'Partij': { dataProperty: 'key', sortIdentifier: 'partij' },
-            'Stemcijfer': { dataProperty: 'votes', sortIdentifier: 'votes' },
+            'Stemcijfer ANP': { dataProperty: 'votes', sortIdentifier: 'votes' },
+            'Stemcijfer NOS': { dataProperty: 'nosVotes', sortIdentifier: 'nosVotes' }, // New column
             'Percentage': { dataProperty: 'percentage', sortIdentifier: 'percentage' },
             '# Verschil': { dataProperty: 'voteDiff', sortIdentifier: 'voteDiff' },
             '% Verschil': { dataProperty: 'percentageDiff', sortIdentifier: 'percentageDiff' }
@@ -93,6 +100,12 @@ function loadDataFor2023() {
         votesData.parties = sortTableData(votesData.parties, sortColumn, sortOrder, lastSortedColumn);
 
         votesData.parties.forEach(party => {
+            const row = tbody.insertRow();
+
+            const partyLabel = keyToLabel.get(party.key); // For "Partij" column
+            const partyShortNOSLabel = keyToNOSLabel.get(party.key); // For NOS votes
+            const nosVotes = nosVotesMap.get(partyShortNOSLabel) || 0;
+        
             const partyName = keyToLabel.get(party.key);
 
             const voteDiff = party.results.diff.votes;
@@ -100,16 +113,13 @@ function loadDataFor2023() {
             const currentVotes = parseInt(party.results.current.votes);
             const previousVotes = parseInt(party.results.previous.votes);
             if (previousVotes === 0 && currentVotes > 0) {
-                percentageDiff = '~';
+                percentageDiff = '∞';
             } else {
                 const voteDifference = currentVotes - previousVotes;
                 percentageDiff = (voteDifference / previousVotes * 100).toFixed(1).replace('.', ',');
             }
         
-            // Check if the party name contains 'OVERIG' or 'overig'
             if (!partyName.toUpperCase().includes('OVERIG')) {
-                const row = tbody.insertRow();
-        
                 // Use the mapping to display the list number
                 const listNumberCell = row.insertCell();
                 listNumberCell.textContent = partyKeyToListNumber.get(party.key);
@@ -120,7 +130,9 @@ function loadDataFor2023() {
                 const votesCell = row.insertCell();
                 votesCell.textContent = parseInt(party.results.current.votes).toLocaleString('nl-NL');
         
-                // Create a cell for the percentage
+                const nosVotesCell = row.insertCell();
+                nosVotesCell.textContent = nosVotes.toLocaleString('nl-NL');
+
                 const percentageCell = row.insertCell();
                 percentageCell.textContent = party.results.current.percentage;
 
@@ -130,6 +142,7 @@ function loadDataFor2023() {
                 const percentageDiffCell = row.insertCell();
                 percentageDiffCell.textContent = percentageDiff;
             }
+            
         });
 
         document.getElementById('tableContainer').appendChild(table);
@@ -157,25 +170,40 @@ function loadDataFor2023() {
         kiesdelerCell.textContent = votesData.kiesdeler.toLocaleString('nl-NL');
     }
 
-    // Fetch label data and votes data, then create table
     fetch('partylabels_2023.json')
-        .then(response => response.json())
-        .then(data => {
-            data.forEach((party, index) => {
-                keyToLabel.set(party.key, party.labelLong);
-                partyKeyToListNumber.set(party.key, index + 1);
-            });
-
-            // Fetch votes data
-            fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2023&source=votes')
-                .then(response => response.json())
-                .then(data => {
-                    votesData = data;
-                    votesData.totalVotes = votesData.parties.reduce((total, party) => total + parseInt(party.results.current.votes), 0);
-                    votesData.kiesdeler = Math.floor(votesData.totalVotes / 150);
-                    createTable();
-                });
+    .then(response => response.json())
+    .then(data => {
+        data.forEach((party, index) => {
+            keyToLabel.set(party.key, party.labelLong); // For "Partij" column
+            keyToNOSLabel.set(party.key, party.labelShortNOS); // For NOS votes
+            partyKeyToListNumber.set(party.key, index + 1);
         });
+
+        // Fetch NOS votes data
+        return fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2023&source=nos');
+    })
+    .then(response => response.json())
+    .then(nosData => {
+        // Process NOS data
+        nosData.landelijke_uitslag.partijen.forEach(party => {
+            const nosKey = party.partij.short_name; // Adjust as needed for mapping
+            nosVotesMap.set(nosKey, party.huidig.stemmen);
+        });
+
+        return fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2023&source=votes');
+    })
+    .then(response => response.json())
+    .then(anpData => {
+        votesData = anpData;
+        votesData.totalVotes = votesData.parties.reduce((total, party) => total + parseInt(party.results.current.votes), 0);
+        votesData.kiesdeler = Math.floor(votesData.totalVotes / 150);
+
+        createTable();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
 }
 
 loadDataFor2023();
