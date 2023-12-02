@@ -8,6 +8,26 @@ function loadDataFor2023() {
     let nosVotesMap = new Map();
     let kiesraadVotesMap = new Map(); // New map
 
+ 
+    function gcd(a, b) {
+        return b ? gcd(b, a % b) : a;
+    }
+
+    // Function for converting a decimal to a fraction
+    function decimalToFraction(decimal) {
+        // Round to three decimal places before converting to a fraction
+        decimal = Math.round(decimal * 1000) / 1000;
+        
+        const len = decimal.toString().length - 2;
+        let denominator = Math.pow(10, len);
+        let numerator = decimal * denominator;
+        const divisor = gcd(numerator, denominator);
+
+        numerator /= divisor;
+        denominator /= divisor;
+        return `${numerator}/${denominator}`;
+    }
+
     function sortTableData(data, sortColumn, sortOrder = 'asc', lastSortedColumn = 'votes') {
         return data.sort((a, b) => {
             let valueA, valueB;
@@ -193,7 +213,12 @@ function loadDataFor2023() {
         const kiesdelerCell = kiesdelerRow.insertCell();
         kiesdelerLabelCell.colSpan = 2;
         kiesdelerLabelCell.textContent = "Kiesdeler:";
-        kiesdelerCell.textContent = votesData.kiesdeler.toLocaleString('nl-NL');
+
+        const kiesdelerValue = votesData.kiesdeler;
+        const kiesdelerWhole = Math.trunc(kiesdelerValue); // Get the whole part
+        const kiesdelerFraction = decimalToFraction(kiesdelerValue % 1); // Get the fractional part
+        kiesdelerCell.textContent = `${kiesdelerWhole} ${kiesdelerFraction}`;
+
     }
 
     fetch('partylabels_2023.json')
@@ -234,7 +259,7 @@ function loadDataFor2023() {
         // Process ANP data
         votesData = anpData;
         votesData.totalVotes = votesData.parties.reduce((total, party) => total + parseInt(party.results.current.votes), 0);
-        votesData.kiesdeler = Math.floor(votesData.totalVotes / 150);
+        votesData.kiesdeler = votesData.totalVotes / 150;
     
         createTable(); // This will now create the table with the Kiesraad data included
     })
