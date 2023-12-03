@@ -109,9 +109,9 @@ function loadDataFor2023() {
             'Stemcijfer ANP': { dataProperty: 'votes', sortIdentifier: 'votes' },
             'Stemcijfer NOS': { dataProperty: 'nosVotes', sortIdentifier: 'nosVotes' },
             'Stemcijfer Kiesraad': { dataProperty: 'kiesraadVotes', sortIdentifier: 'kiesraadVotes' }, // New column
-            'Percentage': { dataProperty: 'percentage', sortIdentifier: 'percentage' },
-            '# Verschil': { dataProperty: 'voteDiff', sortIdentifier: 'voteDiff' },
-            '% Verschil': { dataProperty: 'percentageDiff', sortIdentifier: 'percentageDiff' }
+            'Percentage ANP': { dataProperty: 'percentage', sortIdentifier: 'percentage' },
+            '# Verschil ANP': { dataProperty: 'voteDiff', sortIdentifier: 'voteDiff' },
+            '% Verschil ANP': { dataProperty: 'percentageDiff', sortIdentifier: 'percentageDiff' }
         };
 
         Object.entries(headers).forEach(([headerText, { dataProperty, sortIdentifier }]) => {
@@ -197,6 +197,10 @@ function loadDataFor2023() {
         const totalNOSVotes = Array.from(nosVotesMap.values()).reduce((total, votes) => total + votes, 0);
         const totalKiesraadVotes = Array.from(kiesraadVotesMap.values()).reduce((total, votes) => total + votes, 0);
 
+        const kiesdelerANP = totalANPVotes / 150;
+        const kiesdelerNOS = totalNOSVotes / 150;
+        const kiesdelerKiesraad = totalKiesraadVotes / 150;
+
         // Create total row
         const totalRow = tbody.insertRow();
         const totalLabelCell = totalRow.insertCell();
@@ -215,28 +219,33 @@ function loadDataFor2023() {
         const totalKiesraadCell = totalRow.insertCell();
         totalKiesraadCell.textContent = totalKiesraadVotes.toLocaleString('nl-NL');
 
-        // Create Kiesdeler row
+        // Create Kiesdeler row for each column
         const kiesdelerRow = tbody.insertRow();
         const kiesdelerLabelCell = kiesdelerRow.insertCell();
-        const kiesdelerCell = kiesdelerRow.insertCell();
         kiesdelerLabelCell.colSpan = 2;
         kiesdelerLabelCell.textContent = "Kiesdeler:";
 
-        const kiesdelerValue = votesData.kiesdeler;
-        const kiesdelerWhole = Math.trunc(kiesdelerValue); // Get the whole part
-        const kiesdelerFraction = decimalToFraction(kiesdelerValue % 1); // Get the fractional part
-
-        // Split the fraction into numerator and denominator
-        const [numerator, denominator] = kiesdelerFraction.split('/');
-        // Generate the HTML for the fraction
-        const kiesdelerFractionHTML = createFractionHTML(numerator, denominator);
-
-        // Wrap the whole part (formatted with toLocaleString) and the fraction in a container div for vertical alignment
-        kiesdelerCell.innerHTML = `
-            <div style="display: flex; align-items: center; justify-content: flex-start; height: 100%;">
+        // Function to display Kiesdeler with fraction
+        function displayKiesdeler(kiesdelerValue, cell) {
+            const kiesdelerWhole = Math.trunc(kiesdelerValue);
+            const kiesdelerFraction = decimalToFraction(kiesdelerValue % 1);
+            const [numerator, denominator] = kiesdelerFraction.split('/');
+            const kiesdelerFractionHTML = createFractionHTML(numerator, denominator);
+            cell.innerHTML = `<div style="display: flex; align-items: center; justify-content: flex-start; height: 100%;">
                 <span style="margin-right: 5px;">${kiesdelerWhole.toLocaleString('nl-NL')}</span>
                 ${kiesdelerFractionHTML}
             </div>`;
+        }
+
+        // Display Kiesdeler for each column
+        const kiesdelerANPCell = kiesdelerRow.insertCell();
+        displayKiesdeler(kiesdelerANP, kiesdelerANPCell);
+
+        const kiesdelerNOSCell = kiesdelerRow.insertCell();
+        displayKiesdeler(kiesdelerNOS, kiesdelerNOSCell);
+
+        const kiesdelerKiesraadCell = kiesdelerRow.insertCell();
+        displayKiesdeler(kiesdelerKiesraad, kiesdelerKiesraadCell);
 
     }
 

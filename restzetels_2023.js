@@ -90,7 +90,7 @@ function calculateFullAndRestSeats(votesData) {
         totalVotes += parseInt(party.results.current.votes);
     });
 
-    let kiesdeler = Math.floor(totalVotes / 150);
+    let kiesdeler = totalVotes / 150;
 
     votesData.parties.forEach(party => {
         let fullSeats = Math.floor(party.results.current.votes / kiesdeler);
@@ -267,7 +267,7 @@ function createSeatsSummaryTable(votesData, keyToLabel) {
     let totalRestSeats = 0;
 
     let totalVotes = votesData.totalVotes || votesData.parties.reduce((acc, party) => acc + parseInt(party.results.current.votes), 0);
-    const kiesdeler = Math.floor(totalVotes / 150);
+    const kiesdeler = totalVotes / 150;
 
     votesData.parties.forEach(party => {
         const partyLabelData = globalPartyLabelsData.find(p => p.key === party.key);
