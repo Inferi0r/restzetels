@@ -5,55 +5,41 @@ function loadDataFor2023() {
     document.getElementById('voteAverageContainer').innerHTML = '';
     document.getElementById('latestRestSeatImpactContainer').innerHTML = '';
     document.getElementById('latestUpdateFromNos').textContent = '';
-    // document.getElementById('latestUpdateFromANP').textContent = '';
+    //document.getElementById('latestUpdateFromANP').textContent = '';
 
     // Global variable to hold party labels
     let globalPartyLabelsData = [];
-    let keyToLabel = new Map(); // Declare keyToLabel here
+
 
     // Fetch party labels from partylabels_2023.json
     fetch('partylabels_2023.json')
         .then(response => response.json())
         .then(partyLabelsData => {
             globalPartyLabelsData = partyLabelsData; // Store data globally
-            keyToLabel = new Map(partyLabelsData.map(p => [p.key, p.labelShort])); // Initialize keyToLabel here
+            const keyToLabel = new Map(partyLabelsData.map(p => [p.key, p.labelShort]));
 
-            console.log("keyToLabel map:", keyToLabel); // Add this line to log the map
-
-            // Fetch both ANP and Kiesraad vote data
-            return Promise.all([
-                fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2023&source=votes').then(res => res.json()),
-                fetch('votes-kiesraad_2023.js').then(res => res.json())
-            ]);
-        })
-        .then(([anpData, kiesraadData]) => {
-            // Calculate total votes for each source
-            const totalANPVotes = anpData.parties.reduce((total, party) => total + parseInt(party.results.current.votes), 0);
-            const totalKiesraadVotes = kiesraadData.reduce((total, item) => total + item.votes, 0);
-
-            // Choose the source with the higher total votes and map Kiesraad data if necessary
-            let votesData = totalKiesraadVotes > totalANPVotes ? mapKiesraadDataToANPFormat(kiesraadData, globalPartyLabelsData) : anpData;
-
-            let total_restSeats = createVoteAverageTable(votesData, keyToLabel);
-            createRestSeatsTable(votesData, keyToLabel, total_restSeats);
-            createSeatsSummaryTable(votesData, keyToLabel, total_restSeats);
-            showLatestRestSeatImpact(votesData, keyToLabel);
+            // Fetch the votes data
+            fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2023&source=votes')
+                .then(response => response.json())
+                .then(votesData => {
+                    let total_restSeats = createVoteAverageTable(votesData, keyToLabel);
+                    createRestSeatsTable(votesData, keyToLabel, total_restSeats);
+                    createSeatsSummaryTable(votesData, keyToLabel, total_restSeats);
+                    showLatestRestSeatImpact(votesData, keyToLabel);
+                });
         });
-
-    // Fetch last update data
     fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2023&source=last_update')
-        .then(response => response.json())
-        .then(lastUpdateData => {
-            // showLatestUpdateFromANP(lastUpdateData);
-            showCompletedRegionsCount(lastUpdateData);
-        });
+    .then(response => response.json())
+    .then(lastUpdateData => {
+    //    showLatestUpdateFromANP(lastUpdateData);
+        showCompletedRegionsCount(lastUpdateData);
+    });
 
-    // Fetch NOS data
     fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2023&source=nos')
-        .then(response => response.json())
-        .then(nosData => {
-            showLatestUpdateFromNos(nosData);
-        });
+    .then(response => response.json())
+    .then(nosData => {
+        showLatestUpdateFromNos(nosData);
+    });
 
 
     function showCompletedRegionsCount(lastUpdateData) {
@@ -83,26 +69,6 @@ function showLatestUpdateFromANP(data) {
 }
 */
 
-function mapKiesraadDataToANPFormat(kiesraadData, globalPartyLabelsData) {
-    return {
-        parties: kiesraadData.map(item => {
-            // Find the party in globalPartyLabelsData with the corresponding index
-            let party = globalPartyLabelsData[item.lijstnummer - 1]; // "-1" because array indexes start at 0
-
-            return {
-                key: party.key, // Use the key from partylabels_2023.json
-                results: {
-                    current: {
-                        votes: item.votes
-                        // Add other necessary properties if needed
-                    }
-                }
-            };
-        })
-    };
-}
-
-
 function showLatestUpdateFromNos(nosData) {
     if (nosData && nosData.gemeentes && nosData.gemeentes.length > 0) {
         const sortedGemeentes = nosData.gemeentes.sort((a, b) => 
@@ -114,7 +80,7 @@ function showLatestUpdateFromNos(nosData) {
         const localRegionName = latestEntry.gemeente.naam;
         const status = latestEntry.status; // Extracting the status
 
-        document.getElementById('latestUpdateFromNos').textContent = `Laatste update NOS: ${timestamp} uit ${localRegionName} (${status})`;
+        document.getElementById('latestUpdateFromNos').textContent = `Laatste update: ${timestamp} uit ${localRegionName} (${status})`;
     }
 }
 
