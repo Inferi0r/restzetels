@@ -18,8 +18,6 @@ function loadDataFor2023() {
             globalPartyLabelsData = partyLabelsData; // Store data globally
             keyToLabel = new Map(partyLabelsData.map(p => [p.key, p.labelShort])); // Initialize keyToLabel here
 
-            console.log("keyToLabel map:", keyToLabel); // Add this line to log the map
-
             // Fetch both ANP and Kiesraad vote data
             return Promise.all([
                 fetch('https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata?year=2023&source=votes').then(res => res.json()),
@@ -207,10 +205,6 @@ function assignRestSeats({ votesData, total_restSeats }) {
         votesData.parties.forEach(party => {
             if(party.fullSeats > 0) {
                 let restSeatsCount = Array.from(party.restSeats.values()).reduce((a, b) => a + b, 0);
-
-                if (party.key === 3) {
-                console.log(`Rest Seats Count for party key 3: ${restSeatsCount}`);
-                }
 
                 let voteAverage = Math.round(party.results.current.votes / (party.fullSeats + restSeatsCount + 1));
                 if(voteAverage > maxVoteAverage) {
