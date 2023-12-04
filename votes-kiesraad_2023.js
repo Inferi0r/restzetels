@@ -1,23 +1,23 @@
 [
     {
         "lijstnummer": 1,
-        "votes": 1589518
+        "votes": 1589519
     },
     {
         "lijstnummer": 2,
-        "votes": 656290
+        "votes": 656292
     },
     {
         "lijstnummer": 3,
-        "votes": 1643032
+        "votes": 1643073
     },
     {
         "lijstnummer": 4,
-        "votes": 2450855
+        "votes": 2450878
     },
     {
         "lijstnummer": 5,
-        "votes": 345821
+        "votes": 345822
     },
     {
         "lijstnummer": 6,
@@ -49,7 +49,7 @@
     },
     {
         "lijstnummer": 13,
-        "votes": 246764
+        "votes": 246765
     },
     {
         "lijstnummer": 14,
@@ -73,7 +73,7 @@
     },
     {
         "lijstnummer": 19,
-        "votes": 1343292
+        "votes": 1343287
     },
     {
         "lijstnummer": 20,

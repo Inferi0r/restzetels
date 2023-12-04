@@ -13,20 +13,22 @@ function loadDataFor2023() {
         return b ? gcd(b, a % b) : a;
     }
 
-    // Function for converting a decimal to a fraction
-    function decimalToFraction(decimal) {
-        // Round to three decimal places before converting to a fraction
-        decimal = Math.round(decimal * 1000) / 1000;
-        
-        const len = decimal.toString().length - 2;
-        let denominator = Math.pow(10, len);
-        let numerator = decimal * denominator;
-        const divisor = gcd(numerator, denominator);
+    // Function to display Kiesdeler with fraction, with a fixed denominator of 150
+    function displayKiesdeler(kiesdelerValue, cell) {
+        const fixedDenominator = 150;
+        const kiesdelerWhole = Math.trunc(kiesdelerValue);
+        const fractionalPart = kiesdelerValue % 1;
+        const scaledNumerator = Math.round(fractionalPart * fixedDenominator);
 
-        numerator /= divisor;
-        denominator /= divisor;
-        return `${numerator}/${denominator}`;
+        // Create HTML for the fraction part
+        const kiesdelerFractionHTML = createFractionHTML(scaledNumerator, fixedDenominator);
+
+        cell.innerHTML = `<div style="display: flex; align-items: center; justify-content: flex-start; height: 100%;">
+            <span style="margin-right: 5px;">${kiesdelerWhole.toLocaleString('nl-NL')}</span>
+            ${kiesdelerFractionHTML}
+        </div>`;
     }
+
 
     function createFractionHTML(numerator, denominator) {
         return `
@@ -229,17 +231,22 @@ function loadDataFor2023() {
         kiesdelerLabelCell.colSpan = 2;
         kiesdelerLabelCell.textContent = "Kiesdeler:";
 
-        // Function to display Kiesdeler with fraction
+        // Function to display Kiesdeler with fraction, with a fixed denominator of 150
         function displayKiesdeler(kiesdelerValue, cell) {
+            const fixedDenominator = 150;
             const kiesdelerWhole = Math.trunc(kiesdelerValue);
-            const kiesdelerFraction = decimalToFraction(kiesdelerValue % 1);
-            const [numerator, denominator] = kiesdelerFraction.split('/');
-            const kiesdelerFractionHTML = createFractionHTML(numerator, denominator);
+            const fractionalPart = kiesdelerValue % 1;
+            const scaledNumerator = Math.round(fractionalPart * fixedDenominator);
+
+            // Create HTML for the fraction part
+            const kiesdelerFractionHTML = createFractionHTML(scaledNumerator, fixedDenominator);
+
             cell.innerHTML = `<div style="display: flex; align-items: center; justify-content: flex-start; height: 100%;">
                 <span style="margin-right: 5px;">${kiesdelerWhole.toLocaleString('nl-NL')}</span>
                 ${kiesdelerFractionHTML}
             </div>`;
         }
+
 
         // Display Kiesdeler for each column
         const kiesdelerANPCell = kiesdelerRow.insertCell();
