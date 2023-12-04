@@ -146,3 +146,9 @@ nav ul li a.active {
   margin-left: 5px; /* Spacing between header text and icon */
 }
 
+.averagevotetable-cell {
+  display: flex;
+  align-items: center;
+  min-height: 30px; /* Adjust this value as needed */
+}
+

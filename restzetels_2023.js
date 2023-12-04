@@ -118,6 +118,67 @@ function showLatestUpdateFromNos(nosData) {
     }
 }
 
+
+function gcd(a, b) {
+    return b ? gcd(b, a % b) : a;
+}
+
+// Function for converting a decimal to a fraction with a maximum denominator of 2 digits
+function decimalToFraction(decimal) {
+    const tolerance = 1E-6; // Tolerance for floating point comparison
+    let numerator = decimal;
+    let denominator = 1;
+    let simplified = false;
+
+    // Increase the denominator, attempting to simplify the fraction
+    while (!simplified && denominator < 100) {
+        denominator++;
+        numerator = decimal * denominator;
+
+        // Check if the numerator is nearly an integer
+        if (Math.abs(Math.round(numerator) - numerator) < tolerance) {
+            simplified = true;
+            numerator = Math.round(numerator);
+        }
+    }
+
+    // Simplify the fraction
+    const divisor = gcd(numerator, denominator);
+    numerator /= divisor;
+    denominator /= divisor;
+
+    // If denominator is still 100, try reducing it one step further
+    if (denominator === 100) {
+        numerator *= 0.99;
+        denominator *= 0.99;
+        const newDivisor = gcd(numerator, denominator);
+        numerator /= newDivisor;
+        denominator /= newDivisor;
+    }
+
+    return `${Math.round(numerator)}/${Math.round(denominator)}`;
+}
+
+
+
+
+
+function createFractionHTML(numerator, denominator) {
+    return `
+        <div style="display: inline-block; text-align: center; font-size: smaller;">
+            <span style="display: block; border-bottom: 1px solid; padding-bottom: 2px;">${numerator}</span>
+            <span style="display: block; padding-top: 2px;">${denominator}</span>
+        </div>`;
+}
+
+function extractFraction(htmlString) {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = htmlString;
+    const numerator = tempDiv.querySelector('span:first-child').textContent;
+    const denominator = tempDiv.querySelector('span:last-child').textContent;
+    return numerator / denominator;
+}
+
 function calculateFullAndRestSeats(votesData) {
     let totalVotes = 0;
     votesData.parties.forEach(party => {
@@ -170,50 +231,76 @@ function assignRestSeats({ votesData, total_restSeats }) {
 
 function createVoteAverageTableData(votesData, keyToLabel, total_restSeats) {
     let tableData = [];
-    let listNumber = 1;
-
     votesData.parties.forEach(party => {
-        if(party.fullSeats > 0) {
+        if (party.fullSeats > 0) {
             let rowData = {
                 'Partij': keyToLabel.get(party.key)
             };
-
             for (let i = 1; i <= total_restSeats; i++) {
                 let restSeatsCount = Array.from(party.restSeats.keys())
                     .filter(key => key < i)
                     .reduce((a, key) => a + party.restSeats.get(key), 0);
-
-                rowData[`${i}e`] = Math.round(party.results.current.votes / (party.fullSeats + restSeatsCount + 1));
+                let voteAverage = party.results.current.votes / (party.fullSeats + restSeatsCount + 1);
+                let fraction = decimalToFraction(voteAverage);
+                rowData[`${i}e`] = createFractionHTML(...fraction.split('/'));
             }
-
             tableData.push(rowData);
         }
     });
-
     return tableData;
 }
+
+
 
 function createVoteAverageTable(votesData, keyToLabel) {
     let { votesData: updatedData, total_restSeats } = calculateFullAndRestSeats(votesData);
     updatedData = assignRestSeats({ votesData: updatedData, total_restSeats });
     let tableData = createVoteAverageTableData(updatedData, keyToLabel, total_restSeats);
+
     // Find the highest value in each column
     let maxValues = {};
     for (let i = 1; i <= total_restSeats; i++) {
-        maxValues[`${i}e`] = Math.max(...tableData.map(row => row[`${i}e`]));
+        maxValues[`${i}e`] = Math.max(...tableData.map(row => extractFraction(row[`${i}e`])));
     }
-    // Add a class to the cells with the highest value
+
     tableData.forEach(rowData => {
         for (let i = 1; i <= total_restSeats; i++) {
-            if (rowData[`${i}e`] === maxValues[`${i}e`]) {
+            let voteAverageDecimal = extractFraction(rowData[`${i}e`]);
+            let fraction = voteAverageDecimal % 1 > 0 ? decimalToFraction(voteAverageDecimal % 1) : '';
+
+            let [numerator, denominator] = fraction.split('/');
+            let fractionHTML = createFractionHTML(numerator, denominator);
+
+            rowData[`${i}e`] = `
+                <div class="averagevotetable-cell">
+                    <span style="margin-right: 5px;">${Math.floor(voteAverageDecimal)}</span>
+                    ${fraction ? fractionHTML : ''}
+                </div>`;
+
+            // Check if the current cell should be highlighted
+            if (voteAverageDecimal === maxValues[`${i}e`]) {
                 rowData[`${i}e`] = `<div class='highest-value'>${rowData[`${i}e`]}</div>`;
             }
         }
     });
+    
+    
+    
+    
 
     renderTable('voteAverageContainer', tableData, total_restSeats);
     return total_restSeats;
 }
+
+
+
+
+
+
+
+
+
+
 
 function createRestSeatsTable(votesData, keyToLabel, total_restSeats) {
     let restSeatsTableData = [];
