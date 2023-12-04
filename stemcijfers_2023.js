@@ -201,6 +201,10 @@ function loadDataFor2023() {
         const kiesdelerNOS = totalNOSVotes / 150;
         const kiesdelerKiesraad = totalKiesraadVotes / 150;
 
+        const voorkeurdrempelANP = Math.floor(0.25 * kiesdelerANP);
+        const voorkeurdrempelNOS = Math.floor(0.25 * kiesdelerNOS);
+        const voorkeurdrempelKiesraad = Math.floor(0.25 * kiesdelerKiesraad);
+
         // Create total row
         const totalRow = tbody.insertRow();
         const totalLabelCell = totalRow.insertCell();
@@ -246,6 +250,24 @@ function loadDataFor2023() {
 
         const kiesdelerKiesraadCell = kiesdelerRow.insertCell();
         displayKiesdeler(kiesdelerKiesraad, kiesdelerKiesraadCell);
+
+         // Add Voorkeurdrempel row at the end of the table
+        const voorkeurdrempelRow = tbody.insertRow();
+        const voorkeurdrempelLabelCell = voorkeurdrempelRow.insertCell();
+        voorkeurdrempelLabelCell.colSpan = 2;
+        voorkeurdrempelLabelCell.textContent = "Voorkeurdrempel:";
+
+        // ANP Voorkeurdrempel
+        const voorkeurdrempelANPCell = voorkeurdrempelRow.insertCell();
+        voorkeurdrempelANPCell.textContent = voorkeurdrempelANP.toLocaleString('nl-NL');
+
+        // NOS Voorkeurdrempel
+        const voorkeurdrempelNOSCell = voorkeurdrempelRow.insertCell();
+        voorkeurdrempelNOSCell.textContent = voorkeurdrempelNOS.toLocaleString('nl-NL');
+
+        // Kiesraad Voorkeurdrempel
+        const voorkeurdrempelKiesraadCell = voorkeurdrempelRow.insertCell();
+        voorkeurdrempelKiesraadCell.textContent = voorkeurdrempelKiesraad.toLocaleString('nl-NL');
 
     }
 
