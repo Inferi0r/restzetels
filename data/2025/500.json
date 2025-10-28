@@ -1,0 +1,595 @@
+{
+  "key": "500",
+  "source": "anp",
+  "updated": 1758638265,
+  "cbsCode": null,
+  "parties": [
+    {
+      "key": "3502be6",
+      "results": {
+        "previous": {
+          "votes": "2450878",
+          "percentage": "23,5",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "-2450878",
+          "percentage": "-23,5",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "d2081fb",
+      "results": {
+        "previous": {
+          "votes": "1643073",
+          "percentage": "15,7",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "-1643073",
+          "percentage": "-15,7",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "192ea5b",
+      "results": {
+        "previous": {
+          "votes": "1589519",
+          "percentage": "15,2",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "-1589519",
+          "percentage": "-15,2",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "8abc955",
+      "results": {
+        "previous": {
+          "votes": "1343287",
+          "percentage": "12,9",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "-1343287",
+          "percentage": "-12,9",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "aaef150",
+      "results": {
+        "previous": {
+          "votes": "656292",
+          "percentage": "6,3",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "-656292",
+          "percentage": "-6,3",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "2bb225f",
+      "results": {
+        "previous": {
+          "votes": "485551",
+          "percentage": "4,7",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "-485551",
+          "percentage": "-4,7",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "cb3c7ff",
+      "results": {
+        "previous": {
+          "votes": "345822",
+          "percentage": "3,3",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "-345822",
+          "percentage": "-3,3",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "353cb7a",
+      "results": {
+        "previous": {
+          "votes": "328225",
+          "percentage": "3,1",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "-328225",
+          "percentage": "-3,1",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "5fc64fc",
+      "results": {
+        "previous": {
+          "votes": "246765",
+          "percentage": "2,4",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "-246765",
+          "percentage": "-2,4",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "4404431",
+      "results": {
+        "previous": {
+          "votes": "235148",
+          "percentage": "2,3",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "-235148",
+          "percentage": "-2,3",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "ee554e5",
+      "results": {
+        "previous": {
+          "votes": "232963",
+          "percentage": "2,2",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "-232963",
+          "percentage": "-2,2",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "416db4f",
+      "results": {
+        "previous": {
+          "votes": "217270",
+          "percentage": "2,1",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "-217270",
+          "percentage": "-2,1",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "24b1544",
+      "results": {
+        "previous": {
+          "votes": "212532",
+          "percentage": "2,0",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "-212532",
+          "percentage": "-2,0",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "e991c96",
+      "results": {
+        "previous": {
+          "votes": "178802",
+          "percentage": "1,7",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "-178802",
+          "percentage": "-1,7",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "4e45852",
+      "results": {
+        "previous": {
+          "votes": "71345",
+          "percentage": "0,7",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "-71345",
+          "percentage": "-0,7",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "e7fefbd",
+      "results": {
+        "previous": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "1a6f839",
+      "results": {
+        "previous": {
+          "votes": "52913",
+          "percentage": "0,5",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "-52913",
+          "percentage": "-0,5",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "888e23c",
+      "results": {
+        "previous": {
+          "votes": "44253",
+          "percentage": "0,4",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "-44253",
+          "percentage": "-0,4",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "eec36b3",
+      "results": {
+        "previous": {
+          "votes": "4152",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "-4152",
+          "percentage": "0,0",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "59ffa67",
+      "results": {
+        "previous": {
+          "votes": "51043",
+          "percentage": "0,5",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "-51043",
+          "percentage": "-0,5",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "39cb2e9",
+      "results": {
+        "previous": {
+          "votes": "9117",
+          "percentage": "0,1",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "-9117",
+          "percentage": "-0,1",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "8053062",
+      "results": {
+        "previous": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "0eaf8a1",
+      "results": {
+        "previous": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "710f849",
+      "results": {
+        "previous": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "6f85425",
+      "results": {
+        "previous": {
+          "votes": "5487",
+          "percentage": "0,1",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "-5487",
+          "percentage": "-0,1",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "2c5ff24",
+      "results": {
+        "previous": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "e042e2c",
+      "results": {
+        "previous": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        }
+      }
+    },
+    {
+      "key": "a6224ab",
+      "results": {
+        "previous": {
+          "votes": "28289",
+          "percentage": "0,3",
+          "seats": "0"
+        },
+        "current": {
+          "votes": "0",
+          "percentage": "0,0",
+          "seats": "0"
+        },
+        "diff": {
+          "votes": "-28289",
+          "percentage": "-0,3",
+          "seats": "0"
+        }
+      }
+    }
+  ],
+  "status": 0,
+  "turnout": {
+    "current": "0,0",
+    "previous": "77,7"
+  },
+  "turnoutCount": {
+    "current": "0",
+    "previous": "10475203"
+  },
+  "voters": {
+    "current": "13473750",
+    "previous": "13473750"
+  },
+  "invalid": {
+    "current": "0",
+    "previous": "22822"
+  },
+  "blank": {
+    "current": "0",
+    "previous": "19655"
+  },
+  "countStatus": {
+    "total": null,
+    "completed": null
+  },
+  "statusExtra": null,
+  "parent": null
+}

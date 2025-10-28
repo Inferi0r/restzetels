@@ -1,0 +1,8904 @@
+{
+  "views": [
+    {
+      "key": "500",
+      "type": 2,
+      "cbsCode": null,
+      "label": "Percentage Tweede Kamer",
+      "status": 2,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1701429665,
+      "parent": null,
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "152",
+      "type": 0,
+      "cbsCode": "0363",
+      "label": "Amsterdam",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1701429620,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "192ea5b",
+        "aaef150"
+      ],
+      "topPartiesPrevious": [
+        "aaef150",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "600",
+      "type": 2,
+      "cbsCode": null,
+      "label": "Zetels Tweede Kamer",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1701423147,
+      "parent": null,
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "509",
+      "type": 1,
+      "cbsCode": null,
+      "label": "Zuid-Holland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1701191637,
+      "parent": "500",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "141",
+      "type": 0,
+      "cbsCode": "0344",
+      "label": "Utrecht",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1701189950,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "aaef150",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "aaef150",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "200",
+      "type": 0,
+      "cbsCode": "0518",
+      "label": "Den Haag",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1701189537,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "229",
+      "type": 0,
+      "cbsCode": "0599",
+      "label": "Rotterdam",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1701189097,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "aaef150",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "101",
+      "type": 0,
+      "cbsCode": "0268",
+      "label": "Nijmegen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1701188149,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "3502be6",
+        "aaef150"
+      ],
+      "topPartiesPrevious": [
+        "aaef150",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "508",
+      "type": 1,
+      "cbsCode": null,
+      "label": "Noord-Holland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700903158,
+      "parent": "500",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "181",
+      "type": 0,
+      "cbsCode": "0439",
+      "label": "Purmerend",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700811962,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "507",
+      "type": 1,
+      "cbsCode": null,
+      "label": "Provincie Utrecht",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700751710,
+      "parent": "500",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "506",
+      "type": 1,
+      "cbsCode": null,
+      "label": "Gelderland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700751341,
+      "parent": "500",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "115",
+      "type": 0,
+      "cbsCode": "1960",
+      "label": "West Betuwe",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700751339,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "173",
+      "type": 0,
+      "cbsCode": "0406",
+      "label": "Huizen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700748573,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "130",
+      "type": 0,
+      "cbsCode": "0321",
+      "label": "Houten",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700743526,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "d2081fb",
+        "3502be6"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "177",
+      "type": 0,
+      "cbsCode": "0420",
+      "label": "Medemblik",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700743043,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "512",
+      "type": 1,
+      "cbsCode": null,
+      "label": "Limburg",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700735720,
+      "parent": "500",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "338",
+      "type": 0,
+      "cbsCode": "0994",
+      "label": "Valkenburg aan de Geul",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700735718,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "230",
+      "type": 0,
+      "cbsCode": "0606",
+      "label": "Schiedam",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700731843,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "511",
+      "type": 1,
+      "cbsCode": null,
+      "label": "Noord-Brabant",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700730623,
+      "parent": "500",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "280",
+      "type": 0,
+      "cbsCode": "1655",
+      "label": "Halderberge",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700730621,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "080",
+      "type": 0,
+      "cbsCode": "0213",
+      "label": "Brummen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700726461,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "118",
+      "type": 0,
+      "cbsCode": "0296",
+      "label": "Wijchen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700726330,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "153",
+      "type": 0,
+      "cbsCode": "0373",
+      "label": "Bergen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700723072,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "3502be6",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "078",
+      "type": 0,
+      "cbsCode": "0209",
+      "label": "Beuningen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700722418,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "335",
+      "type": 0,
+      "cbsCode": "1883",
+      "label": "Sittard-Geleen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700709230,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "234",
+      "type": 0,
+      "cbsCode": "1992",
+      "label": "Voorne aan Zee",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700709222,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "285",
+      "type": 0,
+      "cbsCode": "1659",
+      "label": "Laarbeek",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700708678,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "270",
+      "type": 0,
+      "cbsCode": "0766",
+      "label": "Dongen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700707911,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "272",
+      "type": 0,
+      "cbsCode": "0770",
+      "label": "Eersel",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700706951,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "131",
+      "type": 0,
+      "cbsCode": "0353",
+      "label": "IJsselstein",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700706165,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "228",
+      "type": 0,
+      "cbsCode": "0603",
+      "label": "Rijswijk",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700705677,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "198",
+      "type": 0,
+      "cbsCode": "0502",
+      "label": "Capelle aan den IJssel",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700705622,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "132",
+      "type": 0,
+      "cbsCode": "0327",
+      "label": "Leusden",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700705331,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "d2081fb",
+        "3502be6"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "108",
+      "type": 0,
+      "cbsCode": "0274",
+      "label": "Renkum",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700704875,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "192ea5b",
+        "3502be6"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "308",
+      "type": 0,
+      "cbsCode": "0866",
+      "label": "Waalre",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700704793,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "3502be6",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "293",
+      "type": 0,
+      "cbsCode": "0824",
+      "label": "Oisterwijk",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700704615,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "3502be6",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "111",
+      "type": 0,
+      "cbsCode": "0279",
+      "label": "Scherpenzeel",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700704602,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "416db4f",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "416db4f",
+        "cb3c7ff"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "171",
+      "type": 0,
+      "cbsCode": "1911",
+      "label": "Hollands Kroon",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700704486,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "2bb225f"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "275",
+      "type": 0,
+      "cbsCode": "0779",
+      "label": "Geertruidenberg",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700704096,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "237",
+      "type": 0,
+      "cbsCode": "0629",
+      "label": "Wassenaar",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700704032,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "3502be6",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "094",
+      "type": 0,
+      "cbsCode": "0252",
+      "label": "Heumen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700703900,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "297",
+      "type": 0,
+      "cbsCode": "1674",
+      "label": "Roosendaal",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700703814,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "501",
+      "type": 1,
+      "cbsCode": null,
+      "label": "Provincie Groningen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700703676,
+      "parent": "500",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "d2081fb",
+        "aaef150",
+        "192ea5b"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "004",
+      "type": 0,
+      "cbsCode": "1952",
+      "label": "Midden-Groningen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700703674,
+      "parent": "501",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "d2081fb",
+        "3502be6"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "261",
+      "type": 0,
+      "cbsCode": "0748",
+      "label": "Bergen op Zoom",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700703522,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "274",
+      "type": 0,
+      "cbsCode": "0777",
+      "label": "Etten-Leur",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700703471,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "008",
+      "type": 0,
+      "cbsCode": "0047",
+      "label": "Veendam",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700703467,
+      "parent": "501",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "d2081fb"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "504",
+      "type": 1,
+      "cbsCode": null,
+      "label": "Overijssel",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700703459,
+      "parent": "500",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "050",
+      "type": 0,
+      "cbsCode": "0164",
+      "label": "Hengelo",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700703457,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d8ad437",
+        "3502be6",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "216",
+      "type": 0,
+      "cbsCode": "1916",
+      "label": "Leidschendam-Voorburg",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700703424,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "3502be6",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "206",
+      "type": 0,
+      "cbsCode": "0531",
+      "label": "Hendrik-Ido-Ambacht",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700703351,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "416db4f"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "416db4f",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "233",
+      "type": 0,
+      "cbsCode": "0622",
+      "label": "Vlaardingen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700703336,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "210",
+      "type": 0,
+      "cbsCode": "0537",
+      "label": "Katwijk",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700703312,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "502",
+      "type": 1,
+      "cbsCode": null,
+      "label": "Friesland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700703298,
+      "parent": "500",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "017",
+      "type": 0,
+      "cbsCode": "0080",
+      "label": "Leeuwarden",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700703296,
+      "parent": "502",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "3502be6",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "d2081fb",
+        "aaef150",
+        "192ea5b"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "215",
+      "type": 0,
+      "cbsCode": "0547",
+      "label": "Leiderdorp",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700703249,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "227",
+      "type": 0,
+      "cbsCode": "0597",
+      "label": "Ridderkerk",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700703222,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "106",
+      "type": 0,
+      "cbsCode": "1734",
+      "label": "Overbetuwe",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700703181,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "298",
+      "type": 0,
+      "cbsCode": "0840",
+      "label": "Rucphen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700703146,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "3502be6",
+        "192ea5b",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "073",
+      "type": 0,
+      "cbsCode": "0200",
+      "label": "Apeldoorn",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700703043,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "288",
+      "type": 0,
+      "cbsCode": "1991",
+      "label": "Maashorst",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700702895,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "214",
+      "type": 0,
+      "cbsCode": "0546",
+      "label": "Leiden",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700702844,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "aaef150",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "172",
+      "type": 0,
+      "cbsCode": "0405",
+      "label": "Hoorn",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700702815,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "199",
+      "type": 0,
+      "cbsCode": "0503",
+      "label": "Delft",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700702801,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "aaef150",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "317",
+      "type": 0,
+      "cbsCode": "1711",
+      "label": "Echt-Susteren",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700702788,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "3502be6",
+        "192ea5b",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "232",
+      "type": 0,
+      "cbsCode": "1525",
+      "label": "Teylingen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700702743,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "3502be6",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "267",
+      "type": 0,
+      "cbsCode": "0758",
+      "label": "Breda",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700702655,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "3502be6",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "300",
+      "type": 0,
+      "cbsCode": "0845",
+      "label": "Sint-Michielsgestel",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700702626,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "260",
+      "type": 0,
+      "cbsCode": "1724",
+      "label": "Bergeijk",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700702615,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "306",
+      "type": 0,
+      "cbsCode": "0861",
+      "label": "Veldhoven",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700702525,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "192",
+      "type": 0,
+      "cbsCode": "0473",
+      "label": "Zandvoort",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700702507,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "505",
+      "type": 1,
+      "cbsCode": null,
+      "label": "Flevoland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700702449,
+      "parent": "500",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "069",
+      "type": 0,
+      "cbsCode": "0171",
+      "label": "Noordoostpolder",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700702447,
+      "parent": "505",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "134",
+      "type": 0,
+      "cbsCode": "0335",
+      "label": "Montfoort",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700702439,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "007",
+      "type": 0,
+      "cbsCode": "0037",
+      "label": "Stadskanaal",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700702370,
+      "parent": "501",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "3502be6",
+        "192ea5b",
+        "cb3c7ff"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "060",
+      "type": 0,
+      "cbsCode": "1708",
+      "label": "Steenwijkerland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700702354,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "510",
+      "type": 1,
+      "cbsCode": null,
+      "label": "Zeeland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700702239,
+      "parent": "500",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "3502be6"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "255",
+      "type": 0,
+      "cbsCode": "0718",
+      "label": "Vlissingen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700702237,
+      "parent": "510",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "074",
+      "type": 0,
+      "cbsCode": "0202",
+      "label": "Arnhem",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700702162,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "aaef150",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "077",
+      "type": 0,
+      "cbsCode": "1859",
+      "label": "Berkelland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700702107,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "2bb225f"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "014",
+      "type": 0,
+      "cbsCode": "1940",
+      "label": "De Fryske Marren",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700702093,
+      "parent": "502",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "066",
+      "type": 0,
+      "cbsCode": "0034",
+      "label": "Almere",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700702090,
+      "parent": "505",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "087",
+      "type": 0,
+      "cbsCode": "0228",
+      "label": "Ede",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700702065,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "416db4f"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "416db4f",
+        "aaef150"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "162",
+      "type": 0,
+      "cbsCode": "0385",
+      "label": "Edam-Volendam",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701996,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "3502be6",
+        "192ea5b",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "295",
+      "type": 0,
+      "cbsCode": "0828",
+      "label": "Oss",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701969,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "353cb7a"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "124",
+      "type": 0,
+      "cbsCode": "0308",
+      "label": "Baarn",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701965,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "d2081fb",
+        "3502be6"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "503",
+      "type": 1,
+      "cbsCode": null,
+      "label": "Drenthe",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701933,
+      "parent": "500",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "032",
+      "type": 0,
+      "cbsCode": "0109",
+      "label": "Coevorden",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701931,
+      "parent": "503",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "cb3c7ff"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "197",
+      "type": 0,
+      "cbsCode": "1901",
+      "label": "Bodegraven-Reeuwijk",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701931,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "203",
+      "type": 0,
+      "cbsCode": "0512",
+      "label": "Gorinchem",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701847,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "056",
+      "type": 0,
+      "cbsCode": "0175",
+      "label": "Ommen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701833,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "2bb225f"
+      ],
+      "topPartiesPrevious": [
+        "cb3c7ff",
+        "192ea5b",
+        "24b1544"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "065",
+      "type": 0,
+      "cbsCode": "0193",
+      "label": "Zwolle",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701829,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "3502be6",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "aaef150",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "304",
+      "type": 0,
+      "cbsCode": "0855",
+      "label": "Tilburg",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701824,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "082",
+      "type": 0,
+      "cbsCode": "0216",
+      "label": "Culemborg",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701780,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "194",
+      "type": 0,
+      "cbsCode": "0613",
+      "label": "Albrandswaard",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701728,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "326",
+      "type": 0,
+      "cbsCode": "1641",
+      "label": "Maasgouw",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701669,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "092",
+      "type": 0,
+      "cbsCode": "0244",
+      "label": "Hattem",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701642,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "24b1544",
+        "cb3c7ff"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "278",
+      "type": 0,
+      "cbsCode": "0784",
+      "label": "Gilze en Rijen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701641,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "166",
+      "type": 0,
+      "cbsCode": "0394",
+      "label": "Haarlemmermeer",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701623,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "191",
+      "type": 0,
+      "cbsCode": "0479",
+      "label": "Zaanstad",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701584,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "170",
+      "type": 0,
+      "cbsCode": "0402",
+      "label": "Hilversum",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701519,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "067",
+      "type": 0,
+      "cbsCode": "0303",
+      "label": "Dronten",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701466,
+      "parent": "505",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "085",
+      "type": 0,
+      "cbsCode": "0225",
+      "label": "Druten",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701455,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "165",
+      "type": 0,
+      "cbsCode": "0392",
+      "label": "Haarlem",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701403,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "aaef150",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "041",
+      "type": 0,
+      "cbsCode": "0141",
+      "label": "Almelo",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701326,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "121",
+      "type": 0,
+      "cbsCode": "0299",
+      "label": "Zevenaar",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701294,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "112",
+      "type": 0,
+      "cbsCode": "0281",
+      "label": "Tiel",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701285,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "127",
+      "type": 0,
+      "cbsCode": "0310",
+      "label": "De Bilt",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701278,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "192ea5b",
+        "3502be6"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "011",
+      "type": 0,
+      "cbsCode": "0059",
+      "label": "Achtkarspelen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701269,
+      "parent": "502",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "cb3c7ff"
+      ],
+      "topPartiesPrevious": [
+        "cb3c7ff",
+        "3502be6",
+        "192ea5b"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "123",
+      "type": 0,
+      "cbsCode": "0307",
+      "label": "Amersfoort",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701238,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "182",
+      "type": 0,
+      "cbsCode": "0441",
+      "label": "Schagen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701209,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "273",
+      "type": 0,
+      "cbsCode": "0772",
+      "label": "Eindhoven",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701143,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "257",
+      "type": 0,
+      "cbsCode": "1959",
+      "label": "Altena",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701112,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "416db4f"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "145",
+      "type": 0,
+      "cbsCode": "0352",
+      "label": "Wijk bij Duurstede",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701098,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "289",
+      "type": 0,
+      "cbsCode": "1948",
+      "label": "Meierijstad",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701096,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "296",
+      "type": 0,
+      "cbsCode": "1667",
+      "label": "Reusel-De Mierden",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701080,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "099",
+      "type": 0,
+      "cbsCode": "1740",
+      "label": "Neder-Betuwe",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700701018,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "416db4f",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "416db4f",
+        "192ea5b",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "241",
+      "type": 0,
+      "cbsCode": "1892",
+      "label": "Zuidplas",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700893,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "282",
+      "type": 0,
+      "cbsCode": "0794",
+      "label": "Helmond",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700888,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "221",
+      "type": 0,
+      "cbsCode": "0569",
+      "label": "Nieuwkoop",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700875,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "208",
+      "type": 0,
+      "cbsCode": "1963",
+      "label": "Hoeksche Waard",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700820,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "252",
+      "type": 0,
+      "cbsCode": "0715",
+      "label": "Terneuzen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700810,
+      "parent": "510",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "cb3c7ff"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "294",
+      "type": 0,
+      "cbsCode": "0826",
+      "label": "Oosterhout",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700787,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "291",
+      "type": 0,
+      "cbsCode": "0820",
+      "label": "Nuenen, Gerwen en Nederwetten",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700784,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "3502be6",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "015",
+      "type": 0,
+      "cbsCode": "0072",
+      "label": "Harlingen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700783,
+      "parent": "502",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "277",
+      "type": 0,
+      "cbsCode": "1652",
+      "label": "Gemert-Bakel",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700753,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "226",
+      "type": 0,
+      "cbsCode": "1926",
+      "label": "Pijnacker-Nootdorp",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700657,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "321",
+      "type": 0,
+      "cbsCode": "0917",
+      "label": "Heerlen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700654,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "3502be6",
+        "192ea5b",
+        "353cb7a"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "095",
+      "type": 0,
+      "cbsCode": "1705",
+      "label": "Lingewaard",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700642,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "201",
+      "type": 0,
+      "cbsCode": "0505",
+      "label": "Dordrecht",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700613,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "217",
+      "type": 0,
+      "cbsCode": "0553",
+      "label": "Lisse",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700610,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "169",
+      "type": 0,
+      "cbsCode": "0399",
+      "label": "Heiloo",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700600,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "d2081fb",
+        "3502be6"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "219",
+      "type": 0,
+      "cbsCode": "1842",
+      "label": "Midden-Delfland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700552,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "3502be6",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "339",
+      "type": 0,
+      "cbsCode": "0983",
+      "label": "Venlo",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700532,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "053",
+      "type": 0,
+      "cbsCode": "0168",
+      "label": "Losser",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700527,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d8ad437",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "096",
+      "type": 0,
+      "cbsCode": "0262",
+      "label": "Lochem",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700485,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "d2081fb",
+        "2bb225f"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "051",
+      "type": 0,
+      "cbsCode": "1735",
+      "label": "Hof van Twente",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700482,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d8ad437",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "223",
+      "type": 0,
+      "cbsCode": "0575",
+      "label": "Noordwijk",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700474,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "079",
+      "type": 0,
+      "cbsCode": "1876",
+      "label": "Bronckhorst",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700445,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "2bb225f",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "001",
+      "type": 0,
+      "cbsCode": "1979",
+      "label": "Eemsdelta",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700437,
+      "parent": "501",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "d2081fb",
+        "353cb7a"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "269",
+      "type": 0,
+      "cbsCode": "0762",
+      "label": "Deurne",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700432,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "224",
+      "type": 0,
+      "cbsCode": "0579",
+      "label": "Oegstgeest",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700422,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "d2081fb",
+        "aaef150"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "023",
+      "type": 0,
+      "cbsCode": "1900",
+      "label": "Súdwest-Fryslân",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700405,
+      "parent": "502",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "179",
+      "type": 0,
+      "cbsCode": "0432",
+      "label": "Opmeer",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700404,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "005",
+      "type": 0,
+      "cbsCode": "1895",
+      "label": "Oldambt",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700374,
+      "parent": "501",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "d2081fb"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "038",
+      "type": 0,
+      "cbsCode": "1699",
+      "label": "Noordenveld",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700346,
+      "parent": "503",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "044",
+      "type": 0,
+      "cbsCode": "0150",
+      "label": "Deventer",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700330,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "046",
+      "type": 0,
+      "cbsCode": "0153",
+      "label": "Enschede",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700261,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d8ad437",
+        "3502be6",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "303",
+      "type": 0,
+      "cbsCode": "0851",
+      "label": "Steenbergen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700249,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "167",
+      "type": 0,
+      "cbsCode": "0396",
+      "label": "Heemskerk",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700205,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "340",
+      "type": 0,
+      "cbsCode": "0984",
+      "label": "Venray",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700203,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "207",
+      "type": 0,
+      "cbsCode": "0534",
+      "label": "Hillegom",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700160,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "331",
+      "type": 0,
+      "cbsCode": "1894",
+      "label": "Peel en Maas",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700158,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "084",
+      "type": 0,
+      "cbsCode": "0222",
+      "label": "Doetinchem",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700097,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "116",
+      "type": 0,
+      "cbsCode": "0668",
+      "label": "West Maas en Waal",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700700052,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "142",
+      "type": 0,
+      "cbsCode": "1581",
+      "label": "Utrechtse Heuvelrug",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699976,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "192ea5b",
+        "3502be6"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "042",
+      "type": 0,
+      "cbsCode": "0147",
+      "label": "Borne",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699901,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d8ad437",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "081",
+      "type": 0,
+      "cbsCode": "0214",
+      "label": "Buren",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699737,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "309",
+      "type": 0,
+      "cbsCode": "0867",
+      "label": "Waalwijk",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699729,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "157",
+      "type": 0,
+      "cbsCode": "0383",
+      "label": "Castricum",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699721,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "d2081fb",
+        "3502be6"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "158",
+      "type": 0,
+      "cbsCode": "0400",
+      "label": "Den Helder",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699699,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "025",
+      "type": 0,
+      "cbsCode": "0737",
+      "label": "Tytsjerksteradiel",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699626,
+      "parent": "502",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "cb3c7ff",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "290",
+      "type": 0,
+      "cbsCode": "1709",
+      "label": "Moerdijk",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699612,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "212",
+      "type": 0,
+      "cbsCode": "1931",
+      "label": "Krimpenerwaard",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699580,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "266",
+      "type": 0,
+      "cbsCode": "0757",
+      "label": "Boxtel",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699536,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "057",
+      "type": 0,
+      "cbsCode": "0177",
+      "label": "Raalte",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699524,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d8ad437",
+        "3502be6",
+        "2bb225f"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "103",
+      "type": 0,
+      "cbsCode": "0269",
+      "label": "Oldebroek",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699517,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "416db4f"
+      ],
+      "topPartiesPrevious": [
+        "24b1544",
+        "416db4f",
+        "192ea5b"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "088",
+      "type": 0,
+      "cbsCode": "0230",
+      "label": "Elburg",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699509,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "416db4f"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "24b1544",
+        "416db4f"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "236",
+      "type": 0,
+      "cbsCode": "0627",
+      "label": "Waddinxveen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699503,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "100",
+      "type": 0,
+      "cbsCode": "0267",
+      "label": "Nijkerk",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699495,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "24b1544"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "323",
+      "type": 0,
+      "cbsCode": "0928",
+      "label": "Kerkrade",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699491,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "176",
+      "type": 0,
+      "cbsCode": "0417",
+      "label": "Laren",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699450,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "3502be6",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "178",
+      "type": 0,
+      "cbsCode": "0431",
+      "label": "Oostzaan",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699447,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "263",
+      "type": 0,
+      "cbsCode": "0753",
+      "label": "Best",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699369,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "068",
+      "type": 0,
+      "cbsCode": "0995",
+      "label": "Lelystad",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699342,
+      "parent": "505",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "154",
+      "type": 0,
+      "cbsCode": "0375",
+      "label": "Beverwijk",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699305,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "174",
+      "type": 0,
+      "cbsCode": "1598",
+      "label": "Koggenland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699266,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "009",
+      "type": 0,
+      "cbsCode": "1969",
+      "label": "Westerkwartier",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699261,
+      "parent": "501",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "d2081fb"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "028",
+      "type": 0,
+      "cbsCode": "0098",
+      "label": "Weststellingwerf",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699240,
+      "parent": "502",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "2bb225f"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "010",
+      "type": 0,
+      "cbsCode": "1950",
+      "label": "Westerwolde",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699230,
+      "parent": "501",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "2bb225f"
+      ],
+      "topPartiesPrevious": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "302",
+      "type": 0,
+      "cbsCode": "0848",
+      "label": "Son en Breugel",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699226,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "3502be6",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "071",
+      "type": 0,
+      "cbsCode": "0050",
+      "label": "Zeewolde",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699181,
+      "parent": "505",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "146",
+      "type": 0,
+      "cbsCode": "0632",
+      "label": "Woerden",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699173,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "336",
+      "type": 0,
+      "cbsCode": "0971",
+      "label": "Stein",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699115,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "045",
+      "type": 0,
+      "cbsCode": "1774",
+      "label": "Dinkelland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699078,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d8ad437",
+        "3502be6",
+        "2bb225f"
+      ],
+      "topPartiesPrevious": [
+        "cb3c7ff",
+        "192ea5b",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "156",
+      "type": 0,
+      "cbsCode": "0377",
+      "label": "Bloemendaal",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699064,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "d2081fb",
+        "aaef150"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "144",
+      "type": 0,
+      "cbsCode": "1961",
+      "label": "Vijfheerenlanden",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699059,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "035",
+      "type": 0,
+      "cbsCode": "0118",
+      "label": "Hoogeveen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700699050,
+      "parent": "503",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "cb3c7ff"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "225",
+      "type": 0,
+      "cbsCode": "0590",
+      "label": "Papendrecht",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698917,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "327",
+      "type": 0,
+      "cbsCode": "0935",
+      "label": "Maastricht",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698891,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "160",
+      "type": 0,
+      "cbsCode": "1980",
+      "label": "Dijk en Waard",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698874,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "159",
+      "type": 0,
+      "cbsCode": "0384",
+      "label": "Diemen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698833,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "aaef150",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "136",
+      "type": 0,
+      "cbsCode": "0589",
+      "label": "Oudewater",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698795,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "238",
+      "type": 0,
+      "cbsCode": "1783",
+      "label": "Westland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698788,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "047",
+      "type": 0,
+      "cbsCode": "0158",
+      "label": "Haaksbergen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698768,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d8ad437",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "202",
+      "type": 0,
+      "cbsCode": "1924",
+      "label": "Goeree-Overflakkee",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698715,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "416db4f",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "416db4f",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "055",
+      "type": 0,
+      "cbsCode": "1773",
+      "label": "Olst-Wijhe",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698700,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "2bb225f"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "301",
+      "type": 0,
+      "cbsCode": "0847",
+      "label": "Someren",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698691,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "310",
+      "type": 0,
+      "cbsCode": "0873",
+      "label": "Woensdrecht",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698680,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "287",
+      "type": 0,
+      "cbsCode": "0809",
+      "label": "Loon op Zand",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698672,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "089",
+      "type": 0,
+      "cbsCode": "0232",
+      "label": "Epe",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698654,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "098",
+      "type": 0,
+      "cbsCode": "1955",
+      "label": "Montferland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698606,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "cb3c7ff"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "107",
+      "type": 0,
+      "cbsCode": "0273",
+      "label": "Putten",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698597,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "24b1544"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "163",
+      "type": 0,
+      "cbsCode": "0388",
+      "label": "Enkhuizen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698597,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "128",
+      "type": 0,
+      "cbsCode": "0736",
+      "label": "De Ronde Venen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698548,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "3502be6",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "286",
+      "type": 0,
+      "cbsCode": "1982",
+      "label": "Land van Cuijk",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698539,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "148",
+      "type": 0,
+      "cbsCode": "0355",
+      "label": "Zeist",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698534,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "192ea5b",
+        "3502be6"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "020",
+      "type": 0,
+      "cbsCode": "0086",
+      "label": "Opsterland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698435,
+      "parent": "502",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "d2081fb",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "139",
+      "type": 0,
+      "cbsCode": "0342",
+      "label": "Soest",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698431,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "3502be6",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "334",
+      "type": 0,
+      "cbsCode": "0965",
+      "label": "Simpelveld",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698427,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "196",
+      "type": 0,
+      "cbsCode": "0489",
+      "label": "Barendrecht",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698402,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "330",
+      "type": 0,
+      "cbsCode": "0946",
+      "label": "Nederweert",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698368,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "299",
+      "type": 0,
+      "cbsCode": "0796",
+      "label": "Den Bosch",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698313,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "195",
+      "type": 0,
+      "cbsCode": "0484",
+      "label": "Alphen aan den Rijn",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698311,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "151",
+      "type": 0,
+      "cbsCode": "0362",
+      "label": "Amstelveen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698306,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "d2081fb",
+        "3502be6"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "314",
+      "type": 0,
+      "cbsCode": "0889",
+      "label": "Beesel",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698296,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "155",
+      "type": 0,
+      "cbsCode": "0376",
+      "label": "Blaricum",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698270,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "3502be6",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "342",
+      "type": 0,
+      "cbsCode": "0988",
+      "label": "Weert",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698244,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "185",
+      "type": 0,
+      "cbsCode": "0450",
+      "label": "Uitgeest",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698236,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "086",
+      "type": 0,
+      "cbsCode": "0226",
+      "label": "Duiven",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698226,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "140",
+      "type": 0,
+      "cbsCode": "1904",
+      "label": "Stichtse Vecht",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698196,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "150",
+      "type": 0,
+      "cbsCode": "0361",
+      "label": "Alkmaar",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698188,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "187",
+      "type": 0,
+      "cbsCode": "0453",
+      "label": "Velsen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698151,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "188",
+      "type": 0,
+      "cbsCode": "0852",
+      "label": "Waterland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698121,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "279",
+      "type": 0,
+      "cbsCode": "0785",
+      "label": "Goirle",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698117,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "319",
+      "type": 0,
+      "cbsCode": "0907",
+      "label": "Gennep",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698113,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "161",
+      "type": 0,
+      "cbsCode": "0498",
+      "label": "Drechterland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698111,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "209",
+      "type": 0,
+      "cbsCode": "1884",
+      "label": "Kaag en Braassem",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698098,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "175",
+      "type": 0,
+      "cbsCode": "0415",
+      "label": "Landsmeer",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698081,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "242",
+      "type": 0,
+      "cbsCode": "0642",
+      "label": "Zwijndrecht",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698064,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "213",
+      "type": 0,
+      "cbsCode": "1621",
+      "label": "Lansingerland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698057,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "190",
+      "type": 0,
+      "cbsCode": "0880",
+      "label": "Wormerland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698052,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "022",
+      "type": 0,
+      "cbsCode": "0090",
+      "label": "Smallingerland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698051,
+      "parent": "502",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "284",
+      "type": 0,
+      "cbsCode": "0798",
+      "label": "Hilvarenbeek",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698048,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "276",
+      "type": 0,
+      "cbsCode": "1771",
+      "label": "Geldrop-Mierlo",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698044,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "102",
+      "type": 0,
+      "cbsCode": "0302",
+      "label": "Nunspeet",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698039,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "416db4f",
+        "3502be6",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "416db4f",
+        "192ea5b",
+        "24b1544"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "058",
+      "type": 0,
+      "cbsCode": "1742",
+      "label": "Rijssen-Holten",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700698034,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "416db4f",
+        "d8ad437",
+        "3502be6"
+      ],
+      "topPartiesPrevious": [
+        "416db4f",
+        "cb3c7ff",
+        "192ea5b"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "322",
+      "type": 0,
+      "cbsCode": "1507",
+      "label": "Horst aan de Maas",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697834,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "018",
+      "type": 0,
+      "cbsCode": "1970",
+      "label": "Noardeast-Fryslân",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697799,
+      "parent": "502",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "2bb225f"
+      ],
+      "topPartiesPrevious": [
+        "cb3c7ff",
+        "192ea5b",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "006",
+      "type": 0,
+      "cbsCode": "0765",
+      "label": "Pekela",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697774,
+      "parent": "501",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "3502be6",
+        "353cb7a",
+        "192ea5b"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "307",
+      "type": 0,
+      "cbsCode": "0865",
+      "label": "Vught",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697762,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "3502be6",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "183",
+      "type": 0,
+      "cbsCode": "0532",
+      "label": "Stede Broec",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697748,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "062",
+      "type": 0,
+      "cbsCode": "1700",
+      "label": "Twenterand",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697711,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "2bb225f"
+      ],
+      "topPartiesPrevious": [
+        "cb3c7ff",
+        "192ea5b",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "143",
+      "type": 0,
+      "cbsCode": "0345",
+      "label": "Veenendaal",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697708,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "24b1544",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "105",
+      "type": 0,
+      "cbsCode": "1509",
+      "label": "Oude IJsselstreek",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697704,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "063",
+      "type": 0,
+      "cbsCode": "0189",
+      "label": "Wierden",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697640,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d8ad437",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "193",
+      "type": 0,
+      "cbsCode": "0482",
+      "label": "Alblasserdam",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697615,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "416db4f",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "416db4f",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "016",
+      "type": 0,
+      "cbsCode": "0074",
+      "label": "Heerenveen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697605,
+      "parent": "502",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "d2081fb",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "125",
+      "type": 0,
+      "cbsCode": "0312",
+      "label": "Bunnik",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697564,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "192ea5b",
+        "3502be6"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "075",
+      "type": 0,
+      "cbsCode": "0203",
+      "label": "Barneveld",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697559,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "416db4f",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "416db4f",
+        "192ea5b",
+        "cb3c7ff"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "093",
+      "type": 0,
+      "cbsCode": "0246",
+      "label": "Heerde",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697455,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "24b1544"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "126",
+      "type": 0,
+      "cbsCode": "0313",
+      "label": "Bunschoten",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697442,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "24b1544"
+      ],
+      "topPartiesPrevious": [
+        "24b1544",
+        "cb3c7ff",
+        "192ea5b"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "292",
+      "type": 0,
+      "cbsCode": "0823",
+      "label": "Oirschot",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697432,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "220",
+      "type": 0,
+      "cbsCode": "1978",
+      "label": "Molenlanden",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697426,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "416db4f",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "416db4f",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "039",
+      "type": 0,
+      "cbsCode": "1730",
+      "label": "Tynaarlo",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697384,
+      "parent": "503",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "192ea5b",
+        "3502be6"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "271",
+      "type": 0,
+      "cbsCode": "1719",
+      "label": "Drimmelen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697381,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "253",
+      "type": 0,
+      "cbsCode": "0716",
+      "label": "Tholen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697323,
+      "parent": "510",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "416db4f",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "416db4f",
+        "192ea5b",
+        "3502be6"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "258",
+      "type": 0,
+      "cbsCode": "0743",
+      "label": "Asten",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697292,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "122",
+      "type": 0,
+      "cbsCode": "0301",
+      "label": "Zutphen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697238,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "3502be6",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "aaef150",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "325",
+      "type": 0,
+      "cbsCode": "1640",
+      "label": "Leudal",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697235,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "262",
+      "type": 0,
+      "cbsCode": "1721",
+      "label": "Bernheze",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697227,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "231",
+      "type": 0,
+      "cbsCode": "0610",
+      "label": "Sliedrecht",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697222,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "416db4f",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "416db4f",
+        "24b1544"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "135",
+      "type": 0,
+      "cbsCode": "0356",
+      "label": "Nieuwegein",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697159,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "113",
+      "type": 0,
+      "cbsCode": "0285",
+      "label": "Voorst",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697156,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "2bb225f"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "043",
+      "type": 0,
+      "cbsCode": "0148",
+      "label": "Dalfsen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697146,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "2bb225f"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "037",
+      "type": 0,
+      "cbsCode": "1731",
+      "label": "Midden-Drenthe",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697142,
+      "parent": "503",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "2bb225f"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "d2081fb"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "027",
+      "type": 0,
+      "cbsCode": "1949",
+      "label": "Waadhoeke",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697113,
+      "parent": "502",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "147",
+      "type": 0,
+      "cbsCode": "0351",
+      "label": "Woudenberg",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697020,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "416db4f",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "416db4f",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "013",
+      "type": 0,
+      "cbsCode": "1891",
+      "label": "Dantumadiel",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697019,
+      "parent": "502",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "2bb225f"
+      ],
+      "topPartiesPrevious": [
+        "cb3c7ff",
+        "3502be6",
+        "192ea5b"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "315",
+      "type": 0,
+      "cbsCode": "0893",
+      "label": "Bergen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697014,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "265",
+      "type": 0,
+      "cbsCode": "0755",
+      "label": "Boekel",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700697004,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "061",
+      "type": 0,
+      "cbsCode": "0183",
+      "label": "Tubbergen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696980,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d8ad437",
+        "3502be6",
+        "2bb225f"
+      ],
+      "topPartiesPrevious": [
+        "cb3c7ff",
+        "192ea5b",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "239",
+      "type": 0,
+      "cbsCode": "0637",
+      "label": "Zoetermeer",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696959,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "048",
+      "type": 0,
+      "cbsCode": "0160",
+      "label": "Hardenberg",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696946,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "2bb225f"
+      ],
+      "topPartiesPrevious": [
+        "cb3c7ff",
+        "192ea5b",
+        "24b1544"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "083",
+      "type": 0,
+      "cbsCode": "0221",
+      "label": "Doesburg",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696846,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "117",
+      "type": 0,
+      "cbsCode": "0293",
+      "label": "Westervoort",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696840,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "184",
+      "type": 0,
+      "cbsCode": "0448",
+      "label": "Texel",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696746,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "090",
+      "type": 0,
+      "cbsCode": "0233",
+      "label": "Ermelo",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696712,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "24b1544"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "168",
+      "type": 0,
+      "cbsCode": "0397",
+      "label": "Heemstede",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696693,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "d2081fb",
+        "aaef150"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "211",
+      "type": 0,
+      "cbsCode": "0542",
+      "label": "Krimpen aan den IJssel",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696656,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "416db4f",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "416db4f",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "052",
+      "type": 0,
+      "cbsCode": "0166",
+      "label": "Kampen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696592,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "416db4f"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "24b1544"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "268",
+      "type": 0,
+      "cbsCode": "1706",
+      "label": "Cranendonck",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696588,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "204",
+      "type": 0,
+      "cbsCode": "0513",
+      "label": "Gouda",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696564,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "033",
+      "type": 0,
+      "cbsCode": "1690",
+      "label": "De Wolden",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696494,
+      "parent": "503",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "2bb225f",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "072",
+      "type": 0,
+      "cbsCode": "0197",
+      "label": "Aalten",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696488,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "2bb225f"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "305",
+      "type": 0,
+      "cbsCode": "0858",
+      "label": "Valkenswaard",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696463,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "250",
+      "type": 0,
+      "cbsCode": "1676",
+      "label": "Schouwen-Duiveland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696327,
+      "parent": "510",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "328",
+      "type": 0,
+      "cbsCode": "0938",
+      "label": "Meerssen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696315,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "320",
+      "type": 0,
+      "cbsCode": "1729",
+      "label": "Gulpen-Wittem",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696314,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "040",
+      "type": 0,
+      "cbsCode": "1701",
+      "label": "Westerveld",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696309,
+      "parent": "503",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "d2081fb",
+        "aaef150"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "313",
+      "type": 0,
+      "cbsCode": "1954",
+      "label": "Beekdaelen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696175,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "333",
+      "type": 0,
+      "cbsCode": "0957",
+      "label": "Roermond",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696148,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "036",
+      "type": 0,
+      "cbsCode": "0119",
+      "label": "Meppel",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696110,
+      "parent": "503",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "218",
+      "type": 0,
+      "cbsCode": "0556",
+      "label": "Maassluis",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696086,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "109",
+      "type": 0,
+      "cbsCode": "0275",
+      "label": "Rheden",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696073,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "049",
+      "type": 0,
+      "cbsCode": "0163",
+      "label": "Hellendoorn",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700696061,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d8ad437",
+        "3502be6",
+        "2bb225f"
+      ],
+      "topPartiesPrevious": [
+        "cb3c7ff",
+        "192ea5b",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "076",
+      "type": 0,
+      "cbsCode": "1945",
+      "label": "Berg en Dal",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695964,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "138",
+      "type": 0,
+      "cbsCode": "0340",
+      "label": "Rhenen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695949,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "416db4f",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "416db4f",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "149",
+      "type": 0,
+      "cbsCode": "0358",
+      "label": "Aalsmeer",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695936,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "030",
+      "type": 0,
+      "cbsCode": "0106",
+      "label": "Assen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695930,
+      "parent": "503",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "264",
+      "type": 0,
+      "cbsCode": "1728",
+      "label": "Bladel",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695871,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "249",
+      "type": 0,
+      "cbsCode": "0703",
+      "label": "Reimerswaal",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695840,
+      "parent": "510",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "416db4f",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "416db4f",
+        "192ea5b",
+        "3502be6"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "031",
+      "type": 0,
+      "cbsCode": "1681",
+      "label": "Borger-Odoorn",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695833,
+      "parent": "503",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "d2081fb"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "281",
+      "type": 0,
+      "cbsCode": "1658",
+      "label": "Heeze-Leende",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695827,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "114",
+      "type": 0,
+      "cbsCode": "0289",
+      "label": "Wageningen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695800,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "3502be6",
+        "aaef150"
+      ],
+      "topPartiesPrevious": [
+        "aaef150",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "097",
+      "type": 0,
+      "cbsCode": "0263",
+      "label": "Maasdriel",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695776,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "059",
+      "type": 0,
+      "cbsCode": "0180",
+      "label": "Staphorst",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695748,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "416db4f",
+        "3502be6",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "416db4f",
+        "24b1544",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "164",
+      "type": 0,
+      "cbsCode": "1942",
+      "label": "Gooise Meren",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695748,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "d2081fb",
+        "3502be6"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "002",
+      "type": 0,
+      "cbsCode": "0014",
+      "label": "Groningen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695739,
+      "parent": "501",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "3502be6",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "aaef150",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "189",
+      "type": 0,
+      "cbsCode": "1696",
+      "label": "Wijdemeren",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695718,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "3502be6",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "222",
+      "type": 0,
+      "cbsCode": "1930",
+      "label": "Nissewaard",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695655,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "104",
+      "type": 0,
+      "cbsCode": "1586",
+      "label": "Oost Gelre",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695617,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d8ad437",
+        "3502be6",
+        "2bb225f"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "019",
+      "type": 0,
+      "cbsCode": "0085",
+      "label": "Ooststellingwerf",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695518,
+      "parent": "502",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "2bb225f"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "324",
+      "type": 0,
+      "cbsCode": "0882",
+      "label": "Landgraaf",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695483,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "235",
+      "type": 0,
+      "cbsCode": "0626",
+      "label": "Voorschoten",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695451,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "d2081fb",
+        "3502be6"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "133",
+      "type": 0,
+      "cbsCode": "0331",
+      "label": "Lopik",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695246,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "091",
+      "type": 0,
+      "cbsCode": "0243",
+      "label": "Harderwijk",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695225,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "054",
+      "type": 0,
+      "cbsCode": "0173",
+      "label": "Oldenzaal",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695220,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d8ad437",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "311",
+      "type": 0,
+      "cbsCode": "0879",
+      "label": "Zundert",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695202,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "024",
+      "type": 0,
+      "cbsCode": "0093",
+      "label": "Terschelling",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695168,
+      "parent": "502",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "d2081fb",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "070",
+      "type": 0,
+      "cbsCode": "0184",
+      "label": "Urk",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695163,
+      "parent": "505",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "416db4f",
+        "3502be6",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "416db4f",
+        "3502be6",
+        "ee554e5"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "254",
+      "type": 0,
+      "cbsCode": "0717",
+      "label": "Veere",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695119,
+      "parent": "510",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "3502be6",
+        "416db4f"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "416db4f",
+        "cb3c7ff"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "129",
+      "type": 0,
+      "cbsCode": "0317",
+      "label": "Eemnes",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700695035,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "246",
+      "type": 0,
+      "cbsCode": "0678",
+      "label": "Kapelle",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700694863,
+      "parent": "510",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "416db4f"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "416db4f",
+        "cb3c7ff"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "243",
+      "type": 0,
+      "cbsCode": "0654",
+      "label": "Borsele",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700694769,
+      "parent": "510",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "416db4f",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "416db4f",
+        "cb3c7ff"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "003",
+      "type": 0,
+      "cbsCode": "1966",
+      "label": "Het Hogeland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700694709,
+      "parent": "501",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "d2081fb",
+        "cb3c7ff",
+        "192ea5b"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "034",
+      "type": 0,
+      "cbsCode": "0114",
+      "label": "Emmen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700694625,
+      "parent": "503",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "186",
+      "type": 0,
+      "cbsCode": "0451",
+      "label": "Uithoorn",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700694584,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "256",
+      "type": 0,
+      "cbsCode": "1723",
+      "label": "Alphen-Chaam",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700694494,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "244",
+      "type": 0,
+      "cbsCode": "0664",
+      "label": "Goes",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700694469,
+      "parent": "510",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "240",
+      "type": 0,
+      "cbsCode": "0638",
+      "label": "Zoeterwoude",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700694356,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "337",
+      "type": 0,
+      "cbsCode": "0981",
+      "label": "Vaals",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700694197,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "332",
+      "type": 0,
+      "cbsCode": "1669",
+      "label": "Roerdalen",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700694191,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "3502be6",
+        "192ea5b",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "120",
+      "type": 0,
+      "cbsCode": "0297",
+      "label": "Zaltbommel",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700694186,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "416db4f",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "416db4f",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "283",
+      "type": 0,
+      "cbsCode": "0797",
+      "label": "Heusden",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700693930,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "259",
+      "type": 0,
+      "cbsCode": "0744",
+      "label": "Baarle-Nassau",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700693910,
+      "parent": "511",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "2bb225f"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "3502be6"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "341",
+      "type": 0,
+      "cbsCode": "0986",
+      "label": "Voerendaal",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700693837,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "119",
+      "type": 0,
+      "cbsCode": "0294",
+      "label": "Winterswijk",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700693832,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d8ad437",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "cb3c7ff"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "247",
+      "type": 0,
+      "cbsCode": "0687",
+      "label": "Middelburg",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700693632,
+      "parent": "510",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "248",
+      "type": 0,
+      "cbsCode": "1695",
+      "label": "Noord-Beveland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700693605,
+      "parent": "510",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "cb3c7ff"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "029",
+      "type": 0,
+      "cbsCode": "1680",
+      "label": "Aa en Hunze",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700693598,
+      "parent": "503",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d2081fb",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "d2081fb",
+        "aaef150"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "251",
+      "type": 0,
+      "cbsCode": "1714",
+      "label": "Sluis",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700693507,
+      "parent": "510",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "cb3c7ff"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "180",
+      "type": 0,
+      "cbsCode": "0437",
+      "label": "Ouder-Amstel",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700693480,
+      "parent": "508",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "192ea5b",
+        "3502be6"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "245",
+      "type": 0,
+      "cbsCode": "0677",
+      "label": "Hulst",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700693329,
+      "parent": "510",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "cb3c7ff"
+      ],
+      "countParties": 24
+    },
+    {
+      "key": "329",
+      "type": 0,
+      "cbsCode": "0944",
+      "label": "Mook en Middelaar",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700692953,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "3502be6",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "316",
+      "type": 0,
+      "cbsCode": "0899",
+      "label": "Brunssum",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700692931,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "205",
+      "type": 0,
+      "cbsCode": "0523",
+      "label": "Hardinxveld-Giessendam",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700692928,
+      "parent": "509",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "416db4f",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "416db4f",
+        "192ea5b",
+        "24b1544"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "026",
+      "type": 0,
+      "cbsCode": "0096",
+      "label": "Vlieland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700692783,
+      "parent": "502",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "192ea5b",
+        "3502be6"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "137",
+      "type": 0,
+      "cbsCode": "0339",
+      "label": "Renswoude",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700692519,
+      "parent": "507",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "416db4f",
+        "2bb225f"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "416db4f",
+        "cb3c7ff"
+      ],
+      "countParties": 27
+    },
+    {
+      "key": "064",
+      "type": 0,
+      "cbsCode": "1896",
+      "label": "Zwartewaterland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700692379,
+      "parent": "504",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "416db4f",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "416db4f",
+        "24b1544",
+        "cb3c7ff"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "312",
+      "type": 0,
+      "cbsCode": "0888",
+      "label": "Beek",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700692256,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "3502be6",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "012",
+      "type": 0,
+      "cbsCode": "0060",
+      "label": "Ameland",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700691667,
+      "parent": "502",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "d8ad437",
+        "192ea5b"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "cb3c7ff",
+        "aaef150"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "318",
+      "type": 0,
+      "cbsCode": "1903",
+      "label": "Eijsden-Margraten",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700691659,
+      "parent": "512",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "3502be6",
+        "192ea5b",
+        "d2081fb"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 26
+    },
+    {
+      "key": "110",
+      "type": 0,
+      "cbsCode": "0277",
+      "label": "Rozendaal",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700689796,
+      "parent": "506",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "192ea5b",
+        "d2081fb",
+        "aaef150"
+      ],
+      "topPartiesPrevious": [
+        "192ea5b",
+        "aaef150",
+        "d2081fb"
+      ],
+      "countParties": 25
+    },
+    {
+      "key": "021",
+      "type": 0,
+      "cbsCode": "0088",
+      "label": "Schiermonnikoog",
+      "status": 4,
+      "countStatus": {
+        "total": null,
+        "completed": null
+      },
+      "updated": 1700686401,
+      "parent": "502",
+      "source": "anp",
+      "topPartiesCurrent": [
+        "d2081fb",
+        "192ea5b",
+        "d8ad437"
+      ],
+      "topPartiesPrevious": [
+        "d2081fb",
+        "aaef150",
+        "192ea5b"
+      ],
+      "countParties": 26
+    }
+  ]
+}
