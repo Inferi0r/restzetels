@@ -1,0 +1,192 @@
+[
+    {
+      "key": 0,
+      "labelShort": "VVD",
+      "color": "#d741a7"
+    },
+    {
+      "key": 1,
+      "labelShort": "PVV",
+      "color": "#3a1772"
+    },
+    {
+      "key": 2,
+      "labelShort": "CDA",
+      "color": "#5398be"
+    },
+    {
+      "key": 3,
+      "labelShort": "D66",
+      "color": "#f2cd5d"
+    },
+    {
+      "key": 4,
+      "labelShort": "GL",
+      "color": "#dea54b"
+    },
+    {
+      "key": 5,
+      "labelShort": "SP",
+      "color": "#dcd6f7"
+    },
+    {
+      "key": 6,
+      "labelShort": "PVDA",
+      "color": "#a6b1e1"
+    },
+    {
+      "key": 7,
+      "labelShort": "CU",
+      "color": "#b4869f"
+    },
+    {
+      "key": 8,
+      "labelShort": "PVDD",
+      "color": "#985f6f"
+    },
+    {
+      "key": 9,
+      "labelShort": "50PLUS",
+      "color": "#4e4c67"
+    },
+    {
+      "key": 10,
+      "labelShort": "SGP",
+      "color": "#124e78"
+    },
+    {
+      "key": 11,
+      "labelShort": "DENK",
+      "color": "#f0f0c9"
+    },
+    {
+      "key": 12,
+      "labelShort": "FVD",
+      "color": "#f2bb05"
+    },
+    {
+      "key": 13,
+      "labelShort": "BIJ1",
+      "color": "#d74e09"
+    },
+    {
+      "key": 14,
+      "labelShort": "JA21",
+      "color": "#6e0e0a"
+    },
+    {
+      "key": 15,
+      "labelShort": "COORANJE",
+      "color": "#e56399"
+    },
+    {
+      "key": 16,
+      "labelShort": "VOLT",
+      "color": "#d3a588"
+    },
+    {
+      "key": 17,
+      "labelShort": "NIDA",
+      "color": "#ece2d0"
+    },
+    {
+      "key": 18,
+      "labelShort": "PIRATEN",
+      "color": "#7fd1b9"
+    },
+    {
+      "key": 19,
+      "labelShort": "LIBERP",
+      "color": "#7a6563"
+    },
+    {
+      "key": 20,
+      "labelShort": "JONG",
+      "color": "#edd2e0"
+    },
+    {
+      "key": 21,
+      "labelShort": "SPLINTER",
+      "color": "#edbbb4"
+    },
+    {
+      "key": 22,
+      "labelShort": "BBB",
+      "color": "#dbabbe"
+    },
+    {
+      "key": 23,
+      "labelShort": "NLBETER",
+      "color": "#baa1a7"
+    },
+    {
+      "key": 24,
+      "labelShort": "HENKKROL",
+      "color": "#797b84"
+    },
+    {
+      "key": 25,
+      "labelShort": "OPRECHT",
+      "color": "#f46036"
+    },
+    {
+      "key": 26,
+      "labelShort": "JEZUSLFT",
+      "color": "#5b85aa"
+    },
+    {
+      "key": 27,
+      "labelShort": "TROTS",
+      "color": "#414770"
+    },
+    {
+      "key": 28,
+      "labelShort": "UBUNTU",
+      "color": "#372248"
+    },
+    {
+      "key": 29,
+      "labelShort": "BLANCOZV",
+      "color": "#171123"
+    },
+    {
+      "key": 30,
+      "labelShort": "PVDE",
+      "color": "#dcd6f7"
+    },
+    {
+      "key": 31,
+      "labelShort": "DFP",
+      "color": "#a6b1e1"
+    },
+    {
+      "key": 32,
+      "labelShort": "VSN",
+      "color": "#b4869f"
+    },
+    {
+      "key": 33,
+      "labelShort": "WIJZNL",
+      "color": "#985f6f"
+    },
+    {
+      "key": 34,
+      "labelShort": "MODERNNL",
+      "color": "#4e4c67"
+    },
+    {
+      "key": 35,
+      "labelShort": "GROENEN",
+      "color": "#124e78"
+    },
+    {
+      "key": 36,
+      "labelShort": "PVDR",
+      "color": "#f0f0c9"
+    },
+    {
+      "key": 37,
+      "labelShort": "OVERIG",
+      "color": "#f2bb05"
+    }
+]

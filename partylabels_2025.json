@@ -1,0 +1,170 @@
+[
+   {
+      "key":"3502be6",
+      "color":"#77C1E3",
+      "labelLong":"Partij voor de Vrijheid",
+      "labelShort":"PVV"
+   },
+   {
+      "key":"d2081fb",
+      "color":"#C63226",
+      "labelLong":"GroenLinks - Partij van de Arbeid",
+      "labelShort":"GL-PvdA"
+   },
+   {
+      "key":"192ea5b",
+      "color":"#F47B42",
+      "labelLong":"VVD",
+      "labelShort":"VVD"
+   },
+   {
+      "key":"8abc955",
+      "color":"#E29E2A",
+      "labelLong":"Nieuw Sociaal Contract",
+      "labelShort":"NSC"
+   },
+   {
+      "key":"aaef150",
+      "color":"#A5C97A",
+      "labelLong":"D66",
+      "labelShort":"D66"
+   },
+   {
+      "key":"2bb225f",
+      "color":"#477F38",
+      "labelLong":"BoerBurgerBeweging",
+      "labelShort":"BBB"
+   },
+   {
+      "key":"cb3c7ff",
+      "color":"#5CA146",
+      "labelLong":"CDA",
+      "labelShort":"CDA"
+   },
+   {
+      "key":"353cb7a",
+      "color":"#6E0502",
+      "labelLong":"Socialistische Partij",
+      "labelShort":"SP"
+   },
+   {
+      "key":"5fc64fc",
+      "color":"#1E9EC0",
+      "labelLong":"Denk",
+      "labelShort":"Denk"
+   },
+   {
+      "key":"4404431",
+      "color":"#CFE3BE",
+      "labelLong":"Partij voor de Dieren",
+      "labelShort":"PVDD"
+   },
+   {
+      "key":"ee554e5",
+      "color":"#A23232",
+      "labelLong":"Forum voor Democratie",
+      "labelShort":"FVD"
+   },
+   {
+      "key":"416db4f",
+      "color":"#7A7A7A",
+      "labelLong":"Staatkundig Gereformeerde Partij",
+      "labelShort":"SGP"
+   },
+   {
+      "key":"24b1544",
+      "color":"#2DB8C6",
+      "labelLong":"ChristenUnie",
+      "labelShort":"CU"
+   },
+   {
+      "key":"e991c96",
+      "color":"#8555A8",
+      "labelLong":"Volt",
+      "labelShort":"Volt"
+   },
+   {
+      "key":"4e45852",
+      "color":"#3C4E97",
+      "labelLong":"JA21",
+      "labelShort":"JA21"
+   },
+   {
+      "key":"e7fefbd",
+      "color":"#F7E9BD",
+      "labelLong":"Vrede voor Dieren",
+      "labelShort":"VREVDIER"
+   },
+   {
+      "key":"1a6f839",
+      "color":"#CBB8D8",
+      "labelLong":"Belang Van Nederland",
+      "labelShort":"BVNL"
+   },
+   {
+      "key":"888e23c",
+      "color":"#F7BDA9",
+      "labelLong":"BIJ1",
+      "labelShort":"BIJ1"
+   },
+   {
+      "key":"eec36b3",
+      "color":"#F7BDA9",
+      "labelLong":"LP (Libertaire Partij)",
+      "labelShort":"LP"
+   },
+   {
+      "key":"59ffa67",
+      "color":"#edd29c",
+      "labelLong":"50Plus",
+      "labelShort":"50Plus"
+   },
+   {
+      "key":"a6224ab",
+      "color":"#F7BDA9",
+      "labelLong":"Overige 2023",
+      "labelShort":"Overig"
+   },
+   {
+      "key":"39cb2e9",
+      "color":"#F7BDA9",
+      "labelLong":"Piratenpartij",
+      "labelShort":"PIRATEN"
+   },
+   {
+      "key":"8053062",
+      "color":"#F3BAD1",
+      "labelLong":"Fryske Nasjonale Partij",
+      "labelShort":"FNP"
+   },
+   {
+      "key":"0eaf8a1",
+      "color":"#F7BDA9",
+      "labelLong":"Vrij Verbond",
+      "labelShort":"VRIJVER"
+   },
+   {
+      "key":"710f849",
+      "color":"#F7BDA9",
+      "labelLong":"DE LINIE",
+      "labelShort":"DELINIE"
+   },
+   {
+      "key":"6f85425",
+      "color":"#F7BDA9",
+      "labelLong":"NL PLAN",
+      "labelShort":"NLPLAN"
+   },
+   {
+      "key":"2c5ff24",
+      "color":"#F7BDA9",
+      "labelLong":"ELLECT",
+      "labelShort":"ELLECT"
+   },
+   {
+      "key":"e042e2c",
+      "color":"#F7BDA9",
+      "labelLong":"Partij voor de Rechtsstaat",
+      "labelShort":"PVDR"
+   }
+]
