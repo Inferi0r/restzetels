@@ -32,6 +32,37 @@
     };
   }
 
+  function mapNOSDataToANPFormat(nosIndex, partyLabelsList) {
+    try {
+      const partijen = nosIndex && nosIndex.landelijke_uitslag && Array.isArray(nosIndex.landelijke_uitslag.partijen)
+        ? nosIndex.landelijke_uitslag.partijen : [];
+      if (!partijen.length) return { parties: [] };
+      // Build reverse map from NOS short name -> our key
+      const nosToKey = new Map();
+      try {
+        (partyLabelsList||[]).forEach(p => {
+          if (p && p.labelShortNOS) nosToKey.set(String(p.labelShortNOS).toUpperCase(), p.key);
+        });
+      } catch(e){}
+      const parties = partijen.map(row => {
+        const short = row && row.partij ? row.partij.short_name : undefined;
+        const key = nosToKey.get(String(short||'').toUpperCase()) ?? `NOS:${String(short||'ONBEKEND')}`;
+        const votes = (row && row.huidig && typeof row.huidig.stemmen === 'number') ? row.huidig.stemmen : 0;
+        return {
+          key,
+          results: {
+            previous: { votes: '0', percentage: '0,0', seats: '0' },
+            current: { votes: votes, percentage: '0,0', seats: '0' },
+            diff: { votes: '0', percentage: '0,0', seats: '0' }
+          }
+        };
+      });
+      return { parties };
+    } catch(e){
+      return { parties: [] };
+    }
+  }
+
   function sumVotes(anpLikeData) {
     if (!anpLikeData || !anpLikeData.parties) return 0;
     return anpLikeData.parties.reduce((acc, p) => acc + parseInt(p.results.current.votes || 0, 10), 0);
@@ -620,7 +651,7 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
     const completedEl = document.getElementById('completedRegionsCount'); if (completedEl) completedEl.innerHTML = '';
 
     // Fetch labels and data
-    const { list: partyLabelsList, keyToLabelShort, keyToLabelLong, keyToListNumber } = await Data.fetchPartyLabels(year);
+    const { list: partyLabelsList, keyToLabelShort, keyToLabelLong, keyToListNumber, keyToNOS } = await Data.fetchPartyLabels(year);
     const [bundle, kiesraadData] = await Promise.all([
       window.Data && typeof Data.fetchBundle==='function' ? Data.fetchBundle(year) : Promise.resolve({ anp_votes:null, anp_last_update:null, nos_index:null }),
       tryFetchKiesraadVotes(year)
@@ -633,11 +664,19 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
     if (window.Ticker) { try { Ticker.update({ nosIndex, anpLastUpdate: lastUpdate }); } catch(e){} }
 
     let votesData = anpVotes;
-    if (kiesraadData && Array.isArray(kiesraadData)) {
-      const mapped = mapKiesraadDataToANPFormat(kiesraadData, partyLabelsList);
+    if (kiesraadData && Array.isArray(kiesraadData) && kiesraadData.length > 0) {
+      // If Kiesraad is available, always prefer it for seats
+      votesData = mapKiesraadDataToANPFormat(kiesraadData, partyLabelsList);
+    } else {
+      // Choose between ANP and NOS by total votes; ties and zeros default to ANP
+      const nosMapped = mapNOSDataToANPFormat(nosIndex, partyLabelsList);
       const totalANP = sumVotes(anpVotes);
-      const totalKR = sumVotes(mapped);
-      if (totalKR > totalANP) votesData = mapped;
+      const totalNOS = sumVotes(nosMapped);
+      if (totalNOS > totalANP) {
+        votesData = nosMapped;
+      } else {
+        votesData = anpVotes || { parties: [] };
+      }
     }
 
     // Check if we have any votes at all; if not, render blanks instead of 0/NaN
