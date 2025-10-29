@@ -2,6 +2,7 @@
 
 (function () {
   const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
+  const lastStateByYear = new Map(); // year -> { totalVotes, seats: Map(key->count) }
 
   async function tryFetchKiesraadVotes(year) {
     // Unified local file with per-year keys
@@ -327,6 +328,31 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
       // Compute seats
       let { votesData: updatedData, total_restSeats } = calculateFullAndRestSeats(votesData);
       updatedData = assignRestSeats({ votesData: updatedData, total_restSeats });
+
+      // Sound triggers: detect vote increases and seat changes vs last state
+      try {
+        const y = String(year);
+        const prev = lastStateByYear.get(y);
+        const nowSeats = new Map();
+        updatedData.parties.forEach(p => {
+          const rest = Array.from(p.restSeats.values()).reduce((a,b)=>a+b,0);
+          nowSeats.set(p.key, (p.fullSeats||0) + rest);
+        });
+        const nowState = { totalVotes, seats: nowSeats };
+        if (prev) {
+          let anySeatChanged = false;
+          for (const [key, cnt] of nowSeats.entries()) {
+            const prevCnt = prev.seats.get(key) || 0;
+            if (cnt !== prevCnt) { anySeatChanged = true; break; }
+          }
+          const votesIncreased = totalVotes > (prev.totalVotes || 0);
+          if (window.Sound && Sound.isEnabled()) {
+            if (anySeatChanged) Sound.playSeatChange();
+            else if (votesIncreased) Sound.playNewVotes();
+          }
+        }
+        lastStateByYear.set(y, nowState);
+      } catch(e) { /* ignore sound errors */ }
 
       // Vote average table with highlight
       let tableData = createVoteAverageTableData(updatedData, keyToLabelShort, total_restSeats);
