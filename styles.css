@@ -277,13 +277,14 @@ nav ul li a.active {
   min-height: 30px; /* Adjust this value as needed */
 }
 
-/* Responsive: on small screens move utilities (year, badge, sound) to their own row above nav links */
-@media (max-width: 720px) {
+/* Responsive: for medium screens and below, move utilities (year, badge, sound) to a top banner above nav links */
+@media (max-width: 1500px) {
+  nav { padding: 0; }
   nav ul {
     flex-wrap: wrap;
     justify-content: center;
-    padding: 8px 8px;
-    row-gap: 6px;
+    padding: 4px 8px;   /* tighter */
+    row-gap: 2px;       /* tighter gap between rows */
   }
 
   .right-controls {
@@ -294,6 +295,43 @@ nav ul li a.active {
     justify-content: center;
     gap: 8px;
     margin: 0;            /* compact spacing */
+    padding: 4px 8px;     /* tighter banner padding */
+    background: inherit;  /* match nav background */
+    border-bottom: 1px solid #e5e7eb; /* banner divider */
+  }
+
+  .nav-center {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-center li,
+  nav ul li {
+    margin: 0 12px;       /* tighter spacing for mid screens */
+  }
+}
+
+/* Narrow phones: additional compaction + hide sound prompt */
+@media (max-width: 720px) {
+  nav { padding: 0; }
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 4px 8px;    /* tighter */
+    row-gap: 2px;        /* tighter gap */
+  }
+
+  .right-controls {
+    position: static;     /* no absolute overlap */
+    transform: none;
+    order: -1;            /* render above the nav links */
+    width: 100%;
+    justify-content: center;
+    gap: 8px;
+    margin: 0;            /* compact spacing */
+    padding: 4px 8px;     /* tighter banner padding */
+    background: inherit;  /* match nav background */
+    border-bottom: 1px solid #e5e7eb; /* banner divider */
   }
 
   .nav-center {
@@ -326,11 +364,8 @@ nav ul li a.active {
     font-size: 15px;
   }
 
-  .sound-prompt {
-    top: 110%;
-    right: auto;   /* place under and to the left by default */
-    left: 0;
-  }
+  /* Hide the yellow "Geluid inschakelen" prompt entirely on small screens */
+  .sound-prompt { display: none !important; }
 
   .tooltip .tooltiptext {
     left: auto;
