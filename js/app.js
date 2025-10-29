@@ -368,7 +368,7 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
 
 
   // Enhanced rest-seat impact: persistent signature and live "sinds" timer
-  function showLatestRestSeatImpactSince(year, votesData, keyToLabelShort, finalized) {
+  function showLatestRestSeatImpactSince(year, votesData, keyToLabelShort, finalized, lastUpdatedMs) {
     const impactEl = document.getElementById('latestRestSeatImpactContainer');
     if (!impactEl || !votesData || !votesData.parties) return;
     let latestParty = null, highest = 0;
@@ -395,7 +395,10 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
     const prevSig = window.localStorage.getItem(sigKey) || '';
     let sinceTs = parseInt(window.localStorage.getItem(sinceKey) || '0', 10) || 0;
     if (sig !== prevSig || !sinceTs) {
-      sinceTs = Date.now();
+      const nowTs = Date.now();
+      const hasLU = typeof lastUpdatedMs === 'number' && lastUpdatedMs > 0 && lastUpdatedMs <= nowTs;
+      // New visitor (no sinceTs) or actual change: seed with last ANP update time if available; else now.
+      sinceTs = hasLU ? lastUpdatedMs : nowTs;
       try {
         window.localStorage.setItem(sigKey, sig);
         window.localStorage.setItem(sinceKey, String(sinceTs));
@@ -743,7 +746,16 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
 
       // Latest rest seat impact — always visible with persistent since-timer
       let finalizedFlag=false; try{ finalizedFlag = await Data.isFinalizedYear(year); }catch(e){ finalizedFlag=false; }
-      showLatestRestSeatImpactSince(year, updatedData, keyToLabelShort, finalizedFlag);
+      // Compute last ANP update timestamp (ms) to seed 'sinds' on first visit only
+      let lastUpdatedMs = 0;
+      try {
+        const views = Array.isArray(lastUpdate?.views) ? lastUpdate.views : [];
+        if (views.length) {
+          const maxUpd = views.reduce((m,v)=> Math.max(m, Number(v.updated)||0), 0);
+          if (maxUpd > 0) lastUpdatedMs = maxUpd * 1000;
+        }
+      } catch(e){}
+      showLatestRestSeatImpactSince(year, updatedData, keyToLabelShort, finalizedFlag, lastUpdatedMs);
       try { setupShareHandlers(year, updatedData, { keyToLabelShort, keyToLabelLong }, finalizedFlag); } catch(e) {}
     } else {
       // No votes yet: clear detail tables and render summary with blanks, but keep impact banner visible with placeholders

@@ -271,6 +271,12 @@ nav ul li a.active::after {
 /* Keep horizontal scroll behavior for updates tables only */
 #tableContainer { overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 0 12px; }
 #tableContainer table { width: 100%; }
+#tableContainer table.summary-table {
+  width: auto;               /* natural width */
+  margin: 8px auto;          /* center */
+  display: table;            /* honor table sizing */
+  max-width: 520px;          /* keep compact */
+}
 
 .info-badge {
   display: inline-block;

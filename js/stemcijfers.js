@@ -352,6 +352,7 @@
     // Build separate summary table for Kiesdeler and Voorkeurdrempel
     try {
       const summary = document.createElement('table');
+      summary.className = 'summary-table';
       const sBody = summary.createTBody();
       // Kiesdeler row (no header)
       const r1 = sBody.insertRow();
