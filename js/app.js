@@ -450,9 +450,15 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
       // Default sort: by total ANP votes (desc)
       tableData.sort((a,b)=> (b._votes||0) - (a._votes||0));
       const maxValues = {};
+      const secondValues = {};
       for (let i = 1; i <= total_restSeats; i++) {
         const key = `_num_${i}e`;
-        maxValues[`${i}e`] = Math.max(...tableData.map(row => (typeof row[key] === 'number') ? row[key] : 0));
+        const vals = tableData.map(row => (typeof row[key] === 'number') ? row[key] : 0);
+        const max = Math.max(...vals);
+        maxValues[`${i}e`] = max;
+        // second highest strictly less than max (0 if none)
+        const second = vals.filter(v => v < max).sort((a,b)=>b-a)[0] || 0;
+        secondValues[`${i}e`] = second;
       }
       tableData.forEach(row => {
         for (let i = 1; i <= total_restSeats; i++) {
@@ -465,7 +471,11 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
               ${frac ? `<span class="fraction-wrap">${createFractionHTML(num, den)}</span>` : ''}
             </div>`;
           row[`${i}e`] = html;
-          if (dec === maxValues[`${i}e`]) row[`${i}e`] = `<div class='highest-value'>${row[`${i}e`]}</div>`;
+          if (dec === maxValues[`${i}e`]) {
+            row[`${i}e`] = `<div class='highest-value'>${row[`${i}e`]}</div>`;
+          } else if (dec === secondValues[`${i}e`] && dec > 0) {
+            row[`${i}e`] = `<div class='second-highest-value'>${row[`${i}e`]}</div>`;
+          }
         }
       });
       renderTable('voteAverageContainer', tableData);
@@ -478,6 +488,11 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
             if (hv) {
               td.classList.add('highest-td');
               hv.classList.remove('highest-value');
+            }
+            const sv = td.querySelector('.second-highest-value');
+            if (sv) {
+              td.classList.add('second-highest-td');
+              sv.classList.remove('second-highest-value');
             }
           });
         }
