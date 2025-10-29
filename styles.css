@@ -671,9 +671,12 @@ nav ul li a.active::after {
   color: #fff;
   font-size: 12px;
   line-height: 1.2;
-  padding: 4px 6px;
+  padding: 6px 8px;
   border-radius: 4px;
-  white-space: nowrap;
+  white-space: pre;            /* do not wrap header; preserve newlines */
+  display: block;
+  max-width: none;
+  text-align: left;
   z-index: 20;
   pointer-events: none;
 }

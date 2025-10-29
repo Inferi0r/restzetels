@@ -55,13 +55,47 @@
   }
 
   // Exitpoll per year (static JSON in data/exitpoll.json)
+  // Supports two formats:
+  // 1) Legacy array: [{ party: 'VVD', seats: 36 }, ...]
+  // 2) New per-party object with timestamps: { 'VVD': { '21:00': 36, '01:00': 35 }, ... }
+  // Returns { latestByParty: Map(PARTY->seats), allByParty: Map(PARTY->[{t,seats}...]) }
   async function fetchExitpoll(year){
     try {
       const data = await safeFetchJSON('data/exitpoll.json');
       const y = String(year);
-      const arr = (data && data[y]) ? data[y] : [];
-      return Array.isArray(arr) ? arr : [];
-    } catch(e){ return []; }
+      const raw = data && data[y];
+      const latest = new Map();
+      const all = new Map();
+      const norm = (s) => (s||'').toString().trim().toUpperCase();
+      if (!raw) return { latestByParty: latest, allByParty: all };
+      if (Array.isArray(raw)) {
+        raw.forEach(it => {
+          const p = norm(it && it.party);
+          const s = Number(it && it.seats);
+          if (!p || isNaN(s)) return;
+          latest.set(p, s);
+          all.set(p, [{ t: 'latest', seats: s }]);
+        });
+        return { latestByParty: latest, allByParty: all };
+      }
+      if (raw && typeof raw === 'object') {
+        Object.entries(raw).forEach(([party, times]) => {
+          const p = norm(party);
+          if (!p || !times || typeof times !== 'object') return;
+          const series = Object.entries(times).map(([t, s]) => ({ t, seats: Number(s) }))
+                                          .filter(x => !isNaN(x.seats));
+          if (!series.length) return;
+          // Latest = last defined entry order in object
+          const latestSeat = series[series.length - 1].seats;
+          latest.set(p, latestSeat);
+          all.set(p, series);
+        });
+        return { latestByParty: latest, allByParty: all };
+      }
+      return { latestByParty: latest, allByParty: all };
+    } catch(e){
+      return { latestByParty: new Map(), allByParty: new Map() };
+    }
   }
 
   // Discover available years (from partylabels.json keys; fallback to known years)

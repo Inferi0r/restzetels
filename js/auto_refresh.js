@@ -17,6 +17,24 @@ const REFRESH_INTERVAL_SECONDS = 10; // reduced from 30s to 10s
   let inProgress = false;
   let finalizedActive = false; // guard to prevent countdown UI in finalized years
 
+  // Tab title rolling state (only on Zetels page)
+  let titleTickId = null;      // updates relative time text
+  let titleScrollId = null;    // scroll effect for the long title
+  let titleScrollPos = 0;
+  let titleBaseText = 'Zetels - realtime ANP';
+  let titleInfo = { label: '', ts: 0 };
+
+  function onZetelsPage(){ return !!document.getElementById('latestRestSeatImpactContainer'); }
+  function stopTitle(){ if (titleTickId){ clearInterval(titleTickId); titleTickId=null; } if (titleScrollId){ clearInterval(titleScrollId); titleScrollId=null; } titleScrollPos=0; }
+  function relTime(ms){ if (!ms) return ''; const s=Math.max(0,Math.floor((Date.now()-ms)/1000)); if (s<60) return `${s}s`; const m=Math.floor(s/60); if (m<60) return `${m}m`; const h=Math.floor(m/60); if (h<24) return `${h}u`; const d=Math.floor(h/24); return `${d}d`; }
+  function setStaticTitle(){ document.title = titleBaseText; }
+  function startTitleRolling(){
+    if (!onZetelsPage()) return; // only on Zetels page
+    // Disabled (static title requested)
+    stopTitle();
+    setStaticTitle();
+  }
+
   function getYear(){
     const params = new URLSearchParams(window.location.search);
     return params.get('year') || window.localStorage.getItem('selectedYear') || '2025';
@@ -72,6 +90,8 @@ const REFRESH_INTERVAL_SECONDS = 10; // reduced from 30s to 10s
     clearTimers();
     updateBadge('');
     setSoundVisible(false);
+    stopTitle();
+    setStaticTitle();
   }
 
   function startCountdown(onFire){
@@ -123,8 +143,10 @@ const REFRESH_INTERVAL_SECONDS = 10; // reduced from 30s to 10s
     const year = currentYear;
     if (!year) return;
     const lastUpdate = await fetchLastUpdate(year);
-    if (allGemeentesComplete(lastUpdate)) { finalizedActive = true; updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); clearTimers(); return; }
-    if (await isFinalizedYear(year)) { finalizedActive = true; updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); clearTimers(); return; }
+    // Update title info with latest updated Gemeente (type 0)
+    if (onZetelsPage()) { setStaticTitle(); }
+    if (allGemeentesComplete(lastUpdate)) { finalizedActive = true; updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); stopTitle(); setStaticTitle(); clearTimers(); return; }
+    if (await isFinalizedYear(year)) { finalizedActive = true; updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); stopTitle(); setStaticTitle(); clearTimers(); return; }
     // not complete -> start/restart countdown
     finalizedActive = false;
     setSoundVisible(true);
@@ -163,6 +185,8 @@ const REFRESH_INTERVAL_SECONDS = 10; // reduced from 30s to 10s
     currentYear = getYear();
     // ensure no stale UI from previous page/year
     resetUI();
+    // Keep static title on Zetels page
+    if (onZetelsPage()) setStaticTitle();
     setupVisibility(load);
     setupYearChange(load);
     await evaluateAndRun(load);

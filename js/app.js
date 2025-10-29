@@ -278,7 +278,8 @@
 
 function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, keyToLabelShort, opts = {}) {
     const hasVotes = opts.hasVotes !== false;
-    const exitMap = (opts && opts.exitMap) || null; // Map of normalized short label -> seats
+    const exitLatest = (opts && opts.exitLatest) || null; // Map normalized short -> seats (latest)
+    const exitSeries = (opts && opts.exitSeries) || null; // Map normalized short -> [{t,seats}]
     const safeData = votesData && Array.isArray(votesData.parties) ? votesData : { parties: [] };
     const calc = hasVotes ? calculateVotesShortAndSurplus(safeData) : { votesShortData: new Map(), surplusVotesData: new Map() };
     const votesShortData = calc.votesShortData;
@@ -303,13 +304,23 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
           surplus = (typeof sRaw === 'number' && !isNaN(sRaw) && sRaw !== 0) ? sRaw.toLocaleString('nl-NL') : '';
           shortv = (typeof shRaw === 'number' && !isNaN(shRaw) && shRaw !== 0) ? shRaw.toLocaleString('nl-NL') : '';
           // Exitpoll diff rendering + hover title
-          if (exitMap && keyToLabelShort) {
+          if (exitLatest && keyToLabelShort) {
             const norm = (s) => (s||'').toString().trim().toUpperCase();
             const shortLabel = keyToLabelShort.get(p.key) || keyToLabelShort.get(p.key?.toString?.()) || '';
-            const expected = exitMap.get(norm(shortLabel));
+            const expected = exitLatest.get(norm(shortLabel));
             if (typeof expected === 'number' && !isNaN(expected)) {
               const diff = (tsNum || 0) - expected;
-              const title = `Exitpoll Ipsos: ${expected}`;
+              // Build full timestamp list for tooltip if available (multiline)
+              let tooltipText = '';
+              if (exitSeries && exitSeries.has(norm(shortLabel))) {
+                const series = exitSeries.get(norm(shortLabel));
+                const lines = ['Exitpoll Ipsos'];
+                series.forEach(it => { lines.push(`${it.t} ${it.seats} zetels`); });
+                tooltipText = lines.join('\n');
+              } else {
+                tooltipText = `Exitpoll Ipsos\nlatest ${expected} zetels`;
+              }
+              const title = 'Exitpoll Ipsos';
               if (diff !== 0) {
                 const cls = diff > 0 ? 'seat-diff seat-diff--pos' : 'seat-diff seat-diff--neg';
                 const sign = diff > 0 ? '+' : '';
@@ -318,7 +329,8 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
               } else {
                 totalSeats = `<span class=\"seat-total-wrap\" title=\"${title}\">${tsNum}</span>`;
               }
-              rowTotalSeatsTitle = title;
+              // Store full multiline tooltip on the row; td will render instant tooltip from data-tip
+              rowTotalSeatsTitle = tooltipText;
             }
           }
           // keep numeric for sorting
@@ -706,18 +718,21 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
       // Rest seats: build tooltip content for averages header
       updateSeatStripTooltip(updatedData, keyToLabelShort, total_restSeats);
 
-      // Exitpoll map for diffs
-      let exitMap = null;
+      // Exitpoll latest + full series (for tooltip); compute diff from latest
+      let exitLatest = null, exitSeries = null;
       try {
         const xp = await Data.fetchExitpoll(year);
-        if (Array.isArray(xp) && xp.length) {
-          exitMap = new Map();
+        if (xp && xp.latestByParty && xp.allByParty) {
+          exitLatest = xp.latestByParty; exitSeries = xp.allByParty;
+        } else if (Array.isArray(xp) && xp.length) {
+          // Backward compatibility
+          exitLatest = new Map(); exitSeries = new Map();
           const norm = (s) => (s||'').toString().trim().toUpperCase();
-          xp.forEach(it => { if (it && typeof it.seats === 'number') exitMap.set(norm(it.party), it.seats); });
+          xp.forEach(it => { if (it && typeof it.seats === 'number') { const p = norm(it.party); exitLatest.set(p, it.seats); exitSeries.set(p, [{ t:'latest', seats: it.seats }]); } });
         }
       } catch(e){}
       // Seats summary
-      createSeatsSummaryTable(updatedData, keyToLabelLong, keyToListNumber, keyToLabelShort, { hasVotes: true, exitMap });
+      createSeatsSummaryTable(updatedData, keyToLabelLong, keyToListNumber, keyToLabelShort, { hasVotes: true, exitLatest, exitSeries });
 
       // Latest rest seat impact — always visible with persistent since-timer
       let finalizedFlag=false; try{ finalizedFlag = await Data.isFinalizedYear(year); }catch(e){ finalizedFlag=false; }
