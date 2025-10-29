@@ -222,7 +222,7 @@
     });
   }
 
-  function renderStemcijfersTable({containerId, votesData, nosVotesMap, kiesraadVotesMap, maps, anpNulstand=false}){
+  function renderStemcijfersTable({containerId, votesData, nosVotesMap, kiesraadVotesMap, maps, anpNulstand=false, nosHasData=false}){
     const { keyToLabelLong, keyToNOS, keyToListNumber } = maps;
     const table = document.createElement('table');
     const thead = table.createTHead();
@@ -280,7 +280,7 @@
           { id:'lijst', val: listNumber },
           { id:'key', val: partij },
           { id:'votes', val: (anpNulstand && anpVotes === 0) ? '' : anpVotes.toLocaleString('nl-NL') },
-          { id:'nosVotes', val: nosVotes ? nosVotes.toLocaleString('nl-NL') : '' },
+          { id:'nosVotes', val: nosHasData ? nosVotes.toLocaleString('nl-NL') : (nosVotes ? nosVotes.toLocaleString('nl-NL') : '') },
           { id:'kiesraadVotes', val: krVotes ? krVotes.toLocaleString('nl-NL') : '' },
           { id:'percentage', val: (anpNulstand && anpVotes === 0) ? '' : rawPerc },
           { id:'voteDiff', val: (anpNulstand && diffVotes === 0) ? '' : diffVotes.toLocaleString('nl-NL') },
@@ -317,7 +317,7 @@
     totalRow.insertCell().textContent = '';
     const totalLbl = totalRow.insertCell(); totalLbl.textContent = 'Totaal aantal geldige stemmen op lijsten:';
     const totalAnpCell = totalRow.insertCell(); totalAnpCell.classList.add('num'); totalAnpCell.textContent = (anpNulstand && totalANP === 0) ? '' : totalANP.toLocaleString('nl-NL');
-    const totalNosCell = totalRow.insertCell(); totalNosCell.classList.add('num'); totalNosCell.textContent = totalNOS ? totalNOS.toLocaleString('nl-NL') : '';
+    const totalNosCell = totalRow.insertCell(); totalNosCell.classList.add('num'); totalNosCell.textContent = nosHasData ? totalNOS.toLocaleString('nl-NL') : (totalNOS ? totalNOS.toLocaleString('nl-NL') : '');
     const totalKrCell  = totalRow.insertCell(); totalKrCell.classList.add('num');  totalKrCell.textContent  = totalKR ? totalKR.toLocaleString('nl-NL') : '';
     totalRow.insertCell(); totalRow.insertCell(); totalRow.insertCell();
     // Kiesdeler row
@@ -366,7 +366,7 @@
       const r2 = sBody.insertRow();
       const r2Lbl = r2.insertCell(); r2Lbl.textContent = 'Voorkeurdrempel:';
       const r2Anp = r2.insertCell(); r2Anp.classList.add('num'); r2Anp.textContent = (anpNulstand && totalANP === 0) ? '' : Math.floor(0.25*kANP).toLocaleString('nl-NL');
-      const r2Nos = r2.insertCell(); r2Nos.classList.add('num'); r2Nos.textContent = totalNOS ? Math.floor(0.25*kNOS).toLocaleString('nl-NL') : '';
+      const r2Nos = r2.insertCell(); r2Nos.classList.add('num'); r2Nos.textContent = nosHasData ? Math.floor(0.25*kNOS).toLocaleString('nl-NL') : '';
       const r2Kr  = r2.insertCell(); r2Kr.classList.add('num');  r2Kr.textContent  = totalKR ? Math.floor(0.25*kKR).toLocaleString('nl-NL') : '';
       // Remove rows from main table and append summary table
       try { tbody.removeChild(kiesRow); } catch(e){}
@@ -396,13 +396,14 @@
     const nosVotesMap = new Map();
     const landelijke = nosIndex && nosIndex.landelijke_uitslag && nosIndex.landelijke_uitslag.partijen;
     if (Array.isArray(landelijke)) {
-      landelijke.forEach(p=>{ const code = p.partij?.short_name; const votes = p.huidig?.stemmen || 0; if (code) nosVotesMap.set(code, votes); });
+      landelijke.forEach(p=>{ const code = p.partij?.short_name; const votes = p.huidig?.stemmen || 0; if (code!=null) nosVotesMap.set(code, votes||0); });
     }
+    const nosHasData = nosVotesMap.size > 0;
     // Kiesraad map
     const kiesraadVotesMap = new Map();
     if (Array.isArray(kiesraad)) kiesraad.forEach(item=>{ kiesraadVotesMap.set(item.lijstnummer, item.votes); });
     // Render table
-    renderStemcijfersTable({containerId:'tableContainer', votesData: anpVotes, nosVotesMap, kiesraadVotesMap, maps:{keyToLabelLong, keyToNOS, keyToListNumber}, anpNulstand});
+    renderStemcijfersTable({containerId:'tableContainer', votesData: anpVotes, nosVotesMap, kiesraadVotesMap, maps:{keyToLabelLong, keyToNOS, keyToListNumber}, anpNulstand, nosHasData});
   }
 
   window.StemcijfersApp = { loadStemcijfers };

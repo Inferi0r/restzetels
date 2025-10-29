@@ -2,12 +2,22 @@
   const STORAGE_KEY = 'soundEnabled';
   let enabled = false;
   let ctx = null;
+  let unlocked = false;
 
   function ensureContext(){
     if (!ctx) {
       try { ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) { ctx = null; }
     }
     return ctx;
+  }
+
+  async function resumeContext(){
+    const audio = ensureContext();
+    if (!audio) return false;
+    try {
+      if (audio.state === 'suspended') { await audio.resume(); }
+      return true;
+    } catch(e){ return false; }
   }
 
   function updateButton(){
@@ -25,7 +35,14 @@
     if (promptBtn){
       promptBtn.style.display = enabled ? 'none' : 'inline-flex';
     }
-    if (enabled) ensureContext();
+    if (enabled) {
+      ensureContext();
+      // Attempt to resume immediately on user gesture
+      resumeContext().then(() => {
+        // Provide a short confirmation beep
+        try { playBeep({ freq: 880, duration: 0.06, volume: 0.15 }); } catch(e){}
+      });
+    }
   }
 
   function init(){
@@ -34,16 +51,29 @@
     updateButton();
     const btn = document.getElementById('soundToggle');
     if (btn){
-      btn.addEventListener('click', ()=> setEnabled(!enabled));
+      btn.addEventListener('click', async ()=> {
+        setEnabled(!enabled);
+        await resumeContext();
+      });
     }
     const promptBtn = document.getElementById('soundPrompt');
     if (promptBtn){
       promptBtn.style.display = enabled ? 'none' : 'inline-flex';
-      promptBtn.addEventListener('click', ()=> {
+      promptBtn.addEventListener('click', async ()=> {
         setEnabled(true);
+        await resumeContext();
         promptBtn.style.display = 'none';
       });
     }
+    // iOS/Safari unlock: resume context on first pointer/keyboard interaction
+    const unlock = async () => {
+      if (unlocked) return; unlocked = true;
+      await resumeContext();
+      window.removeEventListener('pointerdown', unlock, true);
+      window.removeEventListener('keydown', unlock, true);
+    };
+    window.addEventListener('pointerdown', unlock, true);
+    window.addEventListener('keydown', unlock, true);
   }
 
   function isEnabled(){ return enabled; }

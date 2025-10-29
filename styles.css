@@ -323,6 +323,8 @@ nav ul li a.active::after {
   color: #5a4400;
   cursor: pointer;
   font-size: 14px;
+  z-index: 3000;          /* float above ticker and content */
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
 .sound-prompt:hover {
@@ -643,8 +645,8 @@ nav ul li a.active::after {
     font-size: 15px;
   }
 
-  /* Hide the yellow "Geluid inschakelen" prompt entirely on small screens */
-  .sound-prompt { display: none !important; }
+  /* Keep the prompt visible and above content on small screens */
+  .sound-prompt { z-index: 3000; }
 
   .tooltip .tooltiptext {
     left: auto;
