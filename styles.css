@@ -31,6 +31,7 @@ th {
 nav {
   background-color: #f2f2f2;
   padding: 10px 0;
+  position: relative; /* allow absolute right controls */
 }
 
 nav ul {
@@ -38,7 +39,7 @@ nav ul {
   margin: 0;
   padding: 0;
   display: flex;        /* Use flexbox */
-  justify-content: space-between; /* Space between the main items */
+  justify-content: center; /* Always center the nav links */
   align-items: center;  /* Align items vertically */
 }
 
@@ -88,7 +89,22 @@ nav ul li a.active {
 
 /* New dropdown style for year selection */
 .year-select-li {
-  margin-left: auto;
+  margin-left: 0;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Container to hold info badge + year select on pages that have both (Zetels) */
+.right-controls {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .year-select {
@@ -123,7 +139,6 @@ nav ul li a.active {
 .info-badge {
   display: inline-block;
   padding: 8px 12px;
-  margin-right: 10px;
   background-color: #e0f7fa;
   color: #0d47a1;
   border: 1px solid #a7dceb;

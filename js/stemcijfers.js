@@ -31,7 +31,38 @@
     return `<div style="display:inline-block;text-align:center;font-size:smaller;"><span style="display:block;border-bottom:1px solid;padding-bottom:2px;">${numerator}</span><span style="display:block;padding-top:2px;">${denominator}</span></div>`;
   }
 
-  function renderStatsTable(votesData){
+  function buildStats(anpVotes, nosIndex){
+    const stats = {
+      voters: { current: 0, previous: 0 },
+      turnout: { current: '', previous: '' },
+      turnoutCount: { current: 0, previous: 0 },
+      invalid: { current: 0, previous: 0 },
+      blank: { current: 0, previous: 0 }
+    };
+    const lu = nosIndex && nosIndex.landelijke_uitslag;
+    const hv = lu && lu.huidige_verkiezing ? lu.huidige_verkiezing : null;
+    const pv = lu && lu.vorige_verkiezing ? lu.vorige_verkiezing : null;
+    // Helper for percentage from promillage
+    const fmtPerc = (promi) => (typeof promi === 'number') ? (promi/10).toFixed(1).replace('.', ',') : '';
+
+    // Current
+    stats.voters.current = anpVotes?.voters?.current || (hv?.kiesgerechtigden || 0);
+    stats.turnout.current = anpVotes?.turnout?.current || fmtPerc(hv?.opkomst_promillage);
+    stats.turnoutCount.current = anpVotes?.turnoutCount?.current || (hv?.opkomst || 0);
+    stats.invalid.current = anpVotes?.invalid?.current || (hv?.ongeldig || 0);
+    stats.blank.current = anpVotes?.blank?.current || (hv?.blanco || 0);
+
+    // Previous
+    stats.voters.previous = anpVotes?.voters?.previous || (pv?.kiesgerechtigden || 0);
+    stats.turnout.previous = anpVotes?.turnout?.previous || fmtPerc(pv?.opkomst_promillage);
+    stats.turnoutCount.previous = anpVotes?.turnoutCount?.previous || (pv?.opkomst || 0);
+    stats.invalid.previous = anpVotes?.invalid?.previous || (pv?.ongeldig || 0);
+    stats.blank.previous = anpVotes?.blank?.previous || (pv?.blanco || 0);
+
+    return stats;
+  }
+
+  function renderStatsTable(stats, anpNulstand=false){
     const table = document.createElement('table');
     const thead = table.createTHead();
     const tbody = table.createTBody();
@@ -39,25 +70,38 @@
     ["", "Stemgerechtigden", "Opkomst", "Totale stemmen", "Ongeldige stemmen", "Blanco stemmen"].forEach(h => { const th = document.createElement('th'); th.textContent = h; headerRow.appendChild(th); });
     const cur = tbody.insertRow();
     cur.insertCell().textContent = "Huidig";
-    cur.insertCell().textContent = Number(votesData.voters?.current || 0).toLocaleString('nl-NL');
-    cur.insertCell().textContent = votesData.turnout?.current || '';
-    cur.insertCell().textContent = Number(votesData.turnoutCount?.current || 0).toLocaleString('nl-NL');
-    cur.insertCell().textContent = Number(votesData.invalid?.current || 0).toLocaleString('nl-NL');
-    cur.insertCell().textContent = Number(votesData.blank?.current || 0).toLocaleString('nl-NL');
+    const curVoters = Number(stats.voters.current || 0);
+    const curTurnout = stats.turnout.current || '';
+    const curTurnoutCount = Number(stats.turnoutCount.current || 0);
+    const curInvalid = Number(stats.invalid.current || 0);
+    const curBlank = Number(stats.blank.current || 0);
+    cur.insertCell().textContent = (anpNulstand && curVoters === 0) ? '' : curVoters.toLocaleString('nl-NL');
+    cur.insertCell().textContent = (anpNulstand && (curTurnout === '' || curTurnout === '0,0')) ? '' : curTurnout;
+    cur.insertCell().textContent = (anpNulstand && curTurnoutCount === 0) ? '' : curTurnoutCount.toLocaleString('nl-NL');
+    cur.insertCell().textContent = (anpNulstand && curInvalid === 0) ? '' : curInvalid.toLocaleString('nl-NL');
+    cur.insertCell().textContent = (anpNulstand && curBlank === 0) ? '' : curBlank.toLocaleString('nl-NL');
     const prev = tbody.insertRow();
     prev.insertCell().textContent = "Vorige";
-    prev.insertCell().textContent = Number(votesData.voters?.previous || 0).toLocaleString('nl-NL');
-    prev.insertCell().textContent = votesData.turnout?.previous || '';
-    prev.insertCell().textContent = Number(votesData.turnoutCount?.previous || 0).toLocaleString('nl-NL');
-    prev.insertCell().textContent = Number(votesData.invalid?.previous || 0).toLocaleString('nl-NL');
-    prev.insertCell().textContent = Number(votesData.blank?.previous || 0).toLocaleString('nl-NL');
+    prev.insertCell().textContent = Number(stats.voters.previous || 0).toLocaleString('nl-NL');
+    prev.insertCell().textContent = stats.turnout.previous || '';
+    prev.insertCell().textContent = Number(stats.turnoutCount.previous || 0).toLocaleString('nl-NL');
+    prev.insertCell().textContent = Number(stats.invalid.previous || 0).toLocaleString('nl-NL');
+    prev.insertCell().textContent = Number(stats.blank.previous || 0).toLocaleString('nl-NL');
     return table;
   }
 
-  function updateLastUpdates(lastUpdateData, nosData, votesData){
+  function updateLastUpdates(lastUpdateData, nosData, votesData, year){
     // ANP last update (global timestamp)
     const lu = document.getElementById('lastUpdateANP');
-    if (votesData?.updated && lu) lu.textContent = `Laatste update ANP: ${new Date(votesData.updated * 1000).toLocaleString()}`;
+    if (lu) {
+      const kiesraadDates = {
+        '2021': '26/03/2021, 12:00',
+        '2023': '01/12/2023, 10:00 (2e zitting: 04/12/2023)',
+        '2025': '07/12/2025, 10:00'
+      };
+      const label = kiesraadDates[String(year)] || '';
+      lu.textContent = label ? `Uitslag Kiesraad: ${label}` : '';
+    }
     // ANP latest local region
     const statusMap = new Map([[0,'Nulstand'],[2,'Tussenstand'],[4,'Eindstand']]);
     const localRegion = lastUpdateData?.views?.find(v => v.type === 0);
@@ -110,7 +154,7 @@
     });
   }
 
-  function renderStemcijfersTable({containerId, votesData, nosVotesMap, kiesraadVotesMap, maps}){
+  function renderStemcijfersTable({containerId, votesData, nosVotesMap, kiesraadVotesMap, maps, anpNulstand=false}){
     const { keyToLabelLong, keyToNOS, keyToListNumber } = maps;
     const table = document.createElement('table');
     const thead = table.createTHead();
@@ -149,12 +193,20 @@
         const anpVotes = parseInt(p.results.current.votes)||0;
         const nosVotes = p.__nosVotes || 0;
         const krVotes = p.__kiesraadVotes || 0;
-        const perc = p.results.current.percentage || '';
+        const rawPerc = p.results.current.percentage || '';
         const diffVotes = parseInt(p.results.diff.votes)||0;
         let percDiff;
         const prev = parseInt(p.results.previous.votes)||0; const curr = anpVotes;
         percDiff = prev === 0 && curr > 0 ? '∞' : ((curr - prev) / (prev || 1) * 100).toFixed(1).replace('.', ',');
-        [listNumber, partij, anpVotes.toLocaleString('nl-NL'), nosVotes?nosVotes.toLocaleString('nl-NL'):'', krVotes?krVotes.toLocaleString('nl-NL'):'', perc, diffVotes.toLocaleString('nl-NL'), percDiff].forEach(val=>{ const c=row.insertCell(); c.textContent = val; });
+
+        const anpVotesDisplay = (anpNulstand && anpVotes === 0) ? '' : anpVotes.toLocaleString('nl-NL');
+        const nosVotesDisplay = nosVotes ? nosVotes.toLocaleString('nl-NL') : '';
+        const krVotesDisplay = krVotes ? krVotes.toLocaleString('nl-NL') : '';
+        const percDisplay = (anpNulstand && anpVotes === 0) ? '' : rawPerc;
+        const diffVotesDisplay = (anpNulstand && diffVotes === 0) ? '' : diffVotes.toLocaleString('nl-NL');
+        const percDiffDisplay = anpNulstand ? '' : percDiff;
+
+        [listNumber, partij, anpVotesDisplay, nosVotesDisplay, krVotesDisplay, percDisplay, diffVotesDisplay, percDiffDisplay].forEach(val=>{ const c=row.insertCell(); c.textContent = val; });
       });
     };
     renderBody();
@@ -181,7 +233,7 @@
     const totalRow = tbody.insertRow();
     totalRow.insertCell().textContent = '';
     totalRow.insertCell().textContent = 'Totaal aantal geldige stemmen op lijsten:';
-    totalRow.insertCell().textContent = totalANP.toLocaleString('nl-NL');
+    totalRow.insertCell().textContent = (anpNulstand && totalANP === 0) ? '' : totalANP.toLocaleString('nl-NL');
     totalRow.insertCell().textContent = totalNOS ? totalNOS.toLocaleString('nl-NL') : '';
     totalRow.insertCell().textContent = totalKR ? totalKR.toLocaleString('nl-NL') : '';
     totalRow.insertCell(); totalRow.insertCell(); totalRow.insertCell();
@@ -193,14 +245,14 @@
     const nosCell = kiesRow.insertCell();
     const krCell = kiesRow.insertCell();
     const fixedDen = 150; const anpNum = Math.round((kANP%1)*fixedDen), nosNum = Math.round((kNOS%1)*fixedDen), krNum = Math.round((kKR%1)*fixedDen);
-    anpCell.innerHTML = `<div style="display:flex;align-items:center;justify-content:flex-start;height:100%;"><span style="margin-right:5px;">${Math.trunc(kANP).toLocaleString('nl-NL')}</span>${createFractionHTML(anpNum,fixedDen)}</div>`;
+    anpCell.innerHTML = (anpNulstand && totalANP === 0) ? '' : `<div style="display:flex;align-items:center;justify-content:flex-start;height:100%;"><span style="margin-right:5px;">${Math.trunc(kANP).toLocaleString('nl-NL')}</span>${createFractionHTML(anpNum,fixedDen)}</div>`;
     nosCell.innerHTML = totalNOS ? `<div style="display:flex;align-items:center;justify-content:flex-start;height:100%;"><span style=\"margin-right:5px;\">${Math.trunc(kNOS).toLocaleString('nl-NL')}</span>${createFractionHTML(nosNum,fixedDen)}</div>` : '';
     krCell.innerHTML = totalKR ? `<div style="display:flex;align-items:center;justify-content:flex-start;height:100%;"><span style=\"margin-right:5px;\">${Math.trunc(kKR).toLocaleString('nl-NL')}</span>${createFractionHTML(krNum,fixedDen)}</div>` : '';
     kiesRow.insertCell(); kiesRow.insertCell(); kiesRow.insertCell();
     // Voorkeurdrempel row
     const vRow = tbody.insertRow();
     vRow.insertCell(); vRow.insertCell().textContent='Voorkeurdrempel:';
-    vRow.insertCell().textContent = vANP.toLocaleString('nl-NL');
+    vRow.insertCell().textContent = (anpNulstand && totalANP === 0) ? '' : vANP.toLocaleString('nl-NL');
     vRow.insertCell().textContent = totalNOS ? vNOS.toLocaleString('nl-NL') : '';
     vRow.insertCell().textContent = totalKR ? vKR.toLocaleString('nl-NL') : '';
     vRow.insertCell(); vRow.insertCell(); vRow.insertCell();
@@ -212,9 +264,13 @@
     const [{ list, keyToLabelLong, keyToLabelShort, keyToNOS, keyToListNumber }, anpVotes, lastUpdate, nosIndex, kiesraad] = await Promise.all([
       fetchPartyLabels(year), fetchANPVotes(year), fetchANPLastUpdate(year), fetchNOSIndex(year), fetchKiesraadVotes(year)
     ]);
-    // Stats
-    if (anpVotes){ const stats = renderStatsTable(anpVotes); const sc = document.getElementById('statsTableContainer'); if (sc) sc.appendChild(stats); }
-    updateLastUpdates(lastUpdate, nosIndex, anpVotes);
+    // Stats (ANP values with NOS landelijke_uitslag fallback when missing)
+    const statsObj = buildStats(anpVotes, nosIndex);
+    const rijkView = lastUpdate && Array.isArray(lastUpdate.views) ? lastUpdate.views.find(v=>v.type===2) : null;
+    const anpNulstand = rijkView ? (rijkView.status === 0) : false;
+    const statsEl = renderStatsTable(statsObj, anpNulstand);
+    const sc = document.getElementById('statsTableContainer'); if (sc) sc.appendChild(statsEl);
+    updateLastUpdates(lastUpdate, nosIndex, anpVotes, year);
     // NOS national votes map
     const nosVotesMap = new Map();
     const landelijke = nosIndex && nosIndex.landelijke_uitslag && nosIndex.landelijke_uitslag.partijen;
@@ -225,7 +281,7 @@
     const kiesraadVotesMap = new Map();
     if (Array.isArray(kiesraad)) kiesraad.forEach(item=>{ kiesraadVotesMap.set(item.lijstnummer, item.votes); });
     // Render table
-    renderStemcijfersTable({containerId:'tableContainer', votesData: anpVotes, nosVotesMap, kiesraadVotesMap, maps:{keyToLabelLong, keyToNOS, keyToListNumber}});
+    renderStemcijfersTable({containerId:'tableContainer', votesData: anpVotes, nosVotesMap, kiesraadVotesMap, maps:{keyToLabelLong, keyToNOS, keyToListNumber}, anpNulstand});
   }
 
   window.StemcijfersApp = { loadStemcijfers };

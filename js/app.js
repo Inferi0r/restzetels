@@ -256,32 +256,42 @@
     return { votesShortData, surplusVotesData };
   }
 
-  function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber) {
-    const { votesShortData, surplusVotesData } = calculateVotesShortAndSurplus(votesData);
+function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opts = {}) {
+    const hasVotes = opts.hasVotes !== false;
+    const calc = hasVotes ? calculateVotesShortAndSurplus(votesData) : { votesShortData: new Map(), surplusVotesData: new Map() };
+    const votesShortData = calc.votesShortData;
+    const surplusVotesData = calc.surplusVotesData;
     const rows = [];
     let totalFull = 0, totalRest = 0;
     votesData.parties.forEach(p => {
       const name = keyToLabelLong.get(p.key) || keyToLabelLong.get(p.key?.toString?.()) || 'Onbekend';
       if (!name.toUpperCase().includes('OVERIG')) {
-        const restCount = Array.from(p.restSeats.values()).reduce((a, b) => a + b, 0);
-        const full = p.fullSeats; totalFull += full; totalRest += restCount;
-        const surplus = (full === 0 && restCount === 0) ? parseInt(p.results.current.votes) : Math.ceil(surplusVotesData.get(p.key) || 0);
-        const shortv = Math.ceil(votesShortData.get(p.key) || 0);
         const listNumber = keyToListNumber.get(p.key) || '';
+        let full = '', restCount = '', totalSeats = '', surplus = '', shortv = '';
+        if (hasVotes) {
+          restCount = Array.from(p.restSeats.values()).reduce((a, b) => a + b, 0);
+          full = p.fullSeats;
+          totalFull += full; totalRest += restCount;
+          const sRaw = (full === 0 && restCount === 0) ? parseInt(p.results.current.votes) : Math.ceil(surplusVotesData.get(p.key) || 0);
+          const shRaw = Math.ceil(votesShortData.get(p.key) || 0);
+          totalSeats = full + restCount;
+          surplus = (typeof sRaw === 'number' && !isNaN(sRaw) && sRaw !== 0) ? sRaw.toLocaleString('nl-NL') : '';
+          shortv = (typeof shRaw === 'number' && !isNaN(shRaw) && shRaw !== 0) ? shRaw.toLocaleString('nl-NL') : '';
+        }
         rows.push({
           'Lijst': listNumber,
           'Partij': name,
           'Volle zetels': full,
           'Rest zetels': restCount,
-          'Totaal zetels': full + restCount,
-          'Stemmen over': typeof surplus === 'number' && !isNaN(surplus) ? surplus.toLocaleString('nl-NL') : '-',
-          'Stemmen tekort': typeof shortv === 'number' && !isNaN(shortv) ? shortv.toLocaleString('nl-NL') : '-'
+          'Totaal zetels': totalSeats,
+          'Stemmen over': surplus,
+          'Stemmen tekort': shortv
         });
       }
     });
-    rows.push({ 'Lijst': '', 'Partij': 'Totaal', 'Volle zetels': totalFull, 'Rest zetels': totalRest, 'Totaal zetels': totalFull + totalRest });
-    // Custom sort: total seats desc, then votes short asc
+    if (hasVotes) rows.push({ 'Lijst': '', 'Partij': 'Totaal', 'Volle zetels': totalFull, 'Rest zetels': totalRest, 'Totaal zetels': totalFull + totalRest });
     function customSort(data) {
+      if (!hasVotes) return data;
       return data.slice(0, -1).sort((a, b) => {
         const aVS = a['Totaal zetels'], bVS = b['Totaal zetels'];
         if (aVS > bVS) return -1; if (aVS < bVS) return 1;
@@ -358,40 +368,50 @@
       if (totalKR > totalANP) votesData = mapped;
     }
 
-    // Compute seats
-    let { votesData: updatedData, total_restSeats } = calculateFullAndRestSeats(votesData);
-    updatedData = assignRestSeats({ votesData: updatedData, total_restSeats });
+    // Check if we have any votes at all; if not, render blanks instead of 0/NaN
+    const totalVotes = sumVotes(votesData);
+    if (totalVotes > 0) {
+      // Compute seats
+      let { votesData: updatedData, total_restSeats } = calculateFullAndRestSeats(votesData);
+      updatedData = assignRestSeats({ votesData: updatedData, total_restSeats });
 
-    // Vote average table with highlight
-    let tableData = createVoteAverageTableData(updatedData, keyToLabelShort, total_restSeats);
-    const maxValues = {};
-    for (let i = 1; i <= total_restSeats; i++) {
-      maxValues[`${i}e`] = Math.max(...tableData.map(row => extractFraction(row[`${i}e`])));
-    }
-    tableData.forEach(row => {
+      // Vote average table with highlight
+      let tableData = createVoteAverageTableData(updatedData, keyToLabelShort, total_restSeats);
+      const maxValues = {};
       for (let i = 1; i <= total_restSeats; i++) {
-        const dec = extractFraction(row[`${i}e`]);
-        const frac = dec % 1 > 0 ? decimalToFraction(dec % 1) : '';
-        const [num, den] = (frac || '/').split('/');
-        const html = `
-          <div class="averagevotetable-cell">
-            <span style="margin-right: 5px;">${Math.floor(dec)}</span>
-            ${frac ? createFractionHTML(num, den) : ''}
-          </div>`;
-        row[`${i}e`] = html;
-        if (dec === maxValues[`${i}e`]) row[`${i}e`] = `<div class='highest-value'>${row[`${i}e`]}</div>`;
+        maxValues[`${i}e`] = Math.max(...tableData.map(row => extractFraction(row[`${i}e`])));
       }
-    });
-    renderTable('voteAverageContainer', tableData);
+      tableData.forEach(row => {
+        for (let i = 1; i <= total_restSeats; i++) {
+          const dec = extractFraction(row[`${i}e`]);
+          const frac = dec % 1 > 0 ? decimalToFraction(dec % 1) : '';
+          const [num, den] = (frac || '/').split('/');
+          const html = `
+            <div class="averagevotetable-cell">
+              <span style="margin-right: 5px;">${Math.floor(dec)}</span>
+              ${frac ? createFractionHTML(num, den) : ''}
+            </div>`;
+          row[`${i}e`] = html;
+          if (dec === maxValues[`${i}e`]) row[`${i}e`] = `<div class='highest-value'>${row[`${i}e`]}</div>`;
+        }
+      });
+      renderTable('voteAverageContainer', tableData);
 
-    // Rest seats table
-    createRestSeatsTable(updatedData, keyToLabelShort, total_restSeats);
+      // Rest seats table
+      createRestSeatsTable(updatedData, keyToLabelShort, total_restSeats);
 
-    // Seats summary
-    createSeatsSummaryTable(updatedData, keyToLabelLong, keyToListNumber);
+      // Seats summary
+      createSeatsSummaryTable(updatedData, keyToLabelLong, keyToListNumber, { hasVotes: true });
 
-    // Latest rest seat impact
-    showLatestRestSeatImpact(updatedData, keyToLabelShort);
+      // Latest rest seat impact
+      showLatestRestSeatImpact(updatedData, keyToLabelShort);
+    } else {
+      // No votes yet: clear detail tables and render summary with blanks
+      ['voteAverageContainer','restSeatContainer'].forEach(id => { const el=document.getElementById(id); if (el) el.innerHTML=''; });
+      const impactEl = document.getElementById('latestRestSeatImpactContainer');
+      if (impactEl) impactEl.innerHTML = `Laatste restzetel gaat naar: <span style="font-weight: bold; color: green;">-</span>, dit gaat ten koste van: <span style=\"font-weight: bold; color: red;\">-</span>`;
+      createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, { hasVotes: false });
+    }
   }
 
   // Expose
