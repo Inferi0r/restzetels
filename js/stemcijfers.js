@@ -173,7 +173,7 @@
       {text:'Verschil stemmen', id:'voteDiff'},
       {text:'% verschil', id:'percentageDiff'}
     ];
-    headers.forEach(h=>{ const th=document.createElement('th'); th.textContent=h.text; th.dataset.sort=h.id; headerRow.appendChild(th); });
+    headers.forEach(h=>{ const th=document.createElement('th'); th.dataset.sort=h.id; th.style.cursor='pointer'; th.innerHTML = `${h.text} <span class="sort-icon"></span>`; headerRow.appendChild(th); });
 
     // decorate parties with mapped values
     votesData.parties.forEach((p, i)=>{
@@ -186,6 +186,14 @@
 
     // default sort by ANP votes desc
     let sortColumn = 'votes', sortOrder = 'desc', lastSortedColumn = 'votes';
+    function updateHeaderIcons(){
+      Array.from(headerRow.children).forEach(th => {
+        const id = th.dataset.sort;
+        const icon = th.querySelector('.sort-icon');
+        if (!icon) return;
+        if (id === sortColumn) icon.innerHTML = (sortOrder === 'asc' ? '&#9650;' : '&#9660;'); else icon.innerHTML = '';
+      });
+    }
     const renderBody = () => {
       tbody.innerHTML = '';
       const sorted = sortTableData(votesData.parties.slice(), sortColumn, sortOrder, lastSortedColumn, maps);
@@ -213,6 +221,7 @@
       });
     };
     renderBody();
+    updateHeaderIcons();
 
     // header click sorting
     thead.querySelectorAll('th').forEach(th=>{
@@ -220,6 +229,7 @@
         const id = th.dataset.sort;
         if (sortColumn === id) sortOrder = sortOrder==='asc'?'desc':'asc'; else { sortColumn = id; sortOrder = 'asc'; lastSortedColumn = id; }
         renderBody();
+        updateHeaderIcons();
       });
     });
     const container = document.getElementById(containerId);
