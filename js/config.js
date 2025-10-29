@@ -5,6 +5,12 @@
   var DO_BASE = (window.RESTZETELS_DO_BASE || DEFAULT);
   window.CONFIG = window.CONFIG || {};
   window.CONFIG.DO_BASE = DO_BASE;
+  // Register Service Worker (scoped to current directory)
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function(){
+      try { navigator.serviceWorker.register('sw.js', { scope: './' }); } catch(e) {}
+    });
+  }
   // Inject preconnect for performance based on the origin
   try {
     var origin = new URL(DO_BASE).origin;
@@ -23,4 +29,3 @@
     }
   } catch(e) {}
 })();
-
