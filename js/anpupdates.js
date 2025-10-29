@@ -5,6 +5,10 @@
   async function safeFetchJSON(url){ try{ const r=await fetch(url); if(!r.ok) throw new Error(r.status); return await r.json(); } catch(e){ return null; } }
   async function fetchPartyLabels(year){ const d=await safeFetchJSON(`partylabels.json`); const list=Array.isArray(d)?d:(d[String(year)]||[]); return new Map(list.map(p=>[p.key, p.labelShort])); }
   async function fetchLastUpdate(year){
+    // Prefer bundle to reduce calls
+    if (window.Data && typeof Data.fetchBundle==='function') {
+      const b = await Data.fetchBundle(year); return b && b.anp_last_update ? b.anp_last_update : null;
+    }
     const y = String(year);
     if (await isFinalizedYear(y)) return await safeFetchJSON(`data/${y}/anp_last_update.json`);
     return await safeFetchJSON(`${DO_BASE}?year=${y}&source=anp_last_update`);

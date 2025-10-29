@@ -278,12 +278,13 @@
 
 function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opts = {}) {
     const hasVotes = opts.hasVotes !== false;
-    const calc = hasVotes ? calculateVotesShortAndSurplus(votesData) : { votesShortData: new Map(), surplusVotesData: new Map() };
+    const safeData = votesData && Array.isArray(votesData.parties) ? votesData : { parties: [] };
+    const calc = hasVotes ? calculateVotesShortAndSurplus(safeData) : { votesShortData: new Map(), surplusVotesData: new Map() };
     const votesShortData = calc.votesShortData;
     const surplusVotesData = calc.surplusVotesData;
     const rows = [];
     let totalFull = 0, totalRest = 0;
-    votesData.parties.forEach(p => {
+    safeData.parties.forEach(p => {
       const name = keyToLabelLong.get(p.key) || keyToLabelLong.get(p.key?.toString?.()) || 'Onbekend';
       if (!name.toUpperCase().includes('OVERIG')) {
         const listNumber = keyToListNumber.get(p.key) || '';
@@ -361,9 +362,13 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
 
     // Fetch labels and data
     const { list: partyLabelsList, keyToLabelShort, keyToLabelLong, keyToListNumber } = await fetchPartyLabels(year);
-    const [anpVotes, lastUpdate, nosIndex, kiesraadData] = await Promise.all([
-      fetchANPVotes(year), fetchANPLastUpdate(year), fetchNOSIndex(year), tryFetchKiesraadVotes(year)
+    const [bundle, kiesraadData] = await Promise.all([
+      window.Data && typeof Data.fetchBundle==='function' ? Data.fetchBundle(year) : Promise.resolve({ anp_votes:null, anp_last_update:null, nos_index:null }),
+      tryFetchKiesraadVotes(year)
     ]);
+    const anpVotes = bundle.anp_votes;
+    const lastUpdate = bundle.anp_last_update;
+    const nosIndex = bundle.nos_index;
     // Badge visibility is centralized in AutoRefresh; do not set here
     if (nosIndex) showLatestUpdateFromNos(nosIndex);
 

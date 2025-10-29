@@ -11,6 +11,7 @@
     gtag('config', 'G-RTCSP63MWM');
     </script>    
     <title>NOS updates</title>
+    <link rel="preconnect" href="https://faas-ams3-2a2df116.doserverless.co">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -33,14 +34,27 @@
     <div id="tableContainer"></div>
 
     <!-- Include unified script -->
-   <script src="js/year-nav.js"></script>
-   <script src="js/auto_refresh.js"></script>
-   <script src="js/nosupdates.js"></script>
+   <script src="js/year-nav.js" defer></script>
+   <script src="js/data.js" defer></script>
+   <script src="js/auto_refresh.js" defer></script>
+   <script src="js/nosupdates.js" defer></script>
    <script>
-    function loadYearData(year) { NOSUpdatesApp.loadNOSUpdates(year); }
-    YearNav.init({ load: loadYearData });
-    AutoRefresh.init({ load: loadYearData });
-</script>
+    window.addEventListener('DOMContentLoaded', function(){
+      function loadYearData(year) { NOSUpdatesApp.loadNOSUpdates(year); }
+      if (window.YearNav && window.AutoRefresh) {
+        YearNav.init({ load: loadYearData });
+        AutoRefresh.init({ load: loadYearData });
+      } else {
+        const t = setInterval(function(){
+          if (window.YearNav && window.AutoRefresh) {
+            clearInterval(t);
+            YearNav.init({ load: loadYearData });
+            AutoRefresh.init({ load: loadYearData });
+          }
+        }, 10);
+      }
+    });
+  </script>
     
     
 </body>

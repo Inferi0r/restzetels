@@ -12,6 +12,7 @@
     gtag('config', 'G-RTCSP63MWM');
     </script>
 <title>Zetelverdeling - realtime ANP feed</title>
+<link rel="preconnect" href="https://faas-ams3-2a2df116.doserverless.co">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -55,16 +56,31 @@
         </div>
     </div>
     <!-- Include unified scripts -->
-   <script src="js/year-nav.js"></script>
-   <script src="js/sound.js"></script>
-   <script src="js/auto_refresh.js"></script>
-   <script src="js/app.js"></script>
+   <script src="js/year-nav.js" defer></script>
+   <script src="js/sound.js" defer></script>
+   <script src="js/data.js" defer></script>
+   <script src="js/auto_refresh.js" defer></script>
+   <script src="js/app.js" defer></script>
 
-    <script>
-        function loadYearData(year) { RestzetelsApp.loadZetels(year); }
-        YearNav.init({ load: loadYearData });
-        Sound.init();
-        AutoRefresh.init({ load: loadYearData });
+   <script>
+        window.addEventListener('DOMContentLoaded', function(){
+          function loadYearData(year) { RestzetelsApp.loadZetels(year); }
+          if (window.YearNav && window.Sound && window.AutoRefresh) {
+            YearNav.init({ load: loadYearData });
+            Sound.init();
+            AutoRefresh.init({ load: loadYearData });
+          } else {
+            // In case defer/load order varies, retry shortly
+            const t = setInterval(function(){
+              if (window.YearNav && window.Sound && window.AutoRefresh) {
+                clearInterval(t);
+                YearNav.init({ load: loadYearData });
+                Sound.init();
+                AutoRefresh.init({ load: loadYearData });
+              }
+            }, 10);
+          }
+        });
     </script>
 
 

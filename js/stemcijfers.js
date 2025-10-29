@@ -287,9 +287,10 @@
   async function loadStemcijfers(year){
     // Clear
     ['statsTableContainer','tableContainer','lastUpdateANP','lastUpdatedLocalRegionANP','latestUpdateFromNos'].forEach(id=>{ const el=document.getElementById(id); if (el) el.innerHTML=''; });
-    const [{ list, keyToLabelLong, keyToLabelShort, keyToNOS, keyToListNumber }, anpVotes, lastUpdate, nosIndex, kiesraad] = await Promise.all([
-      fetchPartyLabels(year), fetchANPVotes(year), fetchANPLastUpdate(year), fetchNOSIndex(year), fetchKiesraadVotes(year)
+    const [{ list, keyToLabelLong, keyToLabelShort, keyToNOS, keyToListNumber }, bundle, kiesraad] = await Promise.all([
+      fetchPartyLabels(year), (window.Data && typeof Data.fetchBundle==='function' ? Data.fetchBundle(year) : Promise.resolve({ anp_votes:null, anp_last_update:null, nos_index:null })), fetchKiesraadVotes(year)
     ]);
+    const anpVotes = bundle.anp_votes; const lastUpdate = bundle.anp_last_update; const nosIndex = bundle.nos_index;
     // Stats (ANP values with NOS landelijke_uitslag fallback when missing)
     const statsObj = buildStats(anpVotes, nosIndex);
     const rijkView = lastUpdate && Array.isArray(lastUpdate.views) ? lastUpdate.views.find(v=>v.type===2) : null;

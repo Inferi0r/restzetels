@@ -4,6 +4,10 @@
 
   async function safeFetchJSON(url){ try{ const r=await fetch(url); if(!r.ok) throw new Error(r.status); return await r.json(); } catch(e){ return null; } }
   async function fetchNOS(year){
+    // Prefer bundle to reduce calls
+    if (window.Data && typeof Data.fetchBundle==='function') {
+      const b = await Data.fetchBundle(year); return b && b.nos_index ? b.nos_index : null;
+    }
     const y = String(year);
     if (await isFinalizedYear(y)) return await safeFetchJSON(`data/${y}/nos_index.json`);
     return await safeFetchJSON(`${DO_BASE}?year=${y}&source=nos_index`);

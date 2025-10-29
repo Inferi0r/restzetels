@@ -12,6 +12,7 @@ const REFRESH_INTERVAL_SECONDS = 30; // change here if needed
   let remaining = REFRESH_INTERVAL_SECONDS;
   let currentYear = null;
   let finalizedCache = null;
+  let inProgress = false;
 
   function getYear(){
     const params = new URLSearchParams(window.location.search);
@@ -30,6 +31,11 @@ const REFRESH_INTERVAL_SECONDS = 30; // change here if needed
   }
 
   async function fetchLastUpdate(year){
+    // Prefer shared bundle to avoid an extra request and share cache
+    if (window.Data && typeof Data.fetchBundle === 'function') {
+      const b = await Data.fetchBundle(year);
+      return b ? b.anp_last_update : null;
+    }
     if (await isFinalizedYear(year)) return await loadJSON(`data/${year}/anp_last_update.json`);
     return await loadJSON(`${DO_BASE}?year=${encodeURIComponent(year)}&source=anp_last_update`);
   }
@@ -80,7 +86,10 @@ const REFRESH_INTERVAL_SECONDS = 30; // change here if needed
       // show 0s during refresh
       remaining = 0;
       updateBadge(`Volgende update: ${remaining}s`);
-      try { await onFire(); } catch(e) {}
+      if (!inProgress) {
+        inProgress = true;
+        try { await onFire(); } catch(e) {} finally { inProgress = false; }
+      }
       remaining = REFRESH_INTERVAL_SECONDS;
       updateBadge(`Volgende update: ${remaining}s`);
     }, REFRESH_INTERVAL_SECONDS * 1000);
