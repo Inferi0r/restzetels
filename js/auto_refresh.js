@@ -48,6 +48,12 @@ const REFRESH_INTERVAL_SECONDS = 30; // change here if needed
     el.style.display = 'inline-block';
   }
 
+  function setSoundVisible(show){
+    const wrap = document.getElementById('soundWrap');
+    if (!wrap) return; // only on Zetels page
+    wrap.style.display = show ? 'inline-flex' : 'none';
+  }
+
   function clearTimers(){
     if (timerId) { clearInterval(timerId); timerId = null; }
     if (secondTickId) { clearInterval(secondTickId); secondTickId = null; }
@@ -59,14 +65,16 @@ const REFRESH_INTERVAL_SECONDS = 30; // change here if needed
     updateBadge(`Volgende update: ${remaining}s`);
     // Second display tick
     secondTickId = setInterval(() => {
-      if (document.hidden) return; // pause visual countdown when hidden
       remaining -= 1;
       if (remaining <= 0) remaining = 0;
       updateBadge(`Volgende update: ${remaining}s`);
     }, 1000);
     // Fire loader at interval
-    timerId = setInterval(() => {
-      if (!document.hidden) onFire();
+    timerId = setInterval(async () => {
+      // show 0s during refresh
+      remaining = 0;
+      updateBadge(`Volgende update: ${remaining}s`);
+      try { await onFire(); } catch(e) {}
       remaining = REFRESH_INTERVAL_SECONDS;
       updateBadge(`Volgende update: ${remaining}s`);
     }, REFRESH_INTERVAL_SECONDS * 1000);
@@ -76,9 +84,10 @@ const REFRESH_INTERVAL_SECONDS = 30; // change here if needed
     const year = currentYear;
     if (!year) return;
     const lastUpdate = await fetchLastUpdate(year);
-    if (allGemeentesComplete(lastUpdate)) { updateBadge("Alle kiesregio's compleet"); clearTimers(); return; }
-    if (await isFinalizedYear(year)) { updateBadge("Alle kiesregio's compleet"); clearTimers(); return; }
+    if (allGemeentesComplete(lastUpdate)) { updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); clearTimers(); return; }
+    if (await isFinalizedYear(year)) { updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); clearTimers(); return; }
     // not complete -> start/restart countdown
+    setSoundVisible(true);
     startCountdown(() => load(year));
   }
 

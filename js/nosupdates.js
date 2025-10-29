@@ -18,9 +18,6 @@
     return Array.isArray(entry) && entry.length > 0;
   }
 
-  function formatNumber(num){ return (typeof num==='number') ? num.toLocaleString('nl-NL') : ''; }
-  function formatPercentage(promillage){ return (typeof promillage==='number') ? (promillage/10).toFixed(1)+'%' : ''; }
-  function formatDate(dt){ if (typeof dt!=='string') return ''; const d=new Date(dt); return d.toLocaleString('nl-NL'); }
 
   function createHeaderRow(headers){ const thead=document.createElement('thead'); const tr=thead.insertRow(); headers.forEach((h,idx)=>{ const th=document.createElement('th'); th.innerHTML = `${h} <span class="sort-icon"></span>`; th.dataset.idx = idx; th.style.cursor='pointer'; tr.appendChild(th); }); return thead; }
 

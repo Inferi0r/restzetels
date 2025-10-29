@@ -24,6 +24,13 @@
                 <li><a href="nosupdates.html">NOS Updates</a></li>
             </div>
             <li class="right-controls">
+              <span id="soundWrap" class="sound-wrap">
+                <span class="tooltip">
+                  <button id="soundToggle" class="sound-button">🔇</button>
+                  <span class="tooltiptext">Wordt geïnformeerd als stemmen binnenkomen of zetels wijzigen</span>
+                </span>
+                <button id="soundPrompt" class="sound-prompt" style="display:none;">Geluid inschakelen</button>
+              </span>
               <span id="completedBadge" class="info-badge" style="display:none;"></span>
               <select id="yearSelect" class="year-select" aria-label="Kies verkiezingsjaar"></select>
             </li>
@@ -49,12 +56,14 @@
     </div>
     <!-- Include unified scripts -->
    <script src="js/year-nav.js"></script>
+   <script src="js/sound.js"></script>
    <script src="js/auto_refresh.js"></script>
    <script src="js/app.js"></script>
 
     <script>
         function loadYearData(year) { RestzetelsApp.loadZetels(year); }
-        YearNav.init({ years: ['2021','2023','2025'], defaultYear: '2023', load: loadYearData });
+        YearNav.init({ load: loadYearData });
+        Sound.init();
         AutoRefresh.init({ load: loadYearData });
     </script>
 

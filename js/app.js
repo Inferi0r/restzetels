@@ -348,8 +348,7 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
       badge.textContent = "Alle kiesregio's compleet";
       badge.style.display = 'inline-block';
     } else {
-      badge.style.display = 'none';
-      badge.textContent = '';
+      // Do not override countdown; leave badge as-is for AutoRefresh to manage
     }
   }
 

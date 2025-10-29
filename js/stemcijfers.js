@@ -123,7 +123,7 @@
       const kiesraadDates = {
         '2021': '26/03/2021, 12:00',
         '2023': '01/12/2023, 10:00 (2e zitting: 04/12/2023)',
-        '2025': '07/12/2025, 10:00'
+        '2025': '07/11/2025, 10:00'
       };
       const label = kiesraadDates[String(year)] || '';
       lu.textContent = label ? `Uitslag Kiesraad: ${label}` : '';

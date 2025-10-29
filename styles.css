@@ -114,6 +114,14 @@ nav ul li a.active {
   border-radius: 5px;
   background-color: #e7e7e7;
   cursor: pointer;
+  /* Custom dropdown arrow positioned slightly inward */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center; /* move arrow a bit inward */
+  padding-right: 34px; /* space for the arrow */
 }
 
 .year-select:hover {
@@ -146,6 +154,77 @@ nav ul li a.active {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   font-size: 14px;
   pointer-events: none; /* info only */
+}
+
+.sound-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-right: 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #e7e7e7;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.sound-button:hover {
+  background-color: #ddd;
+}
+
+.sound-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.sound-prompt {
+  position: absolute;
+  top: 120%;       /* below the sound button */
+  right: 100%;      /* to the left of the sound button */
+  margin-right: 8px;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #ffeeba;
+  color: #5a4400;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.sound-prompt:hover {
+  background-color: #ffe39a;
+}
+
+/* Tooltip for sound button */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  position: absolute;
+  left: 100%; /* position to the right */
+  top: 100%;  /* and below */
+  margin-left: 8px;
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
 
 #latestRestSeatImpactContainer {
