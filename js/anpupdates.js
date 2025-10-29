@@ -43,12 +43,11 @@
 
   function renderSortableTable(container, rows){
     const columns = [
-      {key:'Key', label:'Key'},
+      {key:'Status', label:'Status'},
+      {key:'Updated', label:'Laatste Update', display:'UpdatedDisplay'},
       {key:'Type', label:'Type'},
       {key:'CBS', label:'CBS Code'},
       {key:'Label', label:'Label'},
-      {key:'Status', label:'Status'},
-      {key:'Updated', label:'Laatste Update', display:'UpdatedDisplay'},
       {key:'Parent', label:'Parent'},
       {key:'Huidig', label:'Grootste partijen (huidig)'},
       {key:'Vorige', label:'Grootste partijen (vorige)'}

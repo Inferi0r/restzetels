@@ -349,9 +349,11 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
       tryFetchKiesraadVotes(year)
     ]);
     const anpVotes = bundle.anp_votes;
+    const lastUpdate = bundle.anp_last_update;
     const nosIndex = bundle.nos_index;
     // Badge visibility is centralized in AutoRefresh; do not set here
-    if (nosIndex) showLatestUpdateFromNos(nosIndex);
+    if (nosIndex) { showLatestUpdateFromNos(nosIndex); }
+    if (window.Ticker) { try { Ticker.update({ nosIndex, anpLastUpdate: lastUpdate }); } catch(e){} }
 
     let votesData = anpVotes;
     if (kiesraadData && Array.isArray(kiesraadData)) {

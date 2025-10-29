@@ -94,36 +94,88 @@
   }
 
   function updateLastUpdates(lastUpdateData, nosData, votesData, year){
-    // ANP last update (global timestamp)
-    const lu = document.getElementById('lastUpdateANP');
-    if (lu) {
-      const kiesraadDates = {
-        '2021': '26/03/2021, 12:00',
-        '2023': '01/12/2023, 10:00 (2e zitting: 04/12/2023)',
-        '2025': '07/11/2025, 10:00'
-      };
-      const label = kiesraadDates[String(year)] || '';
-      lu.textContent = label ? `Uitslag Kiesraad: ${label}` : '';
-    }
-    // ANP latest local region
+    const container = document.getElementById('metaCards');
+    if (!container) return;
+    const cards = [];
+    // Helpers
+    const relTime = (ms) => {
+      if (!ms) return '';
+      const s = Math.max(0, Math.floor((Date.now() - ms)/1000));
+      if (s < 60) return `${s}s geleden`;
+      const m = Math.floor(s/60); if (m < 60) return `${m}m geleden`;
+      const h = Math.floor(m/60); if (h < 24) return `${h}u geleden`;
+      const d = Math.floor(h/24); return `${d}d geleden`;
+    };
     const statusMap = new Map([[0,'Nulstand'],[2,'Tussenstand'],[4,'Eindstand']]);
-    const localRegion = lastUpdateData?.views?.find(v => v.type === 0);
-    if (localRegion) {
-      const ts = new Date(localRegion.updated * 1000).toLocaleString();
-      const statusText = statusMap.get(localRegion.status) || 'Onbekend';
-      const el = document.getElementById('lastUpdatedLocalRegionANP');
-      if (el) el.textContent = `Laatste gemeente via ANP: ${ts} uit ${localRegion.label} (${statusText})`;
+
+    // 1) Kiesraad (static per year)
+    const kiesraadDates = {
+      '2021': '26/03/2021, 12:00',
+      '2023': '01/12/2023, 10:00 (2e zitting: 04/12/2023)',
+      '2025': '07/11/2025, 10:00'
+    };
+    const krLabel = kiesraadDates[String(year)] || '';
+    if (krLabel) {
+      cards.push(
+        `<div class="meta-card" title="Uitslag Kiesraad">
+           <div class="meta-row">
+             <span class="chip chip--kiesraad">Kiesraad</span>
+             <span class="meta-title">Uitslag</span>
+           </div>
+           <div class="meta-row">
+             <span class="meta-exact">${krLabel}</span>
+           </div>
+         </div>`
+      );
     }
-    // NOS latest update
-    if (nosData?.gemeentes?.length) {
-      const sorted = nosData.gemeentes.slice().sort((a,b)=>new Date(b.publicatie_datum_tijd)-new Date(a.publicatie_datum_tijd));
+
+    // 2) ANP latest gemeente
+    const anpViews = Array.isArray(lastUpdateData?.views) ? lastUpdateData.views : [];
+    const anpGemeenten = anpViews.filter(v => v && v.type === 0);
+    if (anpGemeenten.length) {
+      const latestAnp = anpGemeenten.slice().sort((a,b)=> (b.updated||0)-(a.updated||0))[0];
+      const tsMs = (latestAnp.updated||0) * 1000;
+      const statusText = statusMap.get(latestAnp.status) || 'Onbekend';
+      cards.push(
+        `<div class="meta-card" title="Laatste gemeente via ANP">
+           <div class="meta-row">
+             <span class="chip chip--source chip--source-anp">ANP</span>
+             <span class="chip ${statusText==='Eindstand'?'chip--eindstand':(statusText==='Tussenstand'?'chip--tussenstand':'chip--nulstand')}"><span class="chip-dot"></span>${statusText}</span>
+             <span class="meta-title">${latestAnp.label || ''}</span>
+           </div>
+           <div class="meta-row">
+             <span class="meta-exact">${new Date(tsMs).toLocaleString()}</span>
+             <span class="ticker-dot">•</span>
+             <span class="muted small">${relTime(tsMs)}</span>
+           </div>
+         </div>`
+      );
+    }
+
+    // 3) NOS latest gemeente
+    const nosGemeenten = Array.isArray(nosData?.gemeentes) ? nosData.gemeentes : [];
+    if (nosGemeenten.length) {
+      const sorted = nosGemeenten.slice().sort((a,b)=> new Date(b.publicatie_datum_tijd)-new Date(a.publicatie_datum_tijd));
       const latest = sorted[0];
-      const ts = new Date(latest.publicatie_datum_tijd).toLocaleString();
-      const name = latest.gemeente?.naam;
-      const status = latest.status;
-      const el = document.getElementById('latestUpdateFromNos');
-      if (el) el.textContent = `Laatste gemeente via NOS: ${ts} uit ${name} (${status})`;
+      const ts = latest.publicatie_datum_tijd ? new Date(latest.publicatie_datum_tijd) : null;
+      const status = latest.status || '';
+      cards.push(
+        `<div class="meta-card" title="Laatste gemeente via NOS">
+           <div class="meta-row">
+             <span class="chip chip--source chip--source-nos">NOS</span>
+             <span class="chip ${status.toLowerCase().indexOf('eind')===0?'chip--eindstand':(status.toLowerCase().indexOf('tussen')===0?'chip--tussenstand':'chip--nulstand')}"><span class="chip-dot"></span>${status}</span>
+             <span class="meta-title">${latest?.gemeente?.naam || ''}</span>
+           </div>
+           <div class="meta-row">
+             <span class="meta-exact">${ts ? ts.toLocaleString() : ''}</span>
+             <span class="ticker-dot">•</span>
+             <span class="muted small">${ts ? relTime(ts.getTime()) : ''}</span>
+           </div>
+         </div>`
+      );
     }
+
+    container.innerHTML = cards.join('');
   }
 
   function sortTableData(parties, sortColumn, sortOrder, lastSortedColumn, maps){
@@ -246,13 +298,14 @@
     const totalKR = Array.from(kiesraadVotesMap.values()).reduce((t,v)=>t+v,0);
     const kANP = totalANP/150, kNOS = totalNOS/150, kKR = totalKR/150;
     const vANP = Math.floor(0.25*kANP), vNOS = Math.floor(0.25*kNOS), vKR = Math.floor(0.25*kKR);
-    // Add total row
+    // Add total row (emphasized)
     const totalRow = tbody.insertRow();
+    totalRow.classList.add('total-row');
     totalRow.insertCell().textContent = '';
-    totalRow.insertCell().textContent = 'Totaal aantal geldige stemmen op lijsten:';
-    totalRow.insertCell().textContent = (anpNulstand && totalANP === 0) ? '' : totalANP.toLocaleString('nl-NL');
-    totalRow.insertCell().textContent = totalNOS ? totalNOS.toLocaleString('nl-NL') : '';
-    totalRow.insertCell().textContent = totalKR ? totalKR.toLocaleString('nl-NL') : '';
+    const totalLbl = totalRow.insertCell(); totalLbl.textContent = 'Totaal aantal geldige stemmen op lijsten:';
+    const totalAnpCell = totalRow.insertCell(); totalAnpCell.classList.add('num'); totalAnpCell.textContent = (anpNulstand && totalANP === 0) ? '' : totalANP.toLocaleString('nl-NL');
+    const totalNosCell = totalRow.insertCell(); totalNosCell.classList.add('num'); totalNosCell.textContent = totalNOS ? totalNOS.toLocaleString('nl-NL') : '';
+    const totalKrCell  = totalRow.insertCell(); totalKrCell.classList.add('num');  totalKrCell.textContent  = totalKR ? totalKR.toLocaleString('nl-NL') : '';
     totalRow.insertCell(); totalRow.insertCell(); totalRow.insertCell();
     // Kiesdeler row
     const kiesRow = tbody.insertRow();
@@ -273,6 +326,43 @@
     vRow.insertCell().textContent = totalNOS ? vNOS.toLocaleString('nl-NL') : '';
     vRow.insertCell().textContent = totalKR ? vKR.toLocaleString('nl-NL') : '';
     vRow.insertCell(); vRow.insertCell(); vRow.insertCell();
+
+    // Align total row numeric cells
+    try {
+      if (totalRow && totalRow.cells && totalRow.cells.length >= 5) {
+        totalRow.cells[2].classList.add('num');
+        totalRow.cells[3].classList.add('num');
+        totalRow.cells[4].classList.add('num');
+      }
+    } catch(e){}
+
+    // Build separate summary table for Kiesdeler and Voorkeurdrempel
+    try {
+      const summary = document.createElement('table');
+      const sBody = summary.createTBody();
+      // Kiesdeler row (no header)
+      const r1 = sBody.insertRow();
+      const r1Lbl = r1.insertCell(); r1Lbl.textContent = 'Kiesdeler:';
+      const r1Anp = r1.insertCell(); r1Anp.classList.add('num');
+      r1Anp.innerHTML = (anpNulstand && totalANP === 0) ? '' : `<div style=\"display:flex;align-items:center;justify-content:flex-end;height:100%;\"><span style=\"margin-right:5px;\">${Math.trunc(kANP).toLocaleString('nl-NL')}</span>${createFractionHTML(Math.round((kANP%1)*150),150)}</div>`;
+      const r1Nos = r1.insertCell(); r1Nos.classList.add('num');
+      r1Nos.innerHTML = totalNOS ? `<div style=\"display:flex;align-items:center;justify-content:flex-end;height:100%;\"><span style=\"margin-right:5px;\">${Math.trunc(kNOS).toLocaleString('nl-NL')}</span>${createFractionHTML(Math.round((kNOS%1)*150),150)}</div>` : '';
+      const r1Kr  = r1.insertCell(); r1Kr.classList.add('num');
+      r1Kr.innerHTML  = totalKR ? `<div style=\"display:flex;align-items:center;justify-content:flex-end;height:100%;\"><span style=\"margin-right:5px;\">${Math.trunc(kKR).toLocaleString('nl-NL')}</span>${createFractionHTML(Math.round((kKR%1)*150),150)}</div>` : '';
+      // Voorkeurdrempel row
+      const r2 = sBody.insertRow();
+      const r2Lbl = r2.insertCell(); r2Lbl.textContent = 'Voorkeurdrempel:';
+      const r2Anp = r2.insertCell(); r2Anp.classList.add('num'); r2Anp.textContent = (anpNulstand && totalANP === 0) ? '' : Math.floor(0.25*kANP).toLocaleString('nl-NL');
+      const r2Nos = r2.insertCell(); r2Nos.classList.add('num'); r2Nos.textContent = totalNOS ? Math.floor(0.25*kNOS).toLocaleString('nl-NL') : '';
+      const r2Kr  = r2.insertCell(); r2Kr.classList.add('num');  r2Kr.textContent  = totalKR ? Math.floor(0.25*kKR).toLocaleString('nl-NL') : '';
+      // Remove rows from main table and append summary table
+      try { tbody.removeChild(kiesRow); } catch(e){}
+      try { tbody.removeChild(vRow); } catch(e){}
+      const containerEl = document.getElementById(containerId);
+      const spacer = document.createElement('div'); spacer.style.height = '6px';
+      containerEl.appendChild(spacer);
+      containerEl.appendChild(summary);
+    } catch(e){}
   }
 
   async function loadStemcijfers(year){

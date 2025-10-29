@@ -61,6 +61,23 @@ nav {
   border-radius: 6px;
 }
 
+/* NOS ticker */
+.ticker-container {
+  display: none; /* shown when data available */
+  overflow: hidden;
+  white-space: nowrap;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: #fff;
+  padding: 6px 8px;
+  margin: 8px auto 12px auto;
+  max-width: 1200px;
+}
+.ticker-track { display: inline-flex; gap: 12px; will-change: transform; }
+.ticker-chip { display: inline-flex; align-items: center; gap: 8px; padding: 2px 6px; background: #f9fafb; border: 1px solid var(--color-border); border-radius: 999px; }
+.ticker-name { font-weight: 600; }
+.ticker-dot { color: var(--color-muted); }
+
 nav ul {
   list-style-type: none;
   margin: 0;
@@ -286,6 +303,29 @@ nav ul li a.active::after {
   font-style: italic;
 }
 
+/* Meta cards (Stemcijfers top) */
+.meta-cards {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 12px auto;
+  max-width: 1200px;
+}
+.meta-card {
+  flex: 1 1 320px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: #fff;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.meta-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.meta-title { font-weight: 600; }
+/* Kiesraad chip */
+.chip--kiesraad { background: #e6f4ea; color: #065f46; border: 1px solid #a7f3d0; font-size: 12px; padding: 2px 6px; }
+
 .flex-container {
   display: flex;
   justify-content: space-around; /* This will space the two items evenly */
@@ -302,6 +342,16 @@ nav ul li a.active::after {
 #seatsSummaryContainer .total-row {
   background-color: #f2f2f2; /* Same background as the header */
   font-weight: bold; /* Optional: if you want the text to be bold like the header */
+}
+
+/* Emphasized total row in Stemcijfers table */
+#tableContainer .total-row {
+  background-color: var(--color-header);
+  font-weight: 600;
+}
+#tableContainer .total-row td {
+  border-top: 2px solid var(--color-border);
+  border-bottom: 2px solid var(--color-border);
 }
 
 .sort-icon {
@@ -335,6 +385,14 @@ nav ul li a.active::after {
 #voteAverageContainer table td, #voteAverageContainer table th { padding-top: 4px; padding-bottom: 4px; }
 #voteAverageContainer table td { vertical-align: middle; }
 
+/* Mid-table title row */
+#voteAverageContainer .mid-title-row td.mid-title {
+  text-align: center;
+  font-weight: 600;
+  background: var(--color-header);
+  color: var(--color-text);
+}
+
 /* Improve separation for the first column in the averages table */
 #voteAverageContainer table th:first-child,
 #voteAverageContainer table td:first-child {
@@ -360,7 +418,7 @@ nav ul li a.active::after {
 @keyframes rowPulseFade { from { background-color: #eef6ff; } to { background-color: transparent; } }
 
 /* Hover panel for seat strip on averages header */
-.seatstrip-tooltip { position: relative; display: inline-block; }
+.seatstrip-tooltip { position: relative; display: table; margin: 0 auto; }
 .seatstrip-panel {
   visibility: hidden;
   opacity: 0;
@@ -405,6 +463,13 @@ nav ul li a.active::after {
 .chip--tussenstand .chip-dot { background: #3b82f6; }
 .chip--eindstand { background: #ecfdf5; color: #065f46; border-color: #a7f3d0; }
 .chip--eindstand .chip-dot { background: #10b981; }
+
+/* Source chips */
+.chip--source { font-size: 12px; padding: 2px 6px; }
+/* NOS brand: red */
+.chip--source-nos { background: #fde2e1; color: #e30613; border-color: #f8b4b2; }
+/* ANP brand: blue */
+.chip--source-anp { background: #e0ecff; color: #0057b8; border-color: #bcd4ff; }
 
 /* Responsive: for medium screens and below, move utilities (year, badge, sound) to a top banner above nav links */
 @media (max-width: 1500px) {
