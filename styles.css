@@ -102,6 +102,9 @@ nav ul {
   display: flex;        /* Use flexbox */
   justify-content: center; /* Always center the nav links */
   align-items: center;  /* Align items vertically */
+  max-width: 1200px;    /* center the content inside the banner */
+  margin-left: auto;    /* center */
+  margin-right: auto;   /* center */
 }
 
 .nav-center {
@@ -215,6 +218,10 @@ nav ul li a.active::after {
   margin-top: 18px; /* Space from the top element */
   margin-left: auto; /* Auto margin for horizontal centering */
 }
+
+/* Center the Zetelverdeling table on the page */
+#seatsSummaryContainer { max-width: 1200px; margin: 12px auto; }
+#seatsSummaryContainer table { margin-left: auto; margin-right: auto; }
 
 .info-badge {
   display: inline-block;
