@@ -1,3 +1,2 @@
-# macOS Finder metadata
-.DS_Store
-data/.DS_Store
+# macOS Finder metadata (ignore everywhere)
+**/.DS_Store

@@ -37,6 +37,26 @@
     return gemeenten.map(v => ({ name: v.label || '', status: mapStatus(v.status), ts: (v.updated||0)*1000, source: 'ANP' }));
   }
 
+  function signature(items){
+    return items.map(it => `${it.source}|${it.name}|${it.ts}`).join('||');
+  }
+
+  function refreshWhen(container, items){
+    try {
+      const track = container.querySelector('.ticker-track');
+      if (!track) return;
+      const spans = track.querySelectorAll('.ticker-when');
+      if (!spans.length) return;
+      const n = items.length;
+      for (let loop=0; loop<2; loop++) {
+        for (let i=0; i<n; i++) {
+          const idx = loop*n + i;
+          if (spans[idx]) spans[idx].textContent = relTime(items[i].ts);
+        }
+      }
+    } catch(e){}
+  }
+
   function renderChips(track, items){
     const html = items.map(it => {
       const when = relTime(it.ts);
@@ -59,27 +79,30 @@
     if (prefersReduce) return; // respect reduced motion
     const track = container.querySelector('.ticker-track');
     if (!track) return;
-    let x = 0; let lastTs = performance.now();
-    const speed = 60; // px/sec (doubled)
-    let paused = false; let rafId = 0;
-
+    const st = container._ticker || (container._ticker = { x:0, speed:60, paused:false, rafId:0, whenTimer:0, lastHalf:0, listenersAttached:false, sig:'' });
+    if (st.rafId) return; // already running
+    let lastTs = performance.now();
     function step(ts){
       const dt = (ts - lastTs)/1000; lastTs = ts;
-      if (!paused) {
-        x += speed * dt;
+      if (!st.paused) {
+        st.x += st.speed * dt;
         const half = track.scrollWidth / 2; // since we duplicated
-        if (x >= half) x -= half;
-        track.style.transform = `translateX(${-x}px)`;
+        st.lastHalf = half || st.lastHalf || 1;
+        if (st.x >= st.lastHalf) st.x -= st.lastHalf;
+        track.style.transform = `translateX(${-st.x}px)`;
       }
-      rafId = requestAnimationFrame(step);
+      st.rafId = requestAnimationFrame(step);
     }
-    const onEnter = ()=>{ paused = true; };
-    const onLeave = ()=>{ paused = false; };
-    container.addEventListener('mouseenter', onEnter);
-    container.addEventListener('focusin', onEnter);
-    container.addEventListener('mouseleave', onLeave);
-    container.addEventListener('focusout', onLeave);
-    rafId = requestAnimationFrame(step);
+    if (!st.listenersAttached) {
+      const onEnter = ()=>{ st.paused = true; };
+      const onLeave = ()=>{ st.paused = false; };
+      container.addEventListener('mouseenter', onEnter);
+      container.addEventListener('focusin', onEnter);
+      container.addEventListener('mouseleave', onLeave);
+      container.addEventListener('focusout', onLeave);
+      st.listenersAttached = true;
+    }
+    st.rafId = requestAnimationFrame(step);
   }
 
   function update(opts){
@@ -98,9 +121,30 @@
       .concat(buildItemsFromAnp(anp))
       .sort((a,b)=> b.ts - a.ts)
       .slice(0,5);
-    if (!items.length) { container.style.display='none'; return; }
+    if (!items.length) {
+      container.style.display='none';
+      const st = container._ticker;
+      if (st) {
+        try { if (st.rafId) cancelAnimationFrame(st.rafId); } catch(e){}
+        st.rafId = 0;
+        if (st.whenTimer) { clearInterval(st.whenTimer); st.whenTimer = 0; }
+      }
+      return;
+    }
     container.style.display='block';
-    renderChips(track, items);
+    const st = container._ticker || (container._ticker = { x:0, speed:60, paused:false, rafId:0, whenTimer:0, lastHalf:0, listenersAttached:false, sig:'' });
+    const sig = signature(items);
+    if (st.sig !== sig) {
+      // preserve scroll progress relative to previous width
+      const progress = st.lastHalf ? ((st.x % st.lastHalf) / st.lastHalf) : 0;
+      renderChips(track, items);
+      st.lastHalf = track.scrollWidth / 2;
+      st.x = progress * (st.lastHalf || 1);
+      st.sig = sig;
+    } else {
+      refreshWhen(container, items);
+    }
+    if (!st.whenTimer) st.whenTimer = setInterval(()=> refreshWhen(container, items), 1000);
     startScroll(container);
   }
 

@@ -324,7 +324,7 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
               if (diff !== 0) {
                 const cls = diff > 0 ? 'seat-diff seat-diff--pos' : 'seat-diff seat-diff--neg';
                 const sign = diff > 0 ? '+' : '';
-                const diffHtml = `<span class=\"${cls}\">&nbsp;(${sign}${diff})</span>`;
+                const diffHtml = `<span class=\"${cls}\">(${sign}${diff})</span>`;
                 totalSeats = `<span class=\"seat-total-wrap\" title=\"${title}\">${tsNum} ${diffHtml}</span>`;
               } else {
                 totalSeats = `<span class=\"seat-total-wrap\" title=\"${title}\">${tsNum}</span>`;

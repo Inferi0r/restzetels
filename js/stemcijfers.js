@@ -106,6 +106,16 @@
       const h = Math.floor(m/60); if (h < 24) return `${h}u geleden`;
       const d = Math.floor(h/24); return `${d}d geleden`;
     };
+    // Both past (… geleden) and future (over …) relative time
+    const relTimeSigned = (ms) => {
+      if (!ms) return '';
+      const now = Date.now();
+      const past = now >= ms; const diffS = Math.abs(Math.floor((now - ms)/1000));
+      if (diffS < 60) return past ? `${diffS}s geleden` : `over ${diffS}s`;
+      const m = Math.floor(diffS/60); if (m < 60) return past ? `${m}m geleden` : `over ${m}m`;
+      const h = Math.floor(m/60); if (h < 24) return past ? `${h}u geleden` : `over ${h}u`;
+      const d = Math.floor(h/24); return past ? `${d}d geleden` : `over ${d}d`;
+    };
     const pad2 = (n) => String(n).padStart(2,'0');
     const formatDateTimeNL = (ms, opts = {}) => {
       if (!ms) return '';
@@ -128,6 +138,17 @@
       '2025': '07-11-2025 10:00'
     };
     const krLabel = kiesraadDates[String(year)] || '';
+    // Parse first date/time portion (dd-mm-yyyy HH:MM[:SS]) to compute relative
+    const parseNLDateTime = (str) => {
+      if (!str) return 0;
+      const m = str.match(/^(\d{2})-(\d{2})-(\d{4})\s+(\d{2}):(\d{2})(?::(\d{2}))?/);
+      if (!m) return 0;
+      const dd = Number(m[1]), mm = Number(m[2]) - 1, yyyy = Number(m[3]);
+      const HH = Number(m[4]), MM = Number(m[5]);
+      const SS = m[6] ? Number(m[6]) : 0;
+      return new Date(yyyy, mm, dd, HH, MM, SS).getTime();
+    };
+    const krTs = parseNLDateTime(krLabel);
     if (krLabel) {
       cards.push(
         `<div class="meta-card" title="Uitslag Kiesraad">
@@ -137,6 +158,8 @@
            </div>
            <div class="meta-row">
              <span class="meta-exact">${krLabel}</span>
+             ${krTs ? '<span class="ticker-dot">•</span>' : ''}
+             ${krTs ? `<span class=\"muted small\">${relTimeSigned(krTs)}</span>` : ''}
            </div>
          </div>`
       );

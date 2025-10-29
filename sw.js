@@ -1,6 +1,6 @@
 // Service Worker: cache static assets and API bundle with stale-while-revalidate
 // Bump CACHE_VERSION to invalidate old caches on deploys
-const CACHE_VERSION = 'v2025-10-29-60';
+const CACHE_VERSION = 'v2025-10-29-65';
 const STATIC_CACHE = `static-${CACHE_VERSION}`;
 const DATA_CACHE = `data-${CACHE_VERSION}`;
 const API_CACHE = `api-${CACHE_VERSION}`;

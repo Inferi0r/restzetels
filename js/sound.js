@@ -78,7 +78,7 @@
 
   function isEnabled(){ return enabled; }
 
-  function playBeep({ freq=440, duration=0.12, volume=0.2, type='sine' }={}){
+  function playBeep({ freq=440, duration=0.3, volume=0.22, type='sine' }={}){
     if (!enabled || document.hidden) return;
     const audio = ensureContext();
     if (!audio) return;
@@ -95,8 +95,8 @@
   }
 
   function playNewVotes(){
-    // short, softer beep
-    playBeep({ freq: 660, duration: 0.10, volume: 0.15, type: 'sine' });
+    // 50% longer than previous (0.22s -> ~0.33s)
+    playBeep({ freq: 660, duration: 0.33, volume: 0.22, type: 'sine' });
   }
 
   function playSeatChange(){
@@ -104,21 +104,22 @@
     if (!enabled || document.hidden) return;
     const audio = ensureContext();
     if (!audio) return;
-    const doBeep = (t, freq) => {
+    const doBeep = (t, freq, dur=0.36, vol=0.28) => {
       const osc = audio.createOscillator();
       const gain = audio.createGain();
       osc.type = 'triangle';
       osc.frequency.setValueAtTime(freq, t);
       gain.gain.setValueAtTime(0, t);
-      gain.gain.linearRampToValueAtTime(0.25, t + 0.01);
-      gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.14);
+      gain.gain.linearRampToValueAtTime(vol, t + 0.015);
+      gain.gain.exponentialRampToValueAtTime(0.0001, t + dur);
       osc.connect(gain).connect(audio.destination);
       osc.start(t);
-      osc.stop(t + 0.16);
+      osc.stop(t + dur + 0.02);
     };
     const now = audio.currentTime;
-    doBeep(now, 550);
-    doBeep(now + 0.18, 880);
+    doBeep(now, 550, 0.36, 0.28);
+    // Start the second tone after the first finishes (gap ~20ms)
+    doBeep(now + 0.38, 880, 0.39, 0.30);
   }
 
   window.Sound = { init, isEnabled, setEnabled, playNewVotes, playSeatChange };
