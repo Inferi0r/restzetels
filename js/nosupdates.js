@@ -3,7 +3,20 @@
   const DO_BASE = 'https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata';
 
   async function safeFetchJSON(url){ try{ const r=await fetch(url); if(!r.ok) throw new Error(r.status); return await r.json(); } catch(e){ return null; } }
-  async function fetchNOS(year){ return await safeFetchJSON(`${DO_BASE}?year=${year}&source=nos_index`); }
+  async function fetchNOS(year){
+    const y = String(year);
+    if (await isFinalizedYear(y)) return await safeFetchJSON(`data/${y}/nos_index.json`);
+    return await safeFetchJSON(`${DO_BASE}?year=${y}&source=nos_index`);
+  }
+
+  let __kiesraadIndex = null;
+  async function isFinalizedYear(year){
+    const y = String(year);
+    if (!__kiesraadIndex) __kiesraadIndex = await safeFetchJSON(`votes_kiesraad.json`);
+    if (!__kiesraadIndex) return false;
+    const entry = Array.isArray(__kiesraadIndex) ? __kiesraadIndex : __kiesraadIndex[y];
+    return Array.isArray(entry) && entry.length > 0;
+  }
 
   function formatNumber(num){ return (typeof num==='number') ? num.toLocaleString('nl-NL') : ''; }
   function formatPercentage(promillage){ return (typeof promillage==='number') ? (promillage/10).toFixed(1)+'%' : ''; }

@@ -32,16 +32,33 @@
     return { list, keyToLabelShort, keyToLabelLong, keyToNOS, keyToListNumber };
   }
 
+  let __kiesraadIndex = null;
+  async function isFinalizedYear(year){
+    const y = String(year);
+    if (!__kiesraadIndex) {
+      __kiesraadIndex = await safeFetchJSON(`votes_kiesraad.json`);
+    }
+    if (!__kiesraadIndex) return false;
+    const entry = Array.isArray(__kiesraadIndex) ? __kiesraadIndex : __kiesraadIndex[y];
+    return Array.isArray(entry) && entry.length > 0;
+  }
+
   async function fetchANPVotes(year) {
-    return await safeFetchJSON(`${DO_BASE}?year=${encodeURIComponent(year)}&source=anp_votes`);
+    const y = String(year);
+    if (await isFinalizedYear(y)) return await safeFetchJSON(`data/${y}/anp_votes.json`);
+    return await safeFetchJSON(`${DO_BASE}?year=${encodeURIComponent(y)}&source=anp_votes`);
   }
 
   async function fetchANPLastUpdate(year) {
-    return await safeFetchJSON(`${DO_BASE}?year=${encodeURIComponent(year)}&source=anp_last_update`);
+    const y = String(year);
+    if (await isFinalizedYear(y)) return await safeFetchJSON(`data/${y}/anp_last_update.json`);
+    return await safeFetchJSON(`${DO_BASE}?year=${encodeURIComponent(y)}&source=anp_last_update`);
   }
 
   async function fetchNOSIndex(year) {
-    return await safeFetchJSON(`${DO_BASE}?year=${encodeURIComponent(year)}&source=nos_index`);
+    const y = String(year);
+    if (await isFinalizedYear(y)) return await safeFetchJSON(`data/${y}/nos_index.json`);
+    return await safeFetchJSON(`${DO_BASE}?year=${encodeURIComponent(y)}&source=nos_index`);
   }
 
   async function tryFetchKiesraadVotes(year) {

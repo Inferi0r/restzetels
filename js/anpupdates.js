@@ -4,7 +4,20 @@
 
   async function safeFetchJSON(url){ try{ const r=await fetch(url); if(!r.ok) throw new Error(r.status); return await r.json(); } catch(e){ return null; } }
   async function fetchPartyLabels(year){ const d=await safeFetchJSON(`partylabels.json`); const list=Array.isArray(d)?d:(d[String(year)]||[]); return new Map(list.map(p=>[p.key, p.labelShort])); }
-  async function fetchLastUpdate(year){ return await safeFetchJSON(`${DO_BASE}?year=${year}&source=anp_last_update`); }
+  async function fetchLastUpdate(year){
+    const y = String(year);
+    if (await isFinalizedYear(y)) return await safeFetchJSON(`data/${y}/anp_last_update.json`);
+    return await safeFetchJSON(`${DO_BASE}?year=${y}&source=anp_last_update`);
+  }
+
+  let __kiesraadIndex = null;
+  async function isFinalizedYear(year){
+    const y = String(year);
+    if (!__kiesraadIndex) __kiesraadIndex = await safeFetchJSON(`votes_kiesraad.json`);
+    if (!__kiesraadIndex) return false;
+    const entry = Array.isArray(__kiesraadIndex) ? __kiesraadIndex : __kiesraadIndex[y];
+    return Array.isArray(entry) && entry.length > 0;
+  }
 
   function createTypeMap(){ return new Map([[0,'Gemeente'],[1,'Provincie'],[2,'Rijk']]); }
   function createStatusMap(){ return new Map([[0,'Nulstand'],[2,'Tussenstand'],[4,'Eindstand']]); }

@@ -55,10 +55,30 @@ function main(array $args) : array
         $url .= $args['cbs_code'] . '.json';
     }
 
-    $jsonData = @file_get_contents($url);
-    if ($jsonData === false) {
-        return [ 'statusCode' => 502, 'body' => [ 'error' => 'Upstream fetch failed' ] ];
+    // Simple 10-second cache to reduce upstream load (especially for 2025 live updates)
+    $ttl = 10; // seconds
+    $cacheDir = sys_get_temp_dir() . '/restzetels_cache';
+    if (!is_dir($cacheDir)) { @mkdir($cacheDir, 0777, true); }
+    $cacheKey = sha1($year . '|' . $sourceKey . '|' . ($args['cbs_code'] ?? ''));
+    $cachePath = $cacheDir . '/' . $cacheKey . '.json';
+
+    if (file_exists($cachePath) && (time() - filemtime($cachePath) < $ttl)) {
+        $jsonData = @file_get_contents($cachePath);
+        if ($jsonData !== false) {
+            return [ 'body' => json_decode($jsonData, true) ];
+        }
     }
 
+    $jsonData = @file_get_contents($url);
+    if ($jsonData === false) {
+        // Try stale cache if available
+        if (file_exists($cachePath)) {
+            $stale = @file_get_contents($cachePath);
+            if ($stale !== false) return [ 'body' => json_decode($stale, true) ];
+        }
+        return [ 'statusCode' => 502, 'body' => [ 'error' => 'Upstream fetch failed' ] ];
+    }
+    // Write/update cache
+    @file_put_contents($cachePath, $jsonData);
     return [ 'body' => json_decode($jsonData, true) ];
 }
