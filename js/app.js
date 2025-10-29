@@ -171,8 +171,8 @@
         if (isNum) cls += ' num';
         if (needsSeatTotalCls) cls += ' seat-total-td';
         if (needsSeatTotalCls && row._totalSeatsTitle) {
-          // Use proper quotes in HTML; escape any embedded quotes to &quot;
-          extra += ` title="${String(row._totalSeatsTitle).replace(/"/g,'&quot;')}"`;
+          // Immediate hover tooltip via CSS using data-tip (avoid native title delay)
+          extra += ` data-tip="${String(row._totalSeatsTitle).replace(/"/g,'&quot;')}"`;
         }
         const classAttr = cls ? ` class=\"${cls.trim()}\"` : '';
         return `<td${classAttr}${extra}>${display}</td>`;
@@ -309,7 +309,7 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
             const expected = exitMap.get(norm(shortLabel));
             if (typeof expected === 'number' && !isNaN(expected)) {
               const diff = (tsNum || 0) - expected;
-              const title = `Ipsos Exitpoll: ${expected}`;
+              const title = `Exitpoll Ipsos: ${expected}`;
               if (diff !== 0) {
                 const cls = diff > 0 ? 'seat-diff seat-diff--pos' : 'seat-diff seat-diff--neg';
                 const sign = diff > 0 ? '+' : '';

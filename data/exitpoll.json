@@ -38,5 +38,23 @@
     { "party": "BIJ1", "seats": 0 },
     { "party": "BVNL", "seats": 0 },
     { "party": "OVERIG", "seats": 0 }
+  ],
+  "2025": [
+    { "party": "PVV", "seats": 25 },
+    { "party": "GL-PvdA", "seats": 20 },
+    { "party": "VVD", "seats": 23 },
+    { "party": "NSC", "seats": 0 },
+    { "party": "D66", "seats": 27 },
+    { "party": "BBB", "seats": 4 },
+    { "party": "CDA", "seats": 19 },
+    { "party": "SP", "seats": 3 },
+    { "party": "DENK", "seats": 3 },
+    { "party": "PVDD", "seats": 3 },
+    { "party": "FVD", "seats": 6 },
+    { "party": "SGP", "seats": 2 },
+    { "party": "CU", "seats": 1 },
+    { "party": "VOLT", "seats": 2 },
+    { "party": "JA21", "seats": 9 },
+    { "party": "50PLUS", "seats": 2 }
   ]
 }
