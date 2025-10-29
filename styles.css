@@ -102,9 +102,9 @@ nav ul {
   display: flex;        /* Use flexbox */
   justify-content: center; /* Always center the nav links */
   align-items: center;  /* Align items vertically */
-  max-width: 1200px;    /* center the content inside the banner */
-  margin-left: auto;    /* center */
-  margin-right: auto;   /* center */
+  max-width: 100%;      /* full width on mobile; container centers content */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .nav-center {
@@ -148,6 +148,8 @@ nav ul li a.active::after {
 /* Share bar */
 .share-bar { display:flex; gap:8px; justify-content:center; align-items:center; margin: 8px auto; }
 .share-btn {
+  -webkit-appearance: none;
+  appearance: none;
   padding: 6px 10px;
   border: 1px solid var(--color-border);
   background: #f9fafb;
@@ -155,6 +157,8 @@ nav ul li a.active::after {
   border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
+  line-height: 1.2;
+  white-space: nowrap;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -238,8 +242,16 @@ nav ul li a.active::after {
 }
 
 /* Center the Zetelverdeling table on the page */
-#seatsSummaryContainer { max-width: 1200px; margin: 12px auto; }
-#seatsSummaryContainer table { margin-left: auto; margin-right: auto; }
+#seatsSummaryContainer { max-width: 1200px; margin: 12px auto; padding: 0 12px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+#seatsSummaryContainer table { margin-left: auto; margin-right: auto; width: 100%; display: table; }
+#voteAverageContainer table { width: 100%; display: table; }
+
+/* Prevent horizontal page scroll; confine overflow to containers */
+/* Allow pinch-zoom and natural overflow; do not hide overflow globally */
+
+/* Make main data containers scrollable horizontally on small screens */
+#voteAverageContainer, #tableContainer { overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 0 12px; }
+#voteAverageContainer table, #tableContainer table { width: 100%; }
 
 .info-badge {
   display: inline-block;
