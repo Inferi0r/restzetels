@@ -318,9 +318,22 @@ nav ul li a.active::after {
 .averagevotetable-cell {
   display: flex;
   align-items: center;
-  min-height: 30px; /* Adjust this value as needed */
+  height: 16px;              /* tighter, consistent content height */
+  line-height: 16px;
 }
-.averagevotetable-cell .fraction-wrap { display: inline-block; transform: scale(0.7); transform-origin: left center; margin-left: 2px; }
+.averagevotetable-cell .fraction-wrap {
+  display: inline-block;
+  transform: scale(0.6);
+  transform-origin: left center;
+  margin-left: 2px;
+  line-height: 1;            /* keep fraction compact */
+}
+/* Override inline padding on fraction spans to normalize height */
+#voteAverageContainer .fraction-wrap span { padding: 0 !important; line-height: 1 !important; }
+/* Tighter, uniform row height for this table */
+#voteAverageContainer table tbody tr { height: 26px; }
+#voteAverageContainer table td, #voteAverageContainer table th { padding-top: 4px; padding-bottom: 4px; }
+#voteAverageContainer table td { vertical-align: middle; }
 
 /* Improve separation for the first column in the averages table */
 #voteAverageContainer table th:first-child,
