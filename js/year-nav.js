@@ -37,16 +37,16 @@
   }
 
   async function discoverYears(){
+    if (window.Data && typeof Data.discoverYears === 'function') return Data.discoverYears();
+    // Fallback if Data isn't available yet
     try {
       const res = await fetch('partylabels.json', { cache: 'no-store' });
       if (!res.ok) throw new Error('no partylabels');
       const data = await res.json();
-      if (Array.isArray(data)) return ['2021','2023','2025']; // fallback if someone gives array
-      const keys = Object.keys(data || {});
-      const years = keys.filter(k=>/^\d{4}$/.test(k));
+      if (Array.isArray(data)) return ['2021','2023','2025'];
+      const years = Object.keys(data||{}).filter(k=>/^\d{4}$/.test(k));
       if (years.length) return years.sort((a,b)=>parseInt(a,10)-parseInt(b,10));
     } catch(e) {}
-    // Final fallback
     return ['2021','2023','2025'];
   }
 

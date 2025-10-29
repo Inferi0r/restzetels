@@ -9,6 +9,7 @@
   function now(){ return Date.now(); }
   function isFresh(ts){ return (now() - (ts||0)) < TTL_MS; }
 
+  // URL-level cache to soften errors and respect 304s
   const urlCache = new Map(); // url -> last JSON
   async function safeFetchJSON(url){
     try{
@@ -25,6 +26,7 @@
     }
   }
 
+  // Finalized-year check centralization
   let __kiesraadIndex = null;
   async function isFinalizedYear(year){
     const y = String(year);
@@ -32,6 +34,35 @@
     if (!__kiesraadIndex) return false;
     const entry = Array.isArray(__kiesraadIndex) ? __kiesraadIndex : __kiesraadIndex[y];
     return Array.isArray(entry) && entry.length > 0;
+  }
+
+  // Party labels loader returning all common maps
+  async function fetchPartyLabels(year){
+    const y = String(year);
+    const data = await safeFetchJSON('partylabels.json');
+    const list = Array.isArray(data) ? data : (data && data[y]) || [];
+    const keyToLabelShort = new Map();
+    const keyToLabelLong = new Map();
+    const keyToNOS = new Map();
+    const keyToListNumber = new Map();
+    list.forEach((p, idx) => {
+      keyToLabelShort.set(p.key, p.labelShort || p.labelLong || '');
+      keyToLabelLong.set(p.key, p.labelLong || p.labelShort || '');
+      if (p.labelShortNOS) keyToNOS.set(p.key, p.labelShortNOS);
+      keyToListNumber.set(p.key, idx + 1);
+    });
+    return { list, keyToLabelShort, keyToLabelLong, keyToNOS, keyToListNumber };
+  }
+
+  // Discover available years (from partylabels.json keys; fallback to known years)
+  async function discoverYears(){
+    try {
+      const data = await safeFetchJSON('partylabels.json');
+      if (Array.isArray(data)) return ['2021','2023','2025'];
+      const years = Object.keys(data||{}).filter(k=>/^\d{4}$/.test(k));
+      if (years.length) return years.sort((a,b)=>parseInt(a,10)-parseInt(b,10));
+    } catch(e) {}
+    return ['2021','2023','2025'];
   }
 
   async function fetchLocalBundle(year){
@@ -84,5 +115,11 @@
     };
   }
 
-  window.Data = { fetchBundle };
+  window.Data = {
+    fetchBundle,
+    safeJSON: safeFetchJSON,
+    isFinalizedYear,
+    fetchPartyLabels,
+    discoverYears
+  };
 })();

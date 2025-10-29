@@ -19,6 +19,7 @@ const PRECACHE_URLS = [
   './js/config.js',
   './js/year-nav.js',
   './js/data.js',
+  './js/ui.js',
   './js/auto_refresh.js',
   './js/app.js',
   './js/stemcijfers.js',
@@ -69,7 +70,7 @@ function isStaticAsset(url){
 }
 
 function isFinalizedData(url){
-  return isSameOrigin(url) && /\/data\/(2021|2023)\/.+\.json$/.test(url);
+  return isSameOrigin(url) && /\/data\/\d{4}\/[^?]+\.json$/.test(url);
 }
 
 function isFunctionAPI(url){
@@ -128,4 +129,3 @@ self.addEventListener('fetch', event => {
     return;
   }
 });
-

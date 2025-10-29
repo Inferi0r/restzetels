@@ -34,3 +34,6 @@ Use your browser’s “View Page Source” (or prepend `view-source:`) on the A
 ## Repository notes
 - 2023 logic is the correctness baseline for seats/rest seats and data joins.
 - Year-specific assets (e.g., party labels and optional Kiesraad totals) can be added alongside the generic code to enable full feature parity for new years.
+
+## Google Analytics
+- Realtime overview: https://analytics.google.com/analytics/web/#/a2777124p417078801/realtime/overview

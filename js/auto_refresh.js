@@ -23,11 +23,9 @@ const REFRESH_INTERVAL_SECONDS = 30; // change here if needed
     try { const r = await fetch(url, { cache: 'no-store' }); if (!r.ok) throw new Error(r.status); return await r.json(); } catch(e){ return null; }
   }
 
+  // Use shared finalized-year logic
   async function isFinalizedYear(year){
-    if (!finalizedCache) finalizedCache = await loadJSON('votes_kiesraad.json');
-    if (!finalizedCache) return false;
-    const entry = Array.isArray(finalizedCache) ? finalizedCache : finalizedCache[String(year)];
-    return Array.isArray(entry) && entry.length > 0;
+    return Data.isFinalizedYear(year);
   }
 
   async function fetchLastUpdate(year){

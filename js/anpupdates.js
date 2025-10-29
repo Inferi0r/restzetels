@@ -2,26 +2,21 @@
 (function(){
   const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
 
-  async function safeFetchJSON(url){ try{ const r=await fetch(url); if(!r.ok) throw new Error(r.status); return await r.json(); } catch(e){ return null; } }
-  async function fetchPartyLabels(year){ const d=await safeFetchJSON(`partylabels.json`); const list=Array.isArray(d)?d:(d[String(year)]||[]); return new Map(list.map(p=>[p.key, p.labelShort])); }
+  async function fetchPartyLabels(year){
+    const labels = await Data.fetchPartyLabels(year);
+    return labels.keyToLabelShort;
+  }
   async function fetchLastUpdate(year){
     // Prefer bundle to reduce calls
     if (window.Data && typeof Data.fetchBundle==='function') {
       const b = await Data.fetchBundle(year); return b && b.anp_last_update ? b.anp_last_update : null;
     }
     const y = String(year);
-    if (await isFinalizedYear(y)) return await safeFetchJSON(`data/${y}/anp_last_update.json`);
-    return await safeFetchJSON(`${DO_BASE}?year=${y}&source=anp_last_update`);
+    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/${y}/anp_last_update.json`);
+    return await Data.safeJSON(`${DO_BASE}?year=${y}&source=anp_last_update`);
   }
 
-  let __kiesraadIndex = null;
-  async function isFinalizedYear(year){
-    const y = String(year);
-    if (!__kiesraadIndex) __kiesraadIndex = await safeFetchJSON(`votes_kiesraad.json`);
-    if (!__kiesraadIndex) return false;
-    const entry = Array.isArray(__kiesraadIndex) ? __kiesraadIndex : __kiesraadIndex[y];
-    return Array.isArray(entry) && entry.length > 0;
-  }
+  // finalized year provided by Data
 
   function createTypeMap(){ return new Map([[0,'Gemeente'],[1,'Provincie'],[2,'Rijk']]); }
   function createStatusMap(){ return new Map([[0,'Nulstand'],[2,'Tussenstand'],[4,'Eindstand']]); }

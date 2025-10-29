@@ -1,26 +1,17 @@
 // Unified NOS updates table
 (function(){
   const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
-
-  async function safeFetchJSON(url){ try{ const r=await fetch(url); if(!r.ok) throw new Error(r.status); return await r.json(); } catch(e){ return null; } }
   async function fetchNOS(year){
     // Prefer bundle to reduce calls
     if (window.Data && typeof Data.fetchBundle==='function') {
       const b = await Data.fetchBundle(year); return b && b.nos_index ? b.nos_index : null;
     }
     const y = String(year);
-    if (await isFinalizedYear(y)) return await safeFetchJSON(`data/${y}/nos_index.json`);
-    return await safeFetchJSON(`${DO_BASE}?year=${y}&source=nos_index`);
+    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/${y}/nos_index.json`);
+    return await Data.safeJSON(`${DO_BASE}?year=${y}&source=nos_index`);
   }
 
-  let __kiesraadIndex = null;
-  async function isFinalizedYear(year){
-    const y = String(year);
-    if (!__kiesraadIndex) __kiesraadIndex = await safeFetchJSON(`votes_kiesraad.json`);
-    if (!__kiesraadIndex) return false;
-    const entry = Array.isArray(__kiesraadIndex) ? __kiesraadIndex : __kiesraadIndex[y];
-    return Array.isArray(entry) && entry.length > 0;
-  }
+  // finalized year provided by Data
 
 
   function createHeaderRow(headers){ const thead=document.createElement('thead'); const tr=thead.insertRow(); headers.forEach((h,idx)=>{ const th=document.createElement('th'); th.innerHTML = `${h} <span class="sort-icon"></span>`; th.dataset.idx = idx; th.style.cursor='pointer'; tr.appendChild(th); }); return thead; }

@@ -1,37 +1,24 @@
 // Unified ANP Stemmen per partij across years
 (function(){
   const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
-
-  async function safeFetchJSON(url){ try{ const r=await fetch(url); if(!r.ok) throw new Error(r.status); return await r.json(); } catch(e){ return null; } }
-
   async function fetchPartyLabels(year){
-    const data = await safeFetchJSON(`partylabels.json`);
-    const list = Array.isArray(data) ? data : (data[String(year)] || []);
-    const keyToLabelShort = new Map();
-    list.forEach(p=> keyToLabelShort.set(p.key, p.labelShort || p.labelLong || ''));
-    return keyToLabelShort;
+    const labels = await Data.fetchPartyLabels(year);
+    return labels.keyToLabelShort;
   }
   async function fetchANPVotes(year){
     const y = String(year);
     if (window.Data && typeof Data.fetchBundle==='function') { const b = await Data.fetchBundle(y); return b ? b.anp_votes : null; }
-    if (await isFinalizedYear(y)) return await safeFetchJSON(`data/${y}/anp_votes.json`);
-    return await safeFetchJSON(`${DO_BASE}?year=${y}&source=anp_votes`);
+    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/${y}/anp_votes.json`);
+    return await Data.safeJSON(`${DO_BASE}?year=${y}&source=anp_votes`);
   }
   async function fetchANPLastUpdate(year){
     const y = String(year);
     if (window.Data && typeof Data.fetchBundle==='function') { const b = await Data.fetchBundle(y); return b ? b.anp_last_update : null; }
-    if (await isFinalizedYear(y)) return await safeFetchJSON(`data/${y}/anp_last_update.json`);
-    return await safeFetchJSON(`${DO_BASE}?year=${y}&source=anp_last_update`);
+    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/${y}/anp_last_update.json`);
+    return await Data.safeJSON(`${DO_BASE}?year=${y}&source=anp_last_update`);
   }
 
-  let __kiesraadIndex = null;
-  async function isFinalizedYear(year){
-    const y = String(year);
-    if (!__kiesraadIndex) __kiesraadIndex = await safeFetchJSON(`votes_kiesraad.json`);
-    if (!__kiesraadIndex) return false;
-    const entry = Array.isArray(__kiesraadIndex) ? __kiesraadIndex : __kiesraadIndex[y];
-    return Array.isArray(entry) && entry.length > 0;
-  }
+  // finalized year provided by Data
 
   function createStatsTable(votesData, year){
     const table=document.createElement('table');

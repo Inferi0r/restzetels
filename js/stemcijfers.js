@@ -2,59 +2,36 @@
 (function(){
   const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
 
-  async function safeFetchJSON(url){
-    try { const r = await fetch(url); if(!r.ok) throw new Error(r.status); return await r.json(); } catch(e){ return null; }
-  }
-
   async function fetchPartyLabels(year){
-    const data = await safeFetchJSON(`partylabels.json`);
-    const list = Array.isArray(data) ? data : (data[String(year)] || []);
-    const keyToLabelLong = new Map();
-    const keyToLabelShort = new Map();
-    const keyToNOS = new Map();
-    const keyToListNumber = new Map();
-    list.forEach((p, idx) => {
-      keyToLabelLong.set(p.key, p.labelLong || p.labelShort || '');
-      keyToLabelShort.set(p.key, p.labelShort || '');
-      if (p.labelShortNOS) keyToNOS.set(p.key, p.labelShortNOS);
-      keyToListNumber.set(p.key, idx + 1);
-    });
-    return { list, keyToLabelLong, keyToLabelShort, keyToNOS, keyToListNumber };
+    return Data.fetchPartyLabels(year);
   }
 
   async function fetchANPVotes(year){
     const y = String(year);
-    if (await isFinalizedYear(y)) return await safeFetchJSON(`data/${y}/anp_votes.json`);
-    return await safeFetchJSON(`${DO_BASE}?year=${y}&source=anp_votes`);
+    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/${y}/anp_votes.json`);
+    return await Data.safeJSON(`${DO_BASE}?year=${y}&source=anp_votes`);
   }
   async function fetchANPLastUpdate(year){
     const y = String(year);
-    if (await isFinalizedYear(y)) return await safeFetchJSON(`data/${y}/anp_last_update.json`);
-    return await safeFetchJSON(`${DO_BASE}?year=${y}&source=anp_last_update`);
+    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/${y}/anp_last_update.json`);
+    return await Data.safeJSON(`${DO_BASE}?year=${y}&source=anp_last_update`);
   }
   async function fetchNOSIndex(year){
     const y = String(year);
-    if (await isFinalizedYear(y)) return await safeFetchJSON(`data/${y}/nos_index.json`);
-    return await safeFetchJSON(`${DO_BASE}?year=${y}&source=nos_index`);
+    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/${y}/nos_index.json`);
+    return await Data.safeJSON(`${DO_BASE}?year=${y}&source=nos_index`);
   }
 
-  let __kiesraadIndex = null;
-  async function isFinalizedYear(year){
-    const y = String(year);
-    if (!__kiesraadIndex) __kiesraadIndex = await safeFetchJSON(`votes_kiesraad.json`);
-    if (!__kiesraadIndex) return false;
-    const entry = Array.isArray(__kiesraadIndex) ? __kiesraadIndex : __kiesraadIndex[y];
-    return Array.isArray(entry) && entry.length > 0;
-  }
+  // Finalized logic is provided by Data
   async function fetchKiesraadVotes(year){
-    const data = await safeFetchJSON(`votes_kiesraad.json`);
+    const data = await Data.safeJSON(`votes_kiesraad.json`);
     if (!data) return null;
     if (Array.isArray(data)) return data; // backward compat
     return data[String(year)] || null;
   }
 
   function createFractionHTML(numerator, denominator){
-    return `<div style="display:inline-block;text-align:center;font-size:smaller;"><span style="display:block;border-bottom:1px solid;padding-bottom:2px;">${numerator}</span><span style="display:block;padding-top:2px;">${denominator}</span></div>`;
+    return (window.UI && UI.createFractionHTML) ? UI.createFractionHTML(numerator, denominator) : `${numerator}/${denominator}`;
   }
 
   function buildStats(anpVotes, nosIndex){

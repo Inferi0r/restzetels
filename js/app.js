@@ -3,68 +3,29 @@
 (function () {
   const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
 
-  async function safeFetchJSON(url) {
-    try {
-      const res = await fetch(url);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return await res.json();
-    } catch (e) {
-      return null;
-    }
-  }
-
-  async function fetchPartyLabels(year) {
-    // unified partylabels.json with per-year arrays
-    const url = `partylabels.json`;
-    const data = await safeFetchJSON(url);
-    if (!data) return { list: [], keyToLabelShort: new Map(), keyToLabelLong: new Map(), keyToNOS: new Map(), keyToListNumber: new Map() };
-    const list = Array.isArray(data) ? data : (data[String(year)] || []);
-    const keyToLabelShort = new Map();
-    const keyToLabelLong = new Map();
-    const keyToNOS = new Map();
-    const keyToListNumber = new Map();
-    list.forEach((p, idx) => {
-      keyToLabelShort.set(p.key, p.labelShort);
-      keyToLabelLong.set(p.key, p.labelLong);
-      if (p.labelShortNOS) keyToNOS.set(p.key, p.labelShortNOS);
-      keyToListNumber.set(p.key, idx + 1);
-    });
-    return { list, keyToLabelShort, keyToLabelLong, keyToNOS, keyToListNumber };
-  }
-
-  let __kiesraadIndex = null;
-  async function isFinalizedYear(year){
-    const y = String(year);
-    if (!__kiesraadIndex) {
-      __kiesraadIndex = await safeFetchJSON(`votes_kiesraad.json`);
-    }
-    if (!__kiesraadIndex) return false;
-    const entry = Array.isArray(__kiesraadIndex) ? __kiesraadIndex : __kiesraadIndex[y];
-    return Array.isArray(entry) && entry.length > 0;
-  }
-
+  // Legacy helpers (kept for compatibility if referenced elsewhere)
   async function fetchANPVotes(year) {
     const y = String(year);
-    if (await isFinalizedYear(y)) return await safeFetchJSON(`data/${y}/anp_votes.json`);
-    return await safeFetchJSON(`${DO_BASE}?year=${encodeURIComponent(y)}&source=anp_votes`);
+    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/${y}/anp_votes.json`);
+    return await Data.safeJSON(`${DO_BASE}?year=${encodeURIComponent(y)}&source=anp_votes`);
   }
 
   async function fetchANPLastUpdate(year) {
     const y = String(year);
-    if (await isFinalizedYear(y)) return await safeFetchJSON(`data/${y}/anp_last_update.json`);
-    return await safeFetchJSON(`${DO_BASE}?year=${encodeURIComponent(y)}&source=anp_last_update`);
+    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/${y}/anp_last_update.json`);
+    return await Data.safeJSON(`${DO_BASE}?year=${encodeURIComponent(y)}&source=anp_last_update`);
   }
 
   async function fetchNOSIndex(year) {
     const y = String(year);
-    if (await isFinalizedYear(y)) return await safeFetchJSON(`data/${y}/nos_index.json`);
-    return await safeFetchJSON(`${DO_BASE}?year=${encodeURIComponent(y)}&source=nos_index`);
+    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/${y}/nos_index.json`);
+    return await Data.safeJSON(`${DO_BASE}?year=${encodeURIComponent(y)}&source=nos_index`);
   }
 
   async function tryFetchKiesraadVotes(year) {
     // Unified local file with per-year keys
     const url = `votes_kiesraad.json`;
-    const data = await safeFetchJSON(url);
+    const data = await Data.safeJSON(url);
     if (!data) return null;
     if (Array.isArray(data)) return data; // backward compat if ever array
     return data[String(year)] || null;
@@ -93,7 +54,7 @@
     return anpLikeData.parties.reduce((acc, p) => acc + parseInt(p.results.current.votes || 0, 10), 0);
   }
 
-  // Math helpers
+  // Fraction helpers: keep original fraction behavior for exact same output
   function gcd(a, b) { return b ? gcd(b, a % b) : a; }
   function decimalToFraction(decimal) {
     const tolerance = 1e-6;
@@ -117,15 +78,7 @@
     }
     return `${Math.round(numerator)}/${Math.round(denominator)}`;
   }
-  function createFractionHTML(numerator, denominator) {
-    if (!numerator || !denominator) return '';
-    return (
-      `<div style="display: inline-block; text-align: center; font-size: smaller;">` +
-      `<span style="display: block; border-bottom: 1px solid; padding-bottom: 2px;">${numerator}</span>` +
-      `<span style="display: block; padding-top: 2px;">${denominator}</span>` +
-      `</div>`
-    );
-  }
+  const createFractionHTML = (n, d) => (window.UI && UI.createFractionHTML) ? UI.createFractionHTML(n, d) : `${n}/${d}`;
   function extractFraction(htmlString) {
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = htmlString;
@@ -150,17 +103,20 @@
   }
 
   function assignRestSeats({ votesData, total_restSeats }) {
+    // Track per-party rest count to avoid repeated Map reductions
+    votesData.parties.forEach(p => { p._restCount = 0; });
     for (let i = 1; i <= total_restSeats; i++) {
-      let maxVoteAverage = 0;
-      let partyWithMaxVoteAverage = null;
-      votesData.parties.forEach(party => {
-        if (party.fullSeats > 0) {
-          const restSeatsCount = Array.from(party.restSeats.values()).reduce((a, b) => a + b, 0);
-          const voteAverage = Math.round(party.results.current.votes / (party.fullSeats + restSeatsCount + 1));
-          if (voteAverage > maxVoteAverage) { maxVoteAverage = voteAverage; partyWithMaxVoteAverage = party; }
+      let maxVoteAverage = -Infinity;
+      let partyWithMax = null;
+      for (let idx = 0; idx < votesData.parties.length; idx++) {
+        const p = votesData.parties[idx];
+        if (p.fullSeats > 0) {
+          const denom = p.fullSeats + p._restCount + 1;
+          const va = Math.round(p.results.current.votes / denom);
+          if (va > maxVoteAverage) { maxVoteAverage = va; partyWithMax = p; }
         }
-      });
-      if (partyWithMaxVoteAverage) partyWithMaxVoteAverage.restSeats.set(i, 1);
+      }
+      if (partyWithMax) { partyWithMax._restCount += 1; partyWithMax.restSeats.set(i, 1); }
     }
     return votesData;
   }
@@ -170,11 +126,13 @@
     votesData.parties.forEach(party => {
       if (party.fullSeats > 0) {
         const row = { 'Partij': keyToLabel.get(party.key) };
+        const positions = Array.from(party.restSeats.keys()).sort((a,b)=>a-b);
+        let taken = 0;
         for (let i = 1; i <= total_restSeats; i++) {
-          const prevRest = Array.from(party.restSeats.keys()).filter(k => k < i).reduce((a, k) => a + party.restSeats.get(k), 0);
-          const voteAverage = party.results.current.votes / (party.fullSeats + prevRest + 1);
-          const fraction = decimalToFraction(voteAverage);
-          row[`${i}e`] = createFractionHTML(...fraction.split('/'));
+          while (taken < positions.length && positions[taken] < i) taken++;
+          const voteAverage = party.results.current.votes / (party.fullSeats + taken + 1);
+          row[`_num_${i}e`] = voteAverage;
+          row[`${i}e`] = '';
         }
         tableData.push(row);
       }
@@ -188,6 +146,12 @@
     if (!sortStates[column]) sortStates[column] = defaultOrder; else sortStates[column] = (sortStates[column] === 'asc' ? 'desc' : 'asc');
     const dataToSort = excludeLastRow ? data.slice(0, -1) : [...data];
     dataToSort.sort((a, b) => {
+      if (/^\d+e$/.test(column)) {
+        const key = `_num_${column}`;
+        const A = typeof a[key] === 'number' ? a[key] : 0;
+        const B = typeof b[key] === 'number' ? b[key] : 0;
+        return sortStates[column] === 'asc' ? (A - B) : (B - A);
+      }
       let A = a[column], B = b[column];
       if (column === 'Stemmen over' || column === 'Stemmen tekort') {
         A = parseInt((A || '').toString().replace(/[\.,]/g, ''), 10) || 0;
@@ -202,14 +166,14 @@
 
   function renderTable(containerId, data) {
     if (!data || data.length === 0) { document.getElementById(containerId).innerHTML = ''; return; }
-    const columns = Object.keys(data[0]);
+    const columns = Object.keys(data[0]).filter(k => !k.startsWith('_'));
     const header = columns.map(col => {
       let icon = '';
       if (sortStates[col] === 'asc') icon = '&#9650;'; else if (sortStates[col] === 'desc') icon = '&#9660;';
       return `<th data-column="${col}">${col} <span class="sort-icon">${icon}</span></th>`;
     }).join('');
     const rows = data.map((row, i) => {
-      const cells = Object.values(row).map(cell => `<td>${cell}</td>`).join('');
+      const cells = columns.map(col => `<td>${row[col]}</td>`).join('');
       const rowClass = i === data.length - 1 ? 'total-row' : '';
       return `<tr class="${rowClass}">${cells}</tr>`;
     }).join('');
@@ -246,7 +210,8 @@
       if (p.fullSeats === 0) {
         votesShortData.set(p.key, votes_per_seat - p.results.current.votes);
       } else {
-        const curTotalSeats = p.fullSeats + Array.from(p.restSeats.values()).reduce((a, b) => a + b, 0);
+        const restCount = (typeof p._restCount === 'number') ? p._restCount : Array.from(p.restSeats.values()).reduce((a, b) => a + b, 0);
+        const curTotalSeats = p.fullSeats + restCount;
         const nextAvg = p.results.current.votes / (curTotalSeats + 1);
         if (p.restSeats.get(total_restSeats) === 1) {
           maxAvgLastRest = p.results.current.votes / curTotalSeats;
@@ -256,16 +221,20 @@
         }
       }
     });
+    // Precompute global second-highest next average once
+    const sortedAvgs = Array.from(avgNext.values()).sort((a, b) => b - a);
+    const globalSecond = (sortedAvgs.length > 1) ? sortedAvgs[1] : (sortedAvgs[0] || 0);
     avgNext.forEach((nextAvg, key) => {
       const party = votesData.parties.find(pp => pp.key === key);
-      const curTotalSeats = party.fullSeats + Array.from(party.restSeats.values()).reduce((a, b) => a + b, 0);
+      const restCount = (typeof party._restCount === 'number') ? party._restCount : Array.from(party.restSeats.values()).reduce((a, b) => a + b, 0);
+      const curTotalSeats = party.fullSeats + restCount;
       if (nextAvg < maxAvgLastRest) {
         const votesNeeded = (maxAvgLastRest - nextAvg) * (curTotalSeats + 1);
         const surplus = party.results.current.votes - (curTotalSeats * maxAvgLastRest);
         surplusVotesData.set(key, surplus);
         votesShortData.set(key, votesNeeded);
       } else {
-        const secondHighest = Array.from(avgNext.values()).sort((a, b) => b - a)[1] || nextAvg;
+        const secondHighest = globalSecond || nextAvg;
         const avgCurrentLast = (party.results.current.votes / curTotalSeats);
         const surplus = Math.floor((avgCurrentLast - secondHighest) * curTotalSeats);
         const votesNeed = Math.ceil((secondHighest + 1) * (curTotalSeats + 1)) - party.results.current.votes;
@@ -343,7 +312,7 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
 
   function showLatestUpdateFromNos(nosData, prefix = 'NOS') {
     if (nosData && nosData.gemeentes && nosData.gemeentes.length > 0) {
-      const sorted = nosData.gemeentes.sort((a, b) => new Date(b.publicatie_datum_tijd) - new Date(a.publicatie_datum_tijd));
+      const sorted = nosData.gemeentes.slice().sort((a, b) => new Date(b.publicatie_datum_tijd) - new Date(a.publicatie_datum_tijd));
       const latest = sorted[0];
       const ts = new Date(latest.publicatie_datum_tijd).toLocaleString();
       const name = latest.gemeente.naam;
@@ -361,7 +330,7 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
     const completedEl = document.getElementById('completedRegionsCount'); if (completedEl) completedEl.innerHTML = '';
 
     // Fetch labels and data
-    const { list: partyLabelsList, keyToLabelShort, keyToLabelLong, keyToListNumber } = await fetchPartyLabels(year);
+    const { list: partyLabelsList, keyToLabelShort, keyToLabelLong, keyToListNumber } = await Data.fetchPartyLabels(year);
     const [bundle, kiesraadData] = await Promise.all([
       window.Data && typeof Data.fetchBundle==='function' ? Data.fetchBundle(year) : Promise.resolve({ anp_votes:null, anp_last_update:null, nos_index:null }),
       tryFetchKiesraadVotes(year)
@@ -391,11 +360,12 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
       let tableData = createVoteAverageTableData(updatedData, keyToLabelShort, total_restSeats);
       const maxValues = {};
       for (let i = 1; i <= total_restSeats; i++) {
-        maxValues[`${i}e`] = Math.max(...tableData.map(row => extractFraction(row[`${i}e`])));
+        const key = `_num_${i}e`;
+        maxValues[`${i}e`] = Math.max(...tableData.map(row => (typeof row[key] === 'number') ? row[key] : 0));
       }
       tableData.forEach(row => {
         for (let i = 1; i <= total_restSeats; i++) {
-          const dec = extractFraction(row[`${i}e`]);
+          const dec = row[`_num_${i}e`] || 0;
           const frac = dec % 1 > 0 ? decimalToFraction(dec % 1) : '';
           const [num, den] = (frac || '/').split('/');
           const html = `
