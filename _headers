@@ -1,0 +1,2 @@
+/
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://www.google-analytics.com; connect-src 'self' https://faas-ams3-2a2df116.doserverless.co https://www.google-analytics.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; frame-src https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com; worker-src 'self';

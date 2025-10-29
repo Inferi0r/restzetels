@@ -42,15 +42,14 @@ h1, h2 {
 table {
   border-collapse: separate;
   border-spacing: 0;
-  width: auto; /* Adjusted from 80% to auto */
-  margin-left: auto; /* Center the table */
-  margin-right: auto; /* Center the table */
-  display: table; /* Ensure the table is still displayed as a table */
-  max-width: 100%; /* This ensures tables don't overflow their container */
+  width: auto;                 /* natural content width */
+  margin-left: auto;           /* center */
+  margin-right: auto;          /* center */
+  display: table;
   font-variant-numeric: tabular-nums;
   border: 1px solid var(--color-border);
   border-radius: 6px;
-  overflow: hidden;
+  /* do not hide overflow; allow full table to be visible */
 }
 
 th, td {
@@ -243,8 +242,19 @@ nav ul li a.active::after {
 }
 
 /* Center the Zetelverdeling table on the page */
-#seatsSummaryContainer { max-width: 100%; margin: 12px auto; padding: 0 12px; overflow: visible; text-align: center; }
-#seatsSummaryContainer table { display: inline-table; width: auto; }
+#seatsSummaryContainer {
+  max-width: 100%;
+  margin: 12px auto;
+  padding: 0 12px;
+  overflow-x: auto;            /* allow horizontal scroll like ANP Updates */
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+}
+#seatsSummaryContainer table {
+  display: table;
+  width: auto;                 /* natural width so it can overflow and scroll */
+  margin: 0;                   /* left-align inside the scroll area */
+}
 #voteAverageContainer { max-width: 100%; margin: 12px auto; padding: 0 12px; overflow: visible; text-align: center; }
 #voteAverageContainer table { display: inline-table; width: auto; }
 
