@@ -17,6 +17,9 @@ const REFRESH_INTERVAL_SECONDS = 10; // reduced from 30s to 10s
   let inProgress = false;
   let finalizedActive = false; // guard to prevent countdown UI in finalized years
   let countdownActive = false; // additional guard for mobile Safari visibility glitches
+  let lastDisplayedRemaining = REFRESH_INTERVAL_SECONDS;
+  let lastResetAt = 0;
+  const DISPLAY_CLAMP_MS = 1500; // don't allow countdown to increase after this grace window
 
   // Tab title rolling state (only on Zetels page)
   let titleTickId = null;      // updates relative time text
@@ -106,19 +109,31 @@ const REFRESH_INTERVAL_SECONDS = 10; // reduced from 30s to 10s
     }
     nextFireAt = Date.now() + (REFRESH_INTERVAL_SECONDS * 1000);
     countdownActive = true;
+    lastResetAt = Date.now();
+    lastDisplayedRemaining = REFRESH_INTERVAL_SECONDS;
     const computeRemaining = () => {
       const ms = Math.max(0, nextFireAt - Date.now());
       // ceil so we don't display 0s while time remains
       remaining = Math.ceil(ms / 1000);
     };
     computeRemaining();
-    updateBadge(`Volgende update: ${remaining}s`);
+    const updateCountdownDisplay = () => {
+      // Monotonic countdown display: never increase unless just after a reset
+      let show = remaining;
+      if (show > lastDisplayedRemaining && (Date.now() - lastResetAt) > DISPLAY_CLAMP_MS) {
+        show = lastDisplayedRemaining;
+      } else {
+        lastDisplayedRemaining = show;
+      }
+      updateBadge(`Volgende update: ${show}s`);
+    };
+    updateCountdownDisplay();
 
     // Second display tick — uses nextFireAt so it remains correct even if tab was hidden
     secondTickId = setInterval(() => {
       if (finalizedActive) { clearTimers(); updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); return; }
       computeRemaining();
-      updateBadge(`Volgende update: ${remaining}s`);
+      updateCountdownDisplay();
     }, 1000);
 
     // Schedule the refresh using a timeout; reschedules itself
@@ -128,14 +143,16 @@ const REFRESH_INTERVAL_SECONDS = 10; // reduced from 30s to 10s
       fireTimeoutId = setTimeout(async () => {
         if (finalizedActive) { clearTimers(); updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); return; }
         remaining = 0;
-        updateBadge(`Volgende update: ${remaining}s`);
+        updateCountdownDisplay();
         if (!inProgress) {
           inProgress = true;
           try { await onFire(); } catch(e) {} finally { inProgress = false; }
         }
         nextFireAt = Date.now() + (REFRESH_INTERVAL_SECONDS * 1000);
+        lastResetAt = Date.now();
+        lastDisplayedRemaining = REFRESH_INTERVAL_SECONDS;
         computeRemaining();
-        updateBadge(`Volgende update: ${remaining}s`);
+        updateCountdownDisplay();
         scheduleFire();
       }, delay);
     };
@@ -165,7 +182,14 @@ const REFRESH_INTERVAL_SECONDS = 10; // reduced from 30s to 10s
       if (fireTimeoutId || countdownActive) {
         const ms = nextFireAt ? Math.max(0, nextFireAt - Date.now()) : 0;
         remaining = Math.ceil(ms / 1000);
-        updateBadge(`Volgende update: ${remaining}s`);
+        // Clamp display so it doesn't bounce upward after visibility changes
+        let show = remaining;
+        if (show > lastDisplayedRemaining && (Date.now() - lastResetAt) > DISPLAY_CLAMP_MS) {
+          show = lastDisplayedRemaining;
+        } else {
+          lastDisplayedRemaining = show;
+        }
+        updateBadge(`Volgende update: ${show}s`);
         return;
       }
       // Otherwise evaluate (e.g., first load or after year change)
