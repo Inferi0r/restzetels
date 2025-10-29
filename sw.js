@@ -28,8 +28,8 @@ const PRECACHE_URLS = [
   './js/anpstemmen.js',
   './js/sound.js',
   // Static datasets
-  './partylabels.json',
-  './votes_kiesraad.json',
+  './data/partylabels.json',
+  './data/votes_kiesraad.json',
   './data/2021/anp_votes.json',
   './data/2021/anp_last_update.json',
   './data/2021/nos_index.json',
@@ -65,7 +65,7 @@ function isStaticAsset(url){
     url.endsWith('.css') || url.endsWith('.js') || url.endsWith('.ico') ||
     url.endsWith('.png') || url.endsWith('.jpg') || url.endsWith('.svg') ||
     url.endsWith('index.html') || url.endsWith('.html') ||
-    url.endsWith('partylabels.json') || url.endsWith('votes_kiesraad.json')
+    url.endsWith('data/partylabels.json') || url.endsWith('data/votes_kiesraad.json')
   );
 }
 

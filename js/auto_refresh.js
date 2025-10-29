@@ -1,6 +1,6 @@
 // Auto-refresh controller shared across pages
 // Configurable interval at the top.
-const REFRESH_INTERVAL_SECONDS = 30; // change here if needed
+const REFRESH_INTERVAL_SECONDS = 10; // reduced from 30s to 10s
 
 (function(){
   const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
@@ -19,7 +19,7 @@ const REFRESH_INTERVAL_SECONDS = 30; // change here if needed
 
   function getYear(){
     const params = new URLSearchParams(window.location.search);
-    return params.get('year') || window.localStorage.getItem('selectedYear') || '2023';
+    return params.get('year') || window.localStorage.getItem('selectedYear') || '2025';
   }
 
   async function loadJSON(url){

@@ -1,0 +1,42 @@
+{
+  "2021": [
+    { "party": "VVD", "seats": 35 },
+    { "party": "D66", "seats": 27 },
+    { "party": "PVV", "seats": 17 },
+    { "party": "CDA", "seats": 14 },
+    { "party": "SP", "seats": 8 },
+    { "party": "PVDA", "seats": 9 },
+    { "party": "GL", "seats": 8 },
+    { "party": "FVD", "seats": 7 },
+    { "party": "PVDD", "seats": 6 },
+    { "party": "CU", "seats": 4 },
+    { "party": "VOLT", "seats": 4 },
+    { "party": "JA21", "seats": 3 },
+    { "party": "SGP", "seats": 3 },
+    { "party": "DENK", "seats": 2 },
+    { "party": "50PLUS", "seats": 1 },
+    { "party": "BBB", "seats": 1 },
+    { "party": "BIJ1", "seats": 1 }
+  ],
+  "2023": [
+    { "party": "PVV", "seats": 35 },
+    { "party": "GL-PvdA", "seats": 25 },
+    { "party": "VVD", "seats": 24 },
+    { "party": "NSC", "seats": 20 },
+    { "party": "D66", "seats": 10 },
+    { "party": "BBB", "seats": 7 },
+    { "party": "CDA", "seats": 5 },
+    { "party": "SP", "seats": 5 },
+    { "party": "FVD", "seats": 3 },
+    { "party": "PVDD", "seats": 3 },
+    { "party": "CU", "seats": 3 },
+    { "party": "SGP", "seats": 3 },
+    { "party": "DENK", "seats": 3 },
+    { "party": "Volt", "seats": 2 },
+    { "party": "JA21", "seats": 1 },
+    { "party": "50Plus", "seats": 1 },
+    { "party": "BIJ1", "seats": 0 },
+    { "party": "BVNL", "seats": 0 },
+    { "party": "OVERIG", "seats": 0 }
+  ]
+}

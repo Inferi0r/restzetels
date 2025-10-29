@@ -30,7 +30,7 @@
   let __kiesraadIndex = null;
   async function isFinalizedYear(year){
     const y = String(year);
-    if (!__kiesraadIndex) __kiesraadIndex = await safeFetchJSON('votes_kiesraad.json');
+    if (!__kiesraadIndex) __kiesraadIndex = await safeFetchJSON('data/votes_kiesraad.json');
     if (!__kiesraadIndex) return false;
     const entry = Array.isArray(__kiesraadIndex) ? __kiesraadIndex : __kiesraadIndex[y];
     return Array.isArray(entry) && entry.length > 0;
@@ -39,7 +39,7 @@
   // Party labels loader returning all common maps
   async function fetchPartyLabels(year){
     const y = String(year);
-    const data = await safeFetchJSON('partylabels.json');
+    const data = await safeFetchJSON('data/partylabels.json');
     const list = Array.isArray(data) ? data : (data && data[y]) || [];
     const keyToLabelShort = new Map();
     const keyToLabelLong = new Map();
@@ -54,10 +54,20 @@
     return { list, keyToLabelShort, keyToLabelLong, keyToNOS, keyToListNumber };
   }
 
+  // Exitpoll per year (static JSON in data/exitpoll.json)
+  async function fetchExitpoll(year){
+    try {
+      const data = await safeFetchJSON('data/exitpoll.json');
+      const y = String(year);
+      const arr = (data && data[y]) ? data[y] : [];
+      return Array.isArray(arr) ? arr : [];
+    } catch(e){ return []; }
+  }
+
   // Discover available years (from partylabels.json keys; fallback to known years)
   async function discoverYears(){
     try {
-      const data = await safeFetchJSON('partylabels.json');
+      const data = await safeFetchJSON('data/partylabels.json');
       if (Array.isArray(data)) return ['2021','2023','2025'];
       const years = Object.keys(data||{}).filter(k=>/^\d{4}$/.test(k));
       if (years.length) return years.sort((a,b)=>parseInt(a,10)-parseInt(b,10));
@@ -120,6 +130,7 @@
     safeJSON: safeFetchJSON,
     isFinalizedYear,
     fetchPartyLabels,
+    fetchExitpoll,
     discoverYears
   };
 })();

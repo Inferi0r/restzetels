@@ -7,7 +7,7 @@
 
   async function tryFetchKiesraadVotes(year) {
     // Unified local file with per-year keys
-    const url = `votes_kiesraad.json`;
+    const url = `data/votes_kiesraad.json`;
     const data = await Data.safeJSON(url);
     if (!data) return null;
     if (Array.isArray(data)) return data; // backward compat if ever array
@@ -127,6 +127,11 @@
         const B = typeof b[key] === 'number' ? b[key] : 0;
         return sortStates[column] === 'asc' ? (A - B) : (B - A);
       }
+      if (column === 'Totaal zetels') {
+        const A = typeof a._totalSeats === 'number' ? a._totalSeats : parseInt((a[column]||'').toString(),10) || 0;
+        const B = typeof b._totalSeats === 'number' ? b._totalSeats : parseInt((b[column]||'').toString(),10) || 0;
+        return sortStates[column] === 'asc' ? (A - B) : (B - A);
+      }
       let A = a[column], B = b[column];
       if (column === 'Stemmen over' || column === 'Stemmen tekort') {
         A = parseInt((A || '').toString().replace(/[\.,]/g, ''), 10) || 0;
@@ -159,7 +164,18 @@
       const cells = columns.map(col => {
         const val = row[col];
         const display = (val === undefined || val === null) ? '' : val;
-        return `<td${numericCols.has(col) ? ' class="num"' : ''}>${display}</td>`;
+        const isNum = numericCols.has(col);
+        const needsSeatTotalCls = (containerId === 'seatsSummaryContainer' && col === 'Totaal zetels');
+        let cls = '';
+        let extra = '';
+        if (isNum) cls += ' num';
+        if (needsSeatTotalCls) cls += ' seat-total-td';
+        if (needsSeatTotalCls && row._totalSeatsTitle) {
+          // Use proper quotes in HTML; escape any embedded quotes to &quot;
+          extra += ` title="${String(row._totalSeatsTitle).replace(/"/g,'&quot;')}"`;
+        }
+        const classAttr = cls ? ` class=\"${cls.trim()}\"` : '';
+        return `<td${classAttr}${extra}>${display}</td>`;
       }).join('');
       // Mark total row only when explicitly labeled (avoids mislabeling when there is no total row)
       const rowClass = (containerId === 'seatsSummaryContainer' && String(row['Partij']||'').trim() === 'Totaal') ? 'total-row' : '';
@@ -260,8 +276,9 @@
     return { votesShortData, surplusVotesData };
   }
 
-function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opts = {}) {
+function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, keyToLabelShort, opts = {}) {
     const hasVotes = opts.hasVotes !== false;
+    const exitMap = (opts && opts.exitMap) || null; // Map of normalized short label -> seats
     const safeData = votesData && Array.isArray(votesData.parties) ? votesData : { parties: [] };
     const calc = hasVotes ? calculateVotesShortAndSurplus(safeData) : { votesShortData: new Map(), surplusVotesData: new Map() };
     const votesShortData = calc.votesShortData;
@@ -269,6 +286,8 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
     const rows = [];
     let totalFull = 0, totalRest = 0;
     safeData.parties.forEach(p => {
+      let rowTotalSeatsNum; // ensure per-row numeric total for correct sorting
+      let rowTotalSeatsTitle; // optional hover title for td
       const name = keyToLabelLong.get(p.key) || keyToLabelLong.get(p.key?.toString?.()) || 'Onbekend';
       if (!name.toUpperCase().includes('OVERIG')) {
         const listNumber = keyToListNumber.get(p.key) || '';
@@ -279,11 +298,33 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
           totalFull += full; totalRest += restCount;
           const sRaw = (full === 0 && restCount === 0) ? parseInt(p.results.current.votes) : Math.ceil(surplusVotesData.get(p.key) || 0);
           const shRaw = Math.ceil(votesShortData.get(p.key) || 0);
-          totalSeats = full + restCount;
+          const tsNum = full + restCount;
+          totalSeats = tsNum;
           surplus = (typeof sRaw === 'number' && !isNaN(sRaw) && sRaw !== 0) ? sRaw.toLocaleString('nl-NL') : '';
           shortv = (typeof shRaw === 'number' && !isNaN(shRaw) && shRaw !== 0) ? shRaw.toLocaleString('nl-NL') : '';
+          // Exitpoll diff rendering + hover title
+          if (exitMap && keyToLabelShort) {
+            const norm = (s) => (s||'').toString().trim().toUpperCase();
+            const shortLabel = keyToLabelShort.get(p.key) || keyToLabelShort.get(p.key?.toString?.()) || '';
+            const expected = exitMap.get(norm(shortLabel));
+            if (typeof expected === 'number' && !isNaN(expected)) {
+              const diff = (tsNum || 0) - expected;
+              const title = `Ipsos Exitpoll: ${expected}`;
+              if (diff !== 0) {
+                const cls = diff > 0 ? 'seat-diff seat-diff--pos' : 'seat-diff seat-diff--neg';
+                const sign = diff > 0 ? '+' : '';
+                const diffHtml = `<span class=\"${cls}\">(${sign}${diff})</span>`;
+                totalSeats = `<span class=\"seat-total-wrap\" title=\"${title}\">${tsNum} ${diffHtml}</span>`;
+              } else {
+                totalSeats = `<span class=\"seat-total-wrap\" title=\"${title}\">${tsNum}</span>`;
+              }
+              rowTotalSeatsTitle = title;
+            }
+          }
+          // keep numeric for sorting
+          rowTotalSeatsNum = tsNum;
         }
-        rows.push({
+        const outRow = {
           'Lijst': listNumber,
           'Partij': name,
           'Volle zetels': full,
@@ -291,14 +332,18 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
           'Totaal zetels': totalSeats,
           'Stemmen over': surplus,
           'Stemmen tekort': shortv
-        });
+        };
+        if (typeof rowTotalSeatsNum !== 'undefined') outRow._totalSeats = rowTotalSeatsNum;
+        if (rowTotalSeatsTitle) outRow._totalSeatsTitle = rowTotalSeatsTitle;
+        rows.push(outRow);
       }
     });
     if (hasVotes) rows.push({ 'Lijst': '', 'Partij': 'Totaal', 'Volle zetels': totalFull, 'Rest zetels': totalRest, 'Totaal zetels': totalFull + totalRest });
     function customSort(data) {
       if (!hasVotes) return data;
       return data.slice(0, -1).sort((a, b) => {
-        const aVS = a['Totaal zetels'], bVS = b['Totaal zetels'];
+        const aVS = (typeof a._totalSeats === 'number') ? a._totalSeats : parseInt((a['Totaal zetels']||'').toString(),10) || 0;
+        const bVS = (typeof b._totalSeats === 'number') ? b._totalSeats : parseInt((b['Totaal zetels']||'').toString(),10) || 0;
         if (aVS > bVS) return -1; if (aVS < bVS) return 1;
         const av = parseInt((a['Stemmen tekort'] || '').toString().replace(/[\.,]/g, ''), 10) || 0;
         const bv = parseInt((b['Stemmen tekort'] || '').toString().replace(/[\.,]/g, ''), 10) || 0;
@@ -661,8 +706,18 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
       // Rest seats: build tooltip content for averages header
       updateSeatStripTooltip(updatedData, keyToLabelShort, total_restSeats);
 
+      // Exitpoll map for diffs
+      let exitMap = null;
+      try {
+        const xp = await Data.fetchExitpoll(year);
+        if (Array.isArray(xp) && xp.length) {
+          exitMap = new Map();
+          const norm = (s) => (s||'').toString().trim().toUpperCase();
+          xp.forEach(it => { if (it && typeof it.seats === 'number') exitMap.set(norm(it.party), it.seats); });
+        }
+      } catch(e){}
       // Seats summary
-      createSeatsSummaryTable(updatedData, keyToLabelLong, keyToListNumber, { hasVotes: true });
+      createSeatsSummaryTable(updatedData, keyToLabelLong, keyToListNumber, keyToLabelShort, { hasVotes: true, exitMap });
 
       // Latest rest seat impact — always visible with persistent since-timer
       let finalizedFlag=false; try{ finalizedFlag = await Data.isFinalizedYear(year); }catch(e){ finalizedFlag=false; }
@@ -671,7 +726,7 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
     } else {
       // No votes yet: clear detail tables and render summary with blanks, but keep impact banner visible with placeholders
       ['voteAverageContainer','seatStripTooltip'].forEach(id => { const el=document.getElementById(id); if (el) el.innerHTML=''; });
-      createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, { hasVotes: false });
+      createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, keyToLabelShort, { hasVotes: false });
       const impactEl = document.getElementById('latestRestSeatImpactContainer');
       if (impactEl) {
         impactEl.innerHTML = `

@@ -24,7 +24,7 @@
 
   // Finalized logic is provided by Data
   async function fetchKiesraadVotes(year){
-    const data = await Data.safeJSON(`votes_kiesraad.json`);
+    const data = await Data.safeJSON(`data/votes_kiesraad.json`);
     if (!data) return null;
     if (Array.isArray(data)) return data; // backward compat
     return data[String(year)] || null;

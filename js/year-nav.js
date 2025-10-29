@@ -40,7 +40,7 @@
     if (window.Data && typeof Data.discoverYears === 'function') return Data.discoverYears();
     // Fallback if Data isn't available yet
     try {
-      const res = await fetch('partylabels.json', { cache: 'no-store' });
+      const res = await fetch('data/partylabels.json', { cache: 'no-store' });
       if (!res.ok) throw new Error('no partylabels');
       const data = await res.json();
       if (Array.isArray(data)) return ['2021','2023','2025'];
