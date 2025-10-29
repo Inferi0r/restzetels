@@ -1,6 +1,20 @@
 
+:root {
+  --color-bg: #ffffff;
+  --color-text: #111827;
+  --color-muted: #6b7280;
+  --color-border: #e5e7eb;
+  --color-header: #f9fafb;
+  --color-accent: #0d47a1;
+  --color-accent-weak: #e0f2fe;
+}
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--color-text);
+  background: var(--color-bg);
   margin: 20px;
 }
 
@@ -9,29 +23,42 @@ h1, h2 {
 }
 
 table {
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   width: auto; /* Adjusted from 80% to auto */
   margin-left: auto; /* Center the table */
   margin-right: auto; /* Center the table */
   display: table; /* Ensure the table is still displayed as a table */
   max-width: 100%; /* This ensures tables don't overflow their container */
+  font-variant-numeric: tabular-nums;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 th, td {
-  border: 1px solid #ccc;
-  padding: 8px;
+  border-bottom: 1px solid var(--color-border);
+  padding: 10px 12px;
   text-align: left;
   white-space: nowrap; /* Prevent text from wrapping */
 }
 
 th {
-  background-color: #f2f2f2;
+  background-color: var(--color-header);
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
+
+tbody tr:nth-child(even) { background-color: #fafafa; }
+tbody tr:hover { background-color: #f5faff; }
 
 nav {
   background-color: #f2f2f2;
   padding: 10px 0;
   position: relative; /* allow absolute right controls */
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
 }
 
 nav ul {
@@ -61,16 +88,24 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;
-  color: black;
+  color: var(--color-text);
   font-size: 20px;
 }
 
 nav ul li a:hover {
-  color: blue;
+  color: var(--color-accent);
 }
 
 nav ul li a.active {
-  color: red;
+  color: var(--color-accent);
+  position: relative;
+}
+nav ul li a.active::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -6px;
+  height: 3px; border-radius: 2px;
+  background: var(--color-accent);
 }
 
 .year-toggle {
@@ -129,7 +164,7 @@ nav ul li a.active {
 }
 
 .highest-value {
-  background-color: rgb(145, 184, 145);
+  background-color: #e6f4ea;
 }
 
 #completedRegionsCount {
@@ -147,11 +182,11 @@ nav ul li a.active {
 .info-badge {
   display: inline-block;
   padding: 8px 12px;
-  background-color: #e0f7fa;
-  color: #0d47a1;
-  border: 1px solid #a7dceb;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: var(--color-accent-weak);
+  color: var(--color-accent);
+  border: 1px solid #bfe3ff;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
   font-size: 14px;
   pointer-events: none; /* info only */
 }
@@ -268,14 +303,39 @@ nav ul li a.active {
 
 .sort-icon {
   font-size: 0.8em; /* Adjust size as needed */
-  margin-left: 5px; /* Spacing between header text and icon */
+  margin-left: 6px; /* Spacing between header text and icon */
+  color: var(--color-muted);
 }
+
+/* Utility classes */
+.num { text-align: right; }
+.muted { color: var(--color-muted); }
+.small { font-size: 12px; }
 
 .averagevotetable-cell {
   display: flex;
   align-items: center;
   min-height: 30px; /* Adjust this value as needed */
 }
+
+/* Chips for statuses */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  font-size: 12px;
+  background: #f9fafb;
+}
+.chip-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+.chip--nulstand { background: #f3f4f6; color: #374151; }
+.chip--nulstand .chip-dot { background: #9ca3af; }
+.chip--tussenstand { background: #eff6ff; color: #1e3a8a; border-color: #bfdbfe; }
+.chip--tussenstand .chip-dot { background: #3b82f6; }
+.chip--eindstand { background: #ecfdf5; color: #065f46; border-color: #a7f3d0; }
+.chip--eindstand .chip-dot { background: #10b981; }
 
 /* Responsive: for medium screens and below, move utilities (year, badge, sound) to a top banner above nav links */
 @media (max-width: 1500px) {

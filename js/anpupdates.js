@@ -88,6 +88,23 @@
       });
     }
 
+    function statusChip(text){
+      const t = (text||'').toString().toLowerCase();
+      let cls = 'chip--nulstand';
+      if (t.indexOf('tussen')===0) cls = 'chip--tussenstand';
+      else if (t.indexOf('eind')===0) cls = 'chip--eindstand';
+      return `<span class="chip ${cls}"><span class="chip-dot"></span>${text||''}</span>`;
+    }
+
+    function relTime(ms){
+      if (!ms) return '';
+      const s = Math.max(0, Math.floor((Date.now() - ms)/1000));
+      if (s < 60) return `${s}s geleden`;
+      const m = Math.floor(s/60); if (m < 60) return `${m}m geleden`;
+      const h = Math.floor(m/60); if (h < 24) return `${h}u geleden`;
+      const d = Math.floor(h/24); return `${d}d geleden`;
+    }
+
     function drawBody(){
       tbody.innerHTML = '';
       const sorted = rows.slice().sort((a,b)=>{
@@ -107,7 +124,17 @@
         columns.forEach(col => {
           const td = tr.insertCell();
           const val = col.display ? r[col.display] : r[col.key];
-          td.textContent = (val!=null) ? val.toString() : '';
+          if (col.key === 'Status') {
+            td.innerHTML = statusChip(val);
+          } else if (col.key === 'Updated') {
+            const rel = relTime(r.Updated);
+            td.innerHTML = `${r.UpdatedDisplay || ''} <span class="muted small">${rel ? '('+rel+')' : ''}</span>`;
+          } else if (col.key === 'CBS') {
+            td.classList.add('num');
+            td.textContent = (val!=null) ? val.toString() : '';
+          } else {
+            td.textContent = (val!=null) ? val.toString() : '';
+          }
         });
       });
     }

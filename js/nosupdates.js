@@ -61,6 +61,23 @@
         if (key === sortState.key) icon.innerHTML = sortState.dir==='asc'?'&#9650;':'&#9660;'; else icon.innerHTML = '';
       });
     }
+    function statusChip(text){
+      const t = (text||'').toString().toLowerCase();
+      let cls = 'chip--nulstand';
+      if (t.indexOf('tussen')===0) cls = 'chip--tussenstand';
+      else if (t.indexOf('eind')===0) cls = 'chip--eindstand';
+      return `<span class="chip ${cls}"><span class="chip-dot"></span>${text||''}</span>`;
+    }
+
+    function relTime(ms){
+      if (!ms) return '';
+      const s = Math.max(0, Math.floor((Date.now() - ms)/1000));
+      if (s < 60) return `${s}s geleden`;
+      const m = Math.floor(s/60); if (m < 60) return `${m}m geleden`;
+      const h = Math.floor(m/60); if (h < 24) return `${h}u geleden`;
+      const d = Math.floor(h/24); return `${d}d geleden`;
+    }
+
     function draw(){
       tbody.innerHTML = '';
       const sorted = rows.slice().sort((a,b)=>{
@@ -73,7 +90,22 @@
       });
       sorted.forEach(r=>{
         const tr = tbody.insertRow();
-        cols.forEach(k=>{ const td=tr.insertCell(); const val = (k==='Laatste') ? r.LaatsteDisplay : r[k]; td.textContent = val || ''; });
+        cols.forEach(k=>{
+          const td=tr.insertCell();
+          if (k === 'Status') {
+            td.innerHTML = statusChip(r[k] || '');
+          } else if (k === 'Laatste') {
+            const rel = relTime(r.LaatsteTs);
+            td.innerHTML = `${r.LaatsteDisplay || ''} <span class="muted small">${rel ? '('+rel+')' : ''}</span>`;
+          } else if (k === 'InwonersGemeente' || k === 'InwonersProvincie') {
+            td.classList.add('num');
+            const val = r[k];
+            td.textContent = (val || val===0) ? Number(val).toLocaleString('nl-NL') : '';
+          } else {
+            const val = (k==='Laatste') ? r.LaatsteDisplay : r[k];
+            td.textContent = val || '';
+          }
+        });
       });
     }
     // attach sort handlers

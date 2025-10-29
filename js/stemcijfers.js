@@ -173,7 +173,8 @@
       {text:'Verschil stemmen', id:'voteDiff'},
       {text:'% verschil', id:'percentageDiff'}
     ];
-    headers.forEach(h=>{ const th=document.createElement('th'); th.dataset.sort=h.id; th.style.cursor='pointer'; th.innerHTML = `${h.text} <span class="sort-icon"></span>`; headerRow.appendChild(th); });
+    const numCols = new Set(['lijst','votes','nosVotes','kiesraadVotes','percentage','voteDiff','percentageDiff']);
+    headers.forEach(h=>{ const th=document.createElement('th'); th.dataset.sort=h.id; th.style.cursor='pointer'; th.innerHTML = `${h.text} <span class=\"sort-icon\"></span>`; if (numCols.has(h.id)) th.classList.add('num'); headerRow.appendChild(th); });
 
     // decorate parties with mapped values
     votesData.parties.forEach((p, i)=>{
@@ -210,14 +211,17 @@
         const prev = parseInt(p.results.previous.votes)||0; const curr = anpVotes;
         percDiff = prev === 0 && curr > 0 ? '∞' : ((curr - prev) / (prev || 1) * 100).toFixed(1).replace('.', ',');
 
-        const anpVotesDisplay = (anpNulstand && anpVotes === 0) ? '' : anpVotes.toLocaleString('nl-NL');
-        const nosVotesDisplay = nosVotes ? nosVotes.toLocaleString('nl-NL') : '';
-        const krVotesDisplay = krVotes ? krVotes.toLocaleString('nl-NL') : '';
-        const percDisplay = (anpNulstand && anpVotes === 0) ? '' : rawPerc;
-        const diffVotesDisplay = (anpNulstand && diffVotes === 0) ? '' : diffVotes.toLocaleString('nl-NL');
-        const percDiffDisplay = anpNulstand ? '' : percDiff;
-
-        [listNumber, partij, anpVotesDisplay, nosVotesDisplay, krVotesDisplay, percDisplay, diffVotesDisplay, percDiffDisplay].forEach(val=>{ const c=row.insertCell(); c.textContent = val; });
+        const cells = [
+          { id:'lijst', val: listNumber },
+          { id:'key', val: partij },
+          { id:'votes', val: (anpNulstand && anpVotes === 0) ? '' : anpVotes.toLocaleString('nl-NL') },
+          { id:'nosVotes', val: nosVotes ? nosVotes.toLocaleString('nl-NL') : '' },
+          { id:'kiesraadVotes', val: krVotes ? krVotes.toLocaleString('nl-NL') : '' },
+          { id:'percentage', val: (anpNulstand && anpVotes === 0) ? '' : rawPerc },
+          { id:'voteDiff', val: (anpNulstand && diffVotes === 0) ? '' : diffVotes.toLocaleString('nl-NL') },
+          { id:'percentageDiff', val: anpNulstand ? '' : percDiff }
+        ];
+        cells.forEach(({id,val})=>{ const c=row.insertCell(); if (numCols.has(id)) c.classList.add('num'); c.textContent = val; });
       });
     };
     renderBody();

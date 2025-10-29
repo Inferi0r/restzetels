@@ -141,13 +141,25 @@
   function renderTable(containerId, data) {
     if (!data || data.length === 0) { document.getElementById(containerId).innerHTML = ''; return; }
     const columns = Object.keys(data[0]).filter(k => !k.startsWith('_'));
+    // Right-align numeric columns for known tables
+    const numericCols = new Set();
+    if (containerId === 'seatsSummaryContainer') {
+      ['Lijst','Volle zetels','Rest zetels','Totaal zetels','Stemmen over','Stemmen tekort'].forEach(c=>numericCols.add(c));
+    } else if (containerId === 'restSeatContainer') {
+      ['Restzetel'].forEach(c=>numericCols.add(c));
+    }
     const header = columns.map(col => {
       let icon = '';
       if (sortStates[col] === 'asc') icon = '&#9650;'; else if (sortStates[col] === 'desc') icon = '&#9660;';
-      return `<th data-column="${col}">${col} <span class="sort-icon">${icon}</span></th>`;
+      const cls = numericCols.has(col) ? ' class="num"' : '';
+      return `<th data-column="${col}"${cls}>${col} <span class="sort-icon">${icon}</span></th>`;
     }).join('');
     const rows = data.map((row, i) => {
-      const cells = columns.map(col => `<td>${row[col]}</td>`).join('');
+      const cells = columns.map(col => {
+        const val = row[col];
+        const display = (val === undefined || val === null) ? '' : val;
+        return `<td${numericCols.has(col) ? ' class="num"' : ''}>${display}</td>`;
+      }).join('');
       const rowClass = i === data.length - 1 ? 'total-row' : '';
       return `<tr class="${rowClass}">${cells}</tr>`;
     }).join('');
