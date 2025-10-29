@@ -23,10 +23,13 @@
                 <li><a href="anpupdates.html">ANP Updates</a></li>
                 <li><a href="nosupdates.html">NOS Updates</a></li>
             </div>
-            <li id="yearToggle" class="year-toggle">Verkiezingen 2023</li>
+            <li><span id="completedBadge" class="info-badge" style="display:none;"></span></li>
+            <li class="year-select-li">
+                <select id="yearSelect" class="year-select" aria-label="Kies verkiezingsjaar"></select>
+            </li>
         </ul>
     </nav>
-    <div id="completedRegionsCount"></div>
+    
     <div id="latestRestSeatImpactContainer"></div>
     </div> 
     <h1>Zetelverdeling</h1>
@@ -45,36 +48,16 @@
             <div id="voteAverageContainer"></div>
         </div>
     </div>
-    <!-- Include the scripts -->
-   <script src="restzetels_2021.js"></script>
-   <script src="restzetels_2023.js"></script>
+    <!-- Include unified scripts -->
+   <script src="js/year-nav.js"></script>
+   <script src="js/app.js"></script>
 
     <script>
-        function loadYearData(year) {
-            if (year === '2021') {
-                loadDataFor2021(); // This function should be defined in last_update_2021.js
-            } else {
-                loadDataFor2023(); // This function should be defined in last_update_2023.js
-            }
-        }
-
-        document.getElementById('yearToggle').addEventListener('click', function() {
-            const toggle = document.getElementById('yearToggle');
-            if (toggle.textContent.includes('2023')) {
-                toggle.textContent = 'Verkiezingen 2021';
-                loadYearData('2021');
-            } else {
-                toggle.textContent = 'Verkiezingen 2023';
-                loadYearData('2023');
-            }
-        });
-
-        // Load 2023 data by default
-        loadYearData('2023');
+        function loadYearData(year) { RestzetelsApp.loadZetels(year); }
+        YearNav.init({ years: ['2021','2023','2025'], defaultYear: '2023', load: loadYearData });
     </script>
 
 
 
 </body>
 </html>
-

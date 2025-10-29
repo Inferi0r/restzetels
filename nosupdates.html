@@ -22,41 +22,23 @@
                 <li><a href="anpupdates.html">ANP Updates</a></li>
                 <li><a class="active" href="nosupdates.html">NOS Updates</a></li>
             </div>
-            <li id="yearToggle" class="year-toggle">Verkiezingen 2023</li>
+            <li class="year-select-li">
+                <select id="yearSelect" class="year-select" aria-label="Kies verkiezingsjaar"></select>
+            </li>
         </ul>
     </nav>
     <h1>NOS updates per kiesregio</h1>
 
     <div id="tableContainer"></div>
 
-    <!-- Include the scripts -->
-   <script src="nos_2023.js"></script>
-   <script src="nos_2021.js"></script>
+    <!-- Include unified script -->
+   <script src="js/year-nav.js"></script>
+   <script src="js/nosupdates.js"></script>
    <script>
-    function loadYearData(year) {
-        if (year === '2021') {
-            loadDataFor2021(); // This function should be defined in last_update_2021.js
-        } else {
-            loadDataFor2023(); // This function should be defined in last_update_2023.js
-        }
-    }
-
-    document.getElementById('yearToggle').addEventListener('click', function() {
-        const toggle = document.getElementById('yearToggle');
-        if (toggle.textContent.includes('2023')) {
-            toggle.textContent = 'Verkiezingen 2021';
-            loadYearData('2021');
-        } else {
-            toggle.textContent = 'Verkiezingen 2023';
-            loadYearData('2023');
-        }
-    });
-
-    // Load 2023 data by default
-    loadYearData('2023');
+    function loadYearData(year) { NOSUpdatesApp.loadNOSUpdates(year); }
+    YearNav.init({ years: ['2021','2023','2025'], defaultYear: '2023', load: loadYearData });
 </script>
     
     
 </body>
 </html>
-

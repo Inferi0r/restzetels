@@ -1,0 +1,232 @@
+// Unified Stemcijfers (votes per party) across years
+(function(){
+  const DO_BASE = 'https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata';
+
+  async function safeFetchJSON(url){
+    try { const r = await fetch(url); if(!r.ok) throw new Error(r.status); return await r.json(); } catch(e){ return null; }
+  }
+
+  async function fetchPartyLabels(year){
+    const data = await safeFetchJSON(`partylabels_${year}.json`);
+    const list = Array.isArray(data) ? data : [];
+    const keyToLabelLong = new Map();
+    const keyToLabelShort = new Map();
+    const keyToNOS = new Map();
+    const keyToListNumber = new Map();
+    list.forEach((p, idx) => {
+      keyToLabelLong.set(p.key, p.labelLong || p.labelShort || '');
+      keyToLabelShort.set(p.key, p.labelShort || '');
+      if (p.labelShortNOS) keyToNOS.set(p.key, p.labelShortNOS);
+      keyToListNumber.set(p.key, idx + 1);
+    });
+    return { list, keyToLabelLong, keyToLabelShort, keyToNOS, keyToListNumber };
+  }
+
+  async function fetchANPVotes(year){ return await safeFetchJSON(`${DO_BASE}?year=${year}&source=votes`); }
+  async function fetchANPLastUpdate(year){ return await safeFetchJSON(`${DO_BASE}?year=${year}&source=last_update`); }
+  async function fetchNOSIndex(year){ return await safeFetchJSON(`${DO_BASE}?year=${year}&source=nos`); }
+  async function fetchKiesraadVotes(year){ return await safeFetchJSON(`votes-kiesraad_${year}.js`); }
+
+  function createFractionHTML(numerator, denominator){
+    return `<div style="display:inline-block;text-align:center;font-size:smaller;"><span style="display:block;border-bottom:1px solid;padding-bottom:2px;">${numerator}</span><span style="display:block;padding-top:2px;">${denominator}</span></div>`;
+  }
+
+  function renderStatsTable(votesData){
+    const table = document.createElement('table');
+    const thead = table.createTHead();
+    const tbody = table.createTBody();
+    const headerRow = thead.insertRow();
+    ["", "Stemgerechtigden", "Opkomst", "Totale stemmen", "Ongeldige stemmen", "Blanco stemmen"].forEach(h => { const th = document.createElement('th'); th.textContent = h; headerRow.appendChild(th); });
+    const cur = tbody.insertRow();
+    cur.insertCell().textContent = "Huidig";
+    cur.insertCell().textContent = Number(votesData.voters?.current || 0).toLocaleString('nl-NL');
+    cur.insertCell().textContent = votesData.turnout?.current || '';
+    cur.insertCell().textContent = Number(votesData.turnoutCount?.current || 0).toLocaleString('nl-NL');
+    cur.insertCell().textContent = Number(votesData.invalid?.current || 0).toLocaleString('nl-NL');
+    cur.insertCell().textContent = Number(votesData.blank?.current || 0).toLocaleString('nl-NL');
+    const prev = tbody.insertRow();
+    prev.insertCell().textContent = "Vorige";
+    prev.insertCell().textContent = Number(votesData.voters?.previous || 0).toLocaleString('nl-NL');
+    prev.insertCell().textContent = votesData.turnout?.previous || '';
+    prev.insertCell().textContent = Number(votesData.turnoutCount?.previous || 0).toLocaleString('nl-NL');
+    prev.insertCell().textContent = Number(votesData.invalid?.previous || 0).toLocaleString('nl-NL');
+    prev.insertCell().textContent = Number(votesData.blank?.previous || 0).toLocaleString('nl-NL');
+    return table;
+  }
+
+  function updateLastUpdates(lastUpdateData, nosData, votesData){
+    // ANP last update (global timestamp)
+    const lu = document.getElementById('lastUpdateANP');
+    if (votesData?.updated && lu) lu.textContent = `Laatste update ANP: ${new Date(votesData.updated * 1000).toLocaleString()}`;
+    // ANP latest local region
+    const statusMap = new Map([[0,'Nulstand'],[2,'Tussenstand'],[4,'Eindstand']]);
+    const localRegion = lastUpdateData?.views?.find(v => v.type === 0);
+    if (localRegion) {
+      const ts = new Date(localRegion.updated * 1000).toLocaleString();
+      const statusText = statusMap.get(localRegion.status) || 'Onbekend';
+      const el = document.getElementById('lastUpdatedLocalRegionANP');
+      if (el) el.textContent = `Laatste gemeente via ANP: ${ts} uit ${localRegion.label} (${statusText})`;
+    }
+    // NOS latest update
+    if (nosData?.gemeentes?.length) {
+      const sorted = nosData.gemeentes.slice().sort((a,b)=>new Date(b.publicatie_datum_tijd)-new Date(a.publicatie_datum_tijd));
+      const latest = sorted[0];
+      const ts = new Date(latest.publicatie_datum_tijd).toLocaleString();
+      const name = latest.gemeente?.naam;
+      const status = latest.status;
+      const el = document.getElementById('latestUpdateFromNos');
+      if (el) el.textContent = `Laatste gemeente via NOS: ${ts} uit ${name} (${status})`;
+    }
+  }
+
+  function sortTableData(parties, sortColumn, sortOrder, lastSortedColumn, maps){
+    const { keyToLabelLong, keyToNOS, keyToListNumber } = maps;
+    return parties.sort((a,b)=>{
+      let A,B;
+      if (lastSortedColumn === 'lijst') { A = keyToListNumber.get(a.key); B = keyToListNumber.get(b.key); }
+      else if (sortColumn === 'votes' || sortColumn === 'voteDiff') {
+        A = parseInt(a.results.current.votes); B = parseInt(b.results.current.votes);
+        if (sortColumn === 'voteDiff') { A = parseInt(a.results.diff.votes); B = parseInt(b.results.diff.votes); }
+      } else if (sortColumn === 'nosVotes') {
+        // Handled in caller with mapped values
+        A = a.__nosVotes || 0; B = b.__nosVotes || 0;
+      } else if (sortColumn === 'kiesraadVotes') {
+        A = a.__kiesraadVotes || 0; B = b.__kiesraadVotes || 0;
+      } else if (sortColumn === 'key') {
+        A = keyToLabelLong.get(a.key) || ''; B = keyToLabelLong.get(b.key) || '';
+      } else if (sortColumn === 'percentage' || sortColumn === 'percentageDiff') {
+        A = parseFloat((a.results.current.percentage||'0').toString().replace(',', '.'));
+        B = parseFloat((b.results.current.percentage||'0').toString().replace(',', '.'));
+        if (sortColumn === 'percentageDiff') {
+          const dA = parseInt(a.results.diff.votes), vA = parseInt(a.results.current.votes);
+          const dB = parseInt(b.results.diff.votes), vB = parseInt(b.results.current.votes);
+          A = vA === 0 ? -Infinity : parseFloat(((dA / vA) * 100).toFixed(1));
+          B = vB === 0 ? -Infinity : parseFloat(((dB / vB) * 100).toFixed(1));
+        }
+      } else { A = a[sortColumn]; B = b[sortColumn]; }
+      if ([ 'lijst','votes','voteDiff','percentageDiff','nosVotes','kiesraadVotes'].includes(sortColumn)) return (sortOrder==='asc' ? (A-B) : (B-A));
+      A = (A||'').toString(); B = (B||'').toString();
+      return sortOrder==='asc' ? A.localeCompare(B, undefined, {numeric:true}) : B.localeCompare(A, undefined, {numeric:true});
+    });
+  }
+
+  function renderStemcijfersTable({containerId, votesData, nosVotesMap, kiesraadVotesMap, maps}){
+    const { keyToLabelLong, keyToNOS, keyToListNumber } = maps;
+    const table = document.createElement('table');
+    const thead = table.createTHead();
+    const tbody = table.createTBody();
+    const headerRow = thead.insertRow();
+    const headers = [
+      {text:'Lijst', id:'lijst'},
+      {text:'Partij', id:'key'},
+      {text:'Stemcijfers ANP', id:'votes'},
+      {text:'Stemcijfers NOS', id:'nosVotes'},
+      {text:'Stemcijfers Kiesraad', id:'kiesraadVotes'},
+      {text:'% ANP', id:'percentage'},
+      {text:'Verschil stemmen', id:'voteDiff'},
+      {text:'% verschil', id:'percentageDiff'}
+    ];
+    headers.forEach(h=>{ const th=document.createElement('th'); th.textContent=h.text; th.dataset.sort=h.id; headerRow.appendChild(th); });
+
+    // decorate parties with mapped values
+    votesData.parties.forEach((p, i)=>{
+      p.__origIndex = i + 1; // fallback list number
+      const nosKey = keyToNOS.get(p.key);
+      p.__nosVotes = nosKey ? (nosVotesMap.get(nosKey) || 0) : 0;
+      const listNumber = keyToListNumber.get(p.key);
+      p.__kiesraadVotes = listNumber ? (kiesraadVotesMap.get(listNumber) || 0) : 0;
+    });
+
+    // default sort by ANP votes desc
+    let sortColumn = 'votes', sortOrder = 'desc', lastSortedColumn = 'votes';
+    const renderBody = () => {
+      tbody.innerHTML = '';
+      const sorted = sortTableData(votesData.parties.slice(), sortColumn, sortOrder, lastSortedColumn, maps);
+      sorted.forEach(p=>{
+        const row = tbody.insertRow();
+        const listNumber = keyToListNumber.get(p.key) || p.__origIndex || '';
+        const partij = keyToLabelLong.get(p.key) || '';
+        const anpVotes = parseInt(p.results.current.votes)||0;
+        const nosVotes = p.__nosVotes || 0;
+        const krVotes = p.__kiesraadVotes || 0;
+        const perc = p.results.current.percentage || '';
+        const diffVotes = parseInt(p.results.diff.votes)||0;
+        let percDiff;
+        const prev = parseInt(p.results.previous.votes)||0; const curr = anpVotes;
+        percDiff = prev === 0 && curr > 0 ? '∞' : ((curr - prev) / (prev || 1) * 100).toFixed(1).replace('.', ',');
+        [listNumber, partij, anpVotes.toLocaleString('nl-NL'), nosVotes?nosVotes.toLocaleString('nl-NL'):'', krVotes?krVotes.toLocaleString('nl-NL'):'', perc, diffVotes.toLocaleString('nl-NL'), percDiff].forEach(val=>{ const c=row.insertCell(); c.textContent = val; });
+      });
+    };
+    renderBody();
+
+    // header click sorting
+    thead.querySelectorAll('th').forEach(th=>{
+      th.addEventListener('click',()=>{
+        const id = th.dataset.sort;
+        if (sortColumn === id) sortOrder = sortOrder==='asc'?'desc':'asc'; else { sortColumn = id; sortOrder = 'asc'; lastSortedColumn = id; }
+        renderBody();
+      });
+    });
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+    container.appendChild(table);
+
+    // Totals + kiesdeler rows
+    const totalANP = votesData.parties.reduce((t,p)=>t+parseInt(p.results.current.votes),0);
+    const totalNOS = Array.from(nosVotesMap.values()).reduce((t,v)=>t+v,0);
+    const totalKR = Array.from(kiesraadVotesMap.values()).reduce((t,v)=>t+v,0);
+    const kANP = totalANP/150, kNOS = totalNOS/150, kKR = totalKR/150;
+    const vANP = Math.floor(0.25*kANP), vNOS = Math.floor(0.25*kNOS), vKR = Math.floor(0.25*kKR);
+    // Add total row
+    const totalRow = tbody.insertRow();
+    totalRow.insertCell().textContent = '';
+    totalRow.insertCell().textContent = 'Totaal aantal geldige stemmen op lijsten:';
+    totalRow.insertCell().textContent = totalANP.toLocaleString('nl-NL');
+    totalRow.insertCell().textContent = totalNOS ? totalNOS.toLocaleString('nl-NL') : '';
+    totalRow.insertCell().textContent = totalKR ? totalKR.toLocaleString('nl-NL') : '';
+    totalRow.insertCell(); totalRow.insertCell(); totalRow.insertCell();
+    // Kiesdeler row
+    const kiesRow = tbody.insertRow();
+    kiesRow.insertCell();
+    kiesRow.insertCell().textContent = 'Kiesdeler:';
+    const anpCell = kiesRow.insertCell();
+    const nosCell = kiesRow.insertCell();
+    const krCell = kiesRow.insertCell();
+    const fixedDen = 150; const anpNum = Math.round((kANP%1)*fixedDen), nosNum = Math.round((kNOS%1)*fixedDen), krNum = Math.round((kKR%1)*fixedDen);
+    anpCell.innerHTML = `<div style="display:flex;align-items:center;justify-content:flex-start;height:100%;"><span style="margin-right:5px;">${Math.trunc(kANP).toLocaleString('nl-NL')}</span>${createFractionHTML(anpNum,fixedDen)}</div>`;
+    nosCell.innerHTML = totalNOS ? `<div style="display:flex;align-items:center;justify-content:flex-start;height:100%;"><span style=\"margin-right:5px;\">${Math.trunc(kNOS).toLocaleString('nl-NL')}</span>${createFractionHTML(nosNum,fixedDen)}</div>` : '';
+    krCell.innerHTML = totalKR ? `<div style="display:flex;align-items:center;justify-content:flex-start;height:100%;"><span style=\"margin-right:5px;\">${Math.trunc(kKR).toLocaleString('nl-NL')}</span>${createFractionHTML(krNum,fixedDen)}</div>` : '';
+    kiesRow.insertCell(); kiesRow.insertCell(); kiesRow.insertCell();
+    // Voorkeurdrempel row
+    const vRow = tbody.insertRow();
+    vRow.insertCell(); vRow.insertCell().textContent='Voorkeurdrempel:';
+    vRow.insertCell().textContent = vANP.toLocaleString('nl-NL');
+    vRow.insertCell().textContent = totalNOS ? vNOS.toLocaleString('nl-NL') : '';
+    vRow.insertCell().textContent = totalKR ? vKR.toLocaleString('nl-NL') : '';
+    vRow.insertCell(); vRow.insertCell(); vRow.insertCell();
+  }
+
+  async function loadStemcijfers(year){
+    // Clear
+    ['statsTableContainer','tableContainer','lastUpdateANP','lastUpdatedLocalRegionANP','latestUpdateFromNos'].forEach(id=>{ const el=document.getElementById(id); if (el) el.innerHTML=''; });
+    const [{ list, keyToLabelLong, keyToLabelShort, keyToNOS, keyToListNumber }, anpVotes, lastUpdate, nosIndex, kiesraad] = await Promise.all([
+      fetchPartyLabels(year), fetchANPVotes(year), fetchANPLastUpdate(year), fetchNOSIndex(year), fetchKiesraadVotes(year)
+    ]);
+    // Stats
+    if (anpVotes){ const stats = renderStatsTable(anpVotes); const sc = document.getElementById('statsTableContainer'); if (sc) sc.appendChild(stats); }
+    updateLastUpdates(lastUpdate, nosIndex, anpVotes);
+    // NOS national votes map
+    const nosVotesMap = new Map();
+    const landelijke = nosIndex && nosIndex.landelijke_uitslag && nosIndex.landelijke_uitslag.partijen;
+    if (Array.isArray(landelijke)) {
+      landelijke.forEach(p=>{ const code = p.partij?.short_name; const votes = p.huidig?.stemmen || 0; if (code) nosVotesMap.set(code, votes); });
+    }
+    // Kiesraad map
+    const kiesraadVotesMap = new Map();
+    if (Array.isArray(kiesraad)) kiesraad.forEach(item=>{ kiesraadVotesMap.set(item.lijstnummer, item.votes); });
+    // Render table
+    renderStemcijfersTable({containerId:'tableContainer', votesData: anpVotes, nosVotesMap, kiesraadVotesMap, maps:{keyToLabelLong, keyToNOS, keyToListNumber}});
+  }
+
+  window.StemcijfersApp = { loadStemcijfers };
+})();

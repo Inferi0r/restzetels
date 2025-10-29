@@ -19,6 +19,12 @@ Use your browser’s “View Page Source” (or prepend `view-source:`) on the A
 - The static website is hosted at:
   - http://192.168.1.6:5000/web
 
+## Run locally (PHP built-in server)
+- cd into the project root
+  - `cd /Users/arcovink/Documents/restzetels`
+  - `php -S 127.0.0.1:5000`
+  - Open `http://127.0.0.1:5000/index.html`
+
 ## Repository notes
 - 2023 logic is the correctness baseline for seats/rest seats and data joins.
 - Year-specific assets (e.g., party labels and optional Kiesraad totals) can be added alongside the generic code to enable full feature parity for new years.

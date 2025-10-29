@@ -86,6 +86,24 @@ nav ul li a.active {
   background-color: #ddd;
 }
 
+/* New dropdown style for year selection */
+.year-select-li {
+  margin-left: auto;
+}
+
+.year-select {
+  font-size: 18px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #e7e7e7;
+  cursor: pointer;
+}
+
+.year-select:hover {
+  background-color: #ddd;
+}
+
 .highest-value {
   background-color: rgb(145, 184, 145);
 }
@@ -100,6 +118,19 @@ nav ul li a.active {
   max-width: 250px; /* Maximum width of the container */
   margin-top: 18px; /* Space from the top element */
   margin-left: auto; /* Auto margin for horizontal centering */
+}
+
+.info-badge {
+  display: inline-block;
+  padding: 8px 12px;
+  margin-right: 10px;
+  background-color: #e0f7fa;
+  color: #0d47a1;
+  border: 1px solid #a7dceb;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-size: 14px;
+  pointer-events: none; /* info only */
 }
 
 #latestRestSeatImpactContainer {
@@ -151,4 +182,3 @@ nav ul li a.active {
   align-items: center;
   min-height: 30px; /* Adjust this value as needed */
 }
-
