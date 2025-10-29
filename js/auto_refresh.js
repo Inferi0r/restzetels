@@ -3,7 +3,7 @@
 const REFRESH_INTERVAL_SECONDS = 30; // change here if needed
 
 (function(){
-  const DO_BASE = 'https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata';
+  const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
   let channel;
   try { channel = new BroadcastChannel('restzetels-refresh'); } catch(e) { channel = null; }
 

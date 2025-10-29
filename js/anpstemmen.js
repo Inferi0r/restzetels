@@ -1,6 +1,6 @@
 // Unified ANP Stemmen per partij across years
 (function(){
-  const DO_BASE = 'https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata';
+  const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
 
   async function safeFetchJSON(url){ try{ const r=await fetch(url); if(!r.ok) throw new Error(r.status); return await r.json(); } catch(e){ return null; } }
 
@@ -13,11 +13,13 @@
   }
   async function fetchANPVotes(year){
     const y = String(year);
+    if (window.Data && typeof Data.fetchBundle==='function') { const b = await Data.fetchBundle(y); return b ? b.anp_votes : null; }
     if (await isFinalizedYear(y)) return await safeFetchJSON(`data/${y}/anp_votes.json`);
     return await safeFetchJSON(`${DO_BASE}?year=${y}&source=anp_votes`);
   }
   async function fetchANPLastUpdate(year){
     const y = String(year);
+    if (window.Data && typeof Data.fetchBundle==='function') { const b = await Data.fetchBundle(y); return b ? b.anp_last_update : null; }
     if (await isFinalizedYear(y)) return await safeFetchJSON(`data/${y}/anp_last_update.json`);
     return await safeFetchJSON(`${DO_BASE}?year=${y}&source=anp_last_update`);
   }

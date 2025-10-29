@@ -1,6 +1,6 @@
 // Unified ANP updates table
 (function(){
-  const DO_BASE = 'https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata';
+  const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
 
   async function safeFetchJSON(url){ try{ const r=await fetch(url); if(!r.ok) throw new Error(r.status); return await r.json(); } catch(e){ return null; } }
   async function fetchPartyLabels(year){ const d=await safeFetchJSON(`partylabels.json`); const list=Array.isArray(d)?d:(d[String(year)]||[]); return new Map(list.map(p=>[p.key, p.labelShort])); }
