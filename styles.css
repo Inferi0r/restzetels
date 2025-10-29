@@ -145,6 +145,24 @@ nav ul li a.active::after {
   background: var(--color-accent);
 }
 
+/* Share bar */
+.share-bar { display:flex; gap:8px; justify-content:center; align-items:center; margin: 8px auto; }
+.share-btn {
+  padding: 6px 10px;
+  border: 1px solid var(--color-border);
+  background: #f9fafb;
+  color: var(--color-text);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.share-btn:hover { background: #f3f4f6; }
+.share-btn .icon { width: 16px; height: 16px; display: inline-block; }
+.share-btn .wa-icon { color: #25D366; }
+
 .year-toggle {
   cursor: pointer;
   font-size: 20px;

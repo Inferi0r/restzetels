@@ -23,7 +23,7 @@ Use your browser’s “View Page Source” (or prepend `view-source:`) on the A
 
 ## Website hosting
 - The static website is hosted at:
-  - http://192.168.1.6:5000/web
+  - https://cloud.digitalocean.com/apps/8634eb6f-45c7-40a9-bf00-426a386157f3?i=a80b61 (http://192.168.1.6:5000/web is and old version)
 
 ## Run locally (PHP built-in server)
 - cd into the project root

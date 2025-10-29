@@ -161,7 +161,8 @@
         const display = (val === undefined || val === null) ? '' : val;
         return `<td${numericCols.has(col) ? ' class="num"' : ''}>${display}</td>`;
       }).join('');
-      const rowClass = i === data.length - 1 ? 'total-row' : '';
+      // Mark total row only when explicitly labeled (avoids mislabeling when there is no total row)
+      const rowClass = (containerId === 'seatsSummaryContainer' && String(row['Partij']||'').trim() === 'Totaal') ? 'total-row' : '';
       return `<tr class="${rowClass}">${cells}</tr>`;
     }).join('');
     const html = `<table><thead><tr>${header}</tr></thead><tbody>${rows}</tbody></table>`;
@@ -384,6 +385,165 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
     }
   }
 
+  function buildRestzetelShare(year, data, maps, finalized){
+    const { keyToLabelShort } = maps;
+    let latestParty = null, highest = 0;
+    (data.parties||[]).forEach(p => {
+      const rs = p && p.restSeats;
+      if (rs && typeof rs.forEach === 'function') { rs.forEach((v,k)=>{ if (k>highest){ highest=k; latestParty=p; } }); }
+    });
+    const winnerKey = latestParty ? latestParty.key : '';
+    const winnerName = winnerKey ? (keyToLabelShort.get(winnerKey) || '') : '-';
+    const { votesShortData, surplusVotesData } = calculateVotesShortAndSurplus(data);
+    let lowest = Number.MAX_SAFE_INTEGER, losingKey = null;
+    votesShortData.forEach((v,k)=>{ if (v!=null && v<lowest){ lowest=v; losingKey=k; } });
+    const loserName = (losingKey!=null) ? (keyToLabelShort.get(losingKey) || '') : '-';
+    const over = (winnerKey && surplusVotesData.get(winnerKey)) ? Math.ceil(surplusVotesData.get(winnerKey)).toLocaleString('nl-NL') : '-';
+    const tekort = (losingKey!=null && votesShortData.get(losingKey)) ? Math.ceil(votesShortData.get(losingKey)).toLocaleString('nl-NL') : '-';
+    const y = String(year);
+    const sinceKey = `restImpactSince:v1:${y}`;
+    const sinceTs = parseInt(window.localStorage.getItem(sinceKey)||'0',10)||0;
+    // Twitter/WA intent: include summary text
+    const text = `Laatste restzetel gaat naar: ${winnerName} (stemmen over: ${over}), dit gaat ten koste van: ${loserName} (stemmen tekort: ${tekort})\n\nLive updates via wiekrijgtderestzetel.nl`;
+    return { text };
+  }
+
+  function buildSeatsShare(year, data, maps){
+    const { keyToLabelLong } = maps;
+    const { votesShortData, surplusVotesData } = calculateVotesShortAndSurplus(data);
+    const rows = [];
+    (data.parties||[]).forEach(p => {
+      const name = keyToLabelLong.get(p.key) || keyToLabelLong.get(p.key?.toString?.()) || '';
+      if (!name || name.toUpperCase().includes('OVERIG')) return;
+      const rest = Array.from(p.restSeats?.values?.() || []).reduce((a,b)=>a+b,0);
+      const full = p.fullSeats || 0;
+      const total = full + rest;
+      if (total <= 0) return;
+      const over = Math.ceil(surplusVotesData.get(p.key) || 0);
+      const tekort = Math.ceil(votesShortData.get(p.key) || 0);
+      rows.push({ name, full, rest, over, tekort, total });
+    });
+    rows.sort((a,b)=> b.total - a.total || (a.tekort - b.tekort));
+    const lines = rows.slice(0, 10).map(r => `${r.name}: ${r.full}v, ${r.rest}r (over ${r.over>0?r.over.toLocaleString('nl-NL'):'-'}, tekort ${r.tekort>0?r.tekort.toLocaleString('nl-NL'):'-'})`);
+    if (rows.length > 10) lines.push('…');
+    const header = 'Zeteloverzicht:';
+    const text = [header].concat(lines).join('\n');
+    const url = buildShareURL();
+    return { text, url };
+  }
+
+  function setupShareHandlers(year, data, maps, finalized){
+    const impactX = document.getElementById('impactShareX');
+    const impactWeb = document.getElementById('impactShareWeb');
+    const impactWA = document.getElementById('impactShareWA');
+    const rest = buildRestzetelShare(year, data, maps, finalized);
+    const seats = buildSeatsShare(year, data, maps);
+    const openTwitter = (payload) => {
+      const q = new URLSearchParams({ text: payload.text || '' });
+      const tw = `https://x.com/intent/post?${q.toString()}`;
+      try { window.open(tw, '_blank', 'noopener'); } catch(e) { window.location.href = tw; }
+    };
+    const doShare = (payload) => {
+      if (navigator.share) {
+        navigator.share({ title: 'Wie krijgt de restzetel?', text: payload.text || '', url: 'https://wiekrijgtderestzetel.nl' }).catch(()=>{});
+      } else {
+        openTwitter(payload);
+      }
+    };
+    if (impactX) impactX.onclick = () => { openTwitter(rest); };
+    if (impactWeb) impactWeb.onclick = async () => {
+      try {
+        const f = await buildShareImageFile(year, data, maps, finalized);
+        if (navigator.canShare && navigator.canShare({ files:[f] })) {
+          try { await navigator.share({ files:[f], title:'Wie krijgt de restzetel?', text: buildShareURL() }); } catch(e) {}
+          return;
+        }
+      } catch(e) {}
+      doShare(rest);
+    };
+    if (impactWA) impactWA.onclick = () => {
+      const wa = `https://wa.me/?text=${encodeURIComponent(rest.text || 'wiekrijgtderestzetel.nl')}`;
+      try { window.open(wa, '_blank', 'noopener'); } catch(e) { window.location.href = wa; }
+    };
+  }
+
+  async function buildShareImageFile(year, data, maps, finalized){
+    const { keyToLabelShort, keyToLabelLong } = maps;
+    const canvas = document.createElement('canvas');
+    const W = 1200, H = 630; canvas.width = W; canvas.height = H; const ctx = canvas.getContext('2d');
+    // Background
+    ctx.fillStyle = '#ffffff'; ctx.fillRect(0,0,W,H);
+    // Title + year chip
+    ctx.fillStyle = '#0f172a'; ctx.font = '600 44px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
+    ctx.fillText('Wie krijgt de restzetel?', 40, 70);
+    ctx.fillStyle = '#e5e7eb'; ctx.fillRect(40, 84, 130, 28);
+    ctx.fillStyle = '#374151'; ctx.font = '600 18px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
+    ctx.fillText(`Jaar ${year}`, 50, 104);
+    // Restzetel status
+    let latestParty = null, highest = 0;
+    (data.parties||[]).forEach(p => { const rs = p && p.restSeats; if (rs && typeof rs.forEach==='function'){ rs.forEach((v,k)=>{ if (k>highest){ highest=k; latestParty=p; } }); } });
+    const winnerKey = latestParty ? latestParty.key : '';
+    const winnerName = winnerKey ? (keyToLabelShort.get(winnerKey) || '') : '-';
+    const { votesShortData, surplusVotesData } = calculateVotesShortAndSurplus(data);
+    let lowest = Number.MAX_SAFE_INTEGER, losingKey = null;
+    votesShortData.forEach((v,k)=>{ if (v!=null && v<lowest){ lowest=v; losingKey=k; } });
+    const loserName = (losingKey!=null) ? (keyToLabelShort.get(losingKey) || '') : '-';
+    const over = (winnerKey && surplusVotesData.get(winnerKey)) ? Math.ceil(surplusVotesData.get(winnerKey)).toLocaleString('nl-NL') : '-';
+    const tekort = (losingKey!=null && votesShortData.get(losingKey)) ? Math.ceil(votesShortData.get(losingKey)).toLocaleString('nl-NL') : '-';
+    ctx.fillStyle = '#111827'; ctx.font = '600 28px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
+    ctx.fillText(`Laatste restzetel: ${winnerName} → ${loserName}`, 40, 150);
+    ctx.fillStyle = '#059669'; ctx.font = '600 22px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
+    ctx.fillText(`Over: ${over}`, 40, 185);
+    ctx.fillStyle = '#b91c1c'; ctx.fillText(`Tekort: ${tekort}`, 220, 185);
+    // Sinds
+    const sinceKey = `restImpactSince:v1:${String(year)}`;
+    const sinceTs = parseInt(window.localStorage.getItem(sinceKey)||'0',10)||0;
+    if (!finalized && winnerKey) { ctx.fillStyle = '#6b7280'; ctx.font = '500 18px system-ui, -apple-system, Segoe UI, Roboto, sans-serif'; ctx.fillText(`Sinds ${relTime(sinceTs)}`, 40, 210); }
+    // Seats mini table
+    const rows = [];
+    (data.parties||[]).forEach(p => {
+      const name = keyToLabelLong.get(p.key) || keyToLabelLong.get(p.key?.toString?.()) || '';
+      if (!name || name.toUpperCase().includes('OVERIG')) return;
+      const rest = Array.from(p.restSeats?.values?.() || []).reduce((a,b)=>a+b,0);
+      const full = p.fullSeats || 0; const total = full + rest; if (total<=0) return;
+      const overv = Math.ceil((surplusVotesData.get(p.key)||0));
+      const tekortv = Math.ceil((votesShortData.get(p.key)||0));
+      rows.push({ name, full, rest, over: overv, tekort: tekortv, total });
+    });
+    rows.sort((a,b)=> b.total - a.total || (a.tekort - b.tekort));
+    const tableX = 40, tableY = 250, rowH = 34; const maxRows = 10; // fits
+    ctx.fillStyle = '#6b7280'; ctx.font = '600 18px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
+    const cols = [
+      { label:'Partij',   w: 480, align:'left'  },
+      { label:'Zetels',  w: 100, align:'right' },
+      { label:'Stemmen', w: 180, align:'right' },
+      { label:'Over',    w: 160, align:'right' },
+      { label:'Tekort',  w: 160, align:'right' }
+    ];
+    let x = tableX, y = tableY;
+    cols.forEach(c=>{ if (c.align==='right'){ ctx.textAlign='right'; ctx.fillText(c.label, x + c.w, y); ctx.textAlign='left'; } else { ctx.fillText(c.label, x, y);} x += c.w; });
+    ctx.font = '500 20px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
+    rows.slice(0, maxRows).forEach((r,i)=>{
+      let cx = tableX; const yy = y + (i+1)*rowH;
+      // Partij
+      ctx.fillStyle = '#111827';
+      // truncate name if too long
+      const nm = r.name.length>34 ? (r.name.slice(0,31)+'…') : r.name;
+      ctx.fillText(nm, cx, yy); cx += cols[0].w;
+      // numbers
+      ctx.textAlign='right'; ctx.fillStyle='#111827';
+      ctx.fillText(String(r.total), cx + cols[1].w, yy); cx += cols[1].w;
+      ctx.fillText(r.votes>0 ? r.votes.toLocaleString('nl-NL') : '0', cx + cols[2].w, yy); cx += cols[2].w;
+      ctx.fillStyle = '#065f46'; ctx.fillText(r.over>0 ? r.over.toLocaleString('nl-NL') : '-', cx + cols[3].w, yy); cx += cols[3].w;
+      ctx.fillStyle = '#b91c1c'; ctx.fillText(r.tekort>0 ? r.tekort.toLocaleString('nl-NL') : '-', cx + cols[4].w, yy);
+      ctx.textAlign='left'; ctx.fillStyle='#111827';
+    });
+    // Footer URL
+    ctx.fillStyle = '#6b7280'; ctx.font = '500 18px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
+    ctx.fillText('wiekrijgtderestzetel.nl', 40, H-24);
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    return new File([blob], 'restzetel.png', { type: 'image/png' });
+  }
   async function loadZetels(year) {
     // Clear containers
     ['seatsSummaryContainer','seatStripTooltip','voteAverageContainer','latestRestSeatImpactContainer','latestUpdateFromNos'].forEach(id => {
@@ -507,6 +667,7 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
       // Latest rest seat impact — always visible with persistent since-timer
       let finalizedFlag=false; try{ finalizedFlag = await Data.isFinalizedYear(year); }catch(e){ finalizedFlag=false; }
       showLatestRestSeatImpactSince(year, updatedData, keyToLabelShort, finalizedFlag);
+      try { setupShareHandlers(year, updatedData, { keyToLabelShort, keyToLabelLong }, finalizedFlag); } catch(e) {}
     } else {
       // No votes yet: clear detail tables and render summary with blanks, but keep impact banner visible with placeholders
       ['voteAverageContainer','seatStripTooltip'].forEach(id => { const el=document.getElementById(id); if (el) el.innerHTML=''; });
@@ -518,9 +679,23 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
         `;
         if (__restImpactSinceInterval) { try { clearInterval(__restImpactSinceInterval); } catch(e){} __restImpactSinceInterval = null; }
       }
+      try { setupShareHandlers(year, votesData || { parties: [] }, { keyToLabelShort, keyToLabelLong }, true); } catch(e) {}
     }
   }
 
   // Expose
   window.RestzetelsApp = { loadZetels };
 })();
+  function buildShareURL(/* year, utm */) {
+    // Hardcode canonical domain for all shares as requested
+    return 'https://wiekrijgtderestzetel.nl/';
+  }
+
+  function relTime(ms){
+    if (!ms) return '';
+    const s = Math.max(0, Math.floor((Date.now() - ms)/1000));
+    if (s < 60) return `${s}s geleden`;
+    const m = Math.floor(s/60); if (m < 60) return `${m}m geleden`;
+    const h = Math.floor(m/60); if (h < 24) return `${h}u geleden`;
+    const d = Math.floor(h/24); return `${d}d geleden`;
+  }
