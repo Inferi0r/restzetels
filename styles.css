@@ -367,10 +367,10 @@ nav ul li a.active::after {
   text-align: center; /* Center the text within the container */
   background-color: #f0f0f0; /* Light grey background */
   color: #333333; /* Darker text color for contrast */
-  padding: 10px 0px; /* Reduced horizontal padding */
+  padding: 10px 14px; /* add a bit of horizontal breathing room */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Shadow effect for depth */
   border-radius: 5px; /* Rounded corners for a softer look */
-  max-width: 500px; /* Maximum width of the container */
+  max-width: 600px; /* a bit wider to accommodate long names */
   margin-top: 10px; /* Space from the top element */
   margin-left: auto; /* Auto margin for horizontal centering */
   margin-right: auto; /* Auto margin for horizontal centering */

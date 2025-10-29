@@ -7,19 +7,41 @@
   window.CONFIG.DO_BASE = DO_BASE;
   // Register Service Worker (scoped to current directory)
   if ('serviceWorker' in navigator) {
-    // Register and auto-reload once when a new SW takes control
-    const registerSW = async () => {
+    // Register and defer activation so the first page load doesn't reset immediately
+    (async () => {
       try {
         const reg = await navigator.serviceWorker.register('sw.js', { scope: './' });
-        // Trigger update check on load
-        try { reg.update(); } catch(e) {}
+        const DEFER_MS = 12000; // align roughly with first auto-refresh tick (10s) + slack
+
+        const scheduleActivate = (registration) => {
+          try {
+            const doSkip = () => {
+              if (registration && registration.waiting) {
+                try { registration.waiting.postMessage({ type: 'SKIP_WAITING' }); } catch(e) {}
+              }
+            };
+            setTimeout(doSkip, DEFER_MS);
+          } catch(e) {}
+        };
+
+        // If there's already a waiting worker (first load or update found before page ready), schedule activation
+        if (reg.waiting) scheduleActivate(reg);
+        // For future updates
+        reg.addEventListener('updatefound', () => {
+          const sw = reg.installing;
+          if (!sw) return;
+          sw.addEventListener('statechange', () => {
+            if (sw.state === 'installed' && reg.waiting) scheduleActivate(reg);
+          });
+        });
       } catch(e) {}
-    };
-    registerSW();
+    })();
+
+    // Auto-reload once when the new SW finally takes control (deferred)
     let reloaded = false;
     navigator.serviceWorker.addEventListener('controllerchange', () => {
       if (reloaded) return; reloaded = true;
-      try { window.location.reload(); } catch(e) {}
+      setTimeout(() => { try { window.location.reload(); } catch(e) {} }, 50);
     });
   }
   // Inject preconnect for performance based on the origin

@@ -1,6 +1,6 @@
 // Service Worker: cache static assets and API bundle with stale-while-revalidate
 // Bump CACHE_VERSION to invalidate old caches on deploys
-const CACHE_VERSION = 'v2025-10-29-69';
+const CACHE_VERSION = 'v2025-10-29-71';
 const STATIC_CACHE = `static-${CACHE_VERSION}`;
 const DATA_CACHE = `data-${CACHE_VERSION}`;
 const API_CACHE = `api-${CACHE_VERSION}`;
@@ -39,7 +39,8 @@ const PRECACHE_URLS = [
 ];
 
 self.addEventListener('install', event => {
-  self.skipWaiting();
+  // Do not skipWaiting immediately — activation will be triggered
+  // by the page after a short, user-friendly delay.
   event.waitUntil((async () => {
     try {
       const cache = await caches.open(STATIC_CACHE);
@@ -62,6 +63,14 @@ self.addEventListener('activate', event => {
     );
     await self.clients.claim();
   })());
+});
+
+// Allow the page to request activation when convenient (deferred takeover)
+self.addEventListener('message', (event) => {
+  const msg = event && event.data;
+  if (msg && (msg === 'SKIP_WAITING' || (msg.type && msg.type === 'SKIP_WAITING'))) {
+    try { self.skipWaiting(); } catch(e) {}
+  }
 });
 
 function isSameOrigin(url) {
