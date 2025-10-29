@@ -338,19 +338,7 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
     document.getElementById('latestRestSeatImpactContainer').innerHTML = msg;
   }
 
-  function showCompletedRegionsCount(lastUpdateData, year) {
-    const badge = document.getElementById('completedBadge');
-    if (!badge) return;
-    // Requirement: show "Alle kiesregio's compleet" when every Gemeente (type === 0) has status === 4 (Eindstand)
-    const views = (lastUpdateData && Array.isArray(lastUpdateData.views)) ? lastUpdateData.views : [];
-    const gemeenten = views.filter(v => v.type === 0);
-    if (gemeenten.length > 0 && gemeenten.every(v => v.status === 4)) {
-      badge.textContent = "Alle kiesregio's compleet";
-      badge.style.display = 'inline-block';
-    } else {
-      // Do not override countdown; leave badge as-is for AutoRefresh to manage
-    }
-  }
+  // Note: top badge (Alle kiesregio's compleet / countdown) is managed by AutoRefresh
 
   function showLatestUpdateFromNos(nosData, prefix = 'NOS') {
     if (nosData && nosData.gemeentes && nosData.gemeentes.length > 0) {
@@ -376,7 +364,7 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
     const [anpVotes, lastUpdate, nosIndex, kiesraadData] = await Promise.all([
       fetchANPVotes(year), fetchANPLastUpdate(year), fetchNOSIndex(year), tryFetchKiesraadVotes(year)
     ]);
-    if (lastUpdate) showCompletedRegionsCount(lastUpdate, String(year));
+    // Badge visibility is centralized in AutoRefresh; do not set here
     if (nosIndex) showLatestUpdateFromNos(nosIndex);
 
     let votesData = anpVotes;

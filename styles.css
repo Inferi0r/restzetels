@@ -276,3 +276,64 @@ nav ul li a.active {
   align-items: center;
   min-height: 30px; /* Adjust this value as needed */
 }
+
+/* Responsive: on small screens move utilities (year, badge, sound) to their own row above nav links */
+@media (max-width: 720px) {
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 8px 8px;
+    row-gap: 6px;
+  }
+
+  .right-controls {
+    position: static;     /* no absolute overlap */
+    transform: none;
+    order: -1;            /* render above the nav links */
+    width: 100%;
+    justify-content: center;
+    gap: 8px;
+    margin: 0;            /* compact spacing */
+  }
+
+  .nav-center {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-center li,
+  nav ul li {
+    margin: 0 10px;       /* tighter spacing for links */
+  }
+
+  nav ul li a {
+    font-size: 16px;      /* slightly smaller on mobile */
+  }
+
+  .year-select {
+    font-size: 16px;
+    padding: 6px 32px 6px 10px; /* keep arrow spacing */
+  }
+
+  .info-badge {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  .sound-button {
+    width: 32px;
+    height: 32px;
+    font-size: 15px;
+  }
+
+  .sound-prompt {
+    top: 110%;
+    right: auto;   /* place under and to the left by default */
+    left: 0;
+  }
+
+  .tooltip .tooltiptext {
+    left: auto;
+    right: 0;      /* keep tooltip within viewport */
+  }
+}

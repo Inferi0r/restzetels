@@ -59,6 +59,12 @@ const REFRESH_INTERVAL_SECONDS = 30; // change here if needed
     if (secondTickId) { clearInterval(secondTickId); secondTickId = null; }
   }
 
+  function resetUI(){
+    clearTimers();
+    updateBadge('');
+    setSoundVisible(false);
+  }
+
   function startCountdown(onFire){
     clearTimers();
     remaining = REFRESH_INTERVAL_SECONDS;
@@ -103,8 +109,8 @@ const REFRESH_INTERVAL_SECONDS = 30; // change here if needed
     const sel = document.getElementById('yearSelect');
     if (!sel) return;
     sel.addEventListener('change', async () => {
-      currentYear = getYear();
-      clearTimers();
+      currentYear = sel.value || getYear();
+      resetUI();
       await evaluateAndRun(load);
     });
   }
@@ -112,6 +118,8 @@ const REFRESH_INTERVAL_SECONDS = 30; // change here if needed
   async function init(opts){
     const load = typeof opts.load === 'function' ? opts.load : function(){};
     currentYear = getYear();
+    // ensure no stale UI from previous page/year
+    resetUI();
     setupVisibility(load);
     setupYearChange(load);
     await evaluateAndRun(load);
