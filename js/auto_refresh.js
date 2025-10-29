@@ -1,0 +1,112 @@
+// Auto-refresh controller shared across pages
+// Configurable interval at the top.
+const REFRESH_INTERVAL_SECONDS = 30; // change here if needed
+
+(function(){
+  const DO_BASE = 'https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata';
+  let channel;
+  try { channel = new BroadcastChannel('restzetels-refresh'); } catch(e) { channel = null; }
+
+  let timerId = null;
+  let secondTickId = null;
+  let remaining = REFRESH_INTERVAL_SECONDS;
+  let currentYear = null;
+  let finalizedCache = null;
+
+  function getYear(){
+    const params = new URLSearchParams(window.location.search);
+    return params.get('year') || window.localStorage.getItem('selectedYear') || '2023';
+  }
+
+  async function loadJSON(url){
+    try { const r = await fetch(url, { cache: 'no-store' }); if (!r.ok) throw new Error(r.status); return await r.json(); } catch(e){ return null; }
+  }
+
+  async function isFinalizedYear(year){
+    if (!finalizedCache) finalizedCache = await loadJSON('votes_kiesraad.json');
+    if (!finalizedCache) return false;
+    const entry = Array.isArray(finalizedCache) ? finalizedCache : finalizedCache[String(year)];
+    return Array.isArray(entry) && entry.length > 0;
+  }
+
+  async function fetchLastUpdate(year){
+    if (await isFinalizedYear(year)) return await loadJSON(`data/${year}/anp_last_update.json`);
+    return await loadJSON(`${DO_BASE}?year=${encodeURIComponent(year)}&source=anp_last_update`);
+  }
+
+  function allGemeentesComplete(lastUpdate){
+    const views = (lastUpdate && Array.isArray(lastUpdate.views)) ? lastUpdate.views : [];
+    const gemeenten = views.filter(v => v.type === 0);
+    return gemeenten.length > 0 && gemeenten.every(v => v.status === 4);
+  }
+
+  function updateBadge(text){
+    const el = document.getElementById('completedBadge');
+    if (!el) return;
+    if (!text) { el.style.display = 'none'; el.textContent = ''; return; }
+    el.textContent = text;
+    el.style.display = 'inline-block';
+  }
+
+  function clearTimers(){
+    if (timerId) { clearInterval(timerId); timerId = null; }
+    if (secondTickId) { clearInterval(secondTickId); secondTickId = null; }
+  }
+
+  function startCountdown(onFire){
+    clearTimers();
+    remaining = REFRESH_INTERVAL_SECONDS;
+    updateBadge(`Volgende update: ${remaining}s`);
+    // Second display tick
+    secondTickId = setInterval(() => {
+      if (document.hidden) return; // pause visual countdown when hidden
+      remaining -= 1;
+      if (remaining <= 0) remaining = 0;
+      updateBadge(`Volgende update: ${remaining}s`);
+    }, 1000);
+    // Fire loader at interval
+    timerId = setInterval(() => {
+      if (!document.hidden) onFire();
+      remaining = REFRESH_INTERVAL_SECONDS;
+      updateBadge(`Volgende update: ${remaining}s`);
+    }, REFRESH_INTERVAL_SECONDS * 1000);
+  }
+
+  async function evaluateAndRun(load){
+    const year = currentYear;
+    if (!year) return;
+    const lastUpdate = await fetchLastUpdate(year);
+    if (allGemeentesComplete(lastUpdate)) { updateBadge("Alle kiesregio's compleet"); clearTimers(); return; }
+    if (await isFinalizedYear(year)) { updateBadge("Alle kiesregio's compleet"); clearTimers(); return; }
+    // not complete -> start/restart countdown
+    startCountdown(() => load(year));
+  }
+
+  function setupVisibility(load){
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) return; // pause; timers keep decrementing via code but we gate fire
+      // when becoming visible, refresh countdown display
+      updateBadge(`Volgende update: ${remaining}s`);
+    });
+  }
+
+  function setupYearChange(load){
+    const sel = document.getElementById('yearSelect');
+    if (!sel) return;
+    sel.addEventListener('change', async () => {
+      currentYear = getYear();
+      clearTimers();
+      await evaluateAndRun(load);
+    });
+  }
+
+  async function init(opts){
+    const load = typeof opts.load === 'function' ? opts.load : function(){};
+    currentYear = getYear();
+    setupVisibility(load);
+    setupYearChange(load);
+    await evaluateAndRun(load);
+  }
+
+  window.AutoRefresh = { init };
+})();

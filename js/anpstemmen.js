@@ -65,24 +65,68 @@
       "Results Current Votes","Results Current Percentage","Results Current Seats",
       "Results Diff Votes","Results Diff Percentage","Results Diff Seats"
     ];
-    headers.forEach(h=>{ const th=document.createElement('th'); th.textContent=h; hr.appendChild(th); });
+    headers.forEach(h=>{ const th=document.createElement('th'); th.innerHTML = `${h} <span class="sort-icon"></span>`; th.style.cursor='pointer'; hr.appendChild(th); });
 
-    (votesData.parties||[]).forEach(p=>{
-      const row=tbody.insertRow();
-      const cells=[
-        p.key,
-        keyToLabelShort.get(p.key) || '',
-        Number(p.results.previous.votes||0).toLocaleString('nl-NL'),
-        p.results.previous.percentage||'',
-        Number(p.results.previous.seats||0).toLocaleString('nl-NL'),
-        Number(p.results.current.votes||0).toLocaleString('nl-NL'),
-        p.results.current.percentage||'',
-        Number(p.results.current.seats||0).toLocaleString('nl-NL'),
-        Number(p.results.diff.votes||0).toLocaleString('nl-NL'),
-        p.results.diff.percentage||'',
-        Number(p.results.diff.seats||0).toLocaleString('nl-NL')
-      ];
-      cells.forEach(val=>{ const td=row.insertCell(); td.textContent=val; });
+    const rows = (votesData.parties||[]).map(p=>({
+      Key: p.key,
+      Label: keyToLabelShort.get(p.key) || '',
+      PrevVotes: Number(p.results.previous.votes||0),
+      PrevPerc: p.results.previous.percentage||'',
+      PrevSeats: Number(p.results.previous.seats||0),
+      CurrVotes: Number(p.results.current.votes||0),
+      CurrPerc: p.results.current.percentage||'',
+      CurrSeats: Number(p.results.current.seats||0),
+      DiffVotes: Number(p.results.diff.votes||0),
+      DiffPerc: p.results.diff.percentage||'',
+      DiffSeats: Number(p.results.diff.seats||0)
+    }));
+    const cols = ['Key','Label','PrevVotes','PrevPerc','PrevSeats','CurrVotes','CurrPerc','CurrSeats','DiffVotes','DiffPerc','DiffSeats'];
+    let sortState = { key:'CurrVotes', dir:'desc' };
+
+    function updateHeaderIcons(){
+      Array.from(hr.children).forEach((th, idx)=>{
+        const icon = th.querySelector('.sort-icon');
+        if (!icon) return;
+        const key = cols[idx];
+        if (key === sortState.key) icon.innerHTML = sortState.dir==='asc'?'&#9650;':'&#9660;'; else icon.innerHTML = '';
+      });
+    }
+
+    function draw(){
+      tbody.innerHTML='';
+      const sorted = rows.slice().sort((a,b)=>{
+        let A=a[sortState.key], B=b[sortState.key];
+        if (typeof A==='number' && typeof B==='number') return sortState.dir==='asc'?(A-B):(B-A);
+        A=(A||'').toString(); B=(B||'').toString();
+        return sortState.dir==='asc'? A.localeCompare(B,undefined,{numeric:true}) : B.localeCompare(A,undefined,{numeric:true});
+      });
+      sorted.forEach(r=>{
+        const tr=tbody.insertRow();
+        const cells=[
+          r.Key,
+          r.Label,
+          r.PrevVotes.toLocaleString('nl-NL'),
+          r.PrevPerc,
+          r.PrevSeats.toLocaleString('nl-NL'),
+          r.CurrVotes.toLocaleString('nl-NL'),
+          r.CurrPerc,
+          r.CurrSeats.toLocaleString('nl-NL'),
+          r.DiffVotes.toLocaleString('nl-NL'),
+          r.DiffPerc,
+          r.DiffSeats.toLocaleString('nl-NL')
+        ];
+        cells.forEach(val=>{ const td=tr.insertCell(); td.textContent=val; });
+      });
+    }
+    draw();
+    updateHeaderIcons();
+    Array.from(hr.children).forEach((th, idx)=>{
+      th.addEventListener('click', ()=>{
+        const key = cols[idx];
+        if (sortState.key===key) sortState.dir = (sortState.dir==='asc'?'desc':'asc'); else { sortState.key=key; sortState.dir='asc'; }
+        draw();
+        updateHeaderIcons();
+      });
     });
     return table;
   }

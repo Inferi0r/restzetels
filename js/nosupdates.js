@@ -22,42 +22,93 @@
   function formatPercentage(promillage){ return (typeof promillage==='number') ? (promillage/10).toFixed(1)+'%' : ''; }
   function formatDate(dt){ if (typeof dt!=='string') return ''; const d=new Date(dt); return d.toLocaleString('nl-NL'); }
 
-  function createHeaderRow(headers){ const thead=document.createElement('thead'); const tr=thead.insertRow(); headers.forEach(h=>{ const th=document.createElement('th'); th.textContent=h; tr.appendChild(th); }); return thead; }
+  function createHeaderRow(headers){ const thead=document.createElement('thead'); const tr=thead.insertRow(); headers.forEach((h,idx)=>{ const th=document.createElement('th'); th.innerHTML = `${h} <span class="sort-icon"></span>`; th.dataset.idx = idx; th.style.cursor='pointer'; tr.appendChild(th); }); return thead; }
 
-  function createTableBody(data){
-    const tbody=document.createElement('tbody');
-    (data.gemeentes||[]).forEach(item=>{
-      const row=tbody.insertRow();
-      const columns=[
-        'status','publicatie_datum_tijd','gemeente.naam','gemeente.aantal_inwoners','gemeente.kieskring','gemeente.provincie.naam','gemeente.provincie.aantal_inwoners','eerste_partij.short_name','tweede_partij.short_name','huidige_verkiezing.opkomst_promillage','vorige_verkiezing.opkomst_promillage'
-      ];
-      columns.forEach(col=>{
-        const cell=row.insertCell();
-        const keys=col.split('.'); let val=item; keys.forEach(k=>{ val = (val && k in val) ? val[k] : null; });
-        if (col.endsWith('opkomst_promillage')) val = formatPercentage(val);
-        else if (col.endsWith('aantal_inwoners')) val = formatNumber(val);
-        else if (col==='publicatie_datum_tijd') val = formatDate(val);
-        cell.textContent = val!=null ? val.toString() : '';
-      });
+  function extractRows(data){
+    return (data.gemeentes||[]).map(item=>{
+      const g = (path) => path.split('.').reduce((acc,k)=> (acc && k in acc) ? acc[k] : null, item);
+      const opmH = g('huidige_verkiezing.opkomst_promillage');
+      const opmV = g('vorige_verkiezing.opkomst_promillage');
+      const iso = g('publicatie_datum_tijd');
+      const d = iso ? new Date(iso) : null;
+      const pad = (n) => String(n).padStart(2,'0');
+      const lastDisp = d ? `${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()}, ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}` : '';
+      const row = {
+        Status: g('status') || '',
+        Laatste: iso || '',
+        LaatsteTs: d ? d.getTime() : 0,
+        LaatsteDisplay: lastDisp,
+        Gemeente: g('gemeente.naam') || '',
+        InwonersGemeente: g('gemeente.aantal_inwoners') || 0,
+        Kieskring: g('gemeente.kieskring') || '',
+        Provincie: g('gemeente.provincie.naam') || '',
+        InwonersProvincie: g('gemeente.provincie.aantal_inwoners') || 0,
+        Eerste: g('eerste_partij.short_name') || '',
+        Tweede: g('tweede_partij.short_name') || '',
+        OpkomstHuidig: (typeof opmH==='number') ? (opmH/10).toFixed(1).replace('.', ',')+'%' : '',
+        OpkomstVorige: (typeof opmV==='number') ? (opmV/10).toFixed(1).replace('.', ',')+'%' : ''
+      };
+      return row;
     });
-    return tbody;
   }
 
-  function createAndPopulateTable(data){
-    const copy = { gemeentes: (data.gemeentes||[]).slice().sort((a,b)=> new Date(b.publicatie_datum_tijd) - new Date(a.publicatie_datum_tijd)) };
-    const headers=['Status','Laatste Update','Gemeente','Inwoners Gemeente','Kieskring','Provincie','Inwoners Provincie','1e Partij','2e Partij','Opkomst (huidig)','Opkomst (vorige)'];
-    const table=document.createElement('table');
-    table.appendChild(createHeaderRow(headers));
-    table.appendChild(createTableBody(copy));
-    return table;
+  function renderSortable(container, rows){
+    const headers = ['Status','Laatste Update','Gemeente','Inwoners Gemeente','Kieskring','Provincie','Inwoners Provincie','1e Partij','2e Partij','Opkomst (huidig)','Opkomst (vorige)'];
+    const cols = ['Status','Laatste','Gemeente','InwonersGemeente','Kieskring','Provincie','InwonersProvincie','Eerste','Tweede','OpkomstHuidig','OpkomstVorige'];
+    let sortState = { key:'Laatste', dir:'desc' };
+    const table = document.createElement('table');
+    const thead = createHeaderRow(headers);
+    const tbody = document.createElement('tbody');
+    table.appendChild(thead); table.appendChild(tbody);
+    const ths = Array.from(thead.querySelectorAll('th'));
+    function updateHeaderIcons(){
+      ths.forEach((th,i)=>{
+        const icon = th.querySelector('.sort-icon');
+        const key = cols[i];
+        if (!icon) return;
+        if (key === sortState.key) icon.innerHTML = sortState.dir==='asc'?'&#9650;':'&#9660;'; else icon.innerHTML = '';
+      });
+    }
+    function draw(){
+      tbody.innerHTML = '';
+      const sorted = rows.slice().sort((a,b)=>{
+        let A=a[sortState.key], B=b[sortState.key];
+        if (sortState.key==='Laatste') { A=a.LaatsteTs; B=b.LaatsteTs; }
+        if (['InwonersGemeente','InwonersProvincie'].includes(sortState.key)) { A=Number(A)||0; B=Number(B)||0; return sortState.dir==='asc'?(A-B):(B-A); }
+        if (typeof A==='number' && typeof B==='number') return sortState.dir==='asc'?(A-B):(B-A);
+        A=(A||'').toString(); B=(B||'').toString();
+        return sortState.dir==='asc'? A.localeCompare(B,undefined,{numeric:true}) : B.localeCompare(A,undefined,{numeric:true});
+      });
+      sorted.forEach(r=>{
+        const tr = tbody.insertRow();
+        cols.forEach(k=>{ const td=tr.insertCell(); const val = (k==='Laatste') ? r.LaatsteDisplay : r[k]; td.textContent = val || ''; });
+      });
+    }
+    // attach sort handlers
+    ths.forEach((th, idx)=>{
+      th.addEventListener('click', ()=>{
+        const key = cols[idx];
+        if (sortState.key === key) sortState.dir = (sortState.dir==='asc'?'desc':'asc'); else { sortState.key=key; sortState.dir='asc'; }
+        draw();
+        updateHeaderIcons();
+      });
+    });
+    draw();
+    updateHeaderIcons();
+    container.innerHTML = '';
+    container.appendChild(table);
+  }
+
+  function createAndPopulateTable(container, data){
+    const rows = extractRows(data);
+    renderSortable(container, rows);
   }
 
   async function loadNOSUpdates(year){
     const container = document.getElementById('tableContainer');
     container.innerHTML='';
     const nosData = await fetchNOS(year);
-    const table = createAndPopulateTable(nosData || {gemeentes:[]});
-    container.appendChild(table);
+    createAndPopulateTable(container, nosData || {gemeentes:[]});
   }
 
   window.NOSUpdatesApp = { loadNOSUpdates };

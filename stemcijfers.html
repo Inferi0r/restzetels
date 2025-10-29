@@ -23,8 +23,9 @@
                 <li><a href="anpupdates.html">ANP Updates</a></li>
                 <li><a href="nosupdates.html">NOS Updates</a></li>
             </div>
-            <li class="year-select-li">
-                <select id="yearSelect" class="year-select" aria-label="Kies verkiezingsjaar"></select>
+            <li class="right-controls">
+              <span id="completedBadge" class="info-badge" style="display:none;"></span>
+              <select id="yearSelect" class="year-select" aria-label="Kies verkiezingsjaar"></select>
             </li>
         </ul>
     </nav>
@@ -40,11 +41,13 @@
 
     <!-- Include unified scripts -->
    <script src="js/year-nav.js"></script>
+   <script src="js/auto_refresh.js"></script>
    <script src="js/stemcijfers.js"></script>
 
     <script>
         function loadYearData(year) { StemcijfersApp.loadStemcijfers(year); }
         YearNav.init({ years: ['2021','2023','2025'], defaultYear: '2023', load: loadYearData });
+        AutoRefresh.init({ load: loadYearData });
     </script>
 </body>
 </html>

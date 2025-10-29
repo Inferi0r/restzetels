@@ -49,11 +49,13 @@
     </div>
     <!-- Include unified scripts -->
    <script src="js/year-nav.js"></script>
+   <script src="js/auto_refresh.js"></script>
    <script src="js/app.js"></script>
 
     <script>
         function loadYearData(year) { RestzetelsApp.loadZetels(year); }
         YearNav.init({ years: ['2021','2023','2025'], defaultYear: '2023', load: loadYearData });
+        AutoRefresh.init({ load: loadYearData });
     </script>
 
 
