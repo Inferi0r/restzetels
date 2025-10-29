@@ -222,21 +222,22 @@
     });
   }
 
-  function renderStemcijfersTable({containerId, votesData, nosVotesMap, kiesraadVotesMap, maps, anpNulstand=false, nosHasData=false}){
+  function renderStemcijfersTable({containerId, votesData, nosVotesMap, kiesraadVotesMap, maps, anpNulstand=false, nosHasData=false, prevYear}){
     const { keyToLabelLong, keyToNOS, keyToListNumber } = maps;
     const table = document.createElement('table');
     const thead = table.createTHead();
     const tbody = table.createTBody();
     const headerRow = thead.insertRow();
+    const yy = typeof prevYear === 'number' ? String(prevYear).slice(-2) : '';
     const headers = [
       {text:'Lijst', id:'lijst'},
       {text:'Partij', id:'key'},
       {text:'Stemcijfers ANP', id:'votes'},
       {text:'Stemcijfers NOS', id:'nosVotes'},
       {text:'Stemcijfers Kiesraad', id:'kiesraadVotes'},
-      {text:'% ANP', id:'percentage'},
-      {text:'Verschil stemmen', id:'voteDiff'},
-      {text:'% verschil', id:'percentageDiff'}
+      {text:'% Stemmen', id:'percentage'},
+      {text:'# Verschil', id:'voteDiff'},
+      {text:'% Verschil', id:'percentageDiff'}
     ];
     const numCols = new Set(['lijst','votes','nosVotes','kiesraadVotes','percentage','voteDiff','percentageDiff']);
     headers.forEach(h=>{ const th=document.createElement('th'); th.dataset.sort=h.id; th.style.cursor='pointer'; th.innerHTML = `${h.text} <span class=\"sort-icon\"></span>`; if (numCols.has(h.id)) th.classList.add('num'); headerRow.appendChild(th); });
@@ -274,7 +275,12 @@
         const diffVotes = parseInt(p.results.diff.votes)||0;
         let percDiff;
         const prev = parseInt(p.results.previous.votes)||0; const curr = anpVotes;
-        percDiff = prev === 0 && curr > 0 ? '∞' : ((curr - prev) / (prev || 1) * 100).toFixed(1).replace('.', ',');
+        // If the party did not compete previously (prev === 0), show '-'
+        if (prev === 0) {
+          percDiff = '-';
+        } else {
+          percDiff = (((curr - prev) / prev) * 100).toFixed(1).replace('.', ',');
+        }
 
         const cells = [
           { id:'lijst', val: listNumber },
@@ -403,8 +409,12 @@
     // Kiesraad map
     const kiesraadVotesMap = new Map();
     if (Array.isArray(kiesraad)) kiesraad.forEach(item=>{ kiesraadVotesMap.set(item.lijstnummer, item.votes); });
+    // Determine previous election year label for headers
+    const yNum = parseInt(year, 10) || 0;
+    let prevYear = (yNum ? yNum - 2 : undefined);
+    if (yNum === 2021) prevYear = 2017; else if (yNum === 2023) prevYear = 2021; else if (yNum === 2025) prevYear = 2023;
     // Render table
-    renderStemcijfersTable({containerId:'tableContainer', votesData: anpVotes, nosVotesMap, kiesraadVotesMap, maps:{keyToLabelLong, keyToNOS, keyToListNumber}, anpNulstand, nosHasData});
+    renderStemcijfersTable({containerId:'tableContainer', votesData: anpVotes, nosVotesMap, kiesraadVotesMap, maps:{keyToLabelLong, keyToNOS, keyToListNumber}, anpNulstand, nosHasData, prevYear});
   }
 
   window.StemcijfersApp = { loadStemcijfers };
