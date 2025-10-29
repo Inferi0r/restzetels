@@ -192,10 +192,11 @@ nav ul li a.active::after {
 
 /* Container to hold info badge + year select on pages that have both (Zetels) */
 .right-controls {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
+  position: static;
+  right: auto;
+  top: auto;
+  transform: none;
+  margin-left: auto; /* push to the right within the flex row */
   display: flex;
   align-items: center;
   gap: 10px;
