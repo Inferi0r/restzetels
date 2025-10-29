@@ -99,7 +99,7 @@
     const tableData = [];
     votesData.parties.forEach(party => {
       if (party.fullSeats > 0) {
-        const row = { 'Partij': keyToLabel.get(party.key) };
+        const row = { 'Partij': keyToLabel.get(party.key), _votes: parseInt(party.results.current.votes)||0 };
         const positions = Array.from(party.restSeats.keys()).sort((a,b)=>a-b);
         let taken = 0;
         for (let i = 1; i <= total_restSeats; i++) {
@@ -175,13 +175,40 @@
     });
   }
 
-  function createRestSeatsTable(votesData, keyToLabel, total_restSeats) {
-    const rows = [];
+  function updateSeatStripTooltip(votesData, keyToLabelShort, total_restSeats) {
+    const container = document.getElementById('seatStripTooltip');
+    if (!container) return;
+    const parts = [];
+    parts.push('<ul class="seat-list">');
     for (let i = 1; i <= total_restSeats; i++) {
       const party = votesData.parties.find(p => p.restSeats.get(i) === 1);
-      if (party) rows.push({ 'Restzetel': i, 'Partij': keyToLabel.get(party.key) });
+      if (!party) continue;
+      const label = keyToLabelShort.get(party.key) || '';
+      const title = `${i}e: ${label}`;
+      parts.push(`<li class="seat-list-item" data-key="${String(party.key)}" title="${title}">`+
+                 `<span class="seat-index">${i}e</span>`+
+                 `<span class="chip chip--party">${label}</span>`+
+                 `</li>`);
     }
-    renderTable('restSeatContainer', rows);
+    parts.push('</ul>');
+    container.innerHTML = parts.join('');
+
+    container.querySelectorAll('.seat-list-item').forEach(el => {
+      el.addEventListener('click', () => {
+        const key = el.getAttribute('data-key');
+        const label = keyToLabelShort.get(key) || '';
+        const rows = document.querySelectorAll('#voteAverageContainer tbody tr');
+        for (const tr of rows) {
+          const first = tr.querySelector('td');
+          if (first && first.textContent.trim() === label) {
+            tr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            tr.classList.add('row-pulse');
+            setTimeout(()=> tr.classList.remove('row-pulse'), 1200);
+            break;
+          }
+        }
+      });
+    });
   }
 
   function calculateVotesShortAndSurplus(votesData) {
@@ -310,7 +337,7 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
 
   async function loadZetels(year) {
     // Clear containers
-    ['seatsSummaryContainer','restSeatContainer','voteAverageContainer','latestRestSeatImpactContainer','latestUpdateFromNos'].forEach(id => {
+    ['seatsSummaryContainer','seatStripTooltip','voteAverageContainer','latestRestSeatImpactContainer','latestUpdateFromNos'].forEach(id => {
       const el = document.getElementById(id); if (el) el.innerHTML = '';
     });
     const completedEl = document.getElementById('completedRegionsCount'); if (completedEl) completedEl.innerHTML = '';
@@ -368,6 +395,8 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
 
       // Vote average table with highlight
       let tableData = createVoteAverageTableData(updatedData, keyToLabelShort, total_restSeats);
+      // Default sort: by total ANP votes (desc)
+      tableData.sort((a,b)=> (b._votes||0) - (a._votes||0));
       const maxValues = {};
       for (let i = 1; i <= total_restSeats; i++) {
         const key = `_num_${i}e`;
@@ -381,16 +410,29 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
           const html = `
             <div class="averagevotetable-cell">
               <span style="margin-right: 5px;">${Math.floor(dec)}</span>
-              ${frac ? createFractionHTML(num, den) : ''}
+              ${frac ? `<span class="fraction-wrap">${createFractionHTML(num, den)}</span>` : ''}
             </div>`;
           row[`${i}e`] = html;
           if (dec === maxValues[`${i}e`]) row[`${i}e`] = `<div class='highest-value'>${row[`${i}e`]}</div>`;
         }
       });
       renderTable('voteAverageContainer', tableData);
+      // Ensure highlight covers full cell height uniformly
+      try {
+        const tbl = document.querySelector('#voteAverageContainer table');
+        if (tbl) {
+          tbl.querySelectorAll('td').forEach(td => {
+            const hv = td.querySelector('.highest-value');
+            if (hv) {
+              td.classList.add('highest-td');
+              hv.classList.remove('highest-value');
+            }
+          });
+        }
+      } catch(e) {}
 
-      // Rest seats table
-      createRestSeatsTable(updatedData, keyToLabelShort, total_restSeats);
+      // Rest seats: build tooltip content for averages header
+      updateSeatStripTooltip(updatedData, keyToLabelShort, total_restSeats);
 
       // Seats summary
       createSeatsSummaryTable(updatedData, keyToLabelLong, keyToListNumber, { hasVotes: true });
@@ -399,7 +441,7 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
       showLatestRestSeatImpact(updatedData, keyToLabelShort);
     } else {
       // No votes yet: clear detail tables and render summary with blanks
-      ['voteAverageContainer','restSeatContainer'].forEach(id => { const el=document.getElementById(id); if (el) el.innerHTML=''; });
+      ['voteAverageContainer','seatStripTooltip'].forEach(id => { const el=document.getElementById(id); if (el) el.innerHTML=''; });
       const impactEl = document.getElementById('latestRestSeatImpactContainer');
       if (impactEl) impactEl.innerHTML = `Laatste restzetel gaat naar: <span style="font-weight: bold; color: green;">-</span>, dit gaat ten koste van: <span style=\"font-weight: bold; color: red;\">-</span>`;
       createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, { hasVotes: false });
