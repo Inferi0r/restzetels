@@ -455,8 +455,15 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
     let lowest = Number.MAX_SAFE_INTEGER, losingKey = null;
     votesShortData.forEach((v,k)=>{ if (v!=null && v<lowest){ lowest=v; losingKey=k; } });
     const loserName = (losingKey!=null) ? (keyToLabelShort.get(losingKey) || '') : '-';
-    const over = (winnerKey && surplusVotesData.get(winnerKey)) ? Math.ceil(surplusVotesData.get(winnerKey)).toLocaleString('nl-NL') : '-';
-    const tekort = (losingKey!=null && votesShortData.get(losingKey)) ? Math.ceil(votesShortData.get(losingKey)).toLocaleString('nl-NL') : '-';
+    const haveVotes = Array.isArray(data?.parties) && data.parties.some(p => (parseInt(p?.results?.current?.votes)||0) > 0);
+    let over = '-';
+    let tekort = '-';
+    if (haveVotes) {
+      const overRaw = winnerKey ? Math.ceil(Number(surplusVotesData.get(winnerKey)) || 0) : 0;
+      const tekortRaw = (losingKey!=null) ? Math.ceil(Number(votesShortData.get(losingKey)) || 0) : 0;
+      over = overRaw.toLocaleString('nl-NL');
+      tekort = tekortRaw.toLocaleString('nl-NL');
+    }
     const y = String(year);
     const sinceKey = `restImpactSince:v1:${y}`;
     const sinceTs = parseInt(window.localStorage.getItem(sinceKey)||'0',10)||0;
