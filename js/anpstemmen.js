@@ -1,6 +1,19 @@
 // Unified ANP Stemmen per partij across years
 (function(){
   const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
+  const pad2 = (n) => String(n).padStart(2,'0');
+  function formatDateTimeNL(ms, opts={}){
+    if (!ms) return '';
+    const d = new Date(ms);
+    const dd = pad2(d.getDate());
+    const mm = pad2(d.getMonth()+1);
+    const yyyy = d.getFullYear();
+    const HH = pad2(d.getHours());
+    const MM = pad2(d.getMinutes());
+    const SS = pad2(d.getSeconds());
+    const showSeconds = (opts.seconds === 'always') ? true : (opts.seconds === 'never' ? false : (SS !== '00'));
+    return `${dd}-${mm}-${yyyy} ${HH}:${MM}${showSeconds?':'+SS:''}`;
+  }
   async function fetchPartyLabels(year){
     const labels = await Data.fetchPartyLabels(year);
     return labels.keyToLabelShort;
@@ -122,10 +135,10 @@
 
   function updateLastUpdateFields(lastUpdateData, votesData){
     const lastUpdateEl = document.getElementById('lastUpdate');
-    if (votesData?.updated && lastUpdateEl) lastUpdateEl.textContent = new Date(votesData.updated*1000).toLocaleString();
+    if (votesData?.updated && lastUpdateEl) lastUpdateEl.textContent = formatDateTimeNL(votesData.updated*1000, { seconds: 'auto' });
     const localRegion = lastUpdateData?.views?.find(v=>v.type===0);
     if (localRegion) {
-      const ts=new Date(localRegion.updated*1000).toLocaleString();
+      const ts=formatDateTimeNL(localRegion.updated*1000, { seconds: 'auto' });
       const el = document.getElementById('lastUpdatedLocalRegion');
       if (el) el.textContent = `Laatste gemeente: ${localRegion.label} (${ts})`;
     }

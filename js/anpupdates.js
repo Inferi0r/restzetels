@@ -18,6 +18,21 @@
 
   // finalized year provided by Data
 
+  // Time formatting helpers for uniform Dutch numeric style
+  function pad2(n){ return String(n).padStart(2,'0'); }
+  function formatDateTimeNL(ms, opts = {}){
+    if (!ms) return '';
+    const d = new Date(ms);
+    const dd = pad2(d.getDate());
+    const mm = pad2(d.getMonth()+1);
+    const yyyy = d.getFullYear();
+    const HH = pad2(d.getHours());
+    const MM = pad2(d.getMinutes());
+    const SS = pad2(d.getSeconds());
+    const showSeconds = (opts.seconds === 'always') ? true : (opts.seconds === 'never' ? false : (SS !== '00'));
+    return `${dd}-${mm}-${yyyy} ${HH}:${MM}${showSeconds ? ':'+SS : ''}`;
+  }
+
   function createTypeMap(){ return new Map([[0,'Gemeente'],[1,'Provincie'],[2,'Rijk']]); }
   function createStatusMap(){ return new Map([[0,'Nulstand'],[2,'Tussenstand'],[4,'Eindstand']]); }
 
@@ -34,7 +49,7 @@
         Lijsten: (typeof item.countParties === 'number') ? item.countParties : '',
         Status: statusMap.get(item.status) || item.status,
         Updated: updatedTs,
-        UpdatedDisplay: updatedTs ? new Date(updatedTs).toLocaleString('nl-NL') : '',
+        UpdatedDisplay: updatedTs ? formatDateTimeNL(updatedTs, { seconds: 'auto' }) : '',
         Parent: item.parent ? (viewMap.get(item.parent) || item.parent) : '',
         Huidig: (item.topPartiesCurrent||[]).map(k=>partyLabels.get(k)||k).join(', '),
         Vorige: (item.topPartiesPrevious||[]).map(k=>partyLabels.get(k)||k).join(', ')

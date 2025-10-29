@@ -1,6 +1,19 @@
 // Unified NOS updates table
 (function(){
   const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
+  function pad2(n){ return String(n).padStart(2,'0'); }
+  function formatDateTimeNL(ms, opts = {}){
+    if (!ms) return '';
+    const d = new Date(ms);
+    const dd = pad2(d.getDate());
+    const mm = pad2(d.getMonth()+1);
+    const yyyy = d.getFullYear();
+    const HH = pad2(d.getHours());
+    const MM = pad2(d.getMinutes());
+    const SS = pad2(d.getSeconds());
+    const showSeconds = (opts.seconds === 'always') ? true : (opts.seconds === 'never' ? false : (SS !== '00'));
+    return `${dd}-${mm}-${yyyy} ${HH}:${MM}${showSeconds ? ':'+SS : ''}`;
+  }
   async function fetchNOS(year){
     // Prefer bundle to reduce calls
     if (window.Data && typeof Data.fetchBundle==='function') {
@@ -23,8 +36,7 @@
       const opmV = g('vorige_verkiezing.opkomst_promillage');
       const iso = g('publicatie_datum_tijd');
       const d = iso ? new Date(iso) : null;
-      const pad = (n) => String(n).padStart(2,'0');
-      const lastDisp = d ? `${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()}, ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}` : '';
+      const lastDisp = d ? formatDateTimeNL(d.getTime(), { seconds: 'auto' }) : '';
       const row = {
         Status: g('status') || '',
         Laatste: iso || '',
@@ -102,6 +114,10 @@
             td.classList.add('num');
             const val = r[k];
             td.textContent = (val || val===0) ? Number(val).toLocaleString('nl-NL') : '';
+          } else if (k === 'CBS') {
+            td.classList.add('num');
+            const val = r[k];
+            td.textContent = (val!=null) ? String(val) : '';
           } else {
             const val = (k==='Laatste') ? r.LaatsteDisplay : r[k];
             td.textContent = val || '';

@@ -3,6 +3,7 @@
 (function () {
   const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
   const lastStateByYear = new Map(); // year -> { totalVotes, seats: Map(key->count) }
+  let __restImpactSinceInterval = null; // updates the "sinds" label
 
   async function tryFetchKiesraadVotes(year) {
     // Unified local file with per-year keys
@@ -305,20 +306,68 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
     }
     renderTable('seatsSummaryContainer', customSort(rows));
   }
+  // (legacy simple rest-impact function removed)
 
-  function showLatestRestSeatImpact(votesData, keyToLabelShort) {
+
+  // Enhanced rest-seat impact: persistent signature and live "sinds" timer
+  function showLatestRestSeatImpactSince(year, votesData, keyToLabelShort, finalized) {
+    const impactEl = document.getElementById('latestRestSeatImpactContainer');
+    if (!impactEl || !votesData || !votesData.parties) return;
     let latestParty = null, highest = 0;
     votesData.parties.forEach(p => {
-      p.restSeats.forEach((v, k) => { if (k > highest) { highest = k; latestParty = p; } });
+      const rs = p && p.restSeats;
+      if (rs && typeof rs.forEach === 'function') {
+        rs.forEach((v, k) => { if (k > highest) { highest = k; latestParty = p; } });
+      }
     });
-    const lastName = latestParty ? keyToLabelShort.get(latestParty.key) : '';
+    const winnerKey = latestParty ? latestParty.key : '';
+    const winnerName = winnerKey ? (keyToLabelShort.get(winnerKey) || '') : '';
     const { votesShortData } = calculateVotesShortAndSurplus(votesData);
-    let lowest = Number.MAX_SAFE_INTEGER, losing = '';
+    let lowest = Number.MAX_SAFE_INTEGER, losingKey = null;
     votesShortData.forEach((votesShort, key) => {
-      if (votesShort != null && votesShort < lowest) { lowest = votesShort; losing = keyToLabelShort.get(key); }
+      if (votesShort != null && votesShort < lowest) { lowest = votesShort; losingKey = key; }
     });
-    const msg = `Laatste restzetel gaat naar: <span style="font-weight: bold; color: green;">${lastName || '-'}</span>, dit gaat ten koste van: <span style="font-weight: bold; color: red;">${losing || '-'}</span>`;
-    document.getElementById('latestRestSeatImpactContainer').innerHTML = msg;
+    const losingName = (losingKey != null && losingKey !== '') ? (keyToLabelShort.get(losingKey) || '') : '';
+    const hasParties = !!(winnerKey || (losingKey != null && losingKey !== ''));
+
+    const y = String(year);
+    const sigKey = `restImpactSig:v1:${y}`;
+    const sinceKey = `restImpactSince:v1:${y}`;
+    const sig = `${winnerKey || ''}|${(losingKey != null ? losingKey : '') || ''}|${highest || 0}`;
+    const prevSig = window.localStorage.getItem(sigKey) || '';
+    let sinceTs = parseInt(window.localStorage.getItem(sinceKey) || '0', 10) || 0;
+    if (sig !== prevSig || !sinceTs) {
+      sinceTs = Date.now();
+      try {
+        window.localStorage.setItem(sigKey, sig);
+        window.localStorage.setItem(sinceKey, String(sinceTs));
+      } catch(e){}
+    }
+    const relTime = (ms) => {
+      if (!ms) return '';
+      const s = Math.max(0, Math.floor((Date.now() - ms) / 1000));
+      if (s < 60) return `${s}s geleden`;
+      const m = Math.floor(s/60); if (m < 60) return `${m}m geleden`;
+      const h = Math.floor(m/60); if (h < 24) return `${h}u geleden`;
+      const d = Math.floor(h/24); return `${d}d geleden`;
+    };
+    // Show since only when not finalized and we have parties; otherwise show single line without since
+    if (finalized || !hasParties) {
+      impactEl.innerHTML = `
+        <div class="impact-main">Laatste restzetel gaat naar: <span style="font-weight: bold; color: green;">${winnerName || '-'}</span>, dit gaat ten koste van: <span style="font-weight: bold; color: red;">${losingName || '-'}</span></div>
+      `;
+      if (__restImpactSinceInterval) { clearInterval(__restImpactSinceInterval); __restImpactSinceInterval = null; }
+    } else {
+      impactEl.innerHTML = `
+        <div class="impact-main">Laatste restzetel gaat naar: <span style="font-weight: bold; color: green;">${winnerName || '-'}</span>, dit gaat ten koste van: <span style="font-weight: bold; color: red;">${losingName || '-'}</span></div>
+        <div class="impact-since muted small">(sinds <span id="restImpactSinceSpan"></span>)</div>
+      `;
+      const sinceSpan = document.getElementById('restImpactSinceSpan');
+      const updateSince = () => { if (sinceSpan) sinceSpan.textContent = relTime(sinceTs); };
+      updateSince();
+      if (__restImpactSinceInterval) { clearInterval(__restImpactSinceInterval); __restImpactSinceInterval = null; }
+      __restImpactSinceInterval = setInterval(updateSince, 1000);
+    }
   }
 
   // Note: top badge (Alle kiesregio's compleet / countdown) is managed by AutoRefresh
@@ -327,7 +376,7 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
     if (nosData && nosData.gemeentes && nosData.gemeentes.length > 0) {
       const sorted = nosData.gemeentes.slice().sort((a, b) => new Date(b.publicatie_datum_tijd) - new Date(a.publicatie_datum_tijd));
       const latest = sorted[0];
-      const ts = new Date(latest.publicatie_datum_tijd).toLocaleString();
+      const pad2=(n)=>String(n).padStart(2,'0'); const fmt=(ms)=>{const d=new Date(ms);const dd=pad2(d.getDate());const mm=pad2(d.getMonth()+1);const yyyy=d.getFullYear();const HH=pad2(d.getHours());const MM=pad2(d.getMinutes());const SS=pad2(d.getSeconds());return `${dd}-${mm}-${yyyy} ${HH}:${MM}${SS!=='00'?':'+SS:''}`;}; const ts = latest.publicatie_datum_tijd ? fmt(new Date(latest.publicatie_datum_tijd).getTime()) : '';
       const name = latest.gemeente.naam;
       const status = latest.status;
       const el = document.getElementById('latestUpdateFromNos');
@@ -340,6 +389,7 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
     ['seatsSummaryContainer','seatStripTooltip','voteAverageContainer','latestRestSeatImpactContainer','latestUpdateFromNos'].forEach(id => {
       const el = document.getElementById(id); if (el) el.innerHTML = '';
     });
+    if (__restImpactSinceInterval) { try { clearInterval(__restImpactSinceInterval); } catch(e){} __restImpactSinceInterval = null; }
     const completedEl = document.getElementById('completedRegionsCount'); if (completedEl) completedEl.innerHTML = '';
 
     // Fetch labels and data
@@ -439,14 +489,20 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
       // Seats summary
       createSeatsSummaryTable(updatedData, keyToLabelLong, keyToListNumber, { hasVotes: true });
 
-      // Latest rest seat impact
-      showLatestRestSeatImpact(updatedData, keyToLabelShort);
+      // Latest rest seat impact — always visible with persistent since-timer
+      let finalizedFlag=false; try{ finalizedFlag = await Data.isFinalizedYear(year); }catch(e){ finalizedFlag=false; }
+      showLatestRestSeatImpactSince(year, updatedData, keyToLabelShort, finalizedFlag);
     } else {
-      // No votes yet: clear detail tables and render summary with blanks
+      // No votes yet: clear detail tables and render summary with blanks, but keep impact banner visible with placeholders
       ['voteAverageContainer','seatStripTooltip'].forEach(id => { const el=document.getElementById(id); if (el) el.innerHTML=''; });
-      const impactEl = document.getElementById('latestRestSeatImpactContainer');
-      if (impactEl) impactEl.innerHTML = `Laatste restzetel gaat naar: <span style="font-weight: bold; color: green;">-</span>, dit gaat ten koste van: <span style=\"font-weight: bold; color: red;\">-</span>`;
       createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, { hasVotes: false });
+      const impactEl = document.getElementById('latestRestSeatImpactContainer');
+      if (impactEl) {
+        impactEl.innerHTML = `
+          <div class="impact-main">Laatste restzetel gaat naar: <span style="font-weight: bold; color: green;">-</span>, dit gaat ten koste van: <span style="font-weight: bold; color: red;">-</span></div>
+        `;
+        if (__restImpactSinceInterval) { try { clearInterval(__restImpactSinceInterval); } catch(e){} __restImpactSinceInterval = null; }
+      }
     }
   }
 
