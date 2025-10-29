@@ -378,26 +378,33 @@
       }
     } catch(e){}
 
-    // Build separate summary table for Kiesdeler and Voorkeurdrempel
+    // Build separate summary table for Kiesdeler and Voorkeurdrempel (single chosen source)
     try {
       const summary = document.createElement('table');
       summary.className = 'summary-table';
       const sBody = summary.createTBody();
+
+      // Choose source: Kiesraad if available; else higher of ANP/NOS (ties -> ANP)
+      const chosenTotal = (totalKR && totalKR > 0)
+        ? totalKR
+        : ((totalNOS > totalANP) ? totalNOS : totalANP);
+      const chosenKiesdeler = chosenTotal ? (chosenTotal / 150) : 0;
+
       // Kiesdeler row (no header)
       const r1 = sBody.insertRow();
       const r1Lbl = r1.insertCell(); r1Lbl.textContent = 'Kiesdeler:';
-      const r1Anp = r1.insertCell(); r1Anp.classList.add('num');
-      r1Anp.innerHTML = (anpNulstand && totalANP === 0) ? '' : `<div style=\"display:flex;align-items:center;justify-content:flex-end;height:100%;\"><span style=\"margin-right:5px;\">${Math.trunc(kANP).toLocaleString('nl-NL')}</span>${createFractionHTML(Math.round((kANP%1)*150),150)}</div>`;
-      const r1Nos = r1.insertCell(); r1Nos.classList.add('num');
-      r1Nos.innerHTML = totalNOS ? `<div style=\"display:flex;align-items:center;justify-content:flex-end;height:100%;\"><span style=\"margin-right:5px;\">${Math.trunc(kNOS).toLocaleString('nl-NL')}</span>${createFractionHTML(Math.round((kNOS%1)*150),150)}</div>` : '';
-      const r1Kr  = r1.insertCell(); r1Kr.classList.add('num');
-      r1Kr.innerHTML  = totalKR ? `<div style=\"display:flex;align-items:center;justify-content:flex-end;height:100%;\"><span style=\"margin-right:5px;\">${Math.trunc(kKR).toLocaleString('nl-NL')}</span>${createFractionHTML(Math.round((kKR%1)*150),150)}</div>` : '';
-      // Voorkeurdrempel row
+      const r1Val = r1.insertCell(); r1Val.classList.add('num');
+      if (chosenTotal) {
+        r1Val.innerHTML = `<div style=\"display:flex;align-items:center;justify-content:flex-end;height:100%;\"><span style=\"margin-right:5px;\">${Math.trunc(chosenKiesdeler).toLocaleString('nl-NL')}</span>${createFractionHTML(Math.round((chosenKiesdeler%1)*150),150)}</div>`;
+      } else {
+        r1Val.textContent = '';
+      }
+
+      // Voorkeurdrempel row (25% van kiesdeler)
       const r2 = sBody.insertRow();
       const r2Lbl = r2.insertCell(); r2Lbl.textContent = 'Voorkeurdrempel:';
-      const r2Anp = r2.insertCell(); r2Anp.classList.add('num'); r2Anp.textContent = (anpNulstand && totalANP === 0) ? '' : Math.floor(0.25*kANP).toLocaleString('nl-NL');
-      const r2Nos = r2.insertCell(); r2Nos.classList.add('num'); r2Nos.textContent = nosHasData ? Math.floor(0.25*kNOS).toLocaleString('nl-NL') : '';
-      const r2Kr  = r2.insertCell(); r2Kr.classList.add('num');  r2Kr.textContent  = totalKR ? Math.floor(0.25*kKR).toLocaleString('nl-NL') : '';
+      const r2Val = r2.insertCell(); r2Val.classList.add('num');
+      r2Val.textContent = chosenTotal ? Math.floor(0.25 * chosenKiesdeler).toLocaleString('nl-NL') : '';
       // Remove rows from main table and append summary table
       try { tbody.removeChild(kiesRow); } catch(e){}
       try { tbody.removeChild(vRow); } catch(e){}

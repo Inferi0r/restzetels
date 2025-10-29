@@ -662,7 +662,7 @@ nav ul li a.active::after {
 .seat-diff { font-size: 12px; color: #6b7280; margin-left: 6px; }
 .seat-diff--pos { color: #065f46; }
 .seat-diff--neg { color: #b91c1c; }
-#seatsSummaryContainer td.seat-total-td { position: relative; padding-right: 34px; }
+#seatsSummaryContainer td.seat-total-td { position: relative; padding-right: 40px; }
 .seat-total-td .seat-diff { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: 12px; }
 .seat-diff--pos { color: #065f46; }
 .seat-diff--neg { color: #b91c1c; }
