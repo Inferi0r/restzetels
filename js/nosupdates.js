@@ -31,6 +31,7 @@
         LaatsteTs: d ? d.getTime() : 0,
         LaatsteDisplay: lastDisp,
         Gemeente: g('gemeente.naam') || '',
+        CBS: g('gemeente.cbs_code') || '',
         InwonersGemeente: g('gemeente.aantal_inwoners') || 0,
         Kieskring: g('gemeente.kieskring') || '',
         Provincie: g('gemeente.provincie.naam') || '',
@@ -45,8 +46,8 @@
   }
 
   function renderSortable(container, rows){
-    const headers = ['Status','Laatste Update','Gemeente','Inwoners Gemeente','Kieskring','Provincie','Inwoners Provincie','1e Partij','2e Partij','Opkomst (huidig)','Opkomst (vorige)'];
-    const cols = ['Status','Laatste','Gemeente','InwonersGemeente','Kieskring','Provincie','InwonersProvincie','Eerste','Tweede','OpkomstHuidig','OpkomstVorige'];
+    const headers = ['Status','Laatste Update','CBS code','Gemeente','Inwoners Gemeente','Kieskring','Provincie','Inwoners Provincie','1e Partij','2e Partij','Opkomst (huidig)','Opkomst (vorige)'];
+    const cols = ['Status','Laatste','CBS','Gemeente','InwonersGemeente','Kieskring','Provincie','InwonersProvincie','Eerste','Tweede','OpkomstHuidig','OpkomstVorige'];
     let sortState = { key:'Laatste', dir:'desc' };
     const table = document.createElement('table');
     const thead = createHeaderRow(headers);

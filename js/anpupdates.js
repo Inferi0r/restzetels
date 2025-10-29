@@ -31,6 +31,7 @@
         Type: typeMap.get(item.type) || item.type,
         CBS: item.cbsCode || '',
         Label: item.label || '',
+        Lijsten: (typeof item.countParties === 'number') ? item.countParties : '',
         Status: statusMap.get(item.status) || item.status,
         Updated: updatedTs,
         UpdatedDisplay: updatedTs ? new Date(updatedTs).toLocaleString('nl-NL') : '',
@@ -42,16 +43,21 @@
   }
 
   function renderSortableTable(container, rows){
-    const columns = [
+    let columns = [
       {key:'Status', label:'Status'},
       {key:'Updated', label:'Laatste Update', display:'UpdatedDisplay'},
       {key:'Type', label:'Type'},
       {key:'CBS', label:'CBS Code'},
       {key:'Label', label:'Label'},
+      {key:'Lijsten', label:'Aantal lijsten'},
       {key:'Parent', label:'Parent'},
       {key:'Huidig', label:'Grootste partijen (huidig)'},
       {key:'Vorige', label:'Grootste partijen (vorige)'}
     ];
+    const hasLijsten = rows && rows.some(r => r && r.Lijsten !== '' && r.Lijsten != null);
+    if (!hasLijsten) {
+      columns = columns.filter(c => c.key !== 'Lijsten');
+    }
     let sortState = { key:'Updated', dir:'desc' };
     const table = document.createElement('table');
     const thead = table.createTHead();
@@ -128,7 +134,7 @@
           } else if (col.key === 'Updated') {
             const rel = relTime(r.Updated);
             td.innerHTML = `${r.UpdatedDisplay || ''} <span class="muted small">${rel ? '('+rel+')' : ''}</span>`;
-          } else if (col.key === 'CBS') {
+          } else if (col.key === 'CBS' || col.key === 'Lijsten') {
             td.classList.add('num');
             td.textContent = (val!=null) ? val.toString() : '';
           } else {
