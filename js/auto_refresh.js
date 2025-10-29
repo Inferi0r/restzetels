@@ -16,6 +16,7 @@ const REFRESH_INTERVAL_SECONDS = 10; // reduced from 30s to 10s
   let finalizedCache = null;
   let inProgress = false;
   let finalizedActive = false; // guard to prevent countdown UI in finalized years
+  let countdownActive = false; // additional guard for mobile Safari visibility glitches
 
   // Tab title rolling state (only on Zetels page)
   let titleTickId = null;      // updates relative time text
@@ -84,6 +85,7 @@ const REFRESH_INTERVAL_SECONDS = 10; // reduced from 30s to 10s
     if (secondTickId) { clearInterval(secondTickId); secondTickId = null; }
     if (fireTimeoutId) { clearTimeout(fireTimeoutId); fireTimeoutId = null; }
     nextFireAt = 0;
+    countdownActive = false;
   }
 
   function resetUI(){
@@ -103,6 +105,7 @@ const REFRESH_INTERVAL_SECONDS = 10; // reduced from 30s to 10s
       return;
     }
     nextFireAt = Date.now() + (REFRESH_INTERVAL_SECONDS * 1000);
+    countdownActive = true;
     const computeRemaining = () => {
       const ms = Math.max(0, nextFireAt - Date.now());
       // ceil so we don't display 0s while time remains
@@ -159,7 +162,7 @@ const REFRESH_INTERVAL_SECONDS = 10; // reduced from 30s to 10s
       // If finalized, ensure completed badge is shown
       if (finalizedActive) { updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); return; }
       // If a countdown is active, refresh the displayed remaining without resetting schedule
-      if (fireTimeoutId) {
+      if (fireTimeoutId || countdownActive) {
         const ms = nextFireAt ? Math.max(0, nextFireAt - Date.now()) : 0;
         remaining = Math.ceil(ms / 1000);
         updateBadge(`Volgende update: ${remaining}s`);
