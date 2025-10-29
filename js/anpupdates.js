@@ -3,7 +3,7 @@
   const DO_BASE = 'https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata';
 
   async function safeFetchJSON(url){ try{ const r=await fetch(url); if(!r.ok) throw new Error(r.status); return await r.json(); } catch(e){ return null; } }
-  async function fetchPartyLabels(year){ const d=await safeFetchJSON(`partylabels_${year}.json`); const list=Array.isArray(d)?d:[]; return new Map(list.map(p=>[p.key, p.labelShort])); }
+  async function fetchPartyLabels(year){ const d=await safeFetchJSON(`partylabels.json`); const list=Array.isArray(d)?d:(d[String(year)]||[]); return new Map(list.map(p=>[p.key, p.labelShort])); }
   async function fetchLastUpdate(year){ return await safeFetchJSON(`${DO_BASE}?year=${year}&source=last_update`); }
 
   function createTypeMap(){ return new Map([[0,'Gemeente'],[1,'Provincie'],[2,'Rijk']]); }

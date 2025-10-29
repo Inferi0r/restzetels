@@ -14,11 +14,11 @@
   }
 
   async function fetchPartyLabels(year) {
-    // partylabels_<year>.json at repo root
-    const url = `partylabels_${year}.json`;
+    // unified partylabels.json with per-year arrays
+    const url = `partylabels.json`;
     const data = await safeFetchJSON(url);
     if (!data) return { list: [], keyToLabelShort: new Map(), keyToLabelLong: new Map(), keyToNOS: new Map(), keyToListNumber: new Map() };
-    const list = Array.isArray(data) ? data : [];
+    const list = Array.isArray(data) ? data : (data[String(year)] || []);
     const keyToLabelShort = new Map();
     const keyToLabelLong = new Map();
     const keyToNOS = new Map();
@@ -45,9 +45,12 @@
   }
 
   async function tryFetchKiesraadVotes(year) {
-    // Local JSON file per year if present
-    const url = `votes-kiesraad_${year}.js`;
-    return await safeFetchJSON(url);
+    // Unified local file with per-year keys
+    const url = `votes_kiesraad.json`;
+    const data = await safeFetchJSON(url);
+    if (!data) return null;
+    if (Array.isArray(data)) return data; // backward compat if ever array
+    return data[String(year)] || null;
   }
 
   function mapKiesraadDataToANPFormat(kiesraadData, partyLabelsList) {

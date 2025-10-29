@@ -5,8 +5,8 @@
   async function safeFetchJSON(url){ try{ const r=await fetch(url); if(!r.ok) throw new Error(r.status); return await r.json(); } catch(e){ return null; } }
 
   async function fetchPartyLabels(year){
-    const data = await safeFetchJSON(`partylabels_${year}.json`);
-    const list = Array.isArray(data) ? data : [];
+    const data = await safeFetchJSON(`partylabels.json`);
+    const list = Array.isArray(data) ? data : (data[String(year)] || []);
     const keyToLabelShort = new Map();
     list.forEach(p=> keyToLabelShort.set(p.key, p.labelShort || p.labelLong || ''));
     return keyToLabelShort;

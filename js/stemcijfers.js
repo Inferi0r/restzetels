@@ -7,8 +7,8 @@
   }
 
   async function fetchPartyLabels(year){
-    const data = await safeFetchJSON(`partylabels_${year}.json`);
-    const list = Array.isArray(data) ? data : [];
+    const data = await safeFetchJSON(`partylabels.json`);
+    const list = Array.isArray(data) ? data : (data[String(year)] || []);
     const keyToLabelLong = new Map();
     const keyToLabelShort = new Map();
     const keyToNOS = new Map();
@@ -25,7 +25,12 @@
   async function fetchANPVotes(year){ return await safeFetchJSON(`${DO_BASE}?year=${year}&source=votes`); }
   async function fetchANPLastUpdate(year){ return await safeFetchJSON(`${DO_BASE}?year=${year}&source=last_update`); }
   async function fetchNOSIndex(year){ return await safeFetchJSON(`${DO_BASE}?year=${year}&source=nos`); }
-  async function fetchKiesraadVotes(year){ return await safeFetchJSON(`votes-kiesraad_${year}.js`); }
+  async function fetchKiesraadVotes(year){
+    const data = await safeFetchJSON(`votes_kiesraad.json`);
+    if (!data) return null;
+    if (Array.isArray(data)) return data; // backward compat
+    return data[String(year)] || null;
+  }
 
   function createFractionHTML(numerator, denominator){
     return `<div style="display:inline-block;text-align:center;font-size:smaller;"><span style="display:block;border-bottom:1px solid;padding-bottom:2px;">${numerator}</span><span style="display:block;padding-top:2px;">${denominator}</span></div>`;
