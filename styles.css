@@ -242,9 +242,10 @@ nav ul li a.active::after {
 }
 
 /* Center the Zetelverdeling table on the page */
-#seatsSummaryContainer { max-width: 1200px; margin: 12px auto; padding: 0 12px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-#seatsSummaryContainer table { margin-left: auto; margin-right: auto; width: 100%; display: table; }
-#voteAverageContainer table { width: 100%; display: table; }
+#seatsSummaryContainer { max-width: 100%; margin: 12px auto; padding: 0 12px; overflow: visible; text-align: center; }
+#seatsSummaryContainer table { display: inline-table; width: auto; }
+#voteAverageContainer { max-width: 100%; margin: 12px auto; padding: 0 12px; overflow: visible; text-align: center; }
+#voteAverageContainer table { display: inline-table; width: auto; }
 
 /* Prevent horizontal page scroll; confine overflow to containers */
 /* Allow pinch-zoom and natural overflow; do not hide overflow globally */
