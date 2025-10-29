@@ -10,10 +10,16 @@ A small static site + serverless fetchers to visualize Dutch House of Representa
 
 Use your browser’s “View Page Source” (or prepend `view-source:`) on the ANP widget page to locate the embedded party label data used for mapping (long/short names, NOS short names, colors, etc.).
 
+- ANP widget links: often discoverable via AD.nl election pages (they embed the official ANP widgets). Open the page source and look for the ANP widget URL.
+
 ## Serverless PHP functions (fetch layer)
 - Hosted as DigitalOcean Functions:
   - https://cloud.digitalocean.com/functions/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5?i=a80b61
-- These endpoints back `fetch/getdata.php` and `fetch/gemeente-data.php` and are consumed by the frontend via `fetch(...)` calls.
+- The frontend calls `fetch/getdata.php` (deployed to DO Functions) with sources:
+  - `anp_votes` (alias: `votes`)
+  - `anp_last_update` (alias: `last_update`)
+  - `nos_index` (alias: `nos`)
+  - `nos_gemeente` (alias: `gemeente`) — currently not used by the site.
 
 ## Website hosting
 - The static website is hosted at:

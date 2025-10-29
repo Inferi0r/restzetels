@@ -22,9 +22,9 @@
     return { list, keyToLabelLong, keyToLabelShort, keyToNOS, keyToListNumber };
   }
 
-  async function fetchANPVotes(year){ return await safeFetchJSON(`${DO_BASE}?year=${year}&source=votes`); }
-  async function fetchANPLastUpdate(year){ return await safeFetchJSON(`${DO_BASE}?year=${year}&source=last_update`); }
-  async function fetchNOSIndex(year){ return await safeFetchJSON(`${DO_BASE}?year=${year}&source=nos`); }
+  async function fetchANPVotes(year){ return await safeFetchJSON(`${DO_BASE}?year=${year}&source=anp_votes`); }
+  async function fetchANPLastUpdate(year){ return await safeFetchJSON(`${DO_BASE}?year=${year}&source=anp_last_update`); }
+  async function fetchNOSIndex(year){ return await safeFetchJSON(`${DO_BASE}?year=${year}&source=nos_index`); }
   async function fetchKiesraadVotes(year){
     const data = await safeFetchJSON(`votes_kiesraad.json`);
     if (!data) return null;

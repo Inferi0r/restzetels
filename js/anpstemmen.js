@@ -11,8 +11,8 @@
     list.forEach(p=> keyToLabelShort.set(p.key, p.labelShort || p.labelLong || ''));
     return keyToLabelShort;
   }
-  async function fetchANPVotes(year){ return await safeFetchJSON(`${DO_BASE}?year=${year}&source=votes`); }
-  async function fetchANPLastUpdate(year){ return await safeFetchJSON(`${DO_BASE}?year=${year}&source=last_update`); }
+  async function fetchANPVotes(year){ return await safeFetchJSON(`${DO_BASE}?year=${year}&source=anp_votes`); }
+  async function fetchANPLastUpdate(year){ return await safeFetchJSON(`${DO_BASE}?year=${year}&source=anp_last_update`); }
 
   function createStatsTable(votesData, year){
     const table=document.createElement('table');

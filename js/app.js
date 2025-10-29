@@ -33,15 +33,15 @@
   }
 
   async function fetchANPVotes(year) {
-    return await safeFetchJSON(`${DO_BASE}?year=${encodeURIComponent(year)}&source=votes`);
+    return await safeFetchJSON(`${DO_BASE}?year=${encodeURIComponent(year)}&source=anp_votes`);
   }
 
   async function fetchANPLastUpdate(year) {
-    return await safeFetchJSON(`${DO_BASE}?year=${encodeURIComponent(year)}&source=last_update`);
+    return await safeFetchJSON(`${DO_BASE}?year=${encodeURIComponent(year)}&source=anp_last_update`);
   }
 
   async function fetchNOSIndex(year) {
-    return await safeFetchJSON(`${DO_BASE}?year=${encodeURIComponent(year)}&source=nos`);
+    return await safeFetchJSON(`${DO_BASE}?year=${encodeURIComponent(year)}&source=nos_index`);
   }
 
   async function tryFetchKiesraadVotes(year) {

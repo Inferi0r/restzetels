@@ -3,7 +3,7 @@
   const DO_BASE = 'https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata';
 
   async function safeFetchJSON(url){ try{ const r=await fetch(url); if(!r.ok) throw new Error(r.status); return await r.json(); } catch(e){ return null; } }
-  async function fetchNOS(year){ return await safeFetchJSON(`${DO_BASE}?year=${year}&source=nos`); }
+  async function fetchNOS(year){ return await safeFetchJSON(`${DO_BASE}?year=${year}&source=nos_index`); }
 
   function formatNumber(num){ return (typeof num==='number') ? num.toLocaleString('nl-NL') : ''; }
   function formatPercentage(promillage){ return (typeof promillage==='number') ? (promillage/10).toFixed(1)+'%' : ''; }
@@ -49,4 +49,3 @@
 
   window.NOSUpdatesApp = { loadNOSUpdates };
 })();
-
