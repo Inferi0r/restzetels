@@ -3,25 +3,6 @@
 (function () {
   const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
 
-  // Legacy helpers (kept for compatibility if referenced elsewhere)
-  async function fetchANPVotes(year) {
-    const y = String(year);
-    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/${y}/anp_votes.json`);
-    return await Data.safeJSON(`${DO_BASE}?year=${encodeURIComponent(y)}&source=anp_votes`);
-  }
-
-  async function fetchANPLastUpdate(year) {
-    const y = String(year);
-    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/${y}/anp_last_update.json`);
-    return await Data.safeJSON(`${DO_BASE}?year=${encodeURIComponent(y)}&source=anp_last_update`);
-  }
-
-  async function fetchNOSIndex(year) {
-    const y = String(year);
-    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/${y}/nos_index.json`);
-    return await Data.safeJSON(`${DO_BASE}?year=${encodeURIComponent(y)}&source=nos_index`);
-  }
-
   async function tryFetchKiesraadVotes(year) {
     // Unified local file with per-year keys
     const url = `votes_kiesraad.json`;
@@ -79,14 +60,6 @@
     return `${Math.round(numerator)}/${Math.round(denominator)}`;
   }
   const createFractionHTML = (n, d) => (window.UI && UI.createFractionHTML) ? UI.createFractionHTML(n, d) : `${n}/${d}`;
-  function extractFraction(htmlString) {
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = htmlString;
-    const n = tempDiv.querySelector('span:first-child');
-    const d = tempDiv.querySelector('span:last-child');
-    if (!n || !d) return 0;
-    return (parseFloat(n.textContent) || 0) / (parseFloat(d.textContent) || 1);
-  }
 
   function calculateFullAndRestSeats(votesData) {
     let totalVotes = 0;
@@ -336,7 +309,6 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, opt
       tryFetchKiesraadVotes(year)
     ]);
     const anpVotes = bundle.anp_votes;
-    const lastUpdate = bundle.anp_last_update;
     const nosIndex = bundle.nos_index;
     // Badge visibility is centralized in AutoRefresh; do not set here
     if (nosIndex) showLatestUpdateFromNos(nosIndex);

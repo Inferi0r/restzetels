@@ -7,12 +7,15 @@ const REFRESH_INTERVAL_SECONDS = 30; // change here if needed
   let channel;
   try { channel = new BroadcastChannel('restzetels-refresh'); } catch(e) { channel = null; }
 
-  let timerId = null;
-  let secondTickId = null;
+  let timerId = null;           // legacy; no longer used for countdown firing
+  let secondTickId = null;      // updates badge display once per second
+  let fireTimeoutId = null;     // drives the actual refresh call
   let remaining = REFRESH_INTERVAL_SECONDS;
+  let nextFireAt = 0;           // timestamp (ms) when the next refresh should fire
   let currentYear = null;
   let finalizedCache = null;
   let inProgress = false;
+  let finalizedActive = false; // guard to prevent countdown UI in finalized years
 
   function getYear(){
     const params = new URLSearchParams(window.location.search);
@@ -61,6 +64,8 @@ const REFRESH_INTERVAL_SECONDS = 30; // change here if needed
   function clearTimers(){
     if (timerId) { clearInterval(timerId); timerId = null; }
     if (secondTickId) { clearInterval(secondTickId); secondTickId = null; }
+    if (fireTimeoutId) { clearTimeout(fireTimeoutId); fireTimeoutId = null; }
+    nextFireAt = 0;
   }
 
   function resetUI(){
@@ -71,44 +76,75 @@ const REFRESH_INTERVAL_SECONDS = 30; // change here if needed
 
   function startCountdown(onFire){
     clearTimers();
-    remaining = REFRESH_INTERVAL_SECONDS;
+    if (finalizedActive) {
+      // safety: never start countdown while finalized flag is set
+      updateBadge("Alle kiesregio's compleet");
+      setSoundVisible(false);
+      return;
+    }
+    nextFireAt = Date.now() + (REFRESH_INTERVAL_SECONDS * 1000);
+    const computeRemaining = () => {
+      const ms = Math.max(0, nextFireAt - Date.now());
+      // ceil so we don't display 0s while time remains
+      remaining = Math.ceil(ms / 1000);
+    };
+    computeRemaining();
     updateBadge(`Volgende update: ${remaining}s`);
-    // Second display tick
+
+    // Second display tick — uses nextFireAt so it remains correct even if tab was hidden
     secondTickId = setInterval(() => {
-      remaining -= 1;
-      if (remaining <= 0) remaining = 0;
+      if (finalizedActive) { clearTimers(); updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); return; }
+      computeRemaining();
       updateBadge(`Volgende update: ${remaining}s`);
     }, 1000);
-    // Fire loader at interval
-    timerId = setInterval(async () => {
-      // show 0s during refresh
-      remaining = 0;
-      updateBadge(`Volgende update: ${remaining}s`);
-      if (!inProgress) {
-        inProgress = true;
-        try { await onFire(); } catch(e) {} finally { inProgress = false; }
-      }
-      remaining = REFRESH_INTERVAL_SECONDS;
-      updateBadge(`Volgende update: ${remaining}s`);
-    }, REFRESH_INTERVAL_SECONDS * 1000);
+
+    // Schedule the refresh using a timeout; reschedules itself
+    const scheduleFire = () => {
+      if (finalizedActive) { clearTimers(); updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); return; }
+      const delay = Math.max(0, nextFireAt - Date.now());
+      fireTimeoutId = setTimeout(async () => {
+        if (finalizedActive) { clearTimers(); updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); return; }
+        remaining = 0;
+        updateBadge(`Volgende update: ${remaining}s`);
+        if (!inProgress) {
+          inProgress = true;
+          try { await onFire(); } catch(e) {} finally { inProgress = false; }
+        }
+        nextFireAt = Date.now() + (REFRESH_INTERVAL_SECONDS * 1000);
+        computeRemaining();
+        updateBadge(`Volgende update: ${remaining}s`);
+        scheduleFire();
+      }, delay);
+    };
+    scheduleFire();
   }
 
   async function evaluateAndRun(load){
     const year = currentYear;
     if (!year) return;
     const lastUpdate = await fetchLastUpdate(year);
-    if (allGemeentesComplete(lastUpdate)) { updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); clearTimers(); return; }
-    if (await isFinalizedYear(year)) { updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); clearTimers(); return; }
+    if (allGemeentesComplete(lastUpdate)) { finalizedActive = true; updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); clearTimers(); return; }
+    if (await isFinalizedYear(year)) { finalizedActive = true; updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); clearTimers(); return; }
     // not complete -> start/restart countdown
+    finalizedActive = false;
     setSoundVisible(true);
     startCountdown(() => load(year));
   }
 
   function setupVisibility(load){
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) return; // pause; timers keep decrementing via code but we gate fire
-      // when becoming visible, refresh countdown display
-      updateBadge(`Volgende update: ${remaining}s`);
+    document.addEventListener('visibilitychange', async () => {
+      if (document.hidden) return;
+      // If finalized, ensure completed badge is shown
+      if (finalizedActive) { updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); return; }
+      // If a countdown is active, refresh the displayed remaining without resetting schedule
+      if (fireTimeoutId) {
+        const ms = nextFireAt ? Math.max(0, nextFireAt - Date.now()) : 0;
+        remaining = Math.ceil(ms / 1000);
+        updateBadge(`Volgende update: ${remaining}s`);
+        return;
+      }
+      // Otherwise evaluate (e.g., first load or after year change)
+      await evaluateAndRun(load);
     });
   }
 
