@@ -106,13 +106,26 @@
       const h = Math.floor(m/60); if (h < 24) return `${h}u geleden`;
       const d = Math.floor(h/24); return `${d}d geleden`;
     };
+    const pad2 = (n) => String(n).padStart(2,'0');
+    const formatDateTimeNL = (ms, opts = {}) => {
+      if (!ms) return '';
+      const d = new Date(ms);
+      const dd = pad2(d.getDate());
+      const mm = pad2(d.getMonth()+1);
+      const yyyy = d.getFullYear();
+      const HH = pad2(d.getHours());
+      const MM = pad2(d.getMinutes());
+      const SS = pad2(d.getSeconds());
+      const showSeconds = (opts.seconds === 'always') ? true : (opts.seconds === 'never' ? false : (SS !== '00'));
+      return `${dd}-${mm}-${yyyy} ${HH}:${MM}${showSeconds ? ':'+SS : ''}`;
+    };
     const statusMap = new Map([[0,'Nulstand'],[2,'Tussenstand'],[4,'Eindstand']]);
 
     // 1) Kiesraad (static per year)
     const kiesraadDates = {
-      '2021': '26/03/2021, 12:00',
-      '2023': '01/12/2023, 10:00 (2e zitting: 04/12/2023)',
-      '2025': '07/11/2025, 10:00'
+      '2021': '26-03-2021 12:00',
+      '2023': '01-12-2023 10:00 (2e zitting: 04-12-2023)',
+      '2025': '07-11-2025 10:00'
     };
     const krLabel = kiesraadDates[String(year)] || '';
     if (krLabel) {
@@ -144,7 +157,7 @@
              <span class="meta-title">${latestAnp.label || ''}</span>
            </div>
            <div class="meta-row">
-             <span class="meta-exact">${new Date(tsMs).toLocaleString()}</span>
+             <span class="meta-exact">${formatDateTimeNL(tsMs, { seconds: 'auto' })}</span>
              <span class="ticker-dot">•</span>
              <span class="muted small">${relTime(tsMs)}</span>
            </div>
@@ -167,7 +180,7 @@
              <span class="meta-title">${latest?.gemeente?.naam || ''}</span>
            </div>
            <div class="meta-row">
-             <span class="meta-exact">${ts ? ts.toLocaleString() : ''}</span>
+             <span class="meta-exact">${ts ? formatDateTimeNL(ts.getTime(), { seconds: 'auto' }) : ''}</span>
              <span class="ticker-dot">•</span>
              <span class="muted small">${ts ? relTime(ts.getTime()) : ''}</span>
            </div>
