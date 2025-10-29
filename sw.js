@@ -1,6 +1,6 @@
 // Service Worker: cache static assets and API bundle with stale-while-revalidate
 // Bump CACHE_VERSION to invalidate old caches on deploys
-const CACHE_VERSION = 'v2025-10-29-53';
+const CACHE_VERSION = 'v2025-10-29-54';
 const STATIC_CACHE = `static-${CACHE_VERSION}`;
 const DATA_CACHE = `data-${CACHE_VERSION}`;
 const API_CACHE = `api-${CACHE_VERSION}`;
@@ -40,9 +40,17 @@ const PRECACHE_URLS = [
 
 self.addEventListener('install', event => {
   self.skipWaiting();
-  event.waitUntil(
-    caches.open(STATIC_CACHE).then(cache => cache.addAll(PRECACHE_URLS)).catch(()=>{})
-  );
+  event.waitUntil((async () => {
+    try {
+      const cache = await caches.open(STATIC_CACHE);
+      // Bypass the HTTP cache when precaching to ensure fresh assets on version bump
+      const requests = PRECACHE_URLS.map((url) => new Request(url, { cache: 'reload' }));
+      const responses = await Promise.all(requests.map((req) => fetch(req)));
+      await Promise.all(responses.map((res, i) => cache.put(requests[i], res.clone())));
+    } catch(e) {
+      // best effort
+    }
+  })());
 });
 
 self.addEventListener('activate', event => {
@@ -89,7 +97,7 @@ self.addEventListener('fetch', event => {
       const cached = await caches.match(req);
       if (cached) return cached;
       try {
-        const res = await fetch(req);
+        const res = await fetch(new Request(req, { cache: 'reload' }));
         const cache = await caches.open(STATIC_CACHE);
         cache.put(req, res.clone());
         return res;
@@ -106,7 +114,7 @@ self.addEventListener('fetch', event => {
       const cached = await caches.match(req);
       if (cached) return cached;
       try {
-        const res = await fetch(req);
+        const res = await fetch(new Request(req, { cache: 'reload' }));
         const cache = await caches.open(DATA_CACHE);
         cache.put(req, res.clone());
         return res;

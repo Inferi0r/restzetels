@@ -7,8 +7,19 @@
   window.CONFIG.DO_BASE = DO_BASE;
   // Register Service Worker (scoped to current directory)
   if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function(){
-      try { navigator.serviceWorker.register('sw.js', { scope: './' }); } catch(e) {}
+    // Register and auto-reload once when a new SW takes control
+    const registerSW = async () => {
+      try {
+        const reg = await navigator.serviceWorker.register('sw.js', { scope: './' });
+        // Trigger update check on load
+        try { reg.update(); } catch(e) {}
+      } catch(e) {}
+    };
+    registerSW();
+    let reloaded = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (reloaded) return; reloaded = true;
+      try { window.location.reload(); } catch(e) {}
     });
   }
   // Inject preconnect for performance based on the origin
