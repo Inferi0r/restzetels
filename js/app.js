@@ -815,7 +815,7 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
               const eligible = Number(info.eligible||0).toLocaleString('nl-NL');
               const muni = (info.muniTotal>0) ? `${info.muniCounted||0}/${info.muniTotal}` : '-';
               const src = info.source || '';
-              tt.innerHTML = `Bron: ${src} | Inwoners gedekt: ${counted} | Totaal inwoners: ${eligible}<br>Gemeenten klaar: ${muni}`;
+              tt.innerHTML = `Bron: ${src} | Inwoners gedekt: ${counted} | Totaal inwoners: ${eligible}<br>Gemeenten geteld: ${muni}`;
             } else {
               btnVal.textContent = '–';
               tt.textContent = 'Nog geen data';

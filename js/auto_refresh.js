@@ -1,19 +1,15 @@
 // Auto-refresh controller shared across pages
 // Configurable interval at the top.
-const REFRESH_INTERVAL_SECONDS = 20; // reduced from 30s to 10s
+const REFRESH_INTERVAL_SECONDS = 20; // changed from 10s to 20s
 
 (function(){
   const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
-  let channel;
-  try { channel = new BroadcastChannel('restzetels-refresh'); } catch(e) { channel = null; }
 
-  let timerId = null;           // legacy; no longer used for countdown firing
   let secondTickId = null;      // updates badge display once per second
   let fireTimeoutId = null;     // drives the actual refresh call
   let remaining = REFRESH_INTERVAL_SECONDS;
   let nextFireAt = 0;           // timestamp (ms) when the next refresh should fire
   let currentYear = null;
-  let finalizedCache = null;
   let inProgress = false;
   let finalizedActive = false; // guard to prevent countdown UI in finalized years
   let countdownActive = false; // additional guard for mobile Safari visibility glitches
@@ -21,23 +17,11 @@ const REFRESH_INTERVAL_SECONDS = 20; // reduced from 30s to 10s
   let lastResetAt = 0;
   const DISPLAY_CLAMP_MS = 1500; // don't allow countdown to increase after this grace window
 
-  // Tab title rolling state (only on Zetels page)
-  let titleTickId = null;      // updates relative time text
-  let titleScrollId = null;    // scroll effect for the long title
-  let titleScrollPos = 0;
   let titleBaseText = 'Zetels - realtime ANP';
-  let titleInfo = { label: '', ts: 0 };
 
   function onZetelsPage(){ return !!document.getElementById('latestRestSeatImpactContainer'); }
-  function stopTitle(){ if (titleTickId){ clearInterval(titleTickId); titleTickId=null; } if (titleScrollId){ clearInterval(titleScrollId); titleScrollId=null; } titleScrollPos=0; }
-  function relTime(ms){ if (!ms) return ''; const s=Math.max(0,Math.floor((Date.now()-ms)/1000)); if (s<60) return `${s}s`; const m=Math.floor(s/60); if (m<60) return `${m}m`; const h=Math.floor(m/60); if (h<24) return `${h}u`; const d=Math.floor(h/24); return `${d}d`; }
   function setStaticTitle(){ document.title = titleBaseText; }
-  function startTitleRolling(){
-    if (!onZetelsPage()) return; // only on Zetels page
-    // Disabled (static title requested)
-    stopTitle();
-    setStaticTitle();
-  }
+  // Title is always static now
 
   function getYear(){
     const params = new URLSearchParams(window.location.search);
@@ -84,7 +68,6 @@ const REFRESH_INTERVAL_SECONDS = 20; // reduced from 30s to 10s
   }
 
   function clearTimers(){
-    if (timerId) { clearInterval(timerId); timerId = null; }
     if (secondTickId) { clearInterval(secondTickId); secondTickId = null; }
     if (fireTimeoutId) { clearTimeout(fireTimeoutId); fireTimeoutId = null; }
     nextFireAt = 0;
@@ -95,7 +78,6 @@ const REFRESH_INTERVAL_SECONDS = 20; // reduced from 30s to 10s
     clearTimers();
     updateBadge('');
     setSoundVisible(false);
-    stopTitle();
     setStaticTitle();
   }
 
@@ -165,8 +147,8 @@ const REFRESH_INTERVAL_SECONDS = 20; // reduced from 30s to 10s
     const lastUpdate = await fetchLastUpdate(year);
     // Update title info with latest updated Gemeente (type 0)
     if (onZetelsPage()) { setStaticTitle(); }
-    if (allGemeentesComplete(lastUpdate)) { finalizedActive = true; updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); stopTitle(); setStaticTitle(); clearTimers(); return; }
-    if (await isFinalizedYear(year)) { finalizedActive = true; updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); stopTitle(); setStaticTitle(); clearTimers(); return; }
+    if (allGemeentesComplete(lastUpdate)) { finalizedActive = true; updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); setStaticTitle(); clearTimers(); return; }
+    if (await isFinalizedYear(year)) { finalizedActive = true; updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); setStaticTitle(); clearTimers(); return; }
     // not complete -> start/restart countdown
     finalizedActive = false;
     setSoundVisible(true);

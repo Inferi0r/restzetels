@@ -517,13 +517,13 @@ nav ul li a.active::after {
   left: 0; top: 0; bottom: 0;
   width: 4px; background: #059669;
 }
-/* Very subtle indicator for second-highest (loser) */
-#voteAverageContainer td.second-highest-td { background-color: #fffefe; }
+/* Moderate visibility for second-highest (loser) */
+#voteAverageContainer td.second-highest-td { background-color: #FEF9C3; }
 #voteAverageContainer td.second-highest-td::before {
   content: '';
   position: absolute;
   left: 0; top: 0; bottom: 0;
-  width: 2px; background: #fee2e2;
+  width: 2px; background: #FACC15;
 }
 
 /* (removed old seat-strip styles; replaced by simple list in tooltip) */
