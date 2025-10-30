@@ -266,6 +266,20 @@
     }).join('');
     const html = `<table><thead><tr>${header}</tr></thead><tbody>${rows}</tbody></table>`;
     document.getElementById(containerId).innerHTML = html;
+    // If we just rendered the main seats table, align the explanation block width to the table
+    if (containerId === 'seatsSummaryContainer') {
+      try {
+        const block = document.getElementById('seatsBlock');
+        const tbl = document.querySelector('#seatsSummaryContainer table');
+        if (block && tbl) {
+          // Defer to next frame to ensure layout is settled
+          requestAnimationFrame(() => {
+            const w = tbl.getBoundingClientRect().width;
+            block.style.width = w + 'px';
+          });
+        }
+      } catch(e){}
+    }
     document.querySelectorAll(`#${containerId} th`).forEach(th => {
       th.addEventListener('click', () => {
         const column = th.getAttribute('data-column');

@@ -297,6 +297,19 @@ nav ul li a.active::after {
   max-width: 520px;          /* keep compact */
 }
 
+/* Explanatory dropdown under Zetelverdeling */
+.explain-block { margin: 8px auto 16px; max-width: 1200px; }
+.explain-block > summary { cursor: pointer; font-weight: 600; list-style: none; }
+.explain-block > summary::-webkit-details-marker { display: none; }
+.explain-block .explain-body { margin-top: 6px; padding: 10px 12px; background: #f9fafb; border: 1px solid var(--color-border); border-radius: 6px; color: var(--color-text); }
+.explain-block .explain-body p { margin: 0 0 8px 0; }
+.explain-block .explain-body p:last-child { margin-bottom: 0; }
+
+/* Wrap details + table so they share the same shrink-wrapped width */
+#seatsBlock { display: table; margin: 0 auto; }
+#seatsBlock .explain-block { width: 100%; }
+#seatsBlock .info-icon { width: 16px; height: 16px; vertical-align: -2px; margin-right: 6px; }
+
 .info-badge {
   display: inline-block;
   padding: 8px 12px;

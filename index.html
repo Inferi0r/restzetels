@@ -57,8 +57,31 @@
       </span>
     </div>
     <h1 class="title-enhanced">Zetelverdeling</h1>
+    <div id="seatsBlock">
+    <details class="explain-block">
+      <summary><svg class="info-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="2"/><line x1="12" y1="8" x2="12" y2="8" stroke="#0369a1" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="11" x2="12" y2="17" stroke="#0369a1" stroke-width="2" stroke-linecap="round"/></svg> Uitleg: hoe werken deze cijfers?</summary>
+      <div class="explain-body">
+        <p>In Nederland worden in totaal 150 zetels verdeeld. Eerst krijgt elke partij de <em>volle zetels</em> die zij haalt met de kiesdeler. De zetels die daarna nog overblijven heten <em>restzetels</em> en die gaan naar partijen met het hoogste stemgemiddelde (D’Hondt). Voor de bekende “net wel / net niet”-situaties is uiteindelijk de allerlaatste restzetel bepalend.</p>
+        <p><strong>Kiesdeler</strong> = (totaal aantal <em>geldige</em> uitgebrachte stemmen, incl. blanco) ÷ 150.</p>
+        <ul>
+          <li><strong>Volle zetels</strong>: het aantal keer dat een partij de kiesdeler haalt.</li>
+          <li><strong>Restzetels</strong>: zetels die overblijven na de volle zetels; toegewezen op basis van het hoogste stemgemiddelde. Alleen de <em>laatste</em> restzetel beslist of een partij net een extra zetel krijgt of juist verliest.</li>
+        </ul>
+        <p><strong>Hoe werkt het hoogste stemgemiddelde (D’Hondt) per restzetel?</strong></p>
+        <ol>
+          <li>Bij elke stap: bereken voor <em>iedere</em> partij het stemgemiddelde = (totaal geldige stemmen) ÷ (<em>reeds behaalde zetels</em> + 1). <span class="muted">Reeds behaalde zetels = volle zetels + eerder toegekende restzetels.</span></li>
+          <li>De partij met het hoogste gemiddelde krijgt de <em>volgende</em> restzetel.</li>
+          <li>Herhaal dit totdat alle restzetels verdeeld zijn.</li>
+          <li>De <em>allerlaatste</em> restzetel bepaalt uiteindelijk wie net een extra zetel krijgt of net verliest. Immers net een extra zetel winnen betekent altijd de laatste restzetel winnen, terwijl net een zetel verliezen altijd betekent dat de laatste restzetel net niet gescoord wordt.</li>
+        </ol>
+        <p><u>Stemmen over</u> geeft aan hoeveel extra stemmen een partij heeft boven het minimum dat nodig is om haar <em>huidige</em> zetelaantal te behouden en eventueel net aan de laatste restzetel te winnen.<br>
+        <u>Stemmen tekort</u> geeft aan hoeveel stemmen de partij nog nodig heeft voor precies <em>één</em> extra restzetel, ten koste van een andere partij.</p>
+        <p><strong>Bronnen en actualiteit</strong>: zodra <em>Kiesraad</em>-cijfers beschikbaar zijn, wordt daarmee gerekend. Daarvoor wordt gerekend met <em>ANP</em> of <em>NOS</em> cijfers op basis van de laatste update. De kiesdeler en zetelverdeling worden automatisch bijgewerkt op basis van elke binnengekomen stem.</p>
+      </div>
+    </details>
     <!-- legacy inline NOS update removed; ticker shows latest updates -->
     <div id="seatsSummaryContainer"></div>
+    </div>
 
     <div class="flex-container">
         <div class="flex-item">
