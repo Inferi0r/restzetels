@@ -1,6 +1,7 @@
 // Unified NOS updates table
 (function(){
   const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
+  const lastRenderSigByYear = new Map();
   function pad2(n){ return String(n).padStart(2,'0'); }
   function formatDateTimeNL(ms, opts = {}){
     if (!ms) return '';
@@ -147,8 +148,19 @@
 
   async function loadNOSUpdates(year){
     const container = document.getElementById('tableContainer');
-    container.innerHTML='';
     const nosData = await fetchNOS(year);
+    // Signature: max ts across landelijke uitslag and gemeenten
+    let luTs = 0, gmTs = 0;
+    try { luTs = Date.parse(nosData && nosData.landelijke_uitslag && nosData.landelijke_uitslag.publicatie_datum_tijd) || 0; } catch(e){}
+    try {
+      const list = Array.isArray(nosData && nosData.gemeentes) ? nosData.gemeentes : [];
+      for (const g of list) { const t = Date.parse(g && g.publicatie_datum_tijd) || 0; if (t > gmTs) gmTs = t; }
+    } catch(e){}
+    const sig = String(Math.max(luTs, gmTs));
+    const yKey = String(year);
+    if (lastRenderSigByYear.get(yKey) === sig) return; // unchanged -> no DOM updates
+    lastRenderSigByYear.set(yKey, sig);
+    container.innerHTML='';
     createAndPopulateTable(container, nosData || {gemeentes:[]});
   }
 

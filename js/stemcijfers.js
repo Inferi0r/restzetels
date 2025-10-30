@@ -1,6 +1,7 @@
 // Unified Stemcijfers (votes per party) across years
 (function(){
   const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
+  const lastRenderSigByYear = new Map();
 
   async function fetchPartyLabels(year){
     return Data.fetchPartyLabels(year);
@@ -416,12 +417,27 @@
   }
 
   async function loadStemcijfers(year){
-    // Clear
-    ['statsTableContainer','tableContainer','lastUpdateANP','lastUpdatedLocalRegionANP','latestUpdateFromNos'].forEach(id=>{ const el=document.getElementById(id); if (el) el.innerHTML=''; });
     const [{ list, keyToLabelLong, keyToLabelShort, keyToNOS, keyToListNumber }, bundle, kiesraad] = await Promise.all([
       fetchPartyLabels(year), (window.Data && typeof Data.fetchBundle==='function' ? Data.fetchBundle(year) : Promise.resolve({ anp_votes:null, anp_last_update:null, nos_index:null })), fetchKiesraadVotes(year)
     ]);
     const anpVotes = bundle.anp_votes; const lastUpdate = bundle.anp_last_update; const nosIndex = bundle.nos_index;
+    // Signature: ANP max updated and NOS max ts
+    let anpMaxTs = 0; try {
+      const views = Array.isArray(lastUpdate && lastUpdate.views) ? lastUpdate.views : [];
+      anpMaxTs = views.reduce((m,v)=> Math.max(m, Number(v && v.updated)||0), 0);
+    } catch(e){}
+    let nosMaxTs = 0; try {
+      const luTs = Date.parse(nosIndex && nosIndex.landelijke_uitslag && nosIndex.landelijke_uitslag.publicatie_datum_tijd) || 0;
+      let gmTs = 0; const listG = Array.isArray(nosIndex && nosIndex.gemeentes) ? nosIndex.gemeentes : [];
+      for (const g of listG) { const t = Date.parse(g && g.publicatie_datum_tijd) || 0; if (t > gmTs) gmTs = t; }
+      nosMaxTs = Math.max(luTs, gmTs);
+    } catch(e){}
+    const sig = `${anpMaxTs}|${nosMaxTs}`;
+    const yKey = String(year);
+    if (lastRenderSigByYear.get(yKey) === sig) return; // unchanged -> avoid DOM work
+    lastRenderSigByYear.set(yKey, sig);
+    // Clear
+    ['statsTableContainer','tableContainer','lastUpdateANP','lastUpdatedLocalRegionANP','latestUpdateFromNos'].forEach(id=>{ const el=document.getElementById(id); if (el) el.innerHTML=''; });
     // Stats (ANP values with NOS landelijke_uitslag fallback when missing)
     const statsObj = buildStats(anpVotes, nosIndex);
     const rijkView = lastUpdate && Array.isArray(lastUpdate.views) ? lastUpdate.views.find(v=>v.type===2) : null;

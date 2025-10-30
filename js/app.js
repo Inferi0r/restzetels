@@ -3,6 +3,7 @@
 (function () {
   const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
   const lastStateByYear = new Map(); // year -> { totalVotes, seats: Map(key->count) }
+  const lastRenderSigByYear = new Map(); // year -> signature of last rendered data (prevents no-op repaint)
   let __restImpactSinceInterval = null; // updates the "sinds" label
 
   async function tryFetchKiesraadVotes(year) {
@@ -643,14 +644,7 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
     return new File([blob], 'restzetel.png', { type: 'image/png' });
   }
   async function loadZetels(year) {
-    // Clear containers
-    ['seatsSummaryContainer','seatStripTooltip','voteAverageContainer','latestRestSeatImpactContainer','latestUpdateFromNos'].forEach(id => {
-      const el = document.getElementById(id); if (el) el.innerHTML = '';
-    });
-    if (__restImpactSinceInterval) { try { clearInterval(__restImpactSinceInterval); } catch(e){} __restImpactSinceInterval = null; }
-    const completedEl = document.getElementById('completedRegionsCount'); if (completedEl) completedEl.innerHTML = '';
-
-    // Fetch labels and data
+    // Fetch labels and data first (no UI clears yet)
     const { list: partyLabelsList, keyToLabelShort, keyToLabelLong, keyToListNumber, keyToNOS } = await Data.fetchPartyLabels(year);
     const [bundle, kiesraadData] = await Promise.all([
       window.Data && typeof Data.fetchBundle==='function' ? Data.fetchBundle(year) : Promise.resolve({ anp_votes:null, anp_last_update:null, nos_index:null }),
@@ -659,6 +653,38 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
     const anpVotes = bundle.anp_votes;
     const lastUpdate = bundle.anp_last_update;
     const nosIndex = bundle.nos_index;
+
+    // Compute a lightweight signature to detect no-op updates (prevents flicker)
+    let anpMaxTs = 0; try {
+      const views = Array.isArray(lastUpdate && lastUpdate.views) ? lastUpdate.views : [];
+      anpMaxTs = views.reduce((m,v)=> Math.max(m, Number(v && v.updated) || 0), 0);
+    } catch(e){}
+    let nosMaxTs = 0; try {
+      const luTs = Date.parse(nosIndex && nosIndex.landelijke_uitslag && nosIndex.landelijke_uitslag.publicatie_datum_tijd) || 0;
+      let gmTs = 0;
+      if (Array.isArray(nosIndex && nosIndex.gemeentes)) {
+        for (const g of nosIndex.gemeentes) {
+          const t = Date.parse(g && g.publicatie_datum_tijd) || 0; if (t > gmTs) gmTs = t;
+        }
+      }
+      nosMaxTs = Math.max(luTs, gmTs);
+    } catch(e){}
+    const sig = `${anpMaxTs}|${nosMaxTs}`;
+    const yKey = String(year);
+    const prevSig = lastRenderSigByYear.get(yKey);
+    if (prevSig === sig) {
+      // Nothing new — leave DOM untouched; only the countdown changes elsewhere
+      return;
+    }
+    lastRenderSigByYear.set(yKey, sig);
+
+    // From here, we know data changed — clear containers and rebuild UI
+    ['seatsSummaryContainer','seatStripTooltip','voteAverageContainer','latestRestSeatImpactContainer','latestUpdateFromNos'].forEach(id => {
+      const el = document.getElementById(id); if (el) el.innerHTML = '';
+    });
+    if (__restImpactSinceInterval) { try { clearInterval(__restImpactSinceInterval); } catch(e){} __restImpactSinceInterval = null; }
+    const completedEl = document.getElementById('completedRegionsCount'); if (completedEl) completedEl.innerHTML = '';
+
     // Badge visibility is centralized in AutoRefresh; do not set here
     if (nosIndex) { showLatestUpdateFromNos(nosIndex); }
     if (window.Ticker) { try { Ticker.update({ nosIndex, anpLastUpdate: lastUpdate }); } catch(e){} }

@@ -1,6 +1,7 @@
 // Unified ANP updates table
 (function(){
   const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
+  const lastRenderSigByYear = new Map();
 
   async function fetchPartyLabels(year){
     const labels = await Data.fetchPartyLabels(year);
@@ -166,6 +167,16 @@
 
   async function loadANPUpdates(year){
     const [partyLabelsMap, lastUpdateData] = await Promise.all([fetchPartyLabels(year), fetchLastUpdate(year)]);
+    // Compute signature: max updated across views
+    let maxTs = 0;
+    try {
+      const views = Array.isArray(lastUpdateData && lastUpdateData.views) ? lastUpdateData.views : [];
+      maxTs = views.reduce((m,v)=> Math.max(m, Number(v && v.updated)||0), 0);
+    } catch(e){}
+    const yKey = String(year);
+    const sig = String(maxTs);
+    if (lastRenderSigByYear.get(yKey) === sig) return; // no changes — skip DOM work
+    lastRenderSigByYear.set(yKey, sig);
     const container = document.getElementById('tableContainer');
     const rows = buildRows(lastUpdateData || {views:[]}, partyLabelsMap);
     renderSortableTable(container, rows);
