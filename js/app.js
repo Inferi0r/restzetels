@@ -644,7 +644,11 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
       rows.push({ name, full, rest, over: overv, tekort: tekortv, total });
     });
     rows.sort((a,b)=> b.total - a.total || (a.tekort - b.tekort));
-    const tableX = 40, tableY = 250, rowH = 34; let maxRows = rows.length; // show all parties with >=1 zetel, capped by available space
+    const tableX = 40, tableY = 250; // table origin
+    let usedRows = rows.length;      // aim to show all rows
+    // Dynamic sizing so all rows fit while keeping readability
+    let rowH = 34;                   // base row height
+    let headerH = 28;                // base header height
     ctx.fillStyle = '#6b7280'; ctx.font = '600 18px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
     const cols = [
       { label:'Partij',         w: 440, align:'left'  },
@@ -655,14 +659,27 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
       { label:'Stemmen tekort',w: 160, align:'right' }
     ];
     // Compute grid geometry with header row and enforce bottom gap for URL
-    let usedRows = Math.min(rows.length, maxRows);
     const totalW = cols.reduce((s,c)=>s+c.w, 0);
-    const headerH = 28;
-    const headerTop = tableY - 22; // aligns header text baseline roughly with labels at tableY
-    const bottomGap = rowH; // exactly ~one row of whitespace before URL
-    // If rows would push the URL too low, reduce usedRows to preserve gap
-    const maxUsableRows = Math.max(0, Math.floor(((H - 24) - (headerTop + headerH) - bottomGap) / rowH));
-    usedRows = Math.min(usedRows, maxUsableRows);
+    let bottomGap = rowH; // target ~one row space for URL
+    // Scale row/header to fit all rows if possible
+    const scaleToFit = () => {
+      // Scale header with rows
+      headerH = Math.max(18, Math.round(28 * (rowH/34)));
+      const headerTopLocal = tableY - Math.round(headerH * 0.79);
+      const available = (H - 24) - (headerTopLocal + headerH) - bottomGap;
+      return { headerTopLocal, available };
+    };
+    let { headerTopLocal, available } = scaleToFit();
+    if (usedRows * rowH > available) {
+      const minRowH = 16;
+      rowH = Math.max(minRowH, Math.floor(available / Math.max(1, usedRows)));
+      ({ headerTopLocal, available } = scaleToFit());
+    }
+    // If it still doesn't fit at minimum row height, reduce usedRows
+    if (usedRows * rowH > available) {
+      usedRows = Math.max(0, Math.floor(available / Math.max(1, rowH)));
+    }
+    const headerTop = headerTopLocal;
     const tableTop = headerTop + headerH;
     const tableH = usedRows * rowH;
     const tableBottom = tableTop + tableH;
@@ -672,7 +689,8 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
     ctx.fillRect(tableX, headerTop, totalW, headerH);
     ctx.textBaseline = 'middle';
     let hx = tableX; const hy = headerTop + headerH/2;
-    ctx.fillStyle = '#6b7280'; ctx.font = '600 16px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
+    const headerFontSize = Math.max(12, Math.round(16 * (rowH/34)));
+    ctx.fillStyle = '#6b7280'; ctx.font = `600 ${headerFontSize}px system-ui, -apple-system, Segoe UI, Roboto, sans-serif`;
     cols.forEach(c=>{ if (c.align==='right'){ ctx.textAlign='right'; ctx.fillText(c.label, hx + c.w - 10, hy); ctx.textAlign='left'; } else { ctx.fillText(c.label, hx + 10, hy);} hx += c.w; });
 
     // Grid lines
@@ -692,14 +710,15 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
     ctx.stroke();
 
     // Draw rows, vertically centered, bold names only
+    const rowFontSize = Math.max(12, Math.round(20 * (rowH/34)));
     rows.slice(0, usedRows).forEach((r,i)=>{
       let cx = tableX; const cy = tableTop + i*rowH + (rowH/2);
       // Partij (bold)
-      ctx.fillStyle = '#111827'; ctx.textAlign='left'; ctx.font = '600 20px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
+      ctx.fillStyle = '#111827'; ctx.textAlign='left'; ctx.font = `600 ${rowFontSize}px system-ui, -apple-system, Segoe UI, Roboto, sans-serif`;
       const nm = r.name.length>34 ? (r.name.slice(0,31)+'…') : r.name;
       ctx.fillText(nm, cx + 10, cy); cx += cols[0].w;
       // Numbers (regular weight)
-      ctx.textAlign='right'; ctx.font = '400 20px system-ui, -apple-system, Segoe UI, Roboto, sans-serif'; ctx.fillStyle='#111827';
+      ctx.textAlign='right'; ctx.font = `400 ${rowFontSize}px system-ui, -apple-system, Segoe UI, Roboto, sans-serif`; ctx.fillStyle='#111827';
       ctx.fillText(String(r.full),  cx + cols[1].w - 10, cy); cx += cols[1].w;
       ctx.fillText(String(r.rest),  cx + cols[2].w - 10, cy); cx += cols[2].w;
       ctx.fillText(String(r.total), cx + cols[3].w - 10, cy); cx += cols[3].w;
