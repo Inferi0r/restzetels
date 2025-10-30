@@ -644,7 +644,7 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
       rows.push({ name, full, rest, over: overv, tekort: tekortv, total });
     });
     rows.sort((a,b)=> b.total - a.total || (a.tekort - b.tekort));
-    const tableX = 40, tableY = 250; // table origin
+    const tableX = 40, tableY = 230; // table origin (moved up to reduce gap under "Sinds ...")
     let usedRows = rows.length;      // aim to show all rows
     // Dynamic sizing so all rows fit while keeping readability
     let rowH = 34;                   // base row height
