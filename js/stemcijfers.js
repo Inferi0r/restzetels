@@ -67,14 +67,26 @@
     return stats;
   }
 
-  function renderStatsTable(stats, anpNulstand=false){
+  function renderStatsTable(stats, anpNulstand=false, year){
     const table = document.createElement('table');
     const thead = table.createTHead();
     const tbody = table.createTBody();
     const headerRow = thead.insertRow();
     ["", "Stemgerechtigden", "Opkomst", "Totale stemmen", "Ongeldige stemmen", "Blanco stemmen"].forEach(h => { const th = document.createElement('th'); th.textContent = h; headerRow.appendChild(th); });
     const cur = tbody.insertRow();
-    cur.insertCell().textContent = "Huidig";
+    // Row labels: TKYY for current and previous cycle (e.g., TK25 vs TK23; TK21 vs TK17)
+    let curLabel = 'Huidig';
+    let prevLabel = 'Vorige';
+    try {
+      const yNum = parseInt(String(year||''), 10);
+      if (!isNaN(yNum) && yNum>0) {
+        curLabel = `TK${String(yNum).slice(-2)}`;
+        let prevYear = (yNum === 2021) ? 2017 : (yNum - 2);
+        prevLabel = `TK${String(prevYear).slice(-2)}`;
+      }
+    } catch(e){}
+    const curLblCell = cur.insertCell();
+    try { curLblCell.innerHTML = `<strong>${curLabel}</strong>`; } catch(e) { curLblCell.textContent = curLabel; }
     const curVoters = Number(stats.voters.current || 0);
     const curTurnout = stats.turnout.current || '';
     const curTurnoutCount = Number(stats.turnoutCount.current || 0);
@@ -86,7 +98,7 @@
     cur.insertCell().textContent = (anpNulstand && curInvalid === 0) ? '' : curInvalid.toLocaleString('nl-NL');
     cur.insertCell().textContent = (anpNulstand && curBlank === 0) ? '' : curBlank.toLocaleString('nl-NL');
     const prev = tbody.insertRow();
-    prev.insertCell().textContent = "Vorige";
+    prev.insertCell().textContent = prevLabel;
     prev.insertCell().textContent = Number(stats.voters.previous || 0).toLocaleString('nl-NL');
     prev.insertCell().textContent = stats.turnout.previous || '';
     prev.insertCell().textContent = Number(stats.turnoutCount.previous || 0).toLocaleString('nl-NL');
@@ -276,8 +288,15 @@
       p.__kiesraadVotes = listNumber ? (kiesraadVotesMap.get(listNumber) || 0) : 0;
     });
 
-    // default sort by ANP votes desc
+    // Choose default sort column:
+    // - If Kiesraad totals known, sort by Kiesraad votes (desc)
+    // - Else sort by the source with the highest total votes between ANP and NOS (ties -> ANP)
+    const totalANP_init = votesData.parties.reduce((t,p)=>t + (parseInt(p.results.current.votes)||0), 0);
+    const totalNOS_init = Array.from(nosVotesMap.values()).reduce((t,v)=>t + (v||0), 0);
+    const totalKR_init  = Array.from(kiesraadVotesMap.values()).reduce((t,v)=>t + (v||0), 0);
     let sortColumn = 'votes', sortOrder = 'desc', lastSortedColumn = 'votes';
+    if (totalKR_init > 0) { sortColumn = 'kiesraadVotes'; lastSortedColumn = 'kiesraadVotes'; }
+    else if (totalNOS_init > totalANP_init) { sortColumn = 'nosVotes'; lastSortedColumn = 'nosVotes'; }
     function updateHeaderIcons(){
       Array.from(headerRow.children).forEach(th => {
         const id = th.dataset.sort;
@@ -447,7 +466,7 @@
     const statsObj = buildStats(anpVotes, nosIndex);
     const rijkView = lastUpdate && Array.isArray(lastUpdate.views) ? lastUpdate.views.find(v=>v.type===2) : null;
     const anpNulstand = rijkView ? (rijkView.status === 0) : false;
-    const statsEl = renderStatsTable(statsObj, anpNulstand);
+    const statsEl = renderStatsTable(statsObj, anpNulstand, year);
     const sc = document.getElementById('statsTableContainer'); if (sc) sc.appendChild(statsEl);
     updateLastUpdates(lastUpdate, nosIndex, anpVotes, year);
     // NOS national votes map

@@ -149,6 +149,43 @@
   }
 
   const sortStates = {};
+  function getQSParam(name){ try { const u=new URL(window.location.href); return u.searchParams.get(name); } catch(e){ return null; } }
+  function setQSParams(params){
+    try {
+      const u = new URL(window.location.href);
+      Object.entries(params||{}).forEach(([k,v])=>{ if (v==null) u.searchParams.delete(k); else u.searchParams.set(k, v); });
+      window.history.replaceState({}, '', u.toString());
+    } catch(e) {}
+  }
+
+  function applyFixedSort(data, column, dir, excludeLastRow=false){
+    const prev = sortStates[column];
+    Object.keys(sortStates).forEach(k => { sortStates[k] = null; });
+    sortStates[column] = (dir === 'desc' ? 'desc' : 'asc');
+    const copy = excludeLastRow ? data.slice(0, -1) : [...data];
+    copy.sort((a,b)=>{
+      if (/^\d+e$/.test(column)) {
+        const key = `_num_${column}`;
+        const A = typeof a[key] === 'number' ? a[key] : 0;
+        const B = typeof b[key] === 'number' ? b[key] : 0;
+        return dir==='asc' ? (A-B) : (B-A);
+      }
+      if (column === 'Totaal zetels') {
+        const A = typeof a._totalSeats === 'number' ? a._totalSeats : parseInt((a[column]||'').toString(),10) || 0;
+        const B = typeof b._totalSeats === 'number' ? b._totalSeats : parseInt((b[column]||'').toString(),10) || 0;
+        return dir==='asc' ? (A-B) : (B-A);
+      }
+      let A = a[column], B = b[column];
+      if (column === 'Stemmen over' || column === 'Stemmen tekort') {
+        A = parseInt((A || '').toString().replace(/[\.,]/g, ''), 10) || 0;
+        B = parseInt((B || '').toString().replace(/[\.,]/g, ''), 10) || 0;
+      }
+      if (A < B) return dir==='asc' ? -1 : 1;
+      if (A > B) return dir==='asc' ? 1 : -1;
+      return 0;
+    });
+    return excludeLastRow ? [...copy, data[data.length - 1]] : copy;
+  }
   function sortTableData(data, column, defaultOrder = 'asc', excludeLastRow = false) {
     Object.keys(sortStates).forEach(k => { if (k !== column) sortStates[k] = null; });
     if (!sortStates[column]) sortStates[column] = defaultOrder; else sortStates[column] = (sortStates[column] === 'asc' ? 'desc' : 'asc');
@@ -193,6 +230,19 @@
       const cls = numericCols.has(col) ? ' class="num"' : '';
       return `<th data-column="${col}"${cls}>${col} <span class="sort-icon">${icon}</span></th>`;
     }).join('');
+    // Initial sort via URL for seatsSummaryContainer
+    if (containerId === 'seatsSummaryContainer') {
+      const hasActive = columns.some(c => !!sortStates[c]);
+      if (!hasActive) {
+        const qsCol = getQSParam('seatsSort');
+        const qsDir = getQSParam('seatsDir');
+        if (qsCol && columns.includes(qsCol)) {
+          const excludeLastRow = true;
+          data = applyFixedSort(data, qsCol, (qsDir==='desc'?'desc':'asc'), excludeLastRow);
+        }
+      }
+    }
+
     const rows = data.map((row, i) => {
       const cells = columns.map(col => {
         const val = row[col];
@@ -222,8 +272,27 @@
         const excludeLastRow = containerId === 'seatsSummaryContainer';
         const sortedData = sortTableData(data, column, 'asc', excludeLastRow);
         renderTable(containerId, sortedData);
+        if (containerId === 'seatsSummaryContainer') {
+          // Update URL with current seats table sort
+          const dir = sortStates[column] || 'asc';
+          setQSParams({ seatsSort: column, seatsDir: dir });
+        }
       });
     });
+    // Re-apply average-table highlight classes after any (re)render so full-cell coloring survives sorting
+    if (containerId === 'voteAverageContainer') {
+      try {
+        const tbl = document.querySelector('#voteAverageContainer table');
+        if (tbl) {
+          tbl.querySelectorAll('td').forEach(td => {
+            const hv = td.querySelector('.highest-value');
+            if (hv) { td.classList.add('highest-td'); hv.classList.remove('highest-value'); }
+            const sv = td.querySelector('.second-highest-value');
+            if (sv) { td.classList.add('second-highest-td'); sv.classList.remove('second-highest-value'); }
+          });
+        }
+      } catch(e) {}
+    }
   }
 
   function updateSeatStripTooltip(votesData, keyToLabelShort, total_restSeats) {
