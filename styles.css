@@ -645,6 +645,12 @@ nav ul li a.active::after {
   nav ul li {
     margin: 0 12px;       /* tighter spacing for mid screens */
   }
+
+  /* In the top utilities banner, keep sound prompt on one line to the left of the icon */
+  .right-controls #soundWrap { display: inline-flex; align-items: center; gap: 8px; }
+  .right-controls #soundWrap .sound-prompt { position: static; top: auto; right: auto; margin: 0; white-space: nowrap; order: 0; display: inline-flex; align-items: center; }
+  /* Flex items inside soundWrap are the .tooltip wrapper and the .sound-prompt; move the icon (.tooltip) to the right */
+  .right-controls #soundWrap .tooltip { order: 1; }
 }
 
 /* Narrow phones: additional compaction + hide sound prompt */
@@ -707,6 +713,11 @@ nav ul li a.active::after {
     left: auto;
     right: 0;      /* keep tooltip within viewport */
   }
+
+  /* Compact, single-line layout for sound prompt + icon in top banner */
+  .right-controls #soundWrap { display: inline-flex; align-items: center; gap: 8px; }
+  .right-controls #soundWrap .sound-prompt { position: static; top: auto; right: auto; margin: 0; white-space: nowrap; order: 0; display: inline-flex; align-items: center; }
+  .right-controls #soundWrap .tooltip { order: 1; }
 }
 .seat-diff { font-size: 12px; color: #6b7280; margin-left: 6px; }
 .seat-diff--pos { color: #065f46; }
