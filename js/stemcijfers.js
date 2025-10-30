@@ -248,7 +248,7 @@
   }
 
   function renderStemcijfersTable({containerId, votesData, nosVotesMap, kiesraadVotesMap, maps, anpNulstand=false, nosHasData=false, prevYear}){
-    const { keyToLabelLong, keyToNOS, keyToListNumber } = maps;
+    const { keyToLabelLong, keyToLabelShort, keyToNOS, keyToListNumber } = maps;
     const table = document.createElement('table');
     const thead = table.createTHead();
     const tbody = table.createTBody();
@@ -296,6 +296,9 @@
         const anpVotes = parseInt(p.results.current.votes)||0;
         const nosVotes = p.__nosVotes || 0;
         const krVotes = p.__kiesraadVotes || 0;
+        const shortLbl = (keyToLabelShort && keyToLabelShort.get(p.key)) || '';
+        const isOverig = /overig/i.test(shortLbl);
+        if (isOverig && anpVotes === 0) { try { tbody.removeChild(row); } catch(e){} return; }
         const rawPerc = p.results.current.percentage || '';
         const diffVotes = parseInt(p.results.diff.votes)||0;
         let percDiff;
@@ -462,7 +465,7 @@
     let prevYear = (yNum ? yNum - 2 : undefined);
     if (yNum === 2021) prevYear = 2017; else if (yNum === 2023) prevYear = 2021; else if (yNum === 2025) prevYear = 2023;
     // Render table
-    renderStemcijfersTable({containerId:'tableContainer', votesData: anpVotes, nosVotesMap, kiesraadVotesMap, maps:{keyToLabelLong, keyToNOS, keyToListNumber}, anpNulstand, nosHasData, prevYear});
+    renderStemcijfersTable({containerId:'tableContainer', votesData: anpVotes, nosVotesMap, kiesraadVotesMap, maps:{keyToLabelLong, keyToLabelShort, keyToNOS, keyToListNumber}, anpNulstand, nosHasData, prevYear});
   }
 
   window.StemcijfersApp = { loadStemcijfers };
