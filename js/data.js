@@ -1,5 +1,6 @@
 (function(){
   const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
+  const DATA_MODE = (window.CONFIG && CONFIG.DATA_MODE) || 'auto'; // 'auto' | 'remote' | 'local'
   let channel;
   try { channel = new BroadcastChannel('restzetels-bundle'); } catch(e) { channel = null; }
 
@@ -30,6 +31,7 @@
   let __kiesraadIndex = null;
   async function isFinalizedYear(year){
     const y = String(year);
+    // Only use the unified kiesraad index to decide finalization.
     if (!__kiesraadIndex) __kiesraadIndex = await safeFetchJSON('data/votes_kiesraad.json');
     if (!__kiesraadIndex) return false;
     const entry = Array.isArray(__kiesraadIndex) ? __kiesraadIndex : __kiesraadIndex[y];
@@ -141,8 +143,12 @@
     if (entry && entry.data && isFresh(entry.ts)) return entry.data;
     if (entry && entry.promise) return entry.promise;
     const p = (async () => {
-      const finalized = await isFinalizedYear(y);
-      const bundle = finalized ? await fetchLocalBundle(y) : await fetchRemoteBundle(y);
+      let source = DATA_MODE;
+      if (source === 'auto') {
+        const finalized = await isFinalizedYear(y);
+        source = finalized ? 'local' : 'remote';
+      }
+      const bundle = (source === 'local') ? await fetchLocalBundle(y) : await fetchRemoteBundle(y);
       cache.set(y, { ts: now(), data: bundle, promise: null });
       if (channel) { try{ channel.postMessage({ type:'bundle', year: y, ts: now(), data: bundle }); } catch(e){} }
       return bundle;

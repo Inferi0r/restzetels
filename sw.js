@@ -1,6 +1,6 @@
 // Service Worker: cache static assets and API bundle with stale-while-revalidate
 // Bump CACHE_VERSION to invalidate old caches on deploys
-const CACHE_VERSION = 'v2025-10-29-71';
+const CACHE_VERSION = 'v2025-10-30-01';
 const STATIC_CACHE = `static-${CACHE_VERSION}`;
 const DATA_CACHE = `data-${CACHE_VERSION}`;
 const API_CACHE = `api-${CACHE_VERSION}`;
@@ -23,6 +23,7 @@ const PRECACHE_URLS = [
   './js/auto_refresh.js',
   './js/app.js',
   './js/stemcijfers.js',
+  './js/metrics.js',
   './js/anpupdates.js',
   './js/nosupdates.js',
   './js/anpstemmen.js',

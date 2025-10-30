@@ -5,8 +5,24 @@
   var DO_BASE = (window.RESTZETELS_DO_BASE || DEFAULT);
   window.CONFIG = window.CONFIG || {};
   window.CONFIG.DO_BASE = DO_BASE;
-  // Register Service Worker (scoped to current directory)
-  if ('serviceWorker' in navigator) {
+
+  // Optional data source mode: 'auto' (default), 'remote', or 'local'.
+  // Can be set via query param ?data=remote|local|auto or by setting window.CONFIG.DATA_MODE before this file loads.
+  try {
+    if (!window.CONFIG.DATA_MODE) {
+      var qs = new URLSearchParams(location.search || '');
+      var dm = (qs.get('data') || qs.get('mode') || '').toLowerCase();
+      if (dm === 'remote' || dm === 'local' || dm === 'auto') {
+        window.CONFIG.DATA_MODE = dm;
+      } else {
+        window.CONFIG.DATA_MODE = 'auto';
+      }
+    }
+  } catch(e) { window.CONFIG.DATA_MODE = window.CONFIG.DATA_MODE || 'auto'; }
+
+  var isLocalHost = /^(127\.0\.0\.1|localhost)$/.test(location.hostname);
+  // Register Service Worker (scoped to current directory) only outside local dev
+  if ('serviceWorker' in navigator && !isLocalHost) {
     // Register and defer activation so the first page load doesn't reset immediately
     (async () => {
       try {
@@ -43,6 +59,14 @@
       if (reloaded) return; reloaded = true;
       setTimeout(() => { try { window.location.reload(); } catch(e) {} }, 50);
     });
+  } else if ('serviceWorker' in navigator && isLocalHost) {
+    // In local dev, ensure any previously registered SW is removed to avoid stale caches
+    try {
+      navigator.serviceWorker.getRegistrations().then(function(regs){ regs.forEach(function(r){ try{ r.unregister(); }catch(e){} }); });
+      if (window.caches && typeof caches.keys === 'function') {
+        caches.keys().then(function(keys){ keys.forEach(function(k){ if (/^(static-|data-|api-)/.test(k)) { try{ caches.delete(k); }catch(e){} } }); });
+      }
+    } catch(e) {}
   }
   // Inject preconnect for performance based on the origin
   try {
