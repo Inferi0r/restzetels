@@ -298,6 +298,7 @@ nav ul li a.active::after {
 }
 
 /* Explanatory dropdown under Zetelverdeling */
+.info-icon { width: 16px; height: 16px; max-width: none; display: inline-block; vertical-align: -2px; margin-right: 6px; }
 .explain-block { margin: 8px auto 16px; max-width: 1200px; }
 .explain-block > summary { cursor: pointer; font-weight: 600; list-style: none; }
 .explain-block > summary::-webkit-details-marker { display: none; }
