@@ -388,6 +388,20 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
     const surplusVotesData = calc.surplusVotesData;
     const rows = [];
     let totalFull = 0, totalRest = 0;
+    // Build a union of Ipsos timestamp labels across all parties for this year
+    let ipsosTimes = [];
+    try {
+      if (exitSeries && typeof exitSeries.forEach === 'function') {
+        const seen = new Set();
+        exitSeries.forEach(series => {
+          (series||[]).forEach(it => {
+            const t = String(it && it.t || '').trim();
+            if (t && !seen.has(t)) { seen.add(t); ipsosTimes.push(t); }
+          });
+        });
+      }
+    } catch(e) {}
+
     safeData.parties.forEach(p => {
       let rowTotalSeatsNum; // ensure per-row numeric total for correct sorting
       let rowTotalSeatsTitle; // optional hover title for td
@@ -406,10 +420,10 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
           surplus = (typeof sRaw === 'number' && !isNaN(sRaw) && sRaw !== 0) ? sRaw.toLocaleString('nl-NL') : '';
           shortv = (typeof shRaw === 'number' && !isNaN(shRaw) && shRaw !== 0) ? shRaw.toLocaleString('nl-NL') : '';
           // Exitpoll diff rendering + hover title
-          if (exitLatest && keyToLabelShort) {
+          if (keyToLabelShort) {
             const norm = (s) => (s||'').toString().trim().toUpperCase();
             const shortLabel = keyToLabelShort.get(p.key) || keyToLabelShort.get(p.key?.toString?.()) || '';
-            const expected = exitLatest.get(norm(shortLabel));
+            const expected = exitLatest && exitLatest.get ? exitLatest.get(norm(shortLabel)) : undefined;
             if (typeof expected === 'number' && !isNaN(expected)) {
               const diff = (tsNum || 0) - expected;
               // Build full timestamp list for tooltip if available (multiline)
@@ -433,6 +447,11 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
               }
               // Store full multiline tooltip on the row; td will render instant tooltip from data-tip
               rowTotalSeatsTitle = tooltipText;
+            } else if (Array.isArray(ipsosTimes) && ipsosTimes.length) {
+              // No Ipsos series for this party, but we know the year has Ipsos timestamps: show 0 for each
+              const lines = ['Exitpoll Ipsos'];
+              ipsosTimes.forEach(t => { lines.push(`${t} 0 zetels`); });
+              rowTotalSeatsTitle = lines.join('\n');
             }
           }
           // keep numeric for sorting
@@ -837,6 +856,17 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
     const sig = `${anpMaxTs}|${nosMaxTs}`;
     const yKey = String(year);
     const prevSig = lastRenderSigByYear.get(yKey);
+    // Guard against late responses from a previous year: ignore if not the selected year
+    let selectedYear = yKey;
+    try {
+      const sel = document.getElementById('yearSelect');
+      selectedYear = (sel && sel.value) || (new URLSearchParams(window.location.search).get('year')) || window.localStorage.getItem('selectedYear') || yKey;
+    } catch(e) { selectedYear = yKey; }
+    if (selectedYear !== yKey) {
+      return; // stale response for a different year — do not update UI/ticker
+    }
+    // Update the ticker for the selected year
+    try { if (window.Ticker) { Ticker.update({ nosIndex, anpLastUpdate: lastUpdate, year: yKey }); } } catch(e){}
     if (prevSig === sig && renderedYear === yKey) {
       // Nothing new — leave DOM untouched; only the countdown changes elsewhere
       return;
@@ -852,8 +882,7 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
     const completedEl = document.getElementById('completedRegionsCount'); if (completedEl) completedEl.innerHTML = '';
 
     // Badge visibility is centralized in AutoRefresh; do not set here
-    if (nosIndex) { showLatestUpdateFromNos(nosIndex); }
-    if (window.Ticker) { try { Ticker.update({ nosIndex, anpLastUpdate: lastUpdate }); } catch(e){} }
+    if (nosIndex) { try { showLatestUpdateFromNos(nosIndex); } catch(e){} }
 
     let votesData = anpVotes;
     if (kiesraadData && Array.isArray(kiesraadData) && kiesraadData.length > 0) {

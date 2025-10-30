@@ -65,6 +65,7 @@
       setUrlYear(year);
       updateNavLinks(year);
       window.localStorage.setItem('selectedYear', year);
+      try { window.CURRENT_YEAR = String(year); } catch(e){}
       // callback to load page data
       load(year);
       select.addEventListener('change', function(){
@@ -72,6 +73,7 @@
         window.localStorage.setItem('selectedYear', y);
         setUrlYear(y);
         updateNavLinks(y);
+        try { window.CURRENT_YEAR = String(y); } catch(e){}
         load(y);
       });
     })();

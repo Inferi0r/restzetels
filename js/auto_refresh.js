@@ -79,6 +79,20 @@ const REFRESH_INTERVAL_SECONDS = 30; // changed from 10s to 30s
     updateBadge('');
     setSoundVisible(false);
     setStaticTitle();
+    // Clear ticker to avoid stale cross-year content (exists only on Zetels page)
+    try {
+      const c = document.getElementById('nosTickerContainer');
+      if (c) {
+        const st = c._ticker;
+        if (st) {
+          try { if (st.rafId) cancelAnimationFrame(st.rafId); } catch(e){}
+          try { if (st.whenTimer) clearInterval(st.whenTimer); } catch(e){}
+          st.rafId = 0; st.whenTimer = 0; st.sig = '';
+        }
+        c.innerHTML = '';
+        c.style.display = 'none';
+      }
+    } catch(e){}
   }
 
   function startCountdown(onFire){

@@ -108,8 +108,16 @@
   function update(opts){
     const nosIndex = opts && opts.nosIndex;
     const anp = opts && opts.anpLastUpdate;
+    const targetYear = (opts && opts.year) ? String(opts.year) : null;
     const container = document.getElementById('nosTickerContainer');
     if (!container) return;
+    // Ignore updates for a different year (e.g., late responses after a year switch)
+    try {
+      const selectedYear = (window.CURRENT_YEAR && String(window.CURRENT_YEAR)) || (document.getElementById('yearSelect')?.value) || (new URLSearchParams(window.location.search).get('year')) || window.localStorage.getItem('selectedYear') || targetYear;
+      if (targetYear && String(selectedYear) !== String(targetYear)) return;
+      // Persist the currently rendered year on the container to reject late updates
+      container.dataset.year = String(selectedYear || '');
+    } catch(e) {}
     if (!container.querySelector('.ticker-track')) {
       const track = document.createElement('div');
       track.className = 'ticker-track';

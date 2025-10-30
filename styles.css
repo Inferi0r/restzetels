@@ -431,15 +431,15 @@ nav ul li a.active::after {
 
 .flex-container {
   display: flex;
-  justify-content: space-around; /* This will space the two items evenly */
-  align-items: start; /* Aligns items to the start of the flex container */
+  justify-content: center; /* center the content block itself */
+  align-items: flex-start;
   margin: 0 auto;
-  max-width: 1200px; /* Adjust this value based on your layout needs */
+  max-width: 1200px;
 }
 
 .flex-item {
-  flex: 1; /* Each flex item will take up equal space */
-  padding: 10px; /* Optional, for some spacing around each flex item */
+  flex: 0 1 auto; /* shrink to content width so centering is exact */
+  padding: 10px;
 }
 
 #seatsSummaryContainer .total-row {
