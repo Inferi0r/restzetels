@@ -185,6 +185,9 @@ const REFRESH_INTERVAL_SECONDS = 30; // changed from 10s to 30s
     sel.addEventListener('change', async () => {
       currentYear = sel.value || getYear();
       resetUI();
+      // On explicit year change, render immediately instead of waiting for the next tick
+      try { await load(currentYear); } catch(e) {}
+      // Then (re)start the countdown cycle for ongoing updates
       await evaluateAndRun(load);
     });
   }
