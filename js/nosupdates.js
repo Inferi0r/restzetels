@@ -2,6 +2,7 @@
 (function(){
   const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
   const lastRenderSigByYear = new Map();
+  let renderedYear = null; // which year is currently rendered
   function pad2(n){ return String(n).padStart(2,'0'); }
   function formatDateTimeNL(ms, opts = {}){
     if (!ms) return '';
@@ -158,8 +159,9 @@
     } catch(e){}
     const sig = String(Math.max(luTs, gmTs));
     const yKey = String(year);
-    if (lastRenderSigByYear.get(yKey) === sig) return; // unchanged -> no DOM updates
+    if (lastRenderSigByYear.get(yKey) === sig && renderedYear === yKey) return; // unchanged for current year -> no DOM updates
     lastRenderSigByYear.set(yKey, sig);
+    renderedYear = yKey;
     container.innerHTML='';
     createAndPopulateTable(container, nosData || {gemeentes:[]});
   }

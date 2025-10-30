@@ -2,6 +2,7 @@
 (function(){
   const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
   const lastRenderSigByYear = new Map();
+  let renderedYear = null; // which year is currently rendered
 
   async function fetchPartyLabels(year){
     const labels = await Data.fetchPartyLabels(year);
@@ -175,8 +176,9 @@
     } catch(e){}
     const yKey = String(year);
     const sig = String(maxTs);
-    if (lastRenderSigByYear.get(yKey) === sig) return; // no changes — skip DOM work
+    if (lastRenderSigByYear.get(yKey) === sig && renderedYear === yKey) return; // no changes for current year — skip DOM work
     lastRenderSigByYear.set(yKey, sig);
+    renderedYear = yKey;
     const container = document.getElementById('tableContainer');
     const rows = buildRows(lastUpdateData || {views:[]}, partyLabelsMap);
     renderSortableTable(container, rows);

@@ -4,6 +4,7 @@
   const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
   const lastStateByYear = new Map(); // year -> { totalVotes, seats: Map(key->count) }
   const lastRenderSigByYear = new Map(); // year -> signature of last rendered data (prevents no-op repaint)
+  let renderedYear = null; // tracks which year is currently rendered
   let __restImpactSinceInterval = null; // updates the "sinds" label
 
   async function tryFetchKiesraadVotes(year) {
@@ -551,14 +552,21 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
     };
     if (impactX) impactX.onclick = () => { openTwitter(rest); };
     if (impactWeb) impactWeb.onclick = async () => {
+      // Always generate and download the image (no share sheet on desktop)
       try {
         const f = await buildShareImageFile(year, data, maps, finalized);
-        if (navigator.canShare && navigator.canShare({ files:[f] })) {
-          try { await navigator.share({ files:[f], title:'Wie krijgt de restzetel?', text: buildShareURL() }); } catch(e) {}
-          return;
-        }
-      } catch(e) {}
-      doShare(rest);
+        const url = URL.createObjectURL(f);
+        const a = document.createElement('a');
+        a.href = url; a.download = f && f.name ? f.name : 'restzetels.png'; a.style.display='none';
+        document.body.appendChild(a); a.click();
+        setTimeout(()=>{ try{ URL.revokeObjectURL(url); document.body.removeChild(a); }catch(e){} }, 2500);
+      } catch(e) {
+        // Fallback: text share via X if image generation fails
+        const payload = buildRestzetelShare(year, data, maps, finalized);
+        const q = new URLSearchParams({ text: payload.text || '' });
+        const tw = `https://x.com/intent/post?${q.toString()}`;
+        try { window.open(tw, '_blank', 'noopener'); } catch(_) { window.location.href = tw; }
+      }
     };
     if (impactWA) impactWA.onclick = () => {
       const wa = `https://wa.me/?text=${encodeURIComponent(rest.text || 'wiekrijgtderestzetel.nl')}`;
@@ -572,12 +580,23 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
     const W = 1200, H = 630; canvas.width = W; canvas.height = H; const ctx = canvas.getContext('2d');
     // Background
     ctx.fillStyle = '#ffffff'; ctx.fillRect(0,0,W,H);
-    // Title + year chip
+    // Title
+    const yy = String(year).slice(-2);
     ctx.fillStyle = '#0f172a'; ctx.font = '600 44px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
-    ctx.fillText('Wie krijgt de restzetel?', 40, 70);
-    ctx.fillStyle = '#e5e7eb'; ctx.fillRect(40, 84, 130, 28);
-    ctx.fillStyle = '#374151'; ctx.font = '600 18px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
-    ctx.fillText(`Jaar ${year}`, 50, 104);
+    ctx.fillText(`Verdeling restzetels TK${yy}`, 40, 70);
+    // Top-right progress percent (if available)
+    try {
+      if (window.Data && typeof Data.progressPercent==='function') {
+        const info = await Data.progressPercent(year);
+        if (info && typeof info.percent==='number') {
+          const pct = Math.max(0, Math.min(100, info.percent*100));
+          const pctText = pct.toLocaleString('nl-NL', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + '% stemmen geteld';
+          ctx.textAlign = 'right'; ctx.fillStyle = '#374151'; ctx.font = '600 20px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
+          ctx.fillText(pctText, W-40, 70);
+          ctx.textAlign = 'left';
+        }
+      }
+    } catch(e){}
     // Restzetel status
     let latestParty = null, highest = 0;
     (data.parties||[]).forEach(p => { const rs = p && p.restSeats; if (rs && typeof rs.forEach==='function'){ rs.forEach((v,k)=>{ if (k>highest){ highest=k; latestParty=p; } }); } });
@@ -589,19 +608,34 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
     const loserName = (losingKey!=null) ? (keyToLabelShort.get(losingKey) || '') : '-';
     const over = (winnerKey && surplusVotesData.get(winnerKey)) ? Math.ceil(surplusVotesData.get(winnerKey)).toLocaleString('nl-NL') : '-';
     const tekort = (losingKey!=null && votesShortData.get(losingKey)) ? Math.ceil(votesShortData.get(losingKey)).toLocaleString('nl-NL') : '-';
-    ctx.fillStyle = '#111827'; ctx.font = '600 28px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
-    ctx.fillText(`Laatste restzetel: ${winnerName} → ${loserName}`, 40, 150);
-    ctx.fillStyle = '#059669'; ctx.font = '600 22px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
-    ctx.fillText(`Over: ${over}`, 40, 185);
-    ctx.fillStyle = '#b91c1c'; ctx.fillText(`Tekort: ${tekort}`, 220, 185);
-    // Sinds
+    // "Laatste restzetel gaat naar: <winner>, dit gaat ten koste van: <loser>"
+    ctx.font = '600 28px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
+    let x0 = 40, y0 = 150;
+    ctx.fillStyle = '#111827';
+    const pre1 = 'Laatste restzetel gaat naar: ';
+    ctx.fillText(pre1, x0, y0);
+    x0 += ctx.measureText(pre1).width;
+    ctx.fillStyle = '#059669'; // green winner
+    ctx.fillText(winnerName || '-', x0, y0);
+    x0 += ctx.measureText(winnerName || '-').width;
+    ctx.fillStyle = '#111827';
+    const pre2 = ', dit gaat ten koste van: ';
+    ctx.fillText(pre2, x0, y0);
+    x0 += ctx.measureText(pre2).width;
+    ctx.fillStyle = '#b91c1c'; // red loser
+    ctx.fillText(loserName || '-', x0, y0);
+    // Sinds (directly under the status line)
     const sinceKey = `restImpactSince:v1:${String(year)}`;
     const sinceTs = parseInt(window.localStorage.getItem(sinceKey)||'0',10)||0;
-    if (!finalized && winnerKey) { ctx.fillStyle = '#6b7280'; ctx.font = '500 18px system-ui, -apple-system, Segoe UI, Roboto, sans-serif'; ctx.fillText(`Sinds ${relTime(sinceTs)}`, 40, 210); }
+    if (!finalized && winnerKey) {
+      ctx.fillStyle = '#6b7280';
+      ctx.font = '500 18px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
+      ctx.fillText(`Sinds ${relTime(sinceTs)}`, 40, y0 + 34);
+    }
     // Seats mini table
     const rows = [];
     (data.parties||[]).forEach(p => {
-      const name = keyToLabelLong.get(p.key) || keyToLabelLong.get(p.key?.toString?.()) || '';
+      const name = keyToLabelShort.get(p.key) || keyToLabelShort.get(p.key?.toString?.()) || '';
       if (!name || name.toUpperCase().includes('OVERIG')) return;
       const rest = Array.from(p.restSeats?.values?.() || []).reduce((a,b)=>a+b,0);
       const full = p.fullSeats || 0; const total = full + rest; if (total<=0) return;
@@ -610,38 +644,81 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
       rows.push({ name, full, rest, over: overv, tekort: tekortv, total });
     });
     rows.sort((a,b)=> b.total - a.total || (a.tekort - b.tekort));
-    const tableX = 40, tableY = 250, rowH = 34; const maxRows = 10; // fits
+    const tableX = 40, tableY = 250, rowH = 34; let maxRows = rows.length; // show all parties with >=1 zetel, capped by available space
     ctx.fillStyle = '#6b7280'; ctx.font = '600 18px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
     const cols = [
-      { label:'Partij',   w: 480, align:'left'  },
-      { label:'Zetels',  w: 100, align:'right' },
-      { label:'Stemmen', w: 180, align:'right' },
-      { label:'Over',    w: 160, align:'right' },
-      { label:'Tekort',  w: 160, align:'right' }
+      { label:'Partij',         w: 440, align:'left'  },
+      { label:'Volle zetels',  w: 120, align:'right' },
+      { label:'Restzetels',    w: 120, align:'right' },
+      { label:'Totaal zetels', w: 140, align:'right' },
+      { label:'Stemmen over',  w: 160, align:'right' },
+      { label:'Stemmen tekort',w: 160, align:'right' }
     ];
-    let x = tableX, y = tableY;
-    cols.forEach(c=>{ if (c.align==='right'){ ctx.textAlign='right'; ctx.fillText(c.label, x + c.w, y); ctx.textAlign='left'; } else { ctx.fillText(c.label, x, y);} x += c.w; });
-    ctx.font = '500 20px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
-    rows.slice(0, maxRows).forEach((r,i)=>{
-      let cx = tableX; const yy = y + (i+1)*rowH;
-      // Partij
-      ctx.fillStyle = '#111827';
-      // truncate name if too long
+    // Compute grid geometry with header row and enforce bottom gap for URL
+    let usedRows = Math.min(rows.length, maxRows);
+    const totalW = cols.reduce((s,c)=>s+c.w, 0);
+    const headerH = 28;
+    const headerTop = tableY - 22; // aligns header text baseline roughly with labels at tableY
+    const bottomGap = rowH; // exactly ~one row of whitespace before URL
+    // If rows would push the URL too low, reduce usedRows to preserve gap
+    const maxUsableRows = Math.max(0, Math.floor(((H - 24) - (headerTop + headerH) - bottomGap) / rowH));
+    usedRows = Math.min(usedRows, maxUsableRows);
+    const tableTop = headerTop + headerH;
+    const tableH = usedRows * rowH;
+    const tableBottom = tableTop + tableH;
+
+    // Header background and label row
+    ctx.fillStyle = '#f9fafb';
+    ctx.fillRect(tableX, headerTop, totalW, headerH);
+    ctx.textBaseline = 'middle';
+    let hx = tableX; const hy = headerTop + headerH/2;
+    ctx.fillStyle = '#6b7280'; ctx.font = '600 16px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
+    cols.forEach(c=>{ if (c.align==='right'){ ctx.textAlign='right'; ctx.fillText(c.label, hx + c.w - 10, hy); ctx.textAlign='left'; } else { ctx.fillText(c.label, hx + 10, hy);} hx += c.w; });
+
+    // Grid lines
+    ctx.strokeStyle = '#e5e7eb'; ctx.lineWidth = 1;
+    // Outer border includes header + rows
+    ctx.strokeRect(tableX + 0.5, headerTop + 0.5, totalW, headerH + tableH);
+    // Horizontal lines between header and rows, and between rows
+    ctx.beginPath();
+    ctx.moveTo(tableX, tableTop + 0.5); ctx.lineTo(tableX + totalW, tableTop + 0.5);
+    for (let i=1;i<usedRows;i++) {
+      const yLine = tableTop + i*rowH + 0.5;
+      ctx.moveTo(tableX, yLine); ctx.lineTo(tableX + totalW, yLine);
+    }
+    // Vertical lines at column boundaries
+    let gx = tableX;
+    for (let i=0;i<cols.length-1;i++) { gx += cols[i].w; ctx.moveTo(gx + 0.5, headerTop); ctx.lineTo(gx + 0.5, headerTop + headerH + tableH); }
+    ctx.stroke();
+
+    // Draw rows, vertically centered, bold names only
+    rows.slice(0, usedRows).forEach((r,i)=>{
+      let cx = tableX; const cy = tableTop + i*rowH + (rowH/2);
+      // Partij (bold)
+      ctx.fillStyle = '#111827'; ctx.textAlign='left'; ctx.font = '600 20px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
       const nm = r.name.length>34 ? (r.name.slice(0,31)+'…') : r.name;
-      ctx.fillText(nm, cx, yy); cx += cols[0].w;
-      // numbers
-      ctx.textAlign='right'; ctx.fillStyle='#111827';
-      ctx.fillText(String(r.total), cx + cols[1].w, yy); cx += cols[1].w;
-      ctx.fillText(r.votes>0 ? r.votes.toLocaleString('nl-NL') : '0', cx + cols[2].w, yy); cx += cols[2].w;
-      ctx.fillStyle = '#065f46'; ctx.fillText(r.over>0 ? r.over.toLocaleString('nl-NL') : '-', cx + cols[3].w, yy); cx += cols[3].w;
-      ctx.fillStyle = '#b91c1c'; ctx.fillText(r.tekort>0 ? r.tekort.toLocaleString('nl-NL') : '-', cx + cols[4].w, yy);
+      ctx.fillText(nm, cx + 10, cy); cx += cols[0].w;
+      // Numbers (regular weight)
+      ctx.textAlign='right'; ctx.font = '400 20px system-ui, -apple-system, Segoe UI, Roboto, sans-serif'; ctx.fillStyle='#111827';
+      ctx.fillText(String(r.full),  cx + cols[1].w - 10, cy); cx += cols[1].w;
+      ctx.fillText(String(r.rest),  cx + cols[2].w - 10, cy); cx += cols[2].w;
+      ctx.fillText(String(r.total), cx + cols[3].w - 10, cy); cx += cols[3].w;
+      // Muted, darker tones for readability
+      ctx.fillStyle = '#14532d'; ctx.fillText(r.over>0 ? r.over.toLocaleString('nl-NL') : '-',   cx + cols[4].w - 10, cy); cx += cols[4].w;
+      ctx.fillStyle = '#7f1d1d'; ctx.fillText(r.tekort>0 ? r.tekort.toLocaleString('nl-NL') : '-', cx + cols[5].w - 10, cy);
       ctx.textAlign='left'; ctx.fillStyle='#111827';
     });
-    // Footer URL
+    ctx.textBaseline = 'alphabetic';
+    // Footer URL with extra whitespace above
+    const urlY = Math.min(H-24, headerTop + headerH + usedRows*rowH + bottomGap);
     ctx.fillStyle = '#6b7280'; ctx.font = '500 18px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
-    ctx.fillText('wiekrijgtderestzetel.nl', 40, H-24);
+    ctx.fillText('wiekrijgtderestzetel.nl', 40, urlY);
     const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
-    return new File([blob], 'restzetel.png', { type: 'image/png' });
+    // Filename: restzetels_TKYY_ddmm_hhmm.png
+    const now = new Date();
+    const pad2 = (n) => String(n).padStart(2, '0');
+    const fn = `restzetels_TK${yy}_${pad2(now.getDate())}${pad2(now.getMonth()+1)}_${pad2(now.getHours())}${pad2(now.getMinutes())}.png`;
+    return new File([blob], fn, { type: 'image/png' });
   }
   async function loadZetels(year) {
     // Fetch labels and data first (no UI clears yet)
@@ -672,11 +749,12 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
     const sig = `${anpMaxTs}|${nosMaxTs}`;
     const yKey = String(year);
     const prevSig = lastRenderSigByYear.get(yKey);
-    if (prevSig === sig) {
+    if (prevSig === sig && renderedYear === yKey) {
       // Nothing new — leave DOM untouched; only the countdown changes elsewhere
       return;
     }
     lastRenderSigByYear.set(yKey, sig);
+    renderedYear = yKey;
 
     // From here, we know data changed — clear containers and rebuild UI
     ['seatsSummaryContainer','seatStripTooltip','voteAverageContainer','latestRestSeatImpactContainer','latestUpdateFromNos'].forEach(id => {

@@ -2,6 +2,7 @@
 (function(){
   const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);
   const lastRenderSigByYear = new Map();
+  let renderedYear = null; // which year is currently rendered
 
   async function fetchPartyLabels(year){
     return Data.fetchPartyLabels(year);
@@ -434,8 +435,9 @@
     } catch(e){}
     const sig = `${anpMaxTs}|${nosMaxTs}`;
     const yKey = String(year);
-    if (lastRenderSigByYear.get(yKey) === sig) return; // unchanged -> avoid DOM work
+    if (lastRenderSigByYear.get(yKey) === sig && renderedYear === yKey) return; // unchanged for current year -> avoid DOM work
     lastRenderSigByYear.set(yKey, sig);
+    renderedYear = yKey;
     // Clear
     ['statsTableContainer','tableContainer','lastUpdateANP','lastUpdatedLocalRegionANP','latestUpdateFromNos'].forEach(id=>{ const el=document.getElementById(id); if (el) el.innerHTML=''; });
     // Stats (ANP values with NOS landelijke_uitslag fallback when missing)
