@@ -813,9 +813,11 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
               btnVal.textContent = pct.toLocaleString('nl-NL', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + '%';
               const counted = Number(info.counted||0).toLocaleString('nl-NL');
               const eligible = Number(info.eligible||0).toLocaleString('nl-NL');
-              const muni = (info.muniTotal>0) ? `${info.muniCounted||0}/${info.muniTotal}` : '-';
-              const src = info.source || '';
-              tt.innerHTML = `Bron: ${src} | Inwoners gedekt: ${counted} | Totaal inwoners: ${eligible}<br>Gemeenten geteld: ${muni}`;
+              const muniCount = Number(info.muniCounted||0);
+              const muniTotal = Number(info.muniTotal||0);
+              tt.innerHTML = `NOS methode: ${muniCount} gemeenten met ${counted} inwoners /`+
+                             `<br>${eligible} inwoners in alle ${muniTotal} gemeenten geteld*`+
+                             `<br><br><span class=\"muted\">* ABC-eilanden, briefstemmers en gemeenten met een Tussenstand zijn geen onderdeel van percentage NOS</span>`;
             } else {
               btnVal.textContent = '–';
               tt.textContent = 'Nog geen data';
