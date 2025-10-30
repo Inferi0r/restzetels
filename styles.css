@@ -166,6 +166,14 @@ nav ul li a.active::after {
 .share-btn .icon { width: 16px; height: 16px; display: inline-block; }
 .share-btn .wa-icon { color: #25D366; }
 
+/* Emphasize the live counting button */
+#impactProgressBtn {
+  background: #3b82f6; /* lighter blue */
+  color: #fff;
+  border-color: #2563eb;
+}
+#impactProgressBtn:hover { background: #2563eb; }
+
 .year-toggle {
   cursor: pointer;
   font-size: 20px;
@@ -445,6 +453,20 @@ nav ul li a.active::after {
 .num { text-align: right; }
 .muted { color: var(--color-muted); }
 .small { font-size: 12px; }
+
+/* Impact action buttons under the restzetel banner */
+.impact-actions { display: flex; gap: 8px; justify-content: center; align-items: center; margin-top: 6px; }
+.impact-btn {
+  display: inline-block;
+  padding: 6px 10px;
+  background-color: #eef6ff;
+  color: #0b5cab;
+  border: 1px solid #bfe3ff;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  font-size: 13px;
+  cursor: default; /* hover for tooltip; not a navigation button */
+}
 
 .averagevotetable-cell {
   display: flex;

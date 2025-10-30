@@ -1,6 +1,6 @@
 // Auto-refresh controller shared across pages
 // Configurable interval at the top.
-const REFRESH_INTERVAL_SECONDS = 10; // reduced from 30s to 10s
+const REFRESH_INTERVAL_SECONDS = 20; // reduced from 30s to 10s
 
 (function(){
   const DO_BASE = (window.CONFIG && CONFIG.DO_BASE);

@@ -15,14 +15,13 @@
   async function safeFetchJSON(url){
     try{
       const r = await fetch(url, { cache: 'no-store' });
-      if (r.status === 304) {
-        return urlCache.get(url) || null;
-      }
-      if (!r.ok) throw new Error(r.status);
+      if (r.status === 304) return urlCache.get(url) || null;
+      if (!r.ok) throw new Error(String(r.status||'fetch-failed'));
       const j = await r.json();
       urlCache.set(url, j);
       return j;
     } catch(e){
+      // Network/CORS errors land here; fall back to last good response for this URL if any
       return urlCache.get(url) || null;
     }
   }
@@ -165,12 +164,45 @@
     };
   }
 
+  // Compute progress for a given year based on NOS inhabitants coverage:
+  // percent = sum(inhabitants of gemeenten with status in {Eindstand, Tussenstand}) / sum(inhabitants of all gemeenten)
+  // Also returns gemeenten progress counts for tooltip details.
+  async function progressPercent(year){
+    try {
+      const y = String(year);
+      const b = await fetchBundle(y);
+      const nos = b && b.nos_index;
+      // Municipality progress (inhabitants weighted)
+      let muniCounted = 0, muniTotal = 0;
+      let popCounted = 0, popTotal = 0;
+      const list = Array.isArray(nos && nos.gemeentes) ? nos.gemeentes : [];
+      const seen = new Set();
+      for (const row of list) {
+        const g = row && row.gemeente;
+        const code = g && (g.cbs_code || g.naam);
+        if (!code || seen.has(code)) continue;
+        seen.add(code);
+        const pop = Number((g && g.aantal_inwoners) || 0) || 0;
+        popTotal += pop;
+        muniTotal++;
+        const st = (row && row.status) || '';
+        if (st === 'Eindstand' || st === 'Tussenstand') {
+          muniCounted++;
+          popCounted += pop;
+        }
+      }
+      if (popTotal <= 0) return null;
+      return { source: 'NOS (inwoners)', percent: popCounted / popTotal, counted: popCounted, eligible: popTotal, muniCounted, muniTotal };
+    } catch(e){ return null; }
+  }
+
   window.Data = {
     fetchBundle,
     safeJSON: safeFetchJSON,
     isFinalizedYear,
     fetchPartyLabels,
     fetchExitpoll,
-    discoverYears
+    discoverYears,
+    progressPercent
   };
 })();

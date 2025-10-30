@@ -452,7 +452,7 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
     } else {
       impactEl.innerHTML = `
         <div class="impact-main">Laatste restzetel gaat naar: <span style="font-weight: bold; color: green;">${winnerName || '-'}</span>, dit gaat ten koste van: <span style="font-weight: bold; color: red;">${losingName || '-'}</span></div>
-        <div class="impact-since muted small">(sinds <span id="restImpactSinceSpan"></span>)</div>
+        <div class="impact-since muted small">(sinds <span id=\"restImpactSinceSpan\"></span>)</div>
       `;
       const sinceSpan = document.getElementById('restImpactSinceSpan');
       const updateSince = () => { if (sinceSpan) sinceSpan.textContent = relTime(sinceTs); };
@@ -796,6 +796,33 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
       } catch(e){}
       showLatestRestSeatImpactSince(year, updatedData, keyToLabelShort, finalizedFlag, lastUpdatedMs);
       try { setupShareHandlers(year, updatedData, { keyToLabelShort, keyToLabelLong }, finalizedFlag); } catch(e) {}
+
+      // Update/Show separate "Stemmen geteld" button in the share bar
+      try {
+        const wrap = document.getElementById('impactProgressWrap');
+        const btnVal = document.getElementById('impactProgressValue');
+        const tt = document.getElementById('impactProgressTT');
+        if (wrap && btnVal && tt) {
+          if (finalizedFlag) {
+            wrap.style.display = 'none';
+          } else {
+            wrap.style.display = 'inline-block';
+            const info = await (window.Data && typeof Data.progressPercent==='function' ? Data.progressPercent(year) : Promise.resolve(null));
+            if (info && typeof info.percent === 'number') {
+              const pct = Math.max(0, Math.min(100, info.percent*100));
+              btnVal.textContent = pct.toLocaleString('nl-NL', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + '%';
+              const counted = Number(info.counted||0).toLocaleString('nl-NL');
+              const eligible = Number(info.eligible||0).toLocaleString('nl-NL');
+              const muni = (info.muniTotal>0) ? `${info.muniCounted||0}/${info.muniTotal}` : '-';
+              const src = info.source || '';
+              tt.innerHTML = `Bron: ${src} | Inwoners gedekt: ${counted} | Totaal inwoners: ${eligible}<br>Gemeenten klaar: ${muni}`;
+            } else {
+              btnVal.textContent = '–';
+              tt.textContent = 'Nog geen data';
+            }
+          }
+        }
+      } catch(e) {}
     } else {
       // No votes yet: clear detail tables and render summary with blanks, but keep impact banner visible with placeholders
       ['voteAverageContainer','seatStripTooltip'].forEach(id => { const el=document.getElementById(id); if (el) el.innerHTML=''; });
