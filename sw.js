@@ -135,14 +135,20 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Function API (live data): Stale-While-Revalidate
+  // Function API (live data): Stale-While-Revalidate with graceful network failure handling
   if (isFunctionAPI(url)) {
     event.respondWith((async () => {
       const cache = await caches.open(API_CACHE);
       const cached = await cache.match(req);
-      const networkFetch = fetch(req).then(res => { try { cache.put(req, res.clone()); } catch(e) {} return res; });
-      // Return cached immediately if available; otherwise wait for network
-      return cached || networkFetch;
+      try {
+        const res = await fetch(req);
+        try { cache.put(req, res.clone()); } catch(e) {}
+        return cached || res; // serve cached immediately if present
+      } catch (e) {
+        // Network/CORS failed — serve cached if available, otherwise synthesize a JSON error to avoid uncaught rejections
+        if (cached) return cached;
+        return new Response(JSON.stringify({ error: 'network', message: 'Failed to fetch live data' }), { status: 502, headers: { 'Content-Type': 'application/json' } });
+      }
     })());
     return;
   }

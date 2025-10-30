@@ -25,6 +25,16 @@ function get_header_from_args(array $args, string $name): ?string {
     return null;
 }
 
+function cors_headers(): array {
+    // Let the platform add Access-Control-Allow-Origin. Provide other CORS headers.
+    return [
+        'Access-Control-Allow-Methods' => 'GET, OPTIONS',
+        'Access-Control-Allow-Headers' => 'Content-Type, If-None-Match',
+        'Access-Control-Max-Age' => '86400',
+        'Vary' => 'Origin'
+    ];
+}
+
 function json_response(array $body, int $status = 200, array $extraHeaders = []) : array {
     $json = json_encode($body);
     $etag = 'W/"' . sha1($json) . '"';
@@ -32,11 +42,19 @@ function json_response(array $body, int $status = 200, array $extraHeaders = [])
         'Content-Type' => 'application/json; charset=utf-8',
         'Cache-Control' => 'public, max-age=10, s-maxage=10, stale-while-revalidate=30',
         'ETag' => $etag
-    ], $extraHeaders);
+    ], cors_headers(), $extraHeaders);
     // 304 handling via If-None-Match
     $ifNoneMatch = get_header_from_args($GLOBALS['__fn_args__'] ?? [], 'If-None-Match');
     if ($ifNoneMatch && trim($ifNoneMatch) === $etag) {
+        // Add ACAO explicitly for 304 since some gateways omit it on 304
+        $headers['Access-Control-Allow-Origin'] = '*';
+        $headers['Vary'] = 'Origin';
         return [ 'statusCode' => 304, 'headers' => $headers ];
+    }
+    // Ensure CORS header present on non-OK statuses as well
+    if ($status !== 200) {
+        $headers['Access-Control-Allow-Origin'] = '*';
+        $headers['Vary'] = 'Origin';
     }
     return [ 'statusCode' => $status, 'headers' => $headers, 'body' => $body ];
 }
@@ -65,6 +83,11 @@ function main(array $args) : array
 {
     // Make args available to helpers (for ETag check)
     $GLOBALS['__fn_args__'] = $args;
+    // CORS preflight support
+    $method = strtolower(strval($args['__ow_method'] ?? $_SERVER['REQUEST_METHOD'] ?? 'get'));
+    if ($method === 'options') {
+        return [ 'statusCode' => 204, 'headers' => cors_headers() ];
+    }
     // Default to latest cycle
     $year = 2025;
     if (!empty($args['year'])) {
