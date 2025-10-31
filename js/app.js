@@ -1050,8 +1050,9 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
               const eligible = Number(info.eligible||0).toLocaleString('nl-NL');
               const muniCount = Number(info.muniCounted||0);
               const muniTotal = Number(info.muniTotal||0);
+              const muniTotalAdj = Math.max(0, muniTotal - 1); // exclude briefstemmers met 0 inwoners - geen gemeente
               tt.innerHTML = `NOS methode: ${muniCount} gemeenten met ${counted} inwoners /`+
-                             `<br>${eligible} inwoners in alle ${muniTotal} gemeenten geteld*`+
+                             `<br>${eligible} inwoners in alle ${muniTotalAdj} gemeenten geteld*`+
                              `<br><br><span class=\"muted\">* ABC-eilanden, briefstemmers en gemeenten met een Tussenstand zijn geen onderdeel van percentage NOS</span>`;
             } else {
               btnVal.textContent = '–';
