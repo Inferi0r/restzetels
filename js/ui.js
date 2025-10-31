@@ -60,5 +60,49 @@
     else setTimeout(()=>fitTableScaleToWidth(containerId), 0);
   }
 
-  window.UI = { createFractionHTML, fitTableScaleToWidth, registerScaleTarget };
+  // Keep a block's width in sync with a table inside a container using observers
+  function initBlockWidthSync(blockId, tableContainerId){
+    const block = document.getElementById(blockId);
+    const cont = document.getElementById(tableContainerId);
+    if (!block || !cont) return;
+    let table = null;
+    let resizeObs = null;
+    let rafId = 0;
+    const sync = () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        try {
+          const t = cont.querySelector('table');
+          if (!t) { return; }
+          const w = t.getBoundingClientRect().width;
+          if (w && isFinite(w)) {
+            block.style.width = Math.round(w) + 'px';
+          }
+        } catch(e){}
+      });
+    };
+    const attachResize = () => {
+      const t = cont.querySelector('table');
+      if (!t) return;
+      if (table === t) return; // already observing
+      table = t;
+      if (resizeObs) { try { resizeObs.disconnect(); } catch(e){} resizeObs = null; }
+      try {
+        resizeObs = new ResizeObserver(sync);
+        resizeObs.observe(table);
+      } catch(e){}
+      sync();
+    };
+    // Observe whenever the table is inserted/updated
+    try {
+      const mo = new MutationObserver(attachResize);
+      mo.observe(cont, { childList: true, subtree: true });
+    } catch(e){}
+    // Also react to window resizes
+    window.addEventListener('resize', sync, { passive: true });
+    // Try now
+    attachResize();
+  }
+
+  window.UI = { createFractionHTML, fitTableScaleToWidth, registerScaleTarget, initBlockWidthSync };
 })();

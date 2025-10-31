@@ -106,6 +106,7 @@
 
    <script>
         window.addEventListener('DOMContentLoaded', function(){
+          try { if (window.UI && UI.initBlockWidthSync) { UI.initBlockWidthSync('seatsBlock','seatsSummaryContainer'); } } catch(e){}
           function loadYearData(year) { RestzetelsApp.loadZetels(year); }
           if (window.YearNav && window.Sound && window.AutoRefresh) {
             YearNav.init({ load: loadYearData });
