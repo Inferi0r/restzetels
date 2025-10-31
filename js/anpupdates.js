@@ -110,6 +110,17 @@
       });
     }
 
+    function alignHeaderToCells(){
+      const first = tbody && tbody.rows ? tbody.rows[0] : null;
+      if (!first) return;
+      const tds = Array.from(first.cells);
+      const ths = Array.from(hr.children);
+      tds.forEach((td, i) => {
+        const th = ths[i]; if (!th) return;
+        if (td.classList.contains('num')) th.classList.add('num'); else th.classList.remove('num');
+      });
+    }
+
     function statusChip(text){
       const t = (text||'').toString().toLowerCase();
       let cls = 'chip--nulstand';
@@ -162,6 +173,7 @@
     }
     updateHeaderIcons();
     drawBody();
+    alignHeaderToCells();
     container.innerHTML = '';
     container.appendChild(table);
   }

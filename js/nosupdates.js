@@ -93,6 +93,16 @@
       const d = Math.floor(h/24); return `${d}d geleden`;
     }
 
+    function alignHeaderToCells(){
+      const first = tbody.rows[0];
+      if (!first) return;
+      const tds = Array.from(first.cells);
+      tds.forEach((td, i) => {
+        if (!ths[i]) return;
+        if (td.classList.contains('num')) ths[i].classList.add('num'); else ths[i].classList.remove('num');
+      });
+    }
+
     function draw(){
       tbody.innerHTML = '';
       const sorted = rows.slice().sort((a,b)=>{
@@ -126,6 +136,7 @@
           }
         });
       });
+      alignHeaderToCells();
     }
     // attach sort handlers
     ths.forEach((th, idx)=>{
