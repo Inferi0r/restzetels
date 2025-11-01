@@ -88,30 +88,52 @@ function main(array $args) : array
     if ($method === 'options') {
         return [ 'statusCode' => 204, 'headers' => cors_headers() ];
     }
-    // Default to latest cycle; support inputs like "TK2025" or plain "2025"
-    $year = 2025;
+    // Default to latest cycle; support inputs like "TK2025", "PS2023" or plain "2025"
+    $year = 2025;         // numeric for convenience
+    $yearKey = 'TK2025';  // canonical key for dataSources lookup
     $yearInput = $args['year'] ?? ($args['election'] ?? null);
     if (!empty($yearInput)) {
-        $digits = preg_replace('/\D+/', '', strval($yearInput));
+        $raw = strval($yearInput);
+        $digits = preg_replace('/\D+/', '', $raw);
         if ($digits) { $year = intval($digits); }
+        if (preg_match('/^PS\d{4}$/i', $raw)) {
+            $yearKey = strtoupper($raw);
+        } else if (preg_match('/^TK\d{4}$/i', $raw)) {
+            $yearKey = strtoupper($raw);
+        } else {
+            $yearKey = 'TK' . $year;
+        }
     }
 
     // Per-year sources with descriptive keys
     $dataSources = [
+        'PS2019' => [
+            'anp_votes'       => 'https://lfverkiezingen2019nllive.appspot.com/data/?code=620', // Eerste Kamer
+            'anp_last_update' => 'https://lfverkiezingen2019nllive.appspot.com/data/?code=index',
+        ],
         'TK2021' => [
-            'anp_votes'       => 'https://d2vz64kg7un9ye.cloudfront.net/data/500.json', // voorlopige prognose: https://d2vz64kg7un9ye.cloudfront.net/data/600.json
+            'anp_prognose'    => 'https://d2vz64kg7un9ye.cloudfront.net/data/600.json', // Landelijke prognose
+            'anp_votes'       => 'https://d2vz64kg7un9ye.cloudfront.net/data/500.json', // Landelijke resultaten
             'anp_last_update' => 'https://d2vz64kg7un9ye.cloudfront.net/data/index.json', // key uit index - Amsterdam: https://d2vz64kg7un9ye.cloudfront.net/data/193.json
             'nos_index'       => 'https://voteflow.api.nos.nl/TK21/index.json',
             'nos_gemeente'    => 'https://voteflow.api.nos.nl/TK21/gemeente/',
         ],
+        'PS2023' => [
+            'anp_votes'       => 'https://d2ytsyjyg1iox1.cloudfront.net/data/rh3xjs/620.json', // Eerste Kamer
+            'anp_last_update' => 'https://d2ytsyjyg1iox1.cloudfront.net/data/rh3xjs/index.json',
+            // NOS Eerste Kamer (620) https://app.nos.nl/nieuws/ps2023/data/landelijk/eerste_kamer.json
+            // NOS eindstand:         https://app.nos.nl/nieuws/ps2023/data/landelijk/totaal_zetels_nederland.json
+        ],
         'TK2023' => [
-            'anp_votes'       => 'https://d1nxan4hfcgbsv.cloudfront.net/data/rh3xjs/500.json',
+            'anp_prognose'    => 'https://d1nxan4hfcgbsv.cloudfront.net/data/rh3xjs/600.json', // Landelijke prognose
+            'anp_votes'       => 'https://d1nxan4hfcgbsv.cloudfront.net/data/rh3xjs/500.json', // Landelijke resultaten
             'anp_last_update' => 'https://d1nxan4hfcgbsv.cloudfront.net/data/rh3xjs/index.json',
             'nos_index'       => 'https://voteflow.api.nos.nl/TK23/index.json',
             'nos_gemeente'    => 'https://voteflow.api.nos.nl/TK23/gemeente/',
         ],
         'TK2025' => [
-            'anp_votes'       => 'https://widgets.verkiezingsdienst.anp.nl/tk25/data/rh3xjs/500.json',
+            'anp_prognose'    => 'https://widgets.verkiezingsdienst.anp.nl/tk25/data/rh3xjs/600.json', // Landelijke prognose
+            'anp_votes'       => 'https://widgets.verkiezingsdienst.anp.nl/tk25/data/rh3xjs/500.json', // Landelijke resultaten
             'anp_last_update' => 'https://widgets.verkiezingsdienst.anp.nl/tk25/data/rh3xjs/index.json',
             'nos_index'       => 'https://voteflow.api.nos.nl/TK25/index.json',
             'nos_gemeente'    => 'https://voteflow.api.nos.nl/TK25/gemeente/',
@@ -122,13 +144,11 @@ function main(array $args) : array
     $requested = !empty($args['source']) ? $args['source'] : 'anp_votes';
     $sourceKey = $requested;
 
-    // Resolve key (support TK-prefixed lookup, though we presently index by numeric)
-    $yearKey = $year;
-    if (isset($dataSources['TK'.$year])) { $yearKey = 'TK'.$year; }
+    // $yearKey already resolved above to TKYYYY or PSYYYY
 
     if ($sourceKey === 'all') {
         // Bundle: anp_votes + anp_last_update + nos_index
-        $bundleKey = sha1($year . '|all');
+        $bundleKey = sha1($yearKey . '|all');
         $ttl = 10;
         $cacheDir = sys_get_temp_dir() . '/restzetels_cache';
         if (!is_dir($cacheDir)) { @mkdir($cacheDir, 0777, true); }
@@ -140,13 +160,19 @@ function main(array $args) : array
                 return json_response($body);
             }
         }
-        $anpVotes = fetch_with_cache(sha1($year.'|anp_votes'), $dataSources[$yearKey]['anp_votes']);
-        $anpLast  = fetch_with_cache(sha1($year.'|anp_last_update'), $dataSources[$yearKey]['anp_last_update']);
-        $nosIndex = fetch_with_cache(sha1($year.'|nos_index'), $dataSources[$yearKey]['nos_index']);
+        $anpVotes = isset($dataSources[$yearKey]['anp_votes'])
+          ? fetch_with_cache(sha1($yearKey.'|anp_votes'), $dataSources[$yearKey]['anp_votes'])
+          : null;
+        $anpLast  = isset($dataSources[$yearKey]['anp_last_update'])
+          ? fetch_with_cache(sha1($yearKey.'|anp_last_update'), $dataSources[$yearKey]['anp_last_update'])
+          : null;
+        $nosIndex = isset($dataSources[$yearKey]['nos_index'])
+          ? fetch_with_cache(sha1($yearKey.'|nos_index'), $dataSources[$yearKey]['nos_index'])
+          : null;
         if ($anpVotes === null && $anpLast === null && $nosIndex === null) {
             return json_response([ 'error' => 'Upstream fetch failed' ], 502);
         }
-        $body = [ 'year' => $year, 'anp_votes' => $anpVotes, 'anp_last_update' => $anpLast, 'nos_index' => $nosIndex ];
+        $body = [ 'year' => $yearKey, 'anp_votes' => $anpVotes, 'anp_last_update' => $anpLast, 'nos_index' => $nosIndex ];
         @file_put_contents($cachePath, json_encode($body));
         return json_response($body);
     }
@@ -164,7 +190,7 @@ function main(array $args) : array
     }
 
     $ttl = 10;
-    $cacheKey = sha1($year . '|' . $sourceKey . '|' . ($args['cbs_code'] ?? ''));
+    $cacheKey = sha1($yearKey . '|' . $sourceKey . '|' . ($args['cbs_code'] ?? ''));
     $data = fetch_with_cache($cacheKey, $url, $ttl);
     if ($data === null) {
         return json_response([ 'error' => 'Upstream fetch failed' ], 502);

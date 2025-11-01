@@ -1,4 +1,30 @@
 {
+  "PS2019": [
+    { "key": "VVD", "color": "#284BBE", "labelLong": "VVD", "labelShort": "VVD" },
+    { "key": "D66", "color": "#00C878", "labelLong": "D66", "labelShort": "D66" },
+    { "key": "CDA", "color": "#00696E", "labelLong": "CDA", "labelShort": "CDA" },
+    { "key": "PVDA", "color": "#E61E14", "labelLong": "PvdA", "labelShort": "PvdA" },
+    { "key": "SP", "color": "#FF6E6E", "labelLong": "SP", "labelShort": "SP" },
+    { "key": "GROENLINKS", "color": "#64DCAF", "labelLong": "GroenLinks", "labelShort": "GroenLinks" },
+    { "key": "Partij voor de Dieren", "color": "#FCEE57", "labelLong": "Partij v.d. Dieren", "labelShort": "Partij v.d. Dieren" },
+    { "key": "DENK", "color": "#32D2D2", "labelLong": "Denk", "labelShort": "Denk" },
+    { "key": "PVV", "color": "#7E93D8", "labelLong": "PVV", "labelShort": "PVV" },
+    { "key": "Forum voor Democratie", "color": "#783CDC", "labelLong": "Forum v. Democratie", "labelShort": "Forum v. Democratie" },
+    { "key": "OSF/Overig", "color": "#FFC828", "labelLong": "OSF/Overig", "labelShort": "OSF/Overig" },
+    { "key": "Overige PS2015", "color": "#FFC828", "labelLong": "Overige PS2015", "labelShort": "Overige PS2015" },
+    { "key": "50PLUS", "color": "#E63C9B", "labelLong": "50Plus", "labelShort": "50Plus" },
+    { "key": "ChristenUnie", "color": "#3CA0FF", "labelLong": "ChristenUnie", "labelShort": "ChristenUnie" },
+    { "key": "SGP", "color": "#FFA032", "labelLong": "SGP", "labelShort": "SGP" },
+    { "key": "JEZUS LEEFT", "labelLong": "Jezus Leeft", "labelShort": "Jezus Leeft" },
+    { "key": "Ouderen Appèl - Hart voor Brabant", "labelLong": "Ouderen Appèl-HvB", "labelShort": "Ouderen Appèl-HvB" },
+    { "key": "Lokale Partijen Zuid Holland", "labelLong": "Lok. Partijen Z-Holland", "labelShort": "Lok. Partijen Z-Holland" },
+    { "key": "Lok. Partijen GE - Code Oranje", "labelLong": "Lok. GE - Code Oranje", "labelShort": "Lok. GE - Code Oranje" },
+    { "key": "50PLUS/Partij van de Ouderen", "labelLong": "50Plus/P.v.d. Ouderen", "labelShort": "50Plus/P.v.d. Ouderen" },
+    { "key": "LOKAAL-LIMBURG", "labelLong": "Lokaal-Limburg", "labelShort": "Lokaal-Limburg" },
+    { "key": "U26 GEMEENTEN", "labelLong": "U26 Gemeenten", "labelShort": "U26 Gemeenten" },
+    { "key": "Provinciaal Belang Fryslân", "labelLong": "Prov. Belang Fryslân", "labelShort": "Prov. Belang Fryslân" },
+    { "key": "Onafhankelijke Partij Drenthe", "labelLong": "Onafh. Partij Drenthe", "labelShort": "Onafh. Partij Drenthe" }
+  ],
   "TK2021": [
     { "key": 0,  "color": "#d741a7", "labelLong": "VVD",                                           "labelShortNOS": "VVD",      "labelShort": "VVD" },
     { "key": 1,  "color": "#3a1772", "labelLong": "PVV",                                           "labelShortNOS": "PVV",      "labelShort": "PVV" },
@@ -69,9 +95,9 @@
     { "key": "65cc06c", "color": null,     "labelLong": "Overige 2021",                            "labelShortNOS": "OVERIG",   "labelShort": "OVERIG" }
   ],
   "PS2023": [
-    { "key": "cb3c7ff", "color": "#005c00", "labelLong": "CDA","labelShort": "CDA" },
-    { "key": "ee554e5", "color": "#ad72d2", "labelLong": "Forum voor Democratie", "labelShort": "FvD" },
-    { "key": "353cb7a", "color": "#f00031", "labelLong": "Socialistische Partij", "labelShort": "SP" },
+    { "key": "cb3c7ff", "color": "#005c00", "labelLong": "CDA",                                    "labelShort": "CDA" },
+    { "key": "ee554e5", "color": "#ad72d2", "labelLong": "Forum voor Democratie",                  "labelShort": "FvD" },
+    { "key": "353cb7a", "color": "#f00031", "labelLong": "Socialistische Partij",                  "labelShort": "SP" },
     { "key": "192ea5b", "color": "#4c44ff", "labelLong": "VVD", "labelShort": "VVD" },
     { "key": "aaef150", "color": "#64dcaf", "labelLong": "D66", "labelShort": "D66" },
     { "key": "4404431", "color": "#ffff99", "labelLong": "Partij voor de Dieren", "labelShort": "PvdD" },
@@ -159,5 +185,4 @@
     { "key": "e042e2c", "color": "#F7BDA9", "labelLong": "Partij voor de Rechtsstaat",             "labelShortNOS": "PVDR",     "labelShort": "PVDR" }
   ]
 }
-
 

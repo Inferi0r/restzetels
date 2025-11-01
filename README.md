@@ -7,7 +7,8 @@ A small static site + serverless fetchers to visualize Dutch House of Representa
 - PS2019 widget: https://lfverkiezingen2019nllive.appspot.com/public/builds/rx611b/index.html
 - TK2021 NOS/ANP: https://d2vz64kg7un9ye.cloudfront.net/widgets/t2wmrc/index.html
 - TK2023 NOS: https://app.nos.nl/nieuws/tk2023/
-- PS2023 NOS/ANP: https://d2ytsyjyg1iox1.cloudfront.net/web/jrf5ks/index.html
+- PS2023 NOS: https://d2ytsyjyg1iox1.cloudfront.net/web/jrf5ks/index.html
+- PS2023 NOS: https://app.nos.nl/nieuws/ps2023/
 - TK2023 ANP: https://d1nxan4hfcgbsv.cloudfront.net/web/iir9q1/index.html
 - TK2025 ANP: (open page source in the browser): view-source:https://widgets.verkiezingsdienst.anp.nl/tk25/web/2qxn3l/index.html
 - TK2025 NOS: https://app.nos.nl/nieuws/tk2025/
