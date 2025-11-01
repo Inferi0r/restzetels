@@ -1,4 +1,8 @@
 (function(){
+  // Build identifier: bump this on every deploy to force fresh SW + assets
+  // Use date-like format for readability (YYYYMMDD-HHMM or similar)
+  var BUILD_ID = '2025-11-01-01';
+  try { window.BUILD_ID = BUILD_ID; } catch(e){}
   // Single source of truth for serverless endpoint
   // If you need to override at runtime, set window.RESTZETELS_DO_BASE before this file loads.
   var DEFAULT = 'https://faas-ams3-2a2df116.doserverless.co/api/v1/web/fn-99532869-f9f1-44c3-ba3b-9af9d74b05e5/default/getdata';
@@ -26,7 +30,7 @@
     // Register and defer activation so the first page load doesn't reset immediately
     (async () => {
       try {
-        const reg = await navigator.serviceWorker.register('sw.js', { scope: './' });
+        const reg = await navigator.serviceWorker.register('sw.js?v=' + encodeURIComponent(BUILD_ID), { scope: './' });
         const DEFER_MS = 12000; // align roughly with first auto-refresh tick (10s) + slack
 
         const scheduleActivate = (registration) => {

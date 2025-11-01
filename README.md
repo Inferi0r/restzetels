@@ -44,3 +44,26 @@ Use your browser’s “View Page Source” (or prepend `view-source:`) on the A
 
 ## Google Analytics
 - Realtime overview: https://analytics.google.com/analytics/web/#/a2777124p417078801/realtime/overview
+
+## Deployment notes
+
+### Build ID and instant refresh
+
+We use a single build identifier to force fresh assets and a service worker upgrade per deploy.
+
+- Bump in one place: edit `js/config.js` and change `BUILD_ID` (e.g., `2025-11-01-02`).
+- What it does:
+  - Registers the service worker as `sw.js?v=BUILD_ID`, so the browser detects a new SW and upgrades.
+  - The SW uses `BUILD_ID` to version caches (`static-<BUILD_ID>`, `data-<BUILD_ID>`, etc.).
+  - The page auto‑reloads once when the new SW takes control, so visitors see the newest build immediately.
+- HTML caching at the edge:
+  - `_headers` sets `Cache-Control: no-store` for `/` and all `*.html`, so Cloudflare won’t serve stale HTML shells.
+  - Static assets can be long‑lived; the SW and (optional) URL query strings ensure fresh content after deploy.
+
+### Steps per deploy
+1. Update `BUILD_ID` in `js/config.js`.
+2. Deploy the site.
+3. Verify:
+   - `curl -I https://<host>/` should not show a long `s-maxage` on HTML (expect no-store/no-cache).
+   - `curl -I https://<host>/sw.js?v=BUILD_ID` should be `no-store`.
+4. Load the site: it should auto‑refresh once and then run the new build.

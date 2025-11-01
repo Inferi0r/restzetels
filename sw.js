@@ -1,6 +1,8 @@
 // Service Worker: cache static assets and API bundle with stale-while-revalidate
-// Bump CACHE_VERSION to invalidate old caches on deploys
-const CACHE_VERSION = 'v2025-11-01-00';
+// Cache version is derived from the SW URL query (?v=BUILD_ID) for easy deploy bumps
+const __sw_url = (() => { try { return new URL(self.location.href); } catch(e) { return null; } })();
+const __build_from_url = (__sw_url && __sw_url.searchParams.get('v')) || '';
+const CACHE_VERSION = (__build_from_url ? ('v' + __build_from_url) : 'v-dev');
 const STATIC_CACHE = `static-${CACHE_VERSION}`;
 const DATA_CACHE = `data-${CACHE_VERSION}`;
 const API_CACHE = `api-${CACHE_VERSION}`;
