@@ -605,11 +605,17 @@ Niet de partij die logischerwijs het meeste kans maakt
   }
 
   // Update the D66 vs SP banner with dynamic shortage from current data
-  function updateD66Banner(votesData, keyToLabelShort){
+  // Only visible for TK2025
+  function updateD66Banner(year, votesData, keyToLabelShort){
     try {
       const wrap = document.getElementById('d66Banner');
       const out = document.getElementById('d66Shortage');
       if (!wrap || !out) return;
+      const y = String(year||window.CURRENT_YEAR||'');
+      const m = y.match(/\d{4}/);
+      const show = !!(m && m[0] === '2025');
+      if (!show) { wrap.style.display = 'none'; return; }
+      wrap.style.display = '';
       let shortage = null;
       try {
         const { votesShortData } = calculateVotesShortAndSurplus(votesData);
@@ -1064,8 +1070,8 @@ Niet de partij die logischerwijs het meeste kans maakt
       // Seats summary
       createSeatsSummaryTable(updatedData, keyToLabelLong, keyToListNumber, keyToLabelShort, { hasVotes: true, exitLatest, exitSeries });
 
-      // Update D66 banner shortage based on current data
-      try { updateD66Banner(updatedData, keyToLabelShort); } catch(e){}
+      // Update D66 banner shortage based on current data (only TK2025)
+      try { updateD66Banner(year, updatedData, keyToLabelShort); } catch(e){}
 
       // Latest rest seat impact — always visible with persistent since-timer
       let finalizedFlag=false; try{ finalizedFlag = await Data.isFinalizedYear(year); }catch(e){ finalizedFlag=false; }
@@ -1121,10 +1127,15 @@ Niet de partij die logischerwijs het meeste kans maakt
         `;
         if (__restImpactSinceInterval) { try { clearInterval(__restImpactSinceInterval); } catch(e){} __restImpactSinceInterval = null; }
       }
-      // No votes yet: show dash in D66 banner
+      // No votes yet: only show D66 banner for TK2025; otherwise hide
       try {
+        const wrap = document.getElementById('d66Banner');
         const out = document.getElementById('d66Shortage');
-        if (out) out.textContent = '–';
+        const y = String(year||window.CURRENT_YEAR||'');
+        const m = y.match(/\d{4}/);
+        const show = !!(m && m[0] === '2025');
+        if (wrap) wrap.style.display = show ? '' : 'none';
+        if (show && out) out.textContent = '–';
       } catch(e){}
       try { setupShareHandlers(year, votesData || { parties: [] }, { keyToLabelShort, keyToLabelLong }, true); } catch(e) {}
     }
