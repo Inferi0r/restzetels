@@ -104,5 +104,24 @@
     attachResize();
   }
 
-  window.UI = { createFractionHTML, fitTableScaleToWidth, registerScaleTarget, initBlockWidthSync };
+  // Synchronize widths of multiple elements to the widest one.
+  function syncMaxWidth(ids){
+    try {
+      const els = (ids||[]).map(id => document.getElementById(id)).filter(Boolean);
+      if (!els.length) return;
+      const apply = () => {
+        // reset to natural width then measure
+        els.forEach(el => { try { el.style.width = 'auto'; } catch(e){} });
+        let max = 0;
+        els.forEach(el => { try { const w = Math.ceil(el.getBoundingClientRect().width || 0); if (w > max) max = w; } catch(e){} });
+        if (max > 0) els.forEach(el => { try { el.style.width = max + 'px'; } catch(e){} });
+      };
+      apply();
+      try { const ro = new ResizeObserver(apply); els.forEach(el => ro.observe(el)); } catch(e){}
+      try { const mo = new MutationObserver(apply); els.forEach(el => mo.observe(el, { childList: true, subtree: true, characterData: true })); } catch(e){}
+      window.addEventListener('resize', apply, { passive: true });
+    } catch(e){}
+  }
+
+  window.UI = { createFractionHTML, fitTableScaleToWidth, registerScaleTarget, initBlockWidthSync, syncMaxWidth };
 })();

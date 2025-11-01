@@ -35,11 +35,11 @@
     <!-- Temporary prominent banner: D66 vs SP explainer (placed under impact banner, above share bar) -->
     <div id="d66Banner" class="alert-banner" role="region" aria-label="Uitleg restzetel D66 versus SP">
       <div class="alert-banner__row">
-        <span class="alert-banner__title">Maakt <strong>D66</strong> kans op de laatste restzetel ten koste van <strong>SP</strong>? <span class="answer-chip answer-chip--no" aria-label="Antwoord: Onwaarschijnlijk">Onwaarschijnlijk…</span></span>
+        <span class="alert-banner__title">Laatste restzetel naar <strong>D66</strong> ten koste van <strong>SP</strong>? <span class="answer-chip answer-chip--no" aria-label="Antwoord: Onwaarschijnlijk">Onwaarschijnlijk…</span></span>
         <button id="d66BannerToggle" class="alert-banner__action" type="button" aria-expanded="false">Uitleg</button>
       </div>
       <div id="d66BannerBody" class="alert-banner__body" hidden>
-        <p>Aangenomen dat <strong>SP</strong> geen enkele briefstem krijgt, heeft <strong>D66</strong> momenteel <em><span id="d66Shortage">–</span></em> stemmen <span class="muted">(zie tabel hieronder)</span> nodig om de laatste restzetel te krijgen ten koste van <strong>SP</strong>.</p>
+        <p>Aangenomen dat <strong>SP</strong> geen enkele briefstem krijgt, heeft <strong>D66</strong> momenteel <em><span id="d66Shortage">–</span></em> stemmen <span class="muted">(zie tabel hieronder)</span> nodig om de laatste restzetel te behalen ten koste van <strong>SP</strong>.</p>
         <p>Echter, in de verkiezingen van TK 2023 had <strong>D66</strong> slechts <em>7.243</em>
         briefstemmen en <strong>SP</strong> toen <em>1.284</em> (<a href="https://voteflow.api.nos.nl/TK23/gemeente/B0001.json" target="_blank" rel="noopener">bron</a>). Nu zal <strong>D66</strong> ongetwijfeld beter scoren deze verkiezingen, maar bedenk dat de extra stemmen van <strong>SP</strong> /<em>3</em> gaan en die van <strong>D66</strong> /<em>27</em> (immers stemgemiddelde formule: <em>aantal huidige zetels + de extra te verkrijgen restzetel</em>).
         Dat betekent dat <em>1.000</em> briefstemmen dit jaar voor <strong>SP</strong> voor ±<em>333</em> meetelt in haar stemgemiddelde, wat weer betekent dat <strong>D66</strong> daarmee <em>8.991</em> (<em>333</em>×<em>27</em>) extra briefstemmen nodig heeft om de restzetel te flippen.</p>
@@ -134,6 +134,8 @@
             }
           } catch(e){}
           try { if (window.UI && UI.initBlockWidthSync) { UI.initBlockWidthSync('seatsBlock','seatsSummaryContainer'); } } catch(e){}
+          // Keep impact banner and D66 banner equal width (widest wins)
+          try { if (window.UI && UI.syncMaxWidth) { UI.syncMaxWidth(['latestRestSeatImpactContainer','d66Banner']); } } catch(e){}
           function loadYearData(year) {
             if (window.RestzetelsApp && typeof RestzetelsApp.loadZetels === 'function') {
               return RestzetelsApp.loadZetels(year);

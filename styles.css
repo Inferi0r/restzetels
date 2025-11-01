@@ -187,9 +187,11 @@ nav ul li a.active::after {
 
 /* Temporary prominent banner */
 .alert-banner {
-  max-width: 600px; /* match impact banner width */
-  margin: 10px auto 8px;
+  display: table;           /* shrink to fit content */
+  margin: 10px auto 8px;   /* center horizontally */
   padding: 10px 12px;
+  max-width: 600px;        /* keep consistent with impact banner */
+  box-sizing: border-box;
   border: 1px solid #f59e0b;
   background: #fef9c3; /* soft yellow */
   color: #1f2937;
@@ -197,7 +199,7 @@ nav ul li a.active::after {
   box-shadow: 0 1px 2px rgba(0,0,0,0.03);
 }
 .alert-banner__row { display:flex; align-items:center; justify-content: space-between; gap: 8px; }
-.alert-banner__title { font-size: 15px; }
+.alert-banner__title { font-size: 15px; white-space: nowrap; }
 .alert-banner__action {
   -webkit-appearance: none; appearance: none;
   background: #fff7ed; border: 1px solid #f59e0b; color: #92400e;
@@ -439,11 +441,15 @@ nav ul li a.active::after {
   padding: 10px 14px; /* add a bit of horizontal breathing room */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Shadow effect for depth */
   border-radius: 5px; /* Rounded corners for a softer look */
-  max-width: 600px; /* a bit wider to accommodate long names */
+  max-width: 600px; /* upper bound only */
+  display: table;    /* shrink wrapper to content width */
   margin-top: 10px; /* Space from the top element */
   margin-left: auto; /* Auto margin for horizontal centering */
   margin-right: auto; /* Auto margin for horizontal centering */
+  position: relative; /* establish stacking context for inner tooltips */
+  z-index: 4000;      /* ensure impact tooltips can float above following elements */
 }
+#latestRestSeatImpactContainer .impact-main { white-space: nowrap; }
 /* Winner/loser emphasis + instant tooltips (matching seats table style) */
 #latestRestSeatImpactContainer .impact-party { font-weight: 700; }
 #latestRestSeatImpactContainer .impact-party--win { color: green; }
@@ -452,10 +458,10 @@ nav ul li a.active::after {
 #latestRestSeatImpactContainer .tooltip .tooltiptext {
   visibility: hidden;
   position: absolute;
-  bottom: 100%;
+  top: calc(100% + 8px);    /* place below the impact line to avoid clipping */
   left: 50%;
+  right: auto;              /* override any global right:0 rules */
   transform: translateX(-50%);
-  margin-bottom: 8px;
   background-color: #333;
   color: #fff;
   text-align: left;
@@ -463,19 +469,30 @@ nav ul li a.active::after {
   border-radius: 4px;
   font-size: 12px;
   line-height: 1.3;
-  white-space: pre-wrap;   /* allow multiple lines */
-  max-width: 420px;        /* wider so text isn't cut off */
-  z-index: 1000;
+  white-space: pre-wrap;     /* allow multiple lines */
+  display: inline-block;     /* autosize to content */
+  max-width: 85vw;           /* keep within viewport on large screens */
+  width: auto;               /* allow JS to size based on content */
+  z-index: 9999;           /* float above banners and buttons below */
+  pointer-events: none;    /* hover-only, no interference */
 }
 #latestRestSeatImpactContainer .tooltip:hover .tooltiptext { visibility: visible; }
 #latestRestSeatImpactContainer .tooltip .tooltiptext::after {
   content: '';
   position: absolute;
-  top: 100%;
+  bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
   border: 6px solid transparent;
-  border-top-color: #333;
+  border-bottom-color: #333;
+}
+
+@media (max-width: 640px) {
+  #latestRestSeatImpactContainer .tooltip .tooltiptext {
+    min-width: 0;
+    max-width: 95vw;  /* allow near-full width on small screens */
+    left: 50%; right: auto; transform: translateX(-50%);
+  }
 }
 
 .updateInfo {

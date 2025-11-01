@@ -553,16 +553,35 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
     const loseTip = `Partij die momenteel het laagste aantal 'Stemmen tekort' heeft,
 Niet de partij die logischerwijs het meeste kans maakt
 (met nog te tellen stemmen meegerekend).`;
+    function sizeImpactTips(){
+      try {
+        const tips = impactEl.querySelectorAll('.tooltip .tooltiptext');
+        const maxVW = Math.floor(window.innerWidth * 0.85);
+        tips.forEach(tip => {
+          // Measure longest single line (respecting explicit \n) and set width accordingly
+          const prevWS = tip.style.whiteSpace;
+          tip.style.whiteSpace = 'pre';
+          tip.style.width = 'auto';
+          let w = Math.ceil(tip.scrollWidth || 0);
+          if (!w || w < 1) { w = 260; }
+          w = Math.min(w, maxVW);
+          tip.style.whiteSpace = 'pre-wrap';
+          tip.style.width = w + 'px';
+        });
+      } catch(e){}
+    }
     if (finalized || !hasParties) {
       impactEl.innerHTML = `
         <div class="impact-main">Laatste restzetel gaat naar: <span class="tooltip"><span class="impact-party impact-party--win">${winnerName || '-'}</span><span class="tooltiptext">${winTip}</span></span>, dit gaat ten koste van: <span class="tooltip"><span class="impact-party impact-party--lose">${losingName || '-'}</span><span class="tooltiptext">${loseTip}</span></span></div>
       `;
+      sizeImpactTips();
       if (__restImpactSinceInterval) { clearInterval(__restImpactSinceInterval); __restImpactSinceInterval = null; }
     } else {
       impactEl.innerHTML = `
         <div class="impact-main">Laatste restzetel gaat naar: <span class="tooltip"><span class="impact-party impact-party--win">${winnerName || '-'}</span><span class="tooltiptext">${winTip}</span></span>, dit gaat ten koste van: <span class="tooltip"><span class="impact-party impact-party--lose">${losingName || '-'}</span><span class="tooltiptext">${loseTip}</span></span></div>
         <div class="impact-since muted small">(sinds <span id=\"restImpactSinceSpan\"></span>)</div>
       `;
+      sizeImpactTips();
       const sinceSpan = document.getElementById('restImpactSinceSpan');
       const updateSince = () => { if (sinceSpan) sinceSpan.textContent = relTime(sinceTs); };
       updateSince();
