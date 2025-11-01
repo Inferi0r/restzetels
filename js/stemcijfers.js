@@ -10,17 +10,17 @@
 
   async function fetchANPVotes(year){
     const y = String(year);
-    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/${y}/anp_votes.json`);
+    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/TK${y}/anp_votes.json`);
     return await Data.safeJSON(`${DO_BASE}?year=${y}&source=anp_votes`);
   }
   async function fetchANPLastUpdate(year){
     const y = String(year);
-    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/${y}/anp_last_update.json`);
+    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/TK${y}/anp_last_update.json`);
     return await Data.safeJSON(`${DO_BASE}?year=${y}&source=anp_last_update`);
   }
   async function fetchNOSIndex(year){
     const y = String(year);
-    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/${y}/nos_index.json`);
+    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/TK${y}/nos_index.json`);
     return await Data.safeJSON(`${DO_BASE}?year=${y}&source=nos_index`);
   }
 
@@ -29,7 +29,8 @@
     const data = await Data.safeJSON(`data/votes_kiesraad.json`);
     if (!data) return null;
     if (Array.isArray(data)) return data; // backward compat
-    return data[String(year)] || null;
+    const y = String(year);
+    return data[`TK${y}`] || data[y] || null;
   }
 
   function createFractionHTML(numerator, denominator){

@@ -88,27 +88,29 @@ function main(array $args) : array
     if ($method === 'options') {
         return [ 'statusCode' => 204, 'headers' => cors_headers() ];
     }
-    // Default to latest cycle
+    // Default to latest cycle; support inputs like "TK2025" or plain "2025"
     $year = 2025;
-    if (!empty($args['year'])) {
-        $year = intval($args['year']);
+    $yearInput = $args['year'] ?? ($args['election'] ?? null);
+    if (!empty($yearInput)) {
+        $digits = preg_replace('/\D+/', '', strval($yearInput));
+        if ($digits) { $year = intval($digits); }
     }
 
     // Per-year sources with descriptive keys
     $dataSources = [
-        2021 => [
-            'anp_votes'       => 'https://d2vz64kg7un9ye.cloudfront.net/data/500.json',
-            'anp_last_update' => 'https://d2vz64kg7un9ye.cloudfront.net/data/index.json',
+        'TK2021' => [
+            'anp_votes'       => 'https://d2vz64kg7un9ye.cloudfront.net/data/500.json', // voorlopige prognose: https://d2vz64kg7un9ye.cloudfront.net/data/600.json
+            'anp_last_update' => 'https://d2vz64kg7un9ye.cloudfront.net/data/index.json', // key uit index - Amsterdam: https://d2vz64kg7un9ye.cloudfront.net/data/193.json
             'nos_index'       => 'https://voteflow.api.nos.nl/TK21/index.json',
             'nos_gemeente'    => 'https://voteflow.api.nos.nl/TK21/gemeente/',
         ],
-        2023 => [
+        'TK2023' => [
             'anp_votes'       => 'https://d1nxan4hfcgbsv.cloudfront.net/data/rh3xjs/500.json',
             'anp_last_update' => 'https://d1nxan4hfcgbsv.cloudfront.net/data/rh3xjs/index.json',
             'nos_index'       => 'https://voteflow.api.nos.nl/TK23/index.json',
             'nos_gemeente'    => 'https://voteflow.api.nos.nl/TK23/gemeente/',
         ],
-        2025 => [
+        'TK2025' => [
             'anp_votes'       => 'https://widgets.verkiezingsdienst.anp.nl/tk25/data/rh3xjs/500.json',
             'anp_last_update' => 'https://widgets.verkiezingsdienst.anp.nl/tk25/data/rh3xjs/index.json',
             'nos_index'       => 'https://voteflow.api.nos.nl/TK25/index.json',
@@ -119,6 +121,10 @@ function main(array $args) : array
     // Only accept new descriptive keys or 'all' bundle
     $requested = !empty($args['source']) ? $args['source'] : 'anp_votes';
     $sourceKey = $requested;
+
+    // Resolve key (support TK-prefixed lookup, though we presently index by numeric)
+    $yearKey = $year;
+    if (isset($dataSources['TK'.$year])) { $yearKey = 'TK'.$year; }
 
     if ($sourceKey === 'all') {
         // Bundle: anp_votes + anp_last_update + nos_index
@@ -134,9 +140,9 @@ function main(array $args) : array
                 return json_response($body);
             }
         }
-        $anpVotes = fetch_with_cache(sha1($year.'|anp_votes'), $dataSources[$year]['anp_votes']);
-        $anpLast  = fetch_with_cache(sha1($year.'|anp_last_update'), $dataSources[$year]['anp_last_update']);
-        $nosIndex = fetch_with_cache(sha1($year.'|nos_index'), $dataSources[$year]['nos_index']);
+        $anpVotes = fetch_with_cache(sha1($year.'|anp_votes'), $dataSources[$yearKey]['anp_votes']);
+        $anpLast  = fetch_with_cache(sha1($year.'|anp_last_update'), $dataSources[$yearKey]['anp_last_update']);
+        $nosIndex = fetch_with_cache(sha1($year.'|nos_index'), $dataSources[$yearKey]['nos_index']);
         if ($anpVotes === null && $anpLast === null && $nosIndex === null) {
             return json_response([ 'error' => 'Upstream fetch failed' ], 502);
         }
@@ -145,11 +151,11 @@ function main(array $args) : array
         return json_response($body);
     }
 
-    if (!isset($dataSources[$year][$sourceKey])) {
+    if (!isset($dataSources[$yearKey][$sourceKey])) {
         return json_response([ 'error' => 'Unknown source or year' ], 400);
     }
 
-    $url = $dataSources[$year][$sourceKey];
+    $url = $dataSources[$yearKey][$sourceKey];
     if ($sourceKey === 'nos_gemeente') {
         if (empty($args['cbs_code'])) {
             return json_response([ 'error' => 'Missing cbs_code for nos_gemeente' ], 400);

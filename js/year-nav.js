@@ -3,13 +3,13 @@
   function withYear(href, year){
     try {
       const u = new URL(href, window.location.origin);
-      u.searchParams.set('year', year);
+      u.searchParams.set('year', `TK${year}`);
       return u.pathname + u.search;
     } catch(e){
       // fallback for plain relative paths
       const hasQuery = href.includes('?');
       const base = href.split('?')[0];
-      return base + (hasQuery ? '&' : '?') + 'year=' + encodeURIComponent(year);
+      return base + (hasQuery ? '&' : '?') + 'year=' + encodeURIComponent(`TK${year}`);
     }
   }
 
@@ -22,7 +22,7 @@
 
   function setUrlYear(year){
     const url = new URL(window.location.href);
-    url.searchParams.set('year', year);
+    url.searchParams.set('year', `TK${year}`);
     window.history.replaceState({}, '', url.pathname + url.search);
   }
 
@@ -30,7 +30,7 @@
     select.innerHTML = '';
     years.forEach(y => {
       const opt = document.createElement('option');
-      opt.value = y; opt.textContent = `Verkiezingen ${y}`;
+      opt.value = y; opt.textContent = `TK ${y}`;
       select.appendChild(opt);
     });
     if (years.includes(year)) select.value = year; else select.value = years[0];
@@ -58,9 +58,12 @@
       // Determine default as latest year if no URL or stored selection
       const params = new URLSearchParams(window.location.search);
       const fromUrl = params.get('year');
+      // If someone uses plain numeric year in URL, bounce to home as requested
+      if (fromUrl && /^\d{4}$/.test(fromUrl)) { try { window.location.href = '/'; return; } catch(e){} }
+      const fromUrlNum = fromUrl ? (String(fromUrl).match(/\d{4}/)||[])[0] : null;
       const fromStore = window.localStorage.getItem('selectedYear');
       const latest = String(Math.max.apply(null, years.map(y=>parseInt(y,10))));
-      const year = fromUrl || fromStore || latest;
+      const year = fromUrlNum || fromStore || latest;
       populateSelect(select, years, year);
       setUrlYear(year);
       updateNavLinks(year);

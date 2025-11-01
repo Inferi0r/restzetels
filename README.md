@@ -3,8 +3,14 @@
 A small static site + serverless fetchers to visualize Dutch House of Representatives election results (ANP, NOS, and optional Kiesraad) with rest seat calculations.
 
 ## Party Labels (per year)
-- 2025 example (open page source in the browser):
-  - view-source:https://widgets.verkiezingsdienst.anp.nl/tk25/web/2qxn3l/index.html
+- TK2017 ANP/NOS widget: https://localfocus2.appspot.com/58cab665b9671
+- PS2019 widget: https://lfverkiezingen2019nllive.appspot.com/public/builds/rx611b/index.html
+- TK2021 NOS/ANP: https://d2vz64kg7un9ye.cloudfront.net/widgets/t2wmrc/index.html
+- TK2023 NOS: https://app.nos.nl/nieuws/tk2023/
+- PS2023 NOS/ANP: https://d2ytsyjyg1iox1.cloudfront.net/web/jrf5ks/index.html
+- TK2023 ANP: https://d1nxan4hfcgbsv.cloudfront.net/web/iir9q1/index.html
+- TK2025 ANP: (open page source in the browser): view-source:https://widgets.verkiezingsdienst.anp.nl/tk25/web/2qxn3l/index.html
+- TK2025 NOS: https://app.nos.nl/nieuws/tk2025/
 - General pattern:
   - view-source:<ANP widgets base URL>/index.html
 

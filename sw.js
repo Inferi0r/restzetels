@@ -1,6 +1,6 @@
 // Service Worker: cache static assets and API bundle with stale-while-revalidate
 // Bump CACHE_VERSION to invalidate old caches on deploys
-const CACHE_VERSION = 'v2025-10-30-01';
+const CACHE_VERSION = 'v2025-11-01-00';
 const STATIC_CACHE = `static-${CACHE_VERSION}`;
 const DATA_CACHE = `data-${CACHE_VERSION}`;
 const API_CACHE = `api-${CACHE_VERSION}`;
@@ -31,12 +31,15 @@ const PRECACHE_URLS = [
   // Static datasets
   './data/partylabels.json',
   './data/votes_kiesraad.json',
-  './data/2021/anp_votes.json',
-  './data/2021/anp_last_update.json',
-  './data/2021/nos_index.json',
-  './data/2023/anp_votes.json',
-  './data/2023/anp_last_update.json',
-  './data/2023/nos_index.json'
+  './data/TK2021/anp_votes.json',
+  './data/TK2021/anp_last_update.json',
+  './data/TK2021/nos_index.json',
+  './data/TK2023/anp_votes.json',
+  './data/TK2023/anp_last_update.json',
+  './data/TK2023/nos_index.json',
+  './data/TK2025/anp_votes.json',
+  './data/TK2025/anp_last_update.json',
+  './data/TK2025/nos_index.json'
 ];
 
 self.addEventListener('install', event => {

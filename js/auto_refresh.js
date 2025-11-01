@@ -25,7 +25,9 @@ const REFRESH_INTERVAL_SECONDS = 30; // changed from 10s to 30s
 
   function getYear(){
     const params = new URLSearchParams(window.location.search);
-    return params.get('year') || window.localStorage.getItem('selectedYear') || '2025';
+    const raw = params.get('year') || window.localStorage.getItem('selectedYear') || '2025';
+    const m = String(raw||'').match(/\d{4}/);
+    return (m && m[0]) || '2025';
   }
 
   async function loadJSON(url){
@@ -43,7 +45,7 @@ const REFRESH_INTERVAL_SECONDS = 30; // changed from 10s to 30s
       const b = await Data.fetchBundle(year);
       return b ? b.anp_last_update : null;
     }
-    if (await isFinalizedYear(year)) return await loadJSON(`data/${year}/anp_last_update.json`);
+    if (await isFinalizedYear(year)) return await loadJSON(`data/TK${year}/anp_last_update.json`);
     return await loadJSON(`${DO_BASE}?year=${encodeURIComponent(year)}&source=anp_last_update`);
   }
 

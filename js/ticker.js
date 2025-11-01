@@ -113,7 +113,9 @@
     if (!container) return;
     // Ignore updates for a different year (e.g., late responses after a year switch)
     try {
-      const selectedYear = (window.CURRENT_YEAR && String(window.CURRENT_YEAR)) || (document.getElementById('yearSelect')?.value) || (new URLSearchParams(window.location.search).get('year')) || window.localStorage.getItem('selectedYear') || targetYear;
+      const rawSel = (window.CURRENT_YEAR && String(window.CURRENT_YEAR)) || (document.getElementById('yearSelect')?.value) || (new URLSearchParams(window.location.search).get('year')) || window.localStorage.getItem('selectedYear') || targetYear;
+      const m = String(rawSel||'').match(/\d{4}/);
+      const selectedYear = (m && m[0]) || rawSel;
       if (targetYear && String(selectedYear) !== String(targetYear)) return;
       // Persist the currently rendered year on the container to reject late updates
       container.dataset.year = String(selectedYear || '');

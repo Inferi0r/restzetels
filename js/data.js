@@ -33,7 +33,7 @@
     // Only use the unified kiesraad index to decide finalization.
     if (!__kiesraadIndex) __kiesraadIndex = await safeFetchJSON('data/votes_kiesraad.json');
     if (!__kiesraadIndex) return false;
-    const entry = Array.isArray(__kiesraadIndex) ? __kiesraadIndex : __kiesraadIndex[y];
+    const entry = Array.isArray(__kiesraadIndex) ? __kiesraadIndex : (__kiesraadIndex[`TK${y}`] || __kiesraadIndex[y]);
     return Array.isArray(entry) && entry.length > 0;
   }
 
@@ -41,7 +41,7 @@
   async function fetchPartyLabels(year){
     const y = String(year);
     const data = await safeFetchJSON('data/partylabels.json');
-    const list = Array.isArray(data) ? data : (data && data[y]) || [];
+    const list = Array.isArray(data) ? data : (data && (data[`TK${y}`] || data[y])) || [];
     const keyToLabelShort = new Map();
     const keyToLabelLong = new Map();
     const keyToNOS = new Map();
@@ -64,7 +64,7 @@
     try {
       const data = await safeFetchJSON('data/exitpoll.json');
       const y = String(year);
-      const raw = data && data[y];
+      const raw = data && (data[`TK${y}`] || data[y]);
       const latest = new Map();
       const all = new Map();
       const norm = (s) => (s||'').toString().trim().toUpperCase();
@@ -104,7 +104,11 @@
     try {
       const data = await safeFetchJSON('data/partylabels.json');
       if (Array.isArray(data)) return ['2021','2023','2025'];
-      const years = Object.keys(data||{}).filter(k=>/^\d{4}$/.test(k));
+      const years = Object.keys(data||{}).map(k=>{
+        const m1 = /^TK(\d{4})$/.exec(k); if (m1) return m1[1];
+        const m2 = /^(\d{4})$/.exec(k); if (m2) return m2[1];
+        return null;
+      }).filter(Boolean);
       if (years.length) return years.sort((a,b)=>parseInt(a,10)-parseInt(b,10));
     } catch(e) {}
     return ['2021','2023','2025'];
@@ -113,9 +117,9 @@
   async function fetchLocalBundle(year){
     const y = String(year);
     const [anp_votes, anp_last_update, nos_index] = await Promise.all([
-      safeFetchJSON(`data/${y}/anp_votes.json`),
-      safeFetchJSON(`data/${y}/anp_last_update.json`),
-      safeFetchJSON(`data/${y}/nos_index.json`)
+      safeFetchJSON(`data/TK${y}/anp_votes.json`),
+      safeFetchJSON(`data/TK${y}/anp_last_update.json`),
+      safeFetchJSON(`data/TK${y}/nos_index.json`)
     ]);
     return { year: Number(y), anp_votes, anp_last_update, nos_index };
   }

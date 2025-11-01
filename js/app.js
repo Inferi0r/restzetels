@@ -8,12 +8,13 @@
   let __restImpactSinceInterval = null; // updates the "sinds" label
 
   async function tryFetchKiesraadVotes(year) {
-    // Unified local file with per-year keys
+    // Unified local file with per-year keys (now TKYYYY)
     const url = `data/votes_kiesraad.json`;
     const data = await Data.safeJSON(url);
     if (!data) return null;
     if (Array.isArray(data)) return data; // backward compat if ever array
-    return data[String(year)] || null;
+    const y = String(year);
+    return data[`TK${y}`] || data[y] || null;
   }
 
   function mapKiesraadDataToANPFormat(kiesraadData, partyLabelsList) {
@@ -874,7 +875,7 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
     let selectedYear = yKey;
     try {
       const sel = document.getElementById('yearSelect');
-      selectedYear = (sel && sel.value) || (new URLSearchParams(window.location.search).get('year')) || window.localStorage.getItem('selectedYear') || yKey;
+      selectedYear = parseYearVal((sel && sel.value) || (new URLSearchParams(window.location.search).get('year')) || window.localStorage.getItem('selectedYear') || yKey);
     } catch(e) { selectedYear = yKey; }
     if (selectedYear !== yKey) {
       return; // stale response for a different year — do not update UI/ticker
@@ -1092,3 +1093,4 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
     const h = Math.floor(m/60); if (h < 24) return `${h}u geleden`;
     const d = Math.floor(h/24); return `${d}d geleden`;
   }
+  function parseYearVal(val){ try { const m=String(val||'').match(/\d{4}/); return (m&&m[0])||''; } catch(e){ return String(val||''); } }
