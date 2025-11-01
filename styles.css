@@ -185,6 +185,39 @@ nav ul li a.active::after {
 }
 #impactProgressBtn:hover .progress-info-icon { opacity: 1; }
 
+/* Temporary prominent banner */
+.alert-banner {
+  max-width: 600px; /* match impact banner width */
+  margin: 10px auto 8px;
+  padding: 10px 12px;
+  border: 1px solid #f59e0b;
+  background: #fef9c3; /* soft yellow */
+  color: #1f2937;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.alert-banner__row { display:flex; align-items:center; justify-content: space-between; gap: 8px; }
+.alert-banner__title { font-size: 15px; }
+.alert-banner__action {
+  -webkit-appearance: none; appearance: none;
+  background: #fff7ed; border: 1px solid #f59e0b; color: #92400e;
+  padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 13px;
+}
+.alert-banner__action:hover { background: #ffedd5; }
+.alert-banner__body { margin-top: 8px; font-size: 14px; line-height: 1.4; }
+
+/* Compact answer chip to highlight the decision (distinct from party bold) */
+.answer-chip {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.1;
+}
+.answer-chip--no { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+
 .year-toggle {
   cursor: pointer;
   font-size: 20px;
@@ -410,6 +443,39 @@ nav ul li a.active::after {
   margin-top: 10px; /* Space from the top element */
   margin-left: auto; /* Auto margin for horizontal centering */
   margin-right: auto; /* Auto margin for horizontal centering */
+}
+/* Winner/loser emphasis + instant tooltips (matching seats table style) */
+#latestRestSeatImpactContainer .impact-party { font-weight: 700; }
+#latestRestSeatImpactContainer .impact-party--win { color: green; }
+#latestRestSeatImpactContainer .impact-party--lose { color: red; }
+#latestRestSeatImpactContainer .tooltip { position: relative; display: inline-block; }
+#latestRestSeatImpactContainer .tooltip .tooltiptext {
+  visibility: hidden;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 1.3;
+  white-space: pre-wrap;   /* allow multiple lines */
+  max-width: 420px;        /* wider so text isn't cut off */
+  z-index: 1000;
+}
+#latestRestSeatImpactContainer .tooltip:hover .tooltiptext { visibility: visible; }
+#latestRestSeatImpactContainer .tooltip .tooltiptext::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #333;
 }
 
 .updateInfo {

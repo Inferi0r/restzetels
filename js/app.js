@@ -549,14 +549,18 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
       const d = Math.floor(h/24); return `${d}d geleden`;
     };
     // Show since only when not finalized and we have parties; otherwise show single line without since
+    const winTip = "Partij die momenteel de laatste te verdelen restzetel behaald";
+    const loseTip = `Partij die momenteel het laagste aantal 'Stemmen tekort' heeft,
+Niet de partij die logischerwijs het meeste kans maakt
+(met nog te tellen stemmen meegerekend).`;
     if (finalized || !hasParties) {
       impactEl.innerHTML = `
-        <div class="impact-main">Laatste restzetel gaat naar: <span style="font-weight: bold; color: green;">${winnerName || '-'}</span>, dit gaat ten koste van: <span style="font-weight: bold; color: red;">${losingName || '-'}</span></div>
+        <div class="impact-main">Laatste restzetel gaat naar: <span class="tooltip"><span class="impact-party impact-party--win">${winnerName || '-'}</span><span class="tooltiptext">${winTip}</span></span>, dit gaat ten koste van: <span class="tooltip"><span class="impact-party impact-party--lose">${losingName || '-'}</span><span class="tooltiptext">${loseTip}</span></span></div>
       `;
       if (__restImpactSinceInterval) { clearInterval(__restImpactSinceInterval); __restImpactSinceInterval = null; }
     } else {
       impactEl.innerHTML = `
-        <div class="impact-main">Laatste restzetel gaat naar: <span style="font-weight: bold; color: green;">${winnerName || '-'}</span>, dit gaat ten koste van: <span style="font-weight: bold; color: red;">${losingName || '-'}</span></div>
+        <div class="impact-main">Laatste restzetel gaat naar: <span class="tooltip"><span class="impact-party impact-party--win">${winnerName || '-'}</span><span class="tooltiptext">${winTip}</span></span>, dit gaat ten koste van: <span class="tooltip"><span class="impact-party impact-party--lose">${losingName || '-'}</span><span class="tooltiptext">${loseTip}</span></span></div>
         <div class="impact-since muted small">(sinds <span id=\"restImpactSinceSpan\"></span>)</div>
       `;
       const sinceSpan = document.getElementById('restImpactSinceSpan');
@@ -579,6 +583,28 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
       const el = document.getElementById('latestUpdateFromNos');
       if (el) el.textContent = `Laatste update ${prefix}: ${ts} uit ${name} (${status})`;
     }
+  }
+
+  // Update the D66 vs SP banner with dynamic shortage from current data
+  function updateD66Banner(votesData, keyToLabelShort){
+    try {
+      const wrap = document.getElementById('d66Banner');
+      const out = document.getElementById('d66Shortage');
+      if (!wrap || !out) return;
+      let shortage = null;
+      try {
+        const { votesShortData } = calculateVotesShortAndSurplus(votesData);
+        let d66Key = null;
+        for (const [k, v] of keyToLabelShort.entries()) {
+          if (String(v||'').toUpperCase() === 'D66') { d66Key = k; break; }
+        }
+        if (d66Key != null) {
+          const raw = Math.ceil(Number(votesShortData.get(d66Key) || 0));
+          if (!isNaN(raw)) shortage = raw;
+        }
+      } catch(e) {}
+      out.textContent = (typeof shortage === 'number') ? shortage.toLocaleString('nl-NL') : '–';
+    } catch(e){}
   }
 
   function buildRestzetelShare(year, data, maps, finalized){
@@ -1019,6 +1045,9 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
       // Seats summary
       createSeatsSummaryTable(updatedData, keyToLabelLong, keyToListNumber, keyToLabelShort, { hasVotes: true, exitLatest, exitSeries });
 
+      // Update D66 banner shortage based on current data
+      try { updateD66Banner(updatedData, keyToLabelShort); } catch(e){}
+
       // Latest rest seat impact — always visible with persistent since-timer
       let finalizedFlag=false; try{ finalizedFlag = await Data.isFinalizedYear(year); }catch(e){ finalizedFlag=false; }
       // Compute last ANP update timestamp (ms) to seed 'sinds' on first visit only
@@ -1073,6 +1102,11 @@ function createSeatsSummaryTable(votesData, keyToLabelLong, keyToListNumber, key
         `;
         if (__restImpactSinceInterval) { try { clearInterval(__restImpactSinceInterval); } catch(e){} __restImpactSinceInterval = null; }
       }
+      // No votes yet: show dash in D66 banner
+      try {
+        const out = document.getElementById('d66Shortage');
+        if (out) out.textContent = '–';
+      } catch(e){}
       try { setupShareHandlers(year, votesData || { parties: [] }, { keyToLabelShort, keyToLabelLong }, true); } catch(e) {}
     }
   }
