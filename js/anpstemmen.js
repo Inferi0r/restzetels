@@ -21,13 +21,13 @@
   async function fetchANPVotes(year){
     const y = String(year);
     if (window.Data && typeof Data.fetchBundle==='function') { const b = await Data.fetchBundle(y); return b ? b.anp_votes : null; }
-    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/${y}/anp_votes.json`);
+    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/TK${y}/anp_votes.json`);
     return await Data.safeJSON(`${DO_BASE}?year=${y}&source=anp_votes`);
   }
   async function fetchANPLastUpdate(year){
     const y = String(year);
     if (window.Data && typeof Data.fetchBundle==='function') { const b = await Data.fetchBundle(y); return b ? b.anp_last_update : null; }
-    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/${y}/anp_last_update.json`);
+    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/TK${y}/anp_last_update.json`);
     return await Data.safeJSON(`${DO_BASE}?year=${y}&source=anp_last_update`);
   }
 

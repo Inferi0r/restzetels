@@ -91,7 +91,8 @@ function isStaticAsset(url){
 }
 
 function isFinalizedData(url){
-  return isSameOrigin(url) && /\/data\/\d{4}\/[^?]+\.json$/.test(url);
+  // Support new TKYYYY folders (preferred) and legacy YYYY folders
+  return isSameOrigin(url) && /\/data\/(TK\d{4}|\d{4})\/[^?]+\.json$/.test(url);
 }
 
 function isFunctionAPI(url){

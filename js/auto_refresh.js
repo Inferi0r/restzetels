@@ -163,8 +163,12 @@ const REFRESH_INTERVAL_SECONDS = 30; // changed from 10s to 30s
     const lastUpdate = await fetchLastUpdate(year);
     // Update title info with latest updated Gemeente (type 0)
     if (onZetelsPage()) { setStaticTitle(); }
-    if (allGemeentesComplete(lastUpdate)) { finalizedActive = true; updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); setStaticTitle(); clearTimers(); return; }
-    if (await isFinalizedYear(year)) { finalizedActive = true; updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); setStaticTitle(); clearTimers(); return; }
+    // Decide completeness: Kiesraad OR (NOS all Eindstand) OR (ANP views all status=4)
+    let nosIndex = null;
+    try { if (window.Data && typeof Data.fetchBundle==='function') { const b = await Data.fetchBundle(year); nosIndex = b ? b.nos_index : null; } } catch(e){}
+    const viaNOS = (() => { const list = (nosIndex && Array.isArray(nosIndex.gemeentes)) ? nosIndex.gemeentes : []; return list.length>0 && list.every(r => String(r && r.status || '').toLowerCase().indexOf('eind')===0); })();
+    const viaANP = (() => { const views = (lastUpdate && Array.isArray(lastUpdate.views)) ? lastUpdate.views : []; return views.length>0 && views.every(v => v && v.status === 4); })();
+    if (viaNOS || viaANP || await isFinalizedYear(year)) { finalizedActive = true; updateBadge("Alle kiesregio's compleet"); setSoundVisible(false); setStaticTitle(); clearTimers(); return; }
     // not complete -> start/restart countdown
     finalizedActive = false;
     setSoundVisible(true);

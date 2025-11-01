@@ -14,7 +14,7 @@
       const b = await Data.fetchBundle(year); return b && b.anp_last_update ? b.anp_last_update : null;
     }
     const y = String(year);
-    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/${y}/anp_last_update.json`);
+    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/TK${y}/anp_last_update.json`);
     return await Data.safeJSON(`${DO_BASE}?year=${y}&source=anp_last_update`);
   }
 
@@ -170,10 +170,11 @@
           }
         });
       });
+      // After each body draw (including sorts), align header cell alignment with body
+      alignHeaderToCells();
     }
     updateHeaderIcons();
     drawBody();
-    alignHeaderToCells();
     container.innerHTML = '';
     container.appendChild(table);
   }

@@ -22,7 +22,7 @@
       const b = await Data.fetchBundle(year); return b && b.nos_index ? b.nos_index : null;
     }
     const y = String(year);
-    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/${y}/nos_index.json`);
+    if (await Data.isFinalizedYear(y)) return await Data.safeJSON(`data/TK${y}/nos_index.json`);
     return await Data.safeJSON(`${DO_BASE}?year=${y}&source=nos_index`);
   }
 
