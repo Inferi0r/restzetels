@@ -82,7 +82,7 @@ def extract_pdf_links(html: str, base_url: str) -> list[str]:
         if is_pdf_like:
             urls.append(full)
         else:
-            if any(k in full.lower() for k in ("dsresource", "download", "document", "/file/")) or any(k in text for k in ("pdf", "proces", "stembureau", "uitslag")):
+            if any(k in full.lower() for k in ("dsresource", "download", "document", "/file/", "/wp-content/")) or any(k in text for k in ("pdf", "proces", "stembureau", "uitslag")):
                 maybes.append(full)
 
     # Light probe: check headers for suspected endpoints
@@ -115,7 +115,7 @@ def quick_site_search(start_url: str) -> list[str]:
     """
     pu = urlparse(start_url)
     base = f"{pu.scheme}://{pu.netloc}"
-    terms = ["verkiez", "uitslag", "proces-verbaal", "processen-verbaal", "stembureau"]
+    terms = ["documenten verkiezing", "verkiezingsuitslag", "verkiezingen uitslag", "verkiez", "uitslag", "proces-verbaal", "processen-verbaal", "stembureau"]
     paths = ["zoeken", "search"]
     candidates = []
     for t in terms:
@@ -266,6 +266,12 @@ def get_municipalities_slice(start: int, end: int) -> list[str]:
     return [it.get("name") for it in selected if it.get("name")]
 
 
+def get_all_names() -> list[str]:
+    data = load_json(os.path.join(DATA_DIR, "municipalities.json"))
+    items = data.get("items", [])
+    return [it.get("name") for it in items if it.get("name")]
+
+
 def get_verified_url(name: str) -> str | None:
     data = load_json(os.path.join(DATA_DIR, "municipality_links_verified.json"))
     for v in data.get("verified", []):
@@ -281,7 +287,7 @@ def collect_pdfs_for_municipality(name: str, extra: dict) -> list[str]:
     if start:
         seeds.append(start)
     # fetch seeds and extract pdfs + discover a small set of relevant internal pages
-    discover_pages: list[str] = []
+    discover_pages_scored: list[tuple[str,int]] = []
     KEY_RE = re.compile(r"verkiez|uitslag|proces|stembur|tweede.*kamer|n10|na\s*31|na31|model", re.I)
     for s in seeds[:5]:  # cap seeds processed
         try:
@@ -297,12 +303,33 @@ def collect_pdfs_for_municipality(name: str, extra: dict) -> list[str]:
                     continue
                 if urlparse(full).netloc != pu.netloc or not full.startswith(base):
                     continue
-                if KEY_RE.search(full):
-                    discover_pages.append(full)
+                if KEY_RE.search(full) or KEY_RE.search(a.get_text(" ", strip=True) or ""):
+                    score = 0
+                    low = full.lower()
+                    if "documenten" in low or "document" in low:
+                        score += 6
+                    if "uitslag" in low:
+                        score += 4
+                    if "verkiez" in low:
+                        score += 2
+                    # slight boost if anchor text mentions documenten/uitslag
+                    txt = (a.get_text(" ", strip=True) or "").lower()
+                    if "document" in txt:
+                        score += 2
+                    if "uitslag" in txt:
+                        score += 1
+                    discover_pages_scored.append((full, score))
         except Exception:
             pass
-    # process a few discovered pages
-    for p in list(dict.fromkeys(discover_pages))[:10]:
+    # process discovered pages by priority
+    dedup = []
+    seenp = set()
+    for u, sc in sorted(discover_pages_scored, key=lambda x: x[1], reverse=True):
+        if u in seenp:
+            continue
+        seenp.add(u)
+        dedup.append(u)
+    for p in dedup[:20]:
         try:
             r2 = http_get(p, timeout=12)
             urls += extract_pdf_links(r2.text, r2.url)
@@ -342,7 +369,10 @@ def run(argv: list[str] | None = None) -> int:
     args = ap.parse_args(argv)
 
     # Bepaal doellijst
-    if args.slice:
+    if args.only:
+        all_names = set(get_all_names())
+        names = [n for n in args.only if n in all_names]
+    elif args.slice:
         try:
             a, b = args.slice.split("-", 1)
             start = int(a.strip()); end = int(b.strip())
@@ -354,9 +384,6 @@ def run(argv: list[str] | None = None) -> int:
         names = get_first_n_names(args.first)
     else:
         names = get_first_n_names(5)
-
-    if args.only:
-        names = [n for n in names if n in set(args.only)]
     extra = load_extra_seeds()
 
     print(f"[cleaned] Target: {', '.join(names)}")
