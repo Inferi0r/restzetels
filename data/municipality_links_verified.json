@@ -1,0 +1,24 @@
+{
+  "verified": [
+    {
+      "name": "Aa en Hunze",
+      "start_url": "https://www.aaenhunze.nl/verkiezingen",
+      "final_url": "https://www.aaenhunze.nl/Alle_onderwerpen/Verkiezingen?utm_source=Rx.Front&utm_medium=redirect&utm_campaign=verkiezingen",
+      "status": 200
+    },
+    {
+      "name": "Aalsmeer",
+      "start_url": "https://www.aalsmeer.nl/verkiezingen",
+      "final_url": null,
+      "status": null,
+      "error": "HTTPSConnectionPool(host='www.aalsmeer.nl', port=443): Max retries exceeded with url: /verkiezingen (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x102883b10>, 'Connection to www.aalsmeer.nl timed out. (connect timeout=25.0)'))"
+    },
+    {
+      "name": "Aalten",
+      "start_url": "https://www.aalten.nl/verkiezingen",
+      "final_url": "https://www.aalten.nl/verkiezingen",
+      "status": 200
+    }
+  ],
+  "count": 3
+}

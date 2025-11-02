@@ -1,0 +1,1386 @@
+{
+  "source": "https://www.kiesraad.nl/verkiezingen/tweede-kamer/uitslagen/uitslagen-per-gemeente-tweede-kamer",
+  "count": 345,
+  "items": [
+    {
+      "name": "Aa en Hunze",
+      "url": "https://www.aaenhunze.nl/verkiezingen"
+    },
+    {
+      "name": "Aalsmeer",
+      "url": "https://www.aalsmeer.nl/verkiezingen"
+    },
+    {
+      "name": "Aalten",
+      "url": "https://www.aalten.nl/verkiezingen"
+    },
+    {
+      "name": "Achtkarspelen",
+      "url": "https://www.achtkarspelen.nl/uitslagen-verkiezingen"
+    },
+    {
+      "name": "Alblasserdam",
+      "url": "https://www.alblasserdam.nl/verkiezingen"
+    },
+    {
+      "name": "Albrandswaard",
+      "url": "https://www.albrandswaard.nl/verkiezingen"
+    },
+    {
+      "name": "Alkmaar",
+      "url": "https://www.alkmaar.nl/tweede-kamerverkiezingen/"
+    },
+    {
+      "name": "Almelo",
+      "url": "https://www.almelo.nl/verkiezingen"
+    },
+    {
+      "name": "Almere",
+      "url": "https://almere.nl/verkiezingen"
+    },
+    {
+      "name": "Alphen aan den Rijn",
+      "url": "https://www.alphenaandenrijn.nl/Verkiezingen/Tweede_Kamerverkiezing/Uitslag_verkiezingen/Uitslag_Tweede_Kamerverkiezing_2025"
+    },
+    {
+      "name": "Alphen-Chaam",
+      "url": "https://www.alphen-chaam.nl/verkiezingsuitslagen"
+    },
+    {
+      "name": "Altena",
+      "url": "https://www.gemeentealtena.nl/verkiezingen"
+    },
+    {
+      "name": "Ameland",
+      "url": "https://www.ameland.nl/verkiezingen"
+    },
+    {
+      "name": "Amersfoort",
+      "url": "https://www.amersfoort.nl/verkiezingen"
+    },
+    {
+      "name": "Amstelveen",
+      "url": "https://www.amstelveen.nl/verkiezingen"
+    },
+    {
+      "name": "Amsterdam",
+      "url": "https://www.amsterdam.nl/verkiezingen"
+    },
+    {
+      "name": "Apeldoorn",
+      "url": "https://www.apeldoorn.nl/verkiezingen"
+    },
+    {
+      "name": "Arnhem",
+      "url": "https://arnhemstemt.nl"
+    },
+    {
+      "name": "Assen",
+      "url": "https://www.assen.nl/verkiezingen"
+    },
+    {
+      "name": "Asten",
+      "url": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/tweede-kamer-verkiezingen/verkiezingsuitslag-tweede-kamer-2025"
+    },
+    {
+      "name": "Baarle-Nassau",
+      "url": "https://www.baarle-nassau.nl/tweede-kamerverkiezing/"
+    },
+    {
+      "name": "Baarn",
+      "url": "https://www.baarn.nl/tweede-kamerverkiezing"
+    },
+    {
+      "name": "Barendrecht",
+      "url": "https://www.barendrecht.nl/tweede-kamerverkiezing-2025/"
+    },
+    {
+      "name": "Barneveld",
+      "url": "https://www.barneveld.nl/verkiezingsuitslag"
+    },
+    {
+      "name": "Beek",
+      "url": "https://www.gemeentebeek.nl/verkiezingen"
+    },
+    {
+      "name": "Beekdaelen",
+      "url": "https://www.beekdaelen.nl/verkiezingen"
+    },
+    {
+      "name": "Beesel",
+      "url": "https://www.beesel.nl/verkiezingsuitslag"
+    },
+    {
+      "name": "Berg en Dal",
+      "url": "https://www.bergendal.nl/verkiezingen-2025-tweede-kamer"
+    },
+    {
+      "name": "Bergeijk",
+      "url": "https://www.bergeijk.nl/verkiezingen/uitslagen"
+    },
+    {
+      "name": "Bergen (L)",
+      "url": "https://www.bergen.nl/tweede-kamer-2025"
+    },
+    {
+      "name": "Bergen (NH)",
+      "url": "https://www.bergen-nh.nl/verkiezingen"
+    },
+    {
+      "name": "Bergen op Zoom",
+      "url": "https://www.bergenopzoom.nl/tweedekamerverkiezingen"
+    },
+    {
+      "name": "Berkelland",
+      "url": "https://www.gemeenteberkelland.nl/verkiezingen/uitslagen-2/"
+    },
+    {
+      "name": "Bernheze",
+      "url": "https://www.bernheze.org/bestuur-en-organisatie/verkiezingen/"
+    },
+    {
+      "name": "Best",
+      "url": "https://www.gemeentebest.nl/verkiezingen"
+    },
+    {
+      "name": "Beuningen",
+      "url": "https://www.beuningen.nl/tweede-kamerverkiezing"
+    },
+    {
+      "name": "Beverwijk",
+      "url": "https://www.beverwijk.nl/verkiezingen"
+    },
+    {
+      "name": "Bladel",
+      "url": "https://www.bladel.nl/verkiezingen"
+    },
+    {
+      "name": "Blaricum",
+      "url": "https://www.blaricum.nl/Verkiezingen"
+    },
+    {
+      "name": "Bloemendaal",
+      "url": "https://www.bloemendaal.nl/verkiezingen"
+    },
+    {
+      "name": "Bodegraven-Reeuwijk",
+      "url": "https://www.bodegraven-reeuwijk.nl/uitslag-tweede-kamerverkiezingen-2025"
+    },
+    {
+      "name": "Boekel",
+      "url": "https://www.boekel.nl/bestuur-en-organisatie/verkiezingen/tweede-kamerverkiezing-2025/uitslag"
+    },
+    {
+      "name": "Bonaire",
+      "url": "https://bonairestemt.nl/resultaten/verbalen-databank"
+    },
+    {
+      "name": "Borger-Odoorn",
+      "url": "https://www.borger-odoorn.nl/verkiezingen"
+    },
+    {
+      "name": "Borne",
+      "url": "https://www.borne.nl/stemmen-en-uitslagen"
+    },
+    {
+      "name": "Borsele",
+      "url": "https://www.borsele.nl/verkiezingen"
+    },
+    {
+      "name": "Boxtel",
+      "url": "https://www.boxtel.nl/verkiezingen"
+    },
+    {
+      "name": "Breda",
+      "url": "https://www.breda.nl/stemmen-tellen-en-uitslagen-verkiezingen"
+    },
+    {
+      "name": "Bronckhorst",
+      "url": "https://www.bronckhorst.nl/tweede-kamerverkiezingen"
+    },
+    {
+      "name": "Brummen",
+      "url": "http://www.brummen.nl/verkiezingen"
+    },
+    {
+      "name": "Brunssum",
+      "url": "https://www.brunssum.nl/verkiezingen"
+    },
+    {
+      "name": "Bunnik",
+      "url": "https://www.bunnik.nl/verkiezingen"
+    },
+    {
+      "name": "Bunschoten",
+      "url": "https://www.bunschoten.nl/verkiezingen"
+    },
+    {
+      "name": "Buren",
+      "url": "https://www.buren.nl/verkiezingen/"
+    },
+    {
+      "name": "Capelle aan den IJssel",
+      "url": "https://www.capelleaandenijssel.nl/verkiezingen"
+    },
+    {
+      "name": "Castricum",
+      "url": "https://www.castricum.nl/verkiezingen"
+    },
+    {
+      "name": "Coevorden",
+      "url": "https://www.coevorden.nl/verkiezingen"
+    },
+    {
+      "name": "Cranendonck",
+      "url": "https://www.cranendonck.nl/verkiezingen"
+    },
+    {
+      "name": "Culemborg",
+      "url": "https://www.culemborg.nl/verkiezingen"
+    },
+    {
+      "name": "Dalfsen",
+      "url": "https://www.dalfsen.nl"
+    },
+    {
+      "name": "Dantumadiel",
+      "url": "https://www.dantumadiel.frl/verkiezingsuitslagen"
+    },
+    {
+      "name": "De Bilt",
+      "url": "https://www.debilt.nl/bestuur-en-organisatie/verkiezingen/"
+    },
+    {
+      "name": "De Fryske Marren",
+      "url": "https://www.defryskemarren.nl/verkiezingen/"
+    },
+    {
+      "name": "De Ronde Venen",
+      "url": "https://www.derondevenen.nl/Bestuur_en_organisatie/Verkiezingen_2025"
+    },
+    {
+      "name": "De Wolden",
+      "url": "https://www.dewolden.nl/verkiezingen"
+    },
+    {
+      "name": "Delft",
+      "url": "https://www.delft.nl/verkiezingen"
+    },
+    {
+      "name": "Den Haag",
+      "url": "https://tellingen.stembureausindenhaag.nl/Algemeen"
+    },
+    {
+      "name": "Den Helder",
+      "url": "https://www.denhelder.nl/Onderwerpen/Actueel/Tweede_Kamerverkiezingen_29_oktober_2025"
+    },
+    {
+      "name": "Deurne",
+      "url": "https://www.deurne.nl/verkiezingen"
+    },
+    {
+      "name": "Deventer",
+      "url": "https://www.deventer.nl/verkiezingen"
+    },
+    {
+      "name": "Diemen",
+      "url": "https://www.diemen.nl/Onderwerpen/Verkiezingen"
+    },
+    {
+      "name": "Dijk en Waard",
+      "url": "https://www.dijkenwaard.nl/verkiezingen"
+    },
+    {
+      "name": "Dinkelland",
+      "url": "https://dinkelland.nl/tweede-kamerverkiezingen-2025"
+    },
+    {
+      "name": "Doesburg",
+      "url": "https://www.doesburg.nl/verkiezingen-tweede-kamer-2025"
+    },
+    {
+      "name": "Doetinchem",
+      "url": "https://www.doetinchem.nl/verkiezingen/uitslag"
+    },
+    {
+      "name": "Dongen",
+      "url": "https://www.dongen.nl/verkiezingen"
+    },
+    {
+      "name": "Dordrecht",
+      "url": "https://www.dordrecht.nl/verkiezingen"
+    },
+    {
+      "name": "Drechterland",
+      "url": "https://www.drechterland.nl/verkiezingen"
+    },
+    {
+      "name": "Drimmelen",
+      "url": "https://drimmelen.nl/verkiezingen"
+    },
+    {
+      "name": "Dronten",
+      "url": "https://www.dronten.nl/direct-regelen/thema/subthema/openbare-kennisgevingen-voor-vervroegde-tweede-kamerverkiezingen-2025"
+    },
+    {
+      "name": "Druten",
+      "url": "https://www.druten.nl/tweede-kamerverkiezing"
+    },
+    {
+      "name": "Duiven",
+      "url": "https://www.duiven.nl/tweede-kamerverkiezing-2025"
+    },
+    {
+      "name": "Echt-Susteren",
+      "url": "https://www.echt-susteren.nl/verkiezingsuitslag"
+    },
+    {
+      "name": "Edam-Volendam",
+      "url": "https://edam-volendam.nl/verkiezingen"
+    },
+    {
+      "name": "Ede",
+      "url": "https://www.ede.nl/verkiezingen"
+    },
+    {
+      "name": "Eemnes",
+      "url": "https://www.eemnes.nl/verkiezingen"
+    },
+    {
+      "name": "Eemsdelta",
+      "url": "https://www.eemsdelta.nl/uitslagen"
+    },
+    {
+      "name": "Eersel",
+      "url": "https://www.eersel.nl/verkiezingen"
+    },
+    {
+      "name": "Eijsden-Margraten",
+      "url": "https://www.eijsden-margraten.nl/verkiezingen"
+    },
+    {
+      "name": "Eindhoven",
+      "url": "https://www.eindhoven.nl/bestuur-en-beleid/verkiezingen/tweede-kamerverkiezing-2025"
+    },
+    {
+      "name": "Elburg",
+      "url": "https://www.elburg.nl/Bestuur_en_organisatie/Verkiezingen"
+    },
+    {
+      "name": "Emmen",
+      "url": "https://www.emmen.nl/verkiezingen"
+    },
+    {
+      "name": "Enkhuizen",
+      "url": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/"
+    },
+    {
+      "name": "Enschede",
+      "url": "https://www.enschede.nl/verkiezingen"
+    },
+    {
+      "name": "Epe",
+      "url": "https://www.epe.nl/verkiezingen"
+    },
+    {
+      "name": "Ermelo",
+      "url": "https://www.ermelo.nl/verkiezing-tweede-kamer"
+    },
+    {
+      "name": "Etten-Leur",
+      "url": "https://www.etten-leur.nl/verkiezingen"
+    },
+    {
+      "name": "Geertruidenberg",
+      "url": "https://www.geertruidenberg.nl/verkiezingen2025"
+    },
+    {
+      "name": "Geldrop-Mierlo",
+      "url": "https://www.geldrop-mierlo.nl/voorlopige-uitslag-tweede-kamerverkiezingen-2025"
+    },
+    {
+      "name": "Gemert-Bakel",
+      "url": "https://www.gemert-bakel.nl/uitslagen-verkiezingen-tweede-kamer-2025"
+    },
+    {
+      "name": "Gennep",
+      "url": "https://www.gennep.nl/verkiezingen"
+    },
+    {
+      "name": "Gilze en Rijen",
+      "url": "https://www.gilzerijen.nl/tweede-kamerverkiezingen"
+    },
+    {
+      "name": "Goeree-Overflakkee",
+      "url": "https://www.goeree-overflakkee.nl/uitslagen-verkiezingen-2019-2024"
+    },
+    {
+      "name": "Goes",
+      "url": "https://www.goes.nl/verkiezingen"
+    },
+    {
+      "name": "Goirle",
+      "url": "https://www.goirle.nl/verkiezingen"
+    },
+    {
+      "name": "Gooise Meren",
+      "url": "https://gooisemeren.nl/verkiezingen-tweede-kamer-29-oktober-2025/"
+    },
+    {
+      "name": "Gorinchem",
+      "url": "https://www.gorinchem.nl/verkiezingen"
+    },
+    {
+      "name": "Gouda",
+      "url": "https://www.gouda.nl/verkiezingen"
+    },
+    {
+      "name": "Groningen",
+      "url": "https://gemeente.groningen.nl/verkiezingen"
+    },
+    {
+      "name": "Gulpen-Wittem",
+      "url": "https://www.gulpen-wittem.nl/verkiezingen"
+    },
+    {
+      "name": "Haaksbergen",
+      "url": "https://www.haaksbergen.nl/verkiezingen/Tweede-Kamerverkiezingen.html"
+    },
+    {
+      "name": "Haarlem",
+      "url": "https://haarlem.pleio.nl/groups/view/7b769524-7339-4ae6-ab49-c10b7c20abed/verkiezingen/files/b96c0a9e-64ae-4ea1-bdac-ddee9eb80710"
+    },
+    {
+      "name": "Haarlemmermeer",
+      "url": "https://haarlemmermeergemeente.nl/verkiezingen"
+    },
+    {
+      "name": "Halderberge",
+      "url": "https://www.halderberge.nl/verkiezingen"
+    },
+    {
+      "name": "Hardenberg",
+      "url": "https://www.hardenberg.nl/verkiezingen"
+    },
+    {
+      "name": "Harderwijk",
+      "url": "https://www.harderwijk.nl/verkiezingen/"
+    },
+    {
+      "name": "Hardinxveld-Giessendam",
+      "url": "https://www.hardinxveld-giessendam.nl/Bestuur/Gemeenteraad/Verkiezingen"
+    },
+    {
+      "name": "Harlingen",
+      "url": "https://www.harlingen.nl/verkiezingen"
+    },
+    {
+      "name": "Hattem",
+      "url": "https://www.hattem.nl/Bestuur_en_organisatie/Verkiezingen"
+    },
+    {
+      "name": "Heemskerk",
+      "url": "https://www.heemskerk.nl/over-heemskerk/verkiezingen/tweede-kamerverkiezingen-2025"
+    },
+    {
+      "name": "Heemstede",
+      "url": "https://www.heemstede.nl/verkiezingen"
+    },
+    {
+      "name": "Heerde",
+      "url": "https://www.heerde.nl/Bestuur_en_organisatie/Verkiezingen/Verkiezingen_Tweede_Kamer_2025"
+    },
+    {
+      "name": "Heerenveen",
+      "url": "https://www.heerenveen.nl/actueel/verkiezingen/verkiezingen-tweede-kamer/"
+    },
+    {
+      "name": "Heerlen",
+      "url": "https://www.heerlen.nl/uitslag-verkiezingen"
+    },
+    {
+      "name": "Heeze-Leende",
+      "url": "https://www.heeze-leende.nl/tweede-kamerverkiezing-29-oktober-2025"
+    },
+    {
+      "name": "Heiloo",
+      "url": "https://www.heiloo.nl/verkiezingen"
+    },
+    {
+      "name": "Hellendoorn",
+      "url": "https://www.hellendoorn.nl/verkiezingen/"
+    },
+    {
+      "name": "Helmond",
+      "url": "https://www.helmond.nl/1/verkiezingen/tweede-kamerverkiezingen-2025/voorlopige-uitslag-tweede-kamerverkiezingen-oktober-2025"
+    },
+    {
+      "name": "Hendrik-Ido-Ambacht",
+      "url": "https://www.h-i-ambacht.nl/verkiezingen"
+    },
+    {
+      "name": "Hengelo",
+      "url": "https://www.hengelo.nl/verkiezingsuitslagen"
+    },
+    {
+      "name": "'s-Hertogenbosch",
+      "url": "https://www.s-hertogenbosch.nl/verkiezingen/"
+    },
+    {
+      "name": "Het Hogeland",
+      "url": "https://hethogeland.nl"
+    },
+    {
+      "name": "Heumen",
+      "url": "https://www.heumen.nl/verkiezingen"
+    },
+    {
+      "name": "Heusden",
+      "url": "https://www.heusden.nl/organisatie-bestuur/verkiezingen"
+    },
+    {
+      "name": "Hillegom",
+      "url": "https://www.hillegom.nl/tweede-kamerverkiezingen"
+    },
+    {
+      "name": "Hilvarenbeek",
+      "url": "https://www.hilvarenbeek.nl/verkiezingen"
+    },
+    {
+      "name": "Hilversum",
+      "url": "https://hilversum.nl/verkiezingen-tweede-kamer"
+    },
+    {
+      "name": "Hoeksche Waard",
+      "url": "https://www.gemeentehw.nl/tweede-kamerverkiezingen-2025/"
+    },
+    {
+      "name": "Hof van Twente",
+      "url": "https://www.hofvantwente.nl/verkiezingen/uitslag"
+    },
+    {
+      "name": "Hollands Kroon",
+      "url": "https://www.hollandskroon.nl/verkiezingen-en-uitslagen/"
+    },
+    {
+      "name": "Hoogeveen",
+      "url": "https://www.Hoogeveen.nl/verkiezingen"
+    },
+    {
+      "name": "Hoorn",
+      "url": "https://www.hoorn.nl/verkiezingen"
+    },
+    {
+      "name": "Horst aan de Maas",
+      "url": "https://www.horstaandemaas.nl/uitslag-verkiezingen"
+    },
+    {
+      "name": "Houten",
+      "url": "https://www.houten.nl/gemeenteraad-en-college/verkiezingen"
+    },
+    {
+      "name": "Huizen",
+      "url": "https://www.huizen.nl/definitieve-uitslag-tweede-kamerverkiezing-in-huizen-2025"
+    },
+    {
+      "name": "Hulst",
+      "url": "https://www.gemeentehulst.nl/verkiezingen"
+    },
+    {
+      "name": "IJsselstein",
+      "url": "https://www.ijsselstein.nl/Bestuur_en_organisatie/Verkiezingen/Tweede_Kamerverkiezing_29_oktober_2025"
+    },
+    {
+      "name": "Kaag en Braassem",
+      "url": "https://www.kaagenbraassem.nl/Bestuur_en_organisatie/Verkiezingen"
+    },
+    {
+      "name": "Kampen",
+      "url": "https://www.kampen.nl/verkiezingen"
+    },
+    {
+      "name": "Kapelle",
+      "url": "https://www.kapelle.nl/verkiezingen"
+    },
+    {
+      "name": "Katwijk",
+      "url": "https://www.katwijk.nl/verkiezingen"
+    },
+    {
+      "name": "Kerkrade",
+      "url": "https://www.kerkrade.nl/verkiezingen"
+    },
+    {
+      "name": "Koggenland",
+      "url": "https://www.koggenland.nl/verkiezingen"
+    },
+    {
+      "name": "Krimpen aan den IJssel",
+      "url": "https://krimpenaandenijssel.nl/dossiers/historie-verkiezingsuitslagen/"
+    },
+    {
+      "name": "Krimpenerwaard",
+      "url": "https://www.krimpenerwaard.nl"
+    },
+    {
+      "name": "Laarbeek",
+      "url": "https://www.laarbeek.nl/verkiezingen"
+    },
+    {
+      "name": "Land van Cuijk",
+      "url": "https://www.gemeentelandvancuijk.nl/verkiezingen-tweede-kamer"
+    },
+    {
+      "name": "Landgraaf",
+      "url": "https://www.landgraaf.nl/verkiezingen"
+    },
+    {
+      "name": "Landsmeer",
+      "url": "https://www.landsmeer.nl/verkiezingen"
+    },
+    {
+      "name": "Lansingerland",
+      "url": "https://lansingerland.nl/TK2025"
+    },
+    {
+      "name": "Laren",
+      "url": "https://www.laren.nl/Verkiezingen"
+    },
+    {
+      "name": "Leeuwarden",
+      "url": "https://www.leeuwarden.nl/verkiezingen/verkiezingsuitslagen/"
+    },
+    {
+      "name": "Leiden",
+      "url": "https://gemeente.leiden.nl/verkiezingen/"
+    },
+    {
+      "name": "Leiderdorp",
+      "url": "https://www.leiderdorp.nl/tweede-kamerverkiezingen"
+    },
+    {
+      "name": "Leidschendam-Voorburg",
+      "url": "https://www.lv.nl/verkiezingsuitslag"
+    },
+    {
+      "name": "Lelystad",
+      "url": "https://lelystad.nl/verkiezingen"
+    },
+    {
+      "name": "Leudal",
+      "url": "https://www.leudal.nl/verkiezingen-tweede-kamer"
+    },
+    {
+      "name": "Leusden",
+      "url": "https://www.leusden.nl/verkiezingen/verkiezingen-tweede-kamer-2025"
+    },
+    {
+      "name": "Lingewaard",
+      "url": "https://www.lingewaard.nl/verkiezingen"
+    },
+    {
+      "name": "Lisse",
+      "url": "https://www.lisse.nl/tweede-kamerverkiezingen"
+    },
+    {
+      "name": "Lochem",
+      "url": "https://www.lochem.nl/verkiezingen"
+    },
+    {
+      "name": "Loon op Zand",
+      "url": "https://www.loonopzand.nl/verkiezingen"
+    },
+    {
+      "name": "Lopik",
+      "url": "https://www.lopik.nl/tweede-kamerverkiezing-2025"
+    },
+    {
+      "name": "Losser",
+      "url": "https://www.losser.nl/verkiezingen"
+    },
+    {
+      "name": "Maasdriel",
+      "url": "https://www.maasdriel.nl/verkiezingen"
+    },
+    {
+      "name": "Maasgouw",
+      "url": "https://www.gemeentemaasgouw.nl/verkiezingen"
+    },
+    {
+      "name": "Maashorst",
+      "url": "https://www.gemeentemaashorst.nl/"
+    },
+    {
+      "name": "Maassluis",
+      "url": "https://www.maassluis.nl/tweede-kamerverkiezingen-2025"
+    },
+    {
+      "name": "Maastricht",
+      "url": "https://www.gemeentemaastricht.nl/verkiezingen"
+    },
+    {
+      "name": "Medemblik",
+      "url": "https://www.medemblik.nl/verkiezingsuitslag"
+    },
+    {
+      "name": "Meerssen",
+      "url": "https://www.meerssen.nl/tweedekamerverkiezingen2025"
+    },
+    {
+      "name": "Meierijstad",
+      "url": "https://www.meierijstad.nl/verkiezingen"
+    },
+    {
+      "name": "Meppel",
+      "url": "https://www.meppel.nl/verkiezingen"
+    },
+    {
+      "name": "Middelburg",
+      "url": "https://www.middelburg.nl/processen-verbaal-verkiezing"
+    },
+    {
+      "name": "Midden-Delfland",
+      "url": "https://www.middendelfland.nl/verkiezingen"
+    },
+    {
+      "name": "Midden-Drenthe",
+      "url": "https://www.middendrenthe.nl/verkiezingen"
+    },
+    {
+      "name": "Midden-Groningen",
+      "url": "https://www.midden-groningen.nl/uitslagen"
+    },
+    {
+      "name": "Moerdijk",
+      "url": "https://www.moerdijk.nl/verkiezingen-tweede-kamer-2025/"
+    },
+    {
+      "name": "Molenlanden",
+      "url": "https://www.molenlanden.nl/tweede-kamerverkiezing"
+    },
+    {
+      "name": "Montferland",
+      "url": "https://www.montferland.info/tweede-kamerverkiezingen-2025"
+    },
+    {
+      "name": "Montfoort",
+      "url": "https://www.montfoort.nl/Alle_onderwerpen/Bestuur_en_organisatie/Verkiezingen"
+    },
+    {
+      "name": "Mook en Middelaar",
+      "url": "https://www.mookenmiddelaar.nl/verkiezingen"
+    },
+    {
+      "name": "Neder-Betuwe",
+      "url": "https://www.nederbetuwe.nl/verkiezingen"
+    },
+    {
+      "name": "Nederweert",
+      "url": "https://www.nederweert.nl/verkiezingen"
+    },
+    {
+      "name": "Nieuwegein",
+      "url": "https://www.nieuwegein.nl/verkiezingen"
+    },
+    {
+      "name": "Nieuwkoop",
+      "url": "https://www.nieuwkoop.nl/verkiezingen"
+    },
+    {
+      "name": "Nijkerk",
+      "url": "https://www.nijkerk.eu"
+    },
+    {
+      "name": "Nijmegen",
+      "url": "https://www.nijmegen.nl/diensten/verkiezingen/uitslagen-verkiezingen/"
+    },
+    {
+      "name": "Nissewaard",
+      "url": "https://stembureau-nissewaard.nl/uitslagen"
+    },
+    {
+      "name": "Noardeast-Fryslân",
+      "url": "https://www.noardeast-fryslan.nl/verkiezingen"
+    },
+    {
+      "name": "Noord-Beveland",
+      "url": "https://www.noord-beveland.nl/tweede-kamerverkiezing-2025"
+    },
+    {
+      "name": "Noordenveld",
+      "url": "https://www.noordenveld.nl/verkiezingen"
+    },
+    {
+      "name": "Noordoostpolder",
+      "url": "https://www.noordoostpolder.nl/verkiezingen"
+    },
+    {
+      "name": "Noordwijk",
+      "url": "https://www.noordwijk.nl/verkiezingen"
+    },
+    {
+      "name": "Nuenen",
+      "url": "https://www.nuenen.nl/verkiezingen"
+    },
+    {
+      "name": "Nunspeet",
+      "url": "https://www.nunspeet.nl/verkiezingen"
+    },
+    {
+      "name": "Oegstgeest",
+      "url": "https://www.oegstgeest.nl/bestuur/tweede-kamerverkiezingen-2025"
+    },
+    {
+      "name": "Oirschot",
+      "url": "https://www.oirschot.nl/verkiezingen"
+    },
+    {
+      "name": "Oisterwijk",
+      "url": "https://www.oisterwijk.nl/bestuur-en-organisatie/verkiezingen-tweede-kamer"
+    },
+    {
+      "name": "Oldambt",
+      "url": "https://www.gemeente-oldambt.nl/verkiezingen"
+    },
+    {
+      "name": "Oldebroek",
+      "url": "https://www.oldebroek.nl/Bestuur_en_organisatie/Verkiezingen/Uitslagen_verkiezingen"
+    },
+    {
+      "name": "Oldenzaal",
+      "url": "https://www.oldenzaal.nl/verkiezingen"
+    },
+    {
+      "name": "Olst-Wijhe",
+      "url": "https://www.olst-wijhe.nl/verkiezingen"
+    },
+    {
+      "name": "Ommen",
+      "url": "https://www.ommen.nl/verkiezingen"
+    },
+    {
+      "name": "Oost Gelre",
+      "url": "https://www.oostgelre.nl/uitslag-tweede-kamerverkiezingen-29-oktober-2025"
+    },
+    {
+      "name": "Oosterhout",
+      "url": "https://mijnstembureau-oosterhout.nl/uitslagen"
+    },
+    {
+      "name": "Ooststellingwerf",
+      "url": "https://www.ooststellingwerf.nl/tweedekamerverkiezing"
+    },
+    {
+      "name": "Oostzaan",
+      "url": "https://www.oostzaan.nl/verkiezingenoz"
+    },
+    {
+      "name": "Opmeer",
+      "url": "https://www.opmeer.nl/verkiezingen/"
+    },
+    {
+      "name": "Opsterland",
+      "url": "https://www.opsterland.nl/verkiezingen"
+    },
+    {
+      "name": "Oss",
+      "url": "https://www.oss.nl/inwoners/verkiezingen.htm"
+    },
+    {
+      "name": "Oude IJsselstreek",
+      "url": "https://www.oude-ijsselstreek.nl/tweede-kamerverkiezing"
+    },
+    {
+      "name": "Ouder-Amstel",
+      "url": "https://www.ouder-amstel.nl/verkiezingen"
+    },
+    {
+      "name": "Oudewater",
+      "url": "https://www.oudewater.nl/verkiezingen"
+    },
+    {
+      "name": "Overbetuwe",
+      "url": "https://www.overbetuwe.nl/verkiezingen/uitslagen"
+    },
+    {
+      "name": "Papendrecht",
+      "url": "https://www.papendrecht.nl/verkiezingen"
+    },
+    {
+      "name": "Peel en Maas",
+      "url": "https://www.peelenmaas.nl/bestuur-en-organisatie/verkiezingen/"
+    },
+    {
+      "name": "Pekela",
+      "url": "https://www.pekela.nl/tweedekamerverkiezingen"
+    },
+    {
+      "name": "Pijnacker-Nootdorp",
+      "url": "https://www.pijnacker-nootdorp.nl/verkiezingen"
+    },
+    {
+      "name": "Purmerend",
+      "url": "https://www.purmerend.nl/verkiezingen"
+    },
+    {
+      "name": "Putten",
+      "url": "https://www.putten.nl/verkiezingen"
+    },
+    {
+      "name": "Raalte",
+      "url": "https://www.raalte.nl/verkiezingen"
+    },
+    {
+      "name": "Reimerswaal",
+      "url": "https://www.reimerswaal.nl/verkiezingen"
+    },
+    {
+      "name": "Renkum",
+      "url": "https://www.renkum.nl/Bestuur_en_organisatie/Verkiezingen/Tweede_Kamerverkiezing"
+    },
+    {
+      "name": "Renswoude",
+      "url": "https://www.renswoude.nl/verkiezingen"
+    },
+    {
+      "name": "Reusel-De Mierden",
+      "url": "https://www.reuseldemierden.nl/verkiezingen"
+    },
+    {
+      "name": "Rheden",
+      "url": "https://www.rheden.nl"
+    },
+    {
+      "name": "Rhenen",
+      "url": "https://www.rhenen.nl/praat-en-doe-mee/verkiezingen"
+    },
+    {
+      "name": "Ridderkerk",
+      "url": "https://www.ridderkerk.nl/verkiezingen/"
+    },
+    {
+      "name": "Rijssen-Holten",
+      "url": "https://www.rijssen-holten.nl/verkiezingen"
+    },
+    {
+      "name": "Rijswijk",
+      "url": "https://rijswijk.nl/verkiezingen"
+    },
+    {
+      "name": "Roerdalen",
+      "url": "https://www.roerdalen.nl/uitslagen-verkiezingen"
+    },
+    {
+      "name": "Roermond",
+      "url": "https://www.roermond.nl/verkiezingen"
+    },
+    {
+      "name": "Roosendaal",
+      "url": "https://www.roosendaal.nl/verkiezingen"
+    },
+    {
+      "name": "Rotterdam",
+      "url": "https://uitslagen.stembureausinrotterdam.nl"
+    },
+    {
+      "name": "Rozendaal",
+      "url": "https://www.rozendaal.nl"
+    },
+    {
+      "name": "Rucphen",
+      "url": "https://www.rucphen.nl/verkiezingen"
+    },
+    {
+      "name": "Saba",
+      "url": "https://www.sabagov.nl/residents/voting-elections/national/second-chamber-election-results"
+    },
+    {
+      "name": "Schagen",
+      "url": "https://www.schagen.nl/verkiezingen"
+    },
+    {
+      "name": "Scherpenzeel",
+      "url": "https://www.scherpenzeel.nl/uitslagen-vorige-verkiezingen"
+    },
+    {
+      "name": "Schiedam",
+      "url": "https://www.schiedam.nl/a-tot-z/uitslagen"
+    },
+    {
+      "name": "Schiermonnikoog",
+      "url": "https://www.schiermonnikoog.nl/uitslagen-verkiezingen"
+    },
+    {
+      "name": "Schouwen-Duiveland",
+      "url": "https://www.schouwen-duiveland.nl/verkiezingen/tweede-kamerverkiezingen"
+    },
+    {
+      "name": "Simpelveld",
+      "url": "https://www.simpelveld.nl/verkiezingsuitslagen"
+    },
+    {
+      "name": "Sint-Michielsgestel",
+      "url": "https://www.sint-michielsgestel.nl/verkiezingen"
+    },
+    {
+      "name": "Sint Eustatius",
+      "url": "https://www.statiagovernment.com/key-topics/elections/documents/publications/2023/11/24/verified-results-of-second-chamber-election-on-22-november-2023"
+    },
+    {
+      "name": "Sittard-Geleen",
+      "url": "https://www.sittard-geleen.nl/verkiezingen"
+    },
+    {
+      "name": "Sliedrecht",
+      "url": "https://www.sliedrecht.nl/verkiezingen"
+    },
+    {
+      "name": "Sluis",
+      "url": "https://www.gemeentesluis.nl/Verkiezingen"
+    },
+    {
+      "name": "Smallingerland",
+      "url": "https://www.smallingerland.nl/Onderwerpen/Verkiezingen/Uitslagen"
+    },
+    {
+      "name": "Soest",
+      "url": "https://www.soest.nl/verkiezingen"
+    },
+    {
+      "name": "Someren",
+      "url": "https://www.someren.nl/verkiezingen"
+    },
+    {
+      "name": "Son en Breugel",
+      "url": "https://www.sonenbreugel.nl/verkiezingen"
+    },
+    {
+      "name": "Stadskanaal",
+      "url": "https://www.stadskanaal.nl/verkiezingen"
+    },
+    {
+      "name": "Staphorst",
+      "url": "https://www.staphorst.nl/uitslagen-verkiezingen-tweede-kamer-29-oktober-2025"
+    },
+    {
+      "name": "Stede Broec",
+      "url": "https://www.stedebroec.nl/verkiezingen"
+    },
+    {
+      "name": "Steenbergen",
+      "url": "https://www.gemeente-steenbergen.nl/inwoners_overzicht/verkiezingen/"
+    },
+    {
+      "name": "Steenwijkerland",
+      "url": "https://www.steenwijkerland.nl/over_steenwijkerland/verkiezingen/uitslagen_verkiezingen"
+    },
+    {
+      "name": "Stein",
+      "url": "https://www.gemeentestein.nl/uitslag-verkiezingen"
+    },
+    {
+      "name": "Stichtse Vecht",
+      "url": "https://www.stichtsevecht.nl/verkiezingen"
+    },
+    {
+      "name": "Súdwest-Fryslân",
+      "url": "https://www.sudwestfryslan.nl/verkiezingen"
+    },
+    {
+      "name": "Terneuzen",
+      "url": "https://www.terneuzen.nl/verkiezingen"
+    },
+    {
+      "name": "Terschelling",
+      "url": "https://www.terschelling.nl/tweede-kamerverkiezing-2025"
+    },
+    {
+      "name": "Texel",
+      "url": "https://www.texel.nl/verkiezingsuitslagen2023/"
+    },
+    {
+      "name": "Teylingen",
+      "url": "https://www.teylingen.nl/tweede-kamerverkiezingen"
+    },
+    {
+      "name": "Tholen",
+      "url": "https://www.tholen.nl/verkiezingen"
+    },
+    {
+      "name": "Tiel",
+      "url": "https://www.tiel.nl/verkiezingen"
+    },
+    {
+      "name": "Tilburg",
+      "url": "https://www.tilburg.nl/verkiezingen"
+    },
+    {
+      "name": "Tubbergen",
+      "url": "https://www.tubbergen.nl/tweede-kamerverkiezingen-2025"
+    },
+    {
+      "name": "Twenterand",
+      "url": "https://www.twenterand.nl/verkiezingsuitslagen-2025"
+    },
+    {
+      "name": "Tynaarlo",
+      "url": "https://www.tynaarlo.nl/verkiezingen/uitslagen-verkiezingen"
+    },
+    {
+      "name": "Tytsjerksteradiel",
+      "url": "https://www.t-diel.nl/tweede-kamerverkiezingen-2025"
+    },
+    {
+      "name": "Uitgeest",
+      "url": "https://www.uitgeest.nl/tweede-kamerverkiezing"
+    },
+    {
+      "name": "Uithoorn",
+      "url": "https://www.uithoorn.nl/verkiezingen"
+    },
+    {
+      "name": "Urk",
+      "url": "https://www.urk.nl/verkiezingen"
+    },
+    {
+      "name": "Utrecht",
+      "url": "https://onderzoek.utrecht.nl/verkiezingen"
+    },
+    {
+      "name": "Utrechtse Heuvelrug",
+      "url": "https://www.heuvelrug.nl/verkiezingen"
+    },
+    {
+      "name": "Vaals",
+      "url": "https://www.vaals.nl/verkiezingen"
+    },
+    {
+      "name": "Valkenburg aan de Geul",
+      "url": "https://www.valkenburg.nl/voor-inwoners-en-ondernemers/verkiezingen/tweede-kamerverkiezing-2025/"
+    },
+    {
+      "name": "Valkenswaard",
+      "url": "https://www.valkenswaard.nl/verkiezingen"
+    },
+    {
+      "name": "Veendam",
+      "url": "https://www.veendam.nl/Onderwerpen/Actueel/Verkiezingen/Tweede_Kamerverkiezingen_29_oktober_2025"
+    },
+    {
+      "name": "Veenendaal",
+      "url": "https://www.veenendaal.nl/verkiezingen"
+    },
+    {
+      "name": "Veere",
+      "url": "https://www.veere.nl/uitslagen-tweede-kamerverkiezingen-2025"
+    },
+    {
+      "name": "Veldhoven",
+      "url": "https://www.veldhoven.nl/verkiezingen"
+    },
+    {
+      "name": "Velsen",
+      "url": "https://www.velsen.nl/verkiezingen"
+    },
+    {
+      "name": "Venlo",
+      "url": "https://www.venlo.nl/uitslag-verkiezing-tweede-kamer-2025"
+    },
+    {
+      "name": "Venray",
+      "url": "https://www.venray.nl/tweede-kamerverkiezingen-2025"
+    },
+    {
+      "name": "Vijfheerenlanden",
+      "url": "https://www.vijfheerenlanden.nl/uitslag-tweede-kamerverkiezing-2025"
+    },
+    {
+      "name": "Vlaardingen",
+      "url": "https://www.vlaardingen.nl/Bestuur/Verkiezingen/Tweede_Kamerverkiezing_2025"
+    },
+    {
+      "name": "Vlieland",
+      "url": "https://www.vlieland.nl/uitslagen-verkiezingen"
+    },
+    {
+      "name": "Vlissingen",
+      "url": "https://www.vlissingen.nl/verkiezingen"
+    },
+    {
+      "name": "Voerendaal",
+      "url": "https://www.voerendaal.nl/verkiezingen"
+    },
+    {
+      "name": "Voorne aan Zee",
+      "url": "https://www.voorneaanzee.nl/tweede-kamerverkiezingen-2025"
+    },
+    {
+      "name": "Voorschoten",
+      "url": "https://www.voorschoten.nl/verkiezingen-tweede-kamer-2025"
+    },
+    {
+      "name": "Voorst",
+      "url": "https://www.voorst.nl/verkiezingen"
+    },
+    {
+      "name": "Vught",
+      "url": "https://vught.nl/tweede-kamerverkiezingen"
+    },
+    {
+      "name": "Waadhoeke",
+      "url": "https://waadhoeke.nl/verkiezingen/"
+    },
+    {
+      "name": "Waalre",
+      "url": "https://www.waalre.nl/inwoners-en-ondernemers/verkiezingen"
+    },
+    {
+      "name": "Waalwijk",
+      "url": "https://www.waalwijk.nl/verkiezingen"
+    },
+    {
+      "name": "Waddinxveen",
+      "url": "https://www.waddinxveen.nl/verkiezingen"
+    },
+    {
+      "name": "Wageningen",
+      "url": "https://www.wageningen.nl/verkiezingen/"
+    },
+    {
+      "name": "Wassenaar",
+      "url": "https://www.wassenaar.nl/verkiezingen"
+    },
+    {
+      "name": "Waterland",
+      "url": "https://www.waterland.nl/uitslagen-tweede-kamerverkiezingen-2025"
+    },
+    {
+      "name": "Weert",
+      "url": "https://www.weert.nl/uitslagenverkiezingen"
+    },
+    {
+      "name": "West Betuwe",
+      "url": "https://www.westbetuwe.nl/uitslagen"
+    },
+    {
+      "name": "West Maas en Waal",
+      "url": "https://www.westmaasenwaal.nl/voorlopige-uitslag-tweede-kamerverkiezingen"
+    },
+    {
+      "name": "Westerkwartier",
+      "url": "https://www.westerkwartier.nl/verkiezingen"
+    },
+    {
+      "name": "Westerveld",
+      "url": "https://www.gemeentewesterveld.nl"
+    },
+    {
+      "name": "Westervoort",
+      "url": "https://www.westervoort.nl/tweede-kamerverkiezing-2025"
+    },
+    {
+      "name": "Westerwolde",
+      "url": "https://www.westerwolde.nl/verkiezingen"
+    },
+    {
+      "name": "Westland",
+      "url": "https://gemeentewestland.nl/verkiezingen"
+    },
+    {
+      "name": "Weststellingwerf",
+      "url": "https://www.weststellingwerf.nl/verkiezingen"
+    },
+    {
+      "name": "Wierden",
+      "url": "https://www.wierden.nl/verkiezingen"
+    },
+    {
+      "name": "Wijchen",
+      "url": "https://www.wijchen.nl/tweede-kamerverkiezing"
+    },
+    {
+      "name": "Wijdemeren",
+      "url": "https://www.wijdemeren.nl/verkiezingen"
+    },
+    {
+      "name": "Wijk bij Duurstede",
+      "url": "https://www.wijkbijduurstede.nl/verkiezingen"
+    },
+    {
+      "name": "Winterswijk",
+      "url": "https://www.winterswijk.nl/uitslagen"
+    },
+    {
+      "name": "Woensdrecht",
+      "url": "https://www.woensdrecht.nl/verkiezingen"
+    },
+    {
+      "name": "Woerden",
+      "url": "https://www.woerden.nl/verkiezingen"
+    },
+    {
+      "name": "Wormerland",
+      "url": "https://www.wormerland.nl/verkiezingenwl"
+    },
+    {
+      "name": "Woudenberg",
+      "url": "https://www.woudenberg.nl/verkiezingen/tweede-kamerverkiezingen-2025"
+    },
+    {
+      "name": "Zaanstad",
+      "url": "https://mijnstembureau-zaanstad.nl/uitslagen"
+    },
+    {
+      "name": "Zaltbommel",
+      "url": "https://www.zaltbommel.nl/inwoner-en-ondernemer/verkiezingen/verkiezingen-tweede-kamer-2025/"
+    },
+    {
+      "name": "Zandvoort",
+      "url": "https://zandvoort.nl/tweede-kamerverkiezingen"
+    },
+    {
+      "name": "Zeewolde",
+      "url": "https://www.zeewolde.nl/verkiezingen"
+    },
+    {
+      "name": "Zeist",
+      "url": "https://www.zeist.nl/gemeente-bestuur-en-organisatie/verkiezingen/tweede-kamerverkiezingen"
+    },
+    {
+      "name": "Zevenaar",
+      "url": "https://www.zevenaar.nl/verkiezingen"
+    },
+    {
+      "name": "Zoetermeer",
+      "url": "https://www.zoetermeer.nl/tweede-kamerverkiezing-2025"
+    },
+    {
+      "name": "Zoeterwoude",
+      "url": "https://www.zoeterwoude.nl/gemeenteraad-en-bestuur/verkiezingen/uitslagen"
+    },
+    {
+      "name": "Zuidplas",
+      "url": "https://www.zuidplas.nl/verkiezingen"
+    },
+    {
+      "name": "Zundert",
+      "url": "https://www.zundert.nl/verkiezingen"
+    },
+    {
+      "name": "Zutphen",
+      "url": "https://www.zutphen.nl/verkiezingen"
+    },
+    {
+      "name": "Zwartewaterland",
+      "url": "https://www.zwartewaterland.nl/verkiezingen"
+    },
+    {
+      "name": "Zwijndrecht",
+      "url": "https://mijnstembureau-zwijndrecht.nl/uitslagen/live"
+    },
+    {
+      "name": "Zwolle",
+      "url": "https://www.zwolle.nl/uitslagen-verkiezingen"
+    }
+  ]
+}
