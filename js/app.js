@@ -292,8 +292,16 @@
           const dir = sortStates[column] || 'asc';
           setQSParams({ seatsSort: column, seatsDir: dir });
         }
+        // If we re-rendered the averages table, ensure mobile horizontal scroll remains correct
+        if (containerId === 'voteAverageContainer') {
+          try { fixHorizontalScrollFor('voteAverageContainer'); } catch(e){}
+        }
       });
     });
+    // After initial render: if this is the averages table, ensure mobile scroll works
+    if (containerId === 'voteAverageContainer') {
+      try { fixHorizontalScrollFor('voteAverageContainer'); } catch(e){}
+    }
     // Re-apply average-table highlight classes after any (re)render so full-cell coloring survives sorting
     if (containerId === 'voteAverageContainer') {
       try {
@@ -344,6 +352,28 @@
         }
       });
     });
+  }
+
+  // Ensure a container gets real horizontal scrolling on mobile by
+  // forcing the inner table to its natural scrollWidth and anchoring at left.
+  function fixHorizontalScrollFor(containerId){
+    try {
+      const c = document.getElementById(containerId);
+      if (!c) return;
+      const t = c.querySelector('table');
+      if (!t) return;
+      c.style.overflowX = 'auto';
+      c.style.webkitOverflowScrolling = 'touch';
+      c.style.textAlign = 'left';
+      t.style.display = 'inline-block';
+      t.style.width = 'auto';
+      // Defer to next frame to get correct scrollWidth after render
+      requestAnimationFrame(() => {
+        const w = Math.max(t.scrollWidth || 0, t.getBoundingClientRect().width || 0);
+        if (w && isFinite(w)) t.style.width = w + 'px';
+        c.scrollLeft = 0; // start from first column
+      });
+    } catch(e) {}
   }
 
   function calculateVotesShortAndSurplus(votesData) {
@@ -1032,6 +1062,8 @@ Niet de partij die logischerwijs het meeste kans maakt
         }
       });
       renderTable('voteAverageContainer', tableData);
+      // Mobile: guarantee the bottom table can scroll horizontally and starts at the left edge
+      fixHorizontalScrollFor('voteAverageContainer');
       // Ensure highlight covers full cell height uniformly
       try {
         const tbl = document.querySelector('#voteAverageContainer table');

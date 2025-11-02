@@ -803,6 +803,37 @@ nav ul li a.active::after {
   .right-controls #soundWrap .sound-prompt { position: static; top: auto; right: auto; margin: 0; white-space: nowrap; order: 0; display: inline-flex; align-items: center; }
   .right-controls #soundWrap .tooltip { order: 1; }
 }
+
+/* Mobile overflow safety + scrollable tables */
+@media (max-width: 768px) {
+  /* Prevent full-page horizontal overflow (keeps layout centered) */
+  html, body { overflow-x: hidden; }
+
+  /* Ensure banners cannot widen the page */
+  #latestRestSeatImpactContainer,
+  .alert-banner { max-width: calc(100% - 24px); }
+
+  /* Allow horizontal scroll inside the two wide table sections */
+  #seatsSummaryContainer,
+  #voteAverageContainer {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+    text-align: left;         /* do not center the wide child; allow full left start */
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Keep tables at natural content width so container shows horizontal scroll */
+  #voteAverageContainer table,
+  #seatsSummaryContainer table {
+    display: inline-block;
+    width: -moz-max-content;      /* Firefox */
+    width: -webkit-max-content;   /* old Safari */
+    width: max-content;           /* modern */
+    margin-left: 0;                /* anchor at left so scrollLeft=0 shows first column */
+    margin-right: 0;
+  }
+}
 .seat-diff { font-size: 12px; color: #6b7280; margin-left: 6px; }
 .seat-diff--pos { color: #065f46; }
 .seat-diff--neg { color: #b91c1c; }

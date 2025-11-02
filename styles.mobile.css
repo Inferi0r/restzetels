@@ -1,0 +1,48 @@
+/* Mobile-specific layout overrides for index.html
+   Loaded only on small screens; desktop remains unchanged. */
+
+@media (max-width: 768px) {
+  html, body {
+    margin: 8px;
+    overflow-x: hidden; /* never let the page be wider than the device */
+  }
+
+  /* Keep banners within viewport width */
+  #latestRestSeatImpactContainer,
+  .alert-banner {
+    max-width: calc(100% - 16px);
+    width: calc(100% - 16px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Use full-width wrappers for the two large tables */
+  #seatsSummaryContainer,
+  #voteAverageContainer {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+    text-align: left; /* anchor content to left so first column is visible */
+  }
+
+  /* Ensure the inner tables keep their natural width so the container scrolls */
+  #seatsSummaryContainer table,
+  #voteAverageContainer table {
+    display: inline-block;
+    width: max-content;            /* modern */
+    width: -webkit-max-content;    /* old Safari */
+    width: -moz-max-content;       /* Firefox */
+    margin-left: 0;                /* anchor left */
+    margin-right: auto;
+  }
+
+  /* Reduce general margins slightly for compact layout */
+  .share-bar { margin: 6px auto; }
+  .title-enhanced { margin: 10px auto 8px; }
+
+  /* Stop shrink-wrap centering around Zetelverdeling on mobile */
+  #seatsBlock { display: block; margin-left: auto; margin-right: auto; }
+  #seatsBlock .explain-block { width: auto; }
+}
