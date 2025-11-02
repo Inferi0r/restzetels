@@ -1,2 +1,8 @@
 # macOS Finder metadata (ignore everywhere)
 **/.DS_Store
+ 
+ # Python caches and bytecode
+ **/__pycache__/
+ *.pyc
+ *.pyo
+ *.pyd
