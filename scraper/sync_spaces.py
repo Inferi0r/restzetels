@@ -37,6 +37,7 @@ from typing import Dict, Iterable, Tuple
 
 import boto3
 from botocore.client import Config
+from boto3.s3.transfer import TransferConfig
 
 
 # Default local directory is scraper/pdfs (next to this script)
@@ -126,7 +127,9 @@ def upload_one(s3, bucket: str, local_path: str, key: str, public: bool = False)
     extra = {"ContentType": ensure_mime(local_path)}
     if public:
         extra["ACL"] = "public-read"
-    s3.upload_file(local_path, bucket, key, ExtraArgs=extra)
+    # Force single-part uploads so ETag == MD5, keeping our skip-logic correct
+    tcfg = TransferConfig(multipart_threshold=5 * 1024 ** 3, multipart_chunksize=5 * 1024 ** 3)
+    s3.upload_file(local_path, bucket, key, ExtraArgs=extra, Config=tcfg)
 
 
 def delete_one(s3, bucket: str, key: str) -> None:

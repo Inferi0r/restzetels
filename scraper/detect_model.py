@@ -15,7 +15,7 @@ Detectiestrategie (snel → robuust):
   2) Zo nodig: eerste pagina van de lokale PDF uitlezen (indien mogelijk)
 
 Gebruik:
-  python3 detect_model.py [--only MUNICIPALITY ...] [--dry-run]
+  python3 detect_model.py [--only MUNICIPALITY ...] [--dry-run] [--refresh]
 
 """
 from __future__ import annotations
@@ -24,7 +24,6 @@ import argparse
 import json
 import os
 import re
-import sys
 from urllib.parse import urlparse, unquote
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "pdf_scraper_input")
@@ -100,7 +99,8 @@ def read_first_page_text(local_url: str) -> str | None:
     # Alleen file:// ondersteunen
     if not (isinstance(local_url, str) and local_url.lower().startswith("file://")):
         return None
-    path = urlparse(local_url).path
+    u = urlparse(local_url)
+    path = unquote(u.path)
     # macOS paths uit file:// hebben een leading slash al; unquote is al gedaan in norm_text
     try:
         # Probeer PyPDF2 – lichtgewicht en vaak aanwezig
@@ -120,9 +120,43 @@ def read_first_page_text(local_url: str) -> str | None:
         try:
             from pdfminer.high_level import extract_text  # type: ignore
             txt = extract_text(path, maxpages=1) or ""
-            return txt
+            if txt:
+                return txt
         except Exception:
-            return None
+            pass
+    return None
+
+
+def ocr_header_text(local_url: str) -> str | None:
+    """OCR-fallback: render de kop (bovenste ~28%) van pagina 1 en lees met Tesseract (nld+eng).
+    Gebruikt pdfplumber + pytesseract vergelijkbaar met ocr_methode1.
+    """
+    try:
+        u = urlparse(local_url)
+        path = unquote(u.path)
+        import pdfplumber  # type: ignore
+        from PIL import ImageOps, ImageFilter  # type: ignore
+        from pytesseract import image_to_string  # type: ignore
+        with pdfplumber.open(str(path)) as pdf:
+            if not pdf.pages:
+                return None
+            page = pdf.pages[0]
+            im = page.to_image(resolution=350).original
+            h = im.height
+            crop = im.crop((0, 0, im.width, int(h * 0.28)))
+            g = ImageOps.grayscale(crop)
+            g = ImageOps.autocontrast(g)
+            g = g.filter(ImageFilter.SHARPEN)
+            for langs in ("nld+eng", "eng"):
+                try:
+                    txt = image_to_string(g, config=f"--psm 6 -l {langs}")
+                    if txt and txt.strip():
+                        return txt
+                except Exception:
+                    continue
+    except Exception:
+        return None
+    return None
 
 
 def detect_model_for_item(p: dict) -> str:
@@ -138,6 +172,13 @@ def detect_model_for_item(p: dict) -> str:
         hit2 = detect_from_strings(t)
         if hit2:
             return hit2
+    # 3) OCR fallback op kop als bovenstaande faalt
+    if loc:
+        t2 = ocr_header_text(loc)
+        if t2:
+            hit3 = detect_from_strings(t2)
+            if hit3:
+                return hit3
     return "overig"
 
 
@@ -145,6 +186,7 @@ def run(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Detecteer model van lokale verkiezings-PDFs en update index")
     ap.add_argument("--only", nargs='*', help="Beperk tot deze gemeenten (namen)")
     ap.add_argument("--dry-run", action="store_true", help="Geen wijzigingen schrijven, alleen tonen")
+    ap.add_argument("--refresh", action="store_true", help="Herclassificeer alles (niet alleen ontbrekende modellen)")
     args = ap.parse_args(argv)
 
     data = load_index(INDEX_PATH)
@@ -165,6 +207,9 @@ def run(argv: list[str] | None = None) -> int:
         for p in pdfs:
             # Alleen lokale bestanden classificeren
             if not p.get("local_url"):
+                continue
+            # Default: alleen ontbrekende modellen aanvullen, behalve als --refresh is gezet
+            if not args.refresh and p.get("model"):
                 continue
             total += 1
             new_model = detect_model_for_item(p)
@@ -187,4 +232,3 @@ def run(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(run())
-

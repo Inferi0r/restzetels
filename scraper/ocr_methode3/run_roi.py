@@ -12,6 +12,7 @@ from PIL import Image, ImageOps, ImageFilter
 
 PDF_PATH = Path('pdfs/Aalsmeer/2-aal-vzod.pdf')
 COORDS_PATH = Path('ocr_methode3/sjabloon_coords.na31-2.json')
+SJABL_PATH = Path('ocr_methode3/sjabloon.json')
 OUT_JSON = Path('ocr_methode3/2-aal-vzod.json')
 CACHE_DIR = Path('ocr_methode3/cache')
 
@@ -161,6 +162,90 @@ def tsv_lines(image_path: Path) -> List[Dict]:
     return [v for v in lines.values() if v.get('text')]
 
 
+def extract_page_labels_hybrid(pdf_path: Path, sjabl: Dict) -> Dict[str, str]:
+    """Find labels via TSV on the scan using sjabloon.json label texts, then OCR ROI to the right."""
+    dpi = 400
+    pages = render_pages_cached(pdf_path, dpi)
+    results: Dict[str, str] = {}
+    # Page 1
+    if len(pages) >= 1:
+        img = Image.open(pages[0])
+        L = tsv_lines(pages[0])
+        W, H = img.size
+        # Header
+        kop = sjabl.get('kop', {})
+        header_labels = {
+            'stembureau_nummer': kop.get('stembureau_nummer', {}).get('label', ''),
+            'stembureau_naam': kop.get('stembureau_naam', {}).get('label', ''),
+        }
+        for name, lab in header_labels.items():
+            if not lab:
+                continue
+            lab_low = lab.lower()
+            for ln in L:
+                if lab_low in ln['text'].lower():
+                    # ROI to the right of this line
+                    y0, y1 = ln['top'], ln['bottom']
+                    x0 = ln['right'] + 8
+                    box = (max(0, x0), max(0, y0 - 3), W - 8, y1 + 3)
+                    crop = img.crop(box)
+                    # text OCR
+                    from pytesseract import image_to_string
+                    timg = ImageOps.grayscale(crop)
+                    timg = ImageOps.autocontrast(timg)
+                    ttxt = image_to_string(timg, config='--psm 7 -l nld+eng').strip()
+                    if not ttxt:
+                        ttxt = image_to_string(timg, config='--psm 6 -l nld+eng').strip()
+                    if ttxt:
+                        results[name] = ttxt
+                    break
+        # A..H
+        p1 = sjabl.get('pagina_1', {})
+        lab_map = {}
+        for k in ('A','B','C','D'):
+            v = (p1.get('toegelaten_kiezers', {}).get(k, {}) or {}).get('label')
+            if v:
+                lab_map[k] = v
+        for k in ('E','F','G','H'):
+            v = (p1.get('uitgebrachte_stemmen', {}).get(k, {}) or {}).get('label')
+            if v:
+                lab_map[k] = v
+        for key, lab in lab_map.items():
+            lab_low = lab.lower()
+            for ln in L:
+                if lab_low in ln['text'].lower():
+                    y0, y1 = ln['top'], ln['bottom']
+                    x0 = ln['right'] + 8
+                    box = (max(0, x0), max(0, y0 - 3), W - 8, y1 + 3)
+                    crop = img.crop(box)
+                    val = ocr_digits(crop)
+                    if val:
+                        results[key] = val
+                    break
+    # Page 2 (A2..D2)
+    if len(pages) >= 2:
+        img = Image.open(pages[1])
+        L = tsv_lines(pages[1])
+        W, H = img.size
+        p2 = sjabl.get('pagina_2', {}).get('verschil_toegelaten_vs_uitgebrachte', {}).get('hertelling', {})
+        lab_map = {}
+        for k in ('A2','B2','C2','D2'):
+            v = (p2.get(k) or {}).get('label')
+            if v:
+                lab_map[k] = v
+        for key, lab in lab_map.items():
+            lab_low = lab.lower()
+            for ln in L:
+                if lab_low in ln['text'].lower():
+                    y0, y1 = ln['top'], ln['bottom']
+                    x0 = ln['right'] + 8
+                    box = (max(0, x0), max(0, y0 - 3), W - 8, y1 + 3)
+                    crop = img.crop(box)
+                    val = ocr_digits(crop)
+                    if val:
+                        results[key] = val
+                    break
+    return results
 def extract_candidates_via_column(pdf_path: Path, coords: Dict) -> List[Dict]:
     dpi = coords.get('dpi', 400)
     pages = render_pages_cached(pdf_path, dpi)
@@ -242,23 +327,25 @@ def extract_candidates_via_column(pdf_path: Path, coords: Dict) -> List[Dict]:
 def main():
     t0=time.time()
     coords = json.loads(COORDS_PATH.read_text(encoding='utf-8'))
-    values = extract_page_labels_via_roi(PDF_PATH, coords)
+    sjabl = json.loads(SJABL_PATH.read_text(encoding='utf-8'))
+    # Hybrid: find labels on scan via TSV with sjabloon labels, then ROI OCR to the right
+    values = extract_page_labels_hybrid(PDF_PATH, sjabl)
     pages = extract_candidates_via_column(PDF_PATH, coords)
     out = {
         'bron_pdf': str(PDF_PATH),
         'kop': {
-            'gemeente': {'label':'Gemeente','waarde':'TBD','waarde_bron':'handgeschreven'},
-            'stembureau_nummer': {'label':'Nummer stembureau','waarde':'TBD','waarde_bron':'handgeschreven'},
-            'stembureau_naam': {'label':'Locatie stembureau','waarde':'TBD','waarde_bron':'handgeschreven'},
+            'gemeente': {'label': sjabl.get('kop',{}).get('gemeente',{}).get('label','Gemeente'), 'waarde':'TBD','waarde_bron':'handgeschreven'},
+            'stembureau_nummer': {'label': sjabl.get('kop',{}).get('stembureau_nummer',{}).get('label','Nummer stembureau'), 'waarde': values.get('stembureau_nummer','TBD'), 'waarde_bron':'handgeschreven'},
+            'stembureau_naam': {'label': sjabl.get('kop',{}).get('stembureau_naam',{}).get('label','Locatie stembureau'), 'waarde': values.get('stembureau_naam','TBD'), 'waarde_bron':'handgeschreven'},
         },
         'pagina_1': {
-            'toegelaten_kiezers': {k:{'label':k,'waarde':values.get(k,'TBD'),'waarde_bron':'handgeschreven'} for k in ('A','B','C','D')},
-            'uitgebrachte_stemmen': {k:{'label':k,'waarde':values.get(k,'TBD'),'waarde_bron':'handgeschreven'} for k in ('E','F','G','H')},
+            'toegelaten_kiezers': {k:{'label': sjabl.get('pagina_1',{}).get('toegelaten_kiezers',{}).get(k,{}).get('label',k), 'waarde':values.get(k,'TBD'),'waarde_bron':'handgeschreven'} for k in ('A','B','C','D')},
+            'uitgebrachte_stemmen': {k:{'label': sjabl.get('pagina_1',{}).get('uitgebrachte_stemmen',{}).get(k,{}).get('label',k), 'waarde':values.get(k,'TBD'),'waarde_bron':'handgeschreven'} for k in ('E','F','G','H')},
         },
         'pagina_2': {
             'verschil_toegelaten_vs_uitgebrachte': {
                 'keuze': {'label':'Is er een verschil (Nee/Ja ...)','waarde':'TBD','waarde_bron':'handgeschreven'},
-                'hertelling': {k:{'label':k,'waarde':values.get(k,'TBD'),'waarde_bron':'handgeschreven'} for k in ('A2','B2','C2','D2')}
+                'hertelling': {k:{'label': sjabl.get('pagina_2',{}).get('verschil_toegelaten_vs_uitgebrachte',{}).get('hertelling',{}).get(k,{}).get('label',k), 'waarde':values.get(k,'TBD'),'waarde_bron':'handgeschreven'} for k in ('A2','B2','C2','D2')}
             }
         },
         'paginas': pages,
