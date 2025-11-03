@@ -1,6 +1,1351 @@
 {
   "results": [
     {
+      "name": "Emmen",
+      "start_url": "https://gemeente.emmen.nl/verkiezingen",
+      "pdfs": []
+    },
+    {
+      "name": "Elburg",
+      "start_url": "https://www.elburg.nl/Bestuur_en_organisatie/Verkiezingen",
+      "pdfs": [
+        {
+          "remote_url": "https://www.elburg.nl/dsresource?objectid=515f573f-d6ed-4602-b8d4-22e77a89826f&type=pdf&&",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Elburg/Aanvraagformulier kiezerspas - pdf.pdf",
+          "text": "Schriftelijk een kiezerspas aanvragen",
+          "pdf_name": "dsresource",
+          "score": 1,
+          "from": "https://www.elburg.nl/Bestuur_en_organisatie/Verkiezingen/Kiezerspas"
+        },
+        {
+          "remote_url": "https://prodemos.nl/app/uploads/2025/08/Verkiezingskrant_gewone_taal_tweede_kamer_2025_digitaal.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Elburg/Verkiezingskrant_gewone_taal_tweede_kamer_2025_digitaal.pdf",
+          "text": "Verkiezingskrant in duidelijke taal",
+          "pdf_name": "Verkiezingskrant_gewone_taal_tweede_kamer_2025_digitaal.pdf",
+          "score": 4,
+          "from": "https://www.elburg.nl/Bestuur_en_organisatie/Verkiezingen/Net_18_jaar_eerste_keer_stemmen"
+        },
+        {
+          "remote_url": "https://prodemos.nl/app/uploads/2025/08/Handreiking_dementie_TK2025.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Elburg/Handreiking_dementie_TK2025.pdf",
+          "text": "Handreiking voor mensen met dementie",
+          "pdf_name": "Handreiking_dementie_TK2025.pdf",
+          "score": 1,
+          "from": "https://www.elburg.nl/Bestuur_en_organisatie/Verkiezingen/Toegankelijk_stemmen"
+        },
+        {
+          "remote_url": "https://prodemos.nl/app/uploads/2025/08/Handreiking_dementie_naasten_TK2025.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Elburg/Handreiking_dementie_naasten_TK2025.pdf",
+          "text": "Handreiking voor naasten van mensen met dementie",
+          "pdf_name": "Handreiking_dementie_naasten_TK2025.pdf",
+          "score": 1,
+          "from": "https://www.elburg.nl/Bestuur_en_organisatie/Verkiezingen/Toegankelijk_stemmen"
+        }
+      ]
+    },
+    {
+      "name": "Eijsden-Margraten",
+      "start_url": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html",
+      "pdfs": [
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezing%202025%20UITSLAG/Eijsden-Margraten_1_Gemeenschapshuis_Bemelen_TK25%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_1_Gemeenschapshuis_Bemelen_TK2520(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_1_Gemeenschapshuis_Bemelen_TK25 (geanonimiseerd).pdf",
+          "pdf_name": "Eijsden-Margraten_1_Gemeenschapshuis_Bemelen_TK25%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezing%202025%20UITSLAG/Eijsden-Margraten_2_Harmoniezaal_Banholt_TK25%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_2_Harmoniezaal_Banholt_TK2520(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_2_Harmoniezaal_Banholt_TK25 (geanonimiseerd).pdf",
+          "pdf_name": "Eijsden-Margraten_2_Harmoniezaal_Banholt_TK25%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezing%202025%20UITSLAG/Eijsden-Margraten_3_Harmoniezaal_Mheer_TK25%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_3_Harmoniezaal_Mheer_TK2520(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_3_Harmoniezaal_Mheer_TK25 (geanonimiseerd).pdf",
+          "pdf_name": "Eijsden-Margraten_3_Harmoniezaal_Mheer_TK25%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezing%202025%20UITSLAG/Eijsden-Margraten_4_Paviljoen_Berggalm_TK25%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_4_Paviljoen_Berggalm_TK2520(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_4_Paviljoen_Berggalm_TK25 (geanonimiseerd).pdf",
+          "pdf_name": "Eijsden-Margraten_4_Paviljoen_Berggalm_TK25%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezing%202025%20UITSLAG/Eijsden-Margraten_5_Fanfarezaal_Sint-Geertruid_TK25%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_5_Fanfarezaal_Sint-Geertruid_TK2520(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_5_Fanfarezaal_Sint-Geertruid_TK25 (geanonimiseerd).pdf",
+          "pdf_name": "Eijsden-Margraten_5_Fanfarezaal_Sint-Geertruid_TK25%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezing%202025%20UITSLAG/Eijsden-Margraten_6_Harmoniezaal_Eckelrade_TK25%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_6_Harmoniezaal_Eckelrade_TK2520(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_6_Harmoniezaal_Eckelrade_TK25 (geanonimiseerd).pdf",
+          "pdf_name": "Eijsden-Margraten_6_Harmoniezaal_Eckelrade_TK25%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezing%202025%20UITSLAG/Eijsden-Margraten_7_Gemeenschapshuis_Scheulder_TK25%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_7_Gemeenschapshuis_Scheulder_TK2520(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_7_Gemeenschapshuis_Scheulder_TK25 (geanonimiseerd).pdf",
+          "pdf_name": "Eijsden-Margraten_7_Gemeenschapshuis_Scheulder_TK25%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezing%202025%20UITSLAG/Eijsden-Margraten_8_Zaal-Caf%C3%A9-Ri%C3%A9kelt_Gronsveld_TK25%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_8_Zaal-CafC3A9-RiC3A9kelt_Gronsveld_TK2520(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_8_Zaal-Café-Riékelt_Gronsveld_TK25 (geanonimiseerd).pdf",
+          "pdf_name": "Eijsden-Margraten_8_Zaal-Caf%C3%A9-Ri%C3%A9kelt_Gronsveld_TK25%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezing%202025%20UITSLAG/Eijsden-Margraten_9_De_Laethof_Eijsden_TK25%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_9_De_Laethof_Eijsden_TK2520(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_9_De_Laethof_Eijsden_TK25 (geanonimiseerd).pdf",
+          "pdf_name": "Eijsden-Margraten_9_De_Laethof_Eijsden_TK25%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezing%202025%20UITSLAG/Eijsden-Margraten_10_Gemeentehuis_nummer-1_Margraten_%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_10_Gemeentehuis_nummer-1_Margraten_20(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_10_Gemeentehuis_nummer-1_Margraten_ (geanonimiseerd).pdf",
+          "pdf_name": "Eijsden-Margraten_10_Gemeentehuis_nummer-1_Margraten_%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezing%202025%20UITSLAG/Eijsden-Margraten_11_t-Keerhoes_nummer-1_Cadier-en-Keer_TK25(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_11_t-Keerhoes_nummer-1_Cadier-en-Keer_TK25(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_11_t-Keerhoes_nummer-1_Cadier-en-Keer_TK25(geanonimiseerd).pdf",
+          "pdf_name": "Eijsden-Margraten_11_t-Keerhoes_nummer-1_Cadier-en-Keer_TK25(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezing%202025%20UITSLAG/Eijsden-Margraten_12_Basisschool-Sint-Martinus_Gronsveld_TK25%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_12_Basisschool-Sint-Martinus_Gronsveld_TK2520(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_12_Basisschool-Sint-Martinus_Gronsveld_TK25 (geanonimiseerd).pdf",
+          "pdf_name": "Eijsden-Margraten_12_Basisschool-Sint-Martinus_Gronsveld_TK25%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezing%202025%20UITSLAG/Eijsden-Margraten_13_Brede-school-Op-de-Cour_Eijsden_TK25%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_13_Brede-school-Op-de-Cour_Eijsden_TK2520(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_13_Brede-school-Op-de-Cour_Eijsden_TK25 (geanonimiseerd).pdf",
+          "pdf_name": "Eijsden-Margraten_13_Brede-school-Op-de-Cour_Eijsden_TK25%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezing%202025%20UITSLAG/Eijsden-Margraten_13_Brede-school-Op-de-Cour_Eijsden_TK25_aanpassingen(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_13_Brede-school-Op-de-Cour_Eijsden_TK25_aanpassingen(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_13_Brede-school-Op-de-Cour_Eijsden_TK25_aanpassingen(geanonimiseerd).pdf",
+          "pdf_name": "Eijsden-Margraten_13_Brede-school-Op-de-Cour_Eijsden_TK25_aanpassingen(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezing%202025%20UITSLAG/Eijsden-Margraten_14_Buitengoed-De-Re%C3%BCnie_Eijsden_TK25%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_14_Buitengoed-De-ReC3BCnie_Eijsden_TK2520(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_14_Buitengoed-De-Reünie_Eijsden_TK25 (geanonimiseerd).pdf",
+          "pdf_name": "Eijsden-Margraten_14_Buitengoed-De-Re%C3%BCnie_Eijsden_TK25%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezing%202025%20UITSLAG/Eijsden-Margraten_15_Cultureel-Centrum_Eijsden_TK25%20(geanonimiseerd)%20.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_15_Cultureel-Centrum_Eijsden_TK2520(geanonimiseerd)20.pdf",
+          "text": "Eijsden-Margraten_15_Cultureel-Centrum_Eijsden_TK25 (geanonimiseerd) .pdf",
+          "pdf_name": "Eijsden-Margraten_15_Cultureel-Centrum_Eijsden_TK25%20(geanonimiseerd)%20.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezing%202025%20UITSLAG/Eijsden-Margraten_16_Zaal-KOH_Eijsden_TK25%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_16_Zaal-KOH_Eijsden_TK2520(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_16_Zaal-KOH_Eijsden_TK25 (geanonimiseerd).pdf",
+          "pdf_name": "Eijsden-Margraten_16_Zaal-KOH_Eijsden_TK25%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezing%202025%20UITSLAG/Eijsden-Margraten_23_Gemeentehuis_nummer-2_Margraten_TK25%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_23_Gemeentehuis_nummer-2_Margraten_TK2520(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_23_Gemeentehuis_nummer-2_Margraten_TK25 (geanonimiseerd).pdf",
+          "pdf_name": "Eijsden-Margraten_23_Gemeentehuis_nummer-2_Margraten_TK25%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezing%202025%20UITSLAG/Eijsden-Margraten_24_t-Keerhoes_nummer-2_Cadier-en-Keer_TK25%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_24_t-Keerhoes_nummer-2_Cadier-en-Keer_TK2520(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_24_t-Keerhoes_nummer-2_Cadier-en-Keer_TK25 (geanonimiseerd).pdf",
+          "pdf_name": "Eijsden-Margraten_24_t-Keerhoes_nummer-2_Cadier-en-Keer_TK25%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezing%202025%20UITSLAG/Eijsden-Margraten_uitkomst_TK25%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_uitkomst_TK2520(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_uitkomst_TK25 (geanonimiseerd).pdf",
+          "pdf_name": "Eijsden-Margraten_uitkomst_TK25%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezing%202025%20UITSLAG/Eijsden-Margraten_verklaring_aansluitvoorschriften%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_verklaring_aansluitvoorschriften20(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_verklaring_aansluitvoorschriften (geanonimiseerd).pdf",
+          "pdf_name": "Eijsden-Margraten_verklaring_aansluitvoorschriften%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezing%202025%20UITSLAG/Aantal%20stemmen%20Eijsden-Margraten%20Tweede%20Kamer%20de%20Staten-Generaal%20oktober%202025%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Aantal20stemmen20Eijsden-Margraten20Tweede20Kamer20de20Staten-Generaal20oktober20202520(geanonimiseerd).pdf",
+          "text": "Aantal stemmen Eijsden-Margraten Tweede Kamer de Staten-Generaal oktober 2025 (geanonimiseerd)).pdf",
+          "pdf_name": "Aantal%20stemmen%20Eijsden-Margraten%20Tweede%20Kamer%20de%20Staten-Generaal%20oktober%202025%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/TweedeKamerveriezingen2025/Kandidatenlijsten.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Kandidatenlijsten.pdf",
+          "text": "Bekijk hier de kandidatenlijsten",
+          "pdf_name": "Kandidatenlijsten.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/TweedeKamerveriezingen2025/Overzicht%20locaties%20campagneborden%202025.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Overzicht20locaties20campagneborden202025.pdf",
+          "text": "Overzicht locaties canvasborden in Eijsden-Margraten.",
+          "pdf_name": "Overzicht%20locaties%20campagneborden%202025.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Actueel/Europese%20verkiezingen%202024/Eijsden-Margraten_2_%20Harmoniezaal_Banholt_EP24%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_2_20Harmoniezaal_Banholt_EP2420(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_2_ Harmoniezaal_Banholt_EP24",
+          "pdf_name": "Eijsden-Margraten_2_%20Harmoniezaal_Banholt_EP24%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Actueel/Europese%20verkiezingen%202024/Eijsden-Margraten_3_%20Harmoniezaal_Mheer_EP24%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_3_20Harmoniezaal_Mheer_EP2420(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_3_ Harmoniezaal_Mheer_EP24",
+          "pdf_name": "Eijsden-Margraten_3_%20Harmoniezaal_Mheer_EP24%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Actueel/Europese%20verkiezingen%202024/Eijsden-Margraten_4_%20Paviljoen_Berggalm_Noorbeek_EP24%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_4_20Paviljoen_Berggalm_Noorbeek_EP2420(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_4_ Paviljoen_Berggalm_Noorbeek_EP24",
+          "pdf_name": "Eijsden-Margraten_4_%20Paviljoen_Berggalm_Noorbeek_EP24%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Actueel/Europese%20verkiezingen%202024/Eijsden-Margraten_5_%20Fanfarezaal_Sint_Geertruid_EP24%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_5_20Fanfarezaal_Sint_Geertruid_EP2420(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_5_ Fanfarezaal_Sint_Geertruid_EP24",
+          "pdf_name": "Eijsden-Margraten_5_%20Fanfarezaal_Sint_Geertruid_EP24%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Actueel/Europese%20verkiezingen%202024/Eijsden-Margraten_6_%20Harmoniezaal_Eckelrade_EP24%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_6_20Harmoniezaal_Eckelrade_EP2420(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_6_ Harmoniezaal_Eckelrade_EP24",
+          "pdf_name": "Eijsden-Margraten_6_%20Harmoniezaal_Eckelrade_EP24%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Actueel/Europese%20verkiezingen%202024/Eijsden-Margraten_7_%20Gemeenschapshuis_Scheulder_EP24%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_7_20Gemeenschapshuis_Scheulder_EP2420(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_7_ Gemeenschapshuis_Scheulder_EP24",
+          "pdf_name": "Eijsden-Margraten_7_%20Gemeenschapshuis_Scheulder_EP24%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Actueel/Europese%20verkiezingen%202024/Eijsden-Margraten_8_%20Zaal_Caf%C3%A9_Ri%C3%A9kelt_EP24%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_8_20Zaal_CafC3A9_RiC3A9kelt_EP2420(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_8_ Zaal_Café_Riékelt_EP24",
+          "pdf_name": "Eijsden-Margraten_8_%20Zaal_Caf%C3%A9_Ri%C3%A9kelt_EP24%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Actueel/Europese%20verkiezingen%202024/Eijsden-Margraten_9_%20Hoeve_de_Laathof_Mesch_EP24%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_9_20Hoeve_de_Laathof_Mesch_EP2420(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_9_ Hoeve_de_Laathof_Mesch_EP24",
+          "pdf_name": "Eijsden-Margraten_9_%20Hoeve_de_Laathof_Mesch_EP24%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Actueel/Europese%20verkiezingen%202024/Eijsden-Margraten_10_%20Gemeentehuis_nummer_1_Margraten_EP24%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_10_20Gemeentehuis_nummer_1_Margraten_EP2420(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_10_ Gemeentehuis_nummer_1_Margraten_EP24",
+          "pdf_name": "Eijsden-Margraten_10_%20Gemeentehuis_nummer_1_Margraten_EP24%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Actueel/Europese%20verkiezingen%202024/Eijsden-Margraten_11_%20%E2%80%98t_Keerhoes_nummer_1_Cadier_en_Keer_EP24%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_11_20E28098t_Keerhoes_nummer_1_Cadier_en_Keer_EP2420(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_11_ ‘t_Keerhoes_nummer_1_Cadier_en_Keer_EP24",
+          "pdf_name": "Eijsden-Margraten_11_%20%E2%80%98t_Keerhoes_nummer_1_Cadier_en_Keer_EP24%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Actueel/Europese%20verkiezingen%202024/Eijsden-Margraten_12_%20Basisschool_Sint_Martinus_Gronsveld_EP24%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_12_20Basisschool_Sint_Martinus_Gronsveld_EP2420(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_12_ Basisschool_Sint_Martinus_Gronsveld_EP24",
+          "pdf_name": "Eijsden-Margraten_12_%20Basisschool_Sint_Martinus_Gronsveld_EP24%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Actueel/Europese%20verkiezingen%202024/Eijsden-Margraten_12_%20Basisschool_Sint_Martinus_Gronsveld_EP24_aanpassing%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_12_20Basisschool_Sint_Martinus_Gronsveld_EP24_aanpassing20(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_12_ Basisschool_Sint_Martinus_Gronsveld_EP24_aanpassing",
+          "pdf_name": "Eijsden-Margraten_12_%20Basisschool_Sint_Martinus_Gronsveld_EP24_aanpassing%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Actueel/Europese%20verkiezingen%202024/Eijsden-Margraten_13_%20Cultureel_Centrum_nummer_1_Eijsden_EP24%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_13_20Cultureel_Centrum_nummer_1_Eijsden_EP2420(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_13_ Cultureel_Centrum_nummer_1_Eijsden_EP24",
+          "pdf_name": "Eijsden-Margraten_13_%20Cultureel_Centrum_nummer_1_Eijsden_EP24%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Actueel/Europese%20verkiezingen%202024/Eijsden-Margraten_14_%20Buitengoed_de_Re%C3%BCnie_Oost_Maarland_EP24%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_14_20Buitengoed_de_ReC3BCnie_Oost_Maarland_EP2420(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_14_ Buitengoed_de_Reünie_Oost_Maarland_EP24",
+          "pdf_name": "Eijsden-Margraten_14_%20Buitengoed_de_Re%C3%BCnie_Oost_Maarland_EP24%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Actueel/Europese%20verkiezingen%202024/Eijsden-Margraten_15_%20Cultureel_Centrum_nummer_2_Eijsden_EP24%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_15_20Cultureel_Centrum_nummer_2_Eijsden_EP2420(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_15_ Cultureel_Centrum_nummer_2_Eijsden_EP24",
+          "pdf_name": "Eijsden-Margraten_15_%20Cultureel_Centrum_nummer_2_Eijsden_EP24%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Actueel/Europese%20verkiezingen%202024/Eijsden-Margraten_16_%20Zaal_KOH_Eijsden_EP24%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_16_20Zaal_KOH_Eijsden_EP2420(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_16_ Zaal_KOH_Eijsden_EP24",
+          "pdf_name": "Eijsden-Margraten_16_%20Zaal_KOH_Eijsden_EP24%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Actueel/Europese%20verkiezingen%202024/Eijsden-Margraten_23_%20Gemeentehuis_nummer_2_Margraten_EP24%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_23_20Gemeentehuis_nummer_2_Margraten_EP2420(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_23_ Gemeentehuis_nummer_2_Margraten_EP24",
+          "pdf_name": "Eijsden-Margraten_23_%20Gemeentehuis_nummer_2_Margraten_EP24%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Actueel/Europese%20verkiezingen%202024/Eijsden-Margraten_24_%20%E2%80%98t_Keerhoes_nummer_2_Cadier_en_Keer_EP24%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_24_20E28098t_Keerhoes_nummer_2_Cadier_en_Keer_EP2420(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_24_ ‘t_Keerhoes_nummer_2_Cadier_en_Keer_EP24",
+          "pdf_name": "Eijsden-Margraten_24_%20%E2%80%98t_Keerhoes_nummer_2_Cadier_en_Keer_EP24%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Actueel/Europese%20verkiezingen%202024/Eijsden-Margraten_uitslag_EP24%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_uitslag_EP2420(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten_uitslag_EP24",
+          "pdf_name": "Eijsden-Margraten_uitslag_EP24%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Actueel/Europese%20verkiezingen%202024/Eijsden-Margraten_ControleprotocolGSB_EP24%20(geanonimiseerd).pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_ControleprotocolGSB_EP2420(geanonimiseerd).pdf",
+          "text": "Eijsden-Margraten­_ControleprotocolGSB_EP24",
+          "pdf_name": "Eijsden-Margraten_ControleprotocolGSB_EP24%20(geanonimiseerd).pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezingen%202023/1903_pv-p2a_nieuwezittinggsb_tk23-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_pv-p2a_nieuwezittinggsb_tk23-zh.pdf",
+          "text": "Tweede Kamerverkiezingen 2023/1903_pv-p2a_nieuwezittinggsb",
+          "pdf_name": "1903_pv-p2a_nieuwezittinggsb_tk23-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezingen%202023/1903_pv_corrigendum-14-2_nieuwezittinggsb_tk23-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_pv_corrigendum-14-2_nieuwezittinggsb_tk23-zh.pdf",
+          "text": "Tweede Kamerverkiezingen 2023/1903_pv_corrigendum-14-2_nieuwezittinggsb",
+          "pdf_name": "1903_pv_corrigendum-14-2_nieuwezittinggsb_tk23-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezingen%202023/1903_stembureau_01_gemeenschapshuis-bemelen_bemelen_tk23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_01_gemeenschapshuis-bemelen_bemelen_tk23_zh.pdf",
+          "text": "Tweede Kamerverkiezingen 2023/1903_stembureau_01_gemeenschapshuis-bemelen",
+          "pdf_name": "1903_stembureau_01_gemeenschapshuis-bemelen_bemelen_tk23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezingen%202023/1903_stembureau_02_harmoniezaal-banholt_tk23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_02_harmoniezaal-banholt_tk23_zh.pdf",
+          "text": "Tweede Kamerverkiezingen 2023/1903_stembureau_02_harmoniezaal-banholt",
+          "pdf_name": "1903_stembureau_02_harmoniezaal-banholt_tk23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezingen%202023/1903_stembureau_03_harmoniezaal-mheer_-mheer_tk23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_03_harmoniezaal-mheer_-mheer_tk23_zh.pdf",
+          "text": "Tweede Kamerverkiezingen 2023/1903_stembureau_03_harmoniezaal-mheer",
+          "pdf_name": "1903_stembureau_03_harmoniezaal-mheer_-mheer_tk23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezingen%202023/1903_stembureau_04_paviljoen-berggalm_noorbeek_tk23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_04_paviljoen-berggalm_noorbeek_tk23_zh.pdf",
+          "text": "Tweede Kamerverkiezingen 2023/1903_stembureau_04_paviljoen-berggalm_noorbeek",
+          "pdf_name": "1903_stembureau_04_paviljoen-berggalm_noorbeek_tk23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezingen%202023/1903_stembureau_05_fanfarezaal_sint-geertruid_tk23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_05_fanfarezaal_sint-geertruid_tk23_zh.pdf",
+          "text": "Tweede Kamerverkiezingen 2023/1903_stembureau_05_fanfarezaal_sint-geertruid",
+          "pdf_name": "1903_stembureau_05_fanfarezaal_sint-geertruid_tk23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezingen%202023/1903_stembureau_06_harmoniezaal-eckelrade_eckelrade_tk23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_06_harmoniezaal-eckelrade_eckelrade_tk23_zh.pdf",
+          "text": "Tweede Kamerverkiezingen 2023/1903_stembureau_06_harmoniezaal-eckelrade",
+          "pdf_name": "1903_stembureau_06_harmoniezaal-eckelrade_eckelrade_tk23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezingen%202023/1903_stembureau_07_gemeenschapshuis-scheulder_scheulder_tk23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_07_gemeenschapshuis-scheulder_scheulder_tk23_zh.pdf",
+          "text": "Tweede Kamerverkiezingen 2023/1903_stembureau_07_gemeenschapshuis-scheulder",
+          "pdf_name": "1903_stembureau_07_gemeenschapshuis-scheulder_scheulder_tk23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezingen%202023/1903_stembureau_08_zaal-cafe-riekelt_gronsveld_tk23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_08_zaal-cafe-riekelt_gronsveld_tk23_zh.pdf",
+          "text": "Tweede Kamerverkiezingen 2023/1903_stembureau_08_zaal-cafe-riekelt_gronsveld",
+          "pdf_name": "1903_stembureau_08_zaal-cafe-riekelt_gronsveld_tk23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezingen%202023/1903_stembureau_09_hoeve-de-laethof_eijsden_tk23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_09_hoeve-de-laethof_eijsden_tk23_zh.pdf",
+          "text": "Tweede Kamerverkiezingen 2023/1903_stembureau_09_hoeve-de-laethof_eijsden",
+          "pdf_name": "1903_stembureau_09_hoeve-de-laethof_eijsden_tk23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezingen%202023/1903_stembureau_10_gemeentehuis-nummer-1_margraten_corrigendum_gsb_tk23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_10_gemeentehuis-nummer-1_margraten_corrigendum_gsb_tk23_zh.pdf",
+          "text": "Tweede Kamerverkiezingen 2023/1903_stembureau_10_gemeentehuis-nummer-1_margraten_corrigendum_gsb",
+          "pdf_name": "1903_stembureau_10_gemeentehuis-nummer-1_margraten_corrigendum_gsb_tk23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezingen%202023/1903_stembureau_11_t-keerhoes-nummer-1_cadier-en-keer_tk23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_11_t-keerhoes-nummer-1_cadier-en-keer_tk23_zh.pdf",
+          "text": "Tweede Kamerverkiezingen 2023/1903_stembureau_11_t-keerhoes-nummer-1_cadier-en-keer",
+          "pdf_name": "1903_stembureau_11_t-keerhoes-nummer-1_cadier-en-keer_tk23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezingen%202023/1903_stembureau_12_restaurant-de-grenedeer_gronsveld_tk23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_12_restaurant-de-grenedeer_gronsveld_tk23_zh.pdf",
+          "text": "Tweede Kamerverkiezingen 2023/1903_stembureau_12_restaurant-de-grenedeer_gronsveld",
+          "pdf_name": "1903_stembureau_12_restaurant-de-grenedeer_gronsveld_tk23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezingen%202023/1903_stembureau_13_cultureel-centrum-nummer-1_eijsden_tk23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_13_cultureel-centrum-nummer-1_eijsden_tk23_zh.pdf",
+          "text": "Tweede Kamerverkiezingen 2023/1903_stembureau_13_cultureel-centrum-nummer-1_eijsden",
+          "pdf_name": "1903_stembureau_13_cultureel-centrum-nummer-1_eijsden_tk23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezingen%202023/1903_stembureau_14_buitengoed-de-reunie_eijdsen_tk23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_14_buitengoed-de-reunie_eijdsen_tk23_zh.pdf",
+          "text": "Tweede Kamerverkiezingen 2023/1903_stembureau_14_buitengoed-de-reunie_eijdsen",
+          "pdf_name": "1903_stembureau_14_buitengoed-de-reunie_eijdsen_tk23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezingen%202023/1903_stembureau_15_cultureel-centrum-nummer-2_eijsden_tk23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_15_cultureel-centrum-nummer-2_eijsden_tk23_zh.pdf",
+          "text": "Tweede Kamerverkiezingen 2023/1903_stembureau_15_cultureel-centrum-nummer-2_eijsden",
+          "pdf_name": "1903_stembureau_15_cultureel-centrum-nummer-2_eijsden_tk23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezingen%202023/1903_stembureau_16_zaal-koh_eijsden_tk23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_16_zaal-koh_eijsden_tk23_zh.pdf",
+          "text": "Tweede Kamerverkiezingen 2023/1903_stembureau_16_zaal-koh_eijsden_tk23_zh",
+          "pdf_name": "1903_stembureau_16_zaal-koh_eijsden_tk23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezingen%202023/1903_stembureau_23_gemeentehuis-nummer-2_margraten_corrigendum_nieuwezittinggsb_tk23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_23_gemeentehuis-nummer-2_margraten_corrigendum_nieuwezittinggsb_tk23_zh.pdf",
+          "text": "Tweede Kamerverkiezingen 2023/1903_stembureau_23_gemeentehuis-nummer-2_margraten_corrigendum_nieuwezittinggsb",
+          "pdf_name": "1903_stembureau_23_gemeentehuis-nummer-2_margraten_corrigendum_nieuwezittinggsb_tk23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezingen%202023/1903_stembureau_24_t-keerhoes-nummer-2_cadier-en-keer_tk23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_24_t-keerhoes-nummer-2_cadier-en-keer_tk23_zh.pdf",
+          "text": "Tweede Kamerverkiezingen 2023/1903_stembureau_24_t-keerhoes-nummer-2_cadier-en-keer",
+          "pdf_name": "1903_stembureau_24_t-keerhoes-nummer-2_cadier-en-keer_tk23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezingen%202023/1903_verslag-controleprotocol-gsb_eijsden-margraten_tk23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_verslag-controleprotocol-gsb_eijsden-margraten_tk23_zh.pdf",
+          "text": "Tweede Kamerverkiezingen 2023/1903_verslag-controleprotocol-gsb_eijsden-margraten",
+          "pdf_name": "1903_verslag-controleprotocol-gsb_eijsden-margraten_tk23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Tweede%20Kamerverkiezingen%202023/osv4-3_telling_tk2023_gemeente_eijsdenmargraten.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/osv4-3_telling_tk2023_gemeente_eijsdenmargraten.pdf",
+          "text": "Tweede Kamerverkiezingen 2023/osv4-3_telling_tk2023_gemeente_eijsdenmargraten",
+          "pdf_name": "osv4-3_telling_tk2023_gemeente_eijsdenmargraten.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/1903_stembureau_001_gemeenschapshuis_bemelen_ps23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_001_gemeenschapshuis_bemelen_ps23_zh.pdf",
+          "text": "Provinciale Staten 2023/1903_stembureau_001_gemeenschapshuis_bemelen_ps23_zh",
+          "pdf_name": "1903_stembureau_001_gemeenschapshuis_bemelen_ps23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/1903_stembureau_002_harmoniezaal-banholt_ps23-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_002_harmoniezaal-banholt_ps23-zh.pdf",
+          "text": "Provinciale Staten 2023/1903_stembureau_002_harmoniezaal-banholt_ps23-zh",
+          "pdf_name": "1903_stembureau_002_harmoniezaal-banholt_ps23-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/1903_stembureau_003_harmoniezaal-mheer_ps23-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_003_harmoniezaal-mheer_ps23-zh.pdf",
+          "text": "Provinciale Staten 2023/1903_stembureau_003_harmoniezaal-mheer_ps23-zh",
+          "pdf_name": "1903_stembureau_003_harmoniezaal-mheer_ps23-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/1903_stembureau_004_paviljoen_berggalm_noorbeekps23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_004_paviljoen_berggalm_noorbeekps23_zh.pdf",
+          "text": "Provinciale Staten 2023/1903_stembureau_004_paviljoen_berggalm_noorbeekps23_zh",
+          "pdf_name": "1903_stembureau_004_paviljoen_berggalm_noorbeekps23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/1903_stembureau_004_paviljoen_berggalm_noorbeek_corrigendum_ps23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_004_paviljoen_berggalm_noorbeek_corrigendum_ps23_zh.pdf",
+          "text": "Provinciale Staten 2023/1903_stembureau_004_paviljoen_berggalm_noorbeek_corrigendum_ps23_zh",
+          "pdf_name": "1903_stembureau_004_paviljoen_berggalm_noorbeek_corrigendum_ps23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/1903_stembureau_005_fanfarezaal-sint-geertruid_ps23-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_005_fanfarezaal-sint-geertruid_ps23-zh.pdf",
+          "text": "Provinciale Staten 2023/1903_stembureau_005_fanfarezaal-sint-geertruid_ps23-zh",
+          "pdf_name": "1903_stembureau_005_fanfarezaal-sint-geertruid_ps23-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/1903_stembureau_006_harmoniezaal_eckelrade_ps23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_006_harmoniezaal_eckelrade_ps23_zh.pdf",
+          "text": "Provinciale Staten 2023/1903_stembureau_006_harmoniezaal_eckelrade_ps23_zh",
+          "pdf_name": "1903_stembureau_006_harmoniezaal_eckelrade_ps23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/1903_stembureau_007_gemeenschapshuis-scheulder_ps23-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_007_gemeenschapshuis-scheulder_ps23-zh.pdf",
+          "text": "Provinciale Staten 2023/1903_stembureau_007_gemeenschapshuis-scheulder_ps23-zh",
+          "pdf_name": "1903_stembureau_007_gemeenschapshuis-scheulder_ps23-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/1903_stembureau_008_-zaale-eetcafe-riekholt-gronsveld_ps23-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_008_-zaale-eetcafe-riekholt-gronsveld_ps23-zh.pdf",
+          "text": "Provinciale Staten 2023/1903_stembureau_008_-zaale-eetcafe-riekholt-gronsveld_ps23-zh",
+          "pdf_name": "1903_stembureau_008_-zaale-eetcafe-riekholt-gronsveld_ps23-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/1903_stembureau_009_hoeve-de-laathof-mesch_ps23-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_009_hoeve-de-laathof-mesch_ps23-zh.pdf",
+          "text": "Provinciale Staten 2023/1903_stembureau_009_hoeve-de-laathof-mesch_ps23-zh",
+          "pdf_name": "1903_stembureau_009_hoeve-de-laathof-mesch_ps23-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/1903_stembureau_010_gemeentehuis_margraten_ps23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_010_gemeentehuis_margraten_ps23_zh.pdf",
+          "text": "Provinciale Staten 2023/1903_stembureau_010_gemeentehuis_margraten_ps23_zh",
+          "pdf_name": "1903_stembureau_010_gemeentehuis_margraten_ps23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/1903_stembureau_011_t-keerhoes-cadier-en-keer_ps23-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_011_t-keerhoes-cadier-en-keer_ps23-zh.pdf",
+          "text": "Provinciale Staten 2023/1903_stembureau_011_t-keerhoes-cadier-en-keer_ps23-zh",
+          "pdf_name": "1903_stembureau_011_t-keerhoes-cadier-en-keer_ps23-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/1903_stembureau_012_de_grenedeer_gronsveld_corrigendum_ps23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_012_de_grenedeer_gronsveld_corrigendum_ps23_zh.pdf",
+          "text": "Provinciale Staten 2023/1903_stembureau_012_de_grenedeer_gronsveld_corrigendum_ps23_zh",
+          "pdf_name": "1903_stembureau_012_de_grenedeer_gronsveld_corrigendum_ps23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/1903_stembureau_012_de_grenedeer_gronsveld_ps23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_012_de_grenedeer_gronsveld_ps23_zh.pdf",
+          "text": "Provinciale Staten 2023/1903_stembureau_012_de_grenedeer_gronsveld_ps23_zh",
+          "pdf_name": "1903_stembureau_012_de_grenedeer_gronsveld_ps23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/1903_stembureau_013_kantine-svme-eijsden_corrigendum_ps23-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_013_kantine-svme-eijsden_corrigendum_ps23-zh.pdf",
+          "text": "Provinciale Staten 2023/1903_stembureau_013_kantine-svme-eijsden_corrigendum_ps23-zh",
+          "pdf_name": "1903_stembureau_013_kantine-svme-eijsden_corrigendum_ps23-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/1903_stembureau_013_kantine-svme-eijsden_ps23-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_013_kantine-svme-eijsden_ps23-zh.pdf",
+          "text": "Provinciale Staten 2023/1903_stembureau_013_kantine-svme-eijsden_ps23-zh",
+          "pdf_name": "1903_stembureau_013_kantine-svme-eijsden_ps23-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/1903_stembureau_014_de_reunie_oost_maarland_ps23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_014_de_reunie_oost_maarland_ps23_zh.pdf",
+          "text": "Provinciale Staten 2023/1903_stembureau_014_de_reunie_oost_maarland_ps23_zh",
+          "pdf_name": "1903_stembureau_014_de_reunie_oost_maarland_ps23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/1903_stembureau_015_cultureel_centrum_eijsden_ps23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_015_cultureel_centrum_eijsden_ps23_zh.pdf",
+          "text": "Provinciale Staten 2023/1903_stembureau_015_cultureel_centrum_eijsden_ps23_zh",
+          "pdf_name": "1903_stembureau_015_cultureel_centrum_eijsden_ps23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/1903_stembureau_016_zaal_koninklijke_oude_harmonie_eijsden_ps23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_016_zaal_koninklijke_oude_harmonie_eijsden_ps23_zh.pdf",
+          "text": "Provinciale Staten 2023/1903_stembureau_016_zaal_koninklijke_oude_harmonie_eijsden_ps23_zh",
+          "pdf_name": "1903_stembureau_016_zaal_koninklijke_oude_harmonie_eijsden_ps23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/1903_stembureau_023_cafe-t-flaterke-margraten_ps23-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_023_cafe-t-flaterke-margraten_ps23-zh.pdf",
+          "text": "Provinciale Staten 2023/1903_stembureau_023_cafe-t-flaterke-margraten_ps23-zh",
+          "pdf_name": "1903_stembureau_023_cafe-t-flaterke-margraten_ps23-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/1903_stembureau_024_t_keerhoes_nummer_2_cadier_en_keer_corrigendum_ps23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_024_t_keerhoes_nummer_2_cadier_en_keer_corrigendum_ps23_zh.pdf",
+          "text": "Provinciale Staten 2023/1903_stembureau_024_t_keerhoes_nummer_2_cadier_en_keer_corrigendum_ps23_zh",
+          "pdf_name": "1903_stembureau_024_t_keerhoes_nummer_2_cadier_en_keer_corrigendum_ps23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/1903_stembureau_024_t_keerhoes_nummer_2_cadier_en_keer_ps23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_024_t_keerhoes_nummer_2_cadier_en_keer_ps23_zh.pdf",
+          "text": "Provinciale Staten 2023/1903_stembureau_024_t_keerhoes_nummer_2_cadier_en_keer_ps23_zh",
+          "pdf_name": "1903_stembureau_024_t_keerhoes_nummer_2_cadier_en_keer_ps23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/na31-1_ps23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/na31-1_ps23_zh.pdf",
+          "text": "Provinciale Staten 2023/na31-1_ps23_zh",
+          "pdf_name": "na31-1_ps23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/osv4-3_telling_ps2023_eijsdenmargraten.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/osv4-3_telling_ps2023_eijsdenmargraten.pdf",
+          "text": "Provinciale Staten 2023/osv4-3_telling_ps2023_eijsdenmargraten",
+          "pdf_name": "osv4-3_telling_ps2023_eijsdenmargraten.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/verslag-controleprotocol-gsb_provinciale-staten-1.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/verslag-controleprotocol-gsb_provinciale-staten-1.pdf",
+          "text": "Provinciale Staten 2023/verslag-controleprotocol-gsb_provinciale-staten-1",
+          "pdf_name": "verslag-controleprotocol-gsb_provinciale-staten-1.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Provinciale%20Staten%202023/verslag-controleprotocol-gsb_provinciale-staten_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/verslag-controleprotocol-gsb_provinciale-staten_zh.pdf",
+          "text": "Provinciale Staten 2023/verslag-controleprotocol-gsb_provinciale-staten_zh",
+          "pdf_name": "verslag-controleprotocol-gsb_provinciale-staten_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_001_gemeenschapshuis_bemelen_ws23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_001_gemeenschapshuis_bemelen_ws23_zh.pdf",
+          "text": "Waterschappen 2023/1903_stembureau_001_gemeenschapshuis_bemelen_ws23_zh",
+          "pdf_name": "1903_stembureau_001_gemeenschapshuis_bemelen_ws23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_002_harmoniezaal_banholt_ws23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_002_harmoniezaal_banholt_ws23_zh.pdf",
+          "text": "Waterschappen 2023/1903_stembureau_002_harmoniezaal_banholt_ws23_zh",
+          "pdf_name": "1903_stembureau_002_harmoniezaal_banholt_ws23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_003_harmoniezaal-mheer-_ws23-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_003_harmoniezaal-mheer-_ws23-zh.pdf",
+          "text": "Waterschappen 2023/1903_stembureau_003_harmoniezaal-mheer-_ws23-zh",
+          "pdf_name": "1903_stembureau_003_harmoniezaal-mheer-_ws23-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_004_paviljoen-berggalm-noorbeek_ws23-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_004_paviljoen-berggalm-noorbeek_ws23-zh.pdf",
+          "text": "Waterschappen 2023/1903_stembureau_004_paviljoen-berggalm-noorbeek_ws23-zh",
+          "pdf_name": "1903_stembureau_004_paviljoen-berggalm-noorbeek_ws23-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_005_fanfarezaal-sint-geertruid_ws23-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_005_fanfarezaal-sint-geertruid_ws23-zh.pdf",
+          "text": "Waterschappen 2023/1903_stembureau_005_fanfarezaal-sint-geertruid_ws23-zh",
+          "pdf_name": "1903_stembureau_005_fanfarezaal-sint-geertruid_ws23-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_006_harmoniezaal_eckelrade_ws23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_006_harmoniezaal_eckelrade_ws23_zh.pdf",
+          "text": "Waterschappen 2023/1903_stembureau_006_harmoniezaal_eckelrade_ws23_zh",
+          "pdf_name": "1903_stembureau_006_harmoniezaal_eckelrade_ws23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_007_gemeenschapshuis-scheulder-_ws23-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_007_gemeenschapshuis-scheulder-_ws23-zh.pdf",
+          "text": "Waterschappen 2023/1903_stembureau_007_gemeenschapshuis-scheulder-_ws23-zh",
+          "pdf_name": "1903_stembureau_007_gemeenschapshuis-scheulder-_ws23-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_008_zaal-cafe-riekelt-gronsveld_ws23-mh-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_008_zaal-cafe-riekelt-gronsveld_ws23-mh-zh.pdf",
+          "text": "Waterschappen 2023/1903_stembureau_008_zaal-cafe-riekelt-gronsveld_ws23-mh-zh",
+          "pdf_name": "1903_stembureau_008_zaal-cafe-riekelt-gronsveld_ws23-mh-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_009_feesthoeve_de_laathof_mesch_ws23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_009_feesthoeve_de_laathof_mesch_ws23_zh.pdf",
+          "text": "Waterschappen 2023/1903_stembureau_009_feesthoeve_de_laathof_mesch_ws23_zh",
+          "pdf_name": "1903_stembureau_009_feesthoeve_de_laathof_mesch_ws23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_010_gemeentehuis_margraten_corrigendum_ws23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_010_gemeentehuis_margraten_corrigendum_ws23_zh.pdf",
+          "text": "Waterschappen 2023/1903_stembureau_010_gemeentehuis_margraten_corrigendum_ws23_zh",
+          "pdf_name": "1903_stembureau_010_gemeentehuis_margraten_corrigendum_ws23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_010_gemeentehuis_margraten_ws23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_010_gemeentehuis_margraten_ws23_zh.pdf",
+          "text": "Waterschappen 2023/1903_stembureau_010_gemeentehuis_margraten_ws23_zh",
+          "pdf_name": "1903_stembureau_010_gemeentehuis_margraten_ws23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_011_keerhoes-cadier-en-keer-corrigendum_ws23-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_011_keerhoes-cadier-en-keer-corrigendum_ws23-zh.pdf",
+          "text": "Waterschappen 2023/1903_stembureau_011_keerhoes-cadier-en-keer-corrigendum_ws23-zh",
+          "pdf_name": "1903_stembureau_011_keerhoes-cadier-en-keer-corrigendum_ws23-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_011_keerhoes-cadier-en-keerzh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_011_keerhoes-cadier-en-keerzh.pdf",
+          "text": "Waterschappen 2023/1903_stembureau_011_keerhoes-cadier-en-keerzh",
+          "pdf_name": "1903_stembureau_011_keerhoes-cadier-en-keerzh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_012_restaurant-de-grenedeer-gronsveld_ws23-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_012_restaurant-de-grenedeer-gronsveld_ws23-zh.pdf",
+          "text": "Waterschappen 2023/1903_stembureau_012_restaurant-de-grenedeer-gronsveld_ws23-zh",
+          "pdf_name": "1903_stembureau_012_restaurant-de-grenedeer-gronsveld_ws23-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_013_kantine_svme_eijsden_corrigendum_ws23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_013_kantine_svme_eijsden_corrigendum_ws23_zh.pdf",
+          "text": "Waterschappen 2023/1903_stembureau_013_kantine_svme_eijsden_corrigendum_ws23_zh",
+          "pdf_name": "1903_stembureau_013_kantine_svme_eijsden_corrigendum_ws23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_013_kantine_svme_eijsden_ws23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_013_kantine_svme_eijsden_ws23_zh.pdf",
+          "text": "Waterschappen 2023/1903_stembureau_013_kantine_svme_eijsden_ws23_zh",
+          "pdf_name": "1903_stembureau_013_kantine_svme_eijsden_ws23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_014_de_reunie_oost_maarland_ws23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_014_de_reunie_oost_maarland_ws23_zh.pdf",
+          "text": "Waterschappen 2023/1903_stembureau_014_de_reunie_oost_maarland_ws23_zh",
+          "pdf_name": "1903_stembureau_014_de_reunie_oost_maarland_ws23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_015_cultureel-centrum-eijsden_ws23-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_015_cultureel-centrum-eijsden_ws23-zh.pdf",
+          "text": "Waterschappen 2023/1903_stembureau_015_cultureel-centrum-eijsden_ws23-zh",
+          "pdf_name": "1903_stembureau_015_cultureel-centrum-eijsden_ws23-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_016_zaal-koh-eijsden-_ws23-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_016_zaal-koh-eijsden-_ws23-zh.pdf",
+          "text": "Waterschappen 2023/1903_stembureau_016_zaal-koh-eijsden-_ws23-zh",
+          "pdf_name": "1903_stembureau_016_zaal-koh-eijsden-_ws23-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_023_cafe_t_flaterke_margraten_ws23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_023_cafe_t_flaterke_margraten_ws23_zh.pdf",
+          "text": "Waterschappen 2023/1903_stembureau_023_cafe_t_flaterke_margraten_ws23_zh",
+          "pdf_name": "1903_stembureau_023_cafe_t_flaterke_margraten_ws23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_024_keerhoes-cadier-en-keer-corrigendum-na-14-1_-nieuwezitting-ws23-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_024_keerhoes-cadier-en-keer-corrigendum-na-14-1_-nieuwezitting-ws23-zh.pdf",
+          "text": "Waterschappen 2023/1903_stembureau_024_keerhoes-cadier-en-keer-corrigendum-na-14-1_-nieuwezitting-ws23-zh",
+          "pdf_name": "1903_stembureau_024_keerhoes-cadier-en-keer-corrigendum-na-14-1_-nieuwezitting-ws23-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_024_keerhoes-cadier-en-keer-_ws23-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_024_keerhoes-cadier-en-keer-_ws23-zh.pdf",
+          "text": "Waterschappen 2023/1903_stembureau_024_keerhoes-cadier-en-keer-_ws23-zh",
+          "pdf_name": "1903_stembureau_024_keerhoes-cadier-en-keer-_ws23-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/na31-1-corrigendum-na14-2.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/na31-1-corrigendum-na14-2.pdf",
+          "text": "Waterschappen 2023/na31-1-corrigendum-na14-2",
+          "pdf_name": "na31-1-corrigendum-na14-2.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/na31-1-ws23_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/na31-1-ws23_zh.pdf",
+          "text": "Waterschappen 2023/na31-1-ws23_zh",
+          "pdf_name": "na31-1-ws23_zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/osv4-3_telling_ab2023_eijsdenmargraten.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/osv4-3_telling_ab2023_eijsdenmargraten.pdf",
+          "text": "Waterschappen 2023/osv4-3_telling_ab2023_eijsdenmargraten",
+          "pdf_name": "osv4-3_telling_ab2023_eijsdenmargraten.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/p2a.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/p2a.pdf",
+          "text": "Waterschappen 2023/p2a",
+          "pdf_name": "p2a.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/verslag-controleprotocol-gsb_waterschap-zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/verslag-controleprotocol-gsb_waterschap-zh.pdf",
+          "text": "Waterschappen 2023/verslag-controleprotocol-gsb_waterschap-zh",
+          "pdf_name": "verslag-controleprotocol-gsb_waterschap-zh.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/verslag-controleprotocol-gsb_waterschap.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/verslag-controleprotocol-gsb_waterschap.pdf",
+          "text": "Waterschappen 2023/verslag-controleprotocol-gsb_waterschap",
+          "pdf_name": "verslag-controleprotocol-gsb_waterschap.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20J%20Publicatie/20220314_gr22_j_060.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220314_gr22_j_060.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model J Publicatie/20220314_gr22_j_060",
+          "pdf_name": "20220314_gr22_j_060.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20J%20Publicatie/20220314_gr22_j_061.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220314_gr22_j_061.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model J Publicatie/20220314_gr22_j_061",
+          "pdf_name": "20220314_gr22_j_061.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20J%20Publicatie/20220314_gr22_j_062.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220314_gr22_j_062.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model J Publicatie/20220314_gr22_j_062",
+          "pdf_name": "20220314_gr22_j_062.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20J%20Publicatie/20220314_gr22_j_063.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220314_gr22_j_063.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model J Publicatie/20220314_gr22_j_063",
+          "pdf_name": "20220314_gr22_j_063.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20J%20Publicatie/20220314_gr22_j_064.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220314_gr22_j_064.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model J Publicatie/20220314_gr22_j_064",
+          "pdf_name": "20220314_gr22_j_064.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20J%20Publicatie/20220315_gr22_j_070.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220315_gr22_j_070.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model J Publicatie/20220315_gr22_j_070",
+          "pdf_name": "20220315_gr22_j_070.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20J%20Publicatie/20220315_gr22_j_071.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220315_gr22_j_071.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model J Publicatie/20220315_gr22_j_071",
+          "pdf_name": "20220315_gr22_j_071.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20J%20Publicatie/20220315_gr22_j_072.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220315_gr22_j_072.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model J Publicatie/20220315_gr22_j_072",
+          "pdf_name": "20220315_gr22_j_072.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20J%20Publicatie/20220315_gr22_j_073.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220315_gr22_j_073.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model J Publicatie/20220315_gr22_j_073",
+          "pdf_name": "20220315_gr22_j_073.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20J%20Publicatie/20220315_gr22_j_074.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220315_gr22_j_074.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model J Publicatie/20220315_gr22_j_074",
+          "pdf_name": "20220315_gr22_j_074.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20K%20Publicatie/20220314_gr22_k-1_60.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220314_gr22_k-1_60.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model K Publicatie/20220314_gr22_k-1_60",
+          "pdf_name": "20220314_gr22_k-1_60.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20K%20Publicatie/20220314_gr22_k-1_61.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220314_gr22_k-1_61.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model K Publicatie/20220314_gr22_k-1_61",
+          "pdf_name": "20220314_gr22_k-1_61.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20K%20Publicatie/20220314_gr22_k-1_62.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220314_gr22_k-1_62.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model K Publicatie/20220314_gr22_k-1_62",
+          "pdf_name": "20220314_gr22_k-1_62.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20K%20Publicatie/20220314_gr22_k-1_63.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220314_gr22_k-1_63.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model K Publicatie/20220314_gr22_k-1_63",
+          "pdf_name": "20220314_gr22_k-1_63.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20K%20Publicatie/20220314_gr22_k-1_64.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220314_gr22_k-1_64.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model K Publicatie/20220314_gr22_k-1_64",
+          "pdf_name": "20220314_gr22_k-1_64.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20K%20Publicatie/20220315_gr22_k-1_70.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220315_gr22_k-1_70.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model K Publicatie/20220315_gr22_k-1_70",
+          "pdf_name": "20220315_gr22_k-1_70.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20K%20Publicatie/20220315_gr22_k-1_71.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220315_gr22_k-1_71.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model K Publicatie/20220315_gr22_k-1_71",
+          "pdf_name": "20220315_gr22_k-1_71.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20K%20Publicatie/20220315_gr22_k-1_72.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220315_gr22_k-1_72.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model K Publicatie/20220315_gr22_k-1_72",
+          "pdf_name": "20220315_gr22_k-1_72.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20K%20Publicatie/20220315_gr22_k-1_73.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220315_gr22_k-1_73.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model K Publicatie/20220315_gr22_k-1_73",
+          "pdf_name": "20220315_gr22_k-1_73.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20K%20Publicatie/20220315_gr22_k-1_74.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220315_gr22_k-1_74.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model K Publicatie/20220315_gr22_k-1_74",
+          "pdf_name": "20220315_gr22_k-1_74.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20K%20Publicatie/20220316_gr22_k-1.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220316_gr22_k-1.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model K Publicatie/20220316_gr22_k-1",
+          "pdf_name": "20220316_gr22_k-1.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20N%2010%20Publicatie/20220316_gr22_n10_001.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220316_gr22_n10_001.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model N 10 Publicatie/20220316_gr22_n10_001",
+          "pdf_name": "20220316_gr22_n10_001.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20N%2010%20Publicatie/20220316_gr22_n10_002.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220316_gr22_n10_002.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model N 10 Publicatie/20220316_gr22_n10_002",
+          "pdf_name": "20220316_gr22_n10_002.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20N%2010%20Publicatie/20220316_gr22_n10_003.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220316_gr22_n10_003.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model N 10 Publicatie/20220316_gr22_n10_003",
+          "pdf_name": "20220316_gr22_n10_003.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20N%2010%20Publicatie/20220316_gr22_n10_004.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220316_gr22_n10_004.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model N 10 Publicatie/20220316_gr22_n10_004",
+          "pdf_name": "20220316_gr22_n10_004.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20N%2010%20Publicatie/20220316_gr22_n10_005.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220316_gr22_n10_005.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model N 10 Publicatie/20220316_gr22_n10_005",
+          "pdf_name": "20220316_gr22_n10_005.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20N%2010%20Publicatie/20220316_gr22_n10_006.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220316_gr22_n10_006.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model N 10 Publicatie/20220316_gr22_n10_006",
+          "pdf_name": "20220316_gr22_n10_006.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20N%2010%20Publicatie/20220316_gr22_n10_007.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220316_gr22_n10_007.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model N 10 Publicatie/20220316_gr22_n10_007",
+          "pdf_name": "20220316_gr22_n10_007.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20N%2010%20Publicatie/20220316_gr22_n10_008.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220316_gr22_n10_008.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model N 10 Publicatie/20220316_gr22_n10_008",
+          "pdf_name": "20220316_gr22_n10_008.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20N%2010%20Publicatie/20220316_gr22_n10_009.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220316_gr22_n10_009.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model N 10 Publicatie/20220316_gr22_n10_009",
+          "pdf_name": "20220316_gr22_n10_009.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20N%2010%20Publicatie/20220316_gr22_n10_010.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220316_gr22_n10_010.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model N 10 Publicatie/20220316_gr22_n10_010",
+          "pdf_name": "20220316_gr22_n10_010.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20N%2010%20Publicatie/20220316_gr22_n10_011.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220316_gr22_n10_011.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model N 10 Publicatie/20220316_gr22_n10_011",
+          "pdf_name": "20220316_gr22_n10_011.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20N%2010%20Publicatie/20220316_gr22_n10_012.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220316_gr22_n10_012.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model N 10 Publicatie/20220316_gr22_n10_012",
+          "pdf_name": "20220316_gr22_n10_012.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20N%2010%20Publicatie/20220316_gr22_n10_013.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220316_gr22_n10_013.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model N 10 Publicatie/20220316_gr22_n10_013",
+          "pdf_name": "20220316_gr22_n10_013.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20N%2010%20Publicatie/20220316_gr22_n10_014.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220316_gr22_n10_014.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model N 10 Publicatie/20220316_gr22_n10_014",
+          "pdf_name": "20220316_gr22_n10_014.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20N%2010%20Publicatie/20220316_gr22_n10_015.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220316_gr22_n10_015.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model N 10 Publicatie/20220316_gr22_n10_015",
+          "pdf_name": "20220316_gr22_n10_015.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20N%2010%20Publicatie/20220316_gr22_n10_016.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220316_gr22_n10_016.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model N 10 Publicatie/20220316_gr22_n10_016",
+          "pdf_name": "20220316_gr22_n10_016.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20N%2010%20Publicatie/20220316_gr22_n10_023.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220316_gr22_n10_023.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model N 10 Publicatie/20220316_gr22_n10_023",
+          "pdf_name": "20220316_gr22_n10_023.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20N%2010%20Publicatie/20220316_gr22_n10_024.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220316_gr22_n10_024.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model N 10 Publicatie/20220316_gr22_n10_024",
+          "pdf_name": "20220316_gr22_n10_024.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20N11/20220317_gr22_n11.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220317_gr22_n11.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model N11/20220317_gr22_n11",
+          "pdf_name": "20220317_gr22_n11.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Model%20P22-2/20220321_gr22_p22-2.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/20220321_gr22_p22-2.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Model P22-2/20220321_gr22_p22-2",
+          "pdf_name": "20220321_gr22_p22-2.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        },
+        {
+          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Gemeenteraadsverkiezing%202022/Telling%20Eijsden-Margraten/osv4-3_telling_gr2022_eijsden-margraten.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/osv4-3_telling_gr2022_eijsden-margraten.pdf",
+          "text": "Gemeenteraadsverkiezing 2022/Telling Eijsden-Margraten/osv4-3_telling_gr2022_eijsden-margraten",
+          "pdf_name": "osv4-3_telling_gr2022_eijsden-margraten.pdf",
+          "score": 4,
+          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
+        }
+      ]
+    },
+    {
       "name": "Eersel",
       "start_url": "https://www.eersel.nl/verkiezingen",
       "pdfs": [
@@ -22393,6 +23738,182 @@
           "from": "local"
         },
         {
+          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Proces-verbaal%20gemeentelijk%20stembureau%20Waterschap%20Scheldestromen%202023.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Proces-verbaal20gemeentelijk20stembureau20Waterschap20Scheldestromen202023.pdf",
+          "text": "Proces-verbaal20gemeentelijk20stembureau20Waterschap20Scheldestromen202023",
+          "pdf_name": "Proces-verbaal20gemeentelijk20stembureau20Waterschap20Scheldestromen202023.pdf",
+          "score": 1,
+          "from": "local"
+        },
+        {
+          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Baarland%20Corrigendum%20Waterschap%20Scheldestromen%202023.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Baarland20Corrigendum20Waterschap20Scheldestromen202023.pdf",
+          "text": "Baarland20Corrigendum20Waterschap20Scheldestromen202023",
+          "pdf_name": "Baarland20Corrigendum20Waterschap20Scheldestromen202023.pdf",
+          "score": 1,
+          "from": "local"
+        },
+        {
+          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Baarland%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Baarland20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "text": "Baarland20Proces-verbaal20Waterschap20Scheldestromen202023",
+          "pdf_name": "Baarland20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "score": 1,
+          "from": "local"
+        },
+        {
+          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Borssele%20Corrigendum%20Waterschap%20Scheldestromen%202023.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Borssele20Corrigendum20Waterschap20Scheldestromen202023.pdf",
+          "text": "Borssele20Corrigendum20Waterschap20Scheldestromen202023",
+          "pdf_name": "Borssele20Corrigendum20Waterschap20Scheldestromen202023.pdf",
+          "score": 1,
+          "from": "local"
+        },
+        {
+          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Borssele%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Borssele20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "text": "Borssele20Proces-verbaal20Waterschap20Scheldestromen202023",
+          "pdf_name": "Borssele20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "score": 1,
+          "from": "local"
+        },
+        {
+          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Driewegen%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Driewegen20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "text": "Driewegen20Proces-verbaal20Waterschap20Scheldestromen202023",
+          "pdf_name": "Driewegen20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "score": 1,
+          "from": "local"
+        },
+        {
+          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Ellewoutsdijk%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Ellewoutsdijk20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "text": "Ellewoutsdijk20Proces-verbaal20Waterschap20Scheldestromen202023",
+          "pdf_name": "Ellewoutsdijk20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "score": 1,
+          "from": "local"
+        },
+        {
+          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Heinkenszand%20De%20Stenge%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Heinkenszand20De20Stenge20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "text": "Heinkenszand20De20Stenge20Proces-verbaal20Waterschap20Scheldestromen202023",
+          "pdf_name": "Heinkenszand20De20Stenge20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "score": 1,
+          "from": "local"
+        },
+        {
+          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Heinkenszand%20Dijkstede%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Heinkenszand20Dijkstede20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "text": "Heinkenszand20Dijkstede20Proces-verbaal20Waterschap20Scheldestromen202023",
+          "pdf_name": "Heinkenszand20Dijkstede20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "score": 1,
+          "from": "local"
+        },
+        {
+          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Hoedekenskerke%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Hoedekenskerke20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "text": "Hoedekenskerke20Proces-verbaal20Waterschap20Scheldestromen202023",
+          "pdf_name": "Hoedekenskerke20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "score": 1,
+          "from": "local"
+        },
+        {
+          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Kwadendamme%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Kwadendamme20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "text": "Kwadendamme20Proces-verbaal20Waterschap20Scheldestromen202023",
+          "pdf_name": "Kwadendamme20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "score": 1,
+          "from": "local"
+        },
+        {
+          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Lewedorp%20Proces-verbaal%20Waterschap%20Scheldestromen%202023_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Lewedorp20Proces-verbaal20Waterschap20Scheldestromen202023_0.pdf",
+          "text": "Lewedorp20Proces-verbaal20Waterschap20Scheldestromen202023_0",
+          "pdf_name": "Lewedorp20Proces-verbaal20Waterschap20Scheldestromen202023_0.pdf",
+          "score": 1,
+          "from": "local"
+        },
+        {
+          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Nieuwdorp%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Nieuwdorp20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "text": "Nieuwdorp20Proces-verbaal20Waterschap20Scheldestromen202023",
+          "pdf_name": "Nieuwdorp20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "score": 1,
+          "from": "local"
+        },
+        {
+          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Nisse%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Nisse20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "text": "Nisse20Proces-verbaal20Waterschap20Scheldestromen202023",
+          "pdf_name": "Nisse20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "score": 1,
+          "from": "local"
+        },
+        {
+          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Oudelande%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Oudelande20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "text": "Oudelande20Proces-verbaal20Waterschap20Scheldestromen202023",
+          "pdf_name": "Oudelande20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "score": 1,
+          "from": "local"
+        },
+        {
+          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Ovezande%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Ovezande20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "text": "Ovezande20Proces-verbaal20Waterschap20Scheldestromen202023",
+          "pdf_name": "Ovezande20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "score": 1,
+          "from": "local"
+        },
+        {
+          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/sGravenpolder%20De%20Zwake%20Corrigendum%20Waterschap%20Scheldestromen%202023.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/sGravenpolder20De20Zwake20Corrigendum20Waterschap20Scheldestromen202023.pdf",
+          "text": "sGravenpolder20De20Zwake20Corrigendum20Waterschap20Scheldestromen202023",
+          "pdf_name": "sGravenpolder20De20Zwake20Corrigendum20Waterschap20Scheldestromen202023.pdf",
+          "score": 1,
+          "from": "local"
+        },
+        {
+          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/sGravenpolder%20De%20Zwake%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/sGravenpolder20De20Zwake20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "text": "sGravenpolder20De20Zwake20Proces-verbaal20Waterschap20Scheldestromen202023",
+          "pdf_name": "sGravenpolder20De20Zwake20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "score": 1,
+          "from": "local"
+        },
+        {
+          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/sGravenpolder%20Dorpshuis%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/sGravenpolder20Dorpshuis20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "text": "sGravenpolder20Dorpshuis20Proces-verbaal20Waterschap20Scheldestromen202023",
+          "pdf_name": "sGravenpolder20Dorpshuis20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "score": 1,
+          "from": "local"
+        },
+        {
+          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/sHeer%20Abtskerke%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/sHeer20Abtskerke20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "text": "sHeer20Abtskerke20Proces-verbaal20Waterschap20Scheldestromen202023",
+          "pdf_name": "sHeer20Abtskerke20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "score": 1,
+          "from": "local"
+        },
+        {
+          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/sHeerenhoek%20Corrigendum%20Waterschap%20Scheldestromen%202023.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/sHeerenhoek20Corrigendum20Waterschap20Scheldestromen202023.pdf",
+          "text": "sHeerenhoek20Corrigendum20Waterschap20Scheldestromen202023",
+          "pdf_name": "sHeerenhoek20Corrigendum20Waterschap20Scheldestromen202023.pdf",
+          "score": 1,
+          "from": "local"
+        },
+        {
+          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/sHeerenhoek%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/sHeerenhoek20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "text": "sHeerenhoek20Proces-verbaal20Waterschap20Scheldestromen202023",
+          "pdf_name": "sHeerenhoek20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
+          "score": 1,
+          "from": "local"
+        },
+        {
           "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/0654_controleprotocol_GSBWS_MH.pdf",
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/0654_controleprotocol_GSBWS_MH.pdf",
           "text": "0654_controleprotocol_GSBWS_MH",
@@ -24298,23 +25819,8 @@
       "pdfs": []
     },
     {
-      "name": "Eijsden-Margraten",
-      "start_url": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html",
-      "pdfs": []
-    },
-    {
       "name": "Eindhoven",
       "start_url": "https://www.eindhoven.nl/bestuur-en-beleid/verkiezingen/tweede-kamerverkiezing-2025",
-      "pdfs": []
-    },
-    {
-      "name": "Elburg",
-      "start_url": "https://www.elburg.nl/Bestuur_en_organisatie/Verkiezingen",
-      "pdfs": []
-    },
-    {
-      "name": "Emmen",
-      "start_url": "https://gemeente.emmen.nl/verkiezingen",
       "pdfs": []
     },
     {

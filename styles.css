@@ -218,6 +218,9 @@ nav ul li a.active::after {
   font-size: 13px;
   line-height: 1.1;
 }
+
+/* Respect hidden attribute on alert banners even when base styles set display */
+.alert-banner[hidden] { display: none !important; }
 .answer-chip--no { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
 
 .year-toggle {

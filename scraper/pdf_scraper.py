@@ -131,7 +131,7 @@ def _is_current_year_pdf(label: str) -> bool:
         return (2000 + y) == TARGET_YEAR_FULL
 
     # Date-like patterns: DD[-_/]MM[-_/](YYYY|YY)
-    for dm in re.finditer(r"\b(\d{1,2})[-_/](\d{1,2})[-_/](\d{2,4})\b", s):
+    for dm in re.finditer(r"(?<!\d)(\d{1,2})[-_/](\d{1,2})[-_/](\d{2,4})(?!\d)", s):
         year = dm.group(3)
         try:
             y = int(year)
@@ -145,7 +145,7 @@ def _is_current_year_pdf(label: str) -> bool:
             continue
 
     # Date-like patterns: YYYY[-_/]MM[-_/]DD or YY[-_/]MM[-_/]DD
-    for dm in re.finditer(r"\b(\d{2,4})[-_/](\d{1,2})[-_/](\d{1,2})\b", s):
+    for dm in re.finditer(r"(?<!\d)(\d{2,4})[-_/](\d{1,2})[-_/](\d{1,2})(?!\d)", s):
         year = dm.group(1)
         try:
             y = int(year)
