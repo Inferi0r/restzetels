@@ -1,9 +1,819 @@
 {
   "results": [
     {
-      "name": "Emmen",
-      "start_url": "https://gemeente.emmen.nl/verkiezingen",
+      "name": "Deurne",
+      "start_url": "https://www.deurne.nl/verkiezingen",
+      "pdfs": [
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/ps2023_uitslag_per_stemlokaal_deurne.pdf?cb=k6Wfc1hQ",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/ps2023_uitslag_per_stemlokaal_deurne.pdf",
+          "text": "Totaaluitslag stemmen per stemlokaal PDF, 88 kB",
+          "pdf_name": "ps2023_uitslag_per_stemlokaal_deurne.pdf",
+          "score": 4,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen-provinciale-staten-2023"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/wam2023_totaaluitslag_deurne.pdf?cb=P451rlf8",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/wam2023_totaaluitslag_deurne.pdf",
+          "text": "Totaaluitslag verkiezingen waterschap Aa en Maas 2023 PDF, 38,9 kB",
+          "pdf_name": "wam2023_totaaluitslag_deurne.pdf",
+          "score": 4,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen-waterschap-aa-en-maas-2023"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/wam2023_uitslag_per_stemlokaal_deurne.pdf?cb=A1sbXhwE",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/wam2023_uitslag_per_stemlokaal_deurne.pdf",
+          "text": "Totaaluitslag stemmen per stemlokaal PDF, 69,2 kB",
+          "pdf_name": "wam2023_uitslag_per_stemlokaal_deurne.pdf",
+          "score": 4,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen-waterschap-aa-en-maas-2023"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/tk2023_totaaluitslag_verkiezingen_23_november_2023.pdf?cb=TEPLlP_Y",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/tk2023_totaaluitslag_verkiezingen_23_november_2023.pdf",
+          "text": "Totaaluitslag verkiezingen Tweede Kamer 2023 PDF, 56,3 kB",
+          "pdf_name": "tk2023_totaaluitslag_verkiezingen_23_november_2023.pdf",
+          "score": 4,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen-tweede-kamer-2023"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/tk2023_totaaluitslag_per_stembureau_gemeente_deurne_20231123.pdf?cb=nu5bbwjW",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/tk2023_totaaluitslag_per_stembureau_gemeente_deurne_20231123.pdf",
+          "text": "Totaaluitslag stemmen per stemlokaal PDF, 124,8 kB",
+          "pdf_name": "tk2023_totaaluitslag_per_stembureau_gemeente_deurne_20231123.pdf",
+          "score": 4,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen-tweede-kamer-2023"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/tweede-kamerverkiezingsuitslag-per-stembureau_2021.pdf?cb=CNxiVAxz",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/tweede-kamerverkiezingsuitslag-per-stembureau_2021.pdf",
+          "text": "Totaaluitslag stemmen per stemlokaal PDF, 179,3 kB",
+          "pdf_name": "tweede-kamerverkiezingsuitslag-per-stembureau_2021.pdf",
+          "score": 4,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen-tweede-kamer-2021"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_totaaluitslag_tk25.pdf?cb=mp0MqaJD",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_totaaluitslag_tk25.pdf",
+          "text": "Deurne_totaaluitslag TK25 PDF, 55,1 kB",
+          "pdf_name": "deurne_totaaluitslag_tk25.pdf",
+          "score": 4,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_totaaluitslag_per_stemlokaal_tk25.pdf?cb=yjfOYI0b",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_totaaluitslag_per_stemlokaal_tk25.pdf",
+          "text": "Deurne_totaaluitslag per stemlokaal TK25 PDF, 85,7 kB",
+          "pdf_name": "deurne_totaaluitslag_per_stemlokaal_tk25.pdf",
+          "score": 4,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_01_gemeentehuis_1_tk25_eerste_telling.pdf?cb=cz7fYBOG",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_01_gemeentehuis_1_tk25_eerste_telling.pdf",
+          "text": "deurne_01_gemeentehuis_1_tk25_eerste_telling.pdf PDF, 456 kB",
+          "pdf_name": "deurne_01_gemeentehuis_1_tk25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_02_de_nieuwenhof_tk25_eerste_telling.pdf?cb=WZRMvjnW",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_02_de_nieuwenhof_tk25_eerste_telling.pdf",
+          "text": "deurne_02_de_nieuwenhof_tk25_eerste_telling.pdf PDF, 464,1 kB",
+          "pdf_name": "deurne_02_de_nieuwenhof_tk25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_04_wijkcentrum_de_heiakker_tk25_eerste_telling.pdf?cb=sFRSErTR",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_04_wijkcentrum_de_heiakker_tk25_eerste_telling.pdf",
+          "text": "deurne_04_wijkcentrum_de_heiakker_tk25_eerste_telling.pdf PDF, 447,5 kB",
+          "pdf_name": "deurne_04_wijkcentrum_de_heiakker_tk25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_03_wijkhuis_dn_houtenhoek_tk25_eerste_telling.pdf?cb=3yH3rQ1F",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_03_wijkhuis_dn_houtenhoek_tk25_eerste_telling.pdf",
+          "text": "deurne_03_wijkhuis_dn_houtenhoek_tk25_eerste_telling.pdf PDF, 450,6 kB",
+          "pdf_name": "deurne_03_wijkhuis_dn_houtenhoek_tk25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_05_gerardushuis_tk25_eerste_telling.pdf?cb=zLXyhYC4",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_05_gerardushuis_tk25_eerste_telling.pdf",
+          "text": "deurne_05_gerardushuis_tk25_eerste_telling.pdf PDF, 456,4 kB",
+          "pdf_name": "deurne_05_gerardushuis_tk25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_06_obs_de_bron_tk25_eerste_telling.pdf?cb=LaWIAn4H",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_06_obs_de_bron_tk25_eerste_telling.pdf",
+          "text": "deurne_06_obs_de_bron_tk25_eerste_telling.pdf PDF, 451,8 kB",
+          "pdf_name": "deurne_06_obs_de_bron_tk25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_07_hofke_van_marijke_1_tk25_eerste_telling.pdf?cb=4wMtLnfK",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_07_hofke_van_marijke_1_tk25_eerste_telling.pdf",
+          "text": "deurne_07_hofke_van_marijke_1_tk25_eerste_telling.pdf PDF, 452,6 kB",
+          "pdf_name": "deurne_07_hofke_van_marijke_1_tk25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_08_mfa_t_huis_vlierden_tk25_eerste_telling.pdf?cb=WmlhNulw",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_08_mfa_t_huis_vlierden_tk25_eerste_telling.pdf",
+          "text": "deurne_08_mfa_t_huis_vlierden_tk25_eerste_telling.pdf PDF, 443,3 kB",
+          "pdf_name": "deurne_08_mfa_t_huis_vlierden_tk25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_09_basisschool_de_piramide_tk25_eerste_telling.pdf?cb=OztWLILG",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_09_basisschool_de_piramide_tk25_eerste_telling.pdf",
+          "text": "deurne_09_basisschool_de_piramide_tk25_eerste_telling.pdf PDF, 469,7 kB",
+          "pdf_name": "deurne_09_basisschool_de_piramide_tk25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_10_s.c.c._den_draai_1_tk25_eerste_telling.pdf?cb=sTeLKK08",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_10_s.c.c._den_draai_1_tk25_eerste_telling.pdf",
+          "text": "deurne_10_s.c.c._den_draai_1_tk25_eerste_telling.pdf PDF, 446,5 kB",
+          "pdf_name": "deurne_10_s.c.c._den_draai_1_tk25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_11_gemeenschapshuis_de_kastanje_tk25_eerste_telling.pdf?cb=76GYt_mm",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_11_gemeenschapshuis_de_kastanje_tk25_eerste_telling.pdf",
+          "text": "deurne_11_gemeenschapshuis_de_kastanje_tk25_eerste_telling.pdf PDF, 435,8 kB",
+          "pdf_name": "deurne_11_gemeenschapshuis_de_kastanje_tk25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_12_ontmoetingsruimte_de_gasterij_tk25_eerste_telling.pdf?cb=6CKvB7SX",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_12_ontmoetingsruimte_de_gasterij_tk25_eerste_telling.pdf",
+          "text": "deurne_12_ontmoetingsruimte_de_gasterij_tk25_eerste_telling.pdf PDF, 450,1 kB",
+          "pdf_name": "deurne_12_ontmoetingsruimte_de_gasterij_tk25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_13_gemeenschapshuis_de_moost_tk25_eerste_telling.pdf?cb=oHK72-Ay",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_13_gemeenschapshuis_de_moost_tk25_eerste_telling.pdf",
+          "text": "deurne_13_gemeenschapshuis_de_moost_tk25_eerste_telling.pdf PDF, 469,3 kB",
+          "pdf_name": "deurne_13_gemeenschapshuis_de_moost_tk25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_14_gemeenschapshuis_de_gouden_helm_tk25_eerste_telling.pdf?cb=HB1nCOlZ",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_14_gemeenschapshuis_de_gouden_helm_tk25_eerste_telling.pdf",
+          "text": "deurne_14_gemeenschapshuis_de_gouden_helm_tk25_eerste_telling.pdf PDF, 444,8 kB",
+          "pdf_name": "deurne_14_gemeenschapshuis_de_gouden_helm_tk25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_15_basisschool_dn_heiakker_tk25_eerste_telling.pdf?cb=ffgcA8xS",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_15_basisschool_dn_heiakker_tk25_eerste_telling.pdf",
+          "text": "deurne_15_basisschool_dn_heiakker_tk25_eerste_telling.pdf PDF, 452,9 kB",
+          "pdf_name": "deurne_15_basisschool_dn_heiakker_tk25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_16_hofke_van_marijke_2_tk25_eerste_telling.pdf?cb=wIYZVMQe",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_16_hofke_van_marijke_2_tk25_eerste_telling.pdf",
+          "text": "deurne_16_hofke_van_marijke_2_tk25_eerste_telling.pdf PDF, 440,1 kB",
+          "pdf_name": "deurne_16_hofke_van_marijke_2_tk25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_17_gemeentehuis_2_tk25_eerste_telling.pdf?cb=v7omdCbC",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_17_gemeentehuis_2_tk25_eerste_telling.pdf",
+          "text": "deurne_17_gemeentehuis_2_tk25_eerste_telling.pdf PDF, 455,1 kB",
+          "pdf_name": "deurne_17_gemeentehuis_2_tk25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_21_microsporthal_tk25_eerste_telling.pdf?cb=1rgXX7Fl",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_21_microsporthal_tk25_eerste_telling.pdf",
+          "text": "deurne_21_microsporthal_tk25_eerste_telling.pdf PDF, 454,2 kB",
+          "pdf_name": "deurne_21_microsporthal_tk25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_22_s.c.c._den_draai_2_tk25_eerste_telling.pdf?cb=m1QtVmru",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_22_s.c.c._den_draai_2_tk25_eerste_telling.pdf",
+          "text": "deurne_22_s.c.c._den_draai_2_tk25_eerste_telling.pdf PDF, 446,3 kB",
+          "pdf_name": "deurne_22_s.c.c._den_draai_2_tk25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_01_gemeentehuis_tk2025_bijlage_2.pdf?cb=H6WqC7Zv",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_01_gemeentehuis_tk2025_bijlage_2.pdf",
+          "text": "deurne_01_gemeentehuis_tk2025_bijlage_2.pdf PDF, 1,8 MB",
+          "pdf_name": "deurne_01_gemeentehuis_tk2025_bijlage_2.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_02_de_zorgboog_-_de_nieuwenhof_tk2025_bijlage_2.pdf?cb=EMgqbqfL",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_02_de_zorgboog_-_de_nieuwenhof_tk2025_bijlage_2.pdf",
+          "text": "deurne_02_de_zorgboog_-_de_nieuwenhof_tk2025_bijlage_2.pdf PDF, 1,8 MB",
+          "pdf_name": "deurne_02_de_zorgboog_-_de_nieuwenhof_tk2025_bijlage_2.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_03_wijkhuis_dn_houtenhoek_tk2025_bijlage_2.pdf?cb=mw_npbIa",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_03_wijkhuis_dn_houtenhoek_tk2025_bijlage_2.pdf",
+          "text": "deurne_03_wijkhuis_dn_houtenhoek_tk2025_bijlage_2.pdf PDF, 1,8 MB",
+          "pdf_name": "deurne_03_wijkhuis_dn_houtenhoek_tk2025_bijlage_2.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_04_wijkcentrum_de_heiakker_tk2025_bijlage_2.pdf?cb=TCsczfz6",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_04_wijkcentrum_de_heiakker_tk2025_bijlage_2.pdf",
+          "text": "deurne_04_wijkcentrum_de_heiakker_tk2025_bijlage_2.pdf PDF, 1,9 MB",
+          "pdf_name": "deurne_04_wijkcentrum_de_heiakker_tk2025_bijlage_2.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_06_openbare_basisschool_de_bron_tk2025_bijlage_2.pdf?cb=QT09Tt_t",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_06_openbare_basisschool_de_bron_tk2025_bijlage_2.pdf",
+          "text": "deurne_06_openbare_basisschool_de_bron_tk2025_bijlage_2.pdf PDF, 1,9 MB",
+          "pdf_name": "deurne_06_openbare_basisschool_de_bron_tk2025_bijlage_2.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_05_gerardushuis_tk2025_bijlage_2.pdf?cb=QJ9ekdlG",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_05_gerardushuis_tk2025_bijlage_2.pdf",
+          "text": "deurne_05_gerardushuis_tk2025_bijlage_2.pdf PDF, 1,8 MB",
+          "pdf_name": "deurne_05_gerardushuis_tk2025_bijlage_2.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_07_hofke_van_marijke_tk2025_bijlage_2.pdf?cb=PRu6-Stw",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_07_hofke_van_marijke_tk2025_bijlage_2.pdf",
+          "text": "deurne_07_hofke_van_marijke_tk2025_bijlage_2.pdf PDF, 1,9 MB",
+          "pdf_name": "deurne_07_hofke_van_marijke_tk2025_bijlage_2.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_08_mfa_t_huis_vlierden_tk2025_bijlage_2.pdf?cb=6M9E_QOw",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_08_mfa_t_huis_vlierden_tk2025_bijlage_2.pdf",
+          "text": "deurne_08_mfa_t_huis_vlierden_tk2025_bijlage_2.pdf PDF, 1,8 MB",
+          "pdf_name": "deurne_08_mfa_t_huis_vlierden_tk2025_bijlage_2.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_09_basisschool_de_piramide_tk2025_bijlage_2.pdf?cb=lh73wXEB",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_09_basisschool_de_piramide_tk2025_bijlage_2.pdf",
+          "text": "deurne_09_basisschool_de_piramide_tk2025_bijlage_2.pdf PDF, 1,8 MB",
+          "pdf_name": "deurne_09_basisschool_de_piramide_tk2025_bijlage_2.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_10_s.c.c._den_draai_tk2025_bijlage_2.pdf?cb=obeMpKEs",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_10_s.c.c._den_draai_tk2025_bijlage_2.pdf",
+          "text": "deurne_10_s.c.c._den_draai_tk2025_bijlage_2.pdf PDF, 1,8 MB",
+          "pdf_name": "deurne_10_s.c.c._den_draai_tk2025_bijlage_2.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_12_ontmoetingsruimte_de_gasterij_tk2025_bijlage_2.pdf?cb=0Y8LfUCn",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_12_ontmoetingsruimte_de_gasterij_tk2025_bijlage_2.pdf",
+          "text": "deurne_12_ontmoetingsruimte_de_gasterij_tk2025_bijlage_2.pdf PDF, 1,8 MB",
+          "pdf_name": "deurne_12_ontmoetingsruimte_de_gasterij_tk2025_bijlage_2.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_13_gemeenschapshuis_de_moost_tk2025_bijlage_2.pdf?cb=gceJNHX_",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_13_gemeenschapshuis_de_moost_tk2025_bijlage_2.pdf",
+          "text": "deurne_13_gemeenschapshuis_de_moost_tk2025_bijlage_2.pdf PDF, 1,8 MB",
+          "pdf_name": "deurne_13_gemeenschapshuis_de_moost_tk2025_bijlage_2.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_11_gemeenschapshuis_de_kastanje_tk2025_bijlage_2.pdf?cb=jC6WZHx3",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_11_gemeenschapshuis_de_kastanje_tk2025_bijlage_2.pdf",
+          "text": "deurne_11_gemeenschapshuis_de_kastanje_tk2025_bijlage_2.pdf PDF, 1,9 MB",
+          "pdf_name": "deurne_11_gemeenschapshuis_de_kastanje_tk2025_bijlage_2.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_14_gemeenschapshuis_de_gouden_helm_tk2025_bijlage_2.pdf?cb=_sV13X4u",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_14_gemeenschapshuis_de_gouden_helm_tk2025_bijlage_2.pdf",
+          "text": "deurne_14_gemeenschapshuis_de_gouden_helm_tk2025_bijlage_2.pdf PDF, 1,9 MB",
+          "pdf_name": "deurne_14_gemeenschapshuis_de_gouden_helm_tk2025_bijlage_2.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_15_basisschool_dn_heiakker_tk2025_bijlage2.pdf?cb=B2m_gy0q",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_15_basisschool_dn_heiakker_tk2025_bijlage2.pdf",
+          "text": "deurne_15_basisschool_dn_heiakker_tk2025_bijlage2.pdf PDF, 1,8 MB",
+          "pdf_name": "deurne_15_basisschool_dn_heiakker_tk2025_bijlage2.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_16_hofke_van_marijke_2_tk2025_bijlage_2.pdf?cb=e6pUcWK9",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_16_hofke_van_marijke_2_tk2025_bijlage_2.pdf",
+          "text": "deurne_16_hofke_van_marijke_2_tk2025_bijlage_2.pdf PDF, 1,8 MB",
+          "pdf_name": "deurne_16_hofke_van_marijke_2_tk2025_bijlage_2.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_17_gemeentehuis_2_tk2025_bijlage_2.pdf?cb=wa7DjsIJ",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_17_gemeentehuis_2_tk2025_bijlage_2.pdf",
+          "text": "deurne_17_gemeentehuis_2_tk2025_bijlage_2.pdf PDF, 1,9 MB",
+          "pdf_name": "deurne_17_gemeentehuis_2_tk2025_bijlage_2.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_21_microsporthal_tk2025_bijlage_2.pdf?cb=QcPCpEeK",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_21_microsporthal_tk2025_bijlage_2.pdf",
+          "text": "deurne_21_microsporthal_tk2025_bijlage_2.pdf PDF, 1,9 MB",
+          "pdf_name": "deurne_21_microsporthal_tk2025_bijlage_2.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_22_s.c.c._den_draai_2_tk2025_bijlage_2.pdf?cb=8PQq_sYV",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_22_s.c.c._den_draai_2_tk2025_bijlage_2.pdf",
+          "text": "deurne_22_s.c.c._den_draai_2_tk2025_bijlage_2.pdf PDF, 1,8 MB",
+          "pdf_name": "deurne_22_s.c.c._den_draai_2_tk2025_bijlage_2.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_uitkomst_tk25_31-2_zonder_handtekening_1.pdf?cb=95n7-0oB",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_uitkomst_tk25_31-2_zonder_handtekening_1.pdf",
+          "text": "deurne_uitkomst_tk25_31-2_zonder_handtekening.pdf PDF, 2,3 MB",
+          "pdf_name": "deurne_uitkomst_tk25_31-2_zonder_handtekening_1.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/deurne_verklaring_aansluitvoorvoorschriften_tk25.pdf?cb=8c8eTaaa",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_verklaring_aansluitvoorvoorschriften_tk25.pdf",
+          "text": "deurne_verklaring_aansluitvoorvoorschriften_tk25.pdf PDF, 49,4 kB",
+          "pdf_name": "deurne_verklaring_aansluitvoorvoorschriften_tk25.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/uitslag-verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/Xentari_0.pdf?cb=Feg-_dG8",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/Xentari_0.pdf",
+          "text": "Xentari.pdf (PDF, 223,6 kB )",
+          "pdf_name": "Xentari_0.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/eikenprocessierups"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/G-9999-25-002%20Overzichtskaart%20bestrijding%20processierups_0.pdf?cb=CITK5Zvt",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/G-9999-25-00220Overzichtskaart20bestrijding20processierups_0.pdf",
+          "text": "G-9999-25-002 Overzichtskaart bestrijding processierups.pdf (PDF, 8,1 MB )",
+          "pdf_name": "G-9999-25-002%20Overzichtskaart%20bestrijding%20processierups_0.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/eikenprocessierups"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/Stratenlijst%20preventieve%20bestrijding%20processierups%202025_0.pdf?cb=XZFxaps1",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/Stratenlijst20preventieve20bestrijding20processierups202025_0.pdf",
+          "text": "Stratenlijst preventieve bestrijding processierups 2025.pdf (PDF, 163,8 kB )",
+          "pdf_name": "Stratenlijst%20preventieve%20bestrijding%20processierups%202025_0.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/eikenprocessierups"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/deurne/uploads/model-l-8-verzoek-stemmen-bij-volmacht.pdf?cb=IJmgtyT0",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/model-l-8-verzoek-stemmen-bij-volmacht.pdf",
+          "text": "model-l-8-verzoek-stemmen-bij-volmacht.pdf (PDF, 372,7 kB )",
+          "pdf_name": "model-l-8-verzoek-stemmen-bij-volmacht.pdf",
+          "score": 1,
+          "from": "https://www.deurne.nl/verkiezingen-een-ander-machtigen"
+        }
+      ]
+    },
+    {
+      "name": "Diemen",
+      "start_url": "https://www.diemen.nl/Onderwerpen/Verkiezingen",
+      "pdfs": [
+        {
+          "remote_url": "https://www.diemen.nl/Onderwerpen/Verkiezingen/Uitslag_Tweede_Kamerverkiezing_2025/Definitieve_einduitslag_Tweede_Kamerverkiezingen/Proces_verbaal_van_de_nieuwe_zitting/Diemen_uitkomst_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Diemen/Diemen_uitkomst_TK25.pdf",
+          "text": "Diemen_uitkomst_TK25",
+          "pdf_name": "Diemen_uitkomst_TK25.pdf",
+          "score": 4,
+          "from": "https://www.diemen.nl/Onderwerpen/Verkiezingen/Uitslag_Tweede_Kamerverkiezing_2025/Definitieve_einduitslag_Tweede_Kamerverkiezingen"
+        },
+        {
+          "remote_url": "https://www.diemen.nl/Onderwerpen/Verkiezingen/Uitslag_Tweede_Kamerverkiezing_2025/Definitieve_einduitslag_Tweede_Kamerverkiezingen/Verklaring_onderzoek_aansluitvoorschriften/Diemen_verklaring_aansluitvoorschriften.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Diemen/Diemen_verklaring_aansluitvoorschriften.pdf",
+          "text": "Diemen_verklaring_aansluitvoorschriften",
+          "pdf_name": "Diemen_verklaring_aansluitvoorschriften.pdf",
+          "score": 4,
+          "from": "https://www.diemen.nl/Onderwerpen/Verkiezingen/Uitslag_Tweede_Kamerverkiezing_2025/Definitieve_einduitslag_Tweede_Kamerverkiezingen"
+        },
+        {
+          "remote_url": "https://www.diemen.nl/Onderwerpen2/Verkiezingen/Tweede_kamer_verkiezingen_2023/Stemmen_voor_kiezers_met_een_beperking/Infographic_hulp_voor_kiezers_met_een_beperking_versie_gemeente.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Diemen/Infographic_hulp voor kiezers met een beperking_versie gemeente.pdf",
+          "text": "deze infographic",
+          "pdf_name": "Infographic_hulp_voor_kiezers_met_een_beperking_versie_gemeente.pdf",
+          "score": 4,
+          "from": "https://www.diemen.nl/Onderwerpen/Verkiezingen/Algemene_informatie_over_stemmen/Stemmen_voor_kiezers_met_een_beperking"
+        },
+        {
+          "remote_url": "https://www.diemen.nl/Onderwerpen/Verkiezingen/Regelen_voor_het_stemmen/Stemmen_bij_volmacht/model_l_8_verzoek_stemmen_bij_volmacht_pdf.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Diemen/model-l-8-verzoek-stemmen-bij-volmacht-pdf.pdf",
+          "text": "Model L 8 (Verzoek om bij volmacht te stemmen)",
+          "pdf_name": "model_l_8_verzoek_stemmen_bij_volmacht_pdf.pdf",
+          "score": 4,
+          "from": "https://www.diemen.nl/Onderwerpen/Verkiezingen/Regelen_voor_het_stemmen/Stemmen_bij_volmacht"
+        }
+      ]
+    },
+    {
+      "name": "Dijk en Waard",
+      "start_url": "https://www.dijkenwaard.nl/verkiezingen",
       "pdfs": []
+    },
+    {
+      "name": "Dinkelland",
+      "start_url": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025",
+      "pdfs": [
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_1_gemeentehuis_dinkelland_raadzaal_tk25_eerste_telling_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_1_gemeentehuis_dinkelland_raadzaal_tk25_eerste_telling_0.pdf",
+          "text": "Dinkelland_1_Gemeentehuis_Dinkelland_raadzaal_TK25_eerste_telling ( PDF - 594.55 kB )",
+          "pdf_name": "dinkelland_1_gemeentehuis_dinkelland_raadzaal_tk25_eerste_telling_0.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_1_gemeentehuis_raadzaal_tk25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_1_gemeentehuis_raadzaal_tk25.pdf",
+          "text": "Dinkelland_1_Gemeentehuis_Dinkelland_raadzaal_TK25 ( PDF - 2.43 MB )",
+          "pdf_name": "dinkelland_1_gemeentehuis_raadzaal_tk25.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_2_gemeentehuis_dinkelland_centrale_hal_tk25_eerste_telling_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_2_gemeentehuis_dinkelland_centrale_hal_tk25_eerste_telling_0.pdf",
+          "text": "Dinkelland_2_Gemeentehuis_Dinkelland_centrale_hal_TK25_eerste_telling ( PDF - 591.77 kB )",
+          "pdf_name": "dinkelland_2_gemeentehuis_dinkelland_centrale_hal_tk25_eerste_telling_0.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_2_gemeentehuis_centrale_hal_tk25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_2_gemeentehuis_centrale_hal_tk25.pdf",
+          "text": "Dinkelland_2_Gemeentehuis_Dinkelland_centrale_hal_TK25 ( PDF - 2.43 MB )",
+          "pdf_name": "dinkelland_2_gemeentehuis_centrale_hal_tk25.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_3_denekamper_ijsclub_tk25_eerste_telling_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_3_denekamper_ijsclub_tk25_eerste_telling_0.pdf",
+          "text": "Dinkelland_3_Denekamper_Ijsclub_TK25_eerste_telling ( PDF - 587.79 kB )",
+          "pdf_name": "dinkelland_3_denekamper_ijsclub_tk25_eerste_telling_0.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_3_denekamper_ijsclub_tk25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_3_denekamper_ijsclub_tk25.pdf",
+          "text": "Dinkelland_3_Denekamper_Ijsclub_TK25 ( PDF - 2.34 MB )",
+          "pdf_name": "dinkelland_3_denekamper_ijsclub_tk25.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_4_brandweerkazerne_tk25_eerste_telling_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_4_brandweerkazerne_tk25_eerste_telling_0.pdf",
+          "text": "Dinkelland_4_Brandweerkazerne_TK25_eerste_telling ( PDF - 613.87 kB )",
+          "pdf_name": "dinkelland_4_brandweerkazerne_tk25_eerste_telling_0.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_4_brandweerkazerne_tk25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_4_brandweerkazerne_tk25.pdf",
+          "text": "Dinkelland_4_Brandweerkazerne_TK25 ( PDF - 2.43 MB )",
+          "pdf_name": "dinkelland_4_brandweerkazerne_tk25.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_5_kulturhus_de_mare_tk25_eerste_telling_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_5_kulturhus_de_mare_tk25_eerste_telling_0.pdf",
+          "text": "Dinkelland_5_kulturhus_de_Mare_TK25_eerste_telling ( PDF - 583.83 kB )",
+          "pdf_name": "dinkelland_5_kulturhus_de_mare_tk25_eerste_telling_0.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_5_kulturhus_de_mare_tk25_1.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_5_kulturhus_de_mare_tk25_1.pdf",
+          "text": "Dinkelland_5_kulturhus_de_Mare_TK25 ( PDF - 2.48 MB )",
+          "pdf_name": "dinkelland_5_kulturhus_de_mare_tk25_1.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_6_gasterij_de_smid_tk25_eerste_telling_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_6_gasterij_de_smid_tk25_eerste_telling_0.pdf",
+          "text": "Dinkelland_6_gasterij_de_Smid_TK25_eerste_telling ( PDF - 602.3 kB )",
+          "pdf_name": "dinkelland_6_gasterij_de_smid_tk25_eerste_telling_0.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_6_gasterij_de_smid_tk25_1.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_6_gasterij_de_smid_tk25_1.pdf",
+          "text": "Dinkelland_6_gasterij_de_Smid_TK25 ( PDF - 2.36 MB )",
+          "pdf_name": "dinkelland_6_gasterij_de_smid_tk25_1.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_7_kulturhus_tilligte_terra_nova_tk25_eerste_telling_0_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_7_kulturhus_tilligte_terra_nova_tk25_eerste_telling_0_0.pdf",
+          "text": "Dinkelland_7_kulturhus_Tilligte_Terra_Nova_TK25_eerste_telling ( PDF - 587.8 kB )",
+          "pdf_name": "dinkelland_7_kulturhus_tilligte_terra_nova_tk25_eerste_telling_0_0.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_7_kulturhus_tilligte_terra_nova_tk25_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_7_kulturhus_tilligte_terra_nova_tk25_0.pdf",
+          "text": "Dinkelland_7_kulturhus_Tilligte_Terra_Nova_TK25 ( PDF - 2.44 MB )",
+          "pdf_name": "dinkelland_7_kulturhus_tilligte_terra_nova_tk25_0.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_8_cafe_restaurant_groot_agelo_tk25_eerste_telling_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_8_cafe_restaurant_groot_agelo_tk25_eerste_telling_0.pdf",
+          "text": "Dinkelland_8_cafe_restaurant_Groot_Agelo_TK25_eerste_telling ( PDF - 577.02 kB )",
+          "pdf_name": "dinkelland_8_cafe_restaurant_groot_agelo_tk25_eerste_telling_0.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_8_cafe_restaurant_groot_agelo_tk25_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_8_cafe_restaurant_groot_agelo_tk25_0.pdf",
+          "text": "Dinkelland_8_cafe_restaurant_Groot_Agelo_TK25 ( PDF - 2.43 MB )",
+          "pdf_name": "dinkelland_8_cafe_restaurant_groot_agelo_tk25_0.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_9_gemeenschapscentrum_t_trefpunt_dinkelzaal_tk25_eerste_telling_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_9_gemeenschapscentrum_t_trefpunt_dinkelzaal_tk25_eerste_telling_0.pdf",
+          "text": "Dinkelland_9_gemeenschapscentrum_t_Trefpunt_Dinkelzaal_TK25_eerste_telling ( PDF - 609.85 kB )",
+          "pdf_name": "dinkelland_9_gemeenschapscentrum_t_trefpunt_dinkelzaal_tk25_eerste_telling_0.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_9_gemeenschapscentrum_t_trefpunt_dinkelzaal_tk25_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_9_gemeenschapscentrum_t_trefpunt_dinkelzaal_tk25_0.pdf",
+          "text": "Dinkelland_9_gemeenschapscentrum_t_Trefpunt_Dinkelzaal_TK25 ( PDF - 2.42 MB )",
+          "pdf_name": "dinkelland_9_gemeenschapscentrum_t_trefpunt_dinkelzaal_tk25_0.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_10_gemeenschapscentrum_t_trefpunt_harmoniezaal_tk25_eerste_telling_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_10_gemeenschapscentrum_t_trefpunt_harmoniezaal_tk25_eerste_telling_0.pdf",
+          "text": "Dinkelland_10_gemeenschapscentrum_t_Trefpunt_Harmoniezaal_TK25_eerste_telling ( PDF - 609.42 kB )",
+          "pdf_name": "dinkelland_10_gemeenschapscentrum_t_trefpunt_harmoniezaal_tk25_eerste_telling_0.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_10_gemeenschapscentrum_t_trefpunt_harmoniezaal_tk25_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_10_gemeenschapscentrum_t_trefpunt_harmoniezaal_tk25_0.pdf",
+          "text": "Dinkelland_10_gemeenschapscentrum_t_Trefpunt_Harmoniezaal_TK25 ( PDF - 2.35 MB )",
+          "pdf_name": "dinkelland_10_gemeenschapscentrum_t_trefpunt_harmoniezaal_tk25_0.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_11_muziekgebouw_st-caecillia_tk25_eerste_telling_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_11_muziekgebouw_st-caecillia_tk25_eerste_telling_0.pdf",
+          "text": "Dinkelland_11_muziekgebouw_St-Caecillia_TK25_eerste_telling ( PDF - 567.92 kB )",
+          "pdf_name": "dinkelland_11_muziekgebouw_st-caecillia_tk25_eerste_telling_0.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_11_muziekgebouw_st-caecillia_tk25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_11_muziekgebouw_st-caecillia_tk25.pdf",
+          "text": "Dinkelland_11_muziekgebouw_St._Caecillia_TK25 ( PDF - 2.4 MB )",
+          "pdf_name": "dinkelland_11_muziekgebouw_st-caecillia_tk25.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_12_kulturhus_rabo_de_cocer_zaal_1_tk25_eerste_telling_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_12_kulturhus_rabo_de_cocer_zaal_1_tk25_eerste_telling_0.pdf",
+          "text": "Dinkelland_12_kulturhus_Rabo_de_CoCeR_zaal_1_RK25_eerste_telling ( PDF - 575.95 kB )",
+          "pdf_name": "dinkelland_12_kulturhus_rabo_de_cocer_zaal_1_tk25_eerste_telling_0.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_12_kulturhus_rabo_de_cocer_zaal_1_tk25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_12_kulturhus_rabo_de_cocer_zaal_1_tk25.pdf",
+          "text": "Dinkelland_12_kulturhus_Rabo_de_CoCeR_zaal_1_TK25 ( PDF - 2.38 MB )",
+          "pdf_name": "dinkelland_12_kulturhus_rabo_de_cocer_zaal_1_tk25.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_13_pastorie_deurningen_tk25_eerste_telling_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_13_pastorie_deurningen_tk25_eerste_telling_0.pdf",
+          "text": "Dinkelland_13_Pastorie_Deurningen_TK25_eerste_telling ( PDF - 598.65 kB )",
+          "pdf_name": "dinkelland_13_pastorie_deurningen_tk25_eerste_telling_0.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_13_pastorie_deurningen_tk25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_13_pastorie_deurningen_tk25.pdf",
+          "text": "Dinkelland_13_Pastorie_Deurningen_TK25 ( PDF - 2.46 MB )",
+          "pdf_name": "dinkelland_13_pastorie_deurningen_tk25.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_14_stichting_het_damast_zaal_1_tk25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_14_stichting_het_damast_zaal_1_tk25_eerste_telling.pdf",
+          "text": "Dinkelland_14_stichting_het_Damast_zaal_1_TK25_eerste_telling ( PDF - 589.13 kB )",
+          "pdf_name": "dinkelland_14_stichting_het_damast_zaal_1_tk25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_14_stichting_het_damast_zaal_1_tk25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_14_stichting_het_damast_zaal_1_tk25.pdf",
+          "text": "Dinkelland_14_stichting_het_Damast_zaal_1_TK25 ( PDF - 2.4 MB )",
+          "pdf_name": "dinkelland_14_stichting_het_damast_zaal_1_tk25.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_15_stichting_het_damast_zaal_2_tk25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_15_stichting_het_damast_zaal_2_tk25_eerste_telling.pdf",
+          "text": "Dinkelland_15_stichting_het_Damast_zaal_2_TK25_eerste_telling ( PDF - 594.76 kB )",
+          "pdf_name": "dinkelland_15_stichting_het_damast_zaal_2_tk25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_15_stichting_het_damast_zaal_2_tk25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_15_stichting_het_damast_zaal_2_tk25.pdf",
+          "text": "Dinkelland_15_stichting_het_Damast_zaal_2_TK25 ( PDF - 2.52 MB )",
+          "pdf_name": "dinkelland_15_stichting_het_damast_zaal_2_tk25.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_16_sporthal_de_schalm_tk25_eerste_telling_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_16_sporthal_de_schalm_tk25_eerste_telling_0.pdf",
+          "text": "Dinkelland_16_sporthal_de_Schalm_TK25_eerste_telling ( PDF - 624.26 kB )",
+          "pdf_name": "dinkelland_16_sporthal_de_schalm_tk25_eerste_telling_0.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_16_sporthal_de_schalm_tk25_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_16_sporthal_de_schalm_tk25_0.pdf",
+          "text": "Dinkelland_16_sporthal_de_Schalm_TK25 ( PDF - 2.44 MB )",
+          "pdf_name": "dinkelland_16_sporthal_de_schalm_tk25_0.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_17_kulturhus_rabo_de_cocer_zaal_2_tk25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_17_kulturhus_rabo_de_cocer_zaal_2_tk25_eerste_telling.pdf",
+          "text": "Dinkelland_17_kulturhus_Rabo_de_CoCeR_zaal_2_TK25_eerste_telling ( PDF - 639.2 kB )",
+          "pdf_name": "dinkelland_17_kulturhus_rabo_de_cocer_zaal_2_tk25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_17_kulturhus_rabo_de_cocer_zaal_2_tk_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_17_kulturhus_rabo_de_cocer_zaal_2_tk_0.pdf",
+          "text": "Dinkelland_17_kulturhus_Rabo_de_CoCeR_zaal_2_TK25 ( PDF - 2.41 MB )",
+          "pdf_name": "dinkelland_17_kulturhus_rabo_de_cocer_zaal_2_tk_0.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_18_mobiel_stembureau_tk25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_18_mobiel_stembureau_tk25_eerste_telling.pdf",
+          "text": "Dinkelland_18_mobiel_stembureau_TK25_eerste_telling ( PDF - 597.97 kB )",
+          "pdf_name": "dinkelland_18_mobiel_stembureau_tk25_eerste_telling.pdf",
+          "score": 4,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_18_mobiel_stembureau_tk25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_18_mobiel_stembureau_tk25.pdf",
+          "text": "Dinkelland_18_mobiel_stembureau_TK25 ( PDF - 2.39 MB )",
+          "pdf_name": "dinkelland_18_mobiel_stembureau_tk25.pdf",
+          "score": 4,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/dinkelland_uitkomst_tk25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_uitkomst_tk25.pdf",
+          "text": "Dinkelland_uitkomst_TK25 ( PDF - 3.67 MB )",
+          "pdf_name": "dinkelland_uitkomst_tk25.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-10/verklaring-onderzoek-aansluitvoorschriften-dinkelland.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/verklaring-onderzoek-aansluitvoorschriften-dinkelland.pdf",
+          "text": "Dinkelland_verklaring_aansluitvoorschriften ( PDF - 81.36 kB )",
+          "pdf_name": "verklaring-onderzoek-aansluitvoorschriften-dinkelland.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-09/openbare-kennisgeving-stemmen-bij-volmacht-dinkelland.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/openbare-kennisgeving-stemmen-bij-volmacht-dinkelland.pdf",
+          "text": "Openbare kennisgeving stemmen bij volmacht ( PDF - 23.65 kB )",
+          "pdf_name": "openbare-kennisgeving-stemmen-bij-volmacht-dinkelland.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-09/openbare-kennisgeving-kiezerspas-dinkelland.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/openbare-kennisgeving-kiezerspas-dinkelland.pdf",
+          "text": "Openbare kennisgeving kiezerspas ( PDF - 21.88 kB )",
+          "pdf_name": "openbare-kennisgeving-kiezerspas-dinkelland.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-09/openbare-kennisgeving-centraal-tellen.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/openbare-kennisgeving-centraal-tellen.pdf",
+          "text": "Openbare kennisgeving centraal tellen ( PDF - 48.97 kB )",
+          "pdf_name": "openbare-kennisgeving-centraal-tellen.pdf",
+          "score": 1,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-09/openbare-kennisgeving-gemeentelijk-stembureau-dinkelland.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/openbare-kennisgeving-gemeentelijk-stembureau-dinkelland.pdf",
+          "text": "Openbare kennisgeving gemeentelijk stembureau ( PDF - 35.58 kB )",
+          "pdf_name": "openbare-kennisgeving-gemeentelijk-stembureau-dinkelland.pdf",
+          "score": 4,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://www.dinkelland.nl/sites/default/files/2025-09/openbare-kennisgeving-mobiel-stembureau-dinkelland.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/openbare-kennisgeving-mobiel-stembureau-dinkelland.pdf",
+          "text": "Openbare kennisgeving mobiel stembureau ( PDF - 23.73 kB )",
+          "pdf_name": "openbare-kennisgeving-mobiel-stembureau-dinkelland.pdf",
+          "score": 4,
+          "from": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025"
+        }
+      ]
     },
     {
       "name": "Den Haag",
@@ -8589,26 +9399,6 @@
           "from": "local"
         }
       ]
-    },
-    {
-      "name": "Deurne",
-      "start_url": "https://www.deurne.nl/verkiezingen",
-      "pdfs": []
-    },
-    {
-      "name": "Diemen",
-      "start_url": "https://www.diemen.nl/Onderwerpen/Verkiezingen",
-      "pdfs": []
-    },
-    {
-      "name": "Dijk en Waard",
-      "start_url": "https://www.dijkenwaard.nl/verkiezingen",
-      "pdfs": []
-    },
-    {
-      "name": "Dinkelland",
-      "start_url": "https://www.dinkelland.nl/tweede-kamerverkiezingen-2025",
-      "pdfs": []
     },
     {
       "name": "Doesburg",
@@ -34318,6 +35108,11 @@
     {
       "name": "Elburg",
       "start_url": "https://www.elburg.nl/Bestuur_en_organisatie/Verkiezingen",
+      "pdfs": []
+    },
+    {
+      "name": "Emmen",
+      "start_url": "https://gemeente.emmen.nl/verkiezingen",
       "pdfs": []
     },
     {

@@ -6,6 +6,7 @@
 *.pyc
 *.pyo
 *.pyd
+*.log
 
 # Ignore downloaded artifacts
 *.pdf
