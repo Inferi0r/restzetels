@@ -1,0 +1,11 @@
+# Ignore downloaded PDFs and common binary artifacts
+pdfs/
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.zip
+__pycache__/
+.venv/
+*.pyc
+.DS_Store

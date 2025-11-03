@@ -99,23 +99,68 @@ def _is_current_year_pdf(label: str) -> bool:
     if not isinstance(label, str):
         return True
     s = label.lower()
+
+    # Reject other elections by explicit codes/words + year
+    # EP (Europees Parlement)
+    if re.search(r"\b(ep|europees|europees\s+parlement)\s*20(\d{2})\b", s):
+        y = int(re.search(r"\b(ep|europees|europees\s+parlement)\s*20(\d{2})\b", s).group(2))
+        return (2000 + y) == TARGET_YEAR_FULL
+    # PS (Provinciale Staten)
+    if re.search(r"\bps\s*20(\d{2})\b", s):
+        y = int(re.search(r"\bps\s*20(\d{2})\b", s).group(1))
+        return (2000 + y) == TARGET_YEAR_FULL
+    # WS (Waterschapsverkiezingen)
+    if re.search(r"\bws\s*20(\d{2})\b", s):
+        y = int(re.search(r"\bws\s*20(\d{2})\b", s).group(1))
+        return (2000 + y) == TARGET_YEAR_FULL
+
     # TKyy code
     m = re.search(r"\btk\s*([0-9]{2})\b", s, re.I)
     if m:
         yy = int(m.group(1))
         return yy == TARGET_YEAR_SHORT
+
+    # "tweede kamer YYYY" — accept only 2025
+    m = re.search(r"\btweede\s+kamer\s+20(\d{2})\b", s)
+    if m:
+        y = int(m.group(1))
+        return (2000 + y) == TARGET_YEAR_FULL
+
     # Date-like patterns: DD[-_/]MM[-_/](YYYY|YY)
     for dm in re.finditer(r"\b(\d{1,2})[-_/](\d{1,2})[-_/](\d{2,4})\b", s):
         year = dm.group(3)
         try:
             y = int(year)
             if len(year) == 4:
-                return y == TARGET_YEAR_FULL
+                if y != TARGET_YEAR_FULL:
+                    return False
             else:
-                return y == TARGET_YEAR_SHORT
+                if y != TARGET_YEAR_SHORT:
+                    return False
         except Exception:
             continue
-    # If no explicit year found, keep
+
+    # Date-like patterns: YYYY[-_/]MM[-_/]DD or YY[-_/]MM[-_/]DD
+    for dm in re.finditer(r"\b(\d{2,4})[-_/](\d{1,2})[-_/](\d{1,2})\b", s):
+        year = dm.group(1)
+        try:
+            y = int(year)
+            if len(year) == 4:
+                if y != TARGET_YEAR_FULL:
+                    return False
+            else:
+                if y != TARGET_YEAR_SHORT:
+                    return False
+        except Exception:
+            continue
+
+    # General year tokens: any 4-digit year in 2000..2099 not equal to 2025 implies reject
+    for ym in re.finditer(r"\b(20\d{2})\b", s):
+        y = int(ym.group(1))
+        if y != TARGET_YEAR_FULL:
+            return False
+
+    # If no explicit contrary year found, keep
     return True
 
 
@@ -299,11 +344,11 @@ def download_mediafiler_album(muni: str, album_url: str, items_seed: list[dict])
             new_items: list[tuple[str, str]] = []
             for m in rx1.finditer(html):
                 f, fn = m.group(1), m.group(2)
-                if f not in processed:
+                if f not in processed and _is_current_year_pdf(fn):
                     new_items.append((f, fn))
             for m in rx2.finditer(html):
                 f, fn = m.group(1), m.group(2)
-                if f not in processed:
+                if f not in processed and _is_current_year_pdf(fn):
                     new_items.append((f, fn))
             for fuid, fname in new_items:
                 try:
@@ -474,6 +519,9 @@ def download_stackstorage_share(muni: str, share_url: str) -> list[dict]:
                     if not name.lower().endswith('.pdf'):
                         continue
                     base = os.path.basename(name)
+                    # Skip banned PDFs before writing to disk
+                    if not _is_current_year_pdf(base):
+                        continue
                     dest = os.path.join(out_dir, base)
                     base0, ext = os.path.splitext(dest)
                     i = 1; use = dest
@@ -489,6 +537,10 @@ def download_stackstorage_share(muni: str, share_url: str) -> list[dict]:
             base0, ext = os.path.splitext(base)
             if not ext.lower() == '.pdf':
                 base = base0 + '.pdf'
+            # Skip banned PDFs before saving
+            if not _is_current_year_pdf(os.path.basename(base)):
+                # ensure tmp is cleaned below and do not save
+                return []
             use = base; i = 1
             while os.path.exists(use):
                 use = f"{base0}_{i}{ext or '.pdf'}"; i += 1
@@ -532,7 +584,7 @@ def download_stackstorage_share(muni: str, share_url: str) -> list[dict]:
                     })
         except Exception as e:
             print(f"[stackstorage] Download-all failed for {share_url}: {e}")
-        # Fallback: per-file download anchors
+        # Fallback: per-file download anchors (skip banned before saving)
         anchors = page.locator('a[download], a[data-action="download"], a:has-text("Download")')
         n = anchors.count()
         for i in range(n):
@@ -540,10 +592,15 @@ def download_stackstorage_share(muni: str, share_url: str) -> list[dict]:
                 with page.expect_download(timeout=45000) as dl_ctx:
                     anchors.nth(i).click()
                 dl = dl_ctx.value
+                # Early check on suggested filename, skip saving if banned
+                sf = dl.suggested_filename or 'download.pdf'
+                if not sf.lower().endswith('.pdf'):
+                    sf = sf + '.pdf'
+                if not _is_current_year_pdf(sf):
+                    # Do not persist banned file
+                    continue
                 for path in save_download(dl):
                     fname = os.path.basename(path)
-                    if not _is_current_year_pdf(fname):
-                        continue
                     items.append({
                         "remote_url": share_url,
                         "local_url": "file://" + os.path.abspath(path),
@@ -1032,8 +1089,9 @@ def run(argv: list[str] | None = None) -> int:
         score = p.get("score") if isinstance(p.get("score"), (int, float)) else 0
         from_page = p.get("from") or ((remote_url or "").split('#',1)[0] if (remote_url and "mediafiler.net" in remote_url) else (remote_url or "unknown"))
         q = dict(p)
-        # Clear legacy url field to avoid confusion
+        # Clear legacy/unused fields to avoid confusion
         q.pop("url", None)
+        q.pop("preview_text", None)
         q.update({
             "remote_url": remote_url,
             "local_url": local_url,
@@ -1250,12 +1308,14 @@ def run(argv: list[str] | None = None) -> int:
             for alb in albums:
                 items = collect_mediafiler_album_items(alb) or parse_mediafiler_album_for_items(alb)
                 for it in (items or []):
+                    fn = it.get('filename') or ''
+                    if not _is_current_year_pdf(fn):
+                        continue
                     mediafiler_items.append({
                         "remote_url": f"{it.get('album_url')}#fuid={it.get('fuid')}",
                         "local_url": None,
-                        "pdf_name": it.get('filename'),
+                        "pdf_name": fn,
                         "text": "MediaFiler",
-                        "preview_text": it.get('filename'),
                         "from": it.get('album_url') or "unknown",
                         "score": 0,
                     })

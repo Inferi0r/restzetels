@@ -20,7 +20,7 @@ Notes
     DO_ACCESS_KEY_ID=...
     DO_SECRET_ACCESS_KEY=...
 - Uploads are ACL public-read by default.
-- Compares local file MD5 to remote ETag to skip unchanged uploads (works for typical single-part uploads).
+- Fast mode: skips hashing; treats same key (path) as unchanged.
 - Requires `boto3`: pip install boto3
 """
 from __future__ import annotations
@@ -28,7 +28,6 @@ from __future__ import annotations
 import argparse
 import base64
 import concurrent.futures as cf
-import hashlib
 import mimetypes
 import os
 import sys
@@ -75,15 +74,7 @@ def load_dotenv(path: str = ".env") -> bool:
         return False
 
 
-def md5_hex(path: str, chunk_size: int = 1024 * 1024) -> str:
-    h = hashlib.md5()
-    with open(path, "rb") as f:
-        while True:
-            b = f.read(chunk_size)
-            if not b:
-                break
-            h.update(b)
-    return h.hexdigest()
+# No MD5 hashing: we assume identical keys (paths) are unchanged for speed.
 
 
 def iter_local_pdfs(root: str) -> Iterable[Tuple[str, str]]:
@@ -189,10 +180,9 @@ def sync(
     for abs_path, rel_key in locals_list:
         key = prefix.rstrip("/") + "/" + rel_key if prefix else rel_key
         local_keys_set.add(key)
-        md5_local = md5_hex(abs_path)
-        remote = remote_map.get(key)
-        if remote and remote.etag and remote.etag.lower() == md5_local.lower():
-            continue  # unchanged
+        # Fast-path: if key exists remotely, assume unchanged (skip hashing/etag)
+        if key in remote_map:
+            continue
         plan_uploads.append((abs_path, key))
 
     # Decide deletions

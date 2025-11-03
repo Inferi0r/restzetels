@@ -53,7 +53,7 @@ def normalize_entry(item: dict) -> dict:
     return q
 
 
-def reconcile_muni(entry: dict, pdfs_root: str) -> bool:
+def reconcile_muni(entry: dict, pdfs_root: str, drop_remote_only: bool = False) -> bool:
     """Update a municipality entry in-place:
       - fix local_url to match on-disk file
       - if pdf_name had a _N suffix removed on disk, update to kept base
@@ -117,7 +117,7 @@ def reconcile_muni(entry: dict, pdfs_root: str) -> bool:
                     except Exception:
                         pass
         # Decide whether to keep an entry
-        if q.get("local_url") or q.get("remote_url"):
+        if q.get("local_url") or (q.get("remote_url") and not drop_remote_only):
             new_list.append(q)
         else:
             # entry without any resolvable location is dropped
@@ -134,6 +134,7 @@ def main() -> int:
     ap.add_argument("--index", default="pdf_scraper_input/municipality_pdfs_index.json")
     ap.add_argument("--munis", default="pdf_scraper_input/municipalities.json")
     ap.add_argument("--pdfs", default="pdfs")
+    ap.add_argument("--drop-remote-only", action="store_true", help="Drop entries that only have remote_url and no local file on disk")
     args = ap.parse_args()
 
     with open(args.munis, "r", encoding="utf-8") as f:
@@ -166,7 +167,7 @@ def main() -> int:
         e = name_to_entry.get(name)
         if not e:
             continue
-        if reconcile_muni(e, args.pdfs):
+        if reconcile_muni(e, args.pdfs, drop_remote_only=args.drop_remote_only):
             changed_any = True
 
     if changed_any:
@@ -180,4 +181,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

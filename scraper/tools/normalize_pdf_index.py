@@ -7,7 +7,8 @@ from urllib.parse import urlparse
 
 def sanitize_entry(p: dict) -> dict:
     out = dict(p or {})
-    url = out.get("url") or "unknown"
+    # Prefer remote_url as canonical 'url' for legacy compatibility
+    url = out.get("remote_url") or out.get("url") or "unknown"
     out["url"] = url
 
     # pdf_name

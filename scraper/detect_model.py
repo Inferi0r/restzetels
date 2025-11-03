@@ -161,7 +161,7 @@ def ocr_header_text(local_url: str) -> str | None:
 
 def detect_model_for_item(p: dict) -> str:
     # 1) Snelle heuristiek op strings
-    s = norm_text(p.get("pdf_name"), p.get("text"), p.get("preview_text"), p.get("remote_url"), p.get("local_url"), p.get("from"))
+    s = norm_text(p.get("pdf_name"), p.get("text"), p.get("remote_url"), p.get("local_url"), p.get("from"))
     hit = detect_from_strings(s)
     if hit:
         return hit
