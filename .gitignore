@@ -12,3 +12,6 @@
 *.png
 *.tsv
 *.txt
+ 
+# Local secrets/env
+.env

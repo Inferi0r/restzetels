@@ -1,0 +1,135 @@
+{
+  "dpi": 400,
+  "pages": {
+    "1": [],
+    "2": [],
+    "3": [
+      {
+        "name": "right_column",
+        "type": "digits_column",
+        "x0_pdf": 476.2208,
+        "x1_pdf": 587.276
+      }
+    ],
+    "4": [
+      {
+        "name": "right_column",
+        "type": "digits_column",
+        "x0_pdf": 476.2208,
+        "x1_pdf": 587.276
+      }
+    ],
+    "5": [
+      {
+        "name": "right_column",
+        "type": "digits_column",
+        "x0_pdf": 476.2208,
+        "x1_pdf": 587.276
+      }
+    ],
+    "6": [
+      {
+        "name": "right_column",
+        "type": "digits_column",
+        "x0_pdf": 476.2208,
+        "x1_pdf": 587.276
+      }
+    ],
+    "7": [
+      {
+        "name": "right_column",
+        "type": "digits_column",
+        "x0_pdf": 476.2208,
+        "x1_pdf": 587.276
+      }
+    ],
+    "8": [
+      {
+        "name": "right_column",
+        "type": "digits_column",
+        "x0_pdf": 476.2208,
+        "x1_pdf": 587.276
+      }
+    ],
+    "9": [
+      {
+        "name": "right_column",
+        "type": "digits_column",
+        "x0_pdf": 476.2208,
+        "x1_pdf": 587.276
+      }
+    ],
+    "10": [
+      {
+        "name": "right_column",
+        "type": "digits_column",
+        "x0_pdf": 476.2208,
+        "x1_pdf": 587.276
+      }
+    ],
+    "11": [
+      {
+        "name": "right_column",
+        "type": "digits_column",
+        "x0_pdf": 476.2208,
+        "x1_pdf": 587.276
+      }
+    ],
+    "12": [
+      {
+        "name": "right_column",
+        "type": "digits_column",
+        "x0_pdf": 476.2208,
+        "x1_pdf": 587.276
+      }
+    ],
+    "13": [
+      {
+        "name": "right_column",
+        "type": "digits_column",
+        "x0_pdf": 476.2208,
+        "x1_pdf": 587.276
+      }
+    ],
+    "14": [
+      {
+        "name": "right_column",
+        "type": "digits_column",
+        "x0_pdf": 476.2208,
+        "x1_pdf": 587.276
+      }
+    ],
+    "15": [
+      {
+        "name": "right_column",
+        "type": "digits_column",
+        "x0_pdf": 476.2208,
+        "x1_pdf": 587.276
+      }
+    ],
+    "16": [
+      {
+        "name": "right_column",
+        "type": "digits_column",
+        "x0_pdf": 476.2208,
+        "x1_pdf": 587.276
+      }
+    ],
+    "17": [
+      {
+        "name": "right_column",
+        "type": "digits_column",
+        "x0_pdf": 476.2208,
+        "x1_pdf": 587.276
+      }
+    ],
+    "18": [
+      {
+        "name": "right_column",
+        "type": "digits_column",
+        "x0_pdf": 476.2208,
+        "x1_pdf": 587.276
+      }
+    ]
+  }
+}

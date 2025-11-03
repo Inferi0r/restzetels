@@ -3,17 +3,17 @@
   "kop": {
     "gemeente": {
       "label": "Gemeente",
-      "waarde": null,
+      "waarde": "TBD",
       "waarde_bron": "handgeschreven"
     },
     "stembureau_nummer": {
       "label": "Nummer stembureau",
-      "waarde": null,
+      "waarde": "TBD",
       "waarde_bron": "handgeschreven"
     },
     "stembureau_naam": {
       "label": "Locatie stembureau",
-      "waarde": null,
+      "waarde": "TBD",
       "waarde_bron": "handgeschreven"
     }
   },
@@ -21,44 +21,44 @@
     "toegelaten_kiezers": {
       "A": {
         "label": "Aantal geldige stempassen",
-        "waarde": null,
+        "waarde": "TBD",
         "waarde_bron": "handgeschreven"
       },
       "B": {
         "label": "Aantal geldige volmachtbewijzen (schriftelijk of via ingevulde stem- of kiezerspas)",
-        "waarde": null,
+        "waarde": "TBD",
         "waarde_bron": "handgeschreven"
       },
       "C": {
         "label": "Aantal geldige kiezerspassen",
-        "waarde": null,
+        "waarde": "TBD",
         "waarde_bron": "handgeschreven"
       },
       "D": {
         "label": "Totaal aantal toegelaten kiezers (A+B+C)",
-        "waarde": null,
+        "waarde": "TBD",
         "waarde_bron": "handgeschreven"
       }
     },
     "uitgebrachte_stemmen": {
       "E": {
         "label": "Aantal stembiljetten met een geldige stem op een kandidaat",
-        "waarde": null,
+        "waarde": "TBD",
         "waarde_bron": "handgeschreven"
       },
       "F": {
         "label": "Aantal blanco stembiljetten",
-        "waarde": null,
+        "waarde": "TBD",
         "waarde_bron": "handgeschreven"
       },
       "G": {
         "label": "Aantal ongeldige stembiljetten",
-        "waarde": null,
+        "waarde": "TBD",
         "waarde_bron": "handgeschreven"
       },
       "H": {
         "label": "Totaal aantal uitgebrachte stemmen (E+F+G)",
-        "waarde": null,
+        "waarde": "TBD",
         "waarde_bron": "handgeschreven"
       }
     }
@@ -67,28 +67,28 @@
     "verschil_toegelaten_vs_uitgebrachte": {
       "keuze": {
         "label": "Is er een verschil (Nee/Ja ...)",
-        "waarde": null,
+        "waarde": "TBD",
         "waarde_bron": "handgeschreven"
       },
       "hertelling": {
         "A2": {
           "label": "Aantal geldige stempassen (hertelling)",
-          "waarde": null,
+          "waarde": "TBD",
           "waarde_bron": "handgeschreven"
         },
         "B2": {
           "label": "Aantal geldige volmachtbewijzen (hertelling)",
-          "waarde": null,
+          "waarde": "TBD",
           "waarde_bron": "handgeschreven"
         },
         "C2": {
           "label": "Aantal geldige kiezerspassen (hertelling)",
-          "waarde": null,
+          "waarde": "TBD",
           "waarde_bron": "handgeschreven"
         },
         "D2": {
           "label": "Totaal aantal toegelaten kiezers (hertelling)",
-          "waarde": null,
+          "waarde": "TBD",
           "waarde_bron": "handgeschreven"
         }
       }
@@ -12489,6 +12489,50 @@
           ]
         }
       ]
+    },
+    {
+      "pagina": 30,
+      "lijsten": [
+        {
+          "lijstnummer": {
+            "label": "Lijstnummer",
+            "waarde_bron": "sjabloon",
+            "waarde": 25
+          },
+          "partijnaam": {
+            "label": "Partijnaam",
+            "waarde_bron": "sjabloon",
+            "waarde": "NL PLAN"
+          },
+          "kandidaten": [
+            {
+              "kandidaatnummer": {
+                "label": "Kandidaatnummer",
+                "waarde_bron": "sjabloon",
+                "waarde": 1
+              },
+              "kandidaatnaam": {
+                "label": "Kandidaatnaam",
+                "waarde_bron": "sjabloon",
+                "waarde": "Chan, K.K. (Kok)"
+              }
+            }
+          ],
+          "totaal_lijst": {
+            "label": "Totaal lijst",
+            "waarde_bron": "handgeschreven",
+            "waarde": "TBD"
+          }
+        }
+      ]
+    },
+    {
+      "pagina": 31,
+      "keuze": {
+        "label": "Verschillen lijsttotalen (ja/nee)",
+        "waarde": "TBD",
+        "waarde_bron": "handgeschreven"
+      }
     }
   ]
 }

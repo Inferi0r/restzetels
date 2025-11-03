@@ -884,7 +884,7 @@ def fill_template(template: dict, values: dict) -> dict:
             v = values.get(key)
             if v and isinstance(p1['toegelaten_kiezers'].get(key), dict):
                 cur = str(p1['toegelaten_kiezers'][key].get('waarde')).lower()
-                if cur in {"onleesbaar", "leeg", "", "null", "none"}:
+                if cur in {"onleesbaar", "leeg", "", "null", "none", "tbd"}:
                     try:
                         p1['toegelaten_kiezers'][key]['waarde'] = int(v)
                     except Exception:
@@ -894,7 +894,7 @@ def fill_template(template: dict, values: dict) -> dict:
             v = values.get(key)
             if v and isinstance(p1['uitgebrachte_stemmen'].get(key), dict):
                 cur = str(p1['uitgebrachte_stemmen'][key].get('waarde')).lower()
-                if cur in {"onleesbaar", "leeg", "", "null", "none"}:
+                if cur in {"onleesbaar", "leeg", "", "null", "none", "tbd"}:
                     try:
                         p1['uitgebrachte_stemmen'][key]['waarde'] = int(v)
                     except Exception:
@@ -907,7 +907,7 @@ def fill_template(template: dict, values: dict) -> dict:
             v = values.get(key)
             if v and v.isdigit() and isinstance(h.get(key), dict):
                 cur = str(h[key].get('waarde')).lower()
-                if cur in {"onleesbaar", "leeg", "", "null", "none"}:
+                if cur in {"onleesbaar", "leeg", "", "null", "none", "tbd"}:
                     try:
                         h[key]['waarde'] = int(v)
                     except Exception:

@@ -17,6 +17,8 @@ import sys
 import json
 from urllib.parse import urljoin, urlparse
 import argparse
+import zipfile
+import tempfile
 
 import requests
 from bs4 import BeautifulSoup
@@ -334,6 +336,45 @@ def download_mediafiler_album(muni: str, album_url: str, items_seed: list[dict])
         context.close(); browser.close()
     return saved
 
+def collect_mediafiler_album_items(album_url: str) -> list[dict]:
+    """Use Playwright to paginate an album and collect all (fuid, filename) pairs without downloading.
+    Returns list of dicts: {fuid, filename, album_url}
+    """
+    if not PLAYWRIGHT_AVAILABLE:
+        return []
+    items: list[dict] = []
+    rx1 = re.compile(r"downloadTab\('(\d+)'\s*,\s*&quot;([^&]+?\.pdf)&quot;\)")
+    rx2 = re.compile(r"downloadTab\('(\d+)'\s*,\s*'([^']+?\.pdf)'\)")
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            context = browser.new_context()
+            page = context.new_page()
+            page.goto(album_url, wait_until='domcontentloaded', timeout=60000)
+            page.wait_for_timeout(1200)
+            processed = set()
+            while True:
+                html = page.content()
+                for m in rx1.finditer(html):
+                    f, fn = m.group(1), m.group(2)
+                    if f not in processed:
+                        items.append({"fuid": f, "filename": fn, "album_url": page.url}); processed.add(f)
+                for m in rx2.finditer(html):
+                    f, fn = m.group(1), m.group(2)
+                    if f not in processed:
+                        items.append({"fuid": f, "filename": fn, "album_url": page.url}); processed.add(f)
+                try:
+                    next_btn = page.locator('#anavnext')
+                    if next_btn.count() == 0:
+                        break
+                    next_btn.click(timeout=5000)
+                    page.wait_for_timeout(800)
+                except Exception:
+                    break
+            context.close(); browser.close()
+    except Exception:
+        return items
+    return items
 
 def collect_mediafiler_albums(name: str, extra: dict) -> list[str]:
     """Discover MediaFiler album links for a municipality by scanning start/seeds and discovered pages."""
@@ -377,6 +418,190 @@ def collect_mediafiler_albums(name: str, extra: dict) -> list[str]:
     # dedup albums
     out=[]; seen=set()
     for u in albums:
+        if u in seen: continue
+        seen.add(u); out.append(u)
+    return out
+
+
+# -------- Stackstorage (generic) support --------
+
+def find_stackstorage_shares_from_html(html: str, base_url: str) -> list[str]:
+    """Return Stackstorage share links discovered in the page HTML.
+    Pattern: domain contains 'stackstorage.com' and path starts with '/s/'.
+    """
+    soup = BeautifulSoup(html or "", "html.parser")
+    shares: list[str] = []
+    for a in soup.select("a[href]"):
+        href = a.get("href")
+        if not href:
+            continue
+        full = urljoin(base_url, href)
+        u = urlparse(full)
+        if "stackstorage.com" in u.netloc and "/s/" in u.path:
+            shares.append(full.split("?", 1)[0])
+    # Dedup preserve order
+    out: list[str] = []
+    seen: set[str] = set()
+    for u in shares:
+        if u in seen:
+            continue
+        seen.add(u)
+        out.append(u)
+    return out
+
+
+def download_stackstorage_share(muni: str, share_url: str) -> list[dict]:
+    """Download PDFs from a Stackstorage share.
+    Strategy: try 'Download all' (zip), else click per-file download anchors.
+    Returns list of index items with local_url and pdf_name.
+    """
+    items: list[dict] = []
+    if not PLAYWRIGHT_AVAILABLE:
+        print(f"[stackstorage] Playwright not available; skip share {share_url}")
+        return items
+    out_dir = os.path.join(OUT_BASE, sanitize_filename(muni))
+    os.makedirs(out_dir, exist_ok=True)
+
+    def save_download(dl) -> list[str]:
+        tmpfd, tmppath = tempfile.mkstemp()
+        os.close(tmpfd)
+        dl.save_as(tmppath)
+        saved_paths: list[str] = []
+        # If it's a zip, extract PDFs
+        try:
+            with zipfile.ZipFile(tmppath) as z:
+                for name in z.namelist():
+                    if not name.lower().endswith('.pdf'):
+                        continue
+                    base = os.path.basename(name)
+                    dest = os.path.join(out_dir, base)
+                    base0, ext = os.path.splitext(dest)
+                    i = 1; use = dest
+                    while os.path.exists(use):
+                        use = f"{base0}_{i}{ext}"; i += 1
+                    with z.open(name) as src, open(use, 'wb') as f:
+                        f.write(src.read())
+                    saved_paths.append(use)
+        except zipfile.BadZipFile:
+            # Direct file (likely a single PDF)
+            suggested = dl.suggested_filename or 'download.pdf'
+            base = os.path.join(out_dir, suggested)
+            base0, ext = os.path.splitext(base)
+            if not ext.lower() == '.pdf':
+                base = base0 + '.pdf'
+            use = base; i = 1
+            while os.path.exists(use):
+                use = f"{base0}_{i}{ext or '.pdf'}"; i += 1
+            os.replace(tmppath, use)
+            saved_paths.append(use)
+        finally:
+            try:
+                if os.path.exists(tmppath):
+                    os.remove(tmppath)
+            except Exception:
+                pass
+        return saved_paths
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context(accept_downloads=True)
+        page = context.new_page()
+        page.goto(share_url, wait_until='domcontentloaded', timeout=60000)
+        try:
+            page.wait_for_load_state('networkidle', timeout=60000)
+        except Exception:
+            pass
+        # Try 'Download all'
+        try:
+            dl_links = page.locator('a:has-text("Download all")')
+            if dl_links.count() > 0:
+                with page.expect_download(timeout=60000) as dl_ctx:
+                    dl_links.first.click()
+                dl = dl_ctx.value
+                for path in save_download(dl):
+                    fname = os.path.basename(path)
+                    if not _is_current_year_pdf(fname):
+                        continue
+                    items.append({
+                        "remote_url": share_url,
+                        "local_url": "file://" + os.path.abspath(path),
+                        "pdf_name": fname,
+                        "text": fname,
+                        "from": share_url,
+                        "score": 0,
+                    })
+        except Exception as e:
+            print(f"[stackstorage] Download-all failed for {share_url}: {e}")
+        # Fallback: per-file download anchors
+        anchors = page.locator('a[download], a[data-action="download"], a:has-text("Download")')
+        n = anchors.count()
+        for i in range(n):
+            try:
+                with page.expect_download(timeout=45000) as dl_ctx:
+                    anchors.nth(i).click()
+                dl = dl_ctx.value
+                for path in save_download(dl):
+                    fname = os.path.basename(path)
+                    if not _is_current_year_pdf(fname):
+                        continue
+                    items.append({
+                        "remote_url": share_url,
+                        "local_url": "file://" + os.path.abspath(path),
+                        "pdf_name": fname,
+                        "text": fname,
+                        "from": share_url,
+                        "score": 0,
+                    })
+            except Exception:
+                pass
+        context.close(); browser.close()
+    if items:
+        print(f"[stackstorage] {muni}: downloaded {len(items)} items from {share_url}")
+    return items
+
+
+def collect_stackstorage_shares(name: str, extra: dict) -> list[str]:
+    start = get_start_url(name)
+    seeds = list(extra.get(name, [])) if extra else []
+    if start:
+        seeds.insert(0, start)
+    shares: list[str] = []
+    discover_pages: list[str] = []
+    KEY_RE = re.compile(r"verkiez|uitslag|proces|stembur|tweede.*kamer|stackstorage", re.I)
+    for s in seeds[:5]:
+        try:
+            html, base = fetch_html(s, allow_render=False)
+            if not html:
+                continue
+            shares += find_stackstorage_shares_from_html(html, base)
+            soup = BeautifulSoup(html, 'html.parser')
+            pu = urlparse(base)
+            base0 = f"{pu.scheme}://{pu.netloc}"
+            for a in soup.select('a[href]'):
+                href = a.get('href'); full = urljoin(base0, href or '')
+                if not full or urlparse(full).netloc != pu.netloc:
+                    continue
+                if KEY_RE.search(full) or KEY_RE.search(a.get_text(' ', strip=True) or ''):
+                    discover_pages.append(full)
+        except Exception:
+            pass
+    # Traverse a bit deeper
+    seenp = set(); dedup = []
+    for u in discover_pages:
+        if u in seenp: continue
+        seenp.add(u); dedup.append(u)
+    for p in dedup[:15]:
+        try:
+            html2, base2 = fetch_html(p, allow_render=False)
+            if not html2:
+                continue
+            shares += find_stackstorage_shares_from_html(html2, base2)
+        except Exception:
+            pass
+    # Dedup shares
+    out: list[str] = []
+    seen: set[str] = set()
+    for u in shares:
         if u in seen: continue
         seen.add(u); out.append(u)
     return out
@@ -451,7 +676,11 @@ def discover_via_sitemap(start_url: str, max_pages: int = 30) -> list[str]:
             rr = http_get(url, timeout=8)
         except Exception:
             return
-        soup = BeautifulSoup(rr.text, "xml")
+        # Try XML parser; fallback to html if unavailable
+        try:
+            soup = BeautifulSoup(rr.text, "xml")
+        except Exception:
+            soup = BeautifulSoup(rr.text, "html.parser")
         # nested indexes
         for loc in soup.select("sitemap > loc"):
             u = loc.get_text(strip=True)
@@ -629,7 +858,7 @@ def fetch_html(url: str, allow_render: bool = False) -> tuple[str, str] | tuple[
     return None, None
 
 
-def collect_pdfs_for_municipality(name: str, extra: dict) -> list[dict]:
+def collect_pdfs_for_municipality(name: str, extra: dict, force_render: bool = False) -> list[dict]:
     urls: list[dict] = []
     start = get_start_url(name)
     seeds = list(extra.get(name, [])) if extra else []
@@ -641,7 +870,7 @@ def collect_pdfs_for_municipality(name: str, extra: dict) -> list[dict]:
     KEY_RE = re.compile(r"verkiez|uitslag|proces|stembur|tweede.*kamer|n10|na\s*31|na31|model", re.I)
     for s in seeds[:5]:  # cap seeds processed
         try:
-            allow_render = ("amsterdam.nl" in s)
+            allow_render = ("amsterdam.nl" in s) or force_render
             html, base = fetch_html(s, allow_render=allow_render)
             if not html:
                 continue
@@ -680,7 +909,7 @@ def collect_pdfs_for_municipality(name: str, extra: dict) -> list[dict]:
         dedup.append(u)
     for p in dedup[:20]:
         try:
-            allow_render = ("amsterdam.nl" in p)
+            allow_render = ("amsterdam.nl" in p) or force_render
             html2, base2 = fetch_html(p, allow_render=allow_render)
             if not html2:
                 continue
@@ -691,7 +920,7 @@ def collect_pdfs_for_municipality(name: str, extra: dict) -> list[dict]:
     if not urls and start:
         for p in quick_site_search(start):
             try:
-                allow_render = ("amsterdam.nl" in p)
+                allow_render = ("amsterdam.nl" in p) or force_render
                 html3, base3 = fetch_html(p, allow_render=allow_render)
                 if not html3:
                     continue
@@ -723,9 +952,10 @@ def run(argv: list[str] | None = None) -> int:
     ap.add_argument("--slice", type=str, default=None, help="1-based inclusieve slice, bijv. 1-10 of 6-10")
     ap.add_argument("--first", type=int, default=None, help="Pak de eerste N gemeenten (fallback als --slice ontbreekt)")
     ap.add_argument("--merge-from-disk", action="store_true", help="Vul index aan door lokale PDF-bestanden te scannen (geen downloads)")
+    ap.add_argument("--complete-remote", action="store_true", help="Probeer ontbrekende remote_url voor bestaande items aan te vullen (geen downloads)")
     args = ap.parse_args(argv)
 
-    # Bepaal doellijst
+    # Bepaal doellijst (initieel; kan nog aangepast worden als --complete-remote zonder selectie is opgegeven)
     if args.only:
         all_names = set(get_all_names())
         names = [n for n in args.only if n in all_names]
@@ -769,6 +999,16 @@ def run(argv: list[str] | None = None) -> int:
     except Exception:
         existing_results = []
     existing_map: dict[str, dict] = {e.get("name"): e for e in existing_results if e.get("name")}
+
+    # Als --complete-remote is opgegeven zonder expliciete selectie, richt op gemeenten met missende remote_url
+    if args.complete_remote and not (args.only or args.slice or args.first):
+        miss = []
+        for n,e in existing_map.items():
+            if any((not (p.get('remote_url'))) for p in (e.get('pdfs') or [])):
+                miss.append(n)
+        if miss:
+            names = miss
+            print(f"[cleaned] Auto-selected for complete-remote: {len(names)} gemeenten met missende remote_url")
 
     index_results: list[dict] = []
 
@@ -933,6 +1173,63 @@ def run(argv: list[str] | None = None) -> int:
                     p["local_url"] = files[base]
                     continue
 
+    def complete_remote_urls_best_effort(entry: dict):
+        """Best-effort: fill missing remote_url using known 'from' page, legacy 'url',
+        other remote URLs in the same municipality (to infer a base), or the municipality start_url.
+        This does not guarantee a direct PDF link; it may point to the page or album containing it.
+        """
+        name = entry.get("name") or ""
+        start = entry.get("start_url") or get_start_url(name) or ""
+        # Collect a base from other remote URLs
+        remote_samples = []
+        for q in entry.get("pdfs", []) or []:
+            ru = q.get("remote_url") or (q.get("url") if isinstance(q.get("url"), str) and q.get("url").startswith("http") else None)
+            if ru:
+                remote_samples.append(ru)
+        base_origin = None
+        if remote_samples:
+            try:
+                # Choose the most common origin
+                from collections import Counter
+                origins = [f"{urlparse(u).scheme}://{urlparse(u).netloc}" for u in remote_samples]
+                base_origin = Counter(origins).most_common(1)[0][0]
+            except Exception:
+                base_origin = None
+        if not base_origin and start:
+            try:
+                u = urlparse(start)
+                base_origin = f"{u.scheme}://{u.netloc}"
+            except Exception:
+                base_origin = None
+        for p in entry.get("pdfs", []) or []:
+            if p.get("remote_url"):
+                continue
+            # Legacy url
+            leg = p.get("url")
+            if isinstance(leg, str) and leg.lower().startswith(("http://", "https://")):
+                p["remote_url"] = leg
+                p.pop("url", None)
+                continue
+            frm = p.get("from") or ""
+            if isinstance(frm, str) and frm.lower().startswith(("http://", "https://")):
+                # Use source page as approximate location (e.g., album or content page)
+                p["remote_url"] = frm
+                continue
+            # Fall back to inferred base + filename
+            nm = p.get("pdf_name")
+            if base_origin and nm:
+                try:
+                    # Do not assume path; put at root as best-effort
+                    from urllib.parse import quote
+                    approx = base_origin.rstrip('/') + '/' + quote(nm)
+                    p["remote_url"] = approx
+                    continue
+                except Exception:
+                    pass
+            # Last resort: use start_url itself
+            if start:
+                p["remote_url"] = start
+
     if args.merge_from_disk:
         # If --only not provided, consider all municipalities
         if not names:
@@ -940,6 +1237,33 @@ def run(argv: list[str] | None = None) -> int:
         for n in names:
             e = merge_entry(n, local_pdfs_for(n))
             complete_local_urls_for_entry(e)
+            complete_remote_urls_best_effort(e)
+    elif args.complete_remote:
+        # Alleen remote links ontdekken en mergen, zonder downloads
+        if not names:
+            names = list(existing_map.keys()) or get_all_names()
+        for n in names:
+            pdfs = collect_pdfs_for_municipality(n, extra, force_render=True)
+            # MediaFiler albums ook meenemen, maar niet downloaden
+            albums = collect_mediafiler_albums(n, extra)
+            mediafiler_items: list[dict] = []
+            for alb in albums:
+                items = collect_mediafiler_album_items(alb) or parse_mediafiler_album_for_items(alb)
+                for it in (items or []):
+                    mediafiler_items.append({
+                        "remote_url": f"{it.get('album_url')}#fuid={it.get('fuid')}",
+                        "local_url": None,
+                        "pdf_name": it.get('filename'),
+                        "text": "MediaFiler",
+                        "preview_text": it.get('filename'),
+                        "from": it.get('album_url') or "unknown",
+                        "score": 0,
+                    })
+            if mediafiler_items:
+                pdfs = pdfs + mediafiler_items
+            e = merge_entry(n, pdfs)
+            complete_local_urls_for_entry(e)
+            complete_remote_urls_best_effort(e)
     else:
         for n in names:
             out_dir = os.path.join(OUT_BASE, sanitize_filename(n))
@@ -966,6 +1290,18 @@ def run(argv: list[str] | None = None) -> int:
                     total_saved += downloaded
             if mediafiler_items:
                 pdfs = pdfs + mediafiler_items
+            # Stackstorage shares discovery + downloads
+            shares = collect_stackstorage_shares(n, extra)
+            stack_items: list[dict] = []
+            for sh in shares:
+                try:
+                    itms = download_stackstorage_share(n, sh)
+                    if itms:
+                        stack_items.extend(itms)
+                except Exception as e:
+                    print(f"[stackstorage] {n}: error downloading share {sh}: {e}")
+            if stack_items:
+                pdfs = pdfs + stack_items
             print(f"[cleaned] {n}: {len(pdfs)} pdf links (+{len(mediafiler_items)} mediafiler)")
             saved = 0
             for p in pdfs:
@@ -973,6 +1309,9 @@ def run(argv: list[str] | None = None) -> int:
                 if not u:
                     continue
                 if "mediafiler.net" in u and "#fuid=" in u:
+                    continue
+                if "stackstorage.com" in u:
+                    # handled via Playwright already
                     continue
                 dest = download_pdf(u, out_dir)
                 if dest:
@@ -982,6 +1321,7 @@ def run(argv: list[str] | None = None) -> int:
             print(f"[cleaned] {n}: saved {saved} PDFs (HTTP) -> {out_dir}")
             e = merge_entry(n, pdfs)
             complete_local_urls_for_entry(e)
+            complete_remote_urls_best_effort(e)
     # Merge unprocessed municipalities back in
     for n, e in list(existing_map.items()):
         if not any(r.get("name") == n for r in index_results):
@@ -992,6 +1332,7 @@ def run(argv: list[str] | None = None) -> int:
                 pdfs_norm = []
             new_e = {"name": e.get("name"), "start_url": get_start_url(n), "pdfs": pdfs_norm}
             complete_local_urls_for_entry(new_e)
+            complete_remote_urls_best_effort(new_e)
             index_results.append(new_e)
     # Write merged index file
     try:
