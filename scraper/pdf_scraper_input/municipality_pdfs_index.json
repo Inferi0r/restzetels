@@ -1,6 +1,998 @@
 {
   "results": [
     {
+      "name": "Doesburg",
+      "start_url": "https://www.doesburg.nl/verkiezingen-tweede-kamer-2025",
+      "pdfs": [
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doesburg/uploads/Pub-Procesverbaal stembureau 1.pdf?cb=FDWr8JgL",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doesburg/Pub-Procesverbaal stembureau 1.pdf",
+          "text": "proces-verbaal stembureau 1",
+          "pdf_name": "Pub-Procesverbaal stembureau 1.pdf",
+          "score": 4,
+          "from": "https://www.doesburg.nl/publicaties-tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doesburg/uploads/Procesverbaal stembureau 2.pdf?cb=G769yNFc",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doesburg/Procesverbaal stembureau 2.pdf",
+          "text": "proces-verbaal stembureau 2",
+          "pdf_name": "Procesverbaal stembureau 2.pdf",
+          "score": 4,
+          "from": "https://www.doesburg.nl/publicaties-tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doesburg/uploads/Procesverbaal stembureau 3.pdf?cb=qmH_Wtvq",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doesburg/Procesverbaal stembureau 3.pdf",
+          "text": "proces-verbaal stembureau 3",
+          "pdf_name": "Procesverbaal stembureau 3.pdf",
+          "score": 4,
+          "from": "https://www.doesburg.nl/publicaties-tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doesburg/uploads/Procesverbaal stembureau 4..pdf?cb=73yJQ-ME",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doesburg/Procesverbaal stembureau 4..pdf",
+          "text": "proces-verbaal stembureau 4",
+          "pdf_name": "Procesverbaal stembureau 4..pdf",
+          "score": 4,
+          "from": "https://www.doesburg.nl/publicaties-tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doesburg/uploads/Procesverbaal stembureau 5.pdf?cb=ixIx9a66",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doesburg/Procesverbaal stembureau 5.pdf",
+          "text": "proces-verbaal stembureau 5",
+          "pdf_name": "Procesverbaal stembureau 5.pdf",
+          "score": 4,
+          "from": "https://www.doesburg.nl/publicaties-tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doesburg/uploads/Procesverbaal stembureau 6.pdf?cb=nf_0k5_j",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doesburg/Procesverbaal stembureau 6.pdf",
+          "text": "proces-verbaal stembureau 6",
+          "pdf_name": "Procesverbaal stembureau 6.pdf",
+          "score": 4,
+          "from": "https://www.doesburg.nl/publicaties-tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doesburg/uploads/Procesverbaal stembureau 7.pdf?cb=B_PMGk5p",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doesburg/Procesverbaal stembureau 7.pdf",
+          "text": "proces-verbaal stembureau 7",
+          "pdf_name": "Procesverbaal stembureau 7.pdf",
+          "score": 4,
+          "from": "https://www.doesburg.nl/publicaties-tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doesburg/uploads/Procesverbaal stembureau 8.pdf?cb=xhP8BVFM",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doesburg/Procesverbaal stembureau 8.pdf",
+          "text": "proces-verbaal stembureau 8",
+          "pdf_name": "Procesverbaal stembureau 8.pdf",
+          "score": 4,
+          "from": "https://www.doesburg.nl/publicaties-tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doesburg/uploads/Pub-procesverbaal gemeentelijk stembureau.pdf?cb=7sLiOSF7",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doesburg/Pub-procesverbaal gemeentelijk stembureau.pdf",
+          "text": "proces-verbaal gemeentelijk stembureau",
+          "pdf_name": "Pub-procesverbaal gemeentelijk stembureau.pdf",
+          "score": 4,
+          "from": "https://www.doesburg.nl/publicaties-tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doesburg/uploads/Pub-controleprotocol OSV TK25.pdf?cb=iQNalK2c",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doesburg/Pub-controleprotocol OSV TK25.pdf",
+          "text": "controle protocol OSV2020",
+          "pdf_name": "Pub-controleprotocol OSV TK25.pdf",
+          "score": 1,
+          "from": "https://www.doesburg.nl/publicaties-tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doesburg/uploads/aantallen en percentages per lijst per bureau.pdf?cb=xtq2M-pJ",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doesburg/aantallen en percentages per lijst per bureau.pdf",
+          "text": "Rapport percentages en aantallen per lijst per bureau",
+          "pdf_name": "aantallen en percentages per lijst per bureau.pdf",
+          "score": 1,
+          "from": "https://www.doesburg.nl/publicaties-tweede-kamerverkiezingen-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doesburg/uploads/Ea6 verklaring onderzoek aansluitvoorwaarden.pdf?cb=LmNOs5J6",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doesburg/Ea6 verklaring onderzoek aansluitvoorwaarden.pdf",
+          "text": "Verklaring onderzoek aansluitvoorschriften",
+          "pdf_name": "Ea6 verklaring onderzoek aansluitvoorwaarden.pdf",
+          "score": 1,
+          "from": "https://www.doesburg.nl/publicaties-tweede-kamerverkiezingen-2025"
+        }
+      ]
+    },
+    {
+      "name": "Doetinchem",
+      "start_url": "https://www.doetinchem.nl/verkiezingen/uitslag",
+      "pdfs": [
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_1_Stadhuis A_TK25_eerste_telling.pdf?cb=kHTIM09o",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_1_Stadhuis A_TK25_eerste_telling.pdf",
+          "text": "Stadhuis A (PDF, 570 kB)",
+          "pdf_name": "Doetinchem_1_Stadhuis A_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_2_Stadhuis B_TK25_eerste_telling.pdf?cb=CFEwcevd",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_2_Stadhuis B_TK25_eerste_telling.pdf",
+          "text": "Stadhuis B (PDF, 539 kB)",
+          "pdf_name": "Doetinchem_2_Stadhuis B_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_3_Het Borghuis_TK25_eerste_telling.pdf?cb=caDdQ4vu",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_3_Het Borghuis_TK25_eerste_telling.pdf",
+          "text": "Het Borghuis (PDF, 556kB)",
+          "pdf_name": "Doetinchem_3_Het Borghuis_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_4_Amphion_TK25_eerste_telling.pdf?cb=fkhEQaFX",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_4_Amphion_TK25_eerste_telling.pdf",
+          "text": "Amphion (PDF, 506 kB)",
+          "pdf_name": "Doetinchem_4_Amphion_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_5_Ontmoetingscentrum De Daele_TK25_eerste_telling.pdf?cb=8BfyLgJd",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_5_Ontmoetingscentrum De Daele_TK25_eerste_telling.pdf",
+          "text": "Ontmoetingscentrum de Daele (PDF, 547 kB)",
+          "pdf_name": "Doetinchem_5_Ontmoetingscentrum De Daele_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_6_Het Trommelslag (Buurtkamer Overstegen)_TK25_eerste_telling.pdf?cb=lIHUSPDG",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_6_Het Trommelslag (Buurtkamer Overstegen)_TK25_eerste_telling.pdf",
+          "text": "Het Trommelslag (buurtkamer Overstegen) (PDF, 524 kB)",
+          "pdf_name": "Doetinchem_6_Het Trommelslag (Buurtkamer Overstegen)_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_7_OBS Hogenkamp dependance Overstegen_TK25_eerste_telling.pdf?cb=EkQ21CG7",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_7_OBS Hogenkamp dependance Overstegen_TK25_eerste_telling.pdf",
+          "text": "OBS Hogenkamp dependance Overstegen (PDF, 539 kB)",
+          "pdf_name": "Doetinchem_7_OBS Hogenkamp dependance Overstegen_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_8_IKC Het Noorderlicht_TK25_eerste_telling.pdf?cb=ac15RH8V",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_8_IKC Het Noorderlicht_TK25_eerste_telling.pdf",
+          "text": "IKC Het Noorderlicht (PDF, 571 kB)",
+          "pdf_name": "Doetinchem_8_IKC Het Noorderlicht_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_9_Speeltuinvereniging Schöneveld_TK25_eerste_telling.pdf?cb=EJENeZCN",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_9_Speeltuinvereniging Schöneveld_TK25_eerste_telling.pdf",
+          "text": "Speeltuinvereniging Schöneveld (PDF, 537 kB)",
+          "pdf_name": "Doetinchem_9_Speeltuinvereniging Schöneveld_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_10_MFA De Zonneboom A_TK25_eerste_telling.pdf?cb=WHir0Q4y",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_10_MFA De Zonneboom A_TK25_eerste_telling.pdf",
+          "text": "MFA De Zonneboom A (PDF, 565 kB)",
+          "pdf_name": "Doetinchem_10_MFA De Zonneboom A_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_11_MFA de Zonneboom B_TK25_eerste_telling.pdf?cb=nMfc1yjf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_11_MFA de Zonneboom B_TK25_eerste_telling.pdf",
+          "text": "MFA De Zonneboom B (PDF, 555 kB)",
+          "pdf_name": "Doetinchem_11_MFA de Zonneboom B_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_12_Basisschool te IJzevoorde_TK25_eerste_telling.pdf?cb=PUWD4mUZ",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_12_Basisschool te IJzevoorde_TK25_eerste_telling.pdf",
+          "text": "Basisschool te IJzevoorde (PDF, 524 kB)",
+          "pdf_name": "Doetinchem_12_Basisschool te IJzevoorde_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_13_Werkraat_TK25_eerste_telling.pdf?cb=tiD8ZEal",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_13_Werkraat_TK25_eerste_telling.pdf",
+          "text": "Werkraat (PDF, 571 kB)",
+          "pdf_name": "Doetinchem_13_Werkraat_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_14_de Mispelbloem kinderopvang en onderwijs_TK25_eerste_telling.pdf?cb=9HlS_yfT",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_14_de Mispelbloem kinderopvang en onderwijs_TK25_eerste_telling.pdf",
+          "text": "De Mispelbloem kinderopvang en onderwijs (PDF, 538 kB)",
+          "pdf_name": "Doetinchem_14_de Mispelbloem kinderopvang en onderwijs_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_16_Kerkelijk Centrum De Wingerd_TK25_eerste_telling.pdf?cb=QanX72YL",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_16_Kerkelijk Centrum De Wingerd_TK25_eerste_telling.pdf",
+          "text": "Kerkelijk Centrum De Wingerd (PDF, 572 kB)",
+          "pdf_name": "Doetinchem_16_Kerkelijk Centrum De Wingerd_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_17_Sporthal De Bongerd A_TK25_eerste_telling.pdf?cb=Q3GT001O",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_17_Sporthal De Bongerd A_TK25_eerste_telling.pdf",
+          "text": "Sporthal De Bongerd A (PDF, 565 kB)",
+          "pdf_name": "Doetinchem_17_Sporthal De Bongerd A_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_18_Sporthal de Bongerd B_TK25_eerste_telling.pdf?cb=nD4-QzFY",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_18_Sporthal de Bongerd B_TK25_eerste_telling.pdf",
+          "text": "Sporthal De Bongerd B (PDF, 550 kB)",
+          "pdf_name": "Doetinchem_18_Sporthal de Bongerd B_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_19_IKC Plattenburg_TK25_eerste_telling.pdf?cb=MVdxoleR",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_19_IKC Plattenburg_TK25_eerste_telling.pdf",
+          "text": "IKC Plattenburg (PDF, 543 kB)",
+          "pdf_name": "Doetinchem_19_IKC Plattenburg_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_20_Fort Garry Horse_TK25_eerste_telling.pdf?cb=Q4jkh3Os",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_20_Fort Garry Horse_TK25_eerste_telling.pdf",
+          "text": "Fort Garry Horse (PDF, 517 kB)",
+          "pdf_name": "Doetinchem_20_Fort Garry Horse_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_21_SO Isselborgh_TK25_eerste_telling.pdf?cb=wpOg8zBt",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_21_SO Isselborgh_TK25_eerste_telling.pdf",
+          "text": "SO Isselborgh (PDF, 570 kB)",
+          "pdf_name": "Doetinchem_21_SO Isselborgh_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_22_vv VIOD sportcomplex Dichteren_TK25_eerste_telling.pdf?cb=YvpSIDr-",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_22_vv VIOD sportcomplex Dichteren_TK25_eerste_telling.pdf",
+          "text": "v.v. Viod sportcomplex Dichteren (PDF, 567 kB)",
+          "pdf_name": "Doetinchem_22_vv VIOD sportcomplex Dichteren_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_23_Appartementencomplex Waterrijk A_TK25_eerste_telling.pdf?cb=vXTB9ZEP",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_23_Appartementencomplex Waterrijk A_TK25_eerste_telling.pdf",
+          "text": "Appartementencomplex Waterrijk A (PDF, 557 kB)",
+          "pdf_name": "Doetinchem_23_Appartementencomplex Waterrijk A_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_24_Appartementencomplex Waterrijk B_TK25_eerste_telling.pdf?cb=Gn51oqF7",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_24_Appartementencomplex Waterrijk B_TK25_eerste_telling.pdf",
+          "text": "Appartementencomplex Waterrijk B (PDF, 571 kB)",
+          "pdf_name": "Doetinchem_24_Appartementencomplex Waterrijk B_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_25_Woonzorgcentrum Den Ooiman_TK25_eerste_telling.pdf?cb=hvbWYEMz",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_25_Woonzorgcentrum Den Ooiman_TK25_eerste_telling.pdf",
+          "text": "Woonzorgcentrum Den Ooiman (PDF, 543 kB)",
+          "pdf_name": "Doetinchem_25_Woonzorgcentrum Den Ooiman_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_26_OBS Hagen_TK25_eerste_telling.pdf?cb=_t0NBjBx",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_26_OBS Hagen_TK25_eerste_telling.pdf",
+          "text": "OBS Hagen (PDF, 553 kB)",
+          "pdf_name": "Doetinchem_26_OBS Hagen_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_27_De Kruisbergkerk_TK25_eerste_telling.pdf?cb=ojBDHi4p",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_27_De Kruisbergkerk_TK25_eerste_telling.pdf",
+          "text": "De Kruisbergkerk (PDF, 525 kB)",
+          "pdf_name": "Doetinchem_27_De Kruisbergkerk_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_28_Sporthal De Pol A_TK25_eerste_telling.pdf?cb=Xp6ZUbuj",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_28_Sporthal De Pol A_TK25_eerste_telling.pdf",
+          "text": "Sporthal De Pol A (PDF, 542 kB)",
+          "pdf_name": "Doetinchem_28_Sporthal De Pol A_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_29_Sporthal De Pol B_TK25_eerste_telling.pdf?cb=ex5YfG1i",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_29_Sporthal De Pol B_TK25_eerste_telling.pdf",
+          "text": "Sporthal De Pol B (PDF, 518 kB)",
+          "pdf_name": "Doetinchem_29_Sporthal De Pol B_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_30_Woonzorgcentrum Pelgrim_TK25_eerste_telling.pdf?cb=98Vg7ySf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_30_Woonzorgcentrum Pelgrim_TK25_eerste_telling.pdf",
+          "text": "Woonzorgcentrum Pelgrim (PDF, 550 kB)",
+          "pdf_name": "Doetinchem_30_Woonzorgcentrum Pelgrim_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_31_St. Jozef_TK25_eerste_telling.pdf?cb=LBbv_X4t",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_31_St. Jozef_TK25_eerste_telling.pdf",
+          "text": "St. Jozef (PDF, 548 kB)",
+          "pdf_name": "Doetinchem_31_St. Jozef_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_32_Koningin Beatrixcentrum_TK25_eerste_telling.pdf?cb=7EHeDEem",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_32_Koningin Beatrixcentrum_TK25_eerste_telling.pdf",
+          "text": "Koningin Beatrixcentrum (PDF, 562 kB)",
+          "pdf_name": "Doetinchem_32_Koningin Beatrixcentrum_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_33_Verenigingsgebouw Ons Huis A_TK25_eerste_telling.pdf?cb=J_mrDRP-",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_33_Verenigingsgebouw Ons Huis A_TK25_eerste_telling.pdf",
+          "text": "Verenigingsgebouw Ons Huis A (PDF, 547 kB)",
+          "pdf_name": "Doetinchem_33_Verenigingsgebouw Ons Huis A_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_34_Verenigingsgebouw Ons Huis B_TK25_eerste_telling.pdf?cb=y5BJ_kyA",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_34_Verenigingsgebouw Ons Huis B_TK25_eerste_telling.pdf",
+          "text": "Verenigingsgebouw Ons Huis B (PDF, 505 kB)",
+          "pdf_name": "Doetinchem_34_Verenigingsgebouw Ons Huis B_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_35_Woonzorgcentrum Oldershove_TK25_eerste_telling.pdf?cb=xUm_W5ZQ",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_35_Woonzorgcentrum Oldershove_TK25_eerste_telling.pdf",
+          "text": "Woonzorgcentrum Oldershove (PDF, 550 kB)",
+          "pdf_name": "Doetinchem_35_Woonzorgcentrum Oldershove_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_36_Schutterij St. Martinus_TK25_eerste_telling.pdf?cb=kghjnSMH",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_36_Schutterij St. Martinus_TK25_eerste_telling.pdf",
+          "text": "Schutterij St. Martinus (PDF, 545 kB)",
+          "pdf_name": "Doetinchem_36_Schutterij St. Martinus_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_37_Dorpsaccommodatie De Horst_TK25_eerste_telling.pdf?cb=S9jLyGYP",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_37_Dorpsaccommodatie De Horst_TK25_eerste_telling.pdf",
+          "text": "Dorpsaccommodatie De Horst (PDF, 542 kB)",
+          "pdf_name": "Doetinchem_37_Dorpsaccommodatie De Horst_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_1_Stadhuis A_TK25.pdf?cb=TbjbOMpe",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_1_Stadhuis A_TK25.pdf",
+          "text": "Stadhuis A (PDF, 2,2 MB)",
+          "pdf_name": "Doetinchem_1_Stadhuis A_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_2_Stadhuis B_TK25.pdf?cb=wLRByXGh",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_2_Stadhuis B_TK25.pdf",
+          "text": "Stadhuis B (PDF, 2,2 MB)",
+          "pdf_name": "Doetinchem_2_Stadhuis B_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_3_het Borghuis_TK25.pdf?cb=sNDJX3XI",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_3_het Borghuis_TK25.pdf",
+          "text": "Het Borghuis (PDF, 2,1 MB)",
+          "pdf_name": "Doetinchem_3_het Borghuis_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_4_Amphion_TK25.pdf?cb=q-Yw-QCG",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_4_Amphion_TK25.pdf",
+          "text": "Amphion (PDF, 2,2 MB)",
+          "pdf_name": "Doetinchem_4_Amphion_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_5_Ontmoetingscentrum De Daele_TK25.pdf?cb=4asyrpGl",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_5_Ontmoetingscentrum De Daele_TK25.pdf",
+          "text": "Ontmoetingscentrum de Daele (PDF, 2,9 MB)",
+          "pdf_name": "Doetinchem_5_Ontmoetingscentrum De Daele_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_6_Het Trommelslag Buurtkamer Overstegen_TK25_0.pdf?cb=xoZHhm4s",
+          "local_url": null,
+          "text": "Het Trommelslag (buurtkamer Overstegen) (PDF, 2,2 MB)",
+          "pdf_name": "Doetinchem_6_Het Trommelslag Buurtkamer Overstegen_TK25_0.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_7_OBS Hogenkamp dependance Overstegen_TK25.pdf?cb=piO3SkOf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_7_OBS Hogenkamp dependance Overstegen_TK25.pdf",
+          "text": "OBS Hogenkamp dependance Overstegen (PDF, 2,3 MB)",
+          "pdf_name": "Doetinchem_7_OBS Hogenkamp dependance Overstegen_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_8_IKC Het Noorderlicht_TK25.pdf?cb=QjbpLmcO",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_8_IKC Het Noorderlicht_TK25.pdf",
+          "text": "IKC Het Noorderlicht (PDF, 2,2 MB)",
+          "pdf_name": "Doetinchem_8_IKC Het Noorderlicht_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_9_Speeltuinvereniging Schoneveld_TK25.pdf?cb=0StSTJqP",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_9_Speeltuinvereniging Schoneveld_TK25.pdf",
+          "text": "Speeltuinvereniging Schöneveld (PDF, 2,2 MB)",
+          "pdf_name": "Doetinchem_9_Speeltuinvereniging Schoneveld_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_10_MFA De Zonneboom A_TK25_0.pdf?cb=AmA5KuqM",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_10_MFA De Zonneboom A_TK25_0.pdf",
+          "text": "MFA De Zonneboom A (PDF, 2,2 MB)",
+          "pdf_name": "Doetinchem_10_MFA De Zonneboom A_TK25_0.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_11_MFA De Zonneboom B_TK25.pdf?cb=zRWlfZx8",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_11_MFA De Zonneboom B_TK25.pdf",
+          "text": "MFA De Zonneboom B (PDF, 2,2 MB)",
+          "pdf_name": "Doetinchem_11_MFA De Zonneboom B_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_12_Basisschool te IJzevoorde_TK25.pdf?cb=eE_7siwT",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_12_Basisschool te IJzevoorde_TK25.pdf",
+          "text": "Basisschool te IJzevoorde (PDF, 2,2 MB)",
+          "pdf_name": "Doetinchem_12_Basisschool te IJzevoorde_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_13_Werkraat_TK25.pdf?cb=a8gkYtLX",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_13_Werkraat_TK25.pdf",
+          "text": "Werkraat (PDF, 2,3 MB)",
+          "pdf_name": "Doetinchem_13_Werkraat_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_14_de Mispelbloem kinderopvang en onderwijs_TK25.pdf?cb=Eda26jaP",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_14_de Mispelbloem kinderopvang en onderwijs_TK25.pdf",
+          "text": "De Mispelbloem kinderopvang en onderwijs (PDF, 2,2 MB)",
+          "pdf_name": "Doetinchem_14_de Mispelbloem kinderopvang en onderwijs_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_16_Kerkelijk centrum De Wingerd_TK25.pdf?cb=h_2Up0oW",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_16_Kerkelijk centrum De Wingerd_TK25.pdf",
+          "text": "Kerkelijk Centrum De Wingerd (PDF, 2,9 MB)",
+          "pdf_name": "Doetinchem_16_Kerkelijk centrum De Wingerd_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_17_Sporthal De Bongerd A_TK25.pdf?cb=m2MZaiTZ",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_17_Sporthal De Bongerd A_TK25.pdf",
+          "text": "Sporthal De Bongerd A (PDF, 2,1 MB)",
+          "pdf_name": "Doetinchem_17_Sporthal De Bongerd A_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_18_Sporthal De Bongerd B_TK25.pdf?cb=BjWuk1ES",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_18_Sporthal De Bongerd B_TK25.pdf",
+          "text": "Sporthal De Bongerd B (PDF, 2,3 MB)",
+          "pdf_name": "Doetinchem_18_Sporthal De Bongerd B_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_19_IKC Plattenburg_TK25.pdf?cb=wWy_cmUn",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_19_IKC Plattenburg_TK25.pdf",
+          "text": "IKC Plattenburg (PDF, 2,3 MB)",
+          "pdf_name": "Doetinchem_19_IKC Plattenburg_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_20_Fort Garry Horse_TK25.pdf?cb=msHurOr2",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_20_Fort Garry Horse_TK25.pdf",
+          "text": "Fort Garry Horse (PDF, 2,3 MB)",
+          "pdf_name": "Doetinchem_20_Fort Garry Horse_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_21_SO Isselborgh_TK25.pdf?cb=wt-SGH0j",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_21_SO Isselborgh_TK25.pdf",
+          "text": "SO Isselborgh (PDF, 2,2 MB)",
+          "pdf_name": "Doetinchem_21_SO Isselborgh_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_22_vv VIOD sportcomplex Dichteren_TK25.pdf?cb=nzI38RdD",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_22_vv VIOD sportcomplex Dichteren_TK25.pdf",
+          "text": "v.v. Viod sportcomplex Dichteren (PDF, 2,3 MB)",
+          "pdf_name": "Doetinchem_22_vv VIOD sportcomplex Dichteren_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_23_Appartementencomplex Waterrijk A_TK25.pdf?cb=zYqeVI5W",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_23_Appartementencomplex Waterrijk A_TK25.pdf",
+          "text": "Appartementencomplex Waterrijk A (PDF, 2,2 MB)",
+          "pdf_name": "Doetinchem_23_Appartementencomplex Waterrijk A_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_24_Appartementencomplex Waterrijk B_TK25.pdf?cb=hO9EZtOx",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_24_Appartementencomplex Waterrijk B_TK25.pdf",
+          "text": "Appartementencomplex Waterrijk B (PDF, 2,2 MB)",
+          "pdf_name": "Doetinchem_24_Appartementencomplex Waterrijk B_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_25_Woonzorgcentrum Den Ooiman_TK25.pdf?cb=6qFTvxLs",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_25_Woonzorgcentrum Den Ooiman_TK25.pdf",
+          "text": "Woonzorgcentrum Den Ooiman (PDF, 2,2 MB)",
+          "pdf_name": "Doetinchem_25_Woonzorgcentrum Den Ooiman_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_26_OBS Hagen_TK25.pdf?cb=wI9fb98b",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_26_OBS Hagen_TK25.pdf",
+          "text": "OBS Hagen (PDF, 2,3 MB)",
+          "pdf_name": "Doetinchem_26_OBS Hagen_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_27_De Kruisbergkerk_TK25.pdf?cb=_6QSyeao",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_27_De Kruisbergkerk_TK25.pdf",
+          "text": "De Kruisbergkerk (PDF, 2,2 MB)",
+          "pdf_name": "Doetinchem_27_De Kruisbergkerk_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_29_Sporthal De Pol B_TK25.pdf?cb=SeVdGWxs",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_29_Sporthal De Pol B_TK25.pdf",
+          "text": "Sporthal De Pol B (PDF, 2,3 MB)",
+          "pdf_name": "Doetinchem_29_Sporthal De Pol B_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_30_Woonzorgcentrum Pelgrim_TK25.pdf?cb=lHcb9GH2",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_30_Woonzorgcentrum Pelgrim_TK25.pdf",
+          "text": "Woonzorgcentrum Pelgrim (PDF, 2,3 MB)",
+          "pdf_name": "Doetinchem_30_Woonzorgcentrum Pelgrim_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_31_St. Jozef_TK25.pdf?cb=DgjKM7HV",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_31_St. Jozef_TK25.pdf",
+          "text": "St. Jozef (PDF, 2,1 MB)",
+          "pdf_name": "Doetinchem_31_St. Jozef_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_32_Koningin Beatrixcentrum_TK25.pdf?cb=u-LXPASd",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_32_Koningin Beatrixcentrum_TK25.pdf",
+          "text": "Koningin Beatrixcentrum (PDF, 2,2 MB)",
+          "pdf_name": "Doetinchem_32_Koningin Beatrixcentrum_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_33_Verenigingsgebouw Ons Huis A_TK25.pdf?cb=HHvdqD7a",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_33_Verenigingsgebouw Ons Huis A_TK25.pdf",
+          "text": "Verenigingsgebouw Ons Huis A (PDF, 2,2 MB)",
+          "pdf_name": "Doetinchem_33_Verenigingsgebouw Ons Huis A_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_34_Verenigingsgebouw Ons Huis B_TK25.pdf?cb=c7WWl6tB",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_34_Verenigingsgebouw Ons Huis B_TK25.pdf",
+          "text": "Verenigingsgebouw Ons Huis B (PDF, 2,2 MB)",
+          "pdf_name": "Doetinchem_34_Verenigingsgebouw Ons Huis B_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_35_Woonzorgcentrum Oldershove_TK25.pdf?cb=h63sBC1d",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_35_Woonzorgcentrum Oldershove_TK25.pdf",
+          "text": "Woonzorgcentrum Oldershove (PDF, 2,3 MB)",
+          "pdf_name": "Doetinchem_35_Woonzorgcentrum Oldershove_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_36_Schutterij St. Martinus_TK25.pdf?cb=eNNT1lVW",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_36_Schutterij St. Martinus_TK25.pdf",
+          "text": "Schutterij St. Martinus (PDF, 2,2 MB)",
+          "pdf_name": "Doetinchem_36_Schutterij St. Martinus_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_37_Dorpsaccommodatie De Horst_TK25.pdf?cb=xgVWpZa6",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_37_Dorpsaccommodatie De Horst_TK25.pdf",
+          "text": "Dorpsaccommodatie De Horst (PDF, 2,2 MB)",
+          "pdf_name": "Doetinchem_37_Dorpsaccommodatie De Horst_TK25.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/Doetinchem_uitkomst_TK25.pdf?cb=hyw67c9K",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_uitkomst_TK25.pdf",
+          "text": "procesverbaal van het gemeentelijk stembureau (PDF, 3 MB)",
+          "pdf_name": "Doetinchem_uitkomst_TK25.pdf",
+          "score": 4,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/doetinchem/uploads/verklaring-onderzoek-aansluitvoorschriften.pdf?cb=HmPoMdqo",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/verklaring-onderzoek-aansluitvoorschriften.pdf",
+          "text": "doetinchem_verklaring_aansluitvoorschriften (PDF, 51 kB)",
+          "pdf_name": "verklaring-onderzoek-aansluitvoorschriften.pdf",
+          "score": 1,
+          "from": "https://www.doetinchem.nl/verkiezingen/uitslag"
+        }
+      ]
+    },
+    {
+      "name": "Dongen",
+      "start_url": "https://www.dongen.nl/verkiezingen",
+      "pdfs": [
+        {
+          "remote_url": "https://www.dongen.nl/fileadmin/NIEUW_Dongen/documenten_pdfs/VK-TK25/PV_GSB_zonder_handtekening.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dongen/PV_GSB_zonder_handtekening.pdf",
+          "text": "Proces-verbaal van het gemeentelijke stembureau",
+          "pdf_name": "PV_GSB_zonder_handtekening.pdf",
+          "score": 4,
+          "from": "https://www.dongen.nl/verkiezingen"
+        },
+        {
+          "remote_url": "https://www.dongen.nl/fileadmin/NIEUW_Dongen/documenten_pdfs/VK-TK25/1._PV_met_corrigendum_Gemeentehuis_zonder_handtekening.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dongen/1._PV_met_corrigendum_Gemeentehuis_zonder_handtekening.pdf",
+          "text": "Gemeentehuis",
+          "pdf_name": "1._PV_met_corrigendum_Gemeentehuis_zonder_handtekening.pdf",
+          "score": 1,
+          "from": "https://www.dongen.nl/verkiezingen"
+        },
+        {
+          "remote_url": "https://www.dongen.nl/fileadmin/NIEUW_Dongen/documenten_pdfs/VK-TK25/2._De_Vlinderboom_zonder_handtekening.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dongen/2._De_Vlinderboom_zonder_handtekening.pdf",
+          "text": "Basisschool De Vlinderboom",
+          "pdf_name": "2._De_Vlinderboom_zonder_handtekening.pdf",
+          "score": 1,
+          "from": "https://www.dongen.nl/verkiezingen"
+        },
+        {
+          "remote_url": "https://www.dongen.nl/fileadmin/NIEUW_Dongen/documenten_pdfs/VK-TK25/3._Mijzo_zonder_handtekening.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dongen/3._Mijzo_zonder_handtekening.pdf",
+          "text": "Mijzo, locatie Dongepark",
+          "pdf_name": "3._Mijzo_zonder_handtekening.pdf",
+          "score": 1,
+          "from": "https://www.dongen.nl/verkiezingen"
+        },
+        {
+          "remote_url": "https://www.dongen.nl/fileadmin/NIEUW_Dongen/documenten_pdfs/VK-TK25/4._St_Jan_zonder_handtekening.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dongen/4._St_Jan_zonder_handtekening.pdf",
+          "text": "Basisschool St. Jan",
+          "pdf_name": "4._St_Jan_zonder_handtekening.pdf",
+          "score": 1,
+          "from": "https://www.dongen.nl/verkiezingen"
+        },
+        {
+          "remote_url": "https://www.dongen.nl/fileadmin/NIEUW_Dongen/documenten_pdfs/VK-TK25/5._Kelly_van_Zon_zonder_handtekening.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dongen/5._Kelly_van_Zon_zonder_handtekening.pdf",
+          "text": "Kelly van Zon Gymzaal",
+          "pdf_name": "5._Kelly_van_Zon_zonder_handtekening.pdf",
+          "score": 1,
+          "from": "https://www.dongen.nl/verkiezingen"
+        },
+        {
+          "remote_url": "https://www.dongen.nl/fileadmin/NIEUW_Dongen/documenten_pdfs/VK-TK25/6._PV_met_corrigendum_VV_Dongen_zonder_handtekening.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dongen/6._PV_met_corrigendum_VV_Dongen_zonder_handtekening.pdf",
+          "text": "Clubgebouw V.V. Dongen",
+          "pdf_name": "6._PV_met_corrigendum_VV_Dongen_zonder_handtekening.pdf",
+          "score": 1,
+          "from": "https://www.dongen.nl/verkiezingen"
+        },
+        {
+          "remote_url": "https://www.dongen.nl/fileadmin/NIEUW_Dongen/documenten_pdfs/VK-TK25/7._Otterdonk_zonder_handtekening.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dongen/7._Otterdonk_zonder_handtekening.pdf",
+          "text": "Gymzaal Otterdonk",
+          "pdf_name": "7._Otterdonk_zonder_handtekening.pdf",
+          "score": 1,
+          "from": "https://www.dongen.nl/verkiezingen"
+        },
+        {
+          "remote_url": "https://www.dongen.nl/fileadmin/NIEUW_Dongen/documenten_pdfs/VK-TK25/8._De_Gaasjes_zonder_handtekening.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dongen/8._De_Gaasjes_zonder_handtekening.pdf",
+          "text": "Sportzaal De Gaasjes",
+          "pdf_name": "8._De_Gaasjes_zonder_handtekening.pdf",
+          "score": 1,
+          "from": "https://www.dongen.nl/verkiezingen"
+        },
+        {
+          "remote_url": "https://www.dongen.nl/fileadmin/NIEUW_Dongen/documenten_pdfs/VK-TK25/9._De_Geubel_zonder_handtekening.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dongen/9._De_Geubel_zonder_handtekening.pdf",
+          "text": "Dorpshuis De Geubel",
+          "pdf_name": "9._De_Geubel_zonder_handtekening.pdf",
+          "score": 1,
+          "from": "https://www.dongen.nl/verkiezingen"
+        },
+        {
+          "remote_url": "https://www.dongen.nl/fileadmin/NIEUW_Dongen/documenten_pdfs/VK-TK25/Europlus_zonder_handtekening.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dongen/Europlus_zonder_handtekening.pdf",
+          "text": "Europlus",
+          "pdf_name": "Europlus_zonder_handtekening.pdf",
+          "score": 1,
+          "from": "https://www.dongen.nl/verkiezingen"
+        },
+        {
+          "remote_url": "https://www.dongen.nl/fileadmin/NIEUW_Dongen/documenten_pdfs/VK-TK25/Model_Ea_6-_Verklaring_onderzoek_aansluitvoorschriften_1.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dongen/Model_Ea_6-_Verklaring_onderzoek_aansluitvoorschriften_1.pdf",
+          "text": "Model Ea 6 - Verklaring onderzoek aansluitvoorschriften",
+          "pdf_name": "Model_Ea_6-_Verklaring_onderzoek_aansluitvoorschriften_1.pdf",
+          "score": 1,
+          "from": "https://www.dongen.nl/verkiezingen"
+        }
+      ]
+    },
+    {
+      "name": "Drechterland",
+      "start_url": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/",
+      "pdfs": [
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland_1_RK-kerk-H.-Laurentius_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland_1_RK-kerk-H.-Laurentius_TK25_eerste_telling.pdf",
+          "text": "Drechterland_1_RK kerk H. Laurentius_TK25_eerste_telling",
+          "pdf_name": "Drechterland_1_RK-kerk-H.-Laurentius_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland_2_Het-Reigersnest_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland_2_Het-Reigersnest_TK25_eerste_telling.pdf",
+          "text": "Drechterland_2_Het Reigersnest_TK25_eerste_telling",
+          "pdf_name": "Drechterland_2_Het-Reigersnest_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland_3_Bantam_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland_3_Bantam_TK25_eerste_telling.pdf",
+          "text": "Drechterland_3_Bantam_TK25_eerste_telling",
+          "pdf_name": "Drechterland_3_Bantam_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland_4_Dorpshuis-De-Schalm_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland_4_Dorpshuis-De-Schalm_TK25_eerste_telling.pdf",
+          "text": "Drechterland_4_Dorpshuis De Schalm_TK25_eerste_telling",
+          "pdf_name": "Drechterland_4_Dorpshuis-De-Schalm_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland_5_Cultureel-Centrum-Pancratius_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland_5_Cultureel-Centrum-Pancratius_TK25_eerste_telling.pdf",
+          "text": "Drechterland_5_Cultureel Centrum Pancratius_TK25_eerste_telling",
+          "pdf_name": "Drechterland_5_Cultureel-Centrum-Pancratius_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland_6_Dorpshuis-Het-Centrum_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland_6_Dorpshuis-Het-Centrum_TK25_eerste_telling.pdf",
+          "text": "Drechterland_6_Dorpshuis Het Centrum_TK25_eerste_telling",
+          "pdf_name": "Drechterland_6_Dorpshuis-Het-Centrum_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland_7_NH-kerk-Venhuizen_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland_7_NH-kerk-Venhuizen_TK25_eerste_telling.pdf",
+          "text": "Drechterland_7_NH kerk Venhuizen_TK25_eerste_telling",
+          "pdf_name": "Drechterland_7_NH-kerk-Venhuizen_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland_8_Cafe-De-Roode-Leeuw_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland_8_Cafe-De-Roode-Leeuw_TK25_eerste_telling.pdf",
+          "text": "Drechterland_8_Café De Roode Leeuw_TK25_eerste_telling",
+          "pdf_name": "Drechterland_8_Cafe-De-Roode-Leeuw_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland_9_Dorpshuis-De-Wiekslag_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland_9_Dorpshuis-De-Wiekslag_TK25_eerste_telling.pdf",
+          "text": "Drechterland_9_Dorpshuis De Wiekslag_TK25_eerste_telling",
+          "pdf_name": "Drechterland_9_Dorpshuis-De-Wiekslag_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland_10_Dorpshuis-De-Dregt_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland_10_Dorpshuis-De-Dregt_TK25_eerste_telling.pdf",
+          "text": "Drechterland_10_Dorpshuis De Dregt_TK25_eerste_telling",
+          "pdf_name": "Drechterland_10_Dorpshuis-De-Dregt_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland_11_Sportcafe-De-Sluis_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland_11_Sportcafe-De-Sluis_TK25_eerste_telling.pdf",
+          "text": "Drechterland_11_Sportcafé De Sluis_TK25_eerste_telling",
+          "pdf_name": "Drechterland_11_Sportcafe-De-Sluis_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland-1-RK-kerk-H.-Laurentius-TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland-1-RK-kerk-H.-Laurentius-TK25.pdf",
+          "text": "Drechterland 1 RK kerk H. Laurentius TK25",
+          "pdf_name": "Drechterland-1-RK-kerk-H.-Laurentius-TK25.pdf",
+          "score": 1,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland-2-Het-Reigersnest-TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland-2-Het-Reigersnest-TK25.pdf",
+          "text": "Drechterland 2 Het Reigersnest TK25",
+          "pdf_name": "Drechterland-2-Het-Reigersnest-TK25.pdf",
+          "score": 1,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland-3-Bantam-TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland-3-Bantam-TK25.pdf",
+          "text": "Drechterland 3 Bantam TK25",
+          "pdf_name": "Drechterland-3-Bantam-TK25.pdf",
+          "score": 1,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland-4-Dorpshuis-De-Schalm-TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland-4-Dorpshuis-De-Schalm-TK25.pdf",
+          "text": "Drechterland 4 Dorpshuis De Schalm TK25",
+          "pdf_name": "Drechterland-4-Dorpshuis-De-Schalm-TK25.pdf",
+          "score": 1,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland-5-Cultureel-Centrum-Pancratius-TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland-5-Cultureel-Centrum-Pancratius-TK25.pdf",
+          "text": "Drechterland 5 Cultureel Centrum Pancratius TK25",
+          "pdf_name": "Drechterland-5-Cultureel-Centrum-Pancratius-TK25.pdf",
+          "score": 1,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland-6-Dorpshuis-Het-Centrum-TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland-6-Dorpshuis-Het-Centrum-TK25.pdf",
+          "text": "Drechterland 6 Dorpshuis Het Centrum TK25",
+          "pdf_name": "Drechterland-6-Dorpshuis-Het-Centrum-TK25.pdf",
+          "score": 1,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland-7-NH-Kerk-Venhuizen-TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland-7-NH-Kerk-Venhuizen-TK25.pdf",
+          "text": "Drechterland 7 NH Kerk Venhuizen TK25",
+          "pdf_name": "Drechterland-7-NH-Kerk-Venhuizen-TK25.pdf",
+          "score": 1,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland-8-Cafe-De-Roode-Leeuw-TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland-8-Cafe-De-Roode-Leeuw-TK25.pdf",
+          "text": "Drechterland 8 Café De Roode Leeuw TK25",
+          "pdf_name": "Drechterland-8-Cafe-De-Roode-Leeuw-TK25.pdf",
+          "score": 1,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland-9-Dorpshuis-De-Wiekslag-TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland-9-Dorpshuis-De-Wiekslag-TK25.pdf",
+          "text": "Drechterland 9 Dorpshuis De Wiekslag TK25",
+          "pdf_name": "Drechterland-9-Dorpshuis-De-Wiekslag-TK25.pdf",
+          "score": 1,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland-10-Dorpshuis-De-Dregt-TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland-10-Dorpshuis-De-Dregt-TK25.pdf",
+          "text": "Drechterland 10 Dorpshuis De Dregt TK25",
+          "pdf_name": "Drechterland-10-Dorpshuis-De-Dregt-TK25.pdf",
+          "score": 1,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland-11-Sportcafe-De-Sluis-TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland-11-Sportcafe-De-Sluis-TK25.pdf",
+          "text": "Drechterland 11 Sportcafé De Sluis TK25",
+          "pdf_name": "Drechterland-11-Sportcafe-De-Sluis-TK25.pdf",
+          "score": 1,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland-Na-31-2-TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland-Na-31-2-TK25.pdf",
+          "text": "Drechterland Na 31-2 TK25",
+          "pdf_name": "Drechterland-Na-31-2-TK25.pdf",
+          "score": 4,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.drechterland.nl/wp-content/uploads/2025/10/Drechterland-verklaring-aansluitvoorschriften.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland-verklaring-aansluitvoorschriften.pdf",
+          "text": "Drechterland verklaring aansluitvoorschriften",
+          "pdf_name": "Drechterland-verklaring-aansluitvoorschriften.pdf",
+          "score": 1,
+          "from": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        }
+      ]
+    },
+    {
       "name": "Deurne",
       "start_url": "https://www.deurne.nl/verkiezingen",
       "pdfs": [
@@ -9399,26 +10391,6 @@
           "from": "local"
         }
       ]
-    },
-    {
-      "name": "Doesburg",
-      "start_url": "https://www.doesburg.nl/verkiezingen-tweede-kamer-2025",
-      "pdfs": []
-    },
-    {
-      "name": "Doetinchem",
-      "start_url": "https://www.doetinchem.nl/verkiezingen/uitslag",
-      "pdfs": []
-    },
-    {
-      "name": "Dongen",
-      "start_url": "https://www.dongen.nl/verkiezingen",
-      "pdfs": []
-    },
-    {
-      "name": "Drechterland",
-      "start_url": "https://www.drechterland.nl/bestuur-en-organisatie/verkiezingen/",
-      "pdfs": []
     },
     {
       "name": "Drimmelen",
