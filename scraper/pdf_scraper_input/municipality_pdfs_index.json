@@ -1,6 +1,888 @@
 {
   "results": [
     {
+      "name": "Goeree-Overflakkee",
+      "start_url": "https://www.goeree-overflakkee.nl/uitslag-vorige-verkiezingen?origin=/uitslagen-verkiezingen-2019-2024",
+      "pdfs": [
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/uitslag_tweede_kamerverkiezingen_2023.pdf?cb=hJ1KiiQ7",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/uitslag_tweede_kamerverkiezingen_2023.pdf",
+          "text": "Uitslag Verkiezing Tweede Kamer 2023 PDF, 148,7 kB",
+          "pdf_name": "uitslag_tweede_kamerverkiezingen_2023.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/uitslag-vorige-verkiezingen?origin=/uitslagen-verkiezingen-2019-2024"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_uitkomst_tk25.pdf?cb=v59PYi82",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_uitkomst_tk25.pdf",
+          "text": "goeree-overflakkee_uitkomst_tk25.pdf (PDF, 2,5 MB )",
+          "pdf_name": "goeree-overflakkee_uitkomst_tk25.pdf",
+          "score": 1,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_verklaring_aansluitvoorschriften.pdf?cb=hBhaz_5_",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_verklaring_aansluitvoorschriften.pdf",
+          "text": "goeree-overflakkee_verklaring_aansluitvoorschriften.pdf (PDF, 58,3 kB )",
+          "pdf_name": "goeree-overflakkee_verklaring_aansluitvoorschriften.pdf",
+          "score": 1,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%201_Oostdam_TK25.pdf?cb=3lP1o1UU",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau201_Oostdam_TK25.pdf",
+          "text": "Goeree-Overflakkee stembureau 1 Oostdam tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%201_Oostdam_TK25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%202_Dorpstienden_TK25.pdf?cb=kXLkOwt4",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau202_Dorpstienden_TK25.pdf",
+          "text": "Goeree-Overflakkee stembureau 2 Dorpstienden tk25.pdf (PDF, 1,6 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%202_Dorpstienden_TK25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%203_Eben%20Ha%C3%ABze_TK25.pdf?cb=MguB0-bi",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau203_Eben20HaC3ABze_TK25.pdf",
+          "text": "Goeree-Overflakkee stembureau 3 Eben Haëze tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%203_Eben%20Ha%C3%ABze_TK25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%204_Doopsgezinde%20Gemeente_TK25_aanpassing.pdf?cb=sOsTPES0",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau204_Doopsgezinde20Gemeente_TK25_aanpassing.pdf",
+          "text": "Goeree-Overflakkee stembureau 4 Doopsgezinde Gemeente tk25 aanpassing.pdf (PDF, 2,3 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%204_Doopsgezinde%20Gemeente_TK25_aanpassing.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%205_de%20Rank_TK25.pdf?cb=HkOTzLLF",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau205_de20Rank_TK25.pdf",
+          "text": "Goeree-Overflakkee stembureau 5 De Rank tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%205_de%20Rank_TK25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%206_%27t%20Haegse%20Huus_TK25.pdf?cb=ApnskOJl",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau206_27t20Haegse20Huus_TK25.pdf",
+          "text": "Goeree-Overflakkee stembureau 6 't Haegse Huus tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%206_%27t%20Haegse%20Huus_TK25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%207_Onder%20de%20Wiek_TK25.pdf?cb=gxajaOtV",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau207_Onder20de20Wiek_TK25.pdf",
+          "text": "Goeree-Overflakkee stembureau 7 Onder de Wiek tk25.pdf (PDF, 1,6 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%207_Onder%20de%20Wiek_TK25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%208_Victoriahal_TK25.pdf?cb=kg5HxmdU",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau208_Victoriahal_TK25.pdf",
+          "text": "Goeree-Overflakkee stembureau 8 Victoriahal tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%208_Victoriahal_TK25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%209_de%20Gooye.TK25_aanpassing.pdf?cb=S--Ocy7S",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau209_de20Gooye.TK25_aanpassing.pdf",
+          "text": "Goeree-Overflakkee stembureau 9 de Gooye tk25 aanpassing.pdf (PDF, 2,1 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%209_de%20Gooye.TK25_aanpassing.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%2010_Ons%20Huis_TK25.pdf?cb=3ZwLMTCI",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau2010_Ons20Huis_TK25.pdf",
+          "text": "Goeree-Overflakkee stembureau 10 Ons Huis tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%2010_Ons%20Huis_TK25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%2011_Melishof_TK25_aanpassing.pdf?cb=6KVURA5X",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau2011_Melishof_TK25_aanpassing.pdf",
+          "text": "Goeree-Overflakkee stembureau 11 Melishof tk25 aanpassing.pdf (PDF, 1,9 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%2011_Melishof_TK25_aanpassing.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%2012_Lachai%20Roi_TK25_aanpassing.pdf?cb=AY0KzS0J",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau2012_Lachai20Roi_TK25_aanpassing.pdf",
+          "text": "Goeree-Overflakkee stembureau 12 Lachai Roi tk25 aanpassing.pdf (PDF, 2 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%2012_Lachai%20Roi_TK25_aanpassing.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%2013_Wijkcentrum_TK25_aanpassing.pdf?cb=3Dmd9vfw",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau2013_Wijkcentrum_TK25_aanpassing.pdf",
+          "text": "Goeree-Overflakkee stembureau 13 Wijkcentrum tk25 aanpassing.pdf (PDF, 2,4 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%2013_Wijkcentrum_TK25_aanpassing.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%2014_Jongeren%20Activiteiten%20Centrum_TK25.pdf?cb=sk9zRxLg",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau2014_Jongeren20Activiteiten20Centrum_TK25.pdf",
+          "text": "Goeree-Overflakkee stembureau 14 Jongeren Activiteiten Centrum tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%2014_Jongeren%20Activiteiten%20Centrum_TK25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%2015_Hoeksteen_TK25_aanpassing.pdf?cb=ayc73ytW",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau2015_Hoeksteen_TK25_aanpassing.pdf",
+          "text": "Goeree-Overflakkee stembureau 15 Hoeksteen tk25 aanpassing.pdf (PDF, 2,1 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%2015_Hoeksteen_TK25_aanpassing.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%2016_Vita%20Nova_TK25.pdf?cb=loC6CDe0",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau2016_Vita20Nova_TK25.pdf",
+          "text": "Goeree-Overflakkee stembureau 16 Vita Nova tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%2016_Vita%20Nova_TK25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%2017_de%20Staver_TK25.pdf?cb=fTWSRIxz",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau2017_de20Staver_TK25.pdf",
+          "text": "Goeree-Overflakkee stembureau 17 De Staver tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%2017_de%20Staver_TK25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%2018_Exoduskerk_TK25_aanpassing.pdf?cb=2lWDu82Y",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau2018_Exoduskerk_TK25_aanpassing.pdf",
+          "text": "Goeree-Overflakkee stembureau 18 Exoduskerk tk25 aanpassing.pdf (PDF, 1,9 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%2018_Exoduskerk_TK25_aanpassing.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%2019_Ons%20Dorpshuis_TK25.pdf?cb=78xLccEK",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau2019_Ons20Dorpshuis_TK25.pdf",
+          "text": "Goeree-Overflakkee stembureau 19 Ons Dorpshuis tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%2019_Ons%20Dorpshuis_TK25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%2020_Trefpunt_TK25_aanpassing.pdf?cb=Q396_nmj",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau2020_Trefpunt_TK25_aanpassing.pdf",
+          "text": "Goeree-Overflakkee stembureau 20 Trefpunt tk25 aanpassing.pdf (PDF, 2,1 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%2020_Trefpunt_TK25_aanpassing.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%2021_%27t%20centrum_TK25.pdf?cb=ZIyi6YJo",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau2021_27t20centrum_TK25.pdf",
+          "text": "Goeree-Overflakkee stembureau 21 't Centrum tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%2021_%27t%20centrum_TK25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%2022_Bommelstee_TK25.pdf?cb=veK-6pXH",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau2022_Bommelstee_TK25.pdf",
+          "text": "Goeree-Overflakkee stembureau 22 Bommelstee tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%2022_Bommelstee_TK25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%2023_%27t%20Buurthuus_TK25.pdf?cb=ivKcn2Di",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau2023_27t20Buurthuus_TK25.pdf",
+          "text": "Goeree-Overflakkee stembureau 23 't Buurthuus tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%2023_%27t%20Buurthuus_TK25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%2024_de%20Grutterswei%20Zaal%20A_TK25.pdf?cb=4gQ_fMT2",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau2024_de20Grutterswei20Zaal20A_TK25.pdf",
+          "text": "Goeree-Overflakkee stembureau 24 de Grutterswei zaal a tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%2024_de%20Grutterswei%20Zaal%20A_TK25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%2025_de%20Grutterswei%20Zaal%20C_TK25.pdf?cb=JSFQ55Bz",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau2025_de20Grutterswei20Zaal20C_TK25.pdf",
+          "text": "Goeree-Overflakkee stembureau 25 de Grutterswei zaal c tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%2025_de%20Grutterswei%20Zaal%20C_TK25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%2026_beroepscampus_TK25.pdf?cb=Xdr9GgRh",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau2026_beroepscampus_TK25.pdf",
+          "text": "Goeree-Overflakkee stembureau 26 Beroepscampus tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%2026_beroepscampus_TK25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/Goeree-Overflakkee_stembureau%2027_Diekhuus_TK25.pdf?cb=mxlTHUZJ",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_stembureau2027_Diekhuus_TK25.pdf",
+          "text": "Goeree-Overflakkee stembureau 27 Diekhuus tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "Goeree-Overflakkee_stembureau%2027_Diekhuus_TK25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/voorlopige-uitslag"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_1_oostdam_tk25.pdf?cb=ESzbTe1d",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_1_oostdam_tk25.pdf",
+          "text": "goeree-overflakkee_stembureau_1_oostdam_tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_1_oostdam_tk25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_2_dorpstienden_tk25.pdf?cb=YRcbBxdd",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_2_dorpstienden_tk25.pdf",
+          "text": "goeree-overflakkee_stembureau_2_dorpstienden_tk25.pdf (PDF, 1,6 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_2_dorpstienden_tk25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_3_eben_haeze_tk25.pdf?cb=HwbVwUcA",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_3_eben_haeze_tk25.pdf",
+          "text": "goeree-overflakkee_stembureau_3_eben_haeze_tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_3_eben_haeze_tk25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_4_doopsgezinde_gemeente_tk25_aanpassing.pdf?cb=-79o40CK",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_4_doopsgezinde_gemeente_tk25_aanpassing.pdf",
+          "text": "goeree-overflakkee_stembureau_4_doopsgezinde_gemeente_tk25_aanpassing.pdf (PDF, 2,3 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_4_doopsgezinde_gemeente_tk25_aanpassing.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_5_de_rank_tk25.pdf?cb=YnTuJfPl",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_5_de_rank_tk25.pdf",
+          "text": "goeree-overflakkee_stembureau_5_de_rank_tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_5_de_rank_tk25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_6_t_haegse_huus_tk25.pdf?cb=s_Dsb-7-",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_6_t_haegse_huus_tk25.pdf",
+          "text": "goeree-overflakkee_stembureau_6_t_haegse_huus_tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_6_t_haegse_huus_tk25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_7_onder_de_wiek_tk25.pdf?cb=uGG-Bl5Q",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_7_onder_de_wiek_tk25.pdf",
+          "text": "goeree-overflakkee_stembureau_7_onder_de_wiek_tk25.pdf (PDF, 1,6 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_7_onder_de_wiek_tk25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_8_victoriahal_tk25.pdf?cb=FzVh78Jh",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_8_victoriahal_tk25.pdf",
+          "text": "goeree-overflakkee_stembureau_8_victoriahal_tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_8_victoriahal_tk25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_9_de_gooye.tk25_aanpassing.pdf?cb=8RdnRgRp",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_9_de_gooye.tk25_aanpassing.pdf",
+          "text": "goeree-overflakkee_stembureau_9_de_gooye.tk25_aanpassing.pdf (PDF, 2,1 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_9_de_gooye.tk25_aanpassing.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_10_ons_huis_tk25.pdf?cb=oMKv6MRX",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_10_ons_huis_tk25.pdf",
+          "text": "goeree-overflakkee_stembureau_10_ons_huis_tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_10_ons_huis_tk25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_11_melishof_tk25_aanpassing.pdf?cb=ualVFn3_",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_11_melishof_tk25_aanpassing.pdf",
+          "text": "goeree-overflakkee_stembureau_11_melishof_tk25_aanpassing.pdf (PDF, 1,9 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_11_melishof_tk25_aanpassing.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_12_lachai_roi_tk25_aanpassing.pdf?cb=EXxHv2Xi",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_12_lachai_roi_tk25_aanpassing.pdf",
+          "text": "goeree-overflakkee_stembureau_12_lachai_roi_tk25_aanpassing.pdf (PDF, 2 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_12_lachai_roi_tk25_aanpassing.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_13_wijkcentrum_tk25_aanpassing.pdf?cb=NX9wJjJ9",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_13_wijkcentrum_tk25_aanpassing.pdf",
+          "text": "goeree-overflakkee_stembureau_13_wijkcentrum_tk25_aanpassing.pdf (PDF, 2,4 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_13_wijkcentrum_tk25_aanpassing.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_14_jongeren_activiteiten_centrum_tk25.pdf?cb=k7ovp5Zb",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_14_jongeren_activiteiten_centrum_tk25.pdf",
+          "text": "goeree-overflakkee_stembureau_14_jongeren_activiteiten_centrum_tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_14_jongeren_activiteiten_centrum_tk25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_15_hoeksteen_tk25_aanpassing.pdf?cb=baayajfG",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_15_hoeksteen_tk25_aanpassing.pdf",
+          "text": "goeree-overflakkee_stembureau_15_hoeksteen_tk25_aanpassing.pdf (PDF, 2,1 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_15_hoeksteen_tk25_aanpassing.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_16_vita_nova_tk25.pdf?cb=KYScMbOA",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_16_vita_nova_tk25.pdf",
+          "text": "goeree-overflakkee_stembureau_16_vita_nova_tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_16_vita_nova_tk25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_17_de_staver_tk25.pdf?cb=FRzWqSZf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_17_de_staver_tk25.pdf",
+          "text": "goeree-overflakkee_stembureau_17_de_staver_tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_17_de_staver_tk25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_18_exoduskerk_tk25_aanpassing.pdf?cb=qGDCLoOy",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_18_exoduskerk_tk25_aanpassing.pdf",
+          "text": "goeree-overflakkee_stembureau_18_exoduskerk_tk25_aanpassing.pdf (PDF, 1,9 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_18_exoduskerk_tk25_aanpassing.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_19_ons_dorpshuis_tk25.pdf?cb=lD5gKvT3",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_19_ons_dorpshuis_tk25.pdf",
+          "text": "goeree-overflakkee_stembureau_19_ons_dorpshuis_tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_19_ons_dorpshuis_tk25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_20_trefpunt_tk25_aanpassing.pdf?cb=D97MphoU",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_20_trefpunt_tk25_aanpassing.pdf",
+          "text": "goeree-overflakkee_stembureau_20_trefpunt_tk25_aanpassing.pdf (PDF, 2,1 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_20_trefpunt_tk25_aanpassing.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_21_t_centrum_tk25.pdf?cb=L-gxFRbT",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_21_t_centrum_tk25.pdf",
+          "text": "goeree-overflakkee_stembureau_21_t_centrum_tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_21_t_centrum_tk25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_22_bommelstee_tk25.pdf?cb=Htdi-HXE",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_22_bommelstee_tk25.pdf",
+          "text": "goeree-overflakkee_stembureau_22_bommelstee_tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_22_bommelstee_tk25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_23_t_buurthuus_tk25.pdf?cb=bDTxPo4d",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_23_t_buurthuus_tk25.pdf",
+          "text": "goeree-overflakkee_stembureau_23_t_buurthuus_tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_23_t_buurthuus_tk25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_24_de_grutterswei_zaal_a_tk25.pdf?cb=8GruaMpY",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_24_de_grutterswei_zaal_a_tk25.pdf",
+          "text": "goeree-overflakkee_stembureau_24_de_grutterswei_zaal_a_tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_24_de_grutterswei_zaal_a_tk25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_25_de_grutterswei_zaal_c_tk25.pdf?cb=_RtDbUZB",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_25_de_grutterswei_zaal_c_tk25.pdf",
+          "text": "goeree-overflakkee_stembureau_25_de_grutterswei_zaal_c_tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_25_de_grutterswei_zaal_c_tk25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_26_beroepscampus_tk25.pdf?cb=lqDNmP8j",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_26_beroepscampus_tk25.pdf",
+          "text": "goeree-overflakkee_stembureau_26_beroepscampus_tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_26_beroepscampus_tk25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/goereeoverflakkee/uploads/goeree-overflakkee_stembureau_27_diekhuus_tk25.pdf?cb=lCQRk6lE",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/goeree-overflakkee_stembureau_27_diekhuus_tk25.pdf",
+          "text": "goeree-overflakkee_stembureau_27_diekhuus_tk25.pdf (PDF, 1,7 MB )",
+          "pdf_name": "goeree-overflakkee_stembureau_27_diekhuus_tk25.pdf",
+          "score": 4,
+          "from": "https://www.goeree-overflakkee.nl/proces-verbalen-tweede-kamerverkiezing-2025"
+        }
+      ]
+    },
+    {
+      "name": "Dalfsen",
+      "start_url": "https://www.dalfsen.nl/",
+      "pdfs": [
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/Concept%20Detailhandelsstructuurvisie%202024%20-%20versie%207%20oktober%202024.pdf?cb=E3LV6XfU",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/Concept20Detailhandelsstructuurvisie20202420-20versie20720oktober202024.pdf",
+          "text": "Concept Detailhandelsstructuurvisie 2024",
+          "pdf_name": "Concept%20Detailhandelsstructuurvisie%202024%20-%20versie%207%20oktober%202024.pdf",
+          "score": 1,
+          "from": "https://www.dalfsen.nl/",
+          "model": "overig"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/totaaluitslag_stemmen_1762166611310_gemeente_dalfsen.pdf?cb=ZaZduZv0",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/totaaluitslag_stemmen_1762166611310_gemeente_dalfsen.pdf",
+          "text": "Totaaluitslag Stemmen 1762166611310 gemeente Dalfsen (PDF, 269,9 kB )",
+          "pdf_name": "totaaluitslag_stemmen_1762166611310_gemeente_dalfsen.pdf",
+          "score": 4,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "overig"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/uitslag_gemeente_dalfsen_tk_2025.pdf?cb=sEHTnqIo",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/uitslag_gemeente_dalfsen_tk_2025.pdf",
+          "text": "Totaaluitslag stemmen - TK 2025 (PDF, 51,7 kB )",
+          "pdf_name": "uitslag_gemeente_dalfsen_tk_2025.pdf",
+          "score": 4,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "overig"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/uitslag_stemmen_per_stembureau_-_tweede_kamerverkiezingen_2025.pdf?cb=8q1G2aJ7",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/uitslag_stemmen_per_stembureau_-_tweede_kamerverkiezingen_2025.pdf",
+          "text": "Uitslag stemmen per stembureau - TK 2025 (PDF, 269,9 kB )",
+          "pdf_name": "uitslag_stemmen_per_stembureau_-_tweede_kamerverkiezingen_2025.pdf",
+          "score": 4,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "overig"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/proces-verbaal_gemeentelijk_stembureau_-_model_na_31-2_-_gemeente_dalfsen.pdf?cb=6HfAhbDX",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/proces-verbaal_gemeentelijk_stembureau_-_model_na_31-2_-_gemeente_dalfsen.pdf",
+          "text": "Proces-verbaal gemeentelijk stembureau - Model Na 31-2 - Gemeente Dalfsen (PDF, 2,9 MB )",
+          "pdf_name": "proces-verbaal_gemeentelijk_stembureau_-_model_na_31-2_-_gemeente_dalfsen.pdf",
+          "score": 4,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "Na 31-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/proces-verbaal_tk_2025_ver.gebouw_toerclub_dalfsen.pdf?cb=bMvaoPoS",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/proces-verbaal_tk_2025_ver.gebouw_toerclub_dalfsen.pdf",
+          "text": "Proces-verbaal TK 2025 Ver.gebouw Toerclub Dalfsen (PDF, 444,4 kB )",
+          "pdf_name": "proces-verbaal_tk_2025_ver.gebouw_toerclub_dalfsen.pdf",
+          "score": 4,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "N10-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/tk_2025_bijlage_2._ver.gebouw_toerclub_dalfsen.pdf?cb=GY6IC4wZ",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/tk_2025_bijlage_2._ver.gebouw_toerclub_dalfsen.pdf",
+          "text": "TK 2025 Bijlage 2. Ver.gebouw Toerclub Dalfsen (PDF, 1,8 MB )",
+          "pdf_name": "tk_2025_bijlage_2._ver.gebouw_toerclub_dalfsen.pdf",
+          "score": 1,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "Na 31-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/proces-verbaal_tk_2025_parochiehuis_heilig_hart.pdf?cb=UD7v3P34",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/proces-verbaal_tk_2025_parochiehuis_heilig_hart.pdf",
+          "text": "Proces-verbaal TK 2025 Parochiehuis Heilig Hart (PDF, 444,3 kB )",
+          "pdf_name": "proces-verbaal_tk_2025_parochiehuis_heilig_hart.pdf",
+          "score": 4,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "N10-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/tk_2025_bijlage_2_parochiehuis_heilig_hart.pdf?cb=rQxcRa8J",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/tk_2025_bijlage_2_parochiehuis_heilig_hart.pdf",
+          "text": "TK 2025 bijlage 2 Parochiehuis Heilig Hart (PDF, 2,2 MB )",
+          "pdf_name": "tk_2025_bijlage_2_parochiehuis_heilig_hart.pdf",
+          "score": 1,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "Na 31-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/proces-verbaal_tk_2025_ontmoetingskerk.pdf?cb=-hQa9wQs",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/proces-verbaal_tk_2025_ontmoetingskerk.pdf",
+          "text": "Proces-verbaal TK 2025 Ontmoetingskerk (PDF, 438,5 kB )",
+          "pdf_name": "proces-verbaal_tk_2025_ontmoetingskerk.pdf",
+          "score": 4,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "N10-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/tk_2025_bijlage_2_ontmoetingskerk.pdf?cb=yqUZWU1k",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/tk_2025_bijlage_2_ontmoetingskerk.pdf",
+          "text": "TK 2025 bijlage 2 Ontmoetingskerk (PDF, 2,2 MB )",
+          "pdf_name": "tk_2025_bijlage_2_ontmoetingskerk.pdf",
+          "score": 1,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "Na 31-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/proces-verbaal_tk_2025_de_wiekelaar.pdf?cb=KoeBa-fA",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/proces-verbaal_tk_2025_de_wiekelaar.pdf",
+          "text": "Proces-verbaal TK 2025 De Wiekelaar (PDF, 436,2 kB )",
+          "pdf_name": "proces-verbaal_tk_2025_de_wiekelaar.pdf",
+          "score": 4,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "N10-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/tk_2025_bijlage_2._de_wiekelaar.pdf?cb=8UAsvf1d",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/tk_2025_bijlage_2._de_wiekelaar.pdf",
+          "text": "Tk 2025 Bijlage 2. De Wiekelaar (PDF, 1,8 MB )",
+          "pdf_name": "tk_2025_bijlage_2._de_wiekelaar.pdf",
+          "score": 1,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "Na 31-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/proces-verbaal_tk_2025_brugstede.pdf?cb=DLu5DNdQ",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/proces-verbaal_tk_2025_brugstede.pdf",
+          "text": "Proces-verbaal TK 2025 Brugstede (PDF, 438,3 kB )",
+          "pdf_name": "proces-verbaal_tk_2025_brugstede.pdf",
+          "score": 4,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "N10-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/tk_2025_bijlage_2_brugstede.pdf?cb=MiQ-HKK4",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/tk_2025_bijlage_2_brugstede.pdf",
+          "text": "TK 2025 bijlage 2 Brugstede (PDF, 2,1 MB )",
+          "pdf_name": "tk_2025_bijlage_2_brugstede.pdf",
+          "score": 1,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "Na 31-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/proces-verbaal_tk_2025_restaurant_madrid.pdf?cb=uvNlvCQW",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/proces-verbaal_tk_2025_restaurant_madrid.pdf",
+          "text": "Proces-verbaal TK 2025 Restaurant Madrid (PDF, 375,6 kB )",
+          "pdf_name": "proces-verbaal_tk_2025_restaurant_madrid.pdf",
+          "score": 4,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "N10-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/tk_2025_bijlage_2._restaurant_madrid.pdf?cb=w38DbdZG",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/tk_2025_bijlage_2._restaurant_madrid.pdf",
+          "text": "TK 2025 Bijlage 2. Restaurant Madrid (PDF, 1,8 MB )",
+          "pdf_name": "tk_2025_bijlage_2._restaurant_madrid.pdf",
+          "score": 1,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "Na 31-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/proces-verbaal_tk_2025_restaurant_het_roode_hert.pdf?cb=9_jwE72h",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/proces-verbaal_tk_2025_restaurant_het_roode_hert.pdf",
+          "text": "Proces-verbaal TK 2025 Restaurant Het Roode Hert (PDF, 436,6 kB )",
+          "pdf_name": "proces-verbaal_tk_2025_restaurant_het_roode_hert.pdf",
+          "score": 4,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "N10-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/tk_2025_bijlage_2._rest._het_roode_hert.pdf?cb=wxMN73no",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/tk_2025_bijlage_2._rest._het_roode_hert.pdf",
+          "text": "TK 2025 Bijlage 2. Rest. Het Roode Hert (PDF, 1,8 MB )",
+          "pdf_name": "tk_2025_bijlage_2._rest._het_roode_hert.pdf",
+          "score": 1,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "Na 31-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/proces-verbaal_tk_2025_parochiehuis_hoonhorst.pdf?cb=Qs74wGv-",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/proces-verbaal_tk_2025_parochiehuis_hoonhorst.pdf",
+          "text": "Proces-verbaal TK 2025 Parochiehuis Hoonhorst (PDF, 423,2 kB )",
+          "pdf_name": "proces-verbaal_tk_2025_parochiehuis_hoonhorst.pdf",
+          "score": 4,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "N10-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/tk_2025_bijlage_2_parochiehuis_hoonhorst.pdf?cb=cgS3DHLZ",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/tk_2025_bijlage_2_parochiehuis_hoonhorst.pdf",
+          "text": "TK 2025 bijlage 2 Parochiehuis Hoonhorst (PDF, 2,2 MB )",
+          "pdf_name": "tk_2025_bijlage_2_parochiehuis_hoonhorst.pdf",
+          "score": 1,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "Na 31-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/proces-verbaal_tk_2025_ngk_de_hoeksteen.pdf?cb=naP4DOxA",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/proces-verbaal_tk_2025_ngk_de_hoeksteen.pdf",
+          "text": "Proces-verbaal TK 2025 NGK De Hoeksteen (PDF, 439,6 kB )",
+          "pdf_name": "proces-verbaal_tk_2025_ngk_de_hoeksteen.pdf",
+          "score": 4,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "N10-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/tk_2025_bijlage_2._ngk_de_hoeksteen.pdf?cb=kKxQqal6",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/tk_2025_bijlage_2._ngk_de_hoeksteen.pdf",
+          "text": "Tk 2025 Bijlage 2. NGK De Hoeksteen (PDF, 1,8 MB )",
+          "pdf_name": "tk_2025_bijlage_2._ngk_de_hoeksteen.pdf",
+          "score": 1,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "Na 31-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/proces-verbaal_tk_2025_kulturhus_de_spil.pdf?cb=VWP-2Y6r",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/proces-verbaal_tk_2025_kulturhus_de_spil.pdf",
+          "text": "Proces-verbaal TK 2025 Kulturhus De Spil (PDF, 432,4 kB )",
+          "pdf_name": "proces-verbaal_tk_2025_kulturhus_de_spil.pdf",
+          "score": 4,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "N10-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/tk_2025_bijlage_2_kulturhus_de_spil.pdf?cb=JnYbRc97",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/tk_2025_bijlage_2_kulturhus_de_spil.pdf",
+          "text": "TK 2025 bijlage 2 Kulturhus de Spil (PDF, 2,3 MB )",
+          "pdf_name": "tk_2025_bijlage_2_kulturhus_de_spil.pdf",
+          "score": 1,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "Na 31-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/proces-verbaal_tk_2025_maranathakerk.pdf?cb=996rIwME",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/proces-verbaal_tk_2025_maranathakerk.pdf",
+          "text": "Proces-verbaal TK 2025 Maranathakerk (PDF, 419 kB )",
+          "pdf_name": "proces-verbaal_tk_2025_maranathakerk.pdf",
+          "score": 4,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "N10-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/tk_2025_bijlage_2_maranathakerk.pdf?cb=Bu143L3e",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/tk_2025_bijlage_2_maranathakerk.pdf",
+          "text": "TK 2025 bijlage 2 Maranathakerk (PDF, 2,2 MB )",
+          "pdf_name": "tk_2025_bijlage_2_maranathakerk.pdf",
+          "score": 1,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "Na 31-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/proces-verbaal_tk_2025_kulturhus_de_mozaiek.pdf?cb=KFDAkOch",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/proces-verbaal_tk_2025_kulturhus_de_mozaiek.pdf",
+          "text": "Proces-verbaal TK 2025 Kulturhus De Mozaïek (PDF, 445,3 kB )",
+          "pdf_name": "proces-verbaal_tk_2025_kulturhus_de_mozaiek.pdf",
+          "score": 4,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "N10-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/tk_2025_bijlage_2._kulturhus_de_mozaiek.pdf?cb=Hh3xGUyx",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/tk_2025_bijlage_2._kulturhus_de_mozaiek.pdf",
+          "text": "Tk 2025 Bijlage 2. Kulturhus De Mozaiek (PDF, 1,8 MB )",
+          "pdf_name": "tk_2025_bijlage_2._kulturhus_de_mozaiek.pdf",
+          "score": 1,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "Na 31-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/proces-verbaal_tk_2025_grote_kerk_nieuwleusen.pdf?cb=87bQu5FS",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/proces-verbaal_tk_2025_grote_kerk_nieuwleusen.pdf",
+          "text": "Proces-verbaal TK 2025 Grote Kerk Nieuwleusen (PDF, 423,3 kB )",
+          "pdf_name": "proces-verbaal_tk_2025_grote_kerk_nieuwleusen.pdf",
+          "score": 4,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "N10-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/tk_2025_bijlage_2_grote_kerk_nieuwleusen.pdf?cb=pZ874GzL",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/tk_2025_bijlage_2_grote_kerk_nieuwleusen.pdf",
+          "text": "TK 2025 bijlage 2 Grote Kerk Nieuwleusen (PDF, 2,2 MB )",
+          "pdf_name": "tk_2025_bijlage_2_grote_kerk_nieuwleusen.pdf",
+          "score": 1,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "Na 31-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/proces-verbaal_tk_2025_de_trefkoele.pdf?cb=QsKVRsIY",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/proces-verbaal_tk_2025_de_trefkoele.pdf",
+          "text": "Proces-verbaal TK 2025 De Trefkoele+ (PDF, 430,7 kB )",
+          "pdf_name": "proces-verbaal_tk_2025_de_trefkoele.pdf",
+          "score": 4,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "N10-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/tk_2025_bijlage_2._de_trefkoele_.pdf?cb=k25q-kG9",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/tk_2025_bijlage_2._de_trefkoele_.pdf",
+          "text": "TK 2025 Bijlage 2. De Trefkoele + (PDF, 1,8 MB )",
+          "pdf_name": "tk_2025_bijlage_2._de_trefkoele_.pdf",
+          "score": 1,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "Na 31-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/proces-verbaal_tk_2025_de_hulstkampen.pdf?cb=5o-nO1GF",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/proces-verbaal_tk_2025_de_hulstkampen.pdf",
+          "text": "Proces-verbaal TK 2025 De Hulstkampen (PDF, 431,8 kB )",
+          "pdf_name": "proces-verbaal_tk_2025_de_hulstkampen.pdf",
+          "score": 4,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "N10-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/tk_2025_bijlage_2_de_hulstkampen.pdf?cb=bzm2cpXr",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/tk_2025_bijlage_2_de_hulstkampen.pdf",
+          "text": "TK 2025 bijlage 2 De Hulstkampen (PDF, 2,1 MB )",
+          "pdf_name": "tk_2025_bijlage_2_de_hulstkampen.pdf",
+          "score": 1,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "Na 31-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/proces-verbaal_tk_2025_cbs_het_kompas.pdf?cb=gjxUOf6d",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/proces-verbaal_tk_2025_cbs_het_kompas.pdf",
+          "text": "Proces-verbaal TK 2025 CBS Het Kompas (PDF, 440,2 kB )",
+          "pdf_name": "proces-verbaal_tk_2025_cbs_het_kompas.pdf",
+          "score": 4,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "N10-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/tk_2025_bijlage_2_cbs_het_kompas.pdf?cb=iiT9Kw89",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/tk_2025_bijlage_2_cbs_het_kompas.pdf",
+          "text": "TK 2025 bijlage 2 CBS Het Kompas (PDF, 2,1 MB )",
+          "pdf_name": "tk_2025_bijlage_2_cbs_het_kompas.pdf",
+          "score": 1,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "Na 31-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/procesverbaal_tk_2025_gemeentehuis.pdf?cb=zKdvQ6Kp",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/procesverbaal_tk_2025_gemeentehuis.pdf",
+          "text": "Procesverbaal TK 2025 Gemeentehuis (PDF, 490 kB )",
+          "pdf_name": "procesverbaal_tk_2025_gemeentehuis.pdf",
+          "score": 4,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "N10-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/tk_2025_bijlage_2._gemeentehuis.pdf?cb=cCLTgr4o",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/tk_2025_bijlage_2._gemeentehuis.pdf",
+          "text": "TK 2025 Bijlage 2. Gemeentehuis (PDF, 1,8 MB )",
+          "pdf_name": "tk_2025_bijlage_2._gemeentehuis.pdf",
+          "score": 1,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "Na 31-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/procesverbaal_tk_2025_ngk_het_kruispunt.pdf?cb=7_qy-9vC",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/procesverbaal_tk_2025_ngk_het_kruispunt.pdf",
+          "text": "Procesverbaal TK 2025 NGK “Het Kruispunt” (PDF, 479,9 kB )",
+          "pdf_name": "procesverbaal_tk_2025_ngk_het_kruispunt.pdf",
+          "score": 4,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "N10-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/tk_2025_bijlage_2._ngk_het_kruispunt.pdf?cb=QJ1impDi",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/tk_2025_bijlage_2._ngk_het_kruispunt.pdf",
+          "text": "TK 2025 Bijlage 2. NGK ''Het Kruispunt'' (PDF, 1,8 MB )",
+          "pdf_name": "tk_2025_bijlage_2._ngk_het_kruispunt.pdf",
+          "score": 1,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "Na 31-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/procesverbaal_tk_2025_rosengaerde.pdf?cb=Xa3TPCaF",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/procesverbaal_tk_2025_rosengaerde.pdf",
+          "text": "Procesverbaal TK 2025 Rosengaerde (PDF, 491,2 kB )",
+          "pdf_name": "procesverbaal_tk_2025_rosengaerde.pdf",
+          "score": 4,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "N10-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/dalfsen/uploads/tk_2025_bijlage_2._rosengaerde.pdf?cb=vJS8e6fc",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/tk_2025_bijlage_2._rosengaerde.pdf",
+          "text": "TK 2025 Bijlage 2. Rosengaerde (PDF, 1,8 MB )",
+          "pdf_name": "tk_2025_bijlage_2._rosengaerde.pdf",
+          "score": 1,
+          "from": "https://www.dalfsen.nl/bestanden",
+          "model": "Na 31-2"
+        }
+      ]
+    },
+    {
+      "name": "Emmen",
+      "start_url": "https://gemeente.emmen.nl/verkiezingen",
+      "pdfs": []
+    },
+    {
+      "name": "Rheden",
+      "start_url": "https://www.rheden.nl/",
+      "pdfs": [
+        {
+          "remote_url": "https://www.rheden.nl/Bibliotheek/Documenten/Inwoners/Meldingen_overlast/epr_2025.pdf",
+          "local_url": null,
+          "text": "deze kaart",
+          "pdf_name": "epr_2025.pdf",
+          "score": 1,
+          "from": "https://www.rheden.nl/Inwoners/Meldingen_overlast_werkzaamheden/Eikenprocessierups"
+        },
+        {
+          "remote_url": "https://www.rheden.nl/Bibliotheek/Documenten/Inwoners/Meldingen_overlast/Alles_over_de_eikenprocessierups.pdf",
+          "local_url": null,
+          "text": "Alles_over_de_eikenprocessierups.pdf",
+          "pdf_name": "Alles_over_de_eikenprocessierups.pdf",
+          "score": 1,
+          "from": "https://www.rheden.nl/Inwoners/Meldingen_overlast_werkzaamheden/Eikenprocessierups"
+        }
+      ]
+    },
+    {
       "name": "Rijssen-Holten",
       "start_url": "https://www.rijssen-holten.nl/verkiezingen-en-uitslagen/tweede-kamerverkiezing-2025/",
       "pdfs": [
@@ -7303,11 +8185,6 @@
           "from": "https://cms.dordrecht.nl/Bestuur/Overzicht_Bestuur/Verkiezingen/Tweede_Kamer_verkiezingen_2025/Uitkomsten_Tweede_Kamerverkiezing"
         }
       ]
-    },
-    {
-      "name": "Dalfsen",
-      "start_url": "https://www.dalfsen.nl/",
-      "pdfs": []
     },
     {
       "name": "Dantumadiel",
@@ -32239,11 +33116,6 @@
       "pdfs": []
     },
     {
-      "name": "Emmen",
-      "start_url": "https://gemeente.emmen.nl/verkiezingen",
-      "pdfs": []
-    },
-    {
       "name": "Enkhuizen",
       "start_url": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/",
       "pdfs": []
@@ -32291,11 +33163,6 @@
     {
       "name": "Gilze en Rijen",
       "start_url": "https://www.gilzerijen.nl/tweede-kamerverkiezingen",
-      "pdfs": []
-    },
-    {
-      "name": "Goeree-Overflakkee",
-      "start_url": "https://www.goeree-overflakkee.nl/uitslag-vorige-verkiezingen?origin=/uitslagen-verkiezingen-2019-2024",
       "pdfs": []
     },
     {
@@ -32961,11 +33828,6 @@
     {
       "name": "Reusel-De Mierden",
       "start_url": "https://www.reuseldemierden.nl/verkiezingen",
-      "pdfs": []
-    },
-    {
-      "name": "Rheden",
-      "start_url": "https://www.rheden.nl/",
       "pdfs": []
     },
     {

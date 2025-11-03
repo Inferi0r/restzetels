@@ -203,6 +203,8 @@ def run(argv: list[str] | None = None) -> int:
     ap.add_argument("--refresh", action="store_true", help="Herclassificeer alles (niet alleen ontbrekende modellen)")
     ap.add_argument("--model31", action="store_true", help="Genereer gemeente_model_31.json met alle gemeenten en hun Na 31-(-1/-2) PDFs")
     ap.add_argument("--filename-only", action="store_true", help="In --model31 modus: alleen bestandsnaam-heuristiek toepassen (geen PDF-tekst of OCR)")
+    ap.add_argument("--include-bijlage", action="store_true", help="Neem ook bijlages (bijlage 2: uitkomsten per stembureau) mee in --model31")
+    ap.add_argument("--prune-bijlage", action="store_true", help="Verwijder bestaande bijlage-2/uitkomsten-per-stembureau items uit de JSON (alleen in --model31)")
     ap.add_argument("--limit", type=int, default=None, help="Beperk in --model31 modus het aantal te scannen gemeenten (voor snelle test)")
     args = ap.parse_args(argv)
 
@@ -220,6 +222,21 @@ def run(argv: list[str] | None = None) -> int:
         municipalities_all = [d for d in os.listdir(base_pdfs) if os.path.isdir(os.path.join(base_pdfs, d))]
         municipalities_all.sort(key=lambda s: s.lower())
 
+        # Laad bestaande output (niet leegmaken!) en zorg dat alle gemeenten als key bestaan
+        output_path = os.path.join(os.path.dirname(__file__), "gemeente_model_31.json")
+        out = {}
+        try:
+            if os.path.exists(output_path):
+                with open(output_path, "r", encoding="utf-8") as f:
+                    maybe = json.load(f)
+                if isinstance(maybe, dict):
+                    out = maybe
+        except Exception:
+            out = {}
+        for name in municipalities_all:
+            if name not in out or not isinstance(out.get(name), list):
+                out[name] = []
+
         # Optioneel beperken tot expliciet gevraagde gemeenten of een limiet (alleen voor verwerking)
         if args.only:
             only = set(args.only)
@@ -229,9 +246,6 @@ def run(argv: list[str] | None = None) -> int:
         if args.limit is not None:
             to_process = to_process[: max(0, int(args.limit))]
 
-        # Voor de output vermelden we wel alle gemeenten (maar verwerken er evt. minder)
-        out = {name: [] for name in municipalities_all}
-
         # 1) Snelle pass: alleen bestandsnaam matchen (case-insensitive)
         #    Herken: 'na31' en 'n31' (met -, _ of spatie) en specifiek '31-1' / '31-2'
         # 'na31' moet als los 'na' voorkomen (geen deel van bv. 'Altena')
@@ -239,6 +253,41 @@ def run(argv: list[str] | None = None) -> int:
         rx_n31  = re.compile(r"(?<![A-Za-z])n[\s_\-–—]*31(?!\d)", re.I)
         rx_31_1 = re.compile(r"31[\s_\-–—]*1(?!\d)", re.I)
         rx_31_2 = re.compile(r"31[\s_\-–—]*2(?!\d)", re.I)
+
+        def merge_items(old_list, new_list):
+            seen = set()
+            merged = []
+            for item in (list(old_list or []) + list(new_list or [])):
+                if not isinstance(item, dict):
+                    continue
+                key = (item.get("local_url"), item.get("pdf_name"))
+                if key in seen:
+                    continue
+                seen.add(key)
+                merged.append({
+                    "pdf_name": item.get("pdf_name"),
+                    "local_url": item.get("local_url"),
+                })
+            return merged
+
+        # Optioneel bestaande bijlages wegfilteren
+        if args.prune_bijlage:
+            rx_bijlage = re.compile(r"\bbijlage\b", re.I)
+            rx_bijlage2 = re.compile(r"\bbijlage\s*2\b", re.I)
+            rx_uitkomsten = re.compile(r"uitkomsten\s+per\s+stembureau", re.I)
+            for name in (to_process or []):
+                items = out.get(name, [])
+                if not isinstance(items, list):
+                    continue
+                new_items = []
+                for it in items:
+                    fn = (it or {}).get("pdf_name") or ""
+                    # Snel: als in bestandsnaam 'bijlage' voorkomt, skip
+                    s = fn.lower()
+                    if ("bijlage" in s):
+                        continue
+                    new_items.append(it)
+                out[name] = new_items
 
         for name in to_process:
             gdir = os.path.join(base_pdfs, name)
@@ -255,11 +304,15 @@ def run(argv: list[str] | None = None) -> int:
                         "pdf_name": fn,
                         "local_url": f"file://{abspath}",
                     })
-            out[name] = coll
+            if coll:
+                out[name] = merge_items(out.get(name, []), coll)
 
         # 2) Voor gemeenten zonder resultaten: snelle tekstextractie van pagina 1, daarna pas OCR op kop
         empties = [n for n in to_process if not out.get(n)]
         if empties and not args.filename_only:
+            rx_bijlage = re.compile(r"\bbijlage\b", re.I)
+            rx_bijlage2 = re.compile(r"\bbijlage\s*2\b", re.I)
+            rx_uitkomsten = re.compile(r"uitkomsten\s+per\s+stembureau", re.I)
             for name in empties:
                 gdir = os.path.join(base_pdfs, name)
                 try:
@@ -274,7 +327,8 @@ def run(argv: list[str] | None = None) -> int:
                     t = read_first_page_text(loc) or ""
                     if t:
                         hit = detect_from_strings(t)
-                        if hit in ("Na 31-1", "Na 31-2") or RX["Na31"].search(t):
+                        # standaard: bijlages overslaan, tenzij expliciet toegestaan
+                        if (hit in ("Na 31-1", "Na 31-2") or RX["Na31"].search(t)) and (args.include_bijlage or not (rx_bijlage.search(t) or rx_bijlage2.search(t) or rx_uitkomsten.search(t))):
                             coll.append({
                                 "pdf_name": fn,
                                 "local_url": loc,
@@ -285,17 +339,18 @@ def run(argv: list[str] | None = None) -> int:
                         txt = ocr_header_text(loc) or ""
                         if txt:
                             hit = detect_from_strings(txt)
-                            if hit in ("Na 31-1", "Na 31-2") or RX["Na31"].search(txt):
+                            if (hit in ("Na 31-1", "Na 31-2") or RX["Na31"].search(txt)) and (args.include_bijlage or not (rx_bijlage.search(txt) or rx_bijlage2.search(txt) or rx_uitkomsten.search(txt))):
                                 coll.append({
                                     "pdf_name": fn,
                                     "local_url": loc,
                                 })
                 if coll:
-                    out[name] = coll
+                    out[name] = merge_items(out.get(name, []), coll)
 
-        output_path = os.path.join(os.path.dirname(__file__), "gemeente_model_31.json")
-        with open(output_path, "w", encoding="utf-8") as f:
+        tmp_path = output_path + ".tmp"
+        with open(tmp_path, "w", encoding="utf-8") as f:
             json.dump(out, f, ensure_ascii=False, indent=2, sort_keys=True)
+        os.replace(tmp_path, output_path)
         print(f"[model31] Geschreven: {output_path} (gemeenten={len(out)}, verwerkt={len(to_process)})")
         return 0
 

@@ -799,6 +799,204 @@ def find_stackstorage_shares_from_html(html: str, base_url: str) -> list[str]:
     return out
 
 
+# -------- MijnStembureau (PV portal) support --------
+
+def find_mijnstembureau_links_from_html(html: str, base_url: str) -> list[str]:
+    """Return MijnStembureau portal links discovered in the page HTML.
+    We look for hosts containing 'mijnstembureau' and a path with '/uitslagen/verkiezingen'.
+    If a link points to the portal root, we normalize to the 'download-opties' page.
+    """
+    soup = BeautifulSoup(html or "", "html.parser")
+    links: list[str] = []
+    for a in soup.select("a[href]"):
+        href = a.get("href")
+        if not href:
+            continue
+        full = urljoin(base_url, href)
+        u = urlparse(full)
+        host = (u.netloc or "").lower()
+        path = (u.path or "")
+        if "mijnstembureau" in host and "/uitslagen/verkiezingen" in path:
+            # prefer explicit download options subpage
+            if not path.rstrip("/").endswith("download-opties"):
+                full = urljoin(full.rstrip("/") + "/", "download-opties")
+            links.append(full)
+    # Dedup preserve order
+    out: list[str] = []
+    seen: set[str] = set()
+    for u in links:
+        if u in seen:
+            continue
+        seen.add(u)
+        out.append(u)
+    return out
+
+
+def collect_mijnstembureau_portals(name: str, extra: dict) -> list[str]:
+    """Discover MijnStembureau portal links for a municipality by scanning start/seeds and discovered pages."""
+    start = get_start_url(name)
+    seeds = list(extra.get(name, [])) if extra else []
+    if start:
+        seeds.insert(0, start)
+    portals: list[str] = []
+    discover_pages: list[str] = []
+    KEY_RE = re.compile(r"verkiez|uitslag|proces|stembur|tweede.*kamer|mijnstembureau", re.I)
+    for s in seeds[:5]:
+        try:
+            html, base = fetch_html(s, allow_render=False)
+            if not html:
+                continue
+            portals += find_mijnstembureau_links_from_html(html, base)
+            soup = BeautifulSoup(html, 'html.parser')
+            pu = urlparse(base)
+            base0 = f"{pu.scheme}://{pu.netloc}"
+            for a in soup.select('a[href]'):
+                href = a.get('href'); full = urljoin(base0, href or '')
+                if not full or urlparse(full).netloc != pu.netloc:
+                    continue
+                if KEY_RE.search(full) or KEY_RE.search(a.get_text(' ', strip=True) or ''):
+                    discover_pages.append(full)
+        except Exception:
+            pass
+    # Also probe a few likely pages via quick site search
+    if start:
+        try:
+            for p in quick_site_search(start):
+                try:
+                    html3, base3 = fetch_html(p, allow_render=False)
+                    if not html3:
+                        continue
+                    portals += find_mijnstembureau_links_from_html(html3, base3)
+                except Exception:
+                    continue
+        except Exception:
+            pass
+    # Traverse a bit deeper
+    seenp = set(); dedup = []
+    for u in discover_pages:
+        if u in seenp: continue
+        seenp.add(u); dedup.append(u)
+    for p in dedup[:15]:
+        try:
+            html2, base2 = fetch_html(p, allow_render=False)
+            if not html2:
+                continue
+            portals += find_mijnstembureau_links_from_html(html2, base2)
+        except Exception:
+            pass
+    # Sitemap discovery as a last resort
+    if start and not portals:
+        try:
+            for p in discover_via_sitemap(start, max_pages=40):
+                try:
+                    html4, base4 = fetch_html(p, allow_render=False)
+                    if not html4:
+                        continue
+                    portals += find_mijnstembureau_links_from_html(html4, base4)
+                    if portals:
+                        break
+                except Exception:
+                    continue
+        except Exception:
+            pass
+    # Dedup portals
+    out=[]; seen=set()
+    for u in portals:
+        if u in seen: continue
+        seen.add(u); out.append(u)
+    return out
+
+
+def download_mijnstembureau_portal(muni: str, portal_url: str) -> list[dict]:
+    """Open a MijnStembureau download-options page and download PV PDFs by intercepting PDF responses.
+    Returns a list of index items with local_url and pdf_name (remote_url set to the PDF API endpoint).
+    """
+    if not PLAYWRIGHT_AVAILABLE:
+        print(f"[mijnstembureau] Playwright not available; skip portal {portal_url}")
+        return []
+    out_dir = os.path.join(OUT_BASE, sanitize_filename(muni))
+    os.makedirs(out_dir, exist_ok=True)
+    items: list[dict] = []
+    saved = 0
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            ctx = browser.new_context()
+            page = ctx.new_page()
+            page.goto(portal_url, wait_until='domcontentloaded', timeout=60000)
+            try:
+                page.wait_for_load_state('networkidle', timeout=60000)
+            except Exception:
+                pass
+            # Reveal PV list
+            clicked = False
+            for t in ("Processen verbaal", "Proces-verbaal", "Proces", "verbaal"):
+                try:
+                    el = page.get_by_text(t, exact=False).first
+                    if el and el.is_visible():
+                        el.click(timeout=15000)
+                        clicked = True
+                        break
+                except Exception:
+                    continue
+            if not clicked:
+                print(f"[mijnstembureau] {muni}: couldn't find 'Processen verbaal' on {portal_url}")
+                ctx.close(); browser.close()
+                return []
+            try:
+                page.wait_for_timeout(800)
+            except Exception:
+                pass
+            buttons = page.locator('button:has-text(".pdf")')
+            count = buttons.count()
+            for i in range(count):
+                try:
+                    btn = buttons.nth(i)
+                    label = sanitize_filename((btn.inner_text() or '').strip()) or f"pv_{i+1}.pdf"
+                    if not label.lower().endswith('.pdf'):
+                        label += '.pdf'
+                    dest = os.path.join(out_dir, label)
+                    if os.path.exists(dest):
+                        items.append({
+                            "remote_url": None,
+                            "local_url": "file://" + os.path.abspath(dest),
+                            "pdf_name": label,
+                            "text": label,
+                            "score": 5,
+                            "from": portal_url,
+                        })
+                        continue
+                    def is_pdf(resp):
+                        try:
+                            ct = (resp.headers.get('content-type') or '').lower()
+                            return 'application/pdf' in ct and '/uitslagen/api/' in resp.url
+                        except Exception:
+                            return False
+                    with page.expect_response(is_pdf, timeout=45000) as resp_info:
+                        btn.click(timeout=15000)
+                    resp = resp_info.value
+                    data = resp.body()
+                    with open(dest, 'wb') as f:
+                        f.write(data)
+                    saved += 1
+                    items.append({
+                        "remote_url": resp.url,
+                        "local_url": "file://" + os.path.abspath(dest),
+                        "pdf_name": label,
+                        "text": label,
+                        "score": 5,
+                        "from": portal_url,
+                    })
+                except Exception as e:
+                    print(f"[mijnstembureau] {muni}: error item {i+1}: {e}")
+                    continue
+            ctx.close(); browser.close()
+    except Exception:
+        return items
+    if saved:
+        print(f"[mijnstembureau] {muni}: saved {saved}/{len(items)} PV PDFs")
+    return items
+
 def download_stackstorage_share(muni: str, share_url: str) -> list[dict]:
     """Download PDFs from a Stackstorage share.
     Strategy: try 'Download all' (zip), else click per-file download anchors.
@@ -1049,13 +1247,17 @@ def quick_site_search(start_url: str) -> list[str]:
     # Uitgebreide termen zodat o.a. 'voorlopige-verkiezingsuitslag' gevonden wordt
     terms = [
         "documenten verkiezing", "verkiezingsuitslag", "verkiezingen uitslag", "verkiez", "uitslag",
-        "proces-verbaal", "processen-verbaal", "stembureau", "voorlopige", "N10-2", "Na 31-2", "bijlage 2"
+        "proces-verbaal", "processen-verbaal", "stembureau", "voorlopige", "N10-2", "Na 31-2", "bijlage 2",
+        "bestanden", "documenten"
     ]
     paths = ["zoeken", "search", "site/zoeken"]
     candidates = []
     for t in terms:
         for p in paths:
-            candidates.append(f"{base}/{p}?q={requests.utils.quote(t)}")
+            q = requests.utils.quote(t)
+            # probeer zowel ?q= als ?search=
+            candidates.append(f"{base}/{p}?q={q}")
+            candidates.append(f"{base}/{p}?search={q}")
     found_pages: list[str] = []
     for u in candidates:
         try:
@@ -1066,7 +1268,7 @@ def quick_site_search(start_url: str) -> list[str]:
                 # pak alleen interne contentpagina's, geen assets
                 if urlparse(full).netloc == pu.netloc and full.startswith(base):
                     low = full.lower() + " " + (a.get_text(" ", strip=True) or "").lower()
-                    if any(k in low for k in ("verkiez", "uitslag", "proces", "stembur", "n10", "na 31", "bijlage", "voorlopige")):
+                    if any(k in low for k in ("verkiez", "uitslag", "proces", "stembur", "n10", "na 31", "bijlage", "voorlopige", "document", "bestanden")):
                         found_pages.append(full)
         except Exception:
             pass
@@ -1079,6 +1281,55 @@ def quick_site_search(start_url: str) -> list[str]:
         seen.add(u)
         out.append(u)
     return out[:8]
+
+
+def probe_well_known_pages(start_url: str) -> list[str]:
+    """Probeer een handvol vaak gebruikte paden die gemeenten gebruiken voor verkiezingspagina's.
+    Bijvoorbeeld '/verkiezingen', '/bestanden', '/tweede-kamerverkiezingen', '/tk2025'.
+    """
+    try:
+        pu = urlparse(start_url)
+        origin = f"{pu.scheme}://{pu.netloc}"
+    except Exception:
+        return []
+    # Kandidaten (orde: meest algemeen eerst)
+    cand = [
+        "/verkiezingen",
+        "/bestanden",
+        "/tweede-kamerverkiezingen/",
+        "/tweede-kamerverkiezingen",
+        "/verkiezing",
+        "/verkiezingsuitslag",
+        "/documenten",
+        "/downloads",
+        "/tk2025",
+        "/tk2023",
+        "/site/zoeken?search=proces-verbaal",
+        "/zoeken?search=proces-verbaal",
+        "/search?q=proces-verbaal",
+    ]
+    out: list[str] = []
+    seen = set()
+    for path in cand:
+        u = origin.rstrip("/") + path
+        if u in seen:
+            continue
+        seen.add(u)
+        try:
+            r = http_get(u, timeout=8)
+            if 200 <= r.status_code < 400:
+                out.append(r.url)
+        except Exception:
+            continue
+    # dedup
+    res = []
+    seen2 = set()
+    for u in out:
+        if u in seen2:
+            continue
+        seen2.add(u)
+        res.append(u)
+    return res[:10]
 
 
 def discover_via_sitemap(start_url: str, max_pages: int = 30) -> list[str]:
@@ -1099,7 +1350,7 @@ def discover_via_sitemap(start_url: str, max_pages: int = 30) -> list[str]:
         sitemap_urls = [f"{base}/sitemap.xml"]
 
     found_pages: list[str] = []
-    KEY_RE = re.compile(r"verkiez|uitslag|tweede.*kamer|stembur|proces|result", re.I)
+    KEY_RE = re.compile(r"verkiez|uitslag|tweede.*kamer|stembur|proces|result|gestemd", re.I)
 
     def parse_sm(url: str, depth: int = 0):
         nonlocal found_pages
@@ -1307,6 +1558,13 @@ def collect_pdfs_for_municipality(name: str, extra: dict, force_render: bool = F
     seeds = list(extra.get(name, [])) if extra else []
     if start:
         seeds.insert(0, start)
+        # Probeer bekende paden (zoals /verkiezingen, /bestanden) ook als seed
+        try:
+            for u in probe_well_known_pages(start)[:6]:
+                if u not in seeds:
+                    seeds.append(u)
+        except Exception:
+            pass
     # fetch seeds and extract pdfs + discover a small set of relevant internal pages
     discover_pages_scored: list[tuple[str,int]] = []
     KEY_RE = re.compile(r"verkiez|uitslag|proces|stembur|tweede.*kamer|n10|na\s*31|na31|model", re.I)
@@ -1368,6 +1626,14 @@ def collect_pdfs_for_municipality(name: str, extra: dict, force_render: bool = F
                 urls += extract_pdf_links(html3, base3)
             except Exception:
                 pass
+    # As a deeper fallback: shallow BFS on internal pages to catch hubs like '/bestanden'
+    if len(urls) < 5:
+        try:
+            bfs = collect_pdfs_bfs_internal(name, max_depth=2, max_pages=60, force_render=force_render)
+            if bfs:
+                urls += bfs
+        except Exception:
+            pass
     # sitemap discovery as ultimate fallback
     if not urls and start:
         for p in discover_via_sitemap(start):
@@ -1384,6 +1650,72 @@ def collect_pdfs_for_municipality(name: str, extra: dict, force_render: bool = F
             continue
         seen.add(u)
         out.append(entry)
+    return out
+
+
+# -------- BFS discovery on internal site (generic) --------
+
+def collect_pdfs_bfs_internal(name: str, max_depth: int = 3, max_pages: int = 120, force_render: bool = False) -> list[dict]:
+    """BFS over internal pages up to max_depth, selecting links by election/PV heuristics,
+    extracting PDFs from each visited page. Keeps within the municipality domain.
+    """
+    start = get_start_url(name)
+    if not start:
+        return []
+    try:
+        pu = urlparse(start)
+        origin = f"{pu.scheme}://{pu.netloc}"
+    except Exception:
+        return []
+    KEY_RE = re.compile(r"verkiez|uitslag|proces|verbaal|stembur|tweede.*kamer|pv\b|n10|na\s*31|na31|model", re.I)
+    visited: set[str] = set()
+    queue: list[tuple[str,int]] = [(start, 0)]
+    pages: list[str] = []
+    while queue and len(pages) < max_pages:
+        u, d = queue.pop(0)
+        if u in visited:
+            continue
+        visited.add(u)
+        try:
+            html, base = fetch_html(u, allow_render=force_render)
+        except Exception:
+            html, base = None, None
+        if not html or not base:
+            continue
+        pages.append(base)
+        if d >= max_depth:
+            continue
+        soup = BeautifulSoup(html, 'html.parser')
+        pu2 = urlparse(base)
+        base0 = f"{pu2.scheme}://{pu2.netloc}"
+        for a in soup.select('a[href]'):
+            href = a.get('href'); full = urljoin(base0, href or '')
+            if not full:
+                continue
+            # stay on same host
+            if urlparse(full).netloc != pu.netloc:
+                continue
+            # do not follow direct pdfs
+            if urlparse(full).path.lower().endswith('.pdf'):
+                continue
+            low = (full + ' ' + (a.get_text(' ', strip=True) or '')).lower()
+            if KEY_RE.search(low):
+                queue.append((full, d + 1))
+    # scan collected pages for PDFs
+    out: list[dict] = []
+    seen: set[str] = set()
+    for p in pages:
+        try:
+            r = http_get(p, timeout=15)
+        except Exception:
+            continue
+        eps = extract_pdf_links(r.text, r.url)
+        for e in eps:
+            u = e.get('remote_url')
+            if not u or u in seen:
+                continue
+            seen.add(u)
+            out.append(e)
     return out
 
 
@@ -1723,6 +2055,13 @@ def run(argv: list[str] | None = None) -> int:
         for n in names:
             out_dir = os.path.join(OUT_BASE, sanitize_filename(n))
             pdfs = collect_pdfs_for_municipality(n, extra, force_render=args.render)
+            # Generic BFS over internal pages to catch deeper PV pages (e.g., Olst-Wijhe)
+            try:
+                bfs_pdfs = collect_pdfs_bfs_internal(n, max_depth=3, max_pages=120, force_render=False)
+                if bfs_pdfs:
+                    pdfs = pdfs + bfs_pdfs
+            except Exception:
+                pass
             # MediaFiler albums discovery + downloads
             albums = collect_mediafiler_albums(n, extra)
             mediafiler_items: list[dict] = []
@@ -1757,6 +2096,18 @@ def run(argv: list[str] | None = None) -> int:
                     print(f"[stackstorage] {n}: error downloading share {sh}: {e}")
             if stack_items:
                 pdfs = pdfs + stack_items
+            # MijnStembureau portals discovery + downloads (PV buttons -> PDF responses)
+            portals = collect_mijnstembureau_portals(n, extra)
+            msb_items: list[dict] = []
+            for portal in portals:
+                try:
+                    its = download_mijnstembureau_portal(n, portal)
+                    if its:
+                        msb_items.extend(its)
+                except Exception as e:
+                    print(f"[mijnstembureau] {n}: error downloading portal {portal}: {e}")
+            if msb_items:
+                pdfs = pdfs + msb_items
             # Generic file-hubs (external portals)
             if args.generic_filehubs:
                 hubs = collect_generic_filehubs(n, extra, allow_external=args.follow_external, force_render=args.render)
@@ -1779,6 +2130,9 @@ def run(argv: list[str] | None = None) -> int:
                 if "mediafiler.net" in u and "#fuid=" in u:
                     continue
                 if "stackstorage.com" in u:
+                    # handled via Playwright already
+                    continue
+                if "mijnstembureau" in u:
                     # handled via Playwright already
                     continue
                 # Pre-skip if a file with the intended pdf_name already exists in this municipality dir
