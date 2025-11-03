@@ -100,6 +100,10 @@ def _is_current_year_pdf(label: str) -> bool:
         return True
     s = label.lower()
 
+    # Explicitly skip Waterschapsdocumenten regardless of year
+    if "waterschap" in s:
+        return False
+
     # Reject other elections by explicit codes/words + year
     # EP (Europees Parlement)
     if re.search(r"\b(ep|europees|europees\s+parlement)\s*20(\d{2})\b", s):
@@ -1008,6 +1012,10 @@ def run(argv: list[str] | None = None) -> int:
     ap.add_argument("--only", nargs='*', help="Beperk tot deze gemeenten (namen)")
     ap.add_argument("--slice", type=str, default=None, help="1-based inclusieve slice, bijv. 1-10 of 6-10")
     ap.add_argument("--first", type=int, default=None, help="Pak de eerste N gemeenten (fallback als --slice ontbreekt)")
+    ap.add_argument("--starts-with", dest="starts_with", type=str, default=None,
+                    help="Beperk tot gemeenten die beginnen met deze letters (bijv. 'G' of 'GHI'). Hoofd-/kleine letters genegeerd.")
+    ap.add_argument("--index-path", type=str, default=None, help="Pad naar indexbestand i.p.v. standaard municipality_pdfs_index.json")
+    ap.add_argument("--no-index-write", action="store_true", help="Schrijf geen index-bestand weg aan het einde")
     ap.add_argument("--merge-from-disk", action="store_true", help="Vul index aan door lokale PDF-bestanden te scannen (geen downloads)")
     ap.add_argument("--complete-remote", action="store_true", help="Probeer ontbrekende remote_url voor bestaande items aan te vullen (geen downloads)")
     args = ap.parse_args(argv)
@@ -1016,6 +1024,9 @@ def run(argv: list[str] | None = None) -> int:
     if args.only:
         all_names = set(get_all_names())
         names = [n for n in args.only if n in all_names]
+    elif args.starts_with:
+        letters = set((args.starts_with or "").upper())
+        names = [n for n in get_all_names() if isinstance(n, str) and n[:1].upper() in letters]
     elif args.slice:
         try:
             a, b = args.slice.split("-", 1)
@@ -1042,7 +1053,8 @@ def run(argv: list[str] | None = None) -> int:
     print(f"[cleaned] Target: {', '.join(names)}")
     total_saved = 0
     # Load existing index to merge instead of overwrite
-    idx_path = os.path.join(DATA_DIR, "municipality_pdfs_index.json")
+    # Index pad kan overschreven worden om parallelle runs te isoleren
+    idx_path = args.index_path or os.path.join(DATA_DIR, "municipality_pdfs_index.json")
     existing_results: list[dict] = []
     try:
         with open(idx_path, "r", encoding="utf-8") as f:
@@ -1395,13 +1407,16 @@ def run(argv: list[str] | None = None) -> int:
             complete_remote_urls_best_effort(new_e)
             index_results.append(new_e)
     # Write merged index file
-    try:
-        os.makedirs(DATA_DIR, exist_ok=True)
-        with open(idx_path, "w", encoding="utf-8") as f:
-            json.dump({"results": index_results, "count": len(index_results)}, f, ensure_ascii=False, indent=2)
-        print(f"[cleaned] PDF index merged -> {idx_path}")
-    except Exception as e:
-        print(f"[cleaned] Warning: could not save pdf index: {e}")
+    if not args.no_index_write:
+        try:
+            os.makedirs(os.path.dirname(idx_path) or DATA_DIR, exist_ok=True)
+            with open(idx_path, "w", encoding="utf-8") as f:
+                json.dump({"results": index_results, "count": len(index_results)}, f, ensure_ascii=False, indent=2)
+            print(f"[cleaned] PDF index merged -> {idx_path}")
+        except Exception as e:
+            print(f"[cleaned] Warning: could not save pdf index: {e}")
+    else:
+        print("[cleaned] Index schrijven overgeslagen (--no-index-write)")
     print(f"[cleaned] Done. Total saved: {total_saved}")
     return 0
 

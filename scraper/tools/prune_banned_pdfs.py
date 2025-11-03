@@ -1,4 +1,17 @@
 #!/usr/bin/env python3
+"""
+Prune banned PDFs from existing downloads.
+
+Rules (delegated to pdf_scraper._is_current_year_pdf):
+- Keep only Tweede Kamer 2025 documenten
+- Skip TKyy where yy != 25, any 2000–2099 year not equal to 2025, or date strings not in 2025
+- Skip EP/PS/WS (and similar) for other years
+- Skip anything with 'waterschap' in the name
+
+Usage examples:
+  python3 tools/prune_banned_pdfs.py --only Borsele
+  python3 tools/prune_banned_pdfs.py --root pdfs --only Borsele Capelle
+"""
 import argparse
 import os
 import re
