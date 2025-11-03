@@ -10,3 +10,5 @@
 # Ignore downloaded artifacts
 *.pdf
 *.png
+*.tsv
+*.txt

@@ -1,7 +1,7 @@
 {
-  "bestand": "/Users/arcovink/Documents/restzetels/scraper/Aalsmeer/2-aal-vzod.pdf",
-  "gemeente": "Aalsmeer",
-  "stembureau_nummer": 11,
+  "bestand": "/Users/arcovink/Documents/restzetels/scraper/pdfs/Aalsmeer/2-aal-vzod.pdf",
+  "gemeente": null,
+  "stembureau_nummer": "11",
   "stembureau_naam": "Clubgebouw VZOD",
   "paginas": [
     {
@@ -13,56 +13,38 @@
         },
         "B": {
           "omschrijving": "Aantal geldige volmachtbewijzen (schriftelijk of via ingevulde stem- of kiezerspas)",
-          "waarde": "onleesbaar"
+          "waarde": 32
         },
         "C": {
-          "omschrijving": "Aantal geldige kiezerspassen",
-          "waarde": "onleesbaar"
+          "Omschrijving": "Aantal geldige kiezerspassen",
+          "waarde": 0
         },
         "D": {
           "omschrijving": "Totaal aantal toegelaten kiezers (A+B+C)",
-          "waarde": "onleesbaar"
+          "waarde": 200
         }
       },
       "aantal_uitgebrachte_stemmen": {
         "E": {
           "omschrijving": "Aantal stembiljetten met een geldige stem op een kandidaat",
-          "waarde": "onleesbaar"
+          "waarde": 3
         },
         "F": {
           "omschrijving": "Aantal blanco stembiljetten",
-          "waarde": "onleesbaar"
+          "waarde": 1
         },
         "G": {
           "omschrijving": "Aantal ongeldige stembiljetten",
-          "waarde": "onleesbaar"
+          "waarde": 0
         },
         "H": {
           "omschrijving": "Totaal aantal uitgebrachte stemmen (E+F+G)",
-          "waarde": "onleesbaar"
+          "waarde": 150
         }
       }
     },
     {
       "pagina": 2,
-      "aantal_toegelaten_kiezers": {
-        "A": {
-          "omschrijving": "Aantal geldige stempassen",
-          "waarde": "leeg"
-        },
-        "B": {
-          "omschrijving": "Aantal geldige volmachtbewijzen (schriftelijk of via ingevulde stem- of kiezerspas)",
-          "waarde": "leeg"
-        },
-        "C": {
-          "omschrijving": "Aantal geldige kiezerspassen",
-          "waarde": "leeg"
-        },
-        "D": {
-          "omschrijving": "Totaal aantal toegelaten kiezers (A+B+C)",
-          "waarde": "onleesbaar"
-        }
-      },
       "verschil_toegelaten_vs_uitgebrachte": {
         "keuze": "onleesbaar",
         "hertelling": {
@@ -72,7 +54,7 @@
           },
           "B2": {
             "omschrijving": "Aantal geldige volmachtbewijzen (hertelling)",
-            "waarde": 2
+            "waarde": 82
           },
           "C2": {
             "omschrijving": "Aantal geldige kiezerspassen (hertelling)",
@@ -80,39 +62,10 @@
           },
           "D2": {
             "omschrijving": "Totaal aantal toegelaten kiezers (hertelling)",
-            "waarde": "leeg"
+            "waarde": 2
           }
         }
       }
-    },
-    {
-      "pagina": 3,
-      "verschil_toegelaten_vs_uitgebrachte": {
-        "keuze": "onleesbaar",
-        "hertelling": {
-          "A2": {
-            "omschrijving": "Aantal geldige stempassen (hertelling)",
-            "waarde": "leeg"
-          },
-          "B2": {
-            "omschrijving": "Aantal geldige volmachtbewijzen (hertelling)",
-            "waarde": "leeg"
-          },
-          "C2": {
-            "omschrijving": "Aantal geldige kiezerspassen (hertelling)",
-            "waarde": "leeg"
-          },
-          "D2": {
-            "omschrijving": "Totaal aantal toegelaten kiezers (hertelling)",
-            "waarde": "leeg"
-          }
-        },
-        "aantal_geen_verklaring": 3
-      },
-      "gecombineerde_stemmingen": "onleesbaar"
-    },
-    {
-      "pagina": 4
     },
     {
       "pagina": 5,
@@ -124,52 +77,52 @@
             {
               "kandidaatnummer": 1,
               "kandidaatnaam": "Wilders, G. (Geert) (m)",
-              "stemmen": "leeg"
+              "stemmen": 2
             },
             {
               "kandidaatnummer": 2,
               "kandidaatnaam": "Jansen, G.A. (Chris) (m)",
-              "stemmen": "leeg"
+              "stemmen": 2
             },
             {
               "kandidaatnummer": 3,
               "kandidaatnaam": "Stöteler, T.S.M. (Sebastiaan) (m)",
-              "stemmen": "leeg"
+              "stemmen": 2
             },
             {
               "kandidaatnummer": 4,
               "kandidaatnaam": "Aardema, M. (Max) (m)",
-              "stemmen": "leeg"
+              "stemmen": 2
             },
             {
               "kandidaatnummer": 5,
               "kandidaatnaam": "Schilder, J.M.M. (Shanna) )",
-              "stemmen": "leeg"
+              "stemmen": 2
             },
             {
               "kandidaatnummer": 6,
               "kandidaatnaam": "Deen, M. (Marco) (m)",
-              "stemmen": "leeg"
+              "stemmen": 0
             },
             {
               "kandidaatnummer": 7,
               "kandidaatnaam": "Lammers, A‚N. (Annelotte) (v)",
-              "stemmen": "leeg"
+              "stemmen": 5
             },
             {
               "kandidaatnummer": 8,
               "kandidaatnaam": "Nijhof-Leeuw, J.M. (Jeanet) (v}",
-              "stemmen": "leeg"
+              "stemmen": 5
             },
             {
               "kandidaatnummer": 9,
               "kandidaatnaam": "Markuszower, G. (Gidi) (m)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 10,
               "kandidaatnaam": "de Vree, J.H. (Henk) (m)",
-              "stemmen": "leeg"
+              "stemmen": 6
             },
             {
               "kandidaatnummer": 11,
@@ -374,12 +327,12 @@
             {
               "kandidaatnummer": 51,
               "kandidaatnaam": "Stembureau",
-              "stemmen": 11
+              "stemmen": "leeg"
             }
           ],
-          "subtotaal_links": "onleesbaar",
-          "subtotaal_rechts": "onleesbaar",
-          "totaal_lijst": "onleesbaar"
+          "subtotaal_links": 2,
+          "subtotaal_rechts": "leeg",
+          "totaal_lijst": "leeg"
         }
       ]
     },
@@ -393,12 +346,12 @@
             {
               "kandidaatnummer": 52,
               "kandidaatnaam": "Verbaarschot-Hendriks, M. (Anita) (v)",
-              "stemmen": "leeg"
+              "stemmen": 4
             },
             {
               "kandidaatnummer": 53,
               "kandidaatnaam": "de Graaf, J.L. (Job) (m)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 54,
@@ -543,7 +496,7 @@
             {
               "kandidaatnummer": 82,
               "kandidaatnaam": "Stembureau",
-              "stemmen": 11
+              "stemmen": "leeg"
             },
             {
               "kandidaatnummer": 83,
@@ -551,9 +504,9 @@
               "stemmen": "leeg"
             }
           ],
-          "subtotaal_links": "onleesbaar",
-          "subtotaal_rechts": "leeg",
-          "totaal_lijst": "onleesbaar"
+          "subtotaal_links": 4,
+          "subtotaal_rechts": 4,
+          "totaal_lijst": "leeg"
         }
       ]
     },
@@ -567,52 +520,52 @@
             {
               "kandidaatnummer": 1,
               "kandidaatnaam": "Timmermans, F.C.G.M. (Frans)",
-              "stemmen": "leeg"
+              "stemmen": 4
             },
             {
               "kandidaatnummer": 2,
               "kandidaatnaam": "Pijpelink, A. (Anita)",
-              "stemmen": "leeg"
+              "stemmen": 4
             },
             {
               "kandidaatnummer": 3,
               "kandidaatnaam": "Lahlah, A. (Esmah)",
-              "stemmen": "leeg"
+              "stemmen": 4
             },
             {
               "kandidaatnummer": 4,
               "kandidaatnaam": "Vliegenthart, L. (Lisa)",
-              "stemmen": "leeg"
+              "stemmen": 4
             },
             {
               "kandidaatnummer": 5,
               "kandidaatnaam": "Klaver, J.F. (Jesse)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 6,
               "kandidaatnaam": "Esser, M.J.W. (Marco)",
-              "stemmen": "leeg"
+              "stemmen": 6
             },
             {
               "kandidaatnummer": 7,
               "kandidaatnaam": "Piri, K.P. (Kati)",
-              "stemmen": "leeg"
+              "stemmen": 2
             },
             {
               "kandidaatnummer": 8,
               "kandidaatnaam": "Haage, M.W. (Marleen)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 9,
               "kandidaatnaam": "Westerveld, E.M. (Lisa)",
-              "stemmen": "leeg"
+              "stemmen": 4
             },
             {
               "kandidaatnummer": 10,
               "kandidaatnaam": "White, R.J. (Raoul)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 11,
@@ -817,12 +770,12 @@
             {
               "kandidaatnummer": 51,
               "kandidaatnaam": "Stembureau",
-              "stemmen": 11
+              "stemmen": "leeg"
             }
           ],
-          "subtotaal_links": "onleesbaar",
-          "subtotaal_rechts": "onleesbaar",
-          "totaal_lijst": "leeg"
+          "subtotaal_links": 2,
+          "subtotaal_rechts": "leeg",
+          "totaal_lijst": 1
         }
       ]
     },
@@ -836,12 +789,12 @@
             {
               "kandidaatnummer": 52,
               "kandidaatnaam": "Daenen, J.W.B. (Jan)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 53,
               "kandidaatnaam": "Chalgoum, A. (Abbie)",
-              "stemmen": "leeg"
+              "stemmen": 11
             },
             {
               "kandidaatnummer": 54,
@@ -986,7 +939,7 @@
             {
               "kandidaatnummer": 82,
               "kandidaatnaam": "Stembureau",
-              "stemmen": 11
+              "stemmen": "leeg"
             },
             {
               "kandidaatnummer": 83,
@@ -994,8 +947,8 @@
               "stemmen": "leeg"
             }
           ],
-          "subtotaal_links": "onleesbaar",
-          "subtotaal_rechts": "onleesbaar",
+          "subtotaal_links": 4,
+          "subtotaal_rechts": 4,
           "totaal_lijst": "leeg"
         }
       ]
@@ -1010,32 +963,32 @@
             {
               "kandidaatnummer": 1,
               "kandidaatnaam": "Yesilgöz-Zegerius, D. (Dilan) (v) de Beer, M.E.E. (Martin) (m)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 2,
               "kandidaatnaam": "Heinen, E. (Eelco) (m) Maes, N.C.J. (Nicole) (v)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 3,
               "kandidaatnaam": "Brekelmans, R.P. (Ruben) (m) van der Maas, E.J. (Erik) (m)",
-              "stemmen": "leeg"
+              "stemmen": 4
             },
             {
               "kandidaatnummer": 4,
               "kandidaatnaam": "Karremans, V.P.G. (Vincent) (m) Verkuijlen, R. (Ruud) (rm)",
-              "stemmen": "leeg"
+              "stemmen": 10
             },
             {
               "kandidaatnummer": 5,
               "kandidaatnaam": "van der Burg, E. (Eric) (m) van Groningen-de Haas, D.A. (Dieke) (v)",
-              "stemmen": "leeg"
+              "stemmen": 0
             },
             {
               "kandidaatnummer": 6,
               "kandidaatnaam": "Becker, B. (Bente) (v) Berk, A.S. (Soler) (m)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 7,
@@ -1135,12 +1088,12 @@
             {
               "kandidaatnummer": 26,
               "kandidaatnaam": "Stembureau 11 9/",
-              "stemmen": 32
+              "stemmen": "leeg"
             }
           ],
-          "subtotaal_links": 1,
-          "subtotaal_rechts": "onleesbaar",
-          "totaal_lijst": "onleesbaar"
+          "subtotaal_links": "leeg",
+          "subtotaal_rechts": "leeg",
+          "totaal_lijst": "leeg"
         }
       ]
     },
@@ -1154,17 +1107,17 @@
             {
               "kandidaatnummer": 27,
               "kandidaatnaam": "Aptroot, B.W. (Berend) (m)",
-              "stemmen": "leeg"
+              "stemmen": 69
             },
             {
               "kandidaatnummer": 28,
               "kandidaatnaam": "Naam kandidaal & kandidaatnummer",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 29,
               "kandidaatnaam": "Gadella, JA.N. (Johan) (m)",
-              "stemmen": "leeg"
+              "stemmen": 2
             },
             {
               "kandidaatnummer": 30,
@@ -1304,7 +1257,7 @@
             {
               "kandidaatnummer": 57,
               "kandidaatnaam": "Stembureau",
-              "stemmen": 17
+              "stemmen": "leeg"
             },
             {
               "kandidaatnummer": 58,
@@ -1312,9 +1265,9 @@
               "stemmen": "leeg"
             }
           ],
-          "subtotaal_links": "onleesbaar",
+          "subtotaal_links": 4,
           "subtotaal_rechts": "leeg",
-          "totaal_lijst": "onleesbaar"
+          "totaal_lijst": "leeg"
         }
       ]
     },
@@ -1328,7 +1281,7 @@
             {
               "kandidaatnummer": 1,
               "kandidaatnaam": "van Hijum, YJ. (Eddy) (rm)",
-              "stemmen": "leeg"
+              "stemmen": 61
             },
             {
               "kandidaatnummer": 2,
@@ -1488,11 +1441,11 @@
             {
               "kandidaatnummer": 33,
               "kandidaatnaam": "Stembureau",
-              "stemmen": 11
+              "stemmen": "leeg"
             }
           ],
-          "subtotaal_links": "onleesbaar",
-          "subtotaal_rechts": "onleesbaar",
+          "subtotaal_links": "leeg",
+          "subtotaal_rechts": "leeg",
           "totaal_lijst": "leeg"
         }
       ]
@@ -1507,32 +1460,32 @@
             {
               "kandidaatnummer": 1,
               "kandidaatnaam": "Jetten, R.A.A. (Rob) Huidekooper, D.J. (Dian)",
-              "stemmen": "leeg"
+              "stemmen": 3
             },
             {
               "kandidaatnummer": 2,
               "kandidaatnaam": "Paternotie, J.M. (Jan) Vellinga-Beemsterboer, M.C.A. (Marieke)",
-              "stemmen": "leeg"
+              "stemmen": 7
             },
             {
               "kandidaatnummer": 3,
               "kandidaatnaam": "Vijlbrief, JA. (Hans) van Leijen, R.M. (Robin)",
-              "stemmen": "leeg"
+              "stemmen": 7
             },
             {
               "kandidaatnummer": 4,
               "kandidaatnaam": "Podt, A. (Anne-Marijke) Jagtenberg, M.H. (Michelle)",
-              "stemmen": "leeg"
+              "stemmen": 3
             },
             {
               "kandidaatnummer": 5,
               "kandidaatnaam": "Sneller, J.C. (Jaost) Mathlouti, M. (Mahjoub)",
-              "stemmen": "leeg"
+              "stemmen": 3
             },
             {
               "kandidaatnummer": 6,
               "kandidaatnaam": "van Berkel, N. (Nathalie) van Damme, L. (Lisanne)",
-              "stemmen": "leeg"
+              "stemmen": 2
             },
             {
               "kandidaatnummer": 7,
@@ -1637,17 +1590,17 @@
             {
               "kandidaatnummer": 27,
               "kandidaatnaam": "otaal (1 + 2)",
-              "stemmen": 1
+              "stemmen": "leeg"
             },
             {
               "kandidaatnummer": 28,
               "kandidaatnaam": "Stembureau 11 12/",
-              "stemmen": 32
+              "stemmen": "leeg"
             }
           ],
-          "subtotaal_links": "onleesbaar",
-          "subtotaal_rechts": "leeg",
-          "totaal_lijst": "leeg"
+          "subtotaal_links": 2,
+          "subtotaal_rechts": 2,
+          "totaal_lijst": 1
         }
       ]
     },
@@ -1661,82 +1614,82 @@
             {
               "kandidaatnummer": 1,
               "kandidaatnaam": "van der Plas, C.A.M. (Caroline)",
-              "stemmen": "leeg"
+              "stemmen": 6
             },
             {
               "kandidaatnummer": 2,
               "kandidaatnaam": "de Groot, J.M. (Jelmer)",
-              "stemmen": "leeg"
+              "stemmen": 7
             },
             {
               "kandidaatnummer": 3,
               "kandidaatnaam": "Keijzer, M.C.G. (Mona)",
-              "stemmen": "leeg"
+              "stemmen": 4
             },
             {
               "kandidaatnummer": 4,
               "kandidaatnaam": "Olthof, J.F. (Joost)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 5,
               "kandidaatnaam": "Vermeer, H. (Henk)",
-              "stemmen": "leeg"
+              "stemmen": 7
             },
             {
               "kandidaatnummer": 6,
               "kandidaatnaam": "Huijbens, NA. (Pien)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 7,
               "kandidaatnaam": "Wiersma, F.M. (Femke)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 8,
               "kandidaatnaam": "Brouwer, K.W.P. (Kevin)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 9,
               "kandidaatnaam": "van Zanten, C.R. (Claudia)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 10,
               "kandidaatnaam": "Stienstra, F.J. (Folkert)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 11,
               "kandidaatnaam": "Tuinman, G.P. (Gijs)",
-              "stemmen": "leeg"
+              "stemmen": 3
             },
             {
               "kandidaatnummer": 12,
               "kandidaatnaam": "Berg, B. (Bram)",
-              "stemmen": "leeg"
+              "stemmen": 14
             },
             {
               "kandidaatnummer": 13,
               "kandidaatnaam": "Wijen-Nass, M.J.M.H. (Marieke)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 14,
               "kandidaatnaam": "Meijroos, W.M.S. (Ward)",
-              "stemmen": "leeg"
+              "stemmen": 16
             },
             {
               "kandidaatnummer": 15,
               "kandidaatnaam": "Joseph, A.S. (Agnes)",
-              "stemmen": "leeg"
+              "stemmen": 7
             },
             {
               "kandidaatnummer": 16,
               "kandidaatnaam": "Dekker, J.H. (Hans)",
-              "stemmen": "leeg"
+              "stemmen": 4
             },
             {
               "kandidaatnummer": 17,
@@ -1891,7 +1844,7 @@
             {
               "kandidaatnummer": 47,
               "kandidaatnaam": "Stembureau",
-              "stemmen": 11
+              "stemmen": "leeg"
             },
             {
               "kandidaatnummer": 48,
@@ -1914,8 +1867,8 @@
               "stemmen": "leeg"
             }
           ],
-          "subtotaal_links": "onleesbaar",
-          "subtotaal_rechts": "onleesbaar",
+          "subtotaal_links": 2,
+          "subtotaal_rechts": "leeg",
           "totaal_lijst": "leeg"
         }
       ]
@@ -1930,47 +1883,47 @@
             {
               "kandidaatnummer": 1,
               "kandidaatnaam": "Bontenbal, H. (Henri) (m)",
-              "stemmen": "leeg"
+              "stemmen": 0
             },
             {
               "kandidaatnummer": 2,
               "kandidaatnaam": "Hawezy, H. (Hemin) (m)",
-              "stemmen": "leeg"
+              "stemmen": 17
             },
             {
               "kandidaatnummer": 3,
               "kandidaatnaam": "Steen, H.S. (Hanneke) (v)",
-              "stemmen": "leeg"
+              "stemmen": 17
             },
             {
               "kandidaatnummer": 4,
               "kandidaatnaam": "de Hoon, A.J.M. (Ankie) (v)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 5,
               "kandidaatnaam": "Boswijk, D.G. (Derk) (m)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 6,
               "kandidaatnaam": "de Vries, J.N. (Johanna) (v)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 7,
               "kandidaatnaam": "van Dijk, I. (Inge) (v)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 8,
               "kandidaatnaam": "Mastenbroek, S.M. (Stefan) (m)",
-              "stemmen": "leeg"
+              "stemmen": 4
             },
             {
               "kandidaatnummer": 9,
               "kandidaatnaam": "Krut, H.M. (Harmen) (m)",
-              "stemmen": "leeg"
+              "stemmen": 4
             },
             {
               "kandidaatnummer": 10,
@@ -2155,7 +2108,7 @@
             {
               "kandidaatnummer": 46,
               "kandidaatnaam": "Stembureau",
-              "stemmen": 11
+              "stemmen": "leeg"
             },
             {
               "kandidaatnummer": 47,
@@ -2183,9 +2136,9 @@
               "stemmen": "leeg"
             }
           ],
-          "subtotaal_links": "onleesbaar",
-          "subtotaal_rechts": "onleesbaar",
-          "totaal_lijst": "onleesbaar"
+          "subtotaal_links": 2,
+          "subtotaal_rechts": 2,
+          "totaal_lijst": "leeg"
         }
       ]
     },
@@ -2199,17 +2152,17 @@
             {
               "kandidaatnummer": 1,
               "kandidaatnaam": "Dijk, J.P. (Jimmy)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 2,
               "kandidaatnaam": "Verdaasdonk, |. (Inge)",
-              "stemmen": "leeg"
+              "stemmen": 21
             },
             {
               "kandidaatnummer": 3,
               "kandidaatnaam": "Beckerman, S.M. (Sandra)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 4,
@@ -2444,7 +2397,7 @@
             {
               "kandidaatnummer": 50,
               "kandidaatnaam": "Stembureau",
-              "stemmen": 17
+              "stemmen": "leeg"
             },
             {
               "kandidaatnummer": 51,
@@ -2457,7 +2410,7 @@
               "stemmen": "leeg"
             }
           ],
-          "subtotaal_links": "onleesbaar",
+          "subtotaal_links": "leeg",
           "subtotaal_rechts": "leeg",
           "totaal_lijst": "leeg"
         },
@@ -2468,17 +2421,17 @@
             {
               "kandidaatnummer": 1,
               "kandidaatnaam": "lijk stembureau in een gemeente waar een centrale stemopneming wordt verricht",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 2,
               "kandidaatnaam": "Al Mansoury, E. (Esra) (v)",
-              "stemmen": "leeg"
+              "stemmen": 21
             },
             {
               "kandidaatnummer": 3,
               "kandidaatnaam": "Achbar, F. (Faouzi) (m)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 4,
@@ -2518,7 +2471,7 @@
             {
               "kandidaatnummer": 11,
               "kandidaatnaam": "Ghazi, M.L (Ibrahim) (m) Neshan, L. (Lamba) (v) :",
-              "stemmen": 1
+              "stemmen": "leeg"
             },
             {
               "kandidaatnummer": 12,
@@ -2553,7 +2506,7 @@
             {
               "kandidaatnummer": 18,
               "kandidaatnaam": "Tap, TA. (Timotheus) (m) Bayrakei, Y.C. (Can) (mì) : '",
-              "stemmen": 1
+              "stemmen": "leeg"
             },
             {
               "kandidaatnummer": 19,
@@ -2603,11 +2556,11 @@
             {
               "kandidaatnummer": 28,
               "kandidaatnaam": "Stembureau",
-              "stemmen": 11
+              "stemmen": "leeg"
             }
           ],
-          "subtotaal_links": "onleesbaar",
-          "subtotaal_rechts": "onleesbaar",
+          "subtotaal_links": "leeg",
+          "subtotaal_rechts": "leeg",
           "totaal_lijst": "leeg"
         }
       ]
@@ -2622,22 +2575,22 @@
             {
               "kandidaatnummer": 1,
               "kandidaatnaam": "Ouwehand, E. (Esther)",
-              "stemmen": "leeg"
+              "stemmen": 6
             },
             {
               "kandidaatnummer": 2,
               "kandidaatnaam": "Kostië, |. (Ines)",
-              "stemmen": "leeg"
+              "stemmen": 4
             },
             {
               "kandidaatnummer": 3,
               "kandidaatnaam": "Model Na31-2 Proces-verbaal van een gemeentelijk stembureau in een gemeente waar een centrale stemopneming wordt verricht",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 4,
               "kandidaatnaam": "Markandu, G. (Gaby)",
-              "stemmen": "leeg"
+              "stemmen": 6
             },
             {
               "kandidaatnummer": 5,
@@ -2877,12 +2830,12 @@
             {
               "kandidaatnummer": 52,
               "kandidaatnaam": "Stembureau",
-              "stemmen": 11
+              "stemmen": "leeg"
             }
           ],
-          "subtotaal_links": "onleesbaar",
-          "subtotaal_rechts": "onleesbaar",
-          "totaal_lijst": "onleesbaar"
+          "subtotaal_links": 2,
+          "subtotaal_rechts": "leeg",
+          "totaal_lijst": "leeg"
         }
       ]
     },
@@ -2896,17 +2849,17 @@
             {
               "kandidaatnummer": 1,
               "kandidaatnaam": "de Vos, L.G. (Lidewij) (v)",
-              "stemmen": "leeg"
+              "stemmen": 0
             },
             {
               "kandidaatnummer": 2,
               "kandidaatnaam": "Wittebraod, J.C. (Jelle) (m)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 3,
               "kandidaatnaam": "Baudet, T.H.P. (Thierry) (m)",
-              "stemmen": "leeg"
+              "stemmen": 7
             },
             {
               "kandidaatnummer": 4,
@@ -3096,7 +3049,7 @@
             {
               "kandidaatnummer": 41,
               "kandidaatnaam": "Stembureau",
-              "stemmen": 11
+              "stemmen": "leeg"
             },
             {
               "kandidaatnummer": 42,
@@ -3149,7 +3102,7 @@
               "stemmen": "leeg"
             }
           ],
-          "subtotaal_links": 1,
+          "subtotaal_links": 2,
           "subtotaal_rechts": "leeg",
           "totaal_lijst": "leeg"
         }
@@ -3165,37 +3118,37 @@
             {
               "kandidaatnummer": 1,
               "kandidaatnaam": "Stoffer, C. (Chris)",
-              "stemmen": "leeg"
+              "stemmen": 4
             },
             {
               "kandidaatnummer": 2,
               "kandidaatnaam": "Kok, WH. (Wim)",
-              "stemmen": "leeg"
+              "stemmen": 6
             },
             {
               "kandidaatnummer": 3,
               "kandidaatnaam": "van Dijk, D.J.H. (Diederik)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 4,
               "kandidaatnaam": "Kuijers, J. (Jan)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 5,
               "kandidaatnaam": "Flach, A.J. (André)",
-              "stemmen": "leeg"
+              "stemmen": 7
             },
             {
               "kandidaatnummer": 6,
               "kandidaatnaam": "van Zelst, H.J. (Henk)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 7,
               "kandidaatnaam": "Middelkoop, P.N. (Nathanaél)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 8,
@@ -3410,7 +3363,7 @@
             {
               "kandidaatnummer": 50,
               "kandidaatnaam": "Stembureau",
-              "stemmen": 11
+              "stemmen": "leeg"
             },
             {
               "kandidaatnummer": 51,
@@ -3418,8 +3371,8 @@
               "stemmen": "leeg"
             }
           ],
-          "subtotaal_links": 1,
-          "subtotaal_rechts": "onleesbaar",
+          "subtotaal_links": 2,
+          "subtotaal_rechts": 2,
           "totaal_lijst": "leeg"
         }
       ]
@@ -3434,22 +3387,22 @@
             {
               "kandidaatnummer": 1,
               "kandidaatnaam": "Bikker, M.H. (Mirjam) (v)",
-              "stemmen": "leeg"
+              "stemmen": 3
             },
             {
               "kandidaatnummer": 2,
               "kandidaatnaam": "Grinwis, P.A. (Pieter) (m)",
-              "stemmen": "leeg"
+              "stemmen": 4
             },
             {
               "kandidaatnummer": 3,
               "kandidaatnaam": "Geder, D.G.M. (Don) (m)",
-              "stemmen": "leeg"
+              "stemmen": 11
             },
             {
               "kandidaatnummer": 4,
               "kandidaatnaam": "te Rietstap, A.H. (Alwin) (m)",
-              "stemmen": "leeg"
+              "stemmen": 4
             },
             {
               "kandidaatnummer": 5,
@@ -3659,7 +3612,7 @@
             {
               "kandidaatnummer": 46,
               "kandidaatnaam": "Stembureau",
-              "stemmen": 11
+              "stemmen": "leeg"
             },
             {
               "kandidaatnummer": 47,
@@ -3687,7 +3640,7 @@
               "stemmen": "leeg"
             }
           ],
-          "subtotaal_links": "leeg",
+          "subtotaal_links": 2,
           "subtotaal_rechts": "leeg",
           "totaal_lijst": "leeg"
         }
@@ -3918,11 +3871,11 @@
             {
               "kandidaatnummer": 44,
               "kandidaatnaam": "Stembureau",
-              "stemmen": 11
+              "stemmen": "leeg"
             }
           ],
-          "subtotaal_links": "onleesbaar",
-          "subtotaal_rechts": "onleesbaar",
+          "subtotaal_links": 1,
+          "subtotaal_rechts": "leeg",
           "totaal_lijst": "leeg"
         }
       ]
@@ -3937,57 +3890,57 @@
             {
               "kandidaatnummer": 1,
               "kandidaatnaam": "Eerdmans, B.J. (Joost) (m)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 2,
               "kandidaatnaam": "Determan, R.N. (Roman) (m)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 3,
               "kandidaatnaam": "Nanninga, A. (Annabel) (v}",
-              "stemmen": "leeg"
+              "stemmen": 7
             },
             {
               "kandidaatnummer": 4,
               "kandidaatnaam": "de Bes, P. (Pauline) (v)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 5,
               "kandidaatnaam": "Coenradie, |. (Ingrid) (v)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 6,
               "kandidaatnaam": "Heijkoop, G. (Gert) (m)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 7,
               "kandidaatnaam": "Hoogeveen, M.P. (Michiel) (m)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 8,
               "kandidaatnaam": "Ramcharan, N.N. (Nawin) (m)",
-              "stemmen": "leeg"
+              "stemmen": 3
             },
             {
               "kandidaatnummer": 9,
               "kandidaatnaam": "Ceulemans, S. (Simon) (m)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 10,
               "kandidaatnaam": "van Zaalen, F.P. (Frans) (m)",
-              "stemmen": "leeg"
+              "stemmen": 7
             },
             {
               "kandidaatnummer": 11,
               "kandidaatnaam": "Boomsma, D.T, (Diederik) (m)",
-              "stemmen": "leeg"
+              "stemmen": 4
             },
             {
               "kandidaatnummer": 12,
@@ -4092,7 +4045,7 @@
             {
               "kandidaatnummer": 32,
               "kandidaatnaam": "Stembureau",
-              "stemmen": 11
+              "stemmen": "leeg"
             },
             {
               "kandidaatnummer": 33,
@@ -4175,9 +4128,9 @@
               "stemmen": "leeg"
             }
           ],
-          "subtotaal_links": "onleesbaar",
+          "subtotaal_links": 2,
           "subtotaal_rechts": "leeg",
-          "totaal_lijst": "leeg"
+          "totaal_lijst": 71
         },
         {
           "lijstnummer": 16,
@@ -4186,57 +4139,57 @@
             {
               "kandidaatnummer": 1,
               "kandidaatnaam": "Plusquin, P.S.M.L. (Pascale)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 2,
               "kandidaatnaam": "Bak, J.W. (Hans)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 3,
               "kandidaatnaam": "van der Velden, R.T.J. (Ruud)",
-              "stemmen": "leeg"
+              "stemmen": 7
             },
             {
               "kandidaatnummer": 4,
               "kandidaatnaam": "Koedam, J.J.M. (Jeroen)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 5,
               "kandidaatnaam": "Burgers, A. (Arabella)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 6,
               "kandidaatnaam": "van den Elsen, T.P. (Theo)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 7,
               "kandidaatnaam": "Engelen, E.R. (Ewald)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 8,
               "kandidaatnaam": "van de Laar, M.A.J, (Myrna)",
-              "stemmen": "leeg"
+              "stemmen": 3
             },
             {
               "kandidaatnummer": 9,
               "kandidaatnaam": "Voss, S.H.D. (Harry)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 10,
               "kandidaatnaam": "Holtslag, R. (Rita)",
-              "stemmen": "leeg"
+              "stemmen": 7
             },
             {
               "kandidaatnummer": 11,
               "kandidaatnaam": "Hanssen, A.M.W.M. (Anne)",
-              "stemmen": "leeg"
+              "stemmen": 4
             },
             {
               "kandidaatnummer": 12,
@@ -4351,12 +4304,12 @@
             {
               "kandidaatnummer": 34,
               "kandidaatnaam": "Stembureau",
-              "stemmen": 11
+              "stemmen": "leeg"
             }
           ],
-          "subtotaal_links": "onleesbaar",
-          "subtotaal_rechts": "onleesbaar",
-          "totaal_lijst": "leeg"
+          "subtotaal_links": 2,
+          "subtotaal_rechts": "leeg",
+          "totaal_lijst": 71
         }
       ]
     },
@@ -4370,42 +4323,42 @@
             {
               "kandidaatnummer": 1,
               "kandidaatnaam": "van Haga, W.R. (Wybren) (m)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 2,
               "kandidaatnaam": "Rietman, Y. (Yannick) (m)",
-              "stemmen": "leeg"
+              "stemmen": 0
             },
             {
               "kandidaatnummer": 3,
               "kandidaatnaam": "Rookmaker, D. (Dorien) (v)",
-              "stemmen": "leeg"
+              "stemmen": 4
             },
             {
               "kandidaatnummer": 4,
               "kandidaatnaam": "Schnetkamp, F.F. (Fabienne) (v)",
-              "stemmen": "leeg"
+              "stemmen": 8
             },
             {
               "kandidaatnummer": 5,
               "kandidaatnaam": "Beertema, H.J, (Harm) (m)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 6,
               "kandidaatnaam": "Toes, E.D. (Elène) (v)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 7,
               "kandidaatnaam": "Schetters, T.P.M. (Theo) (m)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 8,
               "kandidaatnaam": "Elferink, 1.J. (Ingmar) (m)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 9,
@@ -4620,11 +4573,11 @@
             {
               "kandidaatnummer": 51,
               "kandidaatnaam": "Stembureau",
-              "stemmen": 11
+              "stemmen": "leeg"
             }
           ],
-          "subtotaal_links": 1,
-          "subtotaal_rechts": "onleesbaar",
+          "subtotaal_links": 2,
+          "subtotaal_rechts": "leeg",
           "totaal_lijst": "leeg"
         }
       ]
@@ -4749,7 +4702,7 @@
             {
               "kandidaatnummer": 23,
               "kandidaatnaam": "Stembureau",
-              "stemmen": 11
+              "stemmen": "leeg"
             }
           ],
           "subtotaal_links": "leeg",
@@ -4853,7 +4806,7 @@
             {
               "kandidaatnummer": 18,
               "kandidaatnaam": "Stembureau 17 26/",
-              "stemmen": 32
+              "stemmen": "leeg"
             }
           ],
           "subtotaal_links": "leeg",
@@ -4872,77 +4825,77 @@
             {
               "kandidaatnummer": 1,
               "kandidaatnaam": "Struijs, J.A, (Jan) (m)",
-              "stemmen": "leeg"
+              "stemmen": 26
             },
             {
               "kandidaatnummer": 2,
               "kandidaatnaam": "Hamersma, K. (Klaas) (m)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 3,
               "kandidaatnaam": "van Brenk-van Barneveld, C.M. (Carrie) (v)",
-              "stemmen": "leeg"
+              "stemmen": 28
             },
             {
               "kandidaatnummer": 4,
               "kandidaatnaam": "Baay-Timmerman, M.H.H. (Martine) (v}",
-              "stemmen": "leeg"
+              "stemmen": 2
             },
             {
               "kandidaatnummer": 5,
               "kandidaatnaam": "van Tilborg, H.C.A.M. (Henk) (m)",
-              "stemmen": "leeg"
+              "stemmen": 34
             },
             {
               "kandidaatnummer": 6,
               "kandidaatnaam": "van Acquoij, R.H. (Ruud) (m)",
-              "stemmen": "leeg"
+              "stemmen": 9
             },
             {
               "kandidaatnummer": 7,
               "kandidaatnaam": "van den Heuvel, W.H.H.M. (Wilma) (v)",
-              "stemmen": "leeg"
+              "stemmen": 36
             },
             {
               "kandidaatnummer": 8,
               "kandidaatnaam": "Fischer, A.M.J.N. (Anne Marie} (¥)",
-              "stemmen": "leeg"
+              "stemmen": 37
             },
             {
               "kandidaatnummer": 9,
               "kandidaatnaam": "van der Helm-Chandansingh, M.P.",
-              "stemmen": "leeg"
+              "stemmen": 38
             },
             {
               "kandidaatnummer": 10,
               "kandidaatnaam": "van Straten, A. (Anton) {m)",
-              "stemmen": "leeg"
+              "stemmen": 39
             },
             {
               "kandidaatnummer": 11,
               "kandidaatnaam": "van Est, A.M.B. (Bennie) (m)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 12,
               "kandidaatnaam": "Leerkes, A.G.M. (Alfons) (m)",
-              "stemmen": "leeg"
+              "stemmen": 42
             },
             {
               "kandidaatnummer": 13,
               "kandidaatnaam": "Engel, J. (Jaap) (m)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 14,
               "kandidaatnaam": "Brouwers, J.F.X.M. (Jan Frans) (m)",
-              "stemmen": "leeg"
+              "stemmen": 0
             },
             {
               "kandidaatnummer": 15,
               "kandidaatnaam": "Wissingh, H.A. (Ab) (m)",
-              "stemmen": "leeg"
+              "stemmen": 7
             },
             {
               "kandidaatnummer": 16,
@@ -5087,7 +5040,7 @@
             {
               "kandidaatnummer": 44,
               "kandidaatnaam": "Stembureau",
-              "stemmen": 11
+              "stemmen": "leeg"
             },
             {
               "kandidaatnummer": 45,
@@ -5125,8 +5078,8 @@
               "stemmen": "leeg"
             }
           ],
-          "subtotaal_links": "onleesbaar",
-          "subtotaal_rechts": "onleesbaar",
+          "subtotaal_links": 2,
+          "subtotaal_rechts": "leeg",
           "totaal_lijst": "leeg"
         }
       ]
@@ -5141,12 +5094,12 @@
             {
               "kandidaatnummer": 1,
               "kandidaatnaam": "Pontier, M.A. (Matthijs) (m)",
-              "stemmen": "leeg"
+              "stemmen": 1
             },
             {
               "kandidaatnummer": 2,
               "kandidaatnaam": "Smit, H.R.M.P. (Ron) (m)",
-              "stemmen": "leeg"
+              "stemmen": 10
             },
             {
               "kandidaatnummer": 3,
@@ -5306,7 +5259,7 @@
             {
               "kandidaatnummer": 34,
               "kandidaatnaam": "Stembureau",
-              "stemmen": 11
+              "stemmen": "leeg"
             },
             {
               "kandidaatnummer": 35,
@@ -5319,8 +5272,8 @@
               "stemmen": "leeg"
             }
           ],
-          "subtotaal_links": "onleesbaar",
-          "subtotaal_rechts": "leeg",
+          "subtotaal_links": 2,
+          "subtotaal_rechts": 2,
           "totaal_lijst": "leeg"
         }
       ]
@@ -5395,7 +5348,7 @@
             {
               "kandidaatnummer": 13,
               "kandidaatnaam": "Stembureau 11 20/",
-              "stemmen": 32
+              "stemmen": "leeg"
             },
             {
               "kandidaatnummer": 14,
@@ -5414,12 +5367,12 @@
             {
               "kandidaatnummer": 1,
               "kandidaatnaam": "Chan, K.K. (Kok) (m)",
-              "stemmen": 1
+              "stemmen": "leeg"
             },
             {
               "kandidaatnummer": 2,
               "kandidaatnaam": "Stembureau 11 30/",
-              "stemmen": 32
+              "stemmen": "leeg"
             }
           ],
           "subtotaal_links": "leeg",
@@ -5427,10 +5380,6 @@
           "totaal_lijst": "leeg"
         }
       ]
-    },
-    {
-      "pagina": 31,
-      "verschillen_lijsttotalen": "ja"
     }
   ]
 }

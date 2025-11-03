@@ -7,7 +7,7 @@ import subprocess
 import tempfile
 from dataclasses import dataclass
 from pathlib import Path
-from PIL import Image
+from PIL import Image, ImageOps, ImageFilter
 from typing import List, Dict, Tuple, Optional
 
 
@@ -274,11 +274,19 @@ def clean_candidate_name(text: str) -> str:
     return t
 
 
+def _preprocess_crop(img: Image.Image) -> Image.Image:
+    g = ImageOps.grayscale(img)
+    g = ImageOps.autocontrast(g)
+    g = g.filter(ImageFilter.SHARPEN)
+    return g
+
+
 def ocr_digit_crop(img: Image.Image) -> Optional[int]:
     """OCR a small crop for digits only. Returns int or None."""
     with tempfile.TemporaryDirectory() as td:
         p = Path(td) / "crop.png"
-        img.save(p)
+        _pre = _preprocess_crop(img)
+        _pre.save(p)
         cmd = [
             "tesseract",
             str(p),
@@ -296,7 +304,25 @@ def ocr_digit_crop(img: Image.Image) -> Optional[int]:
         out = (out or "").strip()
         m = re.search(r"(\d+)$", out)
         if not m:
-            return None
+            # try psm 6 fallback
+            cmd2 = [
+                "tesseract",
+                str(p),
+                "stdout",
+                "-l",
+                "eng",
+                "--psm",
+                "6",
+                "-c",
+                "tessedit_char_whitelist=0123456789",
+            ]
+            code2, out2, err2 = run(cmd2, timeout=60)
+            if code2 != 0:
+                return None
+            out2 = (out2 or "").strip()
+            m = re.search(r"(\d+)$", out2)
+            if not m:
+                return None
         try:
             return int(m.group(1))
         except Exception:
@@ -340,10 +366,15 @@ def parse_page_lines(lines: List[Line], digits_words: List[Word], page_image: Im
             if v is None:
                 v = extract_numeric_on_line(ln)
             if v is None:
-                # Try crop OCR on right column band
+                # Try crop OCR on the appropriate column band (left/right)
                 W, H = page_image.size
-                x0 = int(W * 0.62)
-                crop = page_image.crop((x0, max(ln.top - 4, 0), W - 1, ln.bottom + 4))
+                if ln.left < W * 0.5:
+                    x0 = int(W * 0.45)
+                    x1 = int(W * 0.58)
+                else:
+                    x0 = int(W * 0.90)
+                    x1 = W - 1
+                crop = page_image.crop((x0, max(ln.top - 4, 0), x1, ln.bottom + 4))
                 v = ocr_digit_crop(crop)
             subtotals_on_page.append(v if v is not None else "onleesbaar")
             continue
@@ -356,8 +387,13 @@ def parse_page_lines(lines: List[Line], digits_words: List[Word], page_image: Im
                 v = extract_numeric_on_line(ln)
             if v is None:
                 W, H = page_image.size
-                x0 = int(W * 0.62)
-                crop = page_image.crop((x0, max(ln.top - 4, 0), W - 1, ln.bottom + 4))
+                if ln.left < W * 0.5:
+                    x0 = int(W * 0.45)
+                    x1 = int(W * 0.58)
+                else:
+                    x0 = int(W * 0.90)
+                    x1 = W - 1
+                crop = page_image.crop((x0, max(ln.top - 4, 0), x1, ln.bottom + 4))
                 v = ocr_digit_crop(crop)
             current["totaal_lijst"] = v if v is not None else "onleesbaar"
             continue
@@ -372,8 +408,13 @@ def parse_page_lines(lines: List[Line], digits_words: List[Word], page_image: Im
             if stemmen is None:
                 # Per-candidate crop on right side band
                 W, H = page_image.size
-                x0 = int(W * 0.62)
-                crop = page_image.crop((x0, max(ln.top - 3, 0), W - 1, ln.bottom + 3))
+                if ln.left < W * 0.5:
+                    x0 = int(W * 0.45)
+                    x1 = int(W * 0.58)
+                else:
+                    x0 = int(W * 0.90)
+                    x1 = W - 1
+                crop = page_image.crop((x0, max(ln.top - 3, 0), x1, ln.bottom + 3))
                 stemmen = ocr_digit_crop(crop)
             kandnr_line = extract_candidate_number(ln)
             # Possibly contains multiple candidates; split into segments

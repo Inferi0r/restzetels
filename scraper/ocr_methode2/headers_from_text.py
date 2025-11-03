@@ -116,6 +116,42 @@ def extract_retally(merged_text: str) -> Dict[str, Optional[str]]:
     return out
 
 
+def extract_header_info(merged_text: str) -> Dict[str, Optional[str]]:
+    lines = merged_text.splitlines()
+    def find_line(prefix: str, window: int = 2) -> Optional[str]:
+        for i, ln in enumerate(lines):
+            if prefix in ln:
+                # take rest of line after label
+                tail = ln.split(prefix, 1)[1].strip()
+                if tail:
+                    return tail
+                for j in range(1, window+1):
+                    if i+j < len(lines) and lines[i+j].strip():
+                        return lines[i+j].strip()
+        return None
+    out: Dict[str, Optional[str]] = {"stembureau_nummer": None, "stembureau_naam": None}
+    # Nummer stembureau <n>
+    import re
+    m = re.search(r"Nummer\s+stembureau\s*:?\s*([0-9OIl|!]+)", merged_text)
+    if m:
+        s = m.group(1)
+        s = s.replace('O','0').replace('I','1').replace('l','1').replace('|','1').replace('!','1')
+        out["stembureau_nummer"] = s
+    else:
+        v = find_line("Nummer stembureau")
+        if v:
+            out["stembureau_nummer"] = v
+    # Locatie stembureau ... ) <naam>
+    m2 = re.search(r"Locatie\s+stembureau(?:\s*\([^)]*\))?\s*(.+)", merged_text)
+    if m2:
+        out["stembureau_naam"] = m2.group(1).strip()
+    else:
+        v2 = find_line("Locatie stembureau")
+        if v2:
+            out["stembureau_naam"] = v2
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser(description="Headers uit OCR-tekst (A–H en hertelling A2–D2)")
     ap.add_argument("pdf")
@@ -126,9 +162,11 @@ def main():
     merged = side_text + "\n" + layout
     hdr = extract_headers(merged)
     rtl = extract_retally(merged)
+    inf = extract_header_info(merged)
     out = {"A": hdr.get("A"), "B": hdr.get("B"), "C": hdr.get("C"), "D": hdr.get("D"),
            "E": hdr.get("E"), "F": hdr.get("F"), "G": hdr.get("G"), "H": hdr.get("H"),
-           "A2": rtl.get("A2"), "B2": rtl.get("B2"), "C2": rtl.get("C2"), "D2": rtl.get("D2")}
+           "A2": rtl.get("A2"), "B2": rtl.get("B2"), "C2": rtl.get("C2"), "D2": rtl.get("D2"),
+           "stembureau_nummer": inf.get("stembureau_nummer"), "stembureau_naam": inf.get("stembureau_naam")}
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
     Path(args.out).write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
     print(args.out)
@@ -136,4 +174,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

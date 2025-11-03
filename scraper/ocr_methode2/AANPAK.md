@@ -61,3 +61,24 @@ Samenvatting huidige status
 - Voor Clubgebouw VZOD is pagina 31 toegevoegd met ja/nee‑indicatie op ‘verschillen lijsttotalen’; lege pagina 32 is weggelaten.
 - Kandidaten en subtotalen zijn volledig opgenomen; stemmen per kandidaat staan nu als "leeg" i.p.v. "onleesbaar" waar geen cijfers OCR‑baar zijn.
 
+Sjabloon‑gedreven snelle modus (v2)
+- Doel: sneller en consistenter door het sjabloon (geprinte structuur) éénmalig vast te leggen en per PDF alleen invulvelden (handgeschreven) te OCR’en.
+- Bestanden:
+  - `sjabloon.json`: enkel sjabloonwaarden (lijstnummer, partijnaam, kandidaten met nummers/namen per pagina). Wordt éénmalig opgebouwd en hergebruikt.
+  - `fill_from_sjabloon.py`: leest `sjabloon.json`, rendert pagina’s en haalt alleen cijfers op bij relevante ROI’s (kandidaten, subtotaal links/rechts, totaallijst). Vulde pagina 1/2 (A–H, A2–D2) vanuit tekst‑OCR (`headers_from_text.py`).
+  - `runner.py`: gebruikt, als `sjabloon.json` bestaat, standaard de snelle modus i.p.v. de volledige `sidecar_to_json_nl` → `ocr_votes_pdf.py` → `merge` pipeline. Valt automatisch terug op de volledige pipeline wanneer `sjabloon.json` nog niet bestaat, en maakt deze dan aan.
+- Werking in het kort:
+  1) Normaliseer/generate sidecar `.txt` voor naamconsistentie (niet vereist, wel handig).
+  2) OCR headers (A–H, A2–D2, stembureau info) via `headers_from_text.py`.
+  3) Indien `sjabloon.json` bestaat: `fill_from_sjabloon.py` vult direct `.final.json` op basis van sjabloon + ROI‑OCR.
+  4) Converteer naar combined.nl‑stijl met `make_combined_nl.py` (`<pdf>.json`).
+  5) Ontbreekt `sjabloon.json`? Runner draait legacy‑flow en maakt daarna `sjabloon.json` aan.
+- OCR‑details snelle modus:
+  - Per pagina: Tesseract TSV (nld+eng) voor tekstregels en een digits‑pass (whitelist 0‑9). Alleen lijnen binnen lijstblokken worden gescand.
+  - Stemmen: eerst digits‑woorden met verticale overlap, dan regelnummers, dan crop van rechter kolomband (digits‑only, psm 7/6).
+  - Subtotaal/Totaal: idem met een vaste band voor de rechterkolom per linkse/rechtse sectie.
+  - Mapping: kandidaten uit OCR worden primair op kandidaatnummer gematcht aan het sjabloon; bij ontbreken, gebruikt de tool volgorde.
+
+Benchmark/verwachting
+- Doel is < 2 min voor 32 pagina’s op 400 DPI voor deze sjabloon (afhankelijk van systeem en Tesseract‑versie).
+- De snelle modus slaat brede tekstherkenning en mergen over, en focust enkel op cijfer‑ROIs.

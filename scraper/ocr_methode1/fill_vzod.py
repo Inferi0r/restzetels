@@ -14,14 +14,17 @@ import sys
 import tempfile
 from pathlib import Path
 from typing import Optional, List, Dict
+import copy
 
 import pdfplumber
 from PIL import Image, ImageOps, ImageFilter
+import unicodedata
 
 
-# Input/output defaults (single JSON acts as base + output)
-PDF_PATH = Path("Aalsmeer/2-aal-vzod.pdf")
-JSON_PATH = Path(__file__).with_name("Clubgebouw VZOD.filled.json")
+# Input/output defaults
+PDF_PATH = Path("pdfs/Aalsmeer/2-aal-vzod.pdf")
+JSON_PATH = Path(__file__).with_name("2-aal-vzod.json")  # invul-output (PDF-naam)
+SJABLOON_PATH = Path(__file__).with_name("sjabloon.json")
 
 # Deterministic OCR
 OCR_LANGS = "nld+eng+snum"
@@ -496,15 +499,140 @@ def _ocr_digit_crop(img: Image.Image) -> Optional[int]:
         return None
 
 
+# ---- Caching for renders and TSV OCR ----
+def _cache_dir(pdf_path: Path) -> Path:
+    return Path(__file__).with_name('cache') / pdf_path.stem
+
+
+def _render_pages_cached(pdf_path: Path, dpi: int = 400) -> List[Path]:
+    cdir = _cache_dir(pdf_path)
+    cdir.mkdir(parents=True, exist_ok=True)
+    existing = sorted(cdir.glob('page-*.png'), key=lambda p: int(re.search(r"(\d+)", p.stem).group(1)))
+    if existing:
+        return existing
+    prefix = cdir / 'page'
+    cp = subprocess.run(["pdftoppm", "-png", "-r", str(dpi), str(pdf_path), str(prefix)], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    if cp.returncode != 0:
+        raise RuntimeError(f"pdftoppm failed: {cp.stderr}")
+    return sorted(cdir.glob('page-*.png'), key=lambda p: int(re.search(r"(\d+)", p.stem).group(1)))
+
+
+def _tsv_cache_path(image_path: Path, kind: str) -> Path:
+    return image_path.with_name(f"{kind}-" + image_path.name.replace('page-', '').replace('.png','') + ".tsv")
+
+
+def _tesseract_tsv_cached(image_path: Path, lang: str = "nld+eng") -> List['Line']:
+    cache = _tsv_cache_path(image_path, 'lines')
+    if cache.exists() and cache.stat().st_size > 0:
+        content = cache.read_text(encoding='utf-8', errors='ignore')
+    else:
+        cp = subprocess.run(["tesseract", str(image_path), "stdout", "-l", lang, "tsv", "--psm", "6"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        if cp.returncode != 0:
+            raise RuntimeError(f"tesseract tsv failed: {cp.stderr}")
+        content = cp.stdout
+        cache.write_text(content, encoding='utf-8')
+    # parse content like _tesseract_tsv
+    lines: Dict[tuple, Line] = {}
+    header = None
+    for i, row in enumerate(content.splitlines()):
+        if i == 0:
+            header = row.split("\t")
+            continue
+        cols = row.split("\t")
+        if not header or len(cols) != len(header):
+            continue
+        rec = dict(zip(header, cols))
+        try:
+            level = int(rec.get("level", "0"))
+        except Exception:
+            continue
+        if level not in (4, 5):
+            continue
+        page = int(rec.get("page_num", 1))
+        block = int(rec.get("block_num", 0))
+        par = int(rec.get("par_num", 0))
+        ln = int(rec.get("line_num", 0))
+        left = int(rec.get("left", 0))
+        top = int(rec.get("top", 0))
+        width = int(rec.get("width", 0))
+        height = int(rec.get("height", 0))
+        text = (rec.get("text") or "").strip()
+        conf = float(rec.get("conf", "-1"))
+        key = (page, block, par, ln)
+        if level == 4:
+            lines[key] = Line(page, block, par, ln, left, top, width, height, text, [])
+        else:
+            w = Word(text, left, top, width, height, conf)
+            lines.setdefault(key, Line(page, block, par, ln, left, top, width, height, "", [])).words.append(w)
+    result = []
+    for line in lines.values():
+        if not line.text:
+            line.text = " ".join(w.text for w in line.words if w.text)
+        result.append(line)
+    result.sort(key=lambda l: (l.page, l.top, l.left))
+    return result
+
+
+def _tesseract_digits_cached(image_path: Path) -> List['Word']:
+    cache = _tsv_cache_path(image_path, 'digits')
+    if cache.exists() and cache.stat().st_size > 0:
+        content = cache.read_text(encoding='utf-8', errors='ignore')
+    else:
+        cp = subprocess.run(["tesseract", str(image_path), "stdout", "tsv", "--psm", "6", "-l", "eng", "-c", "tessedit_char_whitelist=0123456789"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        if cp.returncode != 0:
+            raise RuntimeError(f"tesseract digits failed: {cp.stderr}")
+        content = cp.stdout
+        cache.write_text(content, encoding='utf-8')
+    header = None
+    words: List[Word] = []
+    for i, row in enumerate(content.splitlines()):
+        if i == 0:
+            header = row.split("\t")
+            continue
+        cols = row.split("\t")
+        if not header or len(cols) != len(header):
+            continue
+        rec = dict(zip(header, cols))
+        try:
+            level = int(rec.get("level", "0"))
+        except Exception:
+            continue
+        if level != 5:
+            continue
+        text = (rec.get("text") or "").strip()
+        if not text or not re.fullmatch(r"\d+", text):
+            continue
+        try:
+            left = int(rec.get("left", 0))
+            top = int(rec.get("top", 0))
+            width = int(rec.get("width", 0))
+            height = int(rec.get("height", 0))
+            conf = float(rec.get("conf", "-1"))
+        except Exception:
+            continue
+        words.append(Word(text, left, top, width, height, conf))
+    return words
+
+
+def _norm_text(s: str) -> str:
+    s = (s or "").strip()
+    # Unicode fold (remove diacritics)
+    s = unicodedata.normalize('NFKD', s)
+    s = ''.join(c for c in s if not unicodedata.combining(c))
+    s = s.lower()
+    s = re.sub(r"[’'`´]", "'", s)
+    s = re.sub(r"\s+", " ", s)
+    return s
+
+
 def extract_lists_candidates_with_tsv(pdf_path: Path) -> Dict[int, List[dict]]:
     """Return per page a list of lijsten with kandidaten and per-list totals/subtotals using TSV OCR."""
     out: Dict[int, List[dict]] = {}
-    out_dir = Path(tempfile.mkdtemp(prefix="vzod_png_")) / pdf_path.stem
-    imgs = _render_pages(pdf_path, out_dir, dpi=400)
+    imgs = _render_pages_cached(pdf_path, dpi=400)
     for idx, img in enumerate(imgs, start=1):
         try:
-            lines = _tesseract_tsv(img)
-            digits = _tesseract_digits(img)
+            lines = _tesseract_tsv_cached(img)
+            digits = _tesseract_digits_cached(img)
             page_im = Image.open(img)
         except Exception:
             continue
@@ -601,72 +729,225 @@ def extract_lists_candidates_with_tsv(pdf_path: Path) -> Dict[int, List[dict]]:
     return out
 
 
+def merge_tsv_into_template(template: dict, tsv_pages: Dict[int, List[dict]]) -> None:
+    """Merge TSV‑extracted per‑candidate stemmen/subtotalen/totaal in bestaande template, door op partijnaam en kandidaatnaam te matchen.
+    Alleen direct gelezen (int) waarden overschrijven; 'leeg'/'onleesbaar' blijven staan.
+    """
+    # Build quick lookup per page -> partijnaam -> TSV list dict
+    tsv_lookup: Dict[int, Dict[str, dict]] = {}
+    for pnum, lijsten in tsv_pages.items():
+        tmap: Dict[str, dict] = {}
+        for lst in lijsten:
+            tmap[_norm_text(lst.get("partijnaam"))] = lst
+        tsv_lookup[pnum] = tmap
+
+    for page in template.get("paginas", []) or []:
+        pnum = page.get("pagina")
+        if pnum not in tsv_lookup:
+            continue
+        tmap = tsv_lookup[pnum]
+        for lst in page.get("lijsten", []) or []:
+            partij_raw = lst.get("partijnaam")
+            partij_tpl = _norm_text(partij_raw if isinstance(partij_raw, str) else (partij_raw or {}).get("waarde"))
+            tsv_lst = tmap.get(partij_tpl)
+            if not tsv_lst:
+                continue
+            # Subtotalen/totaal
+            for fld in ("subtotaal_links","subtotaal_rechts","totaal_lijst"):
+                v = tsv_lst.get(fld)
+                if isinstance(v, int):
+                    if isinstance(lst.get(fld), dict):
+                        if str(lst[fld].get("waarde")).lower() in {"leeg","onleesbaar","none",""}:
+                            lst[fld]["waarde"] = v
+                    else:
+                        if str(lst.get(fld)).lower() in {"leeg","onleesbaar","none",""}:
+                            lst[fld] = v
+            # Kandidaten
+            tsv_names = { _norm_text(k.get("kandidaatnaam")): k for k in tsv_lst.get("kandidaten", []) }
+            for kd in lst.get("kandidaten", []) or []:
+                nm = kd.get("kandidaatnaam")
+                key = _norm_text(nm if isinstance(nm, str) else (nm or {}).get("waarde"))
+                match = tsv_names.get(key)
+                if not match:
+                    continue
+                st = match.get("stemmen")
+                if isinstance(st, int):
+                    if isinstance(kd.get("stemmen"), dict):
+                        if str(kd["stemmen"].get("waarde")).lower() in {"leeg","onleesbaar","none",""}:
+                            kd["stemmen"]["waarde"] = st
+                    else:
+                        if str(kd.get("stemmen")).lower() in {"leeg","onleesbaar","none",""}:
+                            kd["stemmen"] = st
+
+
+def _pick_rightmost_digit_on_line(line: 'Line', digits: List['Word'], page_im: Image.Image) -> Optional[int]:
+    # prefer digits words overlapping this line in Y
+    cand_words = [w for w in digits if _y_overlap(line.top, line.bottom, w.top, w.bottom) >= 0.5]
+    if cand_words:
+        try:
+            return int(max(cand_words, key=lambda w: w.left).text)
+        except Exception:
+            return None
+    # fallback: numeric words on the line
+    v = _extract_numeric_on_line(line)
+    if v is not None:
+        return v
+    # last resort: crop right band of the line
+    W, H = page_im.size
+    x0 = int(W * 0.62)
+    crop = page_im.crop((x0, max(line.top - 3, 0), W - 1, line.bottom + 3))
+    return _ocr_digit_crop(crop)
+
+
+def extract_page1_fields_via_tsv(pdf_path: Path, sjabl: dict) -> Dict[str, Optional[str]]:
+    out: Dict[str, Optional[str]] = {}
+    imgs = _render_pages_cached(pdf_path, dpi=400)
+    if not imgs:
+        return out
+    img = imgs[0]
+    lines = _tesseract_tsv_cached(img)
+    digits = _tesseract_digits_cached(img)
+    page_im = Image.open(img)
+    # Build patterns from sjabloon labels
+    patterns: Dict[str, str] = {}
+    p1 = sjabl.get('pagina_1', {})
+    for key in ('A','B','C','D'):
+        lab = (p1.get('toegelaten_kiezers', {}).get(key, {}) or {}).get('label')
+        if lab:
+            patterns[key] = _norm_text(lab)
+    for key in ('E','F','G','H'):
+        lab = (p1.get('uitgebrachte_stemmen', {}).get(key, {}) or {}).get('label')
+        if lab:
+            patterns[key] = _norm_text(lab)
+    for ln in lines:
+        low = _norm_text(ln.text)
+        for key, pat in patterns.items():
+            if pat in low and key not in out:
+                v = _pick_rightmost_digit_on_line(ln, digits, page_im)
+                out[key] = str(v) if isinstance(v, int) else None
+    return out
+
+
+def extract_hertelling_via_tsv(pdf_path: Path, sjabl: dict) -> Dict[str, Optional[str]]:
+    out: Dict[str, Optional[str]] = {}
+    imgs = _render_pages_cached(pdf_path, dpi=400)
+    if len(imgs) < 2:
+        return out
+    img = imgs[1]
+    lines = _tesseract_tsv_cached(img)
+    digits = _tesseract_digits_cached(img)
+    page_im = Image.open(img)
+    # Patterns from sjabloon labels + fallback on tokens
+    pats: Dict[str, str] = {}
+    h = (sjabl.get('pagina_2', {}).get('verschil_toegelaten_vs_uitgebrachte', {}).get('hertelling', {}) or {})
+    for key in ('A2','B2','C2','D2'):
+        lab = (h.get(key) or {}).get('label')
+        if lab:
+            pats[key] = _norm_text(lab)
+    for ln in lines:
+        low = _norm_text(ln.text)
+        for key, pat in pats.items():
+            if pat and pat in low and key not in out:
+                v = _pick_rightmost_digit_on_line(ln, digits, page_im)
+                out[key] = str(v) if isinstance(v, int) else None
+        # fallback tokens if label not matched
+        if 'A2' not in out and 'a2' in low:
+            v = _pick_rightmost_digit_on_line(ln, digits, page_im)
+            out['A2'] = str(v) if isinstance(v, int) else out.get('A2')
+        if 'B2' not in out and 'b2' in low:
+            v = _pick_rightmost_digit_on_line(ln, digits, page_im)
+            out['B2'] = str(v) if isinstance(v, int) else out.get('B2')
+        if 'C2' not in out and 'c2' in low:
+            v = _pick_rightmost_digit_on_line(ln, digits, page_im)
+            out['C2'] = str(v) if isinstance(v, int) else out.get('C2')
+        if 'D2' not in out and ('d2' in low or 'd.2' in low):
+            v = _pick_rightmost_digit_on_line(ln, digits, page_im)
+            out['D2'] = str(v) if isinstance(v, int) else out.get('D2')
+    return out
+
+
 def fill_template(template: dict, values: dict) -> dict:
-    if values.get("stembureau_nummer"):
-        v = values["stembureau_nummer"]
-        template["stembureau_nummer"] = int(v) if v.isdigit() else v
-    if values.get("stembureau_naam"):
-        template["stembureau_naam"] = values["stembureau_naam"]
-    p1 = next((p for p in template.get("paginas", []) if p.get("pagina") == 1), None)
-    if p1 and "aantal_toegelaten_kiezers" in p1:
+    # Header into kop
+    if 'kop' in template:
+        if values.get("stembureau_nummer") and isinstance(template['kop'].get('stembureau_nummer'), dict):
+            v = values["stembureau_nummer"]
+            try:
+                template['kop']['stembureau_nummer']['waarde'] = int(v)
+            except Exception:
+                template['kop']['stembureau_nummer']['waarde'] = v
+        if values.get("stembureau_naam") and isinstance(template['kop'].get('stembureau_naam'), dict):
+            template['kop']['stembureau_naam']['waarde'] = values["stembureau_naam"]
+    # Pagina 1
+    p1 = template.get('pagina_1')
+    if p1 and "toegelaten_kiezers" in p1:
         for key in ("A", "B", "C", "D"):
             v = values.get(key)
-            if v and str(p1["aantal_toegelaten_kiezers"][key]["waarde"]).lower() in {"onleesbaar", "leeg", "", "null", "none"}:
-                try:
-                    p1["aantal_toegelaten_kiezers"][key]["waarde"] = int(v)
-                except Exception:
-                    p1["aantal_toegelaten_kiezers"][key]["waarde"] = v
-    if p1 and "aantal_uitgebrachte_stemmen" in p1:
+            if v and isinstance(p1['toegelaten_kiezers'].get(key), dict):
+                cur = str(p1['toegelaten_kiezers'][key].get('waarde')).lower()
+                if cur in {"onleesbaar", "leeg", "", "null", "none"}:
+                    try:
+                        p1['toegelaten_kiezers'][key]['waarde'] = int(v)
+                    except Exception:
+                        p1['toegelaten_kiezers'][key]['waarde'] = v
+    if p1 and "uitgebrachte_stemmen" in p1:
         for key in ("E", "F", "G", "H"):
             v = values.get(key)
-            if v and str(p1["aantal_uitgebrachte_stemmen"][key]["waarde"]).lower() in {"onleesbaar", "leeg", "", "null", "none"}:
-                try:
-                    p1["aantal_uitgebrachte_stemmen"][key]["waarde"] = int(v)
-                except Exception:
-                    p1["aantal_uitgebrachte_stemmen"][key]["waarde"] = v
-    p2 = next((p for p in template.get("paginas", []) if p.get("pagina") == 2), None)
-    if p2 and p2.get("verschil_toegelaten_vs_uitgebrachte") and p2["verschil_toegelaten_vs_uitgebrachte"].get("hertelling"):
-        h = p2["verschil_toegelaten_vs_uitgebrachte"]["hertelling"]
+            if v and isinstance(p1['uitgebrachte_stemmen'].get(key), dict):
+                cur = str(p1['uitgebrachte_stemmen'][key].get('waarde')).lower()
+                if cur in {"onleesbaar", "leeg", "", "null", "none"}:
+                    try:
+                        p1['uitgebrachte_stemmen'][key]['waarde'] = int(v)
+                    except Exception:
+                        p1['uitgebrachte_stemmen'][key]['waarde'] = v
+    # Pagina 2 hertelling
+    p2 = template.get('pagina_2')
+    if p2 and p2.get('verschil_toegelaten_vs_uitgebrachte') and p2['verschil_toegelaten_vs_uitgebrachte'].get('hertelling'):
+        h = p2['verschil_toegelaten_vs_uitgebrachte']['hertelling']
         for key in ("A2","B2","C2","D2"):
             v = values.get(key)
-            if v and v.isdigit() and str(h[key]["waarde"]).lower() in {"onleesbaar", "leeg", "", "null", "none"}:
-                try:
-                    h[key]["waarde"] = int(v)
-                except Exception:
-                    h[key]["waarde"] = v
-    # candidate votes per list on subsequent pages
-    page_votes: Dict[int, List[Optional[str]]] = values.get("_page_votes", {})  # {page_index_1based: [str|None,...]}
-    if isinstance(page_votes, dict):
-        for page_obj in template.get("paginas", []):
-            pnum = page_obj.get("pagina")
-            if not isinstance(pnum, int):
-                continue
-            votes = page_votes.get(pnum)
-            if not votes:
-                continue
-            for lst in page_obj.get("lijsten", []) or []:
-                cands = lst.get("kandidaten", []) or []
-                for i, cand in enumerate(cands):
-                    if i >= len(votes):
-                        break
-                    v = votes[i]
-                    if v and (str(cand.get("stemmen")).lower() in {"leeg", "onleesbaar", "", "none", "null"}):
-                        try:
-                            cand["stemmen"] = int(v)
-                        except Exception:
-                            cand["stemmen"] = v
+            if v and v.isdigit() and isinstance(h.get(key), dict):
+                cur = str(h[key].get('waarde')).lower()
+                if cur in {"onleesbaar", "leeg", "", "null", "none"}:
+                    try:
+                        h[key]['waarde'] = int(v)
+                    except Exception:
+                        h[key]['waarde'] = v
     return template
+
+
+def build_pages_from_tsv(tsv_pages: Dict[int, List[dict]]) -> List[dict]:
+    pages: List[dict] = []
+    for pnum in sorted(tsv_pages.keys()):
+        lijsten_out: List[dict] = []
+        for lst in tsv_pages[pnum]:
+            lst_out = {
+                'lijstnummer': {'label':'Lijstnummer','waarde_bron':'sjabloon','waarde': lst.get('lijstnummer')},
+                'partijnaam': {'label':'Partijnaam','waarde_bron':'sjabloon','waarde': lst.get('partijnaam')},
+                'subtotaal_links': {'label':'Subtotaal links','waarde_bron':'handgeschreven','waarde': lst.get('subtotaal_links','leeg')},
+                'subtotaal_rechts': {'label':'Subtotaal rechts','waarde_bron':'handgeschreven','waarde': lst.get('subtotaal_rechts','leeg')},
+                'totaal_lijst': {'label':'Totaal lijst','waarde_bron':'handgeschreven','waarde': lst.get('totaal_lijst','leeg')},
+                'kandidaten': []
+            }
+            for kd in lst.get('kandidaten', []) or []:
+                lst_out['kandidaten'].append({
+                    'kandidaatnummer': {'label':'Kandidaatnummer','waarde_bron':'sjabloon','waarde': kd.get('kandidaatnummer','leeg')},
+                    'kandidaatnaam': {'label':'Kandidaatnaam','waarde_bron':'sjabloon','waarde': kd.get('kandidaatnaam')},
+                    'stemmen': {'label':'Stemmen','waarde_bron':'handgeschreven','waarde': kd.get('stemmen','leeg')},
+                })
+            lijsten_out.append(lst_out)
+        pages.append({'pagina': pnum, 'lijsten': lijsten_out})
+    return pages
 
 
 def main() -> int:
     pdf = PDF_PATH
-    base_json = JSON_PATH
+    base_json = SJABLOON_PATH
     out_path = JSON_PATH
     if not pdf.exists():
         print(f"PDF not found: {pdf}", file=sys.stderr)
         return 1
     if not base_json.exists():
-        print(f"Base JSON not found: {base_json}", file=sys.stderr)
+        print(f"Sjabloon JSON not found: {base_json}", file=sys.stderr)
         return 1
     side_text, outpdf = ocr_sidecar(pdf)
     layout_text = ""
@@ -677,21 +958,23 @@ def main() -> int:
     vals = extract_fields(merged_text)
     hvals = parse_hertelling(merged_text, outpdf)
     vals.update(hvals)
-    # Full TSV extraction for lists/candidates/subtotal/totaal
+    # TSV fallback/overlay for pagina 1 (A..H) and pagina 2 hertelling (A2..D2)
+    sjabl = json.loads(base_json.read_text(encoding="utf-8"))
+    tsv_p1 = extract_page1_fields_via_tsv(outpdf, sjabl)
+    for k,v in tsv_p1.items():
+        if v and (not vals.get(k)):
+            vals[k] = v
+    tsv_h = extract_hertelling_via_tsv(outpdf, sjabl)
+    for k,v in tsv_h.items():
+        if v and (not vals.get(k)):
+            vals[k] = v
+    # Full TSV extraction en opbouwen paginas uit TSV (sjabloon blijft generiek)
     tsv_pages = extract_lists_candidates_with_tsv(outpdf)
-    tmpl = json.loads(base_json.read_text(encoding="utf-8"))
-    # Merge TSV into vals as _page_votes (candidate stemmen per page per position)
-    # Build mapping page -> flat list of stemmen aligned to candidate order
-    page_votes: Dict[int, List[Optional[str]]] = {}
-    for pnum, lij in tsv_pages.items():
-        flat: List[Optional[str]] = []
-        for lst in lij:
-            for kand in lst.get("kandidaten", []):
-                v = kand.get("stemmen")
-                flat.append(str(v) if isinstance(v, int) else (v if v else None))
-        page_votes[pnum] = flat
-    vals["_page_votes"] = page_votes
-    filled = fill_template(tmpl, vals)
+    filled = copy.deepcopy(sjabl)
+    filled['bron_pdf'] = str(PDF_PATH)
+    filled['paginas'] = build_pages_from_tsv(tsv_pages)
+    # Kop/pagina-1/pagina-2 invullen
+    filled = fill_template(filled, vals)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(filled, ensure_ascii=False, indent=2), encoding="utf-8")
     # Summary
