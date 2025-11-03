@@ -354,25 +354,36 @@
     });
   }
 
-  // Ensure a container gets real horizontal scrolling on mobile by
-  // forcing the inner table to its natural scrollWidth and anchoring at left.
+  // Ensure horizontal scrolling ONLY on mobile by forcing the inner table
+  // to its natural scrollWidth and anchoring at left. On desktop, reset to
+  // centered, auto-sized table without inner scrollbars.
   function fixHorizontalScrollFor(containerId){
     try {
       const c = document.getElementById(containerId);
       if (!c) return;
       const t = c.querySelector('table');
       if (!t) return;
-      c.style.overflowX = 'auto';
-      c.style.webkitOverflowScrolling = 'touch';
-      c.style.textAlign = 'left';
-      t.style.display = 'inline-block';
-      t.style.width = 'auto';
-      // Defer to next frame to get correct scrollWidth after render
-      requestAnimationFrame(() => {
-        const w = Math.max(t.scrollWidth || 0, t.getBoundingClientRect().width || 0);
-        if (w && isFinite(w)) t.style.width = w + 'px';
-        c.scrollLeft = 0; // start from first column
-      });
+      const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+      if (isMobile) {
+        c.style.overflowX = 'auto';
+        c.style.webkitOverflowScrolling = 'touch';
+        c.style.textAlign = 'left';
+        t.style.display = 'inline-block';
+        t.style.width = 'auto';
+        // Defer to next frame to get correct scrollWidth after render
+        requestAnimationFrame(() => {
+          const w = Math.max(t.scrollWidth || 0, t.getBoundingClientRect().width || 0);
+          if (w && isFinite(w)) t.style.width = w + 'px';
+          c.scrollLeft = 0; // start from first column
+        });
+      } else {
+        // Desktop: no inner scroll; allow table to size naturally and stay centered
+        c.style.overflowX = 'visible';
+        c.style.webkitOverflowScrolling = '';
+        c.style.textAlign = 'center';
+        t.style.display = 'table';
+        t.style.width = 'auto';
+      }
     } catch(e) {}
   }
 

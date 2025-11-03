@@ -1,6 +1,1123 @@
 {
   "results": [
     {
+      "name": "Etten-Leur",
+      "start_url": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/",
+      "pdfs": [
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_1_Stadskantoor_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_1_Stadskantoor_TK25.pdf",
+          "text": "Etten-Leur_1_Stadskantoor_TK25",
+          "pdf_name": "Etten-Leur_1_Stadskantoor_TK25.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_16_Stadskantoor-2_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_16_Stadskantoor-2_TK25.pdf",
+          "text": "Etten-Leur_16_Stadskantoor-2_TK25",
+          "pdf_name": "Etten-Leur_16_Stadskantoor-2_TK25.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_2_De-Nobelaer_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_2_De-Nobelaer_TK25.pdf",
+          "text": "Etten-Leur_2_De-Nobelaer_TK25",
+          "pdf_name": "Etten-Leur_2_De-Nobelaer_TK25.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_15_De-Nobelaer-2_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_15_De-Nobelaer-2_TK25.pdf",
+          "text": "Etten-Leur_15_De-Nobelaer-2_TK25",
+          "pdf_name": "Etten-Leur_15_De-Nobelaer-2_TK25.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_3_Avoord-Zorg-en-Wonen-loc-Anbarg_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_3_Avoord-Zorg-en-Wonen-loc-Anbarg_TK25.pdf",
+          "text": "Etten-Leur_3_Avoord-Zorg-en-Wonen-loc-Anbarg_TK25.",
+          "pdf_name": "Etten-Leur_3_Avoord-Zorg-en-Wonen-loc-Anbarg_TK25.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_7_Avoord-Zorg-en-Wonen-loc-Kloostergaard_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_7_Avoord-Zorg-en-Wonen-loc-Kloostergaard_TK25.pdf",
+          "text": "Etten-Leur_7_Avoord-Zorg-en-Wonen-loc-Kloostergaard_TK25",
+          "pdf_name": "Etten-Leur_7_Avoord-Zorg-en-Wonen-loc-Kloostergaard_TK25.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_4_ARV-Achilles_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_4_ARV-Achilles_TK25.pdf",
+          "text": "Etten-Leur_4_ARV-Achilles_TK25",
+          "pdf_name": "Etten-Leur_4_ARV-Achilles_TK25.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_21_ARV-Achilles-2_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_21_ARV-Achilles-2_TK25.pdf",
+          "text": "Etten-Leur_21_ARV-Achilles-2_TK25",
+          "pdf_name": "Etten-Leur_21_ARV-Achilles-2_TK25.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_5_Wijkgebouw-Ut-Praotuis_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_5_Wijkgebouw-Ut-Praotuis_TK25.pdf",
+          "text": "Etten-Leur_5_Wijkgebouw-Ut-Praotuis_TK25",
+          "pdf_name": "Etten-Leur_5_Wijkgebouw-Ut-Praotuis_TK25.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_22_Wijkgebouw-Ut-Praotuis-2_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_22_Wijkgebouw-Ut-Praotuis-2_TK25.pdf",
+          "text": "Etten-Leur_22_Wijkgebouw-Ut-Praotuis-2_TK25",
+          "pdf_name": "Etten-Leur_22_Wijkgebouw-Ut-Praotuis-2_TK25.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_6_Hockeyclub-Etten-Leur_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_6_Hockeyclub-Etten-Leur_TK25.pdf",
+          "text": "Etten-Leur_6_Hockeyclub-Etten-Leur_TK25",
+          "pdf_name": "Etten-Leur_6_Hockeyclub-Etten-Leur_TK25.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_8_Wijkgebouw-De-Linde_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_8_Wijkgebouw-De-Linde_TK25.pdf",
+          "text": "Etten-Leur_8_Wijkgebouw-De-Linde_TK25",
+          "pdf_name": "Etten-Leur_8_Wijkgebouw-De-Linde_TK25.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_9_Tafeltennishal-Tanaka_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_9_Tafeltennishal-Tanaka_TK25.pdf",
+          "text": "Etten-Leur_9_Tafeltennishal-Tanaka_TK25",
+          "pdf_name": "Etten-Leur_9_Tafeltennishal-Tanaka_TK25.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_10_Gemeentewerf-Kantine-_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_10_Gemeentewerf-Kantine-_TK25.pdf",
+          "text": "Etten-Leur_10_Gemeentewerf-Kantine-_TK25",
+          "pdf_name": "Etten-Leur_10_Gemeentewerf-Kantine-_TK25.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_12_Brede-school-de-Vleer-_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_12_Brede-school-de-Vleer-_TK25.pdf",
+          "text": "Etten-Leur_12_Brede-school-de-Vleer-_TK25",
+          "pdf_name": "Etten-Leur_12_Brede-school-de-Vleer-_TK25.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_20_Brede-school-de-Vleer-2_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_20_Brede-school-de-Vleer-2_TK25.pdf",
+          "text": "Etten-Leur_20_Brede-school-de-Vleer-2_TK25",
+          "pdf_name": "Etten-Leur_20_Brede-school-de-Vleer-2_TK25.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_11_Wijkgebouw-De-Gong_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_11_Wijkgebouw-De-Gong_TK25.pdf",
+          "text": "Etten-Leur_11_Wijkgebouw-De-Gong_TK25",
+          "pdf_name": "Etten-Leur_11_Wijkgebouw-De-Gong_TK25.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_19_Wijkgebouw-De-Gong-2_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_19_Wijkgebouw-De-Gong-2_TK25.pdf",
+          "text": "Etten-Leur_19_Wijkgebouw-De-Gong-2_TK25",
+          "pdf_name": "Etten-Leur_19_Wijkgebouw-De-Gong-2_TK25.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_13_Trouwkerkje_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_13_Trouwkerkje_TK25.pdf",
+          "text": "Etten-Leur_13_Trouwkerkje_TK25",
+          "pdf_name": "Etten-Leur_13_Trouwkerkje_TK25.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_18_Trouwkerkje-2-_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_18_Trouwkerkje-2-_TK25.pdf",
+          "text": "Etten-Leur_18_Trouwkerkje-2-_TK25",
+          "pdf_name": "Etten-Leur_18_Trouwkerkje-2-_TK25.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_14_Het-Turfschip_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_14_Het-Turfschip_TK25.pdf",
+          "text": "Etten-Leur_14_Het-Turfschip_TK25",
+          "pdf_name": "Etten-Leur_14_Het-Turfschip_TK25.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_17_Het-Turfschip-2_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_17_Het-Turfschip-2_TK25.pdf",
+          "text": "Etten-Leur_17_Het-Turfschip-2_TK25",
+          "pdf_name": "Etten-Leur_17_Het-Turfschip-2_TK25.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_uitkomst_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_uitkomst_TK25.pdf",
+          "text": "Etten-Leur_uitkomst_TK25",
+          "pdf_name": "Etten-Leur_uitkomst_TK25.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Etten-Leur_verklaring_aansluitvoorschriften.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_verklaring_aansluitvoorschriften.pdf",
+          "text": "Etten-Leur_verklaring_aansluitvoorschriften",
+          "pdf_name": "Etten-Leur_verklaring_aansluitvoorschriften.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/"
+        },
+        {
+          "remote_url": "https://www.etten-leur.nl/wp-content/uploads/2025/10/Kandidatenlijst_TK_2025_Etten_Leur.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Kandidatenlijst_TK_2025_Etten_Leur.pdf",
+          "text": "Kandidatenlijst_TK_2025_Etten_Leur",
+          "pdf_name": "Kandidatenlijst_TK_2025_Etten_Leur.pdf",
+          "score": 1,
+          "from": "https://www.etten-leur.nl/kandidatenlijst-tweede-kamer-verkiezing-2025/"
+        }
+      ]
+    },
+    {
+      "name": "Ermelo",
+      "start_url": "https://www.ermelo.nl/verkiezing-tweede-kamer",
+      "pdfs": []
+    },
+    {
+      "name": "Epe",
+      "start_url": "https://www.epe.nl/verkiezingen",
+      "pdfs": [
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-03/Controleprotocol%20GSB%20gemeente%20EPE%20provinciale%20staten%20zonder%20handtekening.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/Controleprotocol20GSB20gemeente20EPE20provinciale20staten20zonder20handtekening.pdf",
+          "text": "Controleprotocol GSB gemeente EPE provinciale staten zonder handtekening.pdf ( PDF - 2.63 MB )",
+          "pdf_name": "Controleprotocol%20GSB%20gemeente%20EPE%20provinciale%20staten%20zonder%20handtekening.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/controleprotocollen-gemeentelijk-stembureau"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_PV_nieuwezittingGSB_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_PV_nieuwezittingGSB_TK23.pdf",
+          "text": "0232_PV_nieuwezittingGSB_TK23 ( PDF - 2.37 MB )",
+          "pdf_name": "0232_PV_nieuwezittingGSB_TK23.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_Uitslag_1_Gemeentehuis_corrigendum_nieuwezittingGSB_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_Uitslag_1_Gemeentehuis_corrigendum_nieuwezittingGSB_TK23.pdf",
+          "text": "0232_Uitslag_1_Gemeentehuis_corrigendum_nieuwezittingGSB_TK23 ( PDF - 3.21 MB )",
+          "pdf_name": "0232_Uitslag_1_Gemeentehuis_corrigendum_nieuwezittingGSB_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_GSB_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_GSB_TK23.pdf",
+          "text": "0232_GemeentelijkStembureau_TK23 ( PDF - 21.62 MB )",
+          "pdf_name": "0232_GSB_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_PV_Stembureau_1_Gemeentehuis_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_PV_Stembureau_1_Gemeentehuis_TK23.pdf",
+          "text": "0232_PV_Stembureau_1_Gemeentehuis_TK23 ( PDF - 340.17 kB )",
+          "pdf_name": "0232_PV_Stembureau_1_Gemeentehuis_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_PV_Stembureau_2_Vegtelarij_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_PV_Stembureau_2_Vegtelarij_TK23.pdf",
+          "text": "0232_PV_Stembureau_2_Vegtelarij_TK23 ( PDF - 290.81 kB )",
+          "pdf_name": "0232_PV_Stembureau_2_Vegtelarij_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_PV_Stembureau_3_Zuuk_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_PV_Stembureau_3_Zuuk_TK23.pdf",
+          "text": "0232_PV_Stembureau_3_Zuuk_TK23 ( PDF - 293.03 kB )",
+          "pdf_name": "0232_PV_Stembureau_3_Zuuk_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_PV_Stembureau_4_Goede%20Herderkerk_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_PV_Stembureau_4_Goede20Herderkerk_TK23.pdf",
+          "text": "0232_PV_Stembureau_4_Goede Herderkerk_TK23 ( PDF - 356.34 kB )",
+          "pdf_name": "0232_PV_Stembureau_4_Goede%20Herderkerk_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_PV_Stembureau_5_Regenboogkerk_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_PV_Stembureau_5_Regenboogkerk_TK23.pdf",
+          "text": "0232_PV_Stembureau_5_Regenboogkerk_TK23 ( PDF - 314.47 kB )",
+          "pdf_name": "0232_PV_Stembureau_5_Regenboogkerk_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_PV_Stembureau_6_Buurthoeve_TK23%28handtekeningen%20pagina%20is%206%29_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_PV_Stembureau_6_Buurthoeve_TK2328handtekeningen20pagina20is20629_0.pdf",
+          "text": "0232_PV_Stembureau_6_Buurthoeve_TK23 ( PDF - 307.7 kB )",
+          "pdf_name": "0232_PV_Stembureau_6_Buurthoeve_TK23%28handtekeningen%20pagina%20is%206%29_0.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_PV_Stembureau_7_Eper%20Veste_TK23_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_PV_Stembureau_7_Eper20Veste_TK23_0.pdf",
+          "text": "0232_PV_Stembureau_7_Eper Veste_TK23 ( PDF - 317.86 kB )",
+          "pdf_name": "0232_PV_Stembureau_7_Eper%20Veste_TK23_0.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_PV_Stembureau_9_Burgerenk_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_PV_Stembureau_9_Burgerenk_TK23.pdf",
+          "text": "0232_PV_Stembureau_9_Burgerenk_TK23 ( PDF - 346.91 kB )",
+          "pdf_name": "0232_PV_Stembureau_9_Burgerenk_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_PV_Stembureau_10_Sionskerk_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_PV_Stembureau_10_Sionskerk_TK23.pdf",
+          "text": "0232_PV_Stembureau_10_Sionskerk_TK23 ( PDF - 327.54 kB )",
+          "pdf_name": "0232_PV_Stembureau_10_Sionskerk_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_PV_Stembureau_12_De%20Hezebrink_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_PV_Stembureau_12_De20Hezebrink_TK23.pdf",
+          "text": "0232_PV_Stembureau_12_De Hezebrink_TK23 ( PDF - 304.81 kB )",
+          "pdf_name": "0232_PV_Stembureau_12_De%20Hezebrink_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_PV_Stembureau_13_De%20Hoeksteen_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_PV_Stembureau_13_De20Hoeksteen_TK23.pdf",
+          "text": "0232_PV_Stembureau_13_De Hoeksteen_TK23 ( PDF - 283.05 kB )",
+          "pdf_name": "0232_PV_Stembureau_13_De%20Hoeksteen_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_PV_Stembureau_14_Kulturhus%20Oene_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_PV_Stembureau_14_Kulturhus20Oene_TK23.pdf",
+          "text": "0232_PV_Stembureau_14_Kulturhus Oene_TK23 ( PDF - 305.04 kB )",
+          "pdf_name": "0232_PV_Stembureau_14_Kulturhus%20Oene_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_PV_Stembureau_15_Tabernakelkerk_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_PV_Stembureau_15_Tabernakelkerk_TK23.pdf",
+          "text": "0232_PV_Stembureau_15_Tabernakelkerk_TK23 ( PDF - 320.27 kB )",
+          "pdf_name": "0232_PV_Stembureau_15_Tabernakelkerk_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_PV_Stembureau_16_De%20Koekoek_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_PV_Stembureau_16_De20Koekoek_TK23.pdf",
+          "text": "0232_PV_Stembureau_16_De Koekoek_TK23 ( PDF - 328.5 kB )",
+          "pdf_name": "0232_PV_Stembureau_16_De%20Koekoek_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_PV_Stembureau_17_VIOS_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_PV_Stembureau_17_VIOS_TK23.pdf",
+          "text": "0232_PV_Stembureau_17_VIOS_TK23 ( PDF - 314.98 kB )",
+          "pdf_name": "0232_PV_Stembureau_17_VIOS_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_PV_Stembureau_18_Triton_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_PV_Stembureau_18_Triton_TK23.pdf",
+          "text": "0232_PV_Stembureau_18_Triton_TK23 ( PDF - 299.31 kB )",
+          "pdf_name": "0232_PV_Stembureau_18_Triton_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_PV_Stembureau_19_Woord%20en%20Daad_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_PV_Stembureau_19_Woord20en20Daad_TK23.pdf",
+          "text": "0232_PV_Stembureau_19_Woord en Daad_TK23 ( PDF - 295.09 kB )",
+          "pdf_name": "0232_PV_Stembureau_19_Woord%20en%20Daad_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_PV_Stembureau_20_Handbalvereniging%20C.V.O._TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_PV_Stembureau_20_Handbalvereniging20C.V.O._TK23.pdf",
+          "text": "0232_PV_Stembureau_20_Handbalvereniging C.V.O._TK23 ( PDF - 307.64 kB )",
+          "pdf_name": "0232_PV_Stembureau_20_Handbalvereniging%20C.V.O._TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_PV_Stembureau_21_Dorpskerk%20Vaassen_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_PV_Stembureau_21_Dorpskerk20Vaassen_TK23.pdf",
+          "text": "0232_PV_Stembureau_21_Dorpskerk Vaassen_TK23 ( PDF - 349.29 kB )",
+          "pdf_name": "0232_PV_Stembureau_21_Dorpskerk%20Vaassen_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_Uitslag_Stembureau_1_Gemeentehuis_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_Uitslag_Stembureau_1_Gemeentehuis_TK23.pdf",
+          "text": "0232_Uitslag_Stembureau_1_Gemeentehuis_TK23 ( PDF - 1.34 MB )",
+          "pdf_name": "0232_Uitslag_Stembureau_1_Gemeentehuis_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_Uitslag_Stembureau_2_Vegtelarij_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_Uitslag_Stembureau_2_Vegtelarij_TK23.pdf",
+          "text": "0232_Uitslag_Stembureau_2_Vegtelarij_TK23 ( PDF - 1.38 MB )",
+          "pdf_name": "0232_Uitslag_Stembureau_2_Vegtelarij_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_Uitslag_Stembureau_3_Eper%20Veste_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_Uitslag_Stembureau_3_Eper20Veste_TK23.pdf",
+          "text": "0232_Uitslag_Stembureau_3_Zuuk_TK23 ( PDF - 1.26 MB )",
+          "pdf_name": "0232_Uitslag_Stembureau_3_Eper%20Veste_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_Uitslag_Stembureau_4_Goede%20Herderker_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_Uitslag_Stembureau_4_Goede20Herderker_TK23.pdf",
+          "text": "0232_Uitslag_Stembureau_4_Goede Herderker_TK23 ( PDF - 1.42 MB )",
+          "pdf_name": "0232_Uitslag_Stembureau_4_Goede%20Herderker_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_Uitslag_Stembureau_5_Regenboogkerk_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_Uitslag_Stembureau_5_Regenboogkerk_TK23.pdf",
+          "text": "0232_Uitslag_Stembureau_5_Regenboogkerk_TK23 ( PDF - 1.33 MB )",
+          "pdf_name": "0232_Uitslag_Stembureau_5_Regenboogkerk_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_Uitslag_Stembureau_6_Buurthoeve_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_Uitslag_Stembureau_6_Buurthoeve_TK23.pdf",
+          "text": "0232_Uitslag_Stembureau_6_Buurthoeve_TK23 ( PDF - 1.47 MB )",
+          "pdf_name": "0232_Uitslag_Stembureau_6_Buurthoeve_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_Uitslag_Stembureau_7_Eper%20Veste_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_Uitslag_Stembureau_7_Eper20Veste_TK23.pdf",
+          "text": "0232_Uitslag_Stembureau_7_Eper Veste_TK23 ( PDF - 1.27 MB )",
+          "pdf_name": "0232_Uitslag_Stembureau_7_Eper%20Veste_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_Uitslag_Stembureau_8_Wissel_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_Uitslag_Stembureau_8_Wissel_TK23.pdf",
+          "text": "0232_Uitslag_Stembureau_8_Wissel_TK23 ( PDF - 1.41 MB )",
+          "pdf_name": "0232_Uitslag_Stembureau_8_Wissel_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_Uitslag_Stembureau_9_Burgerenk_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_Uitslag_Stembureau_9_Burgerenk_TK23.pdf",
+          "text": "0232_Uitslag_Stembureau_9_Burgerenk_TK23 ( PDF - 1.43 MB )",
+          "pdf_name": "0232_Uitslag_Stembureau_9_Burgerenk_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_Uitslag_Stembureau_10_Sionskerk_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_Uitslag_Stembureau_10_Sionskerk_TK23.pdf",
+          "text": "0232_Uitslag_Stembureau_10_Sionskerk_TK23 ( PDF - 1.32 MB )",
+          "pdf_name": "0232_Uitslag_Stembureau_10_Sionskerk_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_Uitslag_Stembureau_12_Hezebrink_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_Uitslag_Stembureau_12_Hezebrink_TK23.pdf",
+          "text": "0232_Uitslag_Stembureau_12_Hezebrink_TK23 ( PDF - 1.29 MB )",
+          "pdf_name": "0232_Uitslag_Stembureau_12_Hezebrink_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_Uitslag_Stembureau_13_Hoeksteen_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_Uitslag_Stembureau_13_Hoeksteen_TK23.pdf",
+          "text": "0232_Uitslag_Stembureau_13_Hoeksteen_TK23 ( PDF - 1.41 MB )",
+          "pdf_name": "0232_Uitslag_Stembureau_13_Hoeksteen_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_Uitslag_Stembureau_14_Kulturhus%20Oene_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_Uitslag_Stembureau_14_Kulturhus20Oene_TK23.pdf",
+          "text": "0232_Uitslag_Stembureau_14_Kulturhus Oene_TK23 ( PDF - 1.41 MB )",
+          "pdf_name": "0232_Uitslag_Stembureau_14_Kulturhus%20Oene_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_Uitslag_Stembureau_15_Tabernakelkerk_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_Uitslag_Stembureau_15_Tabernakelkerk_TK23.pdf",
+          "text": "0232_Uitslag_Stembureau_15_Tabernakelkerk_TK23 ( PDF - 1.41 MB )",
+          "pdf_name": "0232_Uitslag_Stembureau_15_Tabernakelkerk_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_Uitslag_Stembureau_16_Koekoek_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_Uitslag_Stembureau_16_Koekoek_TK23.pdf",
+          "text": "0232_Uitslag_Stembureau_16_Koekoek_TK23 ( PDF - 1.49 MB )",
+          "pdf_name": "0232_Uitslag_Stembureau_16_Koekoek_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_Uitslag_Stembureau_17_VIOS_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_Uitslag_Stembureau_17_VIOS_TK23.pdf",
+          "text": "0232_Uitslag_Stembureau_17_VIOS_TK23 ( PDF - 1.43 MB )",
+          "pdf_name": "0232_Uitslag_Stembureau_17_VIOS_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_Uitslag_Stembureau_18_Triton_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_Uitslag_Stembureau_18_Triton_TK23.pdf",
+          "text": "0232_Uitslag_Stembureau_18_Triton_TK23 ( PDF - 1.43 MB )",
+          "pdf_name": "0232_Uitslag_Stembureau_18_Triton_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_Uitslag_Stembureau_19_Woord%20en%20Daad_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_Uitslag_Stembureau_19_Woord20en20Daad_TK23.pdf",
+          "text": "0232_Uitslag_Stembureau_19_Woord en Daad_TK23 ( PDF - 1.45 MB )",
+          "pdf_name": "0232_Uitslag_Stembureau_19_Woord%20en%20Daad_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_Uitslag_Stembureau_20_Handbalvereniging%20C.V.O._TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_Uitslag_Stembureau_20_Handbalvereniging20C.V.O._TK23.pdf",
+          "text": "0232_Uitslag_Stembureau_20_Handbalvereniging C.V.O._TK23 ( PDF - 1.52 MB )",
+          "pdf_name": "0232_Uitslag_Stembureau_20_Handbalvereniging%20C.V.O._TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2023-11/0232_Uitslag_Stembureau_21_Dorpskerk%20Vaassen_TK23.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/0232_Uitslag_Stembureau_21_Dorpskerk20Vaassen_TK23.pdf",
+          "text": "0232_Uitslag_Stembureau_21_Dorpskerk Vaassen_TK23 ( PDF - 1.44 MB )",
+          "pdf_name": "0232_Uitslag_Stembureau_21_Dorpskerk%20Vaassen_TK23.pdf",
+          "score": 4,
+          "from": "https://www.epe.nl/processen-verbaal-tweede-kamerverkiezing-2023"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_1_gemeentehuis_tk25_eerste_telling_zh_1.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_1_gemeentehuis_tk25_eerste_telling_zh_1.pdf",
+          "text": "epe_1_gemeentehuis_tk25_eerste_telling_zh ( PDF - 507.45 kB )",
+          "pdf_name": "epe_1_gemeentehuis_tk25_eerste_telling_zh_1.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_2_buurthuisvegtelarij_tk25_eerste_telling_zh_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_2_buurthuisvegtelarij_tk25_eerste_telling_zh_0.pdf",
+          "text": "epe_2_buurthuisvegtelarij_tk25_eerste_telling_zh ( PDF - 472.9 kB )",
+          "pdf_name": "epe_2_buurthuisvegtelarij_tk25_eerste_telling_zh_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_3_schoolzuuk_tk25_eertst_telling_zh_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_3_schoolzuuk_tk25_eertst_telling_zh_0.pdf",
+          "text": "epe_3_schoolzuuk_tk25_eertst_telling_zh ( PDF - 371.76 kB )",
+          "pdf_name": "epe_3_schoolzuuk_tk25_eertst_telling_zh_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_4_goedeherderkerk_tk25_eerste_telling_zh_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_4_goedeherderkerk_tk25_eerste_telling_zh_0.pdf",
+          "text": "epe_4_goedeherderkerk_tk25_eerste_telling_zh ( PDF - 423 kB )",
+          "pdf_name": "epe_4_goedeherderkerk_tk25_eerste_telling_zh_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_5_klaatbeektpraathuis_tk25_eerste_telling_zh_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_5_klaatbeektpraathuis_tk25_eerste_telling_zh_0.pdf",
+          "text": "epe_5_klaatbeektpraathuis_tk25_eerste_telling_zh ( PDF - 442.36 kB )",
+          "pdf_name": "epe_5_klaatbeektpraathuis_tk25_eerste_telling_zh_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_6_hetslath_tk25_eerste_telling_zh_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_6_hetslath_tk25_eerste_telling_zh_0.pdf",
+          "text": "epe_6_hetslath_tk25_eerste_telling_zh ( PDF - 429.65 kB )",
+          "pdf_name": "epe_6_hetslath_tk25_eerste_telling_zh_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_7_eperveste_tk25_eerste_telling_zh_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_7_eperveste_tk25_eerste_telling_zh_0.pdf",
+          "text": "epe_7_eperveste_tk25_eerste_telling_zh ( PDF - 330.46 kB )",
+          "pdf_name": "epe_7_eperveste_tk25_eerste_telling_zh_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_8_svwissel_tk25_eerste_telling_zh_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_8_svwissel_tk25_eerste_telling_zh_0.pdf",
+          "text": "epe_8_svwissel_tk25_eerste_telling_zh ( PDF - 464.97 kB )",
+          "pdf_name": "epe_8_svwissel_tk25_eerste_telling_zh_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_9_buurtverburgerenk_tk25_eerste_telling_zh_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_9_buurtverburgerenk_tk25_eerste_telling_zh_0.pdf",
+          "text": "epe_9_buurtverburgerenk_tk25_eerste_telling_zh ( PDF - 452.15 kB )",
+          "pdf_name": "epe_9_buurtverburgerenk_tk25_eerste_telling_zh_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_10_sionskerk_tk25_eerste_telling_zh_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_10_sionskerk_tk25_eerste_telling_zh_0.pdf",
+          "text": "epe_10_sionskerk_tk25_eerste_telling_zh ( PDF - 428.06 kB )",
+          "pdf_name": "epe_10_sionskerk_tk25_eerste_telling_zh_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_12_dehezebrink_tk25_eerste_telling_zh_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_12_dehezebrink_tk25_eerste_telling_zh_0.pdf",
+          "text": "epe_12_dehezebrink_tk25_eerste_telling_zh ( PDF - 423.23 kB )",
+          "pdf_name": "epe_12_dehezebrink_tk25_eerste_telling_zh_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_13_dehoeksteen_tk25_eerste_telling_zh-2.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_13_dehoeksteen_tk25_eerste_telling_zh-2.pdf",
+          "text": "epe_13_dehoeksteen_tk25_eerste_telling_zh ( PDF - 405.68 kB )",
+          "pdf_name": "epe_13_dehoeksteen_tk25_eerste_telling_zh-2.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_14_kulturhusoene_tk25_eerste_telling_zh_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_14_kulturhusoene_tk25_eerste_telling_zh_0.pdf",
+          "text": "epe_14_kulturhusoene_tk25_eerste_telling_zh ( PDF - 436.77 kB )",
+          "pdf_name": "epe_14_kulturhusoene_tk25_eerste_telling_zh_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_15_tabernakelkerk_tk25_eerste_telling_zh_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_15_tabernakelkerk_tk25_eerste_telling_zh_0.pdf",
+          "text": "epe_15_tabernakelkerk_tk25_eerste_telling_zh ( PDF - 465.43 kB )",
+          "pdf_name": "epe_15_tabernakelkerk_tk25_eerste_telling_zh_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_16_dekoekoek_tk25_eerste_telling_zh_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_16_dekoekoek_tk25_eerste_telling_zh_0.pdf",
+          "text": "epe_16_dekoekoek_tk25_eerste_telling_zh ( PDF - 476.84 kB )",
+          "pdf_name": "epe_16_dekoekoek_tk25_eerste_telling_zh_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_17_clubgebouwvios_tk25_eerste_telling_zh_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_17_clubgebouwvios_tk25_eerste_telling_zh_0.pdf",
+          "text": "epe_17_clubgebouwvios_tk25_eerste_telling_zh ( PDF - 448.35 kB )",
+          "pdf_name": "epe_17_clubgebouwvios_tk25_eerste_telling_zh_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_18_wijkcentrumtriton_tk25_eerste_telling_zh_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_18_wijkcentrumtriton_tk25_eerste_telling_zh_0.pdf",
+          "text": "epe_18_wijkcentrumtriton_tk25_eerste_telling_zh ( PDF - 462.97 kB )",
+          "pdf_name": "epe_18_wijkcentrumtriton_tk25_eerste_telling_zh_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_19_woordendaad_tk25_eerste_telling_zh_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_19_woordendaad_tk25_eerste_telling_zh_0.pdf",
+          "text": "epe_19_woordendaad_tk25_eerste_telling_zh ( PDF - 425.17 kB )",
+          "pdf_name": "epe_19_woordendaad_tk25_eerste_telling_zh_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_20_clubhuishandbalvercvo_tk25_eerste_telling_zh_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_20_clubhuishandbalvercvo_tk25_eerste_telling_zh_0.pdf",
+          "text": "epe_20_clubhuishandbalvercvo_tk25_eerste_telling_zh ( PDF - 377.76 kB )",
+          "pdf_name": "epe_20_clubhuishandbalvercvo_tk25_eerste_telling_zh_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_21_hetanker_tk25_eerste_telling_zh_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_21_hetanker_tk25_eerste_telling_zh_0.pdf",
+          "text": "epe_21_hetanker_tk25_eerste_telling_zh ( PDF - 459.47 kB )",
+          "pdf_name": "epe_21_hetanker_tk25_eerste_telling_zh_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_22_buurtgebouw-tgeerhuus_tk25_eerste_telling_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_22_buurtgebouw-tgeerhuus_tk25_eerste_telling_zh.pdf",
+          "text": "epe_22_buurtgebouw-tgeerhuus_tk25_eerste_telling_zh ( PDF - 346.94 kB )",
+          "pdf_name": "epe_22_buurtgebouw-tgeerhuus_tk25_eerste_telling_zh.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_uitkomst_tk25_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_uitkomst_tk25_0.pdf",
+          "text": "epe_uitkomst_tk25 ( PDF - 30.74 MB )",
+          "pdf_name": "epe_uitkomst_tk25_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_1_gemeentehuis_tk25_1.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_1_gemeentehuis_tk25_1.pdf",
+          "text": "epe_1_gemeentehuis_tk25 ( PDF - 3.04 MB )",
+          "pdf_name": "epe_1_gemeentehuis_tk25_1.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_2_buurthuisvegtelarij_tk25_1.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_2_buurthuisvegtelarij_tk25_1.pdf",
+          "text": "epe_2_buurthuisvegtelarij_tk25 ( PDF - 2.66 MB )",
+          "pdf_name": "epe_2_buurthuisvegtelarij_tk25_1.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_3_schoolzuuk_tk25_1.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_3_schoolzuuk_tk25_1.pdf",
+          "text": "epe_3_schoolzuuk_tk25 ( PDF - 2.9 MB )",
+          "pdf_name": "epe_3_schoolzuuk_tk25_1.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_4_goedeherderkerk_tk25_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_4_goedeherderkerk_tk25_0.pdf",
+          "text": "epe_4_goedeherderkerk_tk25 ( PDF - 3.25 MB )",
+          "pdf_name": "epe_4_goedeherderkerk_tk25_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_5_klaarbeektpraathuis_tk25_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_5_klaarbeektpraathuis_tk25_0.pdf",
+          "text": "epe_5_klaarbeektpraathuis_tk25 ( PDF - 2.4 MB )",
+          "pdf_name": "epe_5_klaarbeektpraathuis_tk25_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-11/epe_6_hetslath_tk25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_6_hetslath_tk25.pdf",
+          "text": "epe_6_hetslath_tk25 ( PDF - 3.05 MB )",
+          "pdf_name": "epe_6_hetslath_tk25.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_7_eperveste_tk25_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_7_eperveste_tk25_0.pdf",
+          "text": "epe_7_eperveste_tk25 ( PDF - 2.93 MB )",
+          "pdf_name": "epe_7_eperveste_tk25_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_8_svwissel_tk25_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_8_svwissel_tk25_0.pdf",
+          "text": "epe_8_svwissel_tk25 ( PDF - 3.1 MB )",
+          "pdf_name": "epe_8_svwissel_tk25_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_9_wijkverburgerenk_tk25_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_9_wijkverburgerenk_tk25_0.pdf",
+          "text": "epe_9_wijkverburgerenk_tk25 ( PDF - 2.65 MB )",
+          "pdf_name": "epe_9_wijkverburgerenk_tk25_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_10_sionskerk_tk25_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_10_sionskerk_tk25_0.pdf",
+          "text": "epe_10_sionskerk_tk25 ( PDF - 3.26 MB )",
+          "pdf_name": "epe_10_sionskerk_tk25_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_12_dehezebrink_tk25_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_12_dehezebrink_tk25_0.pdf",
+          "text": "epe_12_dehezebrink_tk25 ( PDF - 2.37 MB )",
+          "pdf_name": "epe_12_dehezebrink_tk25_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_13_dehoeksteen_tk25_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_13_dehoeksteen_tk25_0.pdf",
+          "text": "epe_13_dehoeksteen_tk25 ( PDF - 2.75 MB )",
+          "pdf_name": "epe_13_dehoeksteen_tk25_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_14_kulturhusoene_tk25_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_14_kulturhusoene_tk25_0.pdf",
+          "text": "epe_14_kulturhusoene_tk25 ( PDF - 3.01 MB )",
+          "pdf_name": "epe_14_kulturhusoene_tk25_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_15_tabernakelkerk_tk25_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_15_tabernakelkerk_tk25_0.pdf",
+          "text": "epe_15_tabernakelkerk_tk25 ( PDF - 2.43 MB )",
+          "pdf_name": "epe_15_tabernakelkerk_tk25_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_16_dekoekoek_tk25_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_16_dekoekoek_tk25_0.pdf",
+          "text": "epe_16_dekoekoek_tk25 ( PDF - 2.55 MB )",
+          "pdf_name": "epe_16_dekoekoek_tk25_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_17_clubgebouwvios_tk25_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_17_clubgebouwvios_tk25_0.pdf",
+          "text": "epe_17_clubgebouwvios_tk25 ( PDF - 2.85 MB )",
+          "pdf_name": "epe_17_clubgebouwvios_tk25_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_18_wijkcentrumtriton_tk25_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_18_wijkcentrumtriton_tk25_0.pdf",
+          "text": "epe_18_wijkcentrumtriton_tk25 ( PDF - 2.91 MB )",
+          "pdf_name": "epe_18_wijkcentrumtriton_tk25_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_19_woordendaad_tk25_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_19_woordendaad_tk25_0.pdf",
+          "text": "epe_19_woordendaad_tk25 ( PDF - 2.26 MB )",
+          "pdf_name": "epe_19_woordendaad_tk25_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_20_clubhuiscvo_tk25_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_20_clubhuiscvo_tk25_0.pdf",
+          "text": "epe_20_clubhuiscvo_tk25 ( PDF - 3.03 MB )",
+          "pdf_name": "epe_20_clubhuiscvo_tk25_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_21_hetanker_tk25_0.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_21_hetanker_tk25_0.pdf",
+          "text": "epe_21_hetanker_tk25 ( PDF - 2.7 MB )",
+          "pdf_name": "epe_21_hetanker_tk25_0.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_22_buurtgebouwtgeerhuus_tk25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_22_buurtgebouwtgeerhuus_tk25.pdf",
+          "text": "epe_22_buurtgebouwtgeerhuus_tk25 ( PDF - 2.17 MB )",
+          "pdf_name": "epe_22_buurtgebouwtgeerhuus_tk25.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        },
+        {
+          "remote_url": "https://www.epe.nl/sites/default/files/2025-10/epe_verklaring_aansluitvoorschriften_zh.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_verklaring_aansluitvoorschriften_zh.pdf",
+          "text": "epe_verklaring_aansluitvoorschriften_zh ( PDF - 65.23 kB )",
+          "pdf_name": "epe_verklaring_aansluitvoorschriften_zh.pdf",
+          "score": 1,
+          "from": "https://www.epe.nl/uitkomsten-en-processen-verbaal-tweede-kamerverkiezing-2025"
+        }
+      ]
+    },
+    {
+      "name": "Enschede",
+      "start_url": "https://www.enschede.nl/verkiezingen",
+      "pdfs": [
+        {
+          "remote_url": "https://prodemos.nl/app/uploads/2025/08/Verkiezingskrant_gewone_taal_tweede_kamer_2025_digitaal.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enschede/Verkiezingskrant_gewone_taal_tweede_kamer_2025_digitaal.pdf",
+          "text": "Verkiezingskrant externe-link-icoon",
+          "pdf_name": "Verkiezingskrant_gewone_taal_tweede_kamer_2025_digitaal.pdf",
+          "score": 4,
+          "from": "https://www.enschede.nl/tweede-kamerverkiezing"
+        },
+        {
+          "remote_url": "https://www.enschede.nl/file/kandidatenlijst-tweede-kamerverkiezing",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enschede/kandidatenlijst-tweede-kamerverkiezing.pdf",
+          "text": "pdf bestand Kandidatenlijst Tweede Kamerverkiezing 158.06 kB",
+          "pdf_name": "kandidatenlijst-tweede-kamerverkiezing",
+          "score": 4,
+          "from": "https://www.enschede.nl/tweede-kamerverkiezing"
+        },
+        {
+          "remote_url": "https://www.enschede.nl/file/kaart-plakzuilen-enschede",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enschede/kaart-plakzuilen-enschede.pdf",
+          "text": "pdf bestand Kaart plakzuilen Enschede 5.92 MB",
+          "pdf_name": "kaart-plakzuilen-enschede",
+          "score": 1,
+          "from": "https://www.enschede.nl/informatie-voor-politieke-partijen"
+        },
+        {
+          "remote_url": "https://www.enschede.nl/file/formulier-verzoek-tot-registratie-van-een-aanduiding",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enschede/formulier-verzoek-tot-registratie-van-een-aanduiding.pdf",
+          "text": "pdf bestand Formulier verzoek tot registratie van een aanduiding 142.54 kB",
+          "pdf_name": "formulier-verzoek-tot-registratie-van-een-aanduiding",
+          "score": 1,
+          "from": "https://www.enschede.nl/nieuwe-politieke-partijen"
+        }
+      ]
+    },
+    {
+      "name": "Enkhuizen",
+      "start_url": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/",
+      "pdfs": [
+        {
+          "remote_url": "https://www.enkhuizen.nl/wp-content/uploads/2025/10/Enkhuizen_1_Drom_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enkhuizen/Enkhuizen_1_Drom_TK25_eerste_telling.pdf",
+          "text": "Enkhuizen_1_Drom_TK25_eerste_telling",
+          "pdf_name": "Enkhuizen_1_Drom_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.enkhuizen.nl/wp-content/uploads/2025/10/Enkhuizen_2_De-Nieuwe-Doelen_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enkhuizen/Enkhuizen_2_De-Nieuwe-Doelen_TK25_eerste_telling.pdf",
+          "text": "Enkhuizen_2_De Nieuwe Doelen_TK25_eerste_telling",
+          "pdf_name": "Enkhuizen_2_De-Nieuwe-Doelen_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.enkhuizen.nl/wp-content/uploads/2025/10/Enkhuizen_3_Westerkerk_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enkhuizen/Enkhuizen_3_Westerkerk_TK25_eerste_telling.pdf",
+          "text": "Enkhuizen_3_Westerkerk_TK25_eerste_telling",
+          "pdf_name": "Enkhuizen_3_Westerkerk_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.enkhuizen.nl/wp-content/uploads/2025/10/Enkhuizen_4_Herfstzon_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enkhuizen/Enkhuizen_4_Herfstzon_TK25_eerste_telling.pdf",
+          "text": "Enkhuizen_4_Herfstzon_TK25_eerste_telling",
+          "pdf_name": "Enkhuizen_4_Herfstzon_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.enkhuizen.nl/wp-content/uploads/2025/10/Enkhuizen_5_IJsselzand_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enkhuizen/Enkhuizen_5_IJsselzand_TK25_eerste_telling.pdf",
+          "text": "Enkhuizen_5_IJsselzand_TK25_eerste_telling",
+          "pdf_name": "Enkhuizen_5_IJsselzand_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.enkhuizen.nl/wp-content/uploads/2025/10/Enkhuizen_6_De-Bonte-Veer-wijkcentrum_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enkhuizen/Enkhuizen_6_De-Bonte-Veer-wijkcentrum_TK25_eerste_telling.pdf",
+          "text": "Enkhuizen_6_De Bonte Veer wijkcentrum_TK25_eerste_telling",
+          "pdf_name": "Enkhuizen_6_De-Bonte-Veer-wijkcentrum_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.enkhuizen.nl/wp-content/uploads/2025/10/Enkhuizen_7_De-Bonte-Veer-rest_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enkhuizen/Enkhuizen_7_De-Bonte-Veer-rest_TK25_eerste_telling.pdf",
+          "text": "Enkhuizen_7_De Bonte Veer rest_TK25_eerste_telling",
+          "pdf_name": "Enkhuizen_7_De-Bonte-Veer-rest_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.enkhuizen.nl/wp-content/uploads/2025/10/Enkhuizen_8_het-Apostolisch-Genootsch_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enkhuizen/Enkhuizen_8_het-Apostolisch-Genootsch_TK25_eerste_telling.pdf",
+          "text": "Enkhuizen_8_het Apostolisch Genootsch_TK25_eerste_telling",
+          "pdf_name": "Enkhuizen_8_het-Apostolisch-Genootsch_TK25_eerste_telling.pdf",
+          "score": 1,
+          "from": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.enkhuizen.nl/wp-content/uploads/2025/10/Enkhuizen_9_RSG_TK25_eerste-telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enkhuizen/Enkhuizen_9_RSG_TK25_eerste-telling.pdf",
+          "text": "Enkhuizen_9_RSG_TK25_eerste telling",
+          "pdf_name": "Enkhuizen_9_RSG_TK25_eerste-telling.pdf",
+          "score": 1,
+          "from": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.enkhuizen.nl/wp-content/uploads/2025/10/Enkhuizen_1_Drommedaris_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enkhuizen/Enkhuizen_1_Drommedaris_TK25.pdf",
+          "text": "Enkhuizen_1_Drommedaris_TK25",
+          "pdf_name": "Enkhuizen_1_Drommedaris_TK25.pdf",
+          "score": 1,
+          "from": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.enkhuizen.nl/wp-content/uploads/2025/10/Enkhuizen_2_Nieuwe-Doelen_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enkhuizen/Enkhuizen_2_Nieuwe-Doelen_TK25.pdf",
+          "text": "Enkhuizen_2_Nieuwe Doelen_TK25",
+          "pdf_name": "Enkhuizen_2_Nieuwe-Doelen_TK25.pdf",
+          "score": 1,
+          "from": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.enkhuizen.nl/wp-content/uploads/2025/10/Enkhuizen_3_Westerkerk_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enkhuizen/Enkhuizen_3_Westerkerk_TK25.pdf",
+          "text": "Enkhuizen_3_Westerkerk_TK25",
+          "pdf_name": "Enkhuizen_3_Westerkerk_TK25.pdf",
+          "score": 1,
+          "from": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.enkhuizen.nl/wp-content/uploads/2025/10/Enkhuizen_4_Herfstzon_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enkhuizen/Enkhuizen_4_Herfstzon_TK25.pdf",
+          "text": "Enkhuizen_4_Herfstzon_TK25",
+          "pdf_name": "Enkhuizen_4_Herfstzon_TK25.pdf",
+          "score": 1,
+          "from": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.enkhuizen.nl/wp-content/uploads/2025/10/Enkhuizen_5_IJsselzand_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enkhuizen/Enkhuizen_5_IJsselzand_TK25.pdf",
+          "text": "Enkhuizen_5_IJsselzand_TK25",
+          "pdf_name": "Enkhuizen_5_IJsselzand_TK25.pdf",
+          "score": 1,
+          "from": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.enkhuizen.nl/wp-content/uploads/2025/10/Enkhuizen_6_De-Bonte-Veer-wijk_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enkhuizen/Enkhuizen_6_De-Bonte-Veer-wijk_TK25.pdf",
+          "text": "Enkhuizen_6_De Bonte Veer wijk_TK25",
+          "pdf_name": "Enkhuizen_6_De-Bonte-Veer-wijk_TK25.pdf",
+          "score": 1,
+          "from": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.enkhuizen.nl/wp-content/uploads/2025/10/Enkhuizen_7_De-Bonte-Veer-rest_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enkhuizen/Enkhuizen_7_De-Bonte-Veer-rest_TK25.pdf",
+          "text": "Enkhuizen_7_De Bonte Veer rest_TK25",
+          "pdf_name": "Enkhuizen_7_De-Bonte-Veer-rest_TK25.pdf",
+          "score": 1,
+          "from": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.enkhuizen.nl/wp-content/uploads/2025/10/Enkhuizen_8_Apostolisch-Genootschap_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enkhuizen/Enkhuizen_8_Apostolisch-Genootschap_TK25.pdf",
+          "text": "Enkhuizen_8_Apostolisch Genootschap_TK25",
+          "pdf_name": "Enkhuizen_8_Apostolisch-Genootschap_TK25.pdf",
+          "score": 1,
+          "from": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.enkhuizen.nl/wp-content/uploads/2025/10/Enkhuizen_9_RSG_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enkhuizen/Enkhuizen_9_RSG_TK25.pdf",
+          "text": "Enkhuizen_9_RSG_TK25",
+          "pdf_name": "Enkhuizen_9_RSG_TK25.pdf",
+          "score": 1,
+          "from": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.enkhuizen.nl/wp-content/uploads/2025/10/Enkhuizen_uitkomst_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enkhuizen/Enkhuizen_uitkomst_TK25.pdf",
+          "text": "Enkhuizen_uitkomst_TK25",
+          "pdf_name": "Enkhuizen_uitkomst_TK25.pdf",
+          "score": 1,
+          "from": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        },
+        {
+          "remote_url": "https://www.enkhuizen.nl/wp-content/uploads/2025/10/Enkhuizen_verklaring_aansluitvoorschriften.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enkhuizen/Enkhuizen_verklaring_aansluitvoorschriften.pdf",
+          "text": "Enkhuizen_verklaring_aansluitvoorschriften",
+          "pdf_name": "Enkhuizen_verklaring_aansluitvoorschriften.pdf",
+          "score": 1,
+          "from": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/verkiezingsuitslag/"
+        }
+      ]
+    },
+    {
       "name": "Emmen",
       "start_url": "https://gemeente.emmen.nl/verkiezingen",
       "pdfs": []
@@ -944,14 +2061,6 @@
           "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
         },
         {
-          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_024_keerhoes-cadier-en-keer-corrigendum-na-14-1_-nieuwezitting-ws23-zh.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_024_keerhoes-cadier-en-keer-corrigendum-na-14-1_-nieuwezitting-ws23-zh.pdf",
-          "text": "Waterschappen 2023/1903_stembureau_024_keerhoes-cadier-en-keer-corrigendum-na-14-1_-nieuwezitting-ws23-zh",
-          "pdf_name": "1903_stembureau_024_keerhoes-cadier-en-keer-corrigendum-na-14-1_-nieuwezitting-ws23-zh.pdf",
-          "score": 4,
-          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
-        },
-        {
           "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/1903_stembureau_024_keerhoes-cadier-en-keer-_ws23-zh.pdf",
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/1903_stembureau_024_keerhoes-cadier-en-keer-_ws23-zh.pdf",
           "text": "Waterschappen 2023/1903_stembureau_024_keerhoes-cadier-en-keer-_ws23-zh",
@@ -988,22 +2097,6 @@
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/p2a.pdf",
           "text": "Waterschappen 2023/p2a",
           "pdf_name": "p2a.pdf",
-          "score": 4,
-          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
-        },
-        {
-          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/verslag-controleprotocol-gsb_waterschap-zh.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/verslag-controleprotocol-gsb_waterschap-zh.pdf",
-          "text": "Waterschappen 2023/verslag-controleprotocol-gsb_waterschap-zh",
-          "pdf_name": "verslag-controleprotocol-gsb_waterschap-zh.pdf",
-          "score": 4,
-          "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
-        },
-        {
-          "remote_url": "https://www.eijsden-margraten.nl/bestanden/docs/Verkiezingen/Waterschappen%202023/verslag-controleprotocol-gsb_waterschap.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/verslag-controleprotocol-gsb_waterschap.pdf",
-          "text": "Waterschappen 2023/verslag-controleprotocol-gsb_waterschap",
-          "pdf_name": "verslag-controleprotocol-gsb_waterschap.pdf",
           "score": 4,
           "from": "https://www.eijsden-margraten.nl/nl/Actueel/Verkiezingen.html"
         },
@@ -5466,86 +6559,6 @@
           "text": "achtkarspelen_uitkomst_tk25_zonder.pdf (PDF, 22,3 MB )",
           "score": 1,
           "from": "https://www.achtkarspelen.nl/uitslag-tweede-kamerverkiezing-2025"
-        },
-        {
-          "remote_url": "https://cuatro.sim-cdn.nl/achtkarspelen/uploads/uitslag_per_stembureau_gr2022_achtkarspelen.pdf?cb=-QiRgKQw",
-          "local_url": null,
-          "text": "Uitslag per stembureau GR2022 Achtkarspelen (PDF, 40,6 kB )",
-          "pdf_name": "uitslag_per_stembureau_gr2022_achtkarspelen.pdf",
-          "score": 4,
-          "from": "https://www.achtkarspelen.nl/uitslagen-verkiezingen"
-        },
-        {
-          "remote_url": "https://cuatro.sim-cdn.nl/achtkarspelen/uploads/uitslag-per-stembureau-gr2018-achtkarspelen.pdf?cb=iqYFCzz0",
-          "local_url": null,
-          "text": "Uitslag per stembureau GR2018 Achtkarspelen (PDF, 226,8 kB )",
-          "pdf_name": "uitslag-per-stembureau-gr2018-achtkarspelen.pdf",
-          "score": 4,
-          "from": "https://www.achtkarspelen.nl/uitslagen-verkiezingen"
-        },
-        {
-          "remote_url": "https://cuatro.sim-cdn.nl/achtkarspelen/uploads/uitslag-per-stembureau-gr2014-achtkarspelen.pdf?cb=T4iSMBu6",
-          "local_url": null,
-          "text": "Uitslag per stembureau GR2014 Achtkarspelen (PDF, 20,1 kB )",
-          "pdf_name": "uitslag-per-stembureau-gr2014-achtkarspelen.pdf",
-          "score": 4,
-          "from": "https://www.achtkarspelen.nl/uitslagen-verkiezingen"
-        },
-        {
-          "remote_url": "https://cuatro.sim-cdn.nl/achtkarspelen/uploads/uitslag_per_stembureau_tk2025_achtkarspelen.pdf?cb=19itYkRl",
-          "local_url": null,
-          "text": "Uitslag per stembureau TK2025 Achtkarspelen (PDF, 237,7 kB )",
-          "pdf_name": "uitslag_per_stembureau_tk2025_achtkarspelen.pdf",
-          "score": 4,
-          "from": "https://www.achtkarspelen.nl/uitslagen-verkiezingen"
-        },
-        {
-          "remote_url": "https://cuatro.sim-cdn.nl/achtkarspelen/uploads/totaaluitslag_stemmen_per_stembureau_tweede_kamerverkiezing_2021_achtkarspelen.pdf?cb=VHadfxMl",
-          "local_url": null,
-          "text": "Uitslag per stembureau TK2021 Achtkarspelen (PDF, 143,5 kB )",
-          "pdf_name": "totaaluitslag_stemmen_per_stembureau_tweede_kamerverkiezing_2021_achtkarspelen.pdf",
-          "score": 4,
-          "from": "https://www.achtkarspelen.nl/uitslagen-verkiezingen"
-        },
-        {
-          "remote_url": "https://cuatro.sim-cdn.nl/achtkarspelen/uploads/totaaluitslag_stemmen_per_stembureau_tweede_kamerverkiezing_2017_achtkarspelen.pdf?cb=3DFOTvFo",
-          "local_url": null,
-          "text": "Uitslag per stembureau TK2017 Achtkarspelen (PDF, 8,8 kB )",
-          "pdf_name": "totaaluitslag_stemmen_per_stembureau_tweede_kamerverkiezing_2017_achtkarspelen.pdf",
-          "score": 4,
-          "from": "https://www.achtkarspelen.nl/uitslagen-verkiezingen"
-        },
-        {
-          "remote_url": "https://cuatro.sim-cdn.nl/achtkarspelen/uploads/totaaluitslag_stemmen_per_stembureau_achtkarspelen_provincialestaten_2023.pdf?cb=c9Ggm9Y_",
-          "local_url": null,
-          "text": "Uitslag per stembureau PS2023 Achtkarspelen (PDF, 193,5 kB )",
-          "pdf_name": "totaaluitslag_stemmen_per_stembureau_achtkarspelen_provincialestaten_2023.pdf",
-          "score": 4,
-          "from": "https://www.achtkarspelen.nl/uitslagen-verkiezingen"
-        },
-        {
-          "remote_url": "https://cuatro.sim-cdn.nl/achtkarspelen/uploads/totaaluitslag_stemmen_per_stembureau_achtkarspelen_waterschap_2023.pdf?cb=XE_HTn2b",
-          "local_url": null,
-          "text": "Uitslag per stembureau WS2023 Achtkarspelen (PDF, 154,2 kB )",
-          "pdf_name": "totaaluitslag_stemmen_per_stembureau_achtkarspelen_waterschap_2023.pdf",
-          "score": 4,
-          "from": "https://www.achtkarspelen.nl/uitslagen-verkiezingen"
-        },
-        {
-          "remote_url": "https://cuatro.sim-cdn.nl/achtkarspelen/uploads/totaaluitslag_stemmen_per_stembureau_achtkarspelen_europeesparlement_2024.pdf?cb=HJuod9Iu",
-          "local_url": null,
-          "text": "Uitslag per stembureau EP2024 Achtkarspelen (PDF, 213,3 kB )",
-          "pdf_name": "totaaluitslag_stemmen_per_stembureau_achtkarspelen_europeesparlement_2024.pdf",
-          "score": 4,
-          "from": "https://www.achtkarspelen.nl/uitslagen-verkiezingen"
-        },
-        {
-          "remote_url": "https://cuatro.sim-cdn.nl/achtkarspelen/uploads/achtkarspelen_verklaring_aansluitvoorschriften.pdf?cb=we_uxV9o",
-          "local_url": null,
-          "text": "Verklaring aansluitvoorschriften Achtkarspelen (PDF, 398,1 kB )",
-          "pdf_name": "achtkarspelen_verklaring_aansluitvoorschriften.pdf",
-          "score": 1,
-          "from": "https://www.achtkarspelen.nl/uitslag-tweede-kamerverkiezing-2025"
         }
       ]
     },
@@ -5736,14 +6749,6 @@
           "text": "stembureau_22_mobiel_3_heurnsen_tref_en_beth-san.pdf (PDF, 2,5 MB )",
           "score": 4,
           "from": "https://www.aalten.nl/voorlopige-resultaten-verkiezing-tweede-kamer-2025"
-        },
-        {
-          "remote_url": "https://cuatro.sim-cdn.nl/aalten/uploads/verklaring_aansluitvoorschriften.pdf?cb=Rnb4TRZB",
-          "local_url": null,
-          "text": "verklaring_aansluitvoorschriften.pdf (PDF, 50,2 kB )",
-          "pdf_name": "verklaring_aansluitvoorschriften.pdf",
-          "score": 1,
-          "from": "https://www.aalten.nl/voorlopige-resultaten-verkiezing-tweede-kamer-2025"
         }
       ]
     },
@@ -5766,22 +6771,6 @@
           "score": 0,
           "remote_url": "https://apeldoorn.mediafiler.net/apeldoorn/start/verkiesings-proces-verbaal/ab91#fuid=3772",
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Apeldoorn/0200_Uitslag_Stembureau_11_TafeltennisverenigingDeVeluwe_TK25.pdf"
-        },
-        {
-          "text": "Het proces-verbaal van het gemeentelijk stembureau (model Na 31-2) met bijlage 1 (pdf, 2 MB)",
-          "pdf_name": "fl-tk2025-model-na31-2",
-          "score": 4,
-          "from": "https://www.apeldoorn.nl/verkiezingen/uitslag-tweede-kamerverkiezingen-2025",
-          "remote_url": "https://www.apeldoorn.nl/fl-tk2025-model-na31-2",
-          "local_url": null
-        },
-        {
-          "text": "De verklaring onderzoek aansluitvoorschriften uitslagenprogrammatuur (model Ea 6) (pdf, 44 kB)",
-          "pdf_name": "fl-tk2025-model-ea-6",
-          "score": 4,
-          "from": "https://www.apeldoorn.nl/verkiezingen/uitslag-tweede-kamerverkiezingen-2025",
-          "remote_url": "https://www.apeldoorn.nl/fl-tk2025-model-ea-6",
-          "local_url": null
         },
         {
           "text": "0200_PV_Stembureau_34_BuurthuistVogelnest_TK25",
@@ -6414,14 +7403,6 @@
           "from": "https://apeldoorn.mediafiler.net/apeldoorn/start/verkiesings-proces-verbaal/ab90",
           "remote_url": "https://apeldoorn.mediafiler.net/apeldoorn/start/verkiesings-proces-verbaal/ab90#fuid=3697",
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Apeldoorn/0200_PV_Stembureau_23_WijkcentrumOrca_TK25.pdf"
-        },
-        {
-          "remote_url": "https://www.apeldoorn.nl/fl-handout-verkiezingen-2026",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Apeldoorn/handout-verkiezingen-2026.pdf",
-          "text": "handout verkiezingen (pdf, 1 MB)",
-          "pdf_name": "fl-handout-verkiezingen-2026",
-          "score": 4,
-          "from": "https://www.apeldoorn.nl/verkiezingen/voor-politieke-partijen"
         }
       ]
     },
@@ -8932,22 +9913,6 @@
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Almelo/almelo_23_woon-_en_zorgcentrum_friso_tk25_eerste_telling.pdf"
         },
         {
-          "pdf_name": "almelo_24_waterschap_vechtstromen_tk25.pdf",
-          "text": "almelo_24_waterschap_vechtstromen_tk25",
-          "from": "local",
-          "score": 1,
-          "remote_url": "https://www.almelo.nl/almelo_24_waterschap_vechtstromen_tk25.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Almelo/almelo_24_waterschap_vechtstromen_tk25.pdf"
-        },
-        {
-          "pdf_name": "almelo_24_waterschap_vechtstromen_tk25_eerste_telling.pdf",
-          "text": "almelo_24_waterschap_vechtstromen_tk25_eerste_telling",
-          "from": "local",
-          "score": 1,
-          "remote_url": "https://www.almelo.nl/almelo_24_waterschap_vechtstromen_tk25_eerste_telling.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Almelo/almelo_24_waterschap_vechtstromen_tk25_eerste_telling.pdf"
-        },
-        {
           "pdf_name": "almelo_25_wijkcentrum_de_driehoek_tk25.pdf",
           "text": "almelo_25_wijkcentrum_de_driehoek_tk25",
           "from": "local",
@@ -11132,14 +12097,6 @@
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Altena/Altena_06_De_Dussenaar_TK25_eerste_telling.pdf"
         },
         {
-          "text": "Sport en Cultureel centrum 't Rondeel (2)",
-          "pdf_name": "Altena_28_Sport_en_Cultureel_centrum__t_Rondeel__2__TK25.pdf",
-          "score": 4,
-          "from": "https://www.gemeentealtena.nl/verkiezingen/uitslagentweedekamer",
-          "remote_url": "https://www.gemeentealtena.nl/fileadmin/Altena_bestanden/PDF_bijlagen/Verkiezingen/Verkiezingen_Tweede_Kamer_2025/uitslagen_per_stembureau/Altena_28_Sport_en_Cultureel_centrum__t_Rondeel__2__TK25.pdf",
-          "local_url": null
-        },
-        {
           "text": "Altena_10_Steunpunt_De_Dotter_TK25_eerste_telling",
           "pdf_name": "Altena_10_Steunpunt_De_Dotter_TK25_eerste_telling.pdf",
           "score": 1,
@@ -11554,22 +12511,6 @@
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Ameland/gemeente_ameland_stembureau_3_hollum_tk25.pdf"
         },
         {
-          "text": "Kiezerspas20aanvragen_3",
-          "pdf_name": "Kiezerspas20aanvragen_3.pdf",
-          "score": 1,
-          "from": "local",
-          "remote_url": "https://cuatro.sim-cdn.nl/Kiezerspas20aanvragen_3.pdf",
-          "local_url": null
-        },
-        {
-          "text": "model_n10-1_waterschap_-_stembureau_buren_1",
-          "pdf_name": "model_n10-1_waterschap_-_stembureau_buren_1.pdf",
-          "score": 1,
-          "from": "local",
-          "remote_url": "https://cuatro.sim-cdn.nl/ameland/uploads/model_n10-1_waterschap_-_stembureau_buren_1.pdf?cb=xxWaovWV",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Ameland/model_n10-1_waterschap_-_stembureau_buren_1.pdf"
-        },
-        {
           "text": "gemeente_ameland_stembureau_2_buren_tk25",
           "pdf_name": "gemeente_ameland_stembureau_2_buren_tk25.pdf",
           "score": 1,
@@ -11584,30 +12525,6 @@
           "from": "local",
           "remote_url": "https://cuatro.sim-cdn.nl/ameland/uploads/proces_verbaal_stembureau_nes.pdf?cb=sFMeS6C8",
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Ameland/proces_verbaal_stembureau_nes.pdf"
-        },
-        {
-          "text": "model_na31-1_waterschap__0",
-          "pdf_name": "model_na31-1_waterschap__0.pdf",
-          "score": 1,
-          "from": "local",
-          "remote_url": "https://cuatro.sim-cdn.nl/ameland/uploads/model_na31-1_waterschap__0.pdf?cb=VB9BGemS",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Ameland/model_na31-1_waterschap__0.pdf"
-        },
-        {
-          "text": "model_n10-1_waterschap_-_stembureau_nes_1",
-          "pdf_name": "model_n10-1_waterschap_-_stembureau_nes_1.pdf",
-          "score": 1,
-          "from": "local",
-          "remote_url": "https://cuatro.sim-cdn.nl/ameland/uploads/model_n10-1_waterschap_-_stembureau_nes_1.pdf?cb=1zlheC8q",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Ameland/model_n10-1_waterschap_-_stembureau_nes_1.pdf"
-        },
-        {
-          "text": "model_n10-1_waterschap_-_stembureau_ballum_1",
-          "pdf_name": "model_n10-1_waterschap_-_stembureau_ballum_1.pdf",
-          "score": 1,
-          "from": "local",
-          "remote_url": "https://cuatro.sim-cdn.nl/ameland/uploads/model_n10-1_waterschap_-_stembureau_ballum_1.pdf?cb=7nv4JRtv",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Ameland/model_n10-1_waterschap_-_stembureau_ballum_1.pdf"
         },
         {
           "text": "model_na31-1_provinciale_staten_2_1",
@@ -11682,28 +12599,12 @@
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Ameland/model_n10-1_provinciale_staten_-_stembureau_nes_0.pdf"
         },
         {
-          "text": "model_n10-1_waterschap_-_stembureau_hollum_1",
-          "pdf_name": "model_n10-1_waterschap_-_stembureau_hollum_1.pdf",
-          "score": 1,
-          "from": "local",
-          "remote_url": "https://cuatro.sim-cdn.nl/ameland/uploads/model_n10-1_waterschap_-_stembureau_hollum_1.pdf?cb=LixstOxC",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Ameland/model_n10-1_waterschap_-_stembureau_hollum_1.pdf"
-        },
-        {
           "text": "proces-verbaal_model_n_10-1_buren",
           "pdf_name": "proces-verbaal_model_n_10-1_buren.pdf",
           "score": 1,
           "from": "local",
           "remote_url": "https://cuatro.sim-cdn.nl/ameland/uploads/proces-verbaal_model_n_10-1_buren.pdf?cb=ncDBrLKV",
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Ameland/proces-verbaal_model_n_10-1_buren.pdf"
-        },
-        {
-          "text": "model_p22-2_4_1",
-          "pdf_name": "model_p22-2_4_1.pdf",
-          "score": 1,
-          "from": "local",
-          "remote_url": "https://cuatro.sim-cdn.nl/ameland/uploads/model_p22-2_4.pdf?cb=bmbZbPdd",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Ameland/model_p22-2_4_1.pdf"
         },
         {
           "text": "model_n_11_vaststelling_aantal_stemmen_1",
@@ -11982,14 +12883,6 @@
           "from": "local",
           "remote_url": "https://www.amersfoort.nl/sites/default/files/2025-11/tk25-sb-sporthal-brink-377_0.pdf",
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Amersfoort/tk25-sb-sporthal-brink-377_0.pdf"
-        },
-        {
-          "text": "tk25cso-clubhuis-ijsvereniging-45_1.pdf ( PDF - 12.33 MB )",
-          "pdf_name": "tk25cso-clubhuis-ijsvereniging-45_1_0.pdf",
-          "score": 1,
-          "from": "https://www.amersfoort.nl/cso-uitslagen-tweede-kamerverkiezingen",
-          "remote_url": "https://www.amersfoort.nl/sites/default/files/2025-10/tk25cso-clubhuis-ijsvereniging-45_1_0.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Amersfoort/tk25cso-clubhuis-ijsvereniging-45_1_0.pdf"
         },
         {
           "text": "tk25-cso-kerk-kandelaar-35_0",
@@ -13502,14 +14395,6 @@
           "from": "local",
           "remote_url": "https://www.amersfoort.nl/sites/default/files/2025-11/tk25-sb-zon-en-schild-54.pdf",
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Amersfoort/tk25-sb-zon-en-schild-54.pdf"
-        },
-        {
-          "remote_url": "https://www.amersfoort.nl/sites/default/files/2025-07/informatie-voor-politieke-partijen-verkiezingen-gemeenteraad-2026-v2.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Amersfoort/informatie-voor-politieke-partijen-verkiezingen-gemeenteraad-2026-v2.pdf",
-          "text": "Informatie voor politieke partijen in Amersfoort",
-          "pdf_name": "informatie-voor-politieke-partijen-verkiezingen-gemeenteraad-2026-v2.pdf",
-          "score": 4,
-          "from": "https://www.amersfoort.nl/verkiezingen"
         },
         {
           "remote_url": "https://www.amersfoort.nl/sites/default/files/2023-11/Eindverslag%20definitieve%20telling%20raadgevend%20referendum%2022%20november%202023.pdf",
@@ -16384,14 +17269,6 @@
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/Stemmen_-_Lijst_1_CDA_kandidaat_per_stembureau.pdf"
         },
         {
-          "text": "Stembureau 12 Tennishal 't Root - dinsdag",
-          "pdf_name": "PV_model_J_stembureau_12.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/gemeenteraadsverkiezingen/definitieve-verkiezingsuitslag-16-03-2022",
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/GR2022/PV/PV_model_J_stembureau_12.pdf",
-          "local_url": null
-        },
-        {
           "text": "Aantal_stemmen_per_partij",
           "pdf_name": "Aantal_stemmen_per_partij.pdf",
           "score": 1,
@@ -16406,22 +17283,6 @@
           "from": "local",
           "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/EP2024/PV_EP_NA31-2/2._Kwartier_Bijlage_PV.pdf",
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/2._Kwartier_Bijlage_PV.pdf"
-        },
-        {
-          "text": "Stemopneming vervroegde stembureaus 8 tot en met 13",
-          "pdf_name": "PV_model_K1_vervroegde_stembureaus_8_tm_13.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/gemeenteraadsverkiezingen/definitieve-verkiezingsuitslag-16-03-2022",
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/GR2022/PV/PV_model_K1_vervroegde_stembureaus_8_tm_13.pdf",
-          "local_url": null
-        },
-        {
-          "text": "Stembureau 13 Hart van Heuze - dinsdag",
-          "pdf_name": "PV_model_J_stembureau_13.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/gemeenteraadsverkiezingen/definitieve-verkiezingsuitslag-16-03-2022",
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/GR2022/PV/PV_model_J_stembureau_13.pdf",
-          "local_url": null
         },
         {
           "text": "7._Hart_van_Heuze_Bijlage_PV",
@@ -16440,28 +17301,12 @@
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/Aantal_stemmen_per_kandidaat_per_stembureau.pdf"
         },
         {
-          "text": "Stembureau 11 Zaal Zegers - dinsdag",
-          "pdf_name": "PV_model_J_stembureau_11.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/gemeenteraadsverkiezingen/definitieve-verkiezingsuitslag-16-03-2022",
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/GR2022/PV/PV_model_J_stembureau_11.pdf",
-          "local_url": null
-        },
-        {
           "text": "1._Dn_Dissel",
           "pdf_name": "1._Dn_Dissel.pdf",
           "score": 1,
           "from": "local",
           "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/EP2024/PV_EP_N10-2/1._Dn_Dissel.pdf",
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/1._Dn_Dissel.pdf"
-        },
-        {
-          "text": "Stembureau 10 Hart van Heuze - maandag",
-          "pdf_name": "PV_model_J_stembureau_10.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/gemeenteraadsverkiezingen/definitieve-verkiezingsuitslag-16-03-2022",
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/GR2022/PV/PV_model_J_stembureau_10.pdf",
-          "local_url": null
         },
         {
           "text": "Uitslag_per_kandidaat_CDA",
@@ -16472,28 +17317,12 @@
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/Uitslag_per_kandidaat_CDA.pdf"
         },
         {
-          "text": "Stembureau 7. Gemeenschapshuis De Kluis",
-          "pdf_name": "Stembureau_7_Bijlage_2.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/tweede-kamer-verkiezingen/voorlopige-verkiezingsuitslag-tweede-kamer-2025",
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/TK2025/PV_NA_31-2/Stembureau_7_Bijlage_2.pdf",
-          "local_url": null
-        },
-        {
           "text": "3._Gemeentehuis",
           "pdf_name": "3._Gemeentehuis.pdf",
           "score": 1,
           "from": "local",
           "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/EP2024/PV_EP_N10-2/3._Gemeentehuis.pdf",
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/3._Gemeentehuis.pdf"
-        },
-        {
-          "text": "Stembureau 3. Gemeentehuis Asten",
-          "pdf_name": "Stembureau_3_Bijlage_2.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/tweede-kamer-verkiezingen/voorlopige-verkiezingsuitslag-tweede-kamer-2025",
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/TK2025/PV_NA_31-2/Stembureau_3_Bijlage_2.pdf",
-          "local_url": null
         },
         {
           "text": "Stembureau_4_PV_N10-2",
@@ -16600,14 +17429,6 @@
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/Verslag_controletelling_gemeente_Asten.pdf"
         },
         {
-          "text": "Stembureau 4. Verenigingsgebouw Polderhonk",
-          "pdf_name": "Stembureau_4_Bijlage_2.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/tweede-kamer-verkiezingen/voorlopige-verkiezingsuitslag-tweede-kamer-2025",
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/TK2025/PV_NA_31-2/Stembureau_4_Bijlage_2.pdf",
-          "local_url": null
-        },
-        {
           "text": "Model_E1_vooropening_15-03",
           "pdf_name": "Model_E1_vooropening_15-03.pdf",
           "score": 1,
@@ -16664,22 +17485,6 @@
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/Procesverbaal_Verkiezingsuitslag.pdf"
         },
         {
-          "text": "Stembureau 1. Soosgebouw D'n Dissel",
-          "pdf_name": "Stembureau_1_Bijlage_2.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/tweede-kamer-verkiezingen/voorlopige-verkiezingsuitslag-tweede-kamer-2025",
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/TK2025/PV_NA_31-2/Stembureau_1_Bijlage_2.pdf",
-          "local_url": null
-        },
-        {
-          "text": "Stembureau 5. Sportcomplex De Schop",
-          "pdf_name": "Stembureau_5_Bijlage_2.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/tweede-kamer-verkiezingen/voorlopige-verkiezingsuitslag-tweede-kamer-2025",
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/TK2025/PV_NA_31-2/Stembureau_5_Bijlage_2.pdf",
-          "local_url": null
-        },
-        {
           "text": "Gekozen_kandidaten_-_aantal_stemmen_en-of_voorkeur",
           "pdf_name": "Gekozen_kandidaten_-_aantal_stemmen_en-of_voorkeur.pdf",
           "score": 1,
@@ -16696,14 +17501,6 @@
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/Stemmen_-_Lijst_4_PGA_kandidaat_per_stembureau.pdf"
         },
         {
-          "text": "Stembureau 2. Gemeenschapshuis 't Kwartier",
-          "pdf_name": "Stembureau_2_Bijlage_2.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/tweede-kamer-verkiezingen/voorlopige-verkiezingsuitslag-tweede-kamer-2025",
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/TK2025/PV_NA_31-2/Stembureau_2_Bijlage_2.pdf",
-          "local_url": null
-        },
-        {
           "text": "Stembureau_1_PV_N10-2",
           "pdf_name": "Stembureau_1_PV_N10-2.pdf",
           "score": 1,
@@ -16718,14 +17515,6 @@
           "from": "local",
           "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/TK2025/PV_TK_N10-2/Stembureau_6_PV_N10-2.pdf",
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/Stembureau_6_PV_N10-2.pdf"
-        },
-        {
-          "text": "Stembureau 6. OBS De Horizon, locatie Dalkruid",
-          "pdf_name": "Stembureau_6_Bijlage_2.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/tweede-kamer-verkiezingen/voorlopige-verkiezingsuitslag-tweede-kamer-2025",
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/TK2025/PV_NA_31-2/Stembureau_6_Bijlage_2.pdf",
-          "local_url": null
         },
         {
           "text": "6._De_Kluis",
@@ -16758,14 +17547,6 @@
           "from": "local",
           "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/EP2024/PV_EP_NA31-2/5._Schoolstraat_Bijlage_PV.pdf",
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/5._Schoolstraat_Bijlage_PV.pdf"
-        },
-        {
-          "text": "Stemmen bij volmacht",
-          "pdf_name": "Ok_Vrb_20_a_stemmen_bij_volmacht__5913192646336345288.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/europees-parlement/europees-parlement",
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/EP2024/Ok_Vrb_20_a_stemmen_bij_volmacht__5913192646336345288.pdf",
-          "local_url": null
         },
         {
           "text": "PV_N10-Briefstembureau_14_Gemeentehuis_Asten_BSB2",
@@ -16832,14 +17613,6 @@
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/Stemmen_-_Lijst_5_VVD_kandidaat_per_stembureau.pdf"
         },
         {
-          "text": "Stemmen met een kiezerspas",
-          "pdf_name": "OK_Kiezerspas-Vrb_11_SWS__9017213625870057951.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/europees-parlement/europees-parlement",
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/EP2024/OK_Kiezerspas-Vrb_11_SWS__9017213625870057951.pdf",
-          "local_url": null
-        },
-        {
           "text": "6._De_Kluis_Bijlage_PV",
           "pdf_name": "6._De_Kluis_Bijlage_PV.pdf",
           "score": 1,
@@ -16856,36 +17629,12 @@
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/OK_GSB.pdf"
         },
         {
-          "text": "Stembureau 8. Hart van Heuze",
-          "pdf_name": "Stembureau_8_Bijlage_2.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/tweede-kamer-verkiezingen/voorlopige-verkiezingsuitslag-tweede-kamer-2025",
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/TK2025/PV_NA_31-2/Stembureau_8_Bijlage_2.pdf",
-          "local_url": null
-        },
-        {
-          "text": "Stembureau 9 Tennishal 't Root - maandag",
-          "pdf_name": "PV_model_J_stembureau_9.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/gemeenteraadsverkiezingen/definitieve-verkiezingsuitslag-16-03-2022",
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/GR2022/PV/PV_model_J_stembureau_9.pdf",
-          "local_url": null
-        },
-        {
           "text": "Totaaluitslag_Stemmen_per_stembureau",
           "pdf_name": "Totaaluitslag_Stemmen_per_stembureau.pdf",
           "score": 1,
           "from": "local",
           "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/GR2022/PV/Totaaluitslag_Stemmen_per_stembureau.pdf",
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/Totaaluitslag_Stemmen_per_stembureau.pdf"
-        },
-        {
-          "text": "Stembureau 8 Zaal Zegers - maandag",
-          "pdf_name": "PV_model_J_stembureau_8.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/gemeenteraadsverkiezingen/definitieve-verkiezingsuitslag-16-03-2022",
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/GR2022/PV/PV_model_J_stembureau_8.pdf",
-          "local_url": null
         },
         {
           "text": "Verslag_controletelling_optellingen_zonder_handtekening",
@@ -16918,110 +17667,6 @@
           "pdf_name": "Gekozen_kandidaten_-_GR_2018_1.pdf",
           "score": 1,
           "from": "local"
-        },
-        {
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/Uitslag_TK2021/PV_N10_-Stembureau_1_De_Klepel_-_stemming_17-3-2021.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/PV_N10_-Stembureau_1_De_Klepel_-_stemming_17-3-2021.pdf",
-          "text": "1. Gemeenschapshuis De Klepel",
-          "pdf_name": "PV_N10_-Stembureau_1_De_Klepel_-_stemming_17-3-2021.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/tweede-kamer-verkiezingen/verkiezingsuitslag-tweede-kamer-2021"
-        },
-        {
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/Uitslag_TK2021/PV_N10_-Stembureau_2_Stg._Exploitatie_Soosgebouw_-_stemming_17-3-2021.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/PV_N10_-Stembureau_2_Stg._Exploitatie_Soosgebouw_-_stemming_17-3-2021.pdf",
-          "text": "2. Soosgebouw D'n Dissel",
-          "pdf_name": "PV_N10_-Stembureau_2_Stg._Exploitatie_Soosgebouw_-_stemming_17-3-2021.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/tweede-kamer-verkiezingen/verkiezingsuitslag-tweede-kamer-2021"
-        },
-        {
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/Uitslag_TK2021/PV_N10_-Stembureau_3_Dienstencentrum_de_Beiaard_-_stemming_17-3-2021.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/PV_N10_-Stembureau_3_Dienstencentrum_de_Beiaard_-_stemming_17-3-2021.pdf",
-          "text": "3. Dienstencentrum De Beiaard",
-          "pdf_name": "PV_N10_-Stembureau_3_Dienstencentrum_de_Beiaard_-_stemming_17-3-2021.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/tweede-kamer-verkiezingen/verkiezingsuitslag-tweede-kamer-2021"
-        },
-        {
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/Uitslag_TK2021/PV_N10_-Stembureau_4_Gymzaal_Schoolstraat_-_stemming_17-3-2021.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/PV_N10_-Stembureau_4_Gymzaal_Schoolstraat_-_stemming_17-3-2021.pdf",
-          "text": "4. Gymzaal de Schoolstraat",
-          "pdf_name": "PV_N10_-Stembureau_4_Gymzaal_Schoolstraat_-_stemming_17-3-2021.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/tweede-kamer-verkiezingen/verkiezingsuitslag-tweede-kamer-2021"
-        },
-        {
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/Uitslag_TK2021/PV_N10_-Stembureau_5_Zaal_Zegers_-_stemming_17-3-2021.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/PV_N10_-Stembureau_5_Zaal_Zegers_-_stemming_17-3-2021.pdf",
-          "text": "5. Zaal Zegers",
-          "pdf_name": "PV_N10_-Stembureau_5_Zaal_Zegers_-_stemming_17-3-2021.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/tweede-kamer-verkiezingen/verkiezingsuitslag-tweede-kamer-2021"
-        },
-        {
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/Uitslag_TK2021/PV_N10_-Stembureau_6_Verenigingsgebouw_Polderhonk_-_stemming_17-3-2021.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/PV_N10_-Stembureau_6_Verenigingsgebouw_Polderhonk_-_stemming_17-3-2021.pdf",
-          "text": "6. Verenigingsgebouw Polderhonk",
-          "pdf_name": "PV_N10_-Stembureau_6_Verenigingsgebouw_Polderhonk_-_stemming_17-3-2021.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/tweede-kamer-verkiezingen/verkiezingsuitslag-tweede-kamer-2021"
-        },
-        {
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/Uitslag_TK2021/PV_N10_stembureau_7_Het_Lover_-_stemming_17-3-2021.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/PV_N10_stembureau_7_Het_Lover_-_stemming_17-3-2021.pdf",
-          "text": "7. Basisschool 't Lover",
-          "pdf_name": "PV_N10_stembureau_7_Het_Lover_-_stemming_17-3-2021.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/tweede-kamer-verkiezingen/verkiezingsuitslag-tweede-kamer-2021"
-        },
-        {
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/Uitslag_TK2021/PV_N10_-Stembureau_8_Gemeenschapshuis_De_Kluis_-_stemming_17-3-2021.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/PV_N10_-Stembureau_8_Gemeenschapshuis_De_Kluis_-_stemming_17-3-2021.pdf",
-          "text": "8. Gemeenschapshuis de Kluis",
-          "pdf_name": "PV_N10_-Stembureau_8_Gemeenschapshuis_De_Kluis_-_stemming_17-3-2021.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/tweede-kamer-verkiezingen/verkiezingsuitslag-tweede-kamer-2021"
-        },
-        {
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/Uitslag_TK2021/PV_N10-Stembureau_9_Hart_van_Heuze_-_stemming_17-3-2021.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/PV_N10-Stembureau_9_Hart_van_Heuze_-_stemming_17-3-2021.pdf",
-          "text": "9. Hart van Heuze",
-          "pdf_name": "PV_N10-Stembureau_9_Hart_van_Heuze_-_stemming_17-3-2021.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/tweede-kamer-verkiezingen/verkiezingsuitslag-tweede-kamer-2021"
-        },
-        {
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/Uitslag_TK2021/PV_N10_-Stembureau_10_De_Klepel_-_stemming_15-3-2021.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/PV_N10_-Stembureau_10_De_Klepel_-_stemming_15-3-2021.pdf",
-          "text": "10. Gemeenschapshuis De Klepel",
-          "pdf_name": "PV_N10_-Stembureau_10_De_Klepel_-_stemming_15-3-2021.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/tweede-kamer-verkiezingen/verkiezingsuitslag-tweede-kamer-2021"
-        },
-        {
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/Uitslag_TK2021/PV_N10_-Stembureau_11_Het_Lover_-_stemming_15-3-2021.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/PV_N10_-Stembureau_11_Het_Lover_-_stemming_15-3-2021.pdf",
-          "text": "11. Basisschool 't Lover",
-          "pdf_name": "PV_N10_-Stembureau_11_Het_Lover_-_stemming_15-3-2021.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/tweede-kamer-verkiezingen/verkiezingsuitslag-tweede-kamer-2021"
-        },
-        {
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/Uitslag_TK2021/PV_N10_-Stembureau_12_De_Klepel_-_stemming_16-3-2021.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/PV_N10_-Stembureau_12_De_Klepel_-_stemming_16-3-2021.pdf",
-          "text": "12. Gemeenschapshuis De Klepel",
-          "pdf_name": "PV_N10_-Stembureau_12_De_Klepel_-_stemming_16-3-2021.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/tweede-kamer-verkiezingen/verkiezingsuitslag-tweede-kamer-2021"
-        },
-        {
-          "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/Uitslag_TK2021/PV_N10_-Stembureau_13_Het_Lover_-_stemming_16-3-2021.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/PV_N10_-Stembureau_13_Het_Lover_-_stemming_16-3-2021.pdf",
-          "text": "13. Basisschool 't Lover",
-          "pdf_name": "PV_N10_-Stembureau_13_Het_Lover_-_stemming_16-3-2021.pdf",
-          "score": 4,
-          "from": "https://www.asten.nl/gemeentebestuur-en-organisatie/verkiezingen/tweede-kamer-verkiezingen-1/tweede-kamer-verkiezingen/verkiezingsuitslag-tweede-kamer-2021"
         },
         {
           "remote_url": "https://www.asten.nl/fileadmin/Asten/PDF-formulieren_producten/Beleid/Verkiezingen/TK2025/Verklaring_onderzoek_aansluitvoorschriften.pdf",
@@ -19346,196 +19991,12 @@
           "from": "local"
         },
         {
-          "remote_url": "https://www.beesel.nl/data/downloadables/2/2/6/8/pv-n10-ep-2024-de-schans-def.pdf",
-          "local_url": null,
-          "text": "N10-1 proces-verbaal Europees Parlement 2024: De Schans (1)",
-          "pdf_name": "pv-n10-ep-2024-de-schans-def.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/2/2/8/3/pv-n10-1-ep2024-nester-def.pdf",
-          "local_url": null,
-          "text": "N10-1 proces-verbaal Europees Parlement 2024: Nester (2)",
-          "pdf_name": "pv-n10-1-ep2024-nester-def.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/2/2/7/4/pv-n10-1-ep2024-de-schakel-def.pdf",
-          "local_url": null,
-          "text": "N10-1 proces-verbaal Europees Parlement 2024: De Schakel (3)",
-          "pdf_name": "pv-n10-1-ep2024-de-schakel-def.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/2/2/8/6/pv-n10-1-ep2024-paerssjtal-def.pdf",
-          "local_url": null,
-          "text": "N10-1 proces-verbaal Europees Parlement 2024: De Paerssjtal (4)",
-          "pdf_name": "pv-n10-1-ep2024-paerssjtal-def.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/2/2/7/7/pv-n10-1-ep2024-de-troubadour-def.pdf",
-          "local_url": null,
-          "text": "N10-1 proces-verbaal Europees Parlement 2024: De Troubadour (5)",
-          "pdf_name": "pv-n10-1-ep2024-de-troubadour-def.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/2/2/7/1/pv-n10-1-ep-2024-de-triolier-def.pdf",
-          "local_url": null,
-          "text": "N10-1 proces-verbaal Europees Parlement 2024: De Triolier (6)",
-          "pdf_name": "pv-n10-1-ep-2024-de-triolier-def.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/2/2/8/0/pv-n10-1-ep2024-mobiel-station-def.pdf",
-          "local_url": null,
-          "text": "N10-1 proces-verbaal Europees Parlement 2024: Mobiel stembureau Station (20)",
-          "pdf_name": "pv-n10-1-ep2024-mobiel-station-def.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/2/2/6/5/pv-na31-1-ep2024-gemeentelijk-stembureau.pdf",
-          "local_url": null,
-          "text": "Na31-1 proces-verbaal Europees Parlement 2024: Gemeentelijk stembureau",
-          "pdf_name": "pv-na31-1-ep2024-gemeentelijk-stembureau.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/2/0/4/4/verslag-controle-protocol-tk-2023-beesel.pdf",
-          "local_url": null,
-          "text": "Verslag controleprotocol Tweede Kamer 2023",
-          "pdf_name": "verslag-controle-protocol-tk-2023-beesel.pdf",
-          "score": 1,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/2/0/2/9/pv-n10-1-tk-2023-de-schans.pdf",
-          "local_url": null,
-          "text": "N10-1 proces-verbaal tweede kamer 2023: De Schans (1)",
-          "pdf_name": "pv-n10-1-tk-2023-de-schans.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/2/0/1/7/pv-n10-1-tk-2023-nester.pdf",
-          "local_url": null,
-          "text": "N10-1 proces-verbaal tweede kamer 2023: Nester (2)",
-          "pdf_name": "pv-n10-1-tk-2023-nester.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/2/0/1/4/pv-n10-1-tk-2023-de-schakel.pdf",
-          "local_url": null,
-          "text": "N10-1 proces-verbaal tweede kamer 2023: De Schakel (3)",
-          "pdf_name": "pv-n10-1-tk-2023-de-schakel.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/2/0/3/8/pv-n10-1-tk-2023-paerssjtal-inclusief-corrigendum-na14-1.pdf",
-          "local_url": null,
-          "text": "N10-1 proces-verbaal tweede kamer 2023: De Paerssjtal (4)",
-          "pdf_name": "pv-n10-1-tk-2023-paerssjtal-inclusief-corrigendum-na14-1.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/2/0/2/0/pv-n10-1-tk-2023-de-troubadour.pdf",
-          "local_url": null,
-          "text": "N10-1 proces-verbaal tweede kamer 2023: De Troubadour (5)",
-          "pdf_name": "pv-n10-1-tk-2023-de-troubadour.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/2/0/2/3/pv-n10-1-tk-2023-triolier.pdf",
-          "local_url": null,
-          "text": "N10-1 proces-verbaal tweede kamer 2023: De Triolier (6)",
-          "pdf_name": "pv-n10-1-tk-2023-triolier.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/2/0/2/6/pv-n10-1-tk-2023-mobiel-stembureau-station.pdf",
-          "local_url": null,
-          "text": "N10-1 proces-verbaal tweede kamer 2023: Mobiel stembureau Station (58)",
-          "pdf_name": "pv-n10-1-tk-2023-mobiel-stembureau-station.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/2/0/4/1/pv-na31-1-tk-2023-gemeentelijk-stembureau.pdf",
-          "local_url": null,
-          "text": "Na31-1 proces-verbaal tweede kamer 2023: Gemeentelijk stembureau",
-          "pdf_name": "pv-na31-1-tk-2023-gemeentelijk-stembureau.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
           "remote_url": "https://www.beesel.nl/data/downloadables/1/8/6/1/verslag-controletelling-ps.pdf",
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Beesel/verslag-controletelling-ps.pdf",
           "text": "verslag-controletelling-ps",
           "pdf_name": "verslag-controletelling-ps.pdf",
           "score": 1,
           "from": "local"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/8/5/5/n10-procesverbaal-ps-2023-de-schans.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal provinciale staten 2023: De Schans (1)",
-          "pdf_name": "n10-procesverbaal-ps-2023-de-schans.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/8/4/0/n10-procesverbaal-ps-2023-nester.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal provinciale staten 2023: Nester (2)",
-          "pdf_name": "n10-procesverbaal-ps-2023-nester.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/8/3/1/n10-procesverbaal-ps-2023-de-schakel.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal provinciale staten 2023: De Schakel (3)",
-          "pdf_name": "n10-procesverbaal-ps-2023-de-schakel.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/8/2/8/n10-procesverbaal-ps-2023-de-paerssjtal.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal provinciale staten 2023: De Paerssjtal (4)",
-          "pdf_name": "n10-procesverbaal-ps-2023-de-paerssjtal.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/8/3/7/n10-procesverbaal-ps-2023-de-troubadour.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal provinciale staten 2023: De Troubadour (5)",
-          "pdf_name": "n10-procesverbaal-ps-2023-de-troubadour.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/8/3/4/n10-procesverbaal-ps-2023-de-triolier.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal provinciale staten 2023: De Triolier (6)",
-          "pdf_name": "n10-procesverbaal-ps-2023-de-triolier.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
         },
         {
           "remote_url": "https://www.beesel.nl/data/downloadables/1/8/6/4/na31-1-procesverbaal-gemeentelijk-stembureau-ps.pdf",
@@ -19554,54 +20015,6 @@
           "from": "local"
         },
         {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/8/0/1/n10-procesverbaal-ws-2023-de-schans.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal waterschap 2023: De Schans (1)",
-          "pdf_name": "n10-procesverbaal-ws-2023-de-schans.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/8/0/4/n10-procesverbaal-ws-2023-nester.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal waterschap 2023: Nester (2)",
-          "pdf_name": "n10-procesverbaal-ws-2023-nester.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/8/5/8/n10-procesverbaal-ws-2023-de-schakel.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal waterschap 2023: De Schakel (3)",
-          "pdf_name": "n10-procesverbaal-ws-2023-de-schakel.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/8/0/7/n10-procesverbaal-ws-2023-de-paerssjtal.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal waterschap 2023: De Paerssjtal (4)",
-          "pdf_name": "n10-procesverbaal-ws-2023-de-paerssjtal.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/8/1/3/n10-procesverbaal-ws-2023-de-troubadour.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal waterschap 20232: De Troubadour (5)",
-          "pdf_name": "n10-procesverbaal-ws-2023-de-troubadour.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/8/1/0/n10-procesverbaal-ws-2023-de-triolier.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal waterschap 2023: De Triolier (6)",
-          "pdf_name": "n10-procesverbaal-ws-2023-de-triolier.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
           "remote_url": "https://www.beesel.nl/data/downloadables/1/8/4/6/na31-1-procesverbaal-gemeentelijk-stembureau-ws.pdf",
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Beesel/na31-1-procesverbaal-gemeentelijk-stembureau-ws.pdf",
           "text": "na31-1-procesverbaal-gemeentelijk-stembureau-ws",
@@ -19616,142 +20029,6 @@
           "pdf_name": "verslag-controle-telling-beesel.pdf",
           "score": 1,
           "from": "local"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/4/6/8/2022-03-16_gr_n10-1-de-schans.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal gemeenteraad 2022: De Schans (1)",
-          "pdf_name": "2022-03-16_gr_n10-1-de-schans.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/4/5/6/2022-03-16_gr_n10-2-nester.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal gemeenteraad 2022: Nester (2)",
-          "pdf_name": "2022-03-16_gr_n10-2-nester.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/4/8/6/2022-03-16_gr_n10-3-de-schakel-kopie-1.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal gemeenteraad 2022: Schakel (3)",
-          "pdf_name": "2022-03-16_gr_n10-3-de-schakel-kopie-1.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/4/7/1/2022-03-16_gr_n10-4-de-paerssjtal.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal gemeenteraad 2022: De Paerssjtal (4)",
-          "pdf_name": "2022-03-16_gr_n10-4-de-paerssjtal.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/4/8/9/2022-03-16_gr_n10-5-troubadour-kopie-1.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal gemeenteraad 2022: De Troubadour (5)",
-          "pdf_name": "2022-03-16_gr_n10-5-troubadour-kopie-1.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/4/7/4/2022-03-16_gr_n10-6-de-triolier.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal gemeenteraad 2022: De Triolier (6)",
-          "pdf_name": "2022-03-16_gr_n10-6-de-triolier.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/4/5/9/2022-03-16_gr_n10-8-grescollege.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal gemeenteraad 2022: Grescollege (8)",
-          "pdf_name": "2022-03-16_gr_n10-8-grescollege.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/4/4/4/2022-03-16_j-31-de-schakel.pdf",
-          "local_url": null,
-          "text": "Model J proces-verbaal gemeenteraad 2022: Schakel (31)",
-          "pdf_name": "2022-03-16_j-31-de-schakel.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/4/4/7/2022-03-16_j-32-de-schakel.pdf",
-          "local_url": null,
-          "text": "Model J proces-verbaal gemeenteraad 2022: Schakel (32)",
-          "pdf_name": "2022-03-16_j-32-de-schakel.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/4/5/0/2022-03-16_j-51-troubadour.pdf",
-          "local_url": null,
-          "text": "Model J proces-verbaal gemeenteraad 2022: De Troubadour (51)",
-          "pdf_name": "2022-03-16_j-51-troubadour.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/4/5/3/2022-03-16_j-52-troubadour.pdf",
-          "local_url": null,
-          "text": "Model J proces-verbaal gemeenteraad 2022: De Troubadour (52)",
-          "pdf_name": "2022-03-16_j-52-troubadour.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/4/3/2/2022-03-16_k-1-31-de-schakel.pdf",
-          "local_url": null,
-          "text": "Model K-1 proces-verbaal gemeenteraad 2022: Schakel (31)",
-          "pdf_name": "2022-03-16_k-1-31-de-schakel.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/4/3/5/2022-03-16_k-1-32-de-schakel.pdf",
-          "local_url": null,
-          "text": "Model K-1 proces-verbaal gemeenteraad 2022: Schakel (32)",
-          "pdf_name": "2022-03-16_k-1-32-de-schakel.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/4/3/8/2022-03-16_k-1-51-troubadour.pdf",
-          "local_url": null,
-          "text": "Model K-1 proces-verbaal gemeenteraad 2022: De Troubadour (51)",
-          "pdf_name": "2022-03-16_k-1-51-troubadour.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/4/4/1/2022-03-16_k-1-52-troubadour.pdf",
-          "local_url": null,
-          "text": "Model K-1 proces-verbaal gemeenteraad 2022: De Troubadour (52)",
-          "pdf_name": "2022-03-16_k-1-52-troubadour.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/4/7/7/2022-03-16_gr_n11-stemmen-gemeente-beesel.pdf",
-          "local_url": null,
-          "text": "N11 proces-verbaal gemeenteraad 2022: vaststelling stemmen gemeente Beesel",
-          "pdf_name": "2022-03-16_gr_n11-stemmen-gemeente-beesel.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/4/9/5/2022-03-16_p22-2-verkiezingsluitslag-gemeenteraad-2022-gemeente-beesel.pdf",
-          "local_url": null,
-          "text": "Model P22-2 proces-verbaal gemeenteraad 2022: verkiezingsuitslag gemeente Beesel",
-          "pdf_name": "2022-03-16_p22-2-verkiezingsluitslag-gemeenteraad-2022-gemeente-beesel.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
         },
         {
           "remote_url": "https://www.beesel.nl/data/downloadables/1/4/9/2/verslag-controle-zetelverdeling-p22.pdf",
@@ -19770,348 +20047,12 @@
           "from": "local"
         },
         {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/1/5/0/n10-proces-verbaal-tweede-kamer-2021-schakel-31.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Tweede Kamer 2021: Schakel (31)",
-          "pdf_name": "n10-proces-verbaal-tweede-kamer-2021-schakel-31.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/1/0/8/n10-proces-verbaal-tweede-kamer-2021-schakel-32.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Tweede Kamer 2021: Schakel (32)",
-          "pdf_name": "n10-proces-verbaal-tweede-kamer-2021-schakel-32.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/1/4/1/n10-proces-verbaal-tweede-kamer-2021-de-troubadour-51.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Tweede Kamer 2021: De Troubadour (51)",
-          "pdf_name": "n10-proces-verbaal-tweede-kamer-2021-de-troubadour-51.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/1/3/5/n10-proces-verbaal-tweede-kamer-2021-de-troubadour-52.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Tweede kamer 2021: De Troubadour (52)",
-          "pdf_name": "n10-proces-verbaal-tweede-kamer-2021-de-troubadour-52.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/1/1/1/n10-proces-verbaal-tweede-kamer-2021-de-schans-1.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Tweede Kamer 2021: De Schans (1)",
-          "pdf_name": "n10-proces-verbaal-tweede-kamer-2021-de-schans-1.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/1/2/9/n10-proces-verbaal-tweede-kamer-2021-nester-2.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Tweede Kamer 2021: Nester (2)",
-          "pdf_name": "n10-proces-verbaal-tweede-kamer-2021-nester-2.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/1/2/0/n10-proces-verbaal-tweede-kamer-2021-schakel-3.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Tweede Kamer 2021: Schakel (3)",
-          "pdf_name": "n10-proces-verbaal-tweede-kamer-2021-schakel-3.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/1/1/4/n10-proces-verbaal-tweede-kamer-2021-de-paerssjtal-4.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Tweede Kamer 2021: De Paerssjtal (4)",
-          "pdf_name": "n10-proces-verbaal-tweede-kamer-2021-de-paerssjtal-4.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/1/1/7/n10-proces-verbaal-tweede-kamer-2021-de-troubadour-5.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Tweede Kamer 2021: De Troubadour (5)",
-          "pdf_name": "n10-proces-verbaal-tweede-kamer-2021-de-troubadour-5.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/1/2/3/n10-proces-verbaal-tweede-kamer-2021-de-triolier-6.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Tweede Kamer 2021: De Triolier (6)",
-          "pdf_name": "n10-proces-verbaal-tweede-kamer-2021-de-triolier-6.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/1/3/2/n10-proces-verbaal-tweede-kamer-2021-t-spick-7.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Tweede Kamer 2021: 't Spick (7)",
-          "pdf_name": "n10-proces-verbaal-tweede-kamer-2021-t-spick-7.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/1/3/8/n10-proces-verbaal-tweede-kamer-2021-grescollege-8.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Tweede Kamer 2021: Grescollege (8)",
-          "pdf_name": "n10-proces-verbaal-tweede-kamer-2021-grescollege-8.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/1/0/2/e1-proces-verbaal-tweede-kamer-2021-vooropening-briefstembureau-1.pdf",
-          "local_url": null,
-          "text": "E1 proces-verbaal Tweede Kamer 2021: Vooropening Briefstembureau (1)",
-          "pdf_name": "e1-proces-verbaal-tweede-kamer-2021-vooropening-briefstembureau-1.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/0/9/9/e1-proces-verbaal-tweede-kamer-2021-vooropening-briefstembureau-2.pdf",
-          "local_url": null,
-          "text": "E1 proces-verbaal Tweede Kamer 2021: Vooropening Briefstembureau (2)",
-          "pdf_name": "e1-proces-verbaal-tweede-kamer-2021-vooropening-briefstembureau-2.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/1/0/5/e2-proces-verbaal-tweede-kamer-2021-briefstembureau-1.pdf",
-          "local_url": null,
-          "text": "E2 proces-verbaal Tweede Kamer 2021: Briefstembureau (1)",
-          "pdf_name": "e2-proces-verbaal-tweede-kamer-2021-briefstembureau-1.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/1/2/6/e2-proces-verbaal-tweede-kamer-2021-briefstembureau-2.pdf",
-          "local_url": null,
-          "text": "E2 proces-verbaal Tweede Kamer 2021: Briefstembureau (2)",
-          "pdf_name": "e2-proces-verbaal-tweede-kamer-2021-briefstembureau-2.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
           "remote_url": "https://www.beesel.nl/data/downloadables/1/1/5/6/n11-proces-verbaal-tweede-kamer-vaststelling-stemmen-gemeente-beesel.pdf",
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Beesel/n11-proces-verbaal-tweede-kamer-vaststelling-stemmen-gemeente-beesel.pdf",
           "text": "n11-proces-verbaal-tweede-kamer-vaststelling-stemmen-gemeente-beesel",
           "pdf_name": "n11-proces-verbaal-tweede-kamer-vaststelling-stemmen-gemeente-beesel.pdf",
           "score": 1,
           "from": "local"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/3/5/8/n10-proces-verbaal-europees-parlement-2019-bosdael.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Europees Parlement 2019: Bosdael",
-          "pdf_name": "n10-proces-verbaal-europees-parlement-2019-bosdael.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/3/7/9/n10-proces-verbaal-europees-parlement-2019-woongoed-2-duizend.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Europees Parlement 2019: WoonGoed 2-Duizend",
-          "pdf_name": "n10-proces-verbaal-europees-parlement-2019-woongoed-2-duizend.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/6/0/n10-proces-verbaal-ps-2019-de-schakel.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Europees Parlement 2019: De Schakel",
-          "pdf_name": "n10-proces-verbaal-ps-2019-de-schakel.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/3/6/4/n10-proces-verbaal-europees-parlement-2019-de-paerssjtal.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Europees Parlement 2019: De Paerssjtal",
-          "pdf_name": "n10-proces-verbaal-europees-parlement-2019-de-paerssjtal.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/3/7/0/n10-proces-verbaal-europees-parlement-2019-de-triolier.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Europees Parlement 2019: De Triolier",
-          "pdf_name": "n10-proces-verbaal-europees-parlement-2019-de-triolier.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/3/7/3/n10-proces-verbaal-europees-parlement-2019-t-spick.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Europees Parlement 2019: 't Spick",
-          "pdf_name": "n10-proces-verbaal-europees-parlement-2019-t-spick.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/3/6/1/n10-proces-verbaal-europees-parlement-2019-de-bongerd.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Europees Parlement 2019: De Bongerd",
-          "pdf_name": "n10-proces-verbaal-europees-parlement-2019-de-bongerd.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/3/7/6/n10-proces-verbaal-europees-parlement-2019-mobiel-stembureau.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Europees Parlement 2019: Mobiel stembureau",
-          "pdf_name": "n10-proces-verbaal-europees-parlement-2019-mobiel-stembureau.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/3/8/2/n11-proces-verbaal-europees-parlement-2019-vaststelling-stemmen-gemeente-beesel.pdf",
-          "local_url": null,
-          "text": "N11 proces-verbaal Europees Parlement 2019: Vaststelling stemmen gemeente Beesel",
-          "pdf_name": "n11-proces-verbaal-europees-parlement-2019-vaststelling-stemmen-gemeente-beesel.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/2/0/5/n10-proces-verbaal-ps-2019-bosdael.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Provinciale Staten 2019: Bosdael",
-          "pdf_name": "n10-proces-verbaal-ps-2019-bosdael.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/7/2/n10-proces-verbaal-ps-2019-woongoed-2-duizend.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Provinciale Staten 2019: WoonGoed 2-Duizend",
-          "pdf_name": "n10-proces-verbaal-ps-2019-woongoed-2-duizend.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/5/7/n10-proces-verbaal-ps-2019-de-paerssjtal.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Provinciale Staten 2019: De Paerssjtal",
-          "pdf_name": "n10-proces-verbaal-ps-2019-de-paerssjtal.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/6/3/n10-proces-verbaal-ps-2019-de-triolier.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Provinciale Staten 2019: De Triolier",
-          "pdf_name": "n10-proces-verbaal-ps-2019-de-triolier.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/6/9/n10-proces-verbaal-ps-2019-t-spick.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Provinciale Staten 2019: 't Spick",
-          "pdf_name": "n10-proces-verbaal-ps-2019-t-spick.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/5/4/n10-proces-verbaal-ps-2019-de-bongerd.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Provinciale Staten 2019: De Bongerd",
-          "pdf_name": "n10-proces-verbaal-ps-2019-de-bongerd.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/6/6/n10-proces-verbaal-ps-2019-mobiel-stembureau.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Provinciale Staten 2019: Mobiel stembureau",
-          "pdf_name": "n10-proces-verbaal-ps-2019-mobiel-stembureau.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/2/0/2/n11-proces-verbaal-ps-2019-vaststelling-stemmen-gemeente-beesel.pdf",
-          "local_url": null,
-          "text": "N11 proces-verbaal Provinciale Staten 2019: vaststelling stemmen gemeente Beesel",
-          "pdf_name": "n11-proces-verbaal-ps-2019-vaststelling-stemmen-gemeente-beesel.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/7/5/n10-proces-verbaal-ws-2019-bosdael.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Waterschap 2019: Bosdael",
-          "pdf_name": "n10-proces-verbaal-ws-2019-bosdael.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/9/6/n10-proces-verbaal-ws-2019-woongoed-2-duizend.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Waterschap 2019: WoonGoed 2-Duizend",
-          "pdf_name": "n10-proces-verbaal-ws-2019-woongoed-2-duizend.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/8/4/n10-proces-verbaal-ws-2019-de-schakel.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Waterschap 2019: De Schakel",
-          "pdf_name": "n10-proces-verbaal-ws-2019-de-schakel.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/8/1/n10-proces-verbaal-ws-2019-de-pearssjtal.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Waterschap 2019: De Paerssjtal",
-          "pdf_name": "n10-proces-verbaal-ws-2019-de-pearssjtal.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/8/7/n10-proces-verbaal-ws-2019-de-triolier.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Waterschap 2019: De Triolier",
-          "pdf_name": "n10-proces-verbaal-ws-2019-de-triolier.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/9/3/n10-proces-verbaal-ws-2019-t-spick.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Waterschap 2019: 't Spick",
-          "pdf_name": "n10-proces-verbaal-ws-2019-t-spick.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/7/8/n10-proces-verbaal-ws-2019-de-bongerd.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Waterschap 2019: De Bongerd",
-          "pdf_name": "n10-proces-verbaal-ws-2019-de-bongerd.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/9/0/n10-proces-verbaal-ws-2019-mobiel-stembureau.pdf",
-          "local_url": null,
-          "text": "N10 proces-verbaal Waterschap 2019: Mobiel stembureau",
-          "pdf_name": "n10-proces-verbaal-ws-2019-mobiel-stembureau.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
-        },
-        {
-          "remote_url": "https://www.beesel.nl/data/downloadables/1/9/9/n11-proces-verbaal-ws-2019-vaststelling-stemmen-gemeente-beesel.pdf",
-          "local_url": null,
-          "text": "N11 proces-verbaal Waterschap 2019: vaststelling stemmen gemeente Beesel",
-          "pdf_name": "n11-proces-verbaal-ws-2019-vaststelling-stemmen-gemeente-beesel.pdf",
-          "score": 4,
-          "from": "https://www.beesel.nl/verkiezingsuitslag"
         }
       ]
     },
@@ -20818,14 +20759,6 @@
           "pdf_name": "Berkelland_uitkomst-TK25.pdf",
           "score": 1,
           "from": "local"
-        },
-        {
-          "remote_url": "https://www.gemeenteberkelland.nl/wp-content/uploads/2024/05/Tolkcontact-Tolk-op-afstand-tijdens-de-verkiezingen-2024.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Berkelland/Tolkcontact-Tolk-op-afstand-tijdens-de-verkiezingen-2024.pdf",
-          "text": "Tolk op afstand",
-          "pdf_name": "Tolkcontact-Tolk-op-afstand-tijdens-de-verkiezingen-2024.pdf",
-          "score": 4,
-          "from": "https://www.gemeenteberkelland.nl/verkiezingen/"
         }
       ]
     },
@@ -22290,94 +22223,6 @@
           "from": "local"
         },
         {
-          "remote_url": "https://cuatro.sim-cdn.nl/bladel/uploads/stembureau_1_-_waterschap.pdf?cb=yaFZzdxp",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bladel/stembureau_1_-_waterschap.pdf",
-          "text": "stembureau_1_-_waterschap",
-          "pdf_name": "stembureau_1_-_waterschap.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://cuatro.sim-cdn.nl/bladel/uploads/stembureau_2_-_waterschap.pdf?cb=QRLKrDB1",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bladel/stembureau_2_-_waterschap.pdf",
-          "text": "stembureau_2_-_waterschap",
-          "pdf_name": "stembureau_2_-_waterschap.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://cuatro.sim-cdn.nl/bladel/uploads/stembureau_3_-_waterschap.pdf?cb=XZpDmIfA",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bladel/stembureau_3_-_waterschap.pdf",
-          "text": "stembureau_3_-_waterschap",
-          "pdf_name": "stembureau_3_-_waterschap.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://cuatro.sim-cdn.nl/bladel/uploads/stembureau_4_-_waterschap.pdf?cb=_XzG5Ldh",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bladel/stembureau_4_-_waterschap.pdf",
-          "text": "stembureau_4_-_waterschap",
-          "pdf_name": "stembureau_4_-_waterschap.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://cuatro.sim-cdn.nl/bladel/uploads/stembureau_5_-_waterschap.pdf?cb=mwCuF1lj",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bladel/stembureau_5_-_waterschap.pdf",
-          "text": "stembureau_5_-_waterschap",
-          "pdf_name": "stembureau_5_-_waterschap.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://cuatro.sim-cdn.nl/bladel/uploads/stembureau_6_-_waterschap.pdf?cb=Y6kBOi1f",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bladel/stembureau_6_-_waterschap.pdf",
-          "text": "stembureau_6_-_waterschap",
-          "pdf_name": "stembureau_6_-_waterschap.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://cuatro.sim-cdn.nl/bladel/uploads/stembureau_7_-_waterschap.pdf?cb=f9nMNyaU",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bladel/stembureau_7_-_waterschap.pdf",
-          "text": "stembureau_7_-_waterschap",
-          "pdf_name": "stembureau_7_-_waterschap.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://cuatro.sim-cdn.nl/bladel/uploads/stembureau_8_-_waterschap.pdf?cb=XrZMvgDy",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bladel/stembureau_8_-_waterschap.pdf",
-          "text": "stembureau_8_-_waterschap",
-          "pdf_name": "stembureau_8_-_waterschap.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://cuatro.sim-cdn.nl/bladel/uploads/stembureau_9_-_waterschap.pdf?cb=NwnW7UpH",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bladel/stembureau_9_-_waterschap.pdf",
-          "text": "stembureau_9_-_waterschap",
-          "pdf_name": "stembureau_9_-_waterschap.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://cuatro.sim-cdn.nl/bladel/uploads/stembureau_10_-_waterschap.pdf?cb=FOmRF0ZM",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bladel/stembureau_10_-_waterschap.pdf",
-          "text": "stembureau_10_-_waterschap",
-          "pdf_name": "stembureau_10_-_waterschap.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://cuatro.sim-cdn.nl/bladel/uploads/overdrachtsdocument_-_waterschap.pdf?cb=a2GBRpDh",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bladel/overdrachtsdocument_-_waterschap.pdf",
-          "text": "overdrachtsdocument_-_waterschap",
-          "pdf_name": "overdrachtsdocument_-_waterschap.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
           "remote_url": "https://cuatro.sim-cdn.nl/bladel/uploads/controle_protocol_-_gemeentelijk_stembureau.pdf?cb=VbzTgRnK",
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bladel/controle_protocol_-_gemeentelijk_stembureau.pdf",
           "text": "controle_protocol_-_gemeentelijk_stembureau",
@@ -22386,26 +22231,10 @@
           "from": "local"
         },
         {
-          "remote_url": "https://cuatro.sim-cdn.nl/bladel/uploads/gemeentelijk_stembureau_-_waterschap.pdf?cb=8pL0A2MI",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bladel/gemeentelijk_stembureau_-_waterschap.pdf",
-          "text": "gemeentelijk_stembureau_-_waterschap",
-          "pdf_name": "gemeentelijk_stembureau_-_waterschap.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
           "remote_url": "https://cuatro.sim-cdn.nl/bladel/uploads/proces-verbaal_van_het_gemeentelijk_stembureau_inclusief_bijlage_1_0.pdf?cb=mjgBBgMM",
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bladel/proces-verbaal_van_het_gemeentelijk_stembureau_inclusief_bijlage_1_0.pdf",
           "text": "proces-verbaal_van_het_gemeentelijk_stembureau_inclusief_bijlage_1_0",
           "pdf_name": "proces-verbaal_van_het_gemeentelijk_stembureau_inclusief_bijlage_1_0.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://cuatro.sim-cdn.nl/bladel/uploads/processen-verbaal_van_de_stembureaus_22-11_model_n_10-2_0.pdf?cb=2Y8tMFt4",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bladel/processen-verbaal_van_de_stembureaus_22-11_model_n_10-2_0.pdf",
-          "text": "processen-verbaal_van_de_stembureaus_22-11_model_n_10-2_0",
-          "pdf_name": "processen-verbaal_van_de_stembureaus_22-11_model_n_10-2_0.pdf",
           "score": 1,
           "from": "local"
         },
@@ -23738,182 +23567,6 @@
           "from": "local"
         },
         {
-          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Proces-verbaal%20gemeentelijk%20stembureau%20Waterschap%20Scheldestromen%202023.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Proces-verbaal20gemeentelijk20stembureau20Waterschap20Scheldestromen202023.pdf",
-          "text": "Proces-verbaal20gemeentelijk20stembureau20Waterschap20Scheldestromen202023",
-          "pdf_name": "Proces-verbaal20gemeentelijk20stembureau20Waterschap20Scheldestromen202023.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Baarland%20Corrigendum%20Waterschap%20Scheldestromen%202023.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Baarland20Corrigendum20Waterschap20Scheldestromen202023.pdf",
-          "text": "Baarland20Corrigendum20Waterschap20Scheldestromen202023",
-          "pdf_name": "Baarland20Corrigendum20Waterschap20Scheldestromen202023.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Baarland%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Baarland20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "text": "Baarland20Proces-verbaal20Waterschap20Scheldestromen202023",
-          "pdf_name": "Baarland20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Borssele%20Corrigendum%20Waterschap%20Scheldestromen%202023.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Borssele20Corrigendum20Waterschap20Scheldestromen202023.pdf",
-          "text": "Borssele20Corrigendum20Waterschap20Scheldestromen202023",
-          "pdf_name": "Borssele20Corrigendum20Waterschap20Scheldestromen202023.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Borssele%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Borssele20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "text": "Borssele20Proces-verbaal20Waterschap20Scheldestromen202023",
-          "pdf_name": "Borssele20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Driewegen%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Driewegen20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "text": "Driewegen20Proces-verbaal20Waterschap20Scheldestromen202023",
-          "pdf_name": "Driewegen20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Ellewoutsdijk%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Ellewoutsdijk20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "text": "Ellewoutsdijk20Proces-verbaal20Waterschap20Scheldestromen202023",
-          "pdf_name": "Ellewoutsdijk20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Heinkenszand%20De%20Stenge%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Heinkenszand20De20Stenge20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "text": "Heinkenszand20De20Stenge20Proces-verbaal20Waterschap20Scheldestromen202023",
-          "pdf_name": "Heinkenszand20De20Stenge20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Heinkenszand%20Dijkstede%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Heinkenszand20Dijkstede20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "text": "Heinkenszand20Dijkstede20Proces-verbaal20Waterschap20Scheldestromen202023",
-          "pdf_name": "Heinkenszand20Dijkstede20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Hoedekenskerke%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Hoedekenskerke20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "text": "Hoedekenskerke20Proces-verbaal20Waterschap20Scheldestromen202023",
-          "pdf_name": "Hoedekenskerke20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Kwadendamme%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Kwadendamme20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "text": "Kwadendamme20Proces-verbaal20Waterschap20Scheldestromen202023",
-          "pdf_name": "Kwadendamme20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Lewedorp%20Proces-verbaal%20Waterschap%20Scheldestromen%202023_0.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Lewedorp20Proces-verbaal20Waterschap20Scheldestromen202023_0.pdf",
-          "text": "Lewedorp20Proces-verbaal20Waterschap20Scheldestromen202023_0",
-          "pdf_name": "Lewedorp20Proces-verbaal20Waterschap20Scheldestromen202023_0.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Nieuwdorp%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Nieuwdorp20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "text": "Nieuwdorp20Proces-verbaal20Waterschap20Scheldestromen202023",
-          "pdf_name": "Nieuwdorp20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Nisse%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Nisse20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "text": "Nisse20Proces-verbaal20Waterschap20Scheldestromen202023",
-          "pdf_name": "Nisse20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Oudelande%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Oudelande20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "text": "Oudelande20Proces-verbaal20Waterschap20Scheldestromen202023",
-          "pdf_name": "Oudelande20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/Ovezande%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/Ovezande20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "text": "Ovezande20Proces-verbaal20Waterschap20Scheldestromen202023",
-          "pdf_name": "Ovezande20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/sGravenpolder%20De%20Zwake%20Corrigendum%20Waterschap%20Scheldestromen%202023.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/sGravenpolder20De20Zwake20Corrigendum20Waterschap20Scheldestromen202023.pdf",
-          "text": "sGravenpolder20De20Zwake20Corrigendum20Waterschap20Scheldestromen202023",
-          "pdf_name": "sGravenpolder20De20Zwake20Corrigendum20Waterschap20Scheldestromen202023.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/sGravenpolder%20De%20Zwake%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/sGravenpolder20De20Zwake20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "text": "sGravenpolder20De20Zwake20Proces-verbaal20Waterschap20Scheldestromen202023",
-          "pdf_name": "sGravenpolder20De20Zwake20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/sGravenpolder%20Dorpshuis%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/sGravenpolder20Dorpshuis20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "text": "sGravenpolder20Dorpshuis20Proces-verbaal20Waterschap20Scheldestromen202023",
-          "pdf_name": "sGravenpolder20Dorpshuis20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/sHeer%20Abtskerke%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/sHeer20Abtskerke20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "text": "sHeer20Abtskerke20Proces-verbaal20Waterschap20Scheldestromen202023",
-          "pdf_name": "sHeer20Abtskerke20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/sHeerenhoek%20Corrigendum%20Waterschap%20Scheldestromen%202023.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/sHeerenhoek20Corrigendum20Waterschap20Scheldestromen202023.pdf",
-          "text": "sHeerenhoek20Corrigendum20Waterschap20Scheldestromen202023",
-          "pdf_name": "sHeerenhoek20Corrigendum20Waterschap20Scheldestromen202023.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/sHeerenhoek%20Proces-verbaal%20Waterschap%20Scheldestromen%202023.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/sHeerenhoek20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "text": "sHeerenhoek20Proces-verbaal20Waterschap20Scheldestromen202023",
-          "pdf_name": "sHeerenhoek20Proces-verbaal20Waterschap20Scheldestromen202023.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
           "remote_url": "https://www.borsele.nl/sites/borsele/files/2023-03/0654_controleprotocol_GSBWS_MH.pdf",
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/0654_controleprotocol_GSBWS_MH.pdf",
           "text": "0654_controleprotocol_GSBWS_MH",
@@ -23964,22 +23617,6 @@
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Boxtel/boxtel_12_jeugdhuispiusx_tk25.pdf",
           "text": "boxtel_12_jeugdhuispiusx_tk25",
           "pdf_name": "boxtel_12_jeugdhuispiusx_tk25.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://www.boxtel.nl/sites/default/files/2025-10/boxtel_13_waterschapdedommel_tk25.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Boxtel/boxtel_13_waterschapdedommel_tk25.pdf",
-          "text": "boxtel_13_waterschapdedommel_tk25",
-          "pdf_name": "boxtel_13_waterschapdedommel_tk25.pdf",
-          "score": 1,
-          "from": "local"
-        },
-        {
-          "remote_url": "https://www.boxtel.nl/sites/default/files/2025-10/boxtel_13_waterschapdedommel_tk25_aanpassing.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Boxtel/boxtel_13_waterschapdedommel_tk25_aanpassing.pdf",
-          "text": "boxtel_13_waterschapdedommel_tk25_aanpassing",
-          "pdf_name": "boxtel_13_waterschapdedommel_tk25_aanpassing.pdf",
           "score": 1,
           "from": "local"
         },
@@ -24126,14 +23763,6 @@
           "pdf_name": "boxtel_verklaring_aansluitvoorschriften.pdf",
           "score": 1,
           "from": "local"
-        },
-        {
-          "remote_url": "https://open.boxtel.nl/sites/default/files/2025-11/Handleiding%20Politieke%20Partijen%20Boxtel%20GR2026.pdf",
-          "local_url": null,
-          "text": "Download de handleiding voor politieke partijen",
-          "pdf_name": "Handleiding%20Politieke%20Partijen%20Boxtel%20GR2026.pdf",
-          "score": 1,
-          "from": "https://www.boxtel.nl/verkiezingen/gemeenteraadsverkiezingen-2026"
         }
       ]
     },
@@ -24180,14 +23809,6 @@
           "pdf_name": "003 PV Stembureau 3 De Rooi Pannen TK25.pdf",
           "score": 1,
           "from": "local"
-        },
-        {
-          "remote_url": "https://www.breda.nl/sites/default/files/verkiezingsuitslagen/10-2025/003a Uitslag Stembureau 3 De Rooi Pannen TK25.pdf",
-          "local_url": null,
-          "text": "003a Uitslag Stembureau 3 De Rooi Pannen TK25.pdf",
-          "pdf_name": "003a Uitslag Stembureau 3 De Rooi Pannen TK25.pdf",
-          "score": 4,
-          "from": "https://www.breda.nl/uitslag-verkiezing-tweede-kamer"
         },
         {
           "remote_url": "https://www.breda.nl/sites/default/files/verkiezingsuitslagen/10-2025/006 PV Stembureau 6 Stadskantoor Gemeente Breda TK25.pdf",
@@ -24246,28 +23867,12 @@
           "from": "local"
         },
         {
-          "remote_url": "https://www.breda.nl/sites/default/files/verkiezingsuitslagen/10-2025/010a Uitslag Stembureau 10 Gymzaal Brouwmeesterstraat TK25.pdf",
-          "local_url": null,
-          "text": "010a Uitslag Stembureau 10 Gymzaal Brouwmeesterstraat TK25.pdf",
-          "pdf_name": "010a Uitslag Stembureau 10 Gymzaal Brouwmeesterstraat TK25.pdf",
-          "score": 4,
-          "from": "https://www.breda.nl/uitslag-verkiezing-tweede-kamer"
-        },
-        {
           "remote_url": "https://www.breda.nl/sites/default/files/verkiezingsuitslagen/10-2025/011 PV Stembureau 11 Woonzorgcentrum Elisabeth TK25.pdf",
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Breda/011 PV Stembureau 11 Woonzorgcentrum Elisabeth TK25.pdf",
           "text": "011 PV Stembureau 11 Woonzorgcentrum Elisabeth TK25",
           "pdf_name": "011 PV Stembureau 11 Woonzorgcentrum Elisabeth TK25.pdf",
           "score": 1,
           "from": "local"
-        },
-        {
-          "remote_url": "https://www.breda.nl/sites/default/files/verkiezingsuitslagen/10-2025/011a Uitslag Stembureau 11 Woonzorgcentrum Elisabeth TK25.pdf",
-          "local_url": null,
-          "text": "011a Uitslag Stembureau 11 Woonzorgcentrum Elisabeth TK25.pdf",
-          "pdf_name": "011a Uitslag Stembureau 11 Woonzorgcentrum Elisabeth TK25.pdf",
-          "score": 4,
-          "from": "https://www.breda.nl/uitslag-verkiezing-tweede-kamer"
         },
         {
           "remote_url": "https://www.breda.nl/sites/default/files/verkiezingsuitslagen/10-2025/051 PV Stembureau 51 Gymzaal Archimedesstraat TK25.pdf",
@@ -24342,14 +23947,6 @@
           "from": "local"
         },
         {
-          "remote_url": "https://www.breda.nl/sites/default/files/verkiezingsuitslagen/10-2025/056a Uitslag Stembureau 56 Het Noorderlicht TK25.pdf",
-          "local_url": null,
-          "text": "056a Uitslag Stembureau 56 Het Noorderlicht TK25.pdf",
-          "pdf_name": "056a Uitslag Stembureau 56 Het Noorderlicht TK25.pdf",
-          "score": 4,
-          "from": "https://www.breda.nl/uitslag-verkiezing-tweede-kamer"
-        },
-        {
           "remote_url": "https://www.breda.nl/sites/default/files/verkiezingsuitslagen/10-2025/057 PV Stembureau 57 Curio Prinsentuin College TK25.pdf",
           "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Breda/057 PV Stembureau 57 Curio Prinsentuin College TK25.pdf",
           "text": "057 PV Stembureau 57 Curio Prinsentuin College TK25",
@@ -24388,14 +23985,6 @@
           "pdf_name": "059 PV Stembureau 59 Gemeenschapshuis De Biesdonk TK25.pdf",
           "score": 1,
           "from": "local"
-        },
-        {
-          "remote_url": "https://www.breda.nl/sites/default/files/verkiezingsuitslagen/10-2025/059a Uitslag Stembureau 59 Gemeenschapshuis De Biesdonk TK25.pdf",
-          "local_url": null,
-          "text": "059a Uitslag Stembureau 59 Gemeenschapshuis De Biesdonk TK25.pdf",
-          "pdf_name": "059a Uitslag Stembureau 59 Gemeenschapshuis De Biesdonk TK25.pdf",
-          "score": 4,
-          "from": "https://www.breda.nl/uitslag-verkiezing-tweede-kamer"
         },
         {
           "remote_url": "https://www.breda.nl/sites/default/files/verkiezingsuitslagen/10-2025/061 PV Stembureau 61 Belcrumhuis TK25.pdf",
@@ -25821,31 +25410,6 @@
     {
       "name": "Eindhoven",
       "start_url": "https://www.eindhoven.nl/bestuur-en-beleid/verkiezingen/tweede-kamerverkiezing-2025",
-      "pdfs": []
-    },
-    {
-      "name": "Enkhuizen",
-      "start_url": "https://www.enkhuizen.nl/bestuur-en-organisatie/verkiezingen/",
-      "pdfs": []
-    },
-    {
-      "name": "Enschede",
-      "start_url": "https://www.enschede.nl/verkiezingen",
-      "pdfs": []
-    },
-    {
-      "name": "Epe",
-      "start_url": "https://www.epe.nl/verkiezingen",
-      "pdfs": []
-    },
-    {
-      "name": "Ermelo",
-      "start_url": "https://www.ermelo.nl/verkiezing-tweede-kamer",
-      "pdfs": []
-    },
-    {
-      "name": "Etten-Leur",
-      "start_url": "https://www.etten-leur.nl/tweede-kamer-verkiezing-2025/",
       "pdfs": []
     },
     {

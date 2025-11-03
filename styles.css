@@ -313,7 +313,7 @@ nav ul li a.active::after {
   margin-right: auto;
 }
 #voteAverageContainer {
-  max-width: 1200px;
+  max-width: none;  /* do not constrain width on desktop */
   margin: 12px auto;
   padding: 0 12px;
   text-align: center;
@@ -534,7 +534,8 @@ nav ul li a.active::after {
   justify-content: center; /* center the content block itself */
   align-items: flex-start;
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: none; /* allow full-width on desktop so wide tables fit */
+  width: 100%;
 }
 
 .flex-item {

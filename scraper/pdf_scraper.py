@@ -104,6 +104,14 @@ def _is_current_year_pdf(label: str) -> bool:
     if "waterschap" in s:
         return False
 
+    # Explicit bans by compact election codes regardless of year, e.g. ep24, ps23, ws25
+    if re.search(r"\bep\s*[-_]?\s*(\d{2})\b", s):
+        return False
+    if re.search(r"\bps\s*[-_]?\s*(\d{2})\b", s):
+        return False
+    if re.search(r"\bws\s*[-_]?\s*(\d{2})\b", s):
+        return False
+
     # Reject other elections by explicit codes/words + year
     # EP (Europees Parlement)
     if re.search(r"\b(ep|europees|europees\s+parlement)\s*20(\d{2})\b", s):
@@ -113,10 +121,9 @@ def _is_current_year_pdf(label: str) -> bool:
     if re.search(r"\bps\s*20(\d{2})\b", s):
         y = int(re.search(r"\bps\s*20(\d{2})\b", s).group(1))
         return (2000 + y) == TARGET_YEAR_FULL
-    # WS (Waterschapsverkiezingen)
+    # WS (Waterschapsverkiezingen) — always banned
     if re.search(r"\bws\s*20(\d{2})\b", s):
-        y = int(re.search(r"\bws\s*20(\d{2})\b", s).group(1))
-        return (2000 + y) == TARGET_YEAR_FULL
+        return False
 
     # TKyy code
     m = re.search(r"\btk\s*([0-9]{2})\b", s, re.I)
@@ -165,6 +172,36 @@ def _is_current_year_pdf(label: str) -> bool:
             return False
 
     # If no explicit contrary year found, keep
+    return True
+
+
+def _is_relevant_nav_target(label: str) -> bool:
+    """Return True if a navigation link (URL/text) is relevant for TK25 before visiting it.
+    - Skip Gemeenteraad/Europees/Provinciale/Waterschap pages
+    - Skip pages that explicitly mention a non-2025 year
+    - Allow general pages that do not conflict, prefer those mentioning TK/stembureau/uitslag/proces/verbaal
+    """
+    if not isinstance(label, str) or not label:
+        return True
+    s = label.lower()
+    # Hard bans by other election types
+    if any(k in s for k in ("gemeenteraad", "gemeenteraads", "europees parlement", "europees", "provinciale", "waterschap", "waterschappen")):
+        # Allow back in only if explicitly mentions Tweede Kamer and not an explicit non-2025 year
+        if ("tweede" in s and "kamer" in s) and not re.search(r"\b20(?!25)\d{2}\b", s):
+            pass
+        else:
+            return False
+    # Skip if explicit TK year not 2025
+    m = re.search(r"\btweede\s+kamer\s+20(\d{2})\b", s)
+    if m and (2000 + int(m.group(1))) != TARGET_YEAR_FULL:
+        return False
+    # Skip if any 2000..2099 year not equal to 2025
+    for ym in re.finditer(r"\b(20\d{2})\b", s):
+        if int(ym.group(1)) != TARGET_YEAR_FULL:
+            return False
+    # Skip EP/PS/WS short codes (e.g., ep24, ps23, ws25)
+    if re.search(r"\b(ep|ps|ws)\s*[-_]?\s*(\d{2})\b", s):
+        return False
     return True
 
 
@@ -259,6 +296,202 @@ def extract_pdf_links(html: str, base_url: str) -> list[dict]:
     return out
 
 
+# -------- Generic "file hub" discovery + download (external portals) --------
+
+GENERIC_FILEHUB_KEY_RE = re.compile(
+    r"verkiez|uitslag|proces|stembur|tweede.*kamer|pv\b|gsb\b|document|documenten|files|bestand|bestanden|download",
+    re.I,
+)
+
+
+def find_generic_filehub_links_from_html(html: str, base_url: str, allow_external: bool) -> list[str]:
+    soup = BeautifulSoup(html or "", "html.parser")
+    hubs: list[str] = []
+    try:
+        pu = urlparse(base_url)
+        base_origin = f"{pu.scheme}://{pu.netloc}"
+    except Exception:
+        pu = None
+        base_origin = None
+    for a in soup.select("a[href]"):
+        href = a.get("href"); full = urljoin(base_url, href or "")
+        if not full:
+            continue
+        # Limit scope unless external crawling allowed
+        if not allow_external and pu and urlparse(full).netloc != pu.netloc:
+            continue
+        low = (full + " " + (a.get_text(" ", strip=True) or "")).lower()
+        # Heuristics: likely 'file hubs' or folders
+        if any(k in low for k in ("/files/", "/file/", "/document", "/documenten", "documenten", "bestanden", "download")):
+            if GENERIC_FILEHUB_KEY_RE.search(low):
+                hubs.append(full)
+                continue
+        # Generic 'Documenten' sections
+        if ("documenten" in low or "bestanden" in low) and GENERIC_FILEHUB_KEY_RE.search(low):
+            hubs.append(full)
+    # Dedup preserve order
+    seen = set(); out = []
+    for u in hubs:
+        if u in seen:
+            continue
+        seen.add(u); out.append(u)
+    return out[:10]
+
+
+def download_generic_filehub(muni: str, hub_url: str, max_click_folders: int = 3, max_downloads: int = 200) -> list[dict]:
+    """Generic downloader for dynamic file-list pages using Playwright.
+    Navigates to hub_url, optionally clicks into a few folder-like anchors, collects file-view or direct PDF anchors,
+    and triggers downloads via visible 'Download' controls.
+    """
+    items: list[dict] = []
+    if not PLAYWRIGHT_AVAILABLE:
+        return items
+    out_dir = os.path.join(OUT_BASE, sanitize_filename(muni))
+    os.makedirs(out_dir, exist_ok=True)
+
+    def save_if_new(dl) -> str | None:
+        try:
+            suggested = dl.suggested_filename or "download.pdf"
+            if not suggested.lower().endswith(".pdf"):
+                suggested += ".pdf"
+            if not _is_current_year_pdf(suggested):
+                return None
+            dest = os.path.join(out_dir, sanitize_filename(suggested))
+            if os.path.exists(dest):
+                return None
+            dl.save_as(dest)
+            return dest
+        except Exception:
+            return None
+
+    visited: set[str] = set()
+    downloaded = 0
+    KEY_FOLDER_RE = re.compile(r"proces|stembur|document|documenten|files|map|folder|verkiez|uitslag|pv|gsb", re.I)
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context(accept_downloads=True)
+        page = context.new_page()
+        try:
+            page.goto(hub_url, wait_until='domcontentloaded', timeout=60000)
+            try:
+                page.wait_for_load_state('networkidle', timeout=60000)
+            except Exception:
+                pass
+            # click into a handful of likely folders if present
+            folder_links = page.locator('a[href]')
+            # Collect up to N folder-like anchors by text
+            selected_idxs = []
+            n = min(folder_links.count(), 200)
+            for i in range(n):
+                el = folder_links.nth(i)
+                try:
+                    txt = (el.inner_text() or "").strip()
+                except Exception:
+                    txt = ""
+                href = el.get_attribute('href') or ''
+                low = (txt + " " + href).lower()
+                if KEY_FOLDER_RE.search(low) and not low.endswith('.pdf'):
+                    selected_idxs.append(i)
+                if len(selected_idxs) >= max_click_folders:
+                    break
+            # Visit each selected folder-like link
+            for idx in selected_idxs:
+                try:
+                    with page.expect_navigation(timeout=10000):
+                        folder_links.nth(idx).click()
+                    page.wait_for_timeout(800)
+                except Exception:
+                    pass
+
+            # From the current page, attempt to harvest both direct PDFs and file view pages
+            def try_downloads_from_current() -> None:
+                nonlocal downloaded
+                if downloaded >= max_downloads:
+                    return
+                anchors = page.locator('a[href]')
+                m = min(anchors.count(), 300)
+                for i in range(m):
+                    if downloaded >= max_downloads:
+                        break
+                    el = anchors.nth(i)
+                    href = el.get_attribute('href') or ''
+                    txt = (el.inner_text() or "").strip()
+                    full = urljoin(page.url, href)
+                    low = (href + " " + txt).lower()
+                    if not href:
+                        continue
+                    # Direct PDF links
+                    if href.lower().endswith('.pdf') or '.pdf' in urlparse(full).path.lower():
+                        # Shortcut: perform HTTP download using existing helper
+                        dest = download_pdf(full, out_dir)
+                        if dest:
+                            items.append({
+                                "remote_url": full,
+                                "local_url": "file://" + os.path.abspath(dest),
+                                "pdf_name": os.path.basename(dest),
+                                "text": txt or os.path.basename(dest),
+                                "from": page.url,
+                                "score": 2,
+                            })
+                            downloaded += 1
+                        continue
+                    # Likely file view pages — try to open and click Download
+                    if GENERIC_FILEHUB_KEY_RE.search(low) or '/files/view/' in href or '/download/' in href:
+                        view = urljoin(page.url, href)
+                        if view in visited:
+                            continue
+                        visited.add(view)
+                        try:
+                            with context.expect_page() as pg_ctx:
+                                el.click(button='left')
+                            view_page = pg_ctx.value
+                        except Exception:
+                            # fallback: open in same page
+                            view_page = page
+                            try:
+                                view_page.goto(view, wait_until='domcontentloaded', timeout=20000)
+                            except Exception:
+                                continue
+                        try:
+                            try:
+                                view_page.wait_for_load_state('networkidle', timeout=10000)
+                            except Exception:
+                                pass
+                            dl_btns = view_page.locator('a[download], a:has-text("Download"), button:has-text("Download"), a[href*="/download"]')
+                            if dl_btns.count() > 0:
+                                try:
+                                    with view_page.expect_download(timeout=30000) as dlctx:
+                                        dl_btns.first.click()
+                                    dl = dlctx.value
+                                    saved = save_if_new(dl)
+                                    if saved:
+                                        items.append({
+                                            "remote_url": view,
+                                            "local_url": "file://" + os.path.abspath(saved),
+                                            "pdf_name": os.path.basename(saved),
+                                            "text": os.path.basename(saved),
+                                            "from": page.url,
+                                            "score": 2,
+                                        })
+                                        downloaded += 1
+                                except Exception:
+                                    pass
+                        finally:
+                            try:
+                                if view_page is not page:
+                                    view_page.close()
+                            except Exception:
+                                pass
+
+            try_downloads_from_current()
+        finally:
+            context.close(); browser.close()
+    if items:
+        print(f"[generic] {muni}: downloaded {len(items)} PDFs from hub {hub_url}")
+    return items
+
+
 # -------- MediaFiler (generic) support --------
 
 def find_mediafiler_albums_from_html(html: str, base_url: str) -> list[str]:
@@ -275,8 +508,8 @@ def find_mediafiler_albums_from_html(html: str, base_url: str) -> list[str]:
         u = urlparse(full)
         if "mediafiler.net" in u.netloc and "/start/" in u.path:
             # Heuristic filter: relevant album pages often mention verkiez/proces/uitslag in link text
-            txt = (a.get_text(" ", strip=True) or "").lower()
-            if any(k in txt for k in ("proces", "uitslag", "verkiez")) or True:
+            txt = (a.get_text(" ", strip=True) or "")
+            if _is_relevant_nav_target((txt + " " + full).lower()):
                 albums.append(full)
     # Dedup preserve order
     out = []
@@ -356,19 +589,25 @@ def download_mediafiler_album(muni: str, album_url: str, items_seed: list[dict])
                     new_items.append((f, fn))
             for fuid, fname in new_items:
                 try:
+                    # Skip if file already exists to avoid duplicates
+                    expected = os.path.join(out_dir, sanitize_filename(fname))
+                    if os.path.exists(expected):
+                        processed.add(fuid)
+                        print(f"[mediafiler] Skip exists: {expected}")
+                        continue
                     with page.expect_download(timeout=45000) as dl_info:
                         page.evaluate("(args) => downloadTab(args[0], args[1])", [fuid, fname])
                     dl = dl_info.value
                     final_name = dl.suggested_filename or fname
                     final_path = os.path.join(out_dir, sanitize_filename(final_name))
-                    base, ext = os.path.splitext(final_path)
-                    i = 1; use = final_path
-                    while os.path.exists(use):
-                        use = f"{base}_{i}{ext}"; i += 1
-                    dl.save_as(use)
+                    if os.path.exists(final_path):
+                        processed.add(fuid)
+                        print(f"[mediafiler] Skip exists: {final_path}")
+                        continue
+                    dl.save_as(final_path)
                     saved += 1
                     processed.add(fuid)
-                    print(f"[mediafiler] Saved: {use}")
+                    print(f"[mediafiler] Saved: {final_path}")
                 except Exception as e:
                     print(f"[mediafiler] Download failed fuid={fuid}: {e}")
             # Paginate
@@ -447,7 +686,8 @@ def collect_mediafiler_albums(name: str, extra: dict) -> list[str]:
                 href = a.get('href'); full = urljoin(base0, href or '')
                 if not full or urlparse(full).netloc != pu.netloc:
                     continue
-                if KEY_RE.search(full) or KEY_RE.search(a.get_text(' ', strip=True) or ''):
+                txt = a.get_text(' ', strip=True) or ''
+                if (KEY_RE.search(full) or KEY_RE.search(txt)) and _is_relevant_nav_target((full + ' ' + txt).lower()):
                     discover_pages_scored.append((full, 1))
         except Exception:
             pass
@@ -487,7 +727,10 @@ def find_stackstorage_shares_from_html(html: str, base_url: str) -> list[str]:
         full = urljoin(base_url, href)
         u = urlparse(full)
         if "stackstorage.com" in u.netloc and "/s/" in u.path:
-            shares.append(full.split("?", 1)[0])
+            txt = a.get_text(" ", strip=True) or ""
+            low = (full + " " + txt).lower()
+            if _is_relevant_nav_target(low):
+                shares.append(full.split("?", 1)[0])
     # Dedup preserve order
     out: list[str] = []
     seen: set[str] = set()
@@ -526,18 +769,17 @@ def download_stackstorage_share(muni: str, share_url: str) -> list[dict]:
                     # Skip banned PDFs before writing to disk
                     if not _is_current_year_pdf(base):
                         continue
-                    dest = os.path.join(out_dir, base)
-                    base0, ext = os.path.splitext(dest)
-                    i = 1; use = dest
-                    while os.path.exists(use):
-                        use = f"{base0}_{i}{ext}"; i += 1
-                    with z.open(name) as src, open(use, 'wb') as f:
+                    dest = os.path.join(out_dir, sanitize_filename(base))
+                    if os.path.exists(dest):
+                        # Skip duplicates
+                        continue
+                    with z.open(name) as src, open(dest, 'wb') as f:
                         f.write(src.read())
-                    saved_paths.append(use)
+                    saved_paths.append(dest)
         except zipfile.BadZipFile:
             # Direct file (likely a single PDF)
             suggested = dl.suggested_filename or 'download.pdf'
-            base = os.path.join(out_dir, suggested)
+            base = os.path.join(out_dir, sanitize_filename(suggested))
             base0, ext = os.path.splitext(base)
             if not ext.lower() == '.pdf':
                 base = base0 + '.pdf'
@@ -545,11 +787,12 @@ def download_stackstorage_share(muni: str, share_url: str) -> list[dict]:
             if not _is_current_year_pdf(os.path.basename(base)):
                 # ensure tmp is cleaned below and do not save
                 return []
-            use = base; i = 1
-            while os.path.exists(use):
-                use = f"{base0}_{i}{ext or '.pdf'}"; i += 1
-            os.replace(tmppath, use)
-            saved_paths.append(use)
+            # Do not create numbered duplicates
+            if os.path.exists(base):
+                # Nothing to save, duplicate
+                return []
+            os.replace(tmppath, base)
+            saved_paths.append(base)
         finally:
             try:
                 if os.path.exists(tmppath):
@@ -666,6 +909,48 @@ def collect_stackstorage_shares(name: str, extra: dict) -> list[str]:
         if u in seen: continue
         seen.add(u); out.append(u)
     return out
+
+
+def collect_generic_filehubs(name: str, extra: dict, allow_external: bool = False, force_render: bool = False) -> list[str]:
+    """Find generic 'file hub' pages (internal or external if allowed) that likely contain documents for this municipality."""
+    start = get_start_url(name)
+    seeds = list(extra.get(name, [])) if extra else []
+    if start:
+        seeds.insert(0, start)
+    hubs: list[str] = []
+    # scan seeds
+    for s in seeds[:5]:
+        try:
+            html, base = fetch_html(s, allow_render=force_render)
+            if not html:
+                continue
+            hubs += find_generic_filehub_links_from_html(html, base, allow_external=allow_external)
+        except Exception:
+            pass
+    # shallow expansion: follow discovered pages from seeds that look promising
+    expanded: list[str] = []
+    seenp: set[str] = set()
+    for u in list(hubs)[:8]:
+        if u in seenp:
+            continue
+        seenp.add(u)
+        try:
+            html2, base2 = fetch_html(u, allow_render=force_render)
+            if not html2:
+                continue
+            expanded += find_generic_filehub_links_from_html(html2, base2, allow_external=allow_external)
+        except Exception:
+            pass
+    hubs += expanded
+    # Dedup
+    out: list[str] = []
+    seen: set[str] = set()
+    for u in hubs:
+        if u in seen:
+            continue
+        seen.add(u)
+        out.append(u)
+    return out[:12]
 
 
 def quick_site_search(start_url: str) -> list[str]:
@@ -804,13 +1089,12 @@ def download_pdf(url: str, out_dir: str) -> str | None:
         if not fname.lower().endswith(".pdf"):
             fname += ".pdf"
         path = os.path.join(out_dir, sanitize_filename(fname))
-        base, ext = os.path.splitext(path)
-        i = 1; use = path
-        while os.path.exists(use):
-            use = f"{base}_{i}{ext}"; i += 1
-        with open(use, "wb") as f:
+        # Skip if file already exists; do not create numbered duplicates
+        if os.path.exists(path):
+            return None
+        with open(path, "wb") as f:
             f.write(r.content)
-        return use
+        return path
     except Exception:
         return None
 
@@ -946,9 +1230,10 @@ def collect_pdfs_for_municipality(name: str, extra: dict, force_render: bool = F
                     continue
                 if urlparse(full).netloc != pu.netloc or not full.startswith(base):
                     continue
-                if KEY_RE.search(full) or KEY_RE.search(a.get_text(" ", strip=True) or ""):
+                txt = a.get_text(" ", strip=True) or ""
+                low = (full + " " + txt).lower()
+                if (KEY_RE.search(full) or KEY_RE.search(txt)) and _is_relevant_nav_target(low):
                     score = 0
-                    low = (full + " " + (a.get_text(" ", strip=True) or "")).lower()
                     if "voorlopige" in low:
                         score += 6
                     if "documenten" in low or "document" in low:
@@ -967,20 +1252,23 @@ def collect_pdfs_for_municipality(name: str, extra: dict, force_render: bool = F
         if u in seenp:
             continue
         seenp.add(u)
-        dedup.append(u)
-    for p in dedup[:20]:
-        try:
-            allow_render = ("amsterdam.nl" in p) or force_render
-            html2, base2 = fetch_html(p, allow_render=allow_render)
-            if not html2:
-                continue
-            urls += extract_pdf_links(html2, base2)
-        except Exception:
-            pass
+        if _is_relevant_nav_target(u):
+            dedup.append(u)
+        for p in dedup[:20]:
+            try:
+                allow_render = ("amsterdam.nl" in p) or force_render
+                html2, base2 = fetch_html(p, allow_render=allow_render)
+                if not html2:
+                    continue
+                urls += extract_pdf_links(html2, base2)
+            except Exception:
+                pass
     # quick site search as a fallback if still nothing
     if not urls and start:
         for p in quick_site_search(start):
             try:
+                if not _is_relevant_nav_target(p):
+                    continue
                 allow_render = ("amsterdam.nl" in p) or force_render
                 html3, base3 = fetch_html(p, allow_render=allow_render)
                 if not html3:
@@ -1018,6 +1306,9 @@ def run(argv: list[str] | None = None) -> int:
     ap.add_argument("--no-index-write", action="store_true", help="Schrijf geen index-bestand weg aan het einde")
     ap.add_argument("--merge-from-disk", action="store_true", help="Vul index aan door lokale PDF-bestanden te scannen (geen downloads)")
     ap.add_argument("--complete-remote", action="store_true", help="Probeer ontbrekende remote_url voor bestaande items aan te vullen (geen downloads)")
+    ap.add_argument("--follow-external", action="store_true", help="Volg relevante externe links (beperkt, geheuristiceerd)")
+    ap.add_argument("--generic-filehubs", action="store_true", help="Zoek algemene document-portalen (folders/files) en probeer downloads via Playwright")
+    ap.add_argument("--render", action="store_true", help="Render pagina's via Playwright om dynamische lijsten te zien")
     args = ap.parse_args(argv)
 
     # Bepaal doellijst (initieel; kan nog aangepast worden als --complete-remote zonder selectie is opgegeven)
@@ -1339,7 +1630,7 @@ def run(argv: list[str] | None = None) -> int:
     else:
         for n in names:
             out_dir = os.path.join(OUT_BASE, sanitize_filename(n))
-            pdfs = collect_pdfs_for_municipality(n, extra)
+            pdfs = collect_pdfs_for_municipality(n, extra, force_render=args.render)
             # MediaFiler albums discovery + downloads
             albums = collect_mediafiler_albums(n, extra)
             mediafiler_items: list[dict] = []
@@ -1374,6 +1665,19 @@ def run(argv: list[str] | None = None) -> int:
                     print(f"[stackstorage] {n}: error downloading share {sh}: {e}")
             if stack_items:
                 pdfs = pdfs + stack_items
+            # Generic file-hubs (external portals)
+            if args.generic_filehubs:
+                hubs = collect_generic_filehubs(n, extra, allow_external=args.follow_external, force_render=args.render)
+                hub_items: list[dict] = []
+                for hub in hubs:
+                    try:
+                        its = download_generic_filehub(n, hub)
+                        if its:
+                            hub_items.extend(its)
+                    except Exception as e:
+                        print(f"[generic] {n}: error downloading hub {hub}: {e}")
+                if hub_items:
+                    pdfs = pdfs + hub_items
             print(f"[cleaned] {n}: {len(pdfs)} pdf links (+{len(mediafiler_items)} mediafiler)")
             saved = 0
             for p in pdfs:
