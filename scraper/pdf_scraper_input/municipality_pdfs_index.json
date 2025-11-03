@@ -1,16 +1,60 @@
 {
   "results": [
     {
-      "name": "Olst-Wijhe",
-      "start_url": "https://www.olst-wijhe.nl/verkiezingen",
+      "name": "Rijssen-Holten",
+      "start_url": "https://www.rijssen-holten.nl/verkiezingen-en-uitslagen/tweede-kamerverkiezing-2025/",
       "pdfs": [
         {
-          "remote_url": "https://www.olst-wijhe.nl/ondersteuningsverklaring.pdf",
-          "local_url": null,
-          "text": "Download",
-          "pdf_name": "ondersteuningsverklaring.pdf",
+          "remote_url": "https://www.rijssen-holten.nl/wp-content/uploads/2025/10/KANDIDATENLIJST__4_Zwolle_FINAL.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Rijssen-Holten/KANDIDATENLIJST__4_Zwolle_FINAL.pdf",
+          "text": "Kandidatenlijst",
+          "pdf_name": "KANDIDATENLIJST__4_Zwolle_FINAL.pdf",
           "score": 1,
-          "from": "https://www.olst-wijhe.nl/bestuur/verkiezingen/afleggen-verklaring-van-ondersteuning-kandidatenlijst"
+          "from": "https://www.rijssen-holten.nl/verkiezingen-en-uitslagen/tweede-kamerverkiezing-2025/"
+        }
+      ]
+    },
+    {
+      "name": "Waadhoeke",
+      "start_url": "https://www.waadhoeke.nl/verkiezingen/",
+      "pdfs": [
+        {
+          "remote_url": "https://www.waadhoeke.nl/fileadmin/bestanden/Verkiezingen_2023/Gemeenteraadsverkiezingen_2026/Registratieformulier.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Waadhoeke/Registratieformulier.pdf",
+          "text": "Registratieformulier.pdf (2 MB)",
+          "pdf_name": "Registratieformulier.pdf",
+          "score": 4,
+          "from": "https://www.waadhoeke.nl/verkiezingen/partijnaam-registreren"
+        }
+      ]
+    },
+    {
+      "name": "Wassenaar",
+      "start_url": "https://www.wassenaar.nl/tweede-kamerverkiezingen-29-oktober-2025?origin=/verkiezingen",
+      "pdfs": [
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/wassenaar/uploads/Verkiezingskrant_gewone_taal_tweede_kamer_2025_digitaal.pdf?cb=sxGf3JQr",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Wassenaar/Verkiezingskrant_gewone_taal_tweede_kamer_2025_digitaal.pdf",
+          "text": "Verkiezingskrant",
+          "pdf_name": "Verkiezingskrant_gewone_taal_tweede_kamer_2025_digitaal.pdf",
+          "score": 4,
+          "from": "https://www.wassenaar.nl/tweede-kamerverkiezingen-29-oktober-2025?origin=/verkiezingen"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/wassenaar/uploads/model-k-6-1-verzoek-kiezerspas-pdf.pdf?cb=zKnLcpnA",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Wassenaar/model-k-6-1-verzoek-kiezerspas-pdf.pdf",
+          "text": "aanvraagformulier",
+          "pdf_name": "model-k-6-1-verzoek-kiezerspas-pdf.pdf",
+          "score": 1,
+          "from": "https://www.wassenaar.nl/verkiezingen-stemmen-vanuit-een-andere-gemeente"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/wassenaar/uploads/model-l-8-verzoek-stemmen-bij-volmacht-pdf%20(1).pdf?cb=U3PCYLDD",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Wassenaar/model-l-8-verzoek-stemmen-bij-volmacht-pdf20(1).pdf",
+          "text": "formulier L8",
+          "pdf_name": "model-l-8-verzoek-stemmen-bij-volmacht-pdf%20(1).pdf",
+          "score": 1,
+          "from": "https://www.wassenaar.nl/verkiezingen-een-ander-machtigen"
         }
       ]
     },
@@ -32800,6 +32844,11 @@
       "pdfs": []
     },
     {
+      "name": "Olst-Wijhe",
+      "start_url": "https://www.olst-wijhe.nl/verkiezingen",
+      "pdfs": []
+    },
+    {
       "name": "Ommen",
       "start_url": "https://www.ommen.nl/verkiezingen/",
       "pdfs": []
@@ -32927,11 +32976,6 @@
     {
       "name": "Ridderkerk",
       "start_url": "https://www.ridderkerk.nl/verkiezingen/",
-      "pdfs": []
-    },
-    {
-      "name": "Rijssen-Holten",
-      "start_url": "https://www.rijssen-holten.nl/verkiezingen-en-uitslagen/tweede-kamerverkiezing-2025/",
       "pdfs": []
     },
     {
@@ -33265,11 +33309,6 @@
       "pdfs": []
     },
     {
-      "name": "Waadhoeke",
-      "start_url": "https://www.waadhoeke.nl/verkiezingen/",
-      "pdfs": []
-    },
-    {
       "name": "Waalre",
       "start_url": "https://www.waalre.nl/inwoners-en-ondernemers/verkiezingen",
       "pdfs": []
@@ -33287,11 +33326,6 @@
     {
       "name": "Wageningen",
       "start_url": "https://www.wageningen.nl/verkiezingen/",
-      "pdfs": []
-    },
-    {
-      "name": "Wassenaar",
-      "start_url": "https://www.wassenaar.nl/tweede-kamerverkiezingen-29-oktober-2025?origin=/verkiezingen",
       "pdfs": []
     },
     {

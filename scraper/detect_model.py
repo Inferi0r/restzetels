@@ -202,6 +202,7 @@ def run(argv: list[str] | None = None) -> int:
     ap.add_argument("--dry-run", action="store_true", help="Geen wijzigingen schrijven, alleen tonen")
     ap.add_argument("--refresh", action="store_true", help="Herclassificeer alles (niet alleen ontbrekende modellen)")
     ap.add_argument("--model31", action="store_true", help="Genereer gemeente_model_31.json met alle gemeenten en hun Na 31-(-1/-2) PDFs")
+    ap.add_argument("--filename-only", action="store_true", help="In --model31 modus: alleen bestandsnaam-heuristiek toepassen (geen PDF-tekst of OCR)")
     ap.add_argument("--limit", type=int, default=None, help="Beperk in --model31 modus het aantal te scannen gemeenten (voor snelle test)")
     args = ap.parse_args(argv)
 
@@ -258,7 +259,7 @@ def run(argv: list[str] | None = None) -> int:
 
         # 2) Voor gemeenten zonder resultaten: snelle tekstextractie van pagina 1, daarna pas OCR op kop
         empties = [n for n in to_process if not out.get(n)]
-        if empties:
+        if empties and not args.filename_only:
             for name in empties:
                 gdir = os.path.join(base_pdfs, name)
                 try:
