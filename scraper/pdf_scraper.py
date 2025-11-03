@@ -110,41 +110,41 @@ def _is_current_year_pdf(label: str) -> bool:
     if "europees" in s or "europees parlement" in s:
         return False
 
-    # Explicit bans by compact election codes regardless of year, e.g. ep24, ps23, ws25, gr22
-    if re.search(r"(ep)\s*[-_]?\s*(\d{2})(?!\d)", s):
+    # Explicit bans by compact election codes regardless of year, e.g. ep24, ep2024, ps23, ws25, gr22
+    if re.search(r"(?<![A-Za-z])ep\s*[-_]?\s*(?:20)?\d{2}", s):
         return False
-    if re.search(r"(ps)\s*[-_]?\s*(\d{2})(?!\d)", s):
+    if re.search(r"(?<![A-Za-z])ps\s*[-_]?\s*(?:20)?\d{2}", s):
         return False
-    if re.search(r"(ws)\s*[-_]?\s*(\d{2})(?!\d)", s):
+    if re.search(r"(?<![A-Za-z])ws\s*[-_]?\s*(?:20)?\d{2}", s):
         return False
-    if re.search(r"(gr)\s*[-_]?\s*(\d{2})(?!\d)", s):
+    if re.search(r"(?<![A-Za-z])gr\s*[-_]?\s*(?:20)?\d{2}", s):
         return False
 
     # Reject other elections by explicit codes/words + year (including glued forms without separators)
     # EP (Europees Parlement)
-    if re.search(r"(ep|europees|europees\s+parlement)\s*[-_]?\s*20(\d{2})(?!\d)", s):
-        y = int(re.search(r"(ep|europees|europees\s+parlement)\s*[-_]?\s*20(\d{2})(?!\d)", s).group(2))
+    if re.search(r"(ep|europees|europees\s+parlement)\s*[-_]?\s*20(\d{2})", s):
+        y = int(re.search(r"(ep|europees|europees\s+parlement)\s*[-_]?\s*20(\d{2})", s).group(2))
         return (2000 + y) == TARGET_YEAR_FULL
     # PS (Provinciale Staten)
-    if re.search(r"ps\s*[-_]?\s*20(\d{2})(?!\d)", s):
+    if re.search(r"ps\s*[-_]?\s*20(\d{2})", s):
         return False
     # WS (Waterschapsverkiezingen) — always banned
-    if re.search(r"ws\s*[-_]?\s*20(\d{2})(?!\d)", s):
+    if re.search(r"ws\s*[-_]?\s*20(\d{2})", s):
         return False
     # GR (Gemeenteraad) — banned regardless of year
     if re.search(r"gr\s*[-_]?\s*20(\d{2})(?!\d)", s):
         return False
 
-    # TKyy code
-    m = re.search(r"tk\s*[-_]?\s*([0-9]{2})(?!\d)", s, re.I)
-    if m:
-        yy = int(m.group(1))
-        return yy == TARGET_YEAR_SHORT
-    # TKYYYY code (e.g., tk2023 vs tk2025)
-    m = re.search(r"tk\s*[-_]?\s*20(\d{2})(?!\d)", s, re.I)
+    # TKYYYY code (e.g., tk2025)
+    m = re.search(r"tk\s*[-_]?\s*20(\d{2})", s, re.I)
     if m:
         yy = int(m.group(1))
         return (2000 + yy) == TARGET_YEAR_FULL
+    # TKyy code (e.g., tk25)
+    m = re.search(r"tk\s*[-_]?\s*([0-9]{2})", s, re.I)
+    if m:
+        yy = int(m.group(1))
+        return yy == TARGET_YEAR_SHORT
 
     # "tweede kamer YYYY" — accept only 2025
     m = re.search(r"\btweede\s+kamer\s+20(\d{2})\b", s)
@@ -229,10 +229,10 @@ def _is_relevant_nav_target(label: str) -> bool:
     if m2 and int(m2.group(1)) != TARGET_YEAR_FULL:
         return False
     # Skip EP/PS/WS short codes (e.g., ep24, ps23, ws25)
-    if re.search(r"(ep|ps|ws|gr)\s*[-_]?\s*(\d{2})(?!\d)", s):
+    if re.search(r"(?<![A-Za-z])(ep|ps|ws|gr)\s*[-_]?\s*(?:20)?\d{2}", s):
         return False
-    # Skip EP/PS/WS/GR with 4-digit years glued
-    if re.search(r"(ep|ps|ws|gr)\s*[-_]?\s*20(\d{2})(?!\d)", s):
+    # Skip EP/PS/WS/GR with 4-digit years (redundant due to previous, kept for clarity)
+    if re.search(r"(?<![A-Za-z])(ep|ps|ws|gr)\s*[-_]?\s*20\d{2}", s):
         return False
     return True
 

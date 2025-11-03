@@ -1,14 +1,196 @@
 {
-  "Aa en Hunze": [],
-  "Aalsmeer": [],
-  "Aalten": [],
-  "Achtkarspelen": [],
-  "Alblasserdam": [
+  "Aa en Hunze": [
     {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Alblasserdam/Model_Na31-1.pdf",
-      "pdf_name": "Model_Na31-1.pdf"
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_13_Multifunctioneel centrum De Badde_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_13_Multifunctioneel centrum De Badde_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_11_Dorpshuis Oes Hoes_Gieterveen_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_11_Dorpshuis Oes Hoes_Gieterveen_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_25_De Trans Nooitgedacht_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_25_De Trans Nooitgedacht_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_23_Dorpshuis Anloo_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_23_Dorpshuis Anloo_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_12_Dorpshuis De Kiep Eexterveenschekanaal_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_12_Dorpshuis De Kiep Eexterveenschekanaal_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_5_Verzorgingscentrum Hendrik Kok_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_5_Verzorgingscentrum Hendrik Kok_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_1_Gemeentehuis Gieten_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_1_Gemeentehuis Gieten_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_20_Cafe Restaurant Eext_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_20_Cafe Restaurant Eext_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_3_Zorgcentrum Dekelhem_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_3_Zorgcentrum Dekelhem_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_18_Verzorgingshuis t Holthuys Annen_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_18_Verzorgingshuis t Holthuys Annen_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_16_Dorpshuis Annen 1_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_16_Dorpshuis Annen 1_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_21_Gemeenschapshuis Oes Stee Anderen_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_21_Gemeenschapshuis Oes Stee Anderen_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_8_Dorpshuis De Trefkoel Gasselte_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_8_Dorpshuis De Trefkoel Gasselte_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_6_Dorpshuis De Eekhof Ekehaar_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_6_Dorpshuis De Eekhof Ekehaar_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_17_Dorpshuis Annen 2_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_17_Dorpshuis Annen 2_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/1680_uitkomst_TK25_ZH.pdf",
+      "pdf_name": "1680_uitkomst_TK25_ZH.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_7_Het Markehuis Grolloo_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_7_Het Markehuis Grolloo_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_15_Dorpscentrum t Achterhoes Eexterveen_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_15_Dorpscentrum t Achterhoes Eexterveen_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_22_Dorpshuis De Gasterije Gasteren_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_22_Dorpshuis De Gasterije Gasteren_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_4_Ontmoetingscentrum Boerhoorn Rolde_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_4_Ontmoetingscentrum Boerhoorn Rolde_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_10_Dorpshuis Gasselternijveenschemond_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_10_Dorpshuis Gasselternijveenschemond_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_2_Openbare basisschool Gieten_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_2_Openbare basisschool Gieten_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_9_MFC De Spil Gasselternijveen_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_9_MFC De Spil Gasselternijveen_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_19_Dorpshuis Schipborg_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_19_Dorpshuis Schipborg_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/Bijlage 2_1680_Stembureau_14_Cafe t Keerpunt Spijkerboor_TK25.pdf",
+      "pdf_name": "Bijlage 2_1680_Stembureau_14_Cafe t Keerpunt Spijkerboor_TK25.pdf"
     }
   ],
+  "Aalsmeer": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aalsmeer/2-aal-zorgcentrum-aelsmeer_0.pdf",
+      "pdf_name": "2-aal-zorgcentrum-aelsmeer_0.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aalsmeer/2-aal-middelpunt.pdf",
+      "pdf_name": "2-aal-middelpunt.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aalsmeer/2-aal-dg-aalsmeer.pdf",
+      "pdf_name": "2-aal-dg-aalsmeer.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aalsmeer/2-aal-bloemhof_0.pdf",
+      "pdf_name": "2-aal-bloemhof_0.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aalsmeer/2-aal-proosdijhal.pdf",
+      "pdf_name": "2-aal-proosdijhal.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aalsmeer/2-aal-ruimte.pdf",
+      "pdf_name": "2-aal-ruimte.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aalsmeer/2-aal-mikado1.pdf",
+      "pdf_name": "2-aal-mikado1.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aalsmeer/2-aal-vzod.pdf",
+      "pdf_name": "2-aal-vzod.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aalsmeer/2-aal-mikado-2.pdf",
+      "pdf_name": "2-aal-mikado-2.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aalsmeer/2-aal-parochiehuis_0.pdf",
+      "pdf_name": "2-aal-parochiehuis_0.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aalsmeer/2-aal-triade.pdf",
+      "pdf_name": "2-aal-triade.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aalsmeer/2-aal-anker_1.pdf",
+      "pdf_name": "2-aal-anker_1.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aalsmeer/2-aal-podium_0.pdf",
+      "pdf_name": "2-aal-podium_0.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aalsmeer/2-aal-antoniusschool_0.pdf",
+      "pdf_name": "2-aal-antoniusschool_0.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aalsmeer/2-aal-hornmeer_0.pdf",
+      "pdf_name": "2-aal-hornmeer_0.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aalsmeer/2-aal-lijnbaankerk.pdf",
+      "pdf_name": "2-aal-lijnbaankerk.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aalsmeer/2-aal-raadhuis_0.pdf",
+      "pdf_name": "2-aal-raadhuis_0.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aalsmeer/2-aal-yuverta.pdf",
+      "pdf_name": "2-aal-yuverta.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aalsmeer/2-aal-baken.pdf",
+      "pdf_name": "2-aal-baken.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aalsmeer/aalsmeer_pv_gsb_tk25_zh.pdf",
+      "pdf_name": "aalsmeer_pv_gsb_tk25_zh.pdf"
+    }
+  ],
+  "Aalten": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aalten/proces-verbaal_gemeentelijk_stembureau_openbare_zitting_0.pdf",
+      "pdf_name": "proces-verbaal_gemeentelijk_stembureau_openbare_zitting_0.pdf"
+    }
+  ],
+  "Achtkarspelen": [],
+  "Alblasserdam": [],
   "Albrandswaard": [],
   "Alkmaar": [],
   "Almelo": [],
@@ -16,153 +198,26 @@
   "Alphen aan den Rijn": [],
   "Alphen-Chaam": [],
   "Altena": [],
-  "Ameland": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Ameland/model_na31-1_provinciale_staten_2_1.pdf",
-      "pdf_name": "model_na31-1_provinciale_staten_2_1.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Ameland/procesverbaal_na_31-1_gsb_ep24.pdf",
-      "pdf_name": "procesverbaal_na_31-1_gsb_ep24.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Ameland/0060_procsverbaal_na_31-1_gsb_tk23.pdf",
-      "pdf_name": "0060_procsverbaal_na_31-1_gsb_tk23.pdf"
-    }
-  ],
-  "Amersfoort": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Amersfoort/amersfoort-pv-na31-gsb-tk25-30okt2025.pdf",
-      "pdf_name": "amersfoort-pv-na31-gsb-tk25-30okt2025.pdf"
-    }
-  ],
+  "Ameland": [],
+  "Amersfoort": [],
   "Amstelveen": [],
   "Amsterdam": [],
-  "Apeldoorn": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Apeldoorn/Apeldoorn_uitslag_Na31-2_TK25.pdf",
-      "pdf_name": "Apeldoorn_uitslag_Na31-2_TK25.pdf"
-    }
-  ],
-  "Arnhem": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Arnhem/Bijlage-N31-2-Overgetypte-meldingen-proces-verbaal-model-N-10-2-punt-6-en-7.pdf",
-      "pdf_name": "Bijlage-N31-2-Overgetypte-meldingen-proces-verbaal-model-N-10-2-punt-6-en-7.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Arnhem/Bijlage-N31-2-Overgetypte-meldingen-proces-verbaal-model-N-10-2-punt-6-en-7-zwartgemaakt.pdf",
-      "pdf_name": "Bijlage-N31-2-Overgetypte-meldingen-proces-verbaal-model-N-10-2-punt-6-en-7-zwartgemaakt.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Arnhem/Model_Na31-2_GSB_Arnhem.pdf",
-      "pdf_name": "Model_Na31-2_GSB_Arnhem.pdf"
-    }
-  ],
+  "Apeldoorn": [],
+  "Arnhem": [],
   "Assen": [],
-  "Asten": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/PV_NA_31-2_incl_bijlage_1.pdf",
-      "pdf_name": "PV_NA_31-2_incl_bijlage_1.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/PV_Na31-2_incl_bijlage_1.pdf",
-      "pdf_name": "PV_Na31-2_incl_bijlage_1.pdf"
-    }
-  ],
+  "Asten": [],
   "Baarle-Nassau": [],
   "Baarn": [],
   "Barendrecht": [],
   "Barneveld": [],
   "Beek": [],
   "Beekdaelen": [],
-  "Beesel": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Beesel/na31-1-procesverbaal-gemeentelijk-stembureau-ws.pdf",
-      "pdf_name": "na31-1-procesverbaal-gemeentelijk-stembureau-ws.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Beesel/na31-1-procesverbaal-gemeentelijk-stembureau-ps.pdf",
-      "pdf_name": "na31-1-procesverbaal-gemeentelijk-stembureau-ps.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Beesel/na31-1-proces-verbaal-tk2025-gemeentelijk-stembureau.pdf",
-      "pdf_name": "na31-1-proces-verbaal-tk2025-gemeentelijk-stembureau.pdf"
-    }
-  ],
+  "Beesel": [],
   "Berg en Dal": [],
   "Bergeijk": [],
   "Bergen (L)": [],
   "Berkelland": [],
-  "Bernheze": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bernheze/model-na31-2-uitkomsten-per-stembureau-nummer-7.pdf",
-      "pdf_name": "model-na31-2-uitkomsten-per-stembureau-nummer-7.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bernheze/model-na31-2-uitkomsten-per-stembureau-nummer-6.pdf",
-      "pdf_name": "model-na31-2-uitkomsten-per-stembureau-nummer-6.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bernheze/model-na31-2-uitkomsten-per-stembureau-nummer-4.pdf",
-      "pdf_name": "model-na31-2-uitkomsten-per-stembureau-nummer-4.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bernheze/model-na31-2-uitkomsten-per-stembureau-nummer-5.pdf",
-      "pdf_name": "model-na31-2-uitkomsten-per-stembureau-nummer-5.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bernheze/model-na31-2-uitkomsten-per-stembureau-nummer-1.pdf",
-      "pdf_name": "model-na31-2-uitkomsten-per-stembureau-nummer-1.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bernheze/model_na31-2.pdf",
-      "pdf_name": "model_na31-2.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bernheze/model-na31-2-uitkomsten-per-stembureau-nummer-2.pdf",
-      "pdf_name": "model-na31-2-uitkomsten-per-stembureau-nummer-2.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bernheze/model-na31-2-uitkomsten-per-stembureau-nummer-3.pdf",
-      "pdf_name": "model-na31-2-uitkomsten-per-stembureau-nummer-3.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bernheze/model-na31-2-uitkomsten-per-stembureau-nummer-16.pdf",
-      "pdf_name": "model-na31-2-uitkomsten-per-stembureau-nummer-16.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bernheze/model-na31-2-uitkomsten-per-stembureau-nummer-14.pdf",
-      "pdf_name": "model-na31-2-uitkomsten-per-stembureau-nummer-14.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bernheze/model-na31-2-uitkomsten-per-stembureau-nummer-15.pdf",
-      "pdf_name": "model-na31-2-uitkomsten-per-stembureau-nummer-15.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bernheze/model-na31-2-uitkomsten-per-stembureau-nummer-8.pdf",
-      "pdf_name": "model-na31-2-uitkomsten-per-stembureau-nummer-8.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bernheze/model-na31-2-uitkomsten-per-stembureau-nummer-11.pdf",
-      "pdf_name": "model-na31-2-uitkomsten-per-stembureau-nummer-11.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bernheze/model-na31-2-uitkomsten-per-stembureau-nummer-10.pdf",
-      "pdf_name": "model-na31-2-uitkomsten-per-stembureau-nummer-10.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bernheze/model-na31-2-uitkomsten-per-stembureau-nummer-9.pdf",
-      "pdf_name": "model-na31-2-uitkomsten-per-stembureau-nummer-9.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bernheze/model-na31-2-uitkomsten-per-stembureau-nummer-12.pdf",
-      "pdf_name": "model-na31-2-uitkomsten-per-stembureau-nummer-12.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bernheze/model-na31-2-uitkomsten-per-stembureau-nummer-13.pdf",
-      "pdf_name": "model-na31-2-uitkomsten-per-stembureau-nummer-13.pdf"
-    }
-  ],
+  "Bernheze": [],
   "Best": [],
   "Beuningen": [],
   "Beverwijk": [],
@@ -171,114 +226,15 @@
   "Bloemendaal": [],
   "Bodegraven-Reeuwijk": [],
   "Boekel": [],
-  "Bonaire": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bonaire/Na_31-2_proces-verbaal_SOL_kiescollege.pdf",
-      "pdf_name": "Na_31-2_proces-verbaal_SOL_kiescollege.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bonaire/Na_31-2_proces-verbaal_SOL_eilandsraad.pdf",
-      "pdf_name": "Na_31-2_proces-verbaal_SOL_eilandsraad.pdf"
-    }
-  ],
+  "Bonaire": [],
   "Borger-Odoorn": [],
   "Borne": [],
   "Borsele": [],
   "Boxtel": [],
-  "Breda": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Breda/312a Uitslag Stembureau 312 De Verbinding TK25.pdf",
-      "pdf_name": "312a Uitslag Stembureau 312 De Verbinding TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Breda/311 PV Stembureau 311 Gymzaal Twaalfbunder TK25.pdf",
-      "pdf_name": "311 PV Stembureau 311 Gymzaal Twaalfbunder TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Breda/312 PV Stembureau 312 De Verbinding TK25.pdf",
-      "pdf_name": "312 PV Stembureau 312 De Verbinding TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Breda/pv-gsb-31oktober2025-model-na31-2.pdf",
-      "pdf_name": "pv-gsb-31oktober2025-model-na31-2.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Breda/311a Uitslag Stembureau 311 Gymzaal Twaalfbunder TK25.pdf",
-      "pdf_name": "311a Uitslag Stembureau 311 Gymzaal Twaalfbunder TK25.pdf"
-    }
-  ],
+  "Breda": [],
   "Bronckhorst": [],
   "Brummen": [],
-  "Brunssum": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Brunssum/Na 31-2 17. Microhal 2.pdf",
-      "pdf_name": "Na 31-2 17. Microhal 2.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Brunssum/Na 31-2 11. Sporthal Brede School Treebeek 2.pdf",
-      "pdf_name": "Na 31-2 11. Sporthal Brede School Treebeek 2.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Brunssum/Na 31-2 10. Sporthal Brede School Treebeek 1.pdf",
-      "pdf_name": "Na 31-2 10. Sporthal Brede School Treebeek 1.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Brunssum/Na 31-2 09. Verenigingegebouw De Burcht.pdf",
-      "pdf_name": "Na 31-2 09. Verenigingegebouw De Burcht.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Brunssum/Na 31-2 01. Brikke Oave.pdf",
-      "pdf_name": "Na 31-2 01. Brikke Oave.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Brunssum/Na 31-2 02. Gymzaal voorm. BS Rumpenerhof.pdf",
-      "pdf_name": "Na 31-2 02. Gymzaal voorm. BS Rumpenerhof.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Brunssum/Na 31-2 03. Kantine BSM Limburgia.pdf",
-      "pdf_name": "Na 31-2 03. Kantine BSM Limburgia.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Brunssum/Na 31-2 05. Gymzaal BMV Bronsheim 2.pdf",
-      "pdf_name": "Na 31-2 05. Gymzaal BMV Bronsheim 2.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Brunssum/Na 31-2 16. Microhal 1.pdf",
-      "pdf_name": "Na 31-2 16. Microhal 1.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Brunssum/Na 31-2 08. Brede School Langeberg.pdf",
-      "pdf_name": "Na 31-2 08. Brede School Langeberg.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Brunssum/Na 31-2 04. Gymzaal BMV Bronsheim 1.pdf",
-      "pdf_name": "Na 31-2 04. Gymzaal BMV Bronsheim 1.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Brunssum/Na 31-2 13. BS De Caleidoscoop.pdf",
-      "pdf_name": "Na 31-2 13. BS De Caleidoscoop.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Brunssum/Na 31-2 07. Sporthal Rumpen 2.pdf",
-      "pdf_name": "Na 31-2 07. Sporthal Rumpen 2.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Brunssum/Na 31-2 06. Sporthal Rumpen 1.pdf",
-      "pdf_name": "Na 31-2 06. Sporthal Rumpen 1.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Brunssum/Na 31-2 12. MFA Emma Nova.pdf",
-      "pdf_name": "Na 31-2 12. MFA Emma Nova.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Brunssum/Na 31-2 15. Noorderhuis.pdf",
-      "pdf_name": "Na 31-2 15. Noorderhuis.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Brunssum/Na 31-2 14. Mobiel Stembureau.pdf",
-      "pdf_name": "Na 31-2 14. Mobiel Stembureau.pdf"
-    }
-  ],
+  "Brunssum": [],
   "Bunnik": [],
   "Bunschoten": [],
   "Buren": [],
@@ -288,187 +244,51 @@
   "Cranendonck": [],
   "Culemborg": [],
   "Dalfsen": [],
-  "Dantumadiel": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dantumadiel/proces-verbaal-na-31-2-gemeente-dantumadiel-zh.pdf",
-      "pdf_name": "proces-verbaal-na-31-2-gemeente-dantumadiel-zh.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dantumadiel/procesverbaal20Model20Na31-2.pdf",
-      "pdf_name": "procesverbaal20Model20Na31-2.pdf"
-    }
-  ],
-  "De Bilt": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau_18_Ontmoetingskerk_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31_2_stembureau_18_Ontmoetingskerk_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau_4_VvSo_WVT_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31_2_stembureau_4_VvSo_WVT_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau_5_Woongroen_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31_2_stembureau_5_Woongroen_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau13_OLV_Kerk_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31_2_stembureau13_OLV_Kerk_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau_6_Kunsthuis_Lichtruim_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31_2_stembureau_6_Kunsthuis_Lichtruim_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau_7_Oosterlichtkerk_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31_2_stembureau_7_Oosterlichtkerk_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau_20_De_Groene_Daan_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31_2_stembureau_20_De_Groene_Daan_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau_9_De_Clou_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31_2_stembureau_9_De_Clou_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau_3_Centrumkerk_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31_2_stembureau_3_Centrumkerk_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau_11_DeVoorhof_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31_2_stembureau_11_DeVoorhof_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau_23_De_Koperwiek_bijzonder_stembureau_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31_2_stembureau_23_De_Koperwiek_bijzonder_stembureau_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau_19_RK_Kerk_Maartensdijk_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31_2_stembureau_19_RK_Kerk_Maartensdijk_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau_21_Dorpshuis_Hollandsche_Rading_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31_2_stembureau_21_Dorpshuis_Hollandsche_Rading_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau_16_Verzorgingshuis_de_Bremhorst_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31_2_stembureau_16_Verzorgingshuis_de_Bremhorst_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau_10_Gebouw_Rode_Kruis_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31_2_stembureau_10_Gebouw_Rode_Kruis_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau_17_Dorpshuis_de_Vierstee_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31_2_stembureau_17_Dorpshuis_de_Vierstee_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau_22_Dorpshuis_Westbroek_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31_2_stembureau_22_Dorpshuis_Westbroek_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31-2_stembureau_1_Gemeentehuis_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31-2_stembureau_1_Gemeentehuis_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau_24_Hof_van_De_Bilt_bijzonder_stembureau_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31_2_stembureau_24_Hof_van_De_Bilt_bijzonder_stembureau_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau_12_De_Woudkapel_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31_2_stembureau_12_De_Woudkapel_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Na31-2_inclusief_bijlagen.pdf",
-      "pdf_name": "Na31-2_inclusief_bijlagen.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau_14_Hobbemaflat_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31_2_stembureau_14_Hobbemaflat_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau_8_HF_Witte_Centrum_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31_2_stembureau_8_HF_Witte_Centrum_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau_15_Huize_Het_Oosten_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31_2_stembureau_15_Huize_Het_Oosten_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau_2_brandweer_TK25.pdf",
-      "pdf_name": "Proces_verbaal_Na31_2_stembureau_2_brandweer_TK25.pdf"
-    }
-  ],
+  "Dantumadiel": [],
+  "De Bilt": [],
   "De Fryske Marren": [],
   "De Ronde Venen": [],
-  "De Wolden": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Wolden/Model_Na31-2.pdf",
-      "pdf_name": "Model_Na31-2.pdf"
-    }
-  ],
+  "De Wolden": [],
   "Delft": [],
-  "Den Haag": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Den Haag/pv_6904f1f15be312.86487545.pdf",
-      "pdf_name": "pv_6904f1f15be312.86487545.pdf"
-    }
-  ],
+  "Den Haag": [],
   "Den Helder": [],
-  "Dordrecht": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dordrecht/NA31-1 -ZHT.pdf",
-      "pdf_name": "NA31-1 -ZHT.pdf"
-    }
-  ],
+  "Deurne": [],
+  "Diemen": [],
+  "Dinkelland": [],
+  "Doesburg": [],
+  "Doetinchem": [],
+  "Dongen": [],
+  "Dordrecht": [],
+  "Drechterland": [],
+  "Drimmelen": [],
+  "Dronten": [],
+  "Druten": [],
+  "Duiven": [],
   "Echt-Susteren": [],
   "Edam-Volendam": [],
   "Ede": [],
   "Eemnes": [],
   "Eemsdelta": [],
   "Eersel": [],
-  "Eijsden-Margraten": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/na31-1-corrigendum-na14-2.pdf",
-      "pdf_name": "na31-1-corrigendum-na14-2.pdf"
-    }
-  ],
+  "Eijsden-Margraten": [],
   "Eindhoven": [],
   "Elburg": [],
+  "Emmen": [],
   "Enkhuizen": [],
   "Enschede": [],
   "Epe": [],
+  "Ermelo": [],
   "Etten-Leur": [],
   "Geertruidenberg": [],
-  "Geldrop-Mierlo": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Geldrop-Mierlo/geldrop-mierlo_na_31_1_tk25.pdf",
-      "pdf_name": "geldrop-mierlo_na_31_1_tk25.pdf"
-    }
-  ],
+  "Geldrop-Mierlo": [],
   "Gemert-Bakel": [],
   "Gennep": [],
   "Gilze en Rijen": [],
   "Goeree-Overflakkee": [],
-  "Goirle": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goirle/PV_Gemeentelijk_Stembureau_N31_1.pdf",
-      "pdf_name": "PV_Gemeentelijk_Stembureau_N31_1.pdf"
-    }
-  ],
+  "Goirle": [],
   "Gorinchem": [],
   "Gouda": [],
-  "Haaksbergen": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Haaksbergen/TK2025-Model-Na-31-2-deel-1.pdf",
-      "pdf_name": "TK2025-Model-Na-31-2-deel-1.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Haaksbergen/TK2025-Model-Na-31-2-deel-2.pdf",
-      "pdf_name": "TK2025-Model-Na-31-2-deel-2.pdf"
-    }
-  ],
+  "Haaksbergen": [],
   "Haarlemmermeer": [],
   "Halderberge": [],
   "Hardenberg": [],
@@ -476,19 +296,9 @@
   "IJsselstein": [],
   "Kaag en Braassem": [],
   "Kampen": [],
-  "Kapelle": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Kapelle/proces-verbaal-na-31-1-gsb-zonder-handtekeningen.pdf",
-      "pdf_name": "proces-verbaal-na-31-1-gsb-zonder-handtekeningen.pdf"
-    }
-  ],
+  "Kapelle": [],
   "Katwijk": [],
-  "Kerkrade": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Kerkrade/tk25-gsb-na_31-1.pdf",
-      "pdf_name": "tk25-gsb-na_31-1.pdf"
-    }
-  ],
+  "Kerkrade": [],
   "Koggenland": [],
   "Krimpen aan den IJssel": [],
   "Krimpenerwaard": [],
@@ -499,32 +309,17 @@
   "Lansingerland": [],
   "Laren": [],
   "Maasdriel": [],
-  "Maasgouw": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maasgouw/model_na31-2.pdf",
-      "pdf_name": "model_na31-2.pdf"
-    }
-  ],
+  "Maasgouw": [],
   "Maashorst": [],
   "Maassluis": [],
   "Maastricht": [],
   "Neder-Betuwe": [],
-  "Nederweert": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Nederweert/model_na_31-1_zonder_handtekening_0.pdf",
-      "pdf_name": "model_na_31-1_zonder_handtekening_0.pdf"
-    }
-  ],
+  "Nederweert": [],
   "Nieuwegein": [],
   "Nieuwkoop": [],
   "Nijkerk": [],
   "Oegstgeest": [],
-  "Oirschot": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oirschot/pv_na_31-1_ps_gemeentelijk_stembureau_0.pdf",
-      "pdf_name": "pv_na_31-1_ps_gemeentelijk_stembureau_0.pdf"
-    }
-  ],
+  "Oirschot": [],
   "Oisterwijk": [],
   "Oldambt": [],
   "Oldebroek": [],
@@ -537,24 +332,7 @@
   "Raalte": [],
   "Reimerswaal": [],
   "Renkum": [],
-  "Renswoude": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Renswoude/na_31-1_proces-verbaal_gsb_provinciale_staten_0.pdf",
-      "pdf_name": "na_31-1_proces-verbaal_gsb_provinciale_staten_0.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Renswoude/model_na_31-1_procesverbaal_gsb.pdf",
-      "pdf_name": "model_na_31-1_procesverbaal_gsb.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Renswoude/na_31-1.pdf",
-      "pdf_name": "na_31-1.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Renswoude/model_na_31-1_pv_gsb.pdf",
-      "pdf_name": "model_na_31-1_pv_gsb.pdf"
-    }
-  ],
+  "Renswoude": [],
   "Reusel-De Mierden": [],
   "Rheden": [],
   "Rhenen": [],
@@ -563,119 +341,18 @@
   "Rijswijk": [],
   "Saba": [],
   "Schagen": [],
-  "Scherpenzeel": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Scherpenzeel/model_na_31-1_pv_gemeentelijk_stembureau_-_zonder_handtekening.pdf",
-      "pdf_name": "model_na_31-1_pv_gemeentelijk_stembureau_-_zonder_handtekening.pdf"
-    }
-  ],
+  "Scherpenzeel": [],
   "Terneuzen": [],
-  "Terschelling": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Terschelling/0093_gemeentelijk_stembureau_na_31-1_tk23.pdf",
-      "pdf_name": "0093_gemeentelijk_stembureau_na_31-1_tk23.pdf"
-    }
-  ],
+  "Terschelling": [],
   "Texel": [],
   "Teylingen": [],
   "Tiel": [],
   "Uitgeest": [],
   "Uithoorn": [],
-  "Urk": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Urk/ps-ws2023_-_na_31-1_ws.pdf",
-      "pdf_name": "ps-ws2023_-_na_31-1_ws.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Urk/ps-ws2023_-_na_31-1_ps.pdf",
-      "pdf_name": "ps-ws2023_-_na_31-1_ps.pdf"
-    }
-  ],
-  "Vaals": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Vaals/pv-na-31-2-tk2023-vaals.pdf",
-      "pdf_name": "pv-na-31-2-tk2023-vaals.pdf"
-    }
-  ],
+  "Urk": [],
+  "Vaals": [],
   "Valkenburg aan de Geul": [],
-  "Valkenswaard": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Valkenswaard/na31-2_bijlage_2_p-v_stembureau_10_mariakerk.pdf",
-      "pdf_name": "na31-2_bijlage_2_p-v_stembureau_10_mariakerk.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Valkenswaard/na31-2_bijlage_2_p-v_stembureau_5_gymnastiekzaal_t_gegraaf.pdf",
-      "pdf_name": "na31-2_bijlage_2_p-v_stembureau_5_gymnastiekzaal_t_gegraaf.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Valkenswaard/na31-2_bijlage_2_p-v_stembureau_9_gemeentehuis.pdf",
-      "pdf_name": "na31-2_bijlage_2_p-v_stembureau_9_gemeentehuis.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Valkenswaard/na31-2_bijlage_2_p-v_stembureau_3_speeltuin_geenhoven.pdf",
-      "pdf_name": "na31-2_bijlage_2_p-v_stembureau_3_speeltuin_geenhoven.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Valkenswaard/na31-2_bijlage_2_p-v_stembureau_16_het_dorpshuis.pdf",
-      "pdf_name": "na31-2_bijlage_2_p-v_stembureau_16_het_dorpshuis.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Valkenswaard/na_31-1_p-v_gemeentelijk_stembureau_provinciale_staten.pdf",
-      "pdf_name": "na_31-1_p-v_gemeentelijk_stembureau_provinciale_staten.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Valkenswaard/na31-2_bijlage_2_p-v_stembureau_17_ontmoetingskerk.pdf",
-      "pdf_name": "na31-2_bijlage_2_p-v_stembureau_17_ontmoetingskerk.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Valkenswaard/na31-2_bijlage_2_p-v_stembureau_8_gemeentehuis.pdf",
-      "pdf_name": "na31-2_bijlage_2_p-v_stembureau_8_gemeentehuis.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Valkenswaard/na31-2_bijlage_2_p-v_stembureau_2_buurtgebouw_de_horizon.pdf",
-      "pdf_name": "na31-2_bijlage_2_p-v_stembureau_2_buurtgebouw_de_horizon.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Valkenswaard/na31-2_bijlage_2_p-v_stembureau_4_ontmoetingscentrum_de_zoete_inval.pdf",
-      "pdf_name": "na31-2_bijlage_2_p-v_stembureau_4_ontmoetingscentrum_de_zoete_inval.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Valkenswaard/na31-2_bijlage_2_p-v_stembureau_6_carolus_gebouw.pdf",
-      "pdf_name": "na31-2_bijlage_2_p-v_stembureau_6_carolus_gebouw.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Valkenswaard/na31-2_bijlage_2_p-v_stembureau_7_scholengemeenschap_were_di.pdf",
-      "pdf_name": "na31-2_bijlage_2_p-v_stembureau_7_scholengemeenschap_were_di.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Valkenswaard/na31-2_bijlage_2_p-v_stembureau_1_zorgcentrum_kempenhof.pdf",
-      "pdf_name": "na31-2_bijlage_2_p-v_stembureau_1_zorgcentrum_kempenhof.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Valkenswaard/na31-2_bijlage_2_p-v_stembureau_14_ons_dommels_plekske.pdf",
-      "pdf_name": "na31-2_bijlage_2_p-v_stembureau_14_ons_dommels_plekske.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Valkenswaard/na31-2_bijlage_2_p-v_stembureau_13_sporthal_de_belleman.pdf",
-      "pdf_name": "na31-2_bijlage_2_p-v_stembureau_13_sporthal_de_belleman.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Valkenswaard/na31-2_bijlage_2_p-v_stembureau_11_h._martinuskerk.pdf",
-      "pdf_name": "na31-2_bijlage_2_p-v_stembureau_11_h._martinuskerk.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Valkenswaard/na31-2_bijlage_2_p-v_stembureau_15_clubgebouw_t_heike_v.v._dommelen.pdf",
-      "pdf_name": "na31-2_bijlage_2_p-v_stembureau_15_clubgebouw_t_heike_v.v._dommelen.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Valkenswaard/na31-2_bijlage_2_p-v_stembureau_12_dommelsche_bierbrouwerij.pdf",
-      "pdf_name": "na31-2_bijlage_2_p-v_stembureau_12_dommelsche_bierbrouwerij.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Valkenswaard/na31-2_inclusief_bijlage_1_gemeentelijk_stembureau.pdf",
-      "pdf_name": "na31-2_inclusief_bijlage_1_gemeentelijk_stembureau.pdf"
-    }
-  ],
+  "Valkenswaard": [],
   "Veendam": [],
   "Veenendaal": [],
   "Waadhoeke": [],

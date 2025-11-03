@@ -26,6 +26,8 @@ import json
 import os
 import re
 from urllib.parse import urlparse, unquote
+import shutil
+import subprocess
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "pdf_scraper_input")
 INDEX_PATH = os.path.join(DATA_DIR, "municipality_pdfs_index.json")
@@ -103,6 +105,17 @@ def read_first_page_text(local_url: str) -> str | None:
     u = urlparse(local_url)
     path = unquote(u.path)
     # macOS paths uit file:// hebben een leading slash al; unquote is al gedaan in norm_text
+    # Snelste pad: gebruik 'pdftotext' als beschikbaar om alleen pagina 1 te extraheren
+    try:
+        exe = shutil.which("pdftotext")
+        if exe and os.path.exists(path):
+            res = subprocess.run([exe, "-q", "-f", "1", "-l", "1", "-layout", path, "-"],
+                                 check=False, capture_output=True)
+            txt = res.stdout.decode("utf-8", errors="ignore").strip()
+            if txt:
+                return txt
+    except Exception:
+        pass
     try:
         # Probeer PyPDF2 – lichtgewicht en vaak aanwezig
         from PyPDF2 import PdfReader  # type: ignore
@@ -189,6 +202,7 @@ def run(argv: list[str] | None = None) -> int:
     ap.add_argument("--dry-run", action="store_true", help="Geen wijzigingen schrijven, alleen tonen")
     ap.add_argument("--refresh", action="store_true", help="Herclassificeer alles (niet alleen ontbrekende modellen)")
     ap.add_argument("--model31", action="store_true", help="Genereer gemeente_model_31.json met alle gemeenten en hun Na 31-(-1/-2) PDFs")
+    ap.add_argument("--limit", type=int, default=None, help="Beperk in --model31 modus het aantal te scannen gemeenten (voor snelle test)")
     args = ap.parse_args(argv)
 
     data = load_index(INDEX_PATH)
@@ -202,10 +216,20 @@ def run(argv: list[str] | None = None) -> int:
             return 2
 
         # Verzamel gemeentenamen uit submappen van ./pdfs en sorteer A→Z
-        municipalities = [d for d in os.listdir(base_pdfs) if os.path.isdir(os.path.join(base_pdfs, d))]
-        municipalities.sort(key=lambda s: s.lower())
+        municipalities_all = [d for d in os.listdir(base_pdfs) if os.path.isdir(os.path.join(base_pdfs, d))]
+        municipalities_all.sort(key=lambda s: s.lower())
 
-        out = {}
+        # Optioneel beperken tot expliciet gevraagde gemeenten of een limiet (alleen voor verwerking)
+        if args.only:
+            only = set(args.only)
+            to_process = [m for m in municipalities_all if m in only]
+        else:
+            to_process = list(municipalities_all)
+        if args.limit is not None:
+            to_process = to_process[: max(0, int(args.limit))]
+
+        # Voor de output vermelden we wel alle gemeenten (maar verwerken er evt. minder)
+        out = {name: [] for name in municipalities_all}
 
         # 1) Snelle pass: alleen bestandsnaam matchen (case-insensitive)
         #    Herken: 'na31' en 'n31' (met -, _ of spatie) en specifiek '31-1' / '31-2'
@@ -215,7 +239,7 @@ def run(argv: list[str] | None = None) -> int:
         rx_31_1 = re.compile(r"31[\s_\-–—]*1(?!\d)", re.I)
         rx_31_2 = re.compile(r"31[\s_\-–—]*2(?!\d)", re.I)
 
-        for name in municipalities:
+        for name in to_process:
             gdir = os.path.join(base_pdfs, name)
             coll: list[dict] = []
             try:
@@ -232,8 +256,8 @@ def run(argv: list[str] | None = None) -> int:
                     })
             out[name] = coll
 
-        # 2) Voor gemeenten zonder resultaten: OCR op kop van eerste pagina
-        empties = [n for n, lst in out.items() if not lst]
+        # 2) Voor gemeenten zonder resultaten: snelle tekstextractie van pagina 1, daarna pas OCR op kop
+        empties = [n for n in to_process if not out.get(n)]
         if empties:
             for name in empties:
                 gdir = os.path.join(base_pdfs, name)
@@ -245,24 +269,33 @@ def run(argv: list[str] | None = None) -> int:
                 for fn in files:
                     abspath = os.path.join(gdir, fn)
                     loc = f"file://{abspath}"
-                    # OCR-alleen, zoals gevraagd
-                    txt = ocr_header_text(loc) or ""
-                    if not txt:
-                        continue
-                    # Variant eerst proberen, daarna generiek Na31
-                    hit = detect_from_strings(txt)
-                    if hit in ("Na 31-1", "Na 31-2") or RX["Na31"].search(txt):
-                        coll.append({
-                            "pdf_name": fn,
-                            "local_url": loc,
-                        })
+                    # 2a. tekst van pagina 1 (snel)
+                    t = read_first_page_text(loc) or ""
+                    if t:
+                        hit = detect_from_strings(t)
+                        if hit in ("Na 31-1", "Na 31-2") or RX["Na31"].search(t):
+                            coll.append({
+                                "pdf_name": fn,
+                                "local_url": loc,
+                            })
+                            continue
+                    else:
+                        # 2b. OCR van kop (alleen als tekst niets oplevert)
+                        txt = ocr_header_text(loc) or ""
+                        if txt:
+                            hit = detect_from_strings(txt)
+                            if hit in ("Na 31-1", "Na 31-2") or RX["Na31"].search(txt):
+                                coll.append({
+                                    "pdf_name": fn,
+                                    "local_url": loc,
+                                })
                 if coll:
                     out[name] = coll
 
         output_path = os.path.join(os.path.dirname(__file__), "gemeente_model_31.json")
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(out, f, ensure_ascii=False, indent=2, sort_keys=True)
-        print(f"[model31] Geschreven: {output_path} (gemeenten={len(out)})")
+        print(f"[model31] Geschreven: {output_path} (gemeenten={len(out)}, verwerkt={len(to_process)})")
         return 0
 
     # Subset bepalen
