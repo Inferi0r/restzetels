@@ -16,6 +16,7 @@ Detectiestrategie (snel → robuust):
 
 Gebruik:
   python3 detect_model.py [--only MUNICIPALITY ...] [--dry-run] [--refresh]
+  python3 detect_model.py --model31
 
 """
 from __future__ import annotations
@@ -187,10 +188,82 @@ def run(argv: list[str] | None = None) -> int:
     ap.add_argument("--only", nargs='*', help="Beperk tot deze gemeenten (namen)")
     ap.add_argument("--dry-run", action="store_true", help="Geen wijzigingen schrijven, alleen tonen")
     ap.add_argument("--refresh", action="store_true", help="Herclassificeer alles (niet alleen ontbrekende modellen)")
+    ap.add_argument("--model31", action="store_true", help="Genereer gemeente_model_31.json met alle gemeenten en hun Na 31-(-1/-2) PDFs")
     args = ap.parse_args(argv)
 
     data = load_index(INDEX_PATH)
     results = data.get("results", [])
+
+    # Speciale modus: export van alle gemeenten (afgeleid uit ./pdfs) met hun Model 31 (-1 of -2)
+    if args.model31:
+        base_pdfs = os.path.join(os.path.dirname(__file__), "pdfs")
+        if not os.path.isdir(base_pdfs):
+            print(f"[model31] Map niet gevonden: {base_pdfs}")
+            return 2
+
+        # Verzamel gemeentenamen uit submappen van ./pdfs en sorteer A→Z
+        municipalities = [d for d in os.listdir(base_pdfs) if os.path.isdir(os.path.join(base_pdfs, d))]
+        municipalities.sort(key=lambda s: s.lower())
+
+        out = {}
+
+        # 1) Snelle pass: alleen bestandsnaam matchen (case-insensitive)
+        #    Herken: 'na31' en 'n31' (met -, _ of spatie) en specifiek '31-1' / '31-2'
+        # 'na31' moet als los 'na' voorkomen (geen deel van bv. 'Altena')
+        rx_na31 = re.compile(r"(?<![A-Za-z])na[\s_\-–—]*31(?!\d)", re.I)
+        rx_n31  = re.compile(r"(?<![A-Za-z])n[\s_\-–—]*31(?!\d)", re.I)
+        rx_31_1 = re.compile(r"31[\s_\-–—]*1(?!\d)", re.I)
+        rx_31_2 = re.compile(r"31[\s_\-–—]*2(?!\d)", re.I)
+
+        for name in municipalities:
+            gdir = os.path.join(base_pdfs, name)
+            coll: list[dict] = []
+            try:
+                files = [f for f in os.listdir(gdir) if f.lower().endswith(".pdf")]
+            except Exception:
+                files = []
+            for fn in files:
+                s = fn
+                if rx_na31.search(s) or rx_n31.search(s) or rx_31_1.search(s) or rx_31_2.search(s):
+                    abspath = os.path.join(gdir, fn)
+                    coll.append({
+                        "pdf_name": fn,
+                        "local_url": f"file://{abspath}",
+                    })
+            out[name] = coll
+
+        # 2) Voor gemeenten zonder resultaten: OCR op kop van eerste pagina
+        empties = [n for n, lst in out.items() if not lst]
+        if empties:
+            for name in empties:
+                gdir = os.path.join(base_pdfs, name)
+                try:
+                    files = [f for f in os.listdir(gdir) if f.lower().endswith(".pdf")]
+                except Exception:
+                    files = []
+                coll: list[dict] = []
+                for fn in files:
+                    abspath = os.path.join(gdir, fn)
+                    loc = f"file://{abspath}"
+                    # OCR-alleen, zoals gevraagd
+                    txt = ocr_header_text(loc) or ""
+                    if not txt:
+                        continue
+                    # Variant eerst proberen, daarna generiek Na31
+                    hit = detect_from_strings(txt)
+                    if hit in ("Na 31-1", "Na 31-2") or RX["Na31"].search(txt):
+                        coll.append({
+                            "pdf_name": fn,
+                            "local_url": loc,
+                        })
+                if coll:
+                    out[name] = coll
+
+        output_path = os.path.join(os.path.dirname(__file__), "gemeente_model_31.json")
+        with open(output_path, "w", encoding="utf-8") as f:
+            json.dump(out, f, ensure_ascii=False, indent=2, sort_keys=True)
+        print(f"[model31] Geschreven: {output_path} (gemeenten={len(out)})")
+        return 0
 
     # Subset bepalen
     if args.only:

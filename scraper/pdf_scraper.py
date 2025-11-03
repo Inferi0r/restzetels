@@ -100,36 +100,51 @@ def _is_current_year_pdf(label: str) -> bool:
         return True
     s = label.lower()
 
-    # Explicitly skip Waterschapsdocumenten regardless of year
+    # Explicitly skip non-TK election types regardless of year
     if "waterschap" in s:
         return False
-
-    # Explicit bans by compact election codes regardless of year, e.g. ep24, ps23, ws25
-    if re.search(r"\bep\s*[-_]?\s*(\d{2})\b", s):
+    if "gemeenteraad" in s or "gemeenteraads" in s:
         return False
-    if re.search(r"\bps\s*[-_]?\s*(\d{2})\b", s):
+    if "provinciale" in s:
         return False
-    if re.search(r"\bws\s*[-_]?\s*(\d{2})\b", s):
+    if "europees" in s or "europees parlement" in s:
         return False
 
-    # Reject other elections by explicit codes/words + year
+    # Explicit bans by compact election codes regardless of year, e.g. ep24, ps23, ws25, gr22
+    if re.search(r"(ep)\s*[-_]?\s*(\d{2})(?!\d)", s):
+        return False
+    if re.search(r"(ps)\s*[-_]?\s*(\d{2})(?!\d)", s):
+        return False
+    if re.search(r"(ws)\s*[-_]?\s*(\d{2})(?!\d)", s):
+        return False
+    if re.search(r"(gr)\s*[-_]?\s*(\d{2})(?!\d)", s):
+        return False
+
+    # Reject other elections by explicit codes/words + year (including glued forms without separators)
     # EP (Europees Parlement)
-    if re.search(r"\b(ep|europees|europees\s+parlement)\s*20(\d{2})\b", s):
-        y = int(re.search(r"\b(ep|europees|europees\s+parlement)\s*20(\d{2})\b", s).group(2))
+    if re.search(r"(ep|europees|europees\s+parlement)\s*[-_]?\s*20(\d{2})(?!\d)", s):
+        y = int(re.search(r"(ep|europees|europees\s+parlement)\s*[-_]?\s*20(\d{2})(?!\d)", s).group(2))
         return (2000 + y) == TARGET_YEAR_FULL
     # PS (Provinciale Staten)
-    if re.search(r"\bps\s*20(\d{2})\b", s):
-        y = int(re.search(r"\bps\s*20(\d{2})\b", s).group(1))
-        return (2000 + y) == TARGET_YEAR_FULL
+    if re.search(r"ps\s*[-_]?\s*20(\d{2})(?!\d)", s):
+        return False
     # WS (Waterschapsverkiezingen) — always banned
-    if re.search(r"\bws\s*20(\d{2})\b", s):
+    if re.search(r"ws\s*[-_]?\s*20(\d{2})(?!\d)", s):
+        return False
+    # GR (Gemeenteraad) — banned regardless of year
+    if re.search(r"gr\s*[-_]?\s*20(\d{2})(?!\d)", s):
         return False
 
     # TKyy code
-    m = re.search(r"\btk\s*([0-9]{2})\b", s, re.I)
+    m = re.search(r"tk\s*[-_]?\s*([0-9]{2})(?!\d)", s, re.I)
     if m:
         yy = int(m.group(1))
         return yy == TARGET_YEAR_SHORT
+    # TKYYYY code (e.g., tk2023 vs tk2025)
+    m = re.search(r"tk\s*[-_]?\s*20(\d{2})(?!\d)", s, re.I)
+    if m:
+        yy = int(m.group(1))
+        return (2000 + yy) == TARGET_YEAR_FULL
 
     # "tweede kamer YYYY" — accept only 2025
     m = re.search(r"\btweede\s+kamer\s+20(\d{2})\b", s)
@@ -162,6 +177,16 @@ def _is_current_year_pdf(label: str) -> bool:
             else:
                 if y != TARGET_YEAR_SHORT:
                     return False
+        except Exception:
+            continue
+
+    # Date-like patterns without separators: YYYYMMDD
+    for dm in re.finditer(r"(?<!\d)(20\d{2})(\d{2})(\d{2})(?!\d)", s):
+        year = dm.group(1)
+        try:
+            y = int(year)
+            if y != TARGET_YEAR_FULL:
+                return False
         except Exception:
             continue
 
@@ -199,8 +224,15 @@ def _is_relevant_nav_target(label: str) -> bool:
     for ym in re.finditer(r"\b(20\d{2})\b", s):
         if int(ym.group(1)) != TARGET_YEAR_FULL:
             return False
+    # Also skip contiguous YYYYMMDD with year != 2025
+    m2 = re.search(r"(?<!\d)(20\d{2})(\d{2})(\d{2})(?!\d)", s)
+    if m2 and int(m2.group(1)) != TARGET_YEAR_FULL:
+        return False
     # Skip EP/PS/WS short codes (e.g., ep24, ps23, ws25)
-    if re.search(r"\b(ep|ps|ws)\s*[-_]?\s*(\d{2})\b", s):
+    if re.search(r"(ep|ps|ws|gr)\s*[-_]?\s*(\d{2})(?!\d)", s):
+        return False
+    # Skip EP/PS/WS/GR with 4-digit years glued
+    if re.search(r"(ep|ps|ws|gr)\s*[-_]?\s*20(\d{2})(?!\d)", s):
         return False
     return True
 
@@ -378,48 +410,118 @@ def download_generic_filehub(muni: str, hub_url: str, max_click_folders: int = 3
                 page.wait_for_load_state('networkidle', timeout=60000)
             except Exception:
                 pass
-            # click into a handful of likely folders if present
-            folder_links = page.locator('a[href]')
-            # Collect up to N folder-like anchors by text
-            selected_idxs = []
-            n = min(folder_links.count(), 200)
-            for i in range(n):
-                el = folder_links.nth(i)
-                try:
-                    txt = (el.inner_text() or "").strip()
-                except Exception:
-                    txt = ""
-                href = el.get_attribute('href') or ''
-                low = (txt + " " + href).lower()
-                if KEY_FOLDER_RE.search(low) and not low.endswith('.pdf'):
-                    selected_idxs.append(i)
-                if len(selected_idxs) >= max_click_folders:
-                    break
-            # Visit each selected folder-like link
-            for idx in selected_idxs:
-                try:
-                    with page.expect_navigation(timeout=10000):
-                        folder_links.nth(idx).click()
-                    page.wait_for_timeout(800)
-                except Exception:
-                    pass
+            # Click into 1-3 obvious folder-like anchors by text
+            try:
+                candidates = [
+                    'a:has-text("proces")',
+                    'a:has-text("verbaal")',
+                    'a:has-text("stembur")',
+                    'a:has-text("document")',
+                    'a:has-text("documenten")',
+                    'a:has-text("bestanden")',
+                    'a:has-text("files")',
+                ]
+                clicked = 0
+                for sel in candidates:
+                    if clicked >= max_click_folders:
+                        break
+                    loc = page.locator(sel)
+                    if loc.count() > 0:
+                        try:
+                            with page.expect_navigation(timeout=15000):
+                                loc.first.click()
+                            try:
+                                page.wait_for_load_state('networkidle', timeout=10000)
+                            except Exception:
+                                pass
+                            page.wait_for_timeout(1500)
+                            clicked += 1
+                        except Exception:
+                            pass
+            except Exception:
+                pass
 
             # From the current page, attempt to harvest both direct PDFs and file view pages
             def try_downloads_from_current() -> None:
                 nonlocal downloaded
                 if downloaded >= max_downloads:
                     return
-                anchors = page.locator('a[href]')
-                m = min(anchors.count(), 300)
-                for i in range(m):
+                anchors = page.query_selector_all('a[href]')
+                for el in anchors[:300]:
                     if downloaded >= max_downloads:
                         break
-                    el = anchors.nth(i)
-                    href = el.get_attribute('href') or ''
-                    txt = (el.inner_text() or "").strip()
+                    try:
+                        href = el.get_attribute('href') or ''
+                    except Exception:
+                        continue
+                    try:
+                        txt = (el.inner_text() or "").strip()
+                    except Exception:
+                        txt = ''
                     full = urljoin(page.url, href)
                     low = (href + " " + txt).lower()
                     if not href:
+                        continue
+                    # Likely file view pages — try to open and click Download first
+                    if '/files/view/' in href or '/document/view/' in href or ('/view/' in href and GENERIC_FILEHUB_KEY_RE.search(low)):
+                        view = urljoin(page.url, href)
+                        if view in visited:
+                            continue
+                        visited.add(view)
+                        view_page = None
+                        try:
+                            # open in same tab; some portals auto-trigger a download on page load
+                            try:
+                                with page.expect_download(timeout=20000) as dlctx:
+                                    page.goto(view, wait_until='domcontentloaded', timeout=20000)
+                                dl = dlctx.value
+                                saved = save_if_new(dl)
+                                if saved:
+                                    items.append({
+                                        "remote_url": view,
+                                        "local_url": "file://" + os.path.abspath(saved),
+                                        "pdf_name": os.path.basename(saved),
+                                        "text": os.path.basename(saved),
+                                        "from": hub_url,
+                                        "score": 2,
+                                    })
+                                    downloaded += 1
+                                    continue
+                            except Exception:
+                                # Fallback: look for explicit download controls
+                                page.goto(view, wait_until='domcontentloaded', timeout=20000)
+                                view_page = page
+                                try:
+                                    view_page.wait_for_load_state('networkidle', timeout=10000)
+                                except Exception:
+                                    pass
+                                dl_btns = view_page.locator('a[download], a:has-text("Download"), button:has-text("Download"), a[href*="/download"]')
+                                if dl_btns.count() > 0:
+                                    try:
+                                        with view_page.expect_download(timeout=30000) as dlctx:
+                                            dl_btns.first.click()
+                                        dl = dlctx.value
+                                        saved = save_if_new(dl)
+                                        if saved:
+                                            items.append({
+                                                "remote_url": view,
+                                                "local_url": "file://" + os.path.abspath(saved),
+                                                "pdf_name": os.path.basename(saved),
+                                                "text": os.path.basename(saved),
+                                                "from": hub_url,
+                                                "score": 2,
+                                            })
+                                            downloaded += 1
+                                    except Exception:
+                                        pass
+                        except Exception:
+                            pass
+                        finally:
+                            # navigate back to hub listing to continue
+                            try:
+                                page.goto(hub_url, wait_until='domcontentloaded', timeout=15000)
+                            except Exception:
+                                pass
                         continue
                     # Direct PDF links
                     if href.lower().endswith('.pdf') or '.pdf' in urlparse(full).path.lower():
@@ -436,53 +538,6 @@ def download_generic_filehub(muni: str, hub_url: str, max_click_folders: int = 3
                             })
                             downloaded += 1
                         continue
-                    # Likely file view pages — try to open and click Download
-                    if GENERIC_FILEHUB_KEY_RE.search(low) or '/files/view/' in href or '/download/' in href:
-                        view = urljoin(page.url, href)
-                        if view in visited:
-                            continue
-                        visited.add(view)
-                        try:
-                            with context.expect_page() as pg_ctx:
-                                el.click(button='left')
-                            view_page = pg_ctx.value
-                        except Exception:
-                            # fallback: open in same page
-                            view_page = page
-                            try:
-                                view_page.goto(view, wait_until='domcontentloaded', timeout=20000)
-                            except Exception:
-                                continue
-                        try:
-                            try:
-                                view_page.wait_for_load_state('networkidle', timeout=10000)
-                            except Exception:
-                                pass
-                            dl_btns = view_page.locator('a[download], a:has-text("Download"), button:has-text("Download"), a[href*="/download"]')
-                            if dl_btns.count() > 0:
-                                try:
-                                    with view_page.expect_download(timeout=30000) as dlctx:
-                                        dl_btns.first.click()
-                                    dl = dlctx.value
-                                    saved = save_if_new(dl)
-                                    if saved:
-                                        items.append({
-                                            "remote_url": view,
-                                            "local_url": "file://" + os.path.abspath(saved),
-                                            "pdf_name": os.path.basename(saved),
-                                            "text": os.path.basename(saved),
-                                            "from": page.url,
-                                            "score": 2,
-                                        })
-                                        downloaded += 1
-                                except Exception:
-                                    pass
-                        finally:
-                            try:
-                                if view_page is not page:
-                                    view_page.close()
-                            except Exception:
-                                pass
 
             try_downloads_from_current()
         finally:
@@ -675,7 +730,8 @@ def collect_mediafiler_albums(name: str, extra: dict) -> list[str]:
     KEY_RE = re.compile(r"verkiez|uitslag|proces|stembur|tweede.*kamer|n10|na\s*31|na31|mediafiler", re.I)
     for s in seeds[:5]:
         try:
-            html, base = fetch_html(s, allow_render=False)
+            dyn = ("amsterdam.nl" in s) or ("gemeente.emmen.nl" in s) or ("ermelo.nl" in s)
+            html, base = fetch_html(s, allow_render=dyn)
             if not html:
                 continue
             albums += find_mediafiler_albums_from_html(html, base)
@@ -698,7 +754,8 @@ def collect_mediafiler_albums(name: str, extra: dict) -> list[str]:
         seenp.add(u); dedup.append(u)
     for p in dedup[:15]:
         try:
-            html2, base2 = fetch_html(p, allow_render=False)
+            dyn = ("amsterdam.nl" in p) or ("gemeente.emmen.nl" in p) or ("ermelo.nl" in p)
+            html2, base2 = fetch_html(p, allow_render=dyn)
             if not html2:
                 continue
             albums += find_mediafiler_albums_from_html(html2, base2)
@@ -831,20 +888,38 @@ def download_stackstorage_share(muni: str, share_url: str) -> list[dict]:
                     })
         except Exception as e:
             print(f"[stackstorage] Download-all failed for {share_url}: {e}")
-        # Fallback: per-file download anchors (skip banned before saving)
+        # Fallback: per-file download anchors (skip banned and duplicates before clicking/saving)
         anchors = page.locator('a[download], a[data-action="download"], a:has-text("Download")')
         n = anchors.count()
         for i in range(n):
             try:
+                a = anchors.nth(i)
+                cand = (a.get_attribute('download') or '').strip()
+                if not cand:
+                    # Fallback to link text as rough guess
+                    try:
+                        cand = (a.inner_text(timeout=1000) or '').strip()
+                    except Exception:
+                        cand = ''
+                if cand and not cand.lower().endswith('.pdf'):
+                    cand = cand + '.pdf'
+                if cand:
+                    if not _is_current_year_pdf(cand):
+                        continue
+                    dest_guess = os.path.join(out_dir, sanitize_filename(cand))
+                    if os.path.exists(dest_guess):
+                        # Already present; skip clicking to avoid duplicate download
+                        continue
                 with page.expect_download(timeout=45000) as dl_ctx:
-                    anchors.nth(i).click()
+                    a.click()
                 dl = dl_ctx.value
-                # Early check on suggested filename, skip saving if banned
+                # Early check on suggested filename, skip saving if banned or duplicate
                 sf = dl.suggested_filename or 'download.pdf'
                 if not sf.lower().endswith('.pdf'):
                     sf = sf + '.pdf'
                 if not _is_current_year_pdf(sf):
-                    # Do not persist banned file
+                    continue
+                if os.path.exists(os.path.join(out_dir, sanitize_filename(sf))):
                     continue
                 for path in save_download(dl):
                     fname = os.path.basename(path)
@@ -874,7 +949,8 @@ def collect_stackstorage_shares(name: str, extra: dict) -> list[str]:
     KEY_RE = re.compile(r"verkiez|uitslag|proces|stembur|tweede.*kamer|stackstorage", re.I)
     for s in seeds[:5]:
         try:
-            html, base = fetch_html(s, allow_render=False)
+            dyn = ("amsterdam.nl" in s) or ("gemeente.emmen.nl" in s) or ("ermelo.nl" in s)
+            html, base = fetch_html(s, allow_render=dyn)
             if not html:
                 continue
             shares += find_stackstorage_shares_from_html(html, base)
@@ -896,7 +972,8 @@ def collect_stackstorage_shares(name: str, extra: dict) -> list[str]:
         seenp.add(u); dedup.append(u)
     for p in dedup[:15]:
         try:
-            html2, base2 = fetch_html(p, allow_render=False)
+            dyn = ("amsterdam.nl" in p) or ("gemeente.emmen.nl" in p) or ("ermelo.nl" in p)
+            html2, base2 = fetch_html(p, allow_render=dyn)
             if not html2:
                 continue
             shares += find_stackstorage_shares_from_html(html2, base2)
@@ -948,6 +1025,16 @@ def collect_generic_filehubs(name: str, extra: dict, allow_external: bool = Fals
     for u in hubs:
         if u in seen:
             continue
+        # Skip same-page fragment anchors like '#documenten-...' on the start page
+        try:
+            st = start or ""
+            if st and '#' in u:
+                from urllib.parse import urlparse
+                up = urlparse(u); sp = urlparse(st)
+                if up.netloc == sp.netloc and up.path == sp.path:
+                    continue
+        except Exception:
+            pass
         seen.add(u)
         out.append(u)
     return out[:12]
@@ -1187,14 +1274,25 @@ def is_blocked_html(text: str) -> bool:
 
 
 def fetch_html(url: str, allow_render: bool = False) -> tuple[str, str] | tuple[None, None]:
-    """Try static GET; if blocked and allow_render, try Playwright."""
+    """Fetch page HTML.
+    - If allow_render=True and Playwright is available, prefer a rendered page (client-side content).
+    - Otherwise, try a static GET and fall back to rendered if blocked/empty.
+    """
+    if allow_render and PLAYWRIGHT_AVAILABLE:
+        try:
+            html, final = render_page_content(url)
+            if html:
+                return html, final
+        except Exception:
+            # fall through to static
+            pass
     try:
         r = http_get(url)
         if r.status_code == 200 and not is_blocked_html(r.text):
             return r.text, r.url
     except Exception:
         pass
-    if allow_render and PLAYWRIGHT_AVAILABLE:
+    if PLAYWRIGHT_AVAILABLE and allow_render:
         try:
             html, final = render_page_content(url)
             return html, final
@@ -1208,32 +1306,29 @@ def collect_pdfs_for_municipality(name: str, extra: dict, force_render: bool = F
     start = get_start_url(name)
     seeds = list(extra.get(name, [])) if extra else []
     if start:
-        # geef verified start prioriteit
         seeds.insert(0, start)
     # fetch seeds and extract pdfs + discover a small set of relevant internal pages
     discover_pages_scored: list[tuple[str,int]] = []
     KEY_RE = re.compile(r"verkiez|uitslag|proces|stembur|tweede.*kamer|n10|na\s*31|na31|model", re.I)
-    for s in seeds[:5]:  # cap seeds processed
+    for s in seeds[:5]:
         try:
-            allow_render = ("amsterdam.nl" in s) or force_render
+            allow_render = ("amsterdam.nl" in s) or ("gemeente.emmen.nl" in s) or ("ermelo.nl" in s) or force_render
             html, base = fetch_html(s, allow_render=allow_render)
             if not html:
                 continue
             urls += extract_pdf_links(html, base)
-            # collect relevant internal pages for 1-hop expansion
             soup = BeautifulSoup(html, "html.parser")
             pu = urlparse(base)
-            base = f"{pu.scheme}://{pu.netloc}"
+            base0 = f"{pu.scheme}://{pu.netloc}"
             for a in soup.select("a[href]"):
-                href = a.get("href"); full = urljoin(base, href or "")
+                href = a.get("href"); full = urljoin(base0, href or "")
                 if not full or ".pdf" in urlparse(full).path.lower():
                     continue
-                if urlparse(full).netloc != pu.netloc or not full.startswith(base):
+                if urlparse(full).netloc != pu.netloc or not full.startswith(base0):
                     continue
-                txt = a.get_text(" ", strip=True) or ""
-                low = (full + " " + txt).lower()
-                if (KEY_RE.search(full) or KEY_RE.search(txt)) and _is_relevant_nav_target(low):
+                if KEY_RE.search(full) or KEY_RE.search(a.get_text(" ", strip=True) or ""):
                     score = 0
+                    low = (full + " " + (a.get_text(" ", strip=True) or "")).lower()
                     if "voorlopige" in low:
                         score += 6
                     if "documenten" in low or "document" in low:
@@ -1252,23 +1347,20 @@ def collect_pdfs_for_municipality(name: str, extra: dict, force_render: bool = F
         if u in seenp:
             continue
         seenp.add(u)
-        if _is_relevant_nav_target(u):
-            dedup.append(u)
-        for p in dedup[:20]:
-            try:
-                allow_render = ("amsterdam.nl" in p) or force_render
-                html2, base2 = fetch_html(p, allow_render=allow_render)
-                if not html2:
-                    continue
-                urls += extract_pdf_links(html2, base2)
-            except Exception:
-                pass
+        dedup.append(u)
+    for p in dedup[:20]:
+        try:
+            allow_render = ("amsterdam.nl" in p) or force_render
+            html2, base2 = fetch_html(p, allow_render=allow_render)
+            if not html2:
+                continue
+            urls += extract_pdf_links(html2, base2)
+        except Exception:
+            pass
     # quick site search as a fallback if still nothing
     if not urls and start:
         for p in quick_site_search(start):
             try:
-                if not _is_relevant_nav_target(p):
-                    continue
                 allow_render = ("amsterdam.nl" in p) or force_render
                 html3, base3 = fetch_html(p, allow_render=allow_render)
                 if not html3:
@@ -1689,6 +1781,24 @@ def run(argv: list[str] | None = None) -> int:
                 if "stackstorage.com" in u:
                     # handled via Playwright already
                     continue
+                # Pre-skip if a file with the intended pdf_name already exists in this municipality dir
+                nm = p.get("pdf_name")
+                if isinstance(nm, str) and nm.strip():
+                    candidate = os.path.join(out_dir, sanitize_filename(nm))
+                    if os.path.exists(candidate):
+                        p["local_url"] = "file://" + os.path.abspath(candidate)
+                        continue
+                else:
+                    # fallback: use URL basename
+                    try:
+                        base = os.path.basename(urlparse(u).path)
+                    except Exception:
+                        base = None
+                    if base:
+                        candidate = os.path.join(out_dir, sanitize_filename(base))
+                        if os.path.exists(candidate):
+                            p["local_url"] = "file://" + os.path.abspath(candidate)
+                            continue
                 dest = download_pdf(u, out_dir)
                 if dest:
                     p["local_url"] = "file://" + os.path.abspath(dest)
