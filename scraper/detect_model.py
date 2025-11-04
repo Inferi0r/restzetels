@@ -366,7 +366,7 @@ def run(argv: list[str] | None = None) -> int:
                 })
             return merged
 
-        # Optioneel bestaande bijlages wegfilteren
+        # Optioneel bestaande bijlages wegfilteren (met inhoudelijke check)
         if args.prune_bijlage:
             for name in (to_process or []):
                 items = out.get(name, [])
@@ -396,6 +396,25 @@ def run(argv: list[str] | None = None) -> int:
                     if not drop:
                         new_items.append(it)
                 out[name] = new_items
+
+        # Altijd: snelle bijlage-prune op bestandsnaam (lichtgewicht), zodat oude bijlage-entries niet blijven hangen
+        for name in (to_process or []):
+            items = out.get(name, [])
+            if not isinstance(items, list):
+                continue
+            quick = []
+            for it in items:
+                if not isinstance(it, dict):
+                    continue
+                s = ((it or {}).get("pdf_name") or "").lower()
+                is_bij = (
+                    ("bijlage" in s)
+                    or (("uitkomsten" in s or "uitkomst" in s or "uitslag" in s) and "stembureau" in s)
+                    or ("nummer" in s and "stembureau" in s)
+                )
+                if not is_bij:
+                    quick.append(it)
+            out[name] = quick
 
         # Extra: verwijder bestaande items die géén Na 31-1/Na 31-2 zijn (bv. N10-2 stembureau-PV's die eerder per ongeluk zijn toegevoegd)
         # Dit maakt 'empties' vrij voor een verse inhoudelijke scan.

@@ -336,7 +336,12 @@
       "pdf_name": "Castricum_uitkomst_TK25.pdf"
     }
   ],
-  "Coevorden": [],
+  "Coevorden": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Coevorden/coevordenuitslagtk25pdf.pdf",
+      "pdf_name": "coevordenuitslagtk25pdf.pdf"
+    }
+  ],
   "Cranendonck": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Cranendonck/cranendonck_uitkomst_tk25.pdf",
@@ -385,21 +390,36 @@
       "pdf_name": "Model_Na31-2.pdf"
     }
   ],
-  "Delft": [],
+  "Delft": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Delft/Delft_GSB_TK25_webversie.pdf",
+      "pdf_name": "Delft_GSB_TK25_webversie.pdf"
+    }
+  ],
   "Den Haag": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Den Haag/pv_6904f1f15be312.86487545.pdf",
       "pdf_name": "pv_6904f1f15be312.86487545.pdf"
     }
   ],
-  "Den Helder": [],
+  "Den Helder": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Den Helder/Den Helder uitkomst TK25 (pdf).pdf",
+      "pdf_name": "Den Helder uitkomst TK25 (pdf).pdf"
+    }
+  ],
   "Deurne": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_uitkomst_tk25_31-2_zonder_handtekening_1.pdf",
       "pdf_name": "deurne_uitkomst_tk25_31-2_zonder_handtekening_1.pdf"
     }
   ],
-  "Deventer": [],
+  "Deventer": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deventer/Tweede_Kamer_verkiezing_-_2025-10-29_-_Proces-verbaal_centrale_stemopneming.pdf",
+      "pdf_name": "Tweede_Kamer_verkiezing_-_2025-10-29_-_Proces-verbaal_centrale_stemopneming.pdf"
+    }
+  ],
   "Diemen": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Diemen/Diemen_uitkomst_TK25.pdf",
@@ -772,10 +792,6 @@
   ],
   "Hilversum": [
     {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Hilversum/sb31_1.pdf",
-      "pdf_name": "sb31_1.pdf"
-    },
-    {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Hilversum/Model_Na31-2.pdf",
       "pdf_name": "Model_Na31-2.pdf"
     }
@@ -909,7 +925,12 @@
       "pdf_name": "Laren_Uitkomst_TK25.pdf"
     }
   ],
-  "Leeuwarden": [],
+  "Leeuwarden": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leeuwarden/Leeuwarden_Uitkomst_TK25.pdf",
+      "pdf_name": "Leeuwarden_Uitkomst_TK25.pdf"
+    }
+  ],
   "Leiden": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leiden/Leiden_Uitkomst_PV-met-bijlage-1_TK_PO.pdf",
@@ -936,108 +957,8 @@
   ],
   "Leudal": [
     {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_1._de_bombardon_0.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_1._de_bombardon_0.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_20._het_glas_atelier.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_20._het_glas_atelier.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_101._de_bombardon.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_101._de_bombardon.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_6._trefcentrum_kelpen-oler.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_6._trefcentrum_kelpen-oler.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_5._meeting_point_de_nassaurie.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_5._meeting_point_de_nassaurie.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_11._gemeenschapshuis_de_haammaeker.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_11._gemeenschapshuis_de_haammaeker.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_21._cc_de_mortel.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_21._cc_de_mortel.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_13._trefcentrum_aldenghoor.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_13._trefcentrum_aldenghoor.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_12._parochiecentrum_haelen.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_12._parochiecentrum_haelen.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_14._de_postkoets.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_14._de_postkoets.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_16._gemeenschapshuis_de_roffert.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_16._gemeenschapshuis_de_roffert.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_2._st._ursula_heythuysen.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_2._st._ursula_heythuysen.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_9._gemeenschapshuis_de_klokkestoel.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_9._gemeenschapshuis_de_klokkestoel.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_15._hotel-restaurant_de_abdij.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_15._hotel-restaurant_de_abdij.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_19._bmv_ell.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_19._bmv_ell.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_18._parochiehuis_hunsel.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_18._parochiehuis_hunsel.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_23._mobiel_stembureau.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_23._mobiel_stembureau.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_7._gemeenschapshuis_la_rochelle.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_7._gemeenschapshuis_la_rochelle.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_22._ons_dorpshuis.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_22._ons_dorpshuis.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_8._gemeenschapshuis_kloeasterhoaf.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_8._gemeenschapshuis_kloeasterhoaf.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_3._eetcafe_de_tump.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_3._eetcafe_de_tump.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_4._gemeenschapshuis_baexheimerhof.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_4._gemeenschapshuis_baexheimerhof.pdf"
-    },
-    {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/na_31-2_proces_verbaal_gemeentelijk_stembureau_0.pdf",
       "pdf_name": "na_31-2_proces_verbaal_gemeentelijk_stembureau_0.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_104._gemeenschapshuis_baexheimerhof.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_104._gemeenschapshuis_baexheimerhof.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_10._handbooglokaal_vriendschap_en_strijd.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_10._handbooglokaal_vriendschap_en_strijd.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/tk2025_29102025_na31-2_17._gemeenschapshuis_st._servaas.pdf",
-      "pdf_name": "tk2025_29102025_na31-2_17._gemeenschapshuis_st._servaas.pdf"
     }
   ],
   "Leusden": [
@@ -1050,10 +971,6 @@
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Lingewaard/lingewaard_uitkomst_tk25.pdf",
       "pdf_name": "lingewaard_uitkomst_tk25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Lingewaard/na_31-1_gemeente_lingewaard_einduitslag.pdf",
-      "pdf_name": "na_31-1_gemeente_lingewaard_einduitslag.pdf"
     }
   ],
   "Lisse": [
@@ -1108,8 +1025,18 @@
       "pdf_name": "proces-verbaal_van_een_gemeentelijk_stembureau_(centrale__stemopneming)__822574.pdf"
     }
   ],
-  "Meierijstad": [],
-  "Meppel": [],
+  "Meierijstad": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Meierijstad/Meierijstad_uitkomst_TK25.pdf",
+      "pdf_name": "Meierijstad_uitkomst_TK25.pdf"
+    }
+  ],
+  "Meppel": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Meppel/Meppel_Uitslag_TK25.pdf",
+      "pdf_name": "Meppel_Uitslag_TK25.pdf"
+    }
+  ],
   "Middelburg": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Middelburg/Uitslag20gemeentelijke20stembureau20gemeente20Middelburg20TK25.pdf",
@@ -1169,10 +1096,25 @@
       "pdf_name": "251030_proces-verbaal_van_een_gemeentelijk_stembureau_centrale_stemopneming.pdf"
     }
   ],
-  "Nijmegen": [],
+  "Nijmegen": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Nijmegen/20251030_0268_TK25_Na31-2.pdf",
+      "pdf_name": "20251030_0268_TK25_Na31-2.pdf"
+    }
+  ],
   "Nissewaard": [],
-  "Noardeast-Fryslân": [],
-  "Noord-Beveland": [],
+  "Noardeast-Fryslân": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Noardeast-Fryslân/noardeastfryslan_uitkomst_tk25.pdf",
+      "pdf_name": "noardeastfryslan_uitkomst_tk25.pdf"
+    }
+  ],
+  "Noord-Beveland": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Noord-Beveland/na31-1-pv-gsb.pdf",
+      "pdf_name": "na31-1-pv-gsb.pdf"
+    }
+  ],
   "Noordenveld": [],
   "Noordoostpolder": [],
   "Noordwijk": [],
@@ -1333,15 +1275,30 @@
       "pdf_name": "rijswijk_uitkomst_tk25.pdf"
     }
   ],
-  "Roerdalen": [],
-  "Roermond": [],
+  "Roerdalen": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Roerdalen/roerdalen_uitkomst_tk25.pdf",
+      "pdf_name": "roerdalen_uitkomst_tk25.pdf"
+    }
+  ],
+  "Roermond": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Roermond/drive_1a5q7oS24dQa00BpVJlf-XvgzUG6ZIIJR.pdf",
+      "pdf_name": "drive_1a5q7oS24dQa00BpVJlf-XvgzUG6ZIIJR.pdf"
+    }
+  ],
   "Roosendaal": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Roosendaal/tk-2025-na-31-1-proces-verbaal-gemeentelijk-stembureau.PDF",
       "pdf_name": "tk-2025-na-31-1-proces-verbaal-gemeentelijk-stembureau.PDF"
     }
   ],
-  "Rotterdam": [],
+  "Rotterdam": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Rotterdam/tweede_kamerverkiezing__2025_procesverbaal_gemeentelijk_stembureau_rotterdam_model_na_312.pdf",
+      "pdf_name": "tweede_kamerverkiezing__2025_procesverbaal_gemeentelijk_stembureau_rotterdam_model_na_312.pdf"
+    }
+  ],
   "Rozendaal": [],
   "Rucphen": [],
   "Saba": [
@@ -1503,11 +1460,31 @@
   "Weert": [],
   "West Betuwe": [],
   "West Maas en Waal": [],
-  "Westerkwartier": [],
+  "Westerkwartier": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Westerkwartier/westerkwartier_uitkomst_tk25_zh_0.pdf",
+      "pdf_name": "westerkwartier_uitkomst_tk25_zh_0.pdf"
+    }
+  ],
   "Westerveld": [],
-  "Westervoort": [],
-  "Westerwolde": [],
-  "Westland": [],
+  "Westervoort": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Westervoort/pdf bestand Westervoort_uitkomst_TK25.pdf 20.56 MB.pdf",
+      "pdf_name": "pdf bestand Westervoort_uitkomst_TK25.pdf 20.56 MB.pdf"
+    }
+  ],
+  "Westerwolde": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Westerwolde/na-31-2-zonder-handtekeningen.pdf",
+      "pdf_name": "na-31-2-zonder-handtekeningen.pdf"
+    }
+  ],
+  "Westland": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Westland/proces-verbaal_Na31-2.pdf",
+      "pdf_name": "proces-verbaal_Na31-2.pdf"
+    }
+  ],
   "Weststellingwerf": [],
   "Wierden": [],
   "Wijchen": [],
@@ -1571,14 +1548,6 @@
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/s-Hertogenbosch/Proces-verbaal-N31-2_s-Hertogenbosch_TK25.pdf",
       "pdf_name": "Proces-verbaal-N31-2_s-Hertogenbosch_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/s-Hertogenbosch/312_Gereformeerde-Kerk-s-Hertogenbosch_TK25.pdf",
-      "pdf_name": "312_Gereformeerde-Kerk-s-Hertogenbosch_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/s-Hertogenbosch/312_Gereformeerde-Kerk-s-Hertogenbosch_TK25_eerste_telling.pdf",
-      "pdf_name": "312_Gereformeerde-Kerk-s-Hertogenbosch_TK25_eerste_telling.pdf"
     }
   ]
 }

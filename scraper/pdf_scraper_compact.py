@@ -37,7 +37,8 @@ PLAYWRIGHT_AVAILABLE = True
 
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "pdf_scraper_input")
-OUT_BASE = os.path.join(os.getcwd(), "pdfs")
+# Save under scraper/pdfs/<Gemeente>
+OUT_BASE = os.path.join(os.path.dirname(__file__), "pdfs")
 INDEX_PATH = os.path.join(DATA_DIR, "municipality_pdfs_index.json")
 
 
@@ -179,7 +180,7 @@ def _probe_pdf_exists(url: str) -> bool:
 
 
 PDF_PAGE_HINT_RE = re.compile(r"verkiez|uitslag|proces|verbaal|stembur|tweede.*kamer|tweede-?kamerverkiez|document|download|n10|na\s*31", re.I)
-OVERVIEW_HINT_RE = re.compile(r"overzicht|proces[-\s]?verbaal|processen[-\s]?verbaal|kies\s+stembureau|stadsdeel|hoofdstembureau|gemeentelijk\s+stembureau|pv\s*overzicht|stemmings|uitslag\s*per\s*stembureau", re.I)
+OVERVIEW_HINT_RE = re.compile(r"overzicht|proces[-\s]?verbaal|processen[-\s]?verbaal|kies\s+stembureau|stadsdeel|hoofdstembureau|gemeentelijk\s+stembureau|pv\s*overzicht|stemmings|uitslag\s*per\s*stembureau|uitslag\s*verkiez", re.I)
 
 
 def simple_extract_pdf_links(html: str, base_url: str) -> list[dict]:
@@ -207,10 +208,12 @@ def simple_extract_pdf_links(html: str, base_url: str) -> list[dict]:
             (".pdf" in path_lower)
             or ("/file/" in path_lower)
             or ("/download" in path_lower)
+            or ("/bestand/" in path_lower)
             or ("dsresource" in full_url.lower())
             or ("type=pdf" in full_url.lower())
             or ("pdf" in hint)
             or ("proces" in hint and "verbaal" in hint)
+            or ("per partij" in hint) or ("per kandidaat" in hint)
         )
         if not looks_like_pdf:
             continue
@@ -234,6 +237,41 @@ def simple_extract_pdf_links(html: str, base_url: str) -> list[dict]:
             "text": txt,
             "from": base_url,
             "score": 1,
+        })
+    return out
+
+
+CENTRAL_PV_TEXT_RE = re.compile(r"proces.*verbaal.*(centrale.*stemo|gemeentelijk\s+stembureau|na\s*31)", re.I)
+
+
+def extract_central_pv_links(html: str, base_url: str) -> list[dict]:
+    """Zoek expliciet naar het gemeentelijk PV (Na31) op een pagina via ankertest.
+    Dit is een gerichte aanvulling naast simple_extract_pdf_links.
+    """
+    out: list[dict] = []
+    seen: set[str] = set()
+    s = BeautifulSoup(html or "", "html.parser")
+    for a in s.select('a[href]'):
+        href = a.get('href') or ''
+        full = urljoin(base_url, href)
+        if not full.lower().endswith('.pdf'):
+            continue
+        txt = (a.get_text(' ', strip=True) or '')
+        if not CENTRAL_PV_TEXT_RE.search(txt):
+            continue
+        if full in seen:
+            continue
+        seen.add(full)
+        name = os.path.basename(urlparse(full).path) or 'document.pdf'
+        if not _is_current_year_pdf(name + ' ' + txt + ' ' + full):
+            continue
+        out.append({
+            'remote_url': full,
+            'local_url': None,
+            'pdf_name': name,
+            'text': txt or name,
+            'from': base_url,
+            'score': 3,
         })
     return out
 
@@ -352,6 +390,11 @@ def probe_well_known_pages(start_url: str) -> list[str]:
         return []
     candidates = [
         "/verkiezingen",
+        # Gemeentelijke structuur (o.a. Deventer) dichtbij de top zodat ze in de slice vallen
+        "/bestuur-en-organisatie/verkiezingen",
+        "/bestuur-en-organisatie/verkiezingen/uitslagen-verkiezing",
+        "/bestuur-en-organisatie/verkiezingen/uitslagen-verkiezing-tweede-kamer",
+        "/bestuur-en-organisatie/verkiezingen/processen-verbaal",
         "/tweede-kamerverkiezingen",
         "/tweede-kamerverkiezing",
         "/verkiezingsuitslag",
@@ -361,6 +404,9 @@ def probe_well_known_pages(start_url: str) -> list[str]:
         "/bestanden",
         "/downloads",
         "/zo-is-er-gestemd",
+        "/tweedekamerverkiezingen2025/",
+        "/tweedekamerverkiezingen2025/uitslag_verkiezingen/",
+        "/verkiezingen/uitslag-verkiezingen/",
     ]
     out: list[str] = []
     seen: set[str] = set()
@@ -370,7 +416,7 @@ def probe_well_known_pages(start_url: str) -> list[str]:
             continue
         seen.add(u)
         out.append(u)
-    return out[:10]
+    return out[:16]
 
 
 def probe_fileadmin_paths(start_url: str) -> list[str]:
@@ -465,7 +511,7 @@ def download_pv_overview_page(muni: str, overview_url: str, max_items: int = 300
             for e in direct:
                 u = e.get('remote_url')
                 if not u: continue
-                dest = stream_download(u, out_dir, e.get('pdf_name') or e.get('text'))
+                dest = stream_download(u, out_dir)
                 if dest:
                     e['local_url'] = 'file://' + os.path.abspath(dest)
                     items.append(e)
@@ -492,7 +538,7 @@ def download_pv_overview_page(muni: str, overview_url: str, max_items: int = 300
                             full_url = urljoin(page.url, val)
                             if not _is_current_year_pdf(full_url + ' ' + lab):
                                 continue
-                            dest = stream_download(full_url, out_dir, lab)
+                            dest = stream_download(full_url, out_dir)
                             if dest:
                                 items.append({'remote_url': full_url, 'local_url': 'file://' + os.path.abspath(dest), 'pdf_name': os.path.basename(dest), 'text': lab or os.path.basename(dest), 'from': overview_url, 'score': 2})
                                 if len(items) >= max_items:
@@ -509,7 +555,7 @@ def download_pv_overview_page(muni: str, overview_url: str, max_items: int = 300
                                 if not u: continue
                                 if any(it.get('remote_url') == u for it in items):
                                     continue
-                                dest = stream_download(u, out_dir, e.get('pdf_name') or e.get('text'))
+                                dest = stream_download(u, out_dir)
                                 if dest:
                                     e['local_url'] = 'file://' + os.path.abspath(dest)
                                     items.append(e)
@@ -738,7 +784,25 @@ def fetch_html(url: str, allow_render: bool = False) -> Tuple[str | None, str | 
     try:
         r = http_get(url)
         if r.status_code == 200:
-            return r.text, r.url
+            html, final = r.text, r.url
+            # Handle simple META refresh to another URL (common on subdomains like verkiezingen.*)
+            try:
+                from bs4 import BeautifulSoup as _BS
+                soup = _BS(html or "", 'html.parser')
+                meta = soup.select_one('meta[http-equiv="refresh" i]')
+                if meta:
+                    content = meta.get('content') or meta.get('CONTENT') or ''
+                    if content and 'URL=' in content:
+                        target = content.split('URL=', 1)[1].strip().strip('"').strip("'")
+                        if target:
+                            import requests as _rq
+                            to = urljoin(final, target)
+                            rr = _rq.get(to, headers={"User-Agent": "restzetels-compact/0.1"}, timeout=20, allow_redirects=True)
+                            rr.raise_for_status()
+                            return rr.text, rr.url
+            except Exception:
+                pass
+            return html, final
     except Exception:
         pass
     if allow_render:
@@ -752,6 +816,23 @@ def fetch_html(url: str, allow_render: bool = False) -> Tuple[str | None, str | 
                 page.goto(url, wait_until="domcontentloaded", timeout=60000)
                 try:
                     page.wait_for_load_state("networkidle", timeout=60000)
+                except Exception:
+                    pass
+                # Follow META refresh if present
+                try:
+                    meta = page.locator('meta[http-equiv="refresh" i]')
+                    if meta.count() > 0:
+                        content = meta.first.get_attribute('content') or ''
+                        if content and 'URL=' in content:
+                            target = content.split('URL=', 1)[1].strip().strip('"').strip("'")
+                            if target:
+                                from urllib.parse import urljoin as _uj
+                                to = _uj(page.url, target)
+                                page.goto(to, wait_until='domcontentloaded', timeout=60000)
+                                try:
+                                    page.wait_for_load_state('networkidle', timeout=15000)
+                                except Exception:
+                                    pass
                 except Exception:
                     pass
                 html = page.content(); final = page.url
@@ -1260,6 +1341,13 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
         return []
     # 1) startpagina: parseer anchors, volg alleen gevonden links (geen speculative slugs)
     html, base = fetch_html(start, allow_render=False)
+    # Robuustheid: als de startpagina niet statisch laadt, probeer 1x met rendering
+    if not html:
+        h_try, b_try = fetch_html(start, allow_render=True)
+        if h_try:
+            html, base = h_try, b_try
+    if base is None:
+        base = start
     found_place = False
     if html:
         s = BeautifulSoup(html, 'html.parser')
@@ -1306,6 +1394,8 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
             except Exception:
                 continue
 
+        
+
         # 1a.1) Compact probe van veelgebruikte paden onder dezelfde host
         if (len(found) < 5) and (not found_place):
             for u in probe_well_known_pages(start)[:8]:
@@ -1315,6 +1405,10 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
                         hP, bP = fetch_html(u, allow_render=True)
                     if not hP:
                         continue
+                    # Specifieke jacht op gemeentelijk PV (Na31) links op deze pagina
+                    central = extract_central_pv_links(hP, bP)
+                    if central:
+                        found.extend(central)
                     # Kijk of deze pagina zelf een overzicht is
                     try:
                         ovP = find_overview_pages_from_html(hP, bP)
@@ -1379,6 +1473,66 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
                     found.append({'remote_url': u, 'local_url': None, 'pdf_name': nm or 'document.pdf', 'text': nm or 'document.pdf', 'from': u, 'score': 1})
                 if len(sibs) >= 5:
                     found_place = True
+
+        # Rescue: als start-HTML ontbrak, probeer alsnog well-known paden te scannen
+        if (not html) and (len(found) < 5) and (not found_place):
+            for u in probe_well_known_pages(start)[:8]:
+                try:
+                    hP, bP = fetch_html(u, allow_render=False)
+                    if not hP:
+                        hP, bP = fetch_html(u, allow_render=True)
+                    if not hP:
+                        continue
+                    # Specifieke jacht op gemeentelijk PV (Na31) links op deze pagina
+                    central = extract_central_pv_links(hP, bP)
+                    if central:
+                        found.extend(central)
+                    # Kijk of deze pagina zelf een overzicht is
+                    try:
+                        ovP = find_overview_pages_from_html(hP, bP)
+                    except Exception:
+                        ovP = []
+                    used_ovP = False
+                    for ov in ovP[:2]:
+                        try:
+                            its = download_pv_overview_page(name, ov)
+                            if its:
+                                found.extend(its)
+                                found_place = True
+                                used_ovP = True
+                                break
+                        except Exception:
+                            continue
+                    if used_ovP:
+                        break
+                    # Directe PDF-anchors
+                    epsP = simple_extract_pdf_links(hP, bP)
+                    if (not epsP) and (("dsresource" in (hP or '').lower()) or ("type=pdf" in (hP or '').lower())):
+                        try:
+                            import re as _re
+                            ds = []
+                            for m in _re.finditer(r'(?:href|data-href|data-url)="([^"\s]*dsresource[^"\s]+)"', hP, _re.I):
+                                ds.append(urljoin(bP, m.group(1)))
+                            seen_local = set()
+                            for du in ds:
+                                if du in seen_local:
+                                    continue
+                                seen_local.add(du)
+                                nm = os.path.basename(urlparse(du).path) or 'document.pdf'
+                                if _is_current_year_pdf(nm + ' ' + du):
+                                    epsP.append({'remote_url': du, 'local_url': None, 'pdf_name': nm, 'text': nm, 'from': bP, 'score': 1})
+                        except Exception:
+                            pass
+                    if epsP:
+                        found.extend(epsP)
+                        if len(epsP) >= 5 or sum(1 for p in epsP if PV_STRONG_HINT_RE.search((p.get('text') or '') + ' ' + (p.get('pdf_name') or ''))) >= 4:
+                            found_place = True
+                            # breek uit rescue-loop
+                            pass
+                    if is_probably_complete(found):
+                        break
+                except Exception:
+                    continue
 
         # 1a.2) Fileadmin-folder probe (compact, beperkt aantal paden)
         if (len(found) < 5) and (not found_place):
@@ -1534,6 +1688,34 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
             seen.add(u)
             h2, b2 = fetch_html(u, allow_render=True)
             if not h2: continue
+            # Speciaal: Google Drive links op deze pagina direct downloaden
+            try:
+                s2 = BeautifulSoup(h2, 'html.parser')
+            except Exception:
+                s2 = None
+            if s2:
+                for a2 in s2.select('a[href]'):
+                    href2 = a2.get('href') or ''
+                    full2 = urljoin(b2, href2)
+                    fid = None
+                    try:
+                        fid = is_gdrive_file(full2)
+                    except Exception:
+                        fid = None
+                    if fid:
+                        di = download_gdrive_file(name, fid, referer_url=full2)
+                        if di:
+                            found.append(di)
+                    else:
+                        fo = None
+                        try:
+                            fo = is_gdrive_folder(full2)
+                        except Exception:
+                            fo = None
+                        if fo:
+                            its = download_gdrive_folder(name, full2)
+                            if its:
+                                found.extend(its)
             # Probeer eerst of dit zelf een PV-overzichtspagina is of linkt naar zo'n pagina
             try:
                 ov2 = find_overview_pages_from_html(h2, b2)
@@ -1578,7 +1760,7 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
                 break
 
         # 1d) laatste redmiddel: sitemap traverseren en PV-overzicht zoeken
-        if (len(found) < 5) and (not found_place):
+        if (not found_place) and (not is_probably_complete(found)):
             try:
                 for sp in discover_via_sitemap(start, max_pages=50):
                     try:
@@ -1599,7 +1781,7 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
             except Exception:
                 pass
         # 1e) beperkte BFS over interne site (alleen als nog weinig gevonden)
-        if (len(found) < 5) and (not found_place):
+        if (not found_place) and (not is_probably_complete(found)):
             try:
                 bfs_pages = 40
                 try:
