@@ -275,9 +275,13 @@ def extract_pdfish_links_probe(html: str, base_url: str) -> list[dict]:
         txt = a.get_text(' ', strip=True) or ''
         hint = (txt + ' ' + href).lower()
         # Strong textual hints
-        if not any(k in hint for k in (
+        tk25_hit = False
+        import re as _re
+        if _re.search(r"\btk\s*25\b|\btk\s*2025\b", hint):
+            tk25_hit = True
+        if not (tk25_hit or any(k in hint for k in (
             'uitkomst', 'proces', 'verbaal', 'stembureau', 'n10', 'na 31', 'na31', 'pv'
-        )):
+        ))):
             continue
         # Avoid obvious non-content URLs
         pl = (urlparse(full).path or '').lower()
@@ -1204,8 +1208,8 @@ def guess_mijnstembureau_urls(name: str) -> list[str]:
     slug = re.sub(r"-+", "-", slug).strip('-')
     # Probeer zowel stembureau- als mijnstembureau- en twee bekende paden
     bases = [
-        f"https://stembureau-{slug}.nl",
         f"https://mijnstembureau-{slug}.nl",
+        f"https://stembureau-{slug}.nl",
     ]
     paths = [
         "/uitslagen/verkiezingen/tk/download-opties",
@@ -1532,23 +1536,26 @@ def download_mijnstembureau_portal(muni: str, page_url: str, max_items: int = 20
             pass
 
         # 0b) Directe anchors: sommige portals hebben statische downloadpagina ('download-opties')
+        #    Pak zowel href als zichtbare linktekst zodat we een nette bestandsnaam kunnen gebruiken.
         try:
-            links = page.eval_on_selector_all('a[href]', 'els => els.map(e => e.href)') or []
+            links = page.eval_on_selector_all('a[href]', 'els => els.map(e => ({href: e.href, text: (e.innerText||"").trim()}))') or []
         except Exception:
             links = []
-        for href in links:
+        for rec in links:
+            href = (rec.get('href') or '').strip()
+            label = (rec.get('text') or '').strip()
             try:
                 u = urljoin(page.url, href)
             except Exception:
                 u = href
-            if not u or not u.lower().endswith('.pdf'):
+            if not u:
                 continue
-            # extra filter op titeltekst indien beschikbaar
-            if not _is_current_year_pdf(u):
+            # accepteer ook endpoints die geen .pdf tonen maar wel pdf respons geven; stream_download checkt content-type
+            if not _is_current_year_pdf(label + ' ' + u):
                 continue
-            dest = stream_download(u, out_dir)
+            dest = stream_download(u, out_dir, suggested_name=(label or None))
             if dest:
-                items.append({'remote_url': u, 'local_url': 'file://' + os.path.abspath(dest), 'pdf_name': os.path.basename(dest), 'text': os.path.basename(dest), 'from': page_url, 'score': 3})
+                items.append({'remote_url': u, 'local_url': 'file://' + os.path.abspath(dest), 'pdf_name': os.path.basename(dest), 'text': label or os.path.basename(dest), 'from': page_url, 'score': 3})
                 if len(items) >= max_items:
                     break
         if len(items) >= max_items:
@@ -1556,7 +1563,9 @@ def download_mijnstembureau_portal(muni: str, page_url: str, max_items: int = 20
         # 0c) Probeer actie-elementen met trefwoorden die vaak de centrale PV/pdf starten
         try:
             keywords = [
-                'Centrale', 'centrale', 'Gemeentelijk stembureau', 'gemeentelijk stembureau',
+                'GSB', 'gsb',
+                'Gemeentelijk stembureau', 'gemeentelijk stembureau',
+                'Centrale', 'centrale', 'centrale stemopneming',
                 'Uitkomst', 'Totale', 'Totaal', 'Download', 'PDF', 'Proces', 'verbaal'
             ]
             # verzamel unieke kandidaten (buttons en anchors) op basis van keyword-match
@@ -1589,7 +1598,7 @@ def download_mijnstembureau_portal(muni: str, page_url: str, max_items: int = 20
                         except Exception:
                             return False
                     try:
-                        with page.expect_response(pred, timeout=15000) as respctx:
+                        with page.expect_response(pred, timeout=60000) as respctx:
                             loc.nth(i).click()
                         resp = respctx.value
                         ct = (resp.headers or {}).get('content-type','').lower()
@@ -1625,10 +1634,11 @@ def download_mijnstembureau_portal(muni: str, page_url: str, max_items: int = 20
                                 pass
                         else:
                             url = resp.url
-                            fname = os.path.basename(_up(url).path) or (label or 'document.pdf')
-                            if not fname.lower().endswith('.pdf'):
-                                fname += '.pdf'
-                            dest = os.path.join(out_dir, sanitize_filename(fname))
+                            # Gebruik label als bestandsnaam indien aanwezig; dit is de nette linktekst op 'download-opties'
+                            fname_base = (label or '').strip() or os.path.basename(_up(url).path) or 'document.pdf'
+                            if not fname_base.lower().endswith('.pdf'):
+                                fname_base += '.pdf'
+                            dest = os.path.join(out_dir, sanitize_filename(fname_base))
                             if not os.path.exists(dest):
                                 with open(dest, 'wb') as f:
                                     f.write(data)
@@ -1723,7 +1733,7 @@ def download_mijnstembureau_portal(muni: str, page_url: str, max_items: int = 20
                 except Exception:
                     return False
             try:
-                with page.expect_response(pred, timeout=45000) as respctx:
+                with page.expect_response(pred, timeout=60000) as respctx:
                     btns.nth(i).click()
                 resp = respctx.value
                 ct = (resp.headers or {}).get('content-type','').lower()
@@ -2425,11 +2435,12 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
             seen.add(u)
             h2, b2 = fetch_html(u, allow_render=True)
             if not h2: continue
-            # Klik-capture (heuristisch) voor pagina's die veel PV's/uitkomst bevatten
+            # Klik-capture (heuristisch) alleen voor portalen (mijnstembureau/stembureau- hosts)
             try:
-                lw = (u or '').lower()
-                if any(k in lw for k in ('/uitslag', '/uitslagen', 'tweede-kamer', 'verkiez')):
-                    cap = click_capture_pdfs(name, u, max_items=120, label_keywords=['TK25','Proces','verbaal','stembureau','Oss','pdf','uitkomst'])
+                from urllib.parse import urlparse as _up
+                host = (_up(u).netloc or '').lower()
+                if ('mijnstembureau' in host) or host.startswith('stembureau-'):
+                    cap = click_capture_pdfs(name, u, max_items=200, label_keywords=['TK25','Proces','verbaal','stembureau','pdf','uitkomst'])
                     if cap:
                         found.extend(cap)
                         if is_probably_complete(found):
@@ -2892,11 +2903,30 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
         return False
     if not _has_central(found):
         try:
-            guess = guess_mijnstembureau_url(name)
-            if is_mijnstembureau_url(guess):
-                its = download_mijnstembureau_portal(name, guess)
+            # Probeer meerdere bekende portalpaden (incl. expliciete TK download-opties)
+            guesses = []
+            try:
+                guesses = guess_mijnstembureau_urls(name)
+            except Exception:
+                pass
+            if not guesses:
+                # fallback op oude enkelvoudige guess
+                try:
+                    from urllib.parse import urlparse
+                    g1 = f"https://mijnstembureau-{re.sub(r'[^a-z0-9-]','-', name.lower()).strip('-')}.nl/uitslagen"
+                    guesses = [g1]
+                except Exception:
+                    guesses = []
+            for g in guesses:
+                if not is_mijnstembureau_url(g):
+                    continue
+                try:
+                    its = download_mijnstembureau_portal(name, g)
+                except Exception:
+                    its = []
                 if its:
                     found.extend(its)
+                    break
         except Exception:
             pass
 
@@ -2918,7 +2948,12 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
         import re as _re
         looks_guid = bool(_re.fullmatch(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", base_no_ext)) or _looks_hashy_basename(base_no_ext)
         if looks_guid or base_no_ext in {"dsresource", "download", "document", "file", "unknown"} or (not sug):
-            sug = p.get('text') or sug or None
+            link_text = (p.get('text') or '').strip()
+            sug = link_text or None
+        # Als de naam nog steeds hash/generic is en er is geen bruikbare linktekst, sla de download over
+        if (sug is None) and (looks_guid or base_no_ext in {"dsresource", "download", "document", "file", "unknown"}):
+            out.append(p)
+            continue
         dest = stream_download(u, out_dir, sug)
         if dest:
             p['local_url'] = 'file://' + os.path.abspath(dest)

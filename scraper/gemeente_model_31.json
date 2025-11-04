@@ -1324,7 +1324,12 @@
       "pdf_name": "0086_totaaluitslag_na31-2.pdf"
     }
   ],
-  "Oss": [],
+  "Oss": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oss/Oss uitkomst TK25.pdf",
+      "pdf_name": "Oss uitkomst TK25.pdf"
+    }
+  ],
   "Oude IJsselstreek": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oude IJsselstreek/gemeentenaam_uitkomst_tk25_aanpassingen.pdf",
@@ -1528,7 +1533,12 @@
     }
   ],
   "Sint Eustatius": [],
-  "Sint-Michielsgestel": [],
+  "Sint-Michielsgestel": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Sint-Michielsgestel/sint-michielsgestel_uitkomst_tk25.pdf",
+      "pdf_name": "sint-michielsgestel_uitkomst_tk25.pdf"
+    }
+  ],
   "Sittard-Geleen": [],
   "Sliedrecht": [
     {
@@ -1818,7 +1828,12 @@
       "pdf_name": "voorne_aan_zee_uitkomst_tk2025_1.pdf"
     }
   ],
-  "Voorschoten": [],
+  "Voorschoten": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voorschoten/scan_nkohabir_2025-10-30-17-24-48.pdf",
+      "pdf_name": "scan_nkohabir_2025-10-30-17-24-48.pdf"
+    }
+  ],
   "Voorst": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voorst/Voorst_uitkomst_Model_Na_31-1_procesverbaal_van_het_GSB.pdf",
@@ -1873,7 +1888,12 @@
       "pdf_name": "pdf bestand waterland_uitkomst_tk25.pdf 20.36 MB.pdf"
     }
   ],
-  "Weert": [],
+  "Weert": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_uitkomst_TK25.pdf",
+      "pdf_name": "Weert_uitkomst_TK25.pdf"
+    }
+  ],
   "West Betuwe": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/West Betuwe/pdf bestand West Betuwe_uitkomst_TK25.pdf 3.07 MB.pdf",
@@ -1954,12 +1974,8 @@
   ],
   "Woensdrecht": [
     {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Woensdrecht/verslag_controleprotocol_gsb_zonder_handtekening.pdf",
-      "pdf_name": "verslag_controleprotocol_gsb_zonder_handtekening.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Woensdrecht/woens_test.pdf",
-      "pdf_name": "woens_test.pdf"
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Woensdrecht/GSB_Woensdrecht.pdf",
+      "pdf_name": "GSB_Woensdrecht.pdf"
     }
   ],
   "Woerden": [
@@ -1980,12 +1996,7 @@
       "pdf_name": "GSB_-_Model_Na31-2__Zonder_Handt._.pdf"
     }
   ],
-  "Zaanstad": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zaanstad/Model Na 31-2 Proces-verbaal van een gemeentelijk stembureau (centrale stemopneming).pdf",
-      "pdf_name": "Model Na 31-2 Proces-verbaal van een gemeentelijk stembureau (centrale stemopneming).pdf"
-    }
-  ],
+  "Zaanstad": [],
   "Zaltbommel": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zaltbommel/zaltbommel_uitkomst_zonder-handtekeningen_tk25.pdf",

@@ -245,6 +245,17 @@ def detect_model_for_item(p: dict) -> str:
             return "Na 31-2"
     except Exception:
         pass
+    # 0b) Heuristiek: 'uitkomst' + 'tk25' in naam/URL/tekst duidt op centrale PV publicatie
+    try:
+        s0 = " ".join([
+            (p.get("pdf_name") or "").lower(),
+            (p.get("text") or "").lower(),
+            (p.get("remote_url") or "").lower(),
+        ])
+        if ("uitkomst" in s0) and ("tk25" in s0 or "t k 25" in s0 or "tweede kamer 2025" in s0):
+            return "Na 31-2"
+    except Exception:
+        pass
     # 1) Snelle heuristiek op strings
     s = norm_text(p.get("pdf_name"), p.get("text"), p.get("remote_url"), p.get("local_url"), p.get("from"))
     hit = detect_from_strings(s)
@@ -440,10 +451,11 @@ def run(argv: list[str] | None = None) -> int:
                 loc = (it or {}).get("local_url") or ""
                 t = read_first_page_text(loc) or ""
                 label = detect_from_strings(t) if t else None
-                if not label and not t:
+                # Als tekst geen Na31 oplevert, probeer alsnog OCR
+                if label not in ("Na 31-1", "Na 31-2"):
                     txt = ocr_header_text(loc) or ""
                     if txt:
-                        label = detect_from_strings(txt)
+                        label = detect_from_strings(txt) or label
                 if label in ("Na 31-1", "Na 31-2"):
                     kept.append(it)
             out[name] = kept
@@ -471,7 +483,7 @@ def run(argv: list[str] | None = None) -> int:
             if coll:
                 out[name] = merge_items(out.get(name, []), coll)
 
-        # 2) Voor gemeenten zonder resultaten: snelle tekstextractie van pagina 1, daarna pas OCR op kop
+        # 2) Voor gemeenten zonder resultaten: snelle tekstextractie van pagina 1, daarna OCR‑fallback
         empties = [n for n in to_process if not out.get(n)]
         if empties and not args.filename_only:
             rx_bijlage = re.compile(r"\bbijlage\b", re.I)
@@ -489,27 +501,26 @@ def run(argv: list[str] | None = None) -> int:
                     loc = f"file://{abspath}"
                     # 2a. tekst van pagina 1 (snel)
                     t = read_first_page_text(loc) or ""
+                    ok_text = False
                     if t:
                         hit = detect_from_strings(t)
-                        # standaard: bijlages overslaan, tenzij expliciet toegestaan
-                        if (hit in ("Na 31-1", "Na 31-2") or RX["Na31"].search(t)):
-                            if args.include_bijlage or not is_bijlage_doc(loc, text_hint=t):
+                        ok_text = bool((hit in ("Na 31-1", "Na 31-2")) or RX["Na31"].search(t))
+                        if ok_text and (args.include_bijlage or not is_bijlage_doc(loc, text_hint=t)):
+                            coll.append({
+                                "pdf_name": fn,
+                                "local_url": loc,
+                            })
+                            continue
+                    # 2b. OCR van kop (fallback wanneer tekst ontbreekt of geen match vindt)
+                    txt = ocr_header_text(loc) or ""
+                    if txt:
+                        hit = detect_from_strings(txt)
+                        if (hit in ("Na 31-1", "Na 31-2") or RX["Na31"].search(txt)):
+                            if args.include_bijlage or not is_bijlage_doc(loc, ocr_hint=txt):
                                 coll.append({
                                     "pdf_name": fn,
                                     "local_url": loc,
                                 })
-                                continue
-                    else:
-                        # 2b. OCR van kop (alleen als tekst niets oplevert)
-                        txt = ocr_header_text(loc) or ""
-                        if txt:
-                            hit = detect_from_strings(txt)
-                            if (hit in ("Na 31-1", "Na 31-2") or RX["Na31"].search(txt)):
-                                if args.include_bijlage or not is_bijlage_doc(loc, ocr_hint=txt):
-                                    coll.append({
-                                        "pdf_name": fn,
-                                        "local_url": loc,
-                                    })
                 if coll:
                     out[name] = merge_items(out.get(name, []), coll)
 
@@ -536,9 +547,10 @@ def run(argv: list[str] | None = None) -> int:
                 ocr = None
                 score = 0
                 label = detect_from_strings(text) if text else None
-                if not label and not text:
+                # Als tekst geen Na31 label oplevert, probeer OCR
+                if label not in ("Na 31-1", "Na 31-2"):
                     ocr = ocr_header_text(loc) or ""
-                    if ocr:
+                    if ocr and not label:
                         label = detect_from_strings(ocr)
                 s_all = (text or "") + "\n" + (ocr or "")
                 # hoofd-PV kenmerken
