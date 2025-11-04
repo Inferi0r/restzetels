@@ -565,7 +565,12 @@
       "pdf_name": "Enkhuizen_uitkomst_TK25.pdf"
     }
   ],
-  "Enschede": [],
+  "Enschede": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enschede/Processen verbaal.pdf",
+      "pdf_name": "Processen verbaal.pdf"
+    }
+  ],
   "Epe": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_uitkomst_tk25_0.pdf",
@@ -948,7 +953,12 @@
       "pdf_name": "landgraaf_uitkomst_tk25.pdf"
     }
   ],
-  "Landsmeer": [],
+  "Landsmeer": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Landsmeer/model_na31-2_256599.pdf",
+      "pdf_name": "model_na31-2_256599.pdf"
+    }
+  ],
   "Lansingerland": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Lansingerland/Lansingerland_uitkomst_TK25.pdf",
@@ -1136,7 +1146,12 @@
       "pdf_name": "Het proces-verbaal van het gemeentelijk stembureau.pdf"
     }
   ],
-  "Mook en Middelaar": [],
+  "Mook en Middelaar": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Mook en Middelaar/model_na31-1.pdf",
+      "pdf_name": "model_na31-1.pdf"
+    }
+  ],
   "Neder-Betuwe": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Neder-Betuwe/Neder-Betuwe_uitkomst_TK25.pdf",
@@ -1697,8 +1712,8 @@
   ],
   "Vaals": [
     {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Vaals/pv-na-31-2-tk2023-vaals.pdf",
-      "pdf_name": "pv-na-31-2-tk2023-vaals.pdf"
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Vaals/pv-na-31-2-gemeentelijk-stembureau-tk25-vaals.pdf",
+      "pdf_name": "pv-na-31-2-gemeentelijk-stembureau-tk25-vaals.pdf"
     }
   ],
   "Valkenburg aan de Geul": [

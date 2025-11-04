@@ -19103,6 +19103,22 @@
           "score": 1,
           "from": "local",
           "model": "overig"
+        },
+        {
+          "remote_url": "https://www.beesel.nl/data/downloadables/2/7/5/0/osv4-3_telling_tk2025_gemeente_beesel.csv",
+          "local_url": null,
+          "pdf_name": "Telling Tweede Kamer 2025 - gemeente Beesel.pdf",
+          "text": "Telling Tweede Kamer 2025 - gemeente Beesel",
+          "from": "https://www.beesel.nl/verkiezingsuitslag",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.beesel.nl/data/downloadables/3/8/5/telling-europese-parlementsverkiezingen-gemeente-beesel.csv",
+          "local_url": null,
+          "pdf_name": "Telling Europese Parlementsverkiezingen - Gemeente Beesel.pdf",
+          "text": "Telling Europese Parlementsverkiezingen - Gemeente Beesel",
+          "from": "https://www.beesel.nl/verkiezingsuitslag",
+          "score": 1
         }
       ]
     },
@@ -72369,6 +72385,134 @@
           "from": "https://www.voorschoten.nl/processen-verbaal-en-uitslagen-2025",
           "score": 4,
           "model": "Na 31-2"
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/voorschoten/uploads/Verkiezingskrant_gewone_taal_tweede_kamer_2025_digitaal.pdf?cb=37WAwj4v",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voorschoten/Verkiezingskrant_gewone_taal_tweede_kamer_2025_digitaal.pdf",
+          "pdf_name": "Verkiezingskrant_gewone_taal_tweede_kamer_2025_digitaal.pdf",
+          "text": "Verkiezingskrant in gewone taal 2025",
+          "from": "https://www.voorschoten.nl/verkiezingen-tweede-kamer-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/voorschoten/uploads/stembureau_1.pdf?cb=HZ1nH_o5",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voorschoten/stembureau_1.pdf",
+          "pdf_name": "stembureau_1.pdf",
+          "text": "Proces-verbaal Gemeente Voorschoten stembureau 1 (PDF, 12,9 MB )",
+          "from": "https://www.voorschoten.nl/processen-verbaal-en-uitslagen-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/voorschoten/uploads/stembureau_2.pdf?cb=mEPAa6nb",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voorschoten/stembureau_2.pdf",
+          "pdf_name": "stembureau_2.pdf",
+          "text": "Proces-verbaal Gemeente Voorschoten stembureau 2 (PDF, 13,2 MB )",
+          "from": "https://www.voorschoten.nl/processen-verbaal-en-uitslagen-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/voorschoten/uploads/stembureau_3.pdf?cb=s6WX0vyK",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voorschoten/stembureau_3.pdf",
+          "pdf_name": "stembureau_3.pdf",
+          "text": "Proces-verbaal Gemeente Voorschoten stembureau 3 (PDF, 12,9 MB )",
+          "from": "https://www.voorschoten.nl/processen-verbaal-en-uitslagen-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/voorschoten/uploads/stembureau_4.pdf?cb=bIuH3wQk",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voorschoten/stembureau_4.pdf",
+          "pdf_name": "stembureau_4.pdf",
+          "text": "Proces-verbaal Gemeente Voorschoten stembureau 4 (PDF, 13 MB )",
+          "from": "https://www.voorschoten.nl/processen-verbaal-en-uitslagen-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/voorschoten/uploads/stembureau_5.pdf?cb=HaObp3QV",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voorschoten/stembureau_5.pdf",
+          "pdf_name": "stembureau_5.pdf",
+          "text": "Proces-verbaal Gemeente Voorschoten stembureau 5 (PDF, 13 MB )",
+          "from": "https://www.voorschoten.nl/processen-verbaal-en-uitslagen-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/voorschoten/uploads/stembureau_6.pdf?cb=RPZ0Nti4",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voorschoten/stembureau_6.pdf",
+          "pdf_name": "stembureau_6.pdf",
+          "text": "Proces-verbaal Gemeente Voorschoten stembureau 6 (PDF, 13,7 MB )",
+          "from": "https://www.voorschoten.nl/processen-verbaal-en-uitslagen-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/voorschoten/uploads/stembureau_7.pdf?cb=Rz4ecq4z",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voorschoten/stembureau_7.pdf",
+          "pdf_name": "stembureau_7.pdf",
+          "text": "Proces-verbaal Gemeente Voorschoten stembureau 7 (PDF, 13 MB )",
+          "from": "https://www.voorschoten.nl/processen-verbaal-en-uitslagen-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/voorschoten/uploads/stembureau_8.pdf?cb=ZQku0m17",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voorschoten/stembureau_8.pdf",
+          "pdf_name": "stembureau_8.pdf",
+          "text": "Proces-verbaal Gemeente Voorschoten stembureau 8 (PDF, 13,5 MB )",
+          "from": "https://www.voorschoten.nl/processen-verbaal-en-uitslagen-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/voorschoten/uploads/stembureau_9.pdf?cb=i6-7NXhi",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voorschoten/stembureau_9.pdf",
+          "pdf_name": "stembureau_9.pdf",
+          "text": "Proces-verbaal Gemeente Voorschoten stembureau 9 (PDF, 13,1 MB )",
+          "from": "https://www.voorschoten.nl/processen-verbaal-en-uitslagen-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/voorschoten/uploads/stembureau_10.pdf?cb=LxbydG73",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voorschoten/stembureau_10.pdf",
+          "pdf_name": "stembureau_10.pdf",
+          "text": "Proces-verbaal Gemeente Voorschoten stembureau 10 (PDF, 13,5 MB )",
+          "from": "https://www.voorschoten.nl/processen-verbaal-en-uitslagen-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/voorschoten/uploads/stembureau_11.pdf?cb=z_j1QfUk",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voorschoten/stembureau_11.pdf",
+          "pdf_name": "stembureau_11.pdf",
+          "text": "Proces-verbaal Gemeente Voorschoten stembureau 11 (PDF, 13 MB )",
+          "from": "https://www.voorschoten.nl/processen-verbaal-en-uitslagen-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/voorschoten/uploads/stembureau_13.pdf?cb=rMedzdcM",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voorschoten/stembureau_13.pdf",
+          "pdf_name": "stembureau_13.pdf",
+          "text": "Proces-verbaal Gemeente Voorschoten stembureau 13 (PDF, 13,6 MB )",
+          "from": "https://www.voorschoten.nl/processen-verbaal-en-uitslagen-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/voorschoten/uploads/stembureau_14.pdf?cb=6rNSrQiQ",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voorschoten/stembureau_14.pdf",
+          "pdf_name": "stembureau_14.pdf",
+          "text": "Proces-verbaal Gemeente Voorschoten stembureau 14 (PDF, 13,3 MB )",
+          "from": "https://www.voorschoten.nl/processen-verbaal-en-uitslagen-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/voorschoten/uploads/stembureau_15.pdf?cb=vyLcPzkH",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voorschoten/stembureau_15.pdf",
+          "pdf_name": "stembureau_15.pdf",
+          "text": "Proces-verbaal Gemeente Voorschoten stembureau 15 (PDF, 13,3 MB )",
+          "from": "https://www.voorschoten.nl/processen-verbaal-en-uitslagen-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://cuatro.sim-cdn.nl/voorschoten/uploads/stembureau_16.pdf?cb=O5Jtzj3F",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voorschoten/stembureau_16.pdf",
+          "pdf_name": "stembureau_16.pdf",
+          "text": "Proces-verbaal Gemeente Voorschoten stembureau 16 (PDF, 13,4 MB )",
+          "from": "https://www.voorschoten.nl/processen-verbaal-en-uitslagen-2025",
+          "score": 1
         }
       ]
     },
@@ -72458,328 +72602,7 @@
     {
       "name": "Weert",
       "start_url": "https://www.weert.nl/uitslagenverkiezingen",
-      "pdfs": [
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_10_Sportpark%20Graswinkel_TK25.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_10_Sportpark20Graswinkel_TK25.pdf",
-          "pdf_name": "Weert_10_Sportpark20Graswinkel_TK25.pdf",
-          "text": "Weert_10_Sportpark Graswinkel_TK25.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_10_Sportpark%20Graswinkel_TK25_eerste_telling.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_10_Sportpark20Graswinkel_TK25_eerste_telling.pdf",
-          "pdf_name": "Weert_10_Sportpark20Graswinkel_TK25_eerste_telling.pdf",
-          "text": "Weert_10_Sportpark Graswinkel_TK25_eerste_telling.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_11_MFA%20Kimpe%20veld_TK25.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_11_MFA20Kimpe20veld_TK25.pdf",
-          "pdf_name": "Weert_11_MFA20Kimpe20veld_TK25.pdf",
-          "text": "Weert_11_MFA Kimpe veld_TK25.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_11_MFA%20Kimpe%20veld_TK25_eerste_telling.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_11_MFA20Kimpe20veld_TK25_eerste_telling.pdf",
-          "pdf_name": "Weert_11_MFA20Kimpe20veld_TK25_eerste_telling.pdf",
-          "text": "Weert_11_MFA Kimpe veld_TK25_eerste_telling.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_12_Sportpark%20Op%20den%20Das_TK25.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_12_Sportpark20Op20den20Das_TK25.pdf",
-          "pdf_name": "Weert_12_Sportpark20Op20den20Das_TK25.pdf",
-          "text": "Weert_12_Sportpark Op den Das_TK25.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_12_Sportpark%20Op%20den%20Das_TK25_eerste_telling.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_12_Sportpark20Op20den20Das_TK25_eerste_telling.pdf",
-          "pdf_name": "Weert_12_Sportpark20Op20den20Das_TK25_eerste_telling.pdf",
-          "text": "Weert_12_Sportpark Op den Das_TK25_eerste_telling.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_13_Trefcentrum%20Willem%20Litjenshof_TK25.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_13_Trefcentrum20Willem20Litjenshof_TK25.pdf",
-          "pdf_name": "Weert_13_Trefcentrum20Willem20Litjenshof_TK25.pdf",
-          "text": "Weert_13_Trefcentrum Willem Litjenshof_TK25.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_13_Trefcentrum%20Willem%20Litjenshof_TK25_eerste_telling.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_13_Trefcentrum20Willem20Litjenshof_TK25_eerste_telling.pdf",
-          "pdf_name": "Weert_13_Trefcentrum20Willem20Litjenshof_TK25_eerste_telling.pdf",
-          "text": "Weert_13_Trefcentrum Willem Litjenshof_TK25_eerste_telling.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_14_SV%20Laar%20(kantine)_TK25.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_14_SV20Laar20(kantine)_TK25.pdf",
-          "pdf_name": "Weert_14_SV20Laar20(kantine)_TK25.pdf",
-          "text": "Weert_14_SV Laar (kantine)_TK25.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_14_SV%20Laar%20(kantine)_TK25_eerste_telling.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_14_SV20Laar20(kantine)_TK25_eerste_telling.pdf",
-          "pdf_name": "Weert_14_SV20Laar20(kantine)_TK25_eerste_telling.pdf",
-          "text": "Weert_14_SV Laar (kantine)_TK25_eerste_telling.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_1_Stadhuis%20Weert_TK25.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_1_Stadhuis20Weert_TK25.pdf",
-          "pdf_name": "Weert_1_Stadhuis20Weert_TK25.pdf",
-          "text": "Weert_1_Stadhuis Weert_TK25.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_1_Stadhuis%20Weert_TK25_eerste_telling.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_1_Stadhuis20Weert_TK25_eerste_telling.pdf",
-          "pdf_name": "Weert_1_Stadhuis20Weert_TK25_eerste_telling.pdf",
-          "text": "Weert_1_Stadhuis Weert_TK25_eerste_telling.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_23_IKC%20Leuken_TK25.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_23_IKC20Leuken_TK25.pdf",
-          "pdf_name": "Weert_23_IKC20Leuken_TK25.pdf",
-          "text": "Weert_23_IKC Leuken_TK25.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_23_IKC%20Leuken_TK25_eerste_telling.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_23_IKC20Leuken_TK25_eerste_telling.pdf",
-          "pdf_name": "Weert_23_IKC20Leuken_TK25_eerste_telling.pdf",
-          "text": "Weert_23_IKC Leuken_TK25_eerste_telling.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_24_Brede%20School%20Moesel_TK25.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_24_Brede20School20Moesel_TK25.pdf",
-          "pdf_name": "Weert_24_Brede20School20Moesel_TK25.pdf",
-          "text": "Weert_24_Brede School Moesel_TK25.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_24_Brede%20School%20Moesel_TK25_eerste_telling.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_24_Brede20School20Moesel_TK25_eerste_telling.pdf",
-          "pdf_name": "Weert_24_Brede20School20Moesel_TK25_eerste_telling.pdf",
-          "text": "Weert_24_Brede School Moesel_TK25_eerste_telling.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_26_Wijkgebouw%20Groenewoud_TK25.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_26_Wijkgebouw20Groenewoud_TK25.pdf",
-          "pdf_name": "Weert_26_Wijkgebouw20Groenewoud_TK25.pdf",
-          "text": "Weert_26_Wijkgebouw Groenewoud_TK25.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_26_Wijkgebouw%20Groenewoud_TK25_eerste_telling.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_26_Wijkgebouw20Groenewoud_TK25_eerste_telling.pdf",
-          "pdf_name": "Weert_26_Wijkgebouw20Groenewoud_TK25_eerste_telling.pdf",
-          "text": "Weert_26_Wijkgebouw Groenewoud_TK25_eerste_telling.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_27_Scouting%20St.%20Job%20Leuken_TK25.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_27_Scouting20St.20Job20Leuken_TK25.pdf",
-          "pdf_name": "Weert_27_Scouting20St.20Job20Leuken_TK25.pdf",
-          "text": "Weert_27_Scouting St. Job Leuken_TK25.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_27_Scouting%20St.%20Job%20Leuken_TK25_eerste_telling.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_27_Scouting20St.20Job20Leuken_TK25_eerste_telling.pdf",
-          "pdf_name": "Weert_27_Scouting20St.20Job20Leuken_TK25_eerste_telling.pdf",
-          "text": "Weert_27_Scouting St. Job Leuken_TK25_eerste_telling.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_2_Scouting%20St.%20Maarten_TK25.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_2_Scouting20St.20Maarten_TK25.pdf",
-          "pdf_name": "Weert_2_Scouting20St.20Maarten_TK25.pdf",
-          "text": "Weert_2_Scouting St. Maarten_TK25.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_2_Scouting%20St.%20Maarten_TK25_eerste_telling.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_2_Scouting20St.20Maarten_TK25_eerste_telling.pdf",
-          "pdf_name": "Weert_2_Scouting20St.20Maarten_TK25_eerste_telling.pdf",
-          "text": "Weert_2_Scouting St. Maarten_TK25_eerste_telling.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_31_Mobiel%20stembureau%201_TK25.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_31_Mobiel20stembureau201_TK25.pdf",
-          "pdf_name": "Weert_31_Mobiel20stembureau201_TK25.pdf",
-          "text": "Weert_31_Mobiel stembureau 1_TK25.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_31_Mobiel%20stembureau%201_TK25_eerste_telling.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_31_Mobiel20stembureau201_TK25_eerste_telling.pdf",
-          "pdf_name": "Weert_31_Mobiel20stembureau201_TK25_eerste_telling.pdf",
-          "text": "Weert_31_Mobiel stembureau 1_TK25_eerste_telling.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_32_Mobiel%20stembureau%202_TK25.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_32_Mobiel20stembureau202_TK25.pdf",
-          "pdf_name": "Weert_32_Mobiel20stembureau202_TK25.pdf",
-          "text": "Weert_32_Mobiel stembureau 2_TK25.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_32_Mobiel%20stembureau%202_TK25_eerste_telling.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_32_Mobiel20stembureau202_TK25_eerste_telling.pdf",
-          "pdf_name": "Weert_32_Mobiel20stembureau202_TK25_eerste_telling.pdf",
-          "text": "Weert_32_Mobiel stembureau 2_TK25_eerste_telling.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_33_BS%20De%20Firtel_TK25.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_33_BS20De20Firtel_TK25.pdf",
-          "pdf_name": "Weert_33_BS20De20Firtel_TK25.pdf",
-          "text": "Weert_33_BS De Firtel_TK25.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_33_BS%20De%20Firtel_TK25_eerste_telling.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_33_BS20De20Firtel_TK25_eerste_telling.pdf",
-          "pdf_name": "Weert_33_BS20De20Firtel_TK25_eerste_telling.pdf",
-          "text": "Weert_33_BS De Firtel_TK25_eerste_telling.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_35_Zorgcentrum%20Rust%20in%20Roy_TK25.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_35_Zorgcentrum20Rust20in20Roy_TK25.pdf",
-          "pdf_name": "Weert_35_Zorgcentrum20Rust20in20Roy_TK25.pdf",
-          "text": "Weert_35_Zorgcentrum Rust in Roy_TK25.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_35_Zorgcentrum%20Rust%20in%20Roy_TK25_eerste_telling.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_35_Zorgcentrum20Rust20in20Roy_TK25_eerste_telling.pdf",
-          "pdf_name": "Weert_35_Zorgcentrum20Rust20in20Roy_TK25_eerste_telling.pdf",
-          "text": "Weert_35_Zorgcentrum Rust in Roy_TK25_eerste_telling.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_36_Buurthuis%20Boshoven_TK25.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_36_Buurthuis20Boshoven_TK25.pdf",
-          "pdf_name": "Weert_36_Buurthuis20Boshoven_TK25.pdf",
-          "text": "Weert_36_Buurthuis Boshoven_TK25.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_36_Buurthuis%20Boshoven_TK25_eerste_telling.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_36_Buurthuis20Boshoven_TK25_eerste_telling.pdf",
-          "pdf_name": "Weert_36_Buurthuis20Boshoven_TK25_eerste_telling.pdf",
-          "text": "Weert_36_Buurthuis Boshoven_TK25_eerste_telling.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_38_Caf%C3%A9%20Zaal%20Bee-j%20Bertje_TK25.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_38_CafC3A920Zaal20Bee-j20Bertje_TK25.pdf",
-          "pdf_name": "Weert_38_CafC3A920Zaal20Bee-j20Bertje_TK25.pdf",
-          "text": "Weert_38_Café Zaal Bee-j Bertje_TK25.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_38_Caf%C3%A9%20Zaal%20Bee-j%20Bertje_TK25_eerste_telling.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_38_CafC3A920Zaal20Bee-j20Bertje_TK25_eerste_telling.pdf",
-          "pdf_name": "Weert_38_CafC3A920Zaal20Bee-j20Bertje_TK25_eerste_telling.pdf",
-          "text": "Weert_38_Café Zaal Bee-j Bertje_TK25_eerste_telling.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_42_Buurtcentrum%20Moesel_TK25.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_42_Buurtcentrum20Moesel_TK25.pdf",
-          "pdf_name": "Weert_42_Buurtcentrum20Moesel_TK25.pdf",
-          "text": "Weert_42_Buurtcentrum Moesel_TK25.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_42_Buurtcentrum%20Moesel_TK25_eerste_telling.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_42_Buurtcentrum20Moesel_TK25_eerste_telling.pdf",
-          "pdf_name": "Weert_42_Buurtcentrum20Moesel_TK25_eerste_telling.pdf",
-          "text": "Weert_42_Buurtcentrum Moesel_TK25_eerste_telling.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_43_Scoutcentrum%20'De%20Boshoek'_TK25.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_43_Scoutcentrum20De20Boshoek_TK25.pdf",
-          "pdf_name": "Weert_43_Scoutcentrum20De20Boshoek_TK25.pdf",
-          "text": "Weert_43_Scoutcentrum 'De Boshoek'_TK25.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_43_Scoutcentrum%20'De%20Boshoek'_TK25_eerste_telling.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_43_Scoutcentrum20De20Boshoek_TK25_eerste_telling.pdf",
-          "pdf_name": "Weert_43_Scoutcentrum20De20Boshoek_TK25_eerste_telling.pdf",
-          "text": "Weert_43_Scoutcentrum 'De Boshoek'_TK25_eerste_telling.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_45_Sporthal%20Boshoven%20(kantine)_TK25.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_45_Sporthal20Boshoven20(kantine)_TK25.pdf",
-          "pdf_name": "Weert_45_Sporthal20Boshoven20(kantine)_TK25.pdf",
-          "text": "Weert_45_Sporthal Boshoven (kantine)_TK25.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        },
-        {
-          "remote_url": "https://www.weert.nl/Downloads/Verkiezingen/Tweede%20Kamer%202025/Uitslagen/Weert_45_Sporthal%20Boshoven%20(kantine)_TK25_eerste_telling.pdf",
-          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_45_Sporthal20Boshoven20(kantine)_TK25_eerste_telling.pdf",
-          "pdf_name": "Weert_45_Sporthal20Boshoven20(kantine)_TK25_eerste_telling.pdf",
-          "text": "Weert_45_Sporthal Boshoven (kantine)_TK25_eerste_telling.pdf",
-          "from": "https://www.weert.nl/verkiezingentk2025",
-          "score": 1
-        }
-      ]
+      "pdfs": []
     },
     {
       "name": "West Betuwe",
@@ -74970,7 +74793,8 @@
           "pdf_name": "6904b01ff07bbfef6a52cc77.pdf",
           "text": "Model Na 31-2 Proces-verbaal van een gemeentelijk stembureau (centrale stemopneming).pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 4
+          "score": 4,
+          "model": "Na 31-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904aef9f07bbfef6a52c838",
@@ -74978,7 +74802,8 @@
           "pdf_name": "6904aef9f07bbfef6a52c838.pdf",
           "text": "Processen verbaal",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 4
+          "score": 4,
+          "model": "overig"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/ed081022-80d2-446c-a51c-3373651a3d3a",
@@ -74986,7 +74811,8 @@
           "pdf_name": "ed081022-80d2-446c-a51c-3373651a3d3a.pdf",
           "text": "Processen verbaal",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 4
+          "score": 4,
+          "model": "overig"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/4c1be47f-f71a-441b-8238-6f5182264496",
@@ -74994,7 +74820,8 @@
           "pdf_name": "verklaring onderzoek aansluitvoorschriften uitslagenprogrammatuur (model Ea 6).pdf",
           "text": "verklaring onderzoek aansluitvoorschriften uitslagenprogrammatuur (model Ea 6).pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "overig"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a0baf07bbfef6a52943f",
@@ -75002,7 +74829,9 @@
           "pdf_name": "PV TK 602.pdf",
           "text": "PV TK 602.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/25505cef-6d2f-4c59-891d-3aab93b01fd9",
@@ -75010,7 +74839,9 @@
           "pdf_name": "PV TK 603.pdf",
           "text": "PV TK 603.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a172ca6c39d3345291bd",
@@ -75018,7 +74849,9 @@
           "pdf_name": "PV TK 604.pdf",
           "text": "PV TK 604.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/250a2369-51f9-4cea-b3d8-bd83c51a7a5f",
@@ -75026,7 +74859,9 @@
           "pdf_name": "PV TK 605.pdf",
           "text": "PV TK 605.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/f18c31d6-8f75-4de1-86d9-b882eabbc107",
@@ -75034,7 +74869,9 @@
           "pdf_name": "PV TK 611.pdf",
           "text": "PV TK 611.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a193f07bbfef6a52977f",
@@ -75042,7 +74879,9 @@
           "pdf_name": "PV TK 613.pdf",
           "text": "PV TK 613.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/0b391819-ea90-477f-80b1-0ccb52b86943",
@@ -75050,7 +74889,9 @@
           "pdf_name": "PV TK 203.pdf",
           "text": "PV TK 203.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a1c8ca6c39d334529327",
@@ -75058,7 +74899,9 @@
           "pdf_name": "PV TK 204.pdf",
           "text": "PV TK 204.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/35d278f2-0461-4e9a-924f-52be4172451d",
@@ -75066,7 +74909,9 @@
           "pdf_name": "PV TK 206.pdf",
           "text": "PV TK 206.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a1deca6c39d334529376",
@@ -75074,7 +74919,9 @@
           "pdf_name": "PV TK 301.pdf",
           "text": "PV TK 301.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a1e3ca6c39d33452938a",
@@ -75082,7 +74929,9 @@
           "pdf_name": "PV TK 303.pdf",
           "text": "PV TK 303.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/7dbc450b-0ceb-4559-ac69-fcba7675a3ea",
@@ -75090,7 +74939,9 @@
           "pdf_name": "PV TK 403.pdf",
           "text": "PV TK 403.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a1e6ca6c39d3345293b1",
@@ -75098,7 +74949,9 @@
           "pdf_name": "PV Tk 407.pdf",
           "text": "PV Tk 407.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a1ebca6c39d3345293cf",
@@ -75106,7 +74959,9 @@
           "pdf_name": "PV TK 504.pdf",
           "text": "PV TK 504.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a1eeca6c39d3345293dc",
@@ -75114,7 +74969,9 @@
           "pdf_name": "PV TK 505.pdf",
           "text": "PV TK 505.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a1f6ca6c39d3345293f1",
@@ -75122,7 +74979,9 @@
           "pdf_name": "PV TK 507.pdf",
           "text": "PV TK 507.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/9bac94f6-ff6d-4fdf-ab00-c829ff9ba3fe",
@@ -75130,7 +74989,9 @@
           "pdf_name": "PV TK 116.pdf",
           "text": "PV TK 116.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a1f9ca6c39d3345293fe",
@@ -75138,7 +74999,9 @@
           "pdf_name": "PV TK 119.pdf",
           "text": "PV TK 119.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/9aff1f17-54cb-4b45-9f7a-e7d05a36ad33",
@@ -75146,7 +75009,9 @@
           "pdf_name": "PV TK 121.pdf",
           "text": "PV TK 121.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/a89ff4cb-82ee-492d-81a7-0dcabf65da27",
@@ -75154,7 +75019,9 @@
           "pdf_name": "PV TK 123.pdf",
           "text": "PV TK 123.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/cb47a7e1-2892-44e4-9a68-f2e93f88805d",
@@ -75162,7 +75029,9 @@
           "pdf_name": "PV TK 124.pdf",
           "text": "PV TK 124.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a211ca6c39d33452946c",
@@ -75170,7 +75039,9 @@
           "pdf_name": "PV TK 130.pdf",
           "text": "PV TK 130.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/4f271b44-4539-43bf-bb41-81822784c8d0",
@@ -75178,7 +75049,9 @@
           "pdf_name": "PV TK 134.pdf",
           "text": "PV TK 134.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a21eca6c39d3345294a1",
@@ -75186,7 +75059,9 @@
           "pdf_name": "PV TK 202.pdf",
           "text": "PV TK 202.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a226ca6c39d3345294eb",
@@ -75194,7 +75069,9 @@
           "pdf_name": "PV 702.pdf",
           "text": "PV 702.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/7fa3367a-b9fb-41a5-8bdb-348c017f118f",
@@ -75202,7 +75079,9 @@
           "pdf_name": "PV TK 102.pdf",
           "text": "PV TK 102.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/ccd570bc-2c1d-4c06-bd7c-927128942c8c",
@@ -75210,7 +75089,9 @@
           "pdf_name": "PV TK 107.pdf",
           "text": "PV TK 107.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/6b97d2be-4fab-431a-b2f6-14794ee7c42e",
@@ -75218,7 +75099,9 @@
           "pdf_name": "PV TK 112.pdf",
           "text": "PV TK 112.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a243ca6c39d33452956d",
@@ -75226,7 +75109,9 @@
           "pdf_name": "PV TK 115.pdf",
           "text": "PV TK 115.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a24aca6c39d334529587",
@@ -75234,7 +75119,9 @@
           "pdf_name": "PV 402.pdf",
           "text": "PV 402.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/bec3da86-1a28-4258-999c-c3a8891b1fa2",
@@ -75242,7 +75129,9 @@
           "pdf_name": "PV 405.pdf",
           "text": "PV 405.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a25bca6c39d3345295c9",
@@ -75250,7 +75139,9 @@
           "pdf_name": "PV 406.pdf",
           "text": "PV 406.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/d04de182-c98b-4a70-b0cb-8f9d11c4be10",
@@ -75258,7 +75149,9 @@
           "pdf_name": "PV 501.pdf",
           "text": "PV 501.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a25eca6c39d3345295f5",
@@ -75266,7 +75159,9 @@
           "pdf_name": "PV 502.pdf",
           "text": "PV 502.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a261ca6c39d33452960f",
@@ -75274,7 +75169,9 @@
           "pdf_name": "PV 503.pdf",
           "text": "PV 503.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a265ca6c39d33452961c",
@@ -75282,7 +75179,9 @@
           "pdf_name": "PV 506.pdf",
           "text": "PV 506.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/3a1c24dc-8678-4c14-900f-77b30c9c1f7b",
@@ -75290,7 +75189,9 @@
           "pdf_name": "PV 509.pdf",
           "text": "PV 509.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a26cca6c39d334529649",
@@ -75298,7 +75199,9 @@
           "pdf_name": "PV 601.pdf",
           "text": "PV 601.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a286ca6c39d3345296b5",
@@ -75306,7 +75209,9 @@
           "pdf_name": "PV 606.pdf",
           "text": "PV 606.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/1ffedd86-8e2b-4b48-91e0-d03763149d98",
@@ -75314,7 +75219,9 @@
           "pdf_name": "PV 614.pdf",
           "text": "PV 614.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a28cca6c39d3345296d4",
@@ -75322,7 +75229,9 @@
           "pdf_name": "PV 701.pdf",
           "text": "PV 701.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/8c961e20-febf-443c-b1f5-f9e6beb891fb",
@@ -75330,7 +75239,9 @@
           "pdf_name": "PV 133.pdf",
           "text": "PV 133.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/6856488a-1ff4-44e2-a9ec-127f28059705",
@@ -75338,7 +75249,9 @@
           "pdf_name": "PV 140.pdf",
           "text": "PV 140.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a296ca6c39d3345296f5",
@@ -75346,7 +75259,9 @@
           "pdf_name": "PV 141.pdf",
           "text": "PV 141.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a2abca6c39d334529765",
@@ -75354,7 +75269,9 @@
           "pdf_name": "PV 142.pdf",
           "text": "PV 142.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/7d5d9b88-43e5-403c-af8b-9ebedff0d928",
@@ -75362,7 +75279,9 @@
           "pdf_name": "PV 201.pdf",
           "text": "PV 201.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a2b4ca6c39d334529786",
@@ -75370,7 +75289,9 @@
           "pdf_name": "PV 205.pdf",
           "text": "PV 205.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a2c0ca6c39d3345297c3",
@@ -75378,7 +75299,9 @@
           "pdf_name": "PV 304.pdf",
           "text": "PV 304.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/9255acaa-844b-492b-8d00-e99dd817916e",
@@ -75386,7 +75309,9 @@
           "pdf_name": "PV 305.pdf",
           "text": "PV 305.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a2c3ca6c39d3345297d0",
@@ -75394,7 +75319,9 @@
           "pdf_name": "PV 401.pdf",
           "text": "PV 401.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a2c6ca6c39d3345297dd",
@@ -75402,7 +75329,9 @@
           "pdf_name": "PV 103.pdf",
           "text": "PV 103.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/ca6316a9-6f2e-4555-a8e6-a95cb9aa8de0",
@@ -75410,7 +75339,9 @@
           "pdf_name": "PV 108.pdf",
           "text": "PV 108.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/1a76d619-2c47-4338-938d-6826fc52b718",
@@ -75418,7 +75349,9 @@
           "pdf_name": "PV 113.pdf",
           "text": "PV 113.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a2d1ca6c39d334529804",
@@ -75426,7 +75359,9 @@
           "pdf_name": "PV 117.pdf",
           "text": "PV 117.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a2ddca6c39d334529869",
@@ -75434,7 +75369,9 @@
           "pdf_name": "PV 118.pdf",
           "text": "PV 118.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/f08f0bf9-fc5b-420e-ad16-3c2cd5cc657a",
@@ -75442,7 +75379,9 @@
           "pdf_name": "PV 122.pdf",
           "text": "PV 122.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a2e2ca6c39d33452987d",
@@ -75450,7 +75389,9 @@
           "pdf_name": "PV 125.pdf",
           "text": "PV 125.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a2e5ca6c39d33452988a",
@@ -75458,7 +75399,9 @@
           "pdf_name": "PV 126.pdf",
           "text": "PV 126.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904a345ca6c39d3345299d7",
@@ -75466,7 +75409,9 @@
           "pdf_name": "PV 129.pdf",
           "text": "PV 129.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/e3fb3b48-fa00-4ff2-b16f-4b298c8347a5",
@@ -75474,7 +75419,9 @@
           "pdf_name": "PV 131.pdf",
           "text": "PV 131.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/df69f78d-61fb-44bd-95c7-374f67dff732",
@@ -75482,7 +75429,9 @@
           "pdf_name": "CSO PV 103.pdf",
           "text": "CSO PV 103.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "N10-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b2e7f07bbfef6a52d649",
@@ -75490,7 +75439,9 @@
           "pdf_name": "CSO PV 105.pdf",
           "text": "CSO PV 105.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/fe97c961-c28e-453f-bdf6-50b567ff4df2",
@@ -75498,7 +75449,9 @@
           "pdf_name": "CSO PV 107.pdf",
           "text": "CSO PV 107.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/f78d9e85-e12b-4cc4-8924-114c3d91bef6",
@@ -75506,7 +75459,9 @@
           "pdf_name": "CSO PV 109.pdf",
           "text": "CSO PV 109.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b30ff07bbfef6a52d6f1",
@@ -75514,7 +75469,9 @@
           "pdf_name": "CSO PV 110.pdf",
           "text": "CSO PV 110.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b317f07bbfef6a52d70e",
@@ -75522,7 +75479,9 @@
           "pdf_name": "CSO PV 111.pdf",
           "text": "CSO PV 111.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/90bc49e6-f0e4-4dd2-bab6-068d639ae572",
@@ -75530,7 +75489,9 @@
           "pdf_name": "CSO PV 112.pdf",
           "text": "CSO PV 112.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b31ef07bbfef6a52d741",
@@ -75538,7 +75499,9 @@
           "pdf_name": "CSO PV 113.pdf",
           "text": "CSO PV 113.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/11de4526-a7d5-406c-b9d4-58523d56ddf4",
@@ -75546,7 +75509,9 @@
           "pdf_name": "CSO PV 114.pdf",
           "text": "CSO PV 114.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b328f07bbfef6a52d768",
@@ -75554,7 +75519,9 @@
           "pdf_name": "CSO PV 116.pdf",
           "text": "CSO PV 116.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/d9d8cd14-8765-450b-9ae1-547abc9acc49",
@@ -75562,7 +75529,9 @@
           "pdf_name": "CSO PV 118.pdf",
           "text": "CSO PV 118.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b332f07bbfef6a52d793",
@@ -75570,7 +75539,9 @@
           "pdf_name": "CSO PV 119.pdf",
           "text": "CSO PV 119.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/5a12af5b-270a-47c8-8d70-acc4507675f0",
@@ -75578,7 +75549,9 @@
           "pdf_name": "CSO PV 120.pdf",
           "text": "CSO PV 120.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/249e4c11-04ca-4dea-ab02-33a559293de3",
@@ -75586,7 +75559,9 @@
           "pdf_name": "CSO PV 121.pdf",
           "text": "CSO PV 121.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b33bf07bbfef6a52d7e3",
@@ -75594,7 +75569,9 @@
           "pdf_name": "CSO PV 122.pdf",
           "text": "CSO PV 122.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b345f07bbfef6a52d811",
@@ -75602,7 +75579,9 @@
           "pdf_name": "CSO PV 123.pdf",
           "text": "CSO PV 123.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b34bf07bbfef6a52d825",
@@ -75610,7 +75589,9 @@
           "pdf_name": "CSO PV 124.pdf",
           "text": "CSO PV 124.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/664a0e85-8c9f-407a-808b-b9801f78c5ff",
@@ -75618,7 +75599,9 @@
           "pdf_name": "CSO PV 125.pdf",
           "text": "CSO PV 125.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b34ef07bbfef6a52d832",
@@ -75626,7 +75609,9 @@
           "pdf_name": "CSO PV 126.pdf",
           "text": "CSO PV 126.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b351f07bbfef6a52d842",
@@ -75634,7 +75619,9 @@
           "pdf_name": "CSO PV 127.pdf",
           "text": "CSO PV 127.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/7f9e42e3-b389-4a31-b504-a2e7c12b5c93",
@@ -75642,7 +75629,9 @@
           "pdf_name": "CSO PV 129.pdf",
           "text": "CSO PV 129.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b354f07bbfef6a52d84f",
@@ -75650,7 +75639,9 @@
           "pdf_name": "CSO PV 130.pdf",
           "text": "CSO PV 130.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b35df07bbfef6a52d888",
@@ -75658,7 +75649,9 @@
           "pdf_name": "CSO PV 132.pdf",
           "text": "CSO PV 132.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/53d56f3a-7da4-439e-ab32-7c65635e34f3",
@@ -75666,7 +75659,9 @@
           "pdf_name": "CSO PV 133.pdf",
           "text": "CSO PV 133.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/4cbb060c-2e81-4d49-b1ab-2df8febf3919",
@@ -75674,7 +75669,9 @@
           "pdf_name": "CSO PV 134.pdf",
           "text": "CSO PV 134.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b364f07bbfef6a52d8a2",
@@ -75682,7 +75679,9 @@
           "pdf_name": "CSO PV 135.pdf",
           "text": "CSO PV 135.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/8bfd26fa-6c31-4c23-843c-27a415c04036",
@@ -75690,7 +75689,9 @@
           "pdf_name": "CSO PV 137.pdf",
           "text": "CSO PV 137.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/a17240e3-9ce9-421c-acf0-46c7332e3e23",
@@ -75698,7 +75699,9 @@
           "pdf_name": "CSO PV 141.pdf",
           "text": "CSO PV 141.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b36ef07bbfef6a52d8cc",
@@ -75706,7 +75709,9 @@
           "pdf_name": "CSO PV 142.pdf",
           "text": "CSO PV 142.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/0508cff1-5361-4688-bf8f-a94bd344e81a",
@@ -75714,7 +75719,9 @@
           "pdf_name": "CSO PV 201.pdf",
           "text": "CSO PV 201.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b37bf07bbfef6a52d946",
@@ -75722,7 +75729,9 @@
           "pdf_name": "CSO PV 202.pdf",
           "text": "CSO PV 202.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/04e2df63-563c-4211-ab47-89f663b62b3f",
@@ -75730,7 +75739,9 @@
           "pdf_name": "CSO PV 203.pdf",
           "text": "CSO PV 203.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b384f07bbfef6a52d96d",
@@ -75738,7 +75749,9 @@
           "pdf_name": "CSO PV 204.pdf",
           "text": "CSO PV 204.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/bb3f5410-de51-4a0f-a13a-74f25be3fcfc",
@@ -75746,7 +75759,9 @@
           "pdf_name": "CSO PV 205.pdf",
           "text": "CSO PV 205.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b38df07bbfef6a52d992",
@@ -75754,7 +75769,9 @@
           "pdf_name": "CSO PV 206.pdf",
           "text": "CSO PV 206.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/02bc10dc-8ff2-4f51-ab08-f2f624ef9103",
@@ -75762,7 +75779,9 @@
           "pdf_name": "CSO PV 301.pdf",
           "text": "CSO PV 301.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b393f07bbfef6a52d9be",
@@ -75770,7 +75789,9 @@
           "pdf_name": "CSO PV 303.pdf",
           "text": "CSO PV 303.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b39af07bbfef6a52d9d8",
@@ -75778,7 +75799,9 @@
           "pdf_name": "CSO PV 305.pdf",
           "text": "CSO PV 305.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/e1adf6f4-ccdf-4b15-9783-8c3a2ac99a98",
@@ -75786,7 +75809,9 @@
           "pdf_name": "CSO PV 401.pdf",
           "text": "CSO PV 401.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b3a0f07bbfef6a52d9f2",
@@ -75794,7 +75819,9 @@
           "pdf_name": "CSO PV 402.pdf",
           "text": "CSO PV 402.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/1121a541-6702-485a-ab37-416595333e64",
@@ -75802,7 +75829,9 @@
           "pdf_name": "CSO PV 405.pdf",
           "text": "CSO PV 405.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b3a7f07bbfef6a52da0f",
@@ -75810,7 +75839,9 @@
           "pdf_name": "CSO PV 406.pdf",
           "text": "CSO PV 406.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/09e72165-8ef7-4127-ac8e-6acb02f3de9e",
@@ -75818,7 +75849,9 @@
           "pdf_name": "CSO PV 407.pdf",
           "text": "CSO PV 407.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b3b1f07bbfef6a52da67",
@@ -75826,7 +75859,9 @@
           "pdf_name": "CSO PV 501.pdf",
           "text": "CSO PV 501.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/c22592a1-a38f-488b-99ba-5e688274312e",
@@ -75834,7 +75869,9 @@
           "pdf_name": "CSO PV 502.pdf",
           "text": "CSO PV 502.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/08d6e897-5330-47ed-bcb0-62d7b8475b4b",
@@ -75842,7 +75879,9 @@
           "pdf_name": "CSO PV 503.pdf",
           "text": "CSO PV 503.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b3c6f07bbfef6a52daa4",
@@ -75850,7 +75889,9 @@
           "pdf_name": "CSO PV 504.pdf",
           "text": "CSO PV 504.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/75b013b9-dae9-4dc5-aff8-4c2f9f536b88",
@@ -75858,7 +75899,9 @@
           "pdf_name": "CSO PV 505.pdf",
           "text": "CSO PV 505.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/0732de4f-d5ca-487c-a617-fb7b7566dd2d",
@@ -75866,7 +75909,9 @@
           "pdf_name": "CSO PV 507.pdf",
           "text": "CSO PV 507.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/366c968c-df62-422d-9674-cf3bab79d8b2",
@@ -75874,7 +75919,9 @@
           "pdf_name": "CSO PV 601.pdf",
           "text": "CSO PV 601.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/eee5c470-f46b-47cf-b560-e08e061aca9b",
@@ -75882,7 +75929,9 @@
           "pdf_name": "CSO PV 602.pdf",
           "text": "CSO PV 602.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b3daf07bbfef6a52db01",
@@ -75890,7 +75939,9 @@
           "pdf_name": "CSO PV 603.pdf",
           "text": "CSO PV 603.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/e1c168cc-8aa6-49f6-adf9-19e356d09d9d",
@@ -75898,7 +75949,9 @@
           "pdf_name": "CSO PV 604.pdf",
           "text": "CSO PV 604.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/134eac72-6911-4e94-8097-e76f61e4ce8d",
@@ -75906,7 +75959,9 @@
           "pdf_name": "CSO PV 608.pdf",
           "text": "CSO PV 608.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b3e7f07bbfef6a52db3f",
@@ -75914,7 +75969,9 @@
           "pdf_name": "CSO PV 611.pdf",
           "text": "CSO PV 611.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/3a48a300-a653-45ec-a8fe-b3a9e717344f",
@@ -75922,7 +75979,9 @@
           "pdf_name": "CSO PV 613.pdf",
           "text": "CSO PV 613.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b3ebf07bbfef6a52db5e",
@@ -75930,7 +75989,9 @@
           "pdf_name": "CSO PV 614.pdf",
           "text": "CSO PV 614.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/793f51c9-bee6-4a36-b84f-34dadd751a16",
@@ -75938,7 +75999,9 @@
           "pdf_name": "CSO PV 701.pdf",
           "text": "CSO PV 701.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b3f5f07bbfef6a52db97",
@@ -75946,7 +76009,9 @@
           "pdf_name": "CSO PV 702.pdf",
           "text": "CSO PV 702.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
         },
         {
           "remote_url": "blob:https://mijnstembureau-zaanstad.nl/c54f0d61-5853-4670-a5d2-355172ef184c",
@@ -75954,7 +76019,17 @@
           "pdf_name": "CSO PV 703.pdf",
           "text": "CSO PV 703.pdf",
           "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
-          "score": 3
+          "score": 3,
+          "model": "Na 31-2",
+          "doc_kind": "bijlage-2"
+        },
+        {
+          "remote_url": "blob:https://mijnstembureau-zaanstad.nl/9ffac986-45fd-4a0a-a178-05f35edffc56",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zaanstad/9ffac986-45fd-4a0a-a178-05f35edffc56.pdf",
+          "pdf_name": "9ffac986-45fd-4a0a-a178-05f35edffc56.pdf",
+          "text": "Processen verbaal",
+          "from": "https://mijnstembureau-zaanstad.nl/uitslagen",
+          "score": 4
         }
       ]
     },

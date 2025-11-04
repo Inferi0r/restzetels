@@ -258,6 +258,54 @@ def simple_extract_pdf_links(html: str, base_url: str) -> list[dict]:
     return out
 
 
+def extract_pdfish_links_probe(html: str, base_url: str) -> list[dict]:
+    """Probe anchors whose text strongly suggests a PDF (e.g., 'uitkomst', 'proces-verbaal')
+    even if the href does not end with .pdf. Uses a lightweight HTTP probe to
+    check content-type.
+    """
+    out: list[dict] = []
+    seen: set[str] = set()
+    s = BeautifulSoup(html or "", "html.parser")
+    for a in s.select('a[href]'):
+        href = a.get('href') or ''
+        full = urljoin(base_url, href)
+        if not full or full in seen:
+            continue
+        seen.add(full)
+        txt = a.get_text(' ', strip=True) or ''
+        hint = (txt + ' ' + href).lower()
+        # Strong textual hints
+        if not any(k in hint for k in (
+            'uitkomst', 'proces', 'verbaal', 'stembureau', 'n10', 'na 31', 'na31', 'pv'
+        )):
+            continue
+        # Avoid obvious non-content URLs
+        pl = (urlparse(full).path or '').lower()
+        if any(seg in pl for seg in ('/contact', '/zoeken', '/search', '/loket')):
+            continue
+        # Probe content-type quickly
+        try:
+            if not _probe_pdf_exists(full):
+                continue
+        except Exception:
+            continue
+        # Use link text as filename suggestion
+        name = txt.strip() or os.path.basename(urlparse(full).path) or 'document.pdf'
+        if not name.lower().endswith('.pdf'):
+            name += '.pdf'
+        if not _is_current_year_pdf(name + ' ' + txt + ' ' + full):
+            continue
+        out.append({
+            'remote_url': full,
+            'local_url': None,
+            'pdf_name': name,
+            'text': txt,
+            'from': base_url,
+            'score': 2,
+        })
+    return out
+
+
 CENTRAL_PV_TEXT_RE = re.compile(r"proces.*verbaal.*(centrale.*stemo|gemeentelijk\s+stembureau|na\s*31)", re.I)
 
 
@@ -679,7 +727,15 @@ def download_pv_overview_page(muni: str, overview_url: str, max_items: int = 300
                     except Exception:
                         u = href
                     if u and u.lower().split('?')[0].endswith('.pdf'):
-                        direct.append({'remote_url': u, 'local_url': None, 'pdf_name': os.path.basename(urlparse(u).path) or 'document.pdf', 'text': os.path.basename(urlparse(u).path) or 'document.pdf', 'from': overview_url, 'score': 2})
+                        # Year filter for dynamic anchors as well
+                        try:
+                            from urllib.parse import urlparse as _up
+                            nm = os.path.basename(_up(u).path) or 'document.pdf'
+                        except Exception:
+                            nm = 'document.pdf'
+                        if not _is_current_year_pdf(nm + ' ' + u):
+                            continue
+                        direct.append({'remote_url': u, 'local_url': None, 'pdf_name': nm, 'text': nm, 'from': overview_url, 'score': 2})
             for e in direct:
                 u = e.get('remote_url')
                 if not u: continue
@@ -741,6 +797,71 @@ def download_pv_overview_page(muni: str, overview_url: str, max_items: int = 300
             ctx.close(); b.close()
     return items
 
+
+def click_capture_pdfs(muni: str, page_url: str, max_items: int = 300, label_keywords: list[str] | None = None) -> list[dict]:
+    """Generic Playwright clicker: visit a page and click likely elements to capture PDF responses.
+    Uses heuristics on element text; saves PDFs to muni dir; returns index items.
+    """
+    if not PLAYWRIGHT_AVAILABLE:
+        return []
+    out_dir = os.path.join(OUT_BASE, sanitize_filename(muni))
+    os.makedirs(out_dir, exist_ok=True)
+    items: list[dict] = []
+    keys = label_keywords or ['Oss', 'TK25', 'uitkomst', 'Proces', 'verbaal', 'stembureau', 'pdf']
+    try:
+        with sync_playwright() as p:
+            b = p.chromium.launch(headless=True)
+            ctx = b.new_context()
+            page = ctx.new_page()
+            page.goto(page_url, wait_until='domcontentloaded', timeout=60000)
+            try:
+                page.wait_for_load_state('networkidle', timeout=60000)
+            except Exception:
+                pass
+            clickable = page.locator('a, button, [role=button]')
+            n = min(clickable.count(), 200)
+            processed = 0
+            for i in range(n):
+                if processed >= max_items:
+                    break
+                el = clickable.nth(i)
+                try:
+                    label = (el.inner_text() or '').strip()
+                except Exception:
+                    label = ''
+                low = (label or '').lower()
+                if not any(k.lower() in low for k in keys):
+                    continue
+                def pred(resp):
+                    try:
+                        ct = (resp.headers or {}).get('content-type','').lower()
+                        u = (resp.url or '').lower()
+                        return (resp.status == 200) and (('application/pdf' in ct) or u.endswith('.pdf'))
+                    except Exception:
+                        return False
+                try:
+                    with page.expect_response(pred, timeout=10000) as respctx:
+                        el.click()
+                    resp = respctx.value
+                    data = resp.body() or b''
+                    if not data:
+                        continue
+                    fname = (label or os.path.basename(urlparse(resp.url).path) or 'document.pdf')
+                    if not fname.lower().endswith('.pdf'):
+                        fname += '.pdf'
+                    dest = os.path.join(out_dir, sanitize_filename(fname))
+                    if os.path.exists(dest):
+                        continue
+                    with open(dest, 'wb') as f:
+                        f.write(data)
+                    items.append({'remote_url': resp.url, 'local_url': 'file://' + os.path.abspath(dest), 'pdf_name': os.path.basename(dest), 'text': label or os.path.basename(dest), 'from': page_url, 'score': 2})
+                    processed += 1
+                except Exception:
+                    continue
+            ctx.close(); b.close()
+    except Exception:
+        return items
+    return items
 
 def collect_pdfs_bfs_internal(name: str, max_depth: int = 2, max_pages: int = 40, force_render: bool = True) -> list[dict]:
     """Compact BFS over internal pages to find PDFs using our heuristics.
@@ -1926,6 +2047,12 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
         s = BeautifulSoup(html, 'html.parser')
         # verzamel PDF’s direct uit start
         start_eps = simple_extract_pdf_links(html, base)
+        # extra: probeer PDF-achtige anchors met 'uitkomst'/'proces-verbaal' die geen .pdf tonen
+        if len(start_eps) < 5:
+            try:
+                start_eps += extract_pdfish_links_probe(html, base)
+            except Exception:
+                pass
         # Als geen directe anchors maar de bron hint op embedded resources (dsresource/type=pdf), render 1x en herhaal
         if (not start_eps) and (('dsresource' in html.lower()) or ('type=pdf' in html.lower())):
             h0, b0 = fetch_html(start, allow_render=True)
@@ -2298,6 +2425,17 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
             seen.add(u)
             h2, b2 = fetch_html(u, allow_render=True)
             if not h2: continue
+            # Klik-capture (heuristisch) voor pagina's die veel PV's/uitkomst bevatten
+            try:
+                lw = (u or '').lower()
+                if any(k in lw for k in ('/uitslag', '/uitslagen', 'tweede-kamer', 'verkiez')):
+                    cap = click_capture_pdfs(name, u, max_items=120, label_keywords=['TK25','Proces','verbaal','stembureau','Oss','pdf','uitkomst'])
+                    if cap:
+                        found.extend(cap)
+                        if is_probably_complete(found):
+                            return dedup_by_remote(found)
+            except Exception:
+                pass
             # Speciaal: Google Drive en MijnStembureau links op deze pagina direct verwerken
             try:
                 s2 = BeautifulSoup(h2, 'html.parser')
@@ -2355,6 +2493,11 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
             if used_ov:
                 break
             eps = simple_extract_pdf_links(h2, b2)
+            if len(eps) < 5:
+                try:
+                    eps += extract_pdfish_links_probe(h2, b2)
+                except Exception:
+                    pass
             # Fallback: sommige subpagina's embedden PDF's via dsresource/type=pdf zonder anchor
             if (not eps) and (("dsresource" in (h2 or "").lower()) or ("type=pdf" in (h2 or "").lower())):
                 try:
