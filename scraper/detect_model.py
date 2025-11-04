@@ -59,8 +59,8 @@ def compile_regex():
         # Generieke vangnetten (niet gebruikt voor label, alleen ter ondersteuning)
         "N10": re.compile(rf"\b(model{sep})?n{sep}10\b", re.I),
         "Na31": re.compile(rf"\b(model{sep})?na{sep}31\b", re.I),
-        # Gemeentelijk stembureau aanduiding; voor TK2025 centrale stemopneming is dit Na 31-2
-        "GSB": re.compile(r"(gemeentelijk\s+stembureau|\bgsb\b)", re.I),
+        # Let op: 'Gemeentelijk stembureau' komt ook voor in toelichtingen op N10/N5 en is dus geen betrouwbaar label
+        # (bewust geen GSB-heuristiek voor label)
     }
     return rx
 
@@ -97,9 +97,7 @@ def detect_from_strings(s: str) -> str | None:
         return "Na 31-2"
     if RX["Na 31-1"].search(s):
         return "Na 31-1"
-    # Heuristiek: 'Gemeentelijk stembureau' of 'GSB' duidt vrijwel zeker op model Na 31-2 bij TK2025
-    if RX.get("GSB") and RX["GSB"].search(s):
-        return "Na 31-2"
+    # Geen GSB-heuristiek meer: komt ook voor in N10/N5-teksten
     return None
 
 
@@ -239,6 +237,14 @@ def is_bijlage_doc(local_url: str, text_hint: str | None = None, ocr_hint: str |
 
 
 def detect_model_for_item(p: dict) -> str:
+    # 0) Zeer specifieke regel: als bestandsnaam duidelijk 'GSB' aangeeft,
+    #    is dit bij TK2025 het gemeentelijk stembureau (Na 31-2)
+    try:
+        fname = (p.get("pdf_name") or "").lower()
+        if ("gsb" in fname) or ("gemeentelijk stembureau" in fname):
+            return "Na 31-2"
+    except Exception:
+        pass
     # 1) Snelle heuristiek op strings
     s = norm_text(p.get("pdf_name"), p.get("text"), p.get("remote_url"), p.get("local_url"), p.get("from"))
     hit = detect_from_strings(s)
@@ -442,6 +448,10 @@ def run(argv: list[str] | None = None) -> int:
                     kept.append(it)
             out[name] = kept
 
+        # Regex voor GSB in bestandsnaam
+        rx_gsb_name = re.compile(r"\bgsb\b", re.I)
+        rx_gemeentelijk_in_name = re.compile(r"gemeentelijk\s+stembureau", re.I)
+
         for name in to_process:
             gdir = os.path.join(base_pdfs, name)
             coll: list[dict] = []
@@ -451,7 +461,8 @@ def run(argv: list[str] | None = None) -> int:
                 files = []
             for fn in files:
                 s = fn
-                if (rx_na31.search(s) or rx_n31.search(s) or rx_31_1.search(s) or rx_31_2.search(s) or rx_uitkomst_tk25.search(s)) and not is_bijlage_filename(s):
+                if (rx_na31.search(s) or rx_n31.search(s) or rx_31_1.search(s) or rx_31_2.search(s) or rx_uitkomst_tk25.search(s)
+                    or rx_gsb_name.search(s) or rx_gemeentelijk_in_name.search(s)) and not is_bijlage_filename(s):
                     abspath = os.path.join(gdir, fn)
                     coll.append({
                         "pdf_name": fn,
@@ -511,7 +522,7 @@ def run(argv: list[str] | None = None) -> int:
             if not prelim:
                 prelim = list(items)
 
-            rx_gsb = re.compile(r"gemeentelijk\s+stembureau", re.I)
+            rx_gsb = re.compile(r"(gemeentelijk\s+stembureau|\bgsb\b)", re.I)
             rx_pv = re.compile(r"proces[-\s]?verbaal", re.I)
             rx_cso = re.compile(r"centrale\s+stemopneming", re.I)
             rx_nummer = re.compile(r"nummer\s+stembureau", re.I)

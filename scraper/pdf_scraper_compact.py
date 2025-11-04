@@ -179,8 +179,25 @@ def _probe_pdf_exists(url: str) -> bool:
     return False
 
 
-PDF_PAGE_HINT_RE = re.compile(r"verkiez|uitslag|proces|verbaal|stembur|tweede.*kamer|tweede-?kamerverkiez|document|download|n10|na\s*31|model\s*na\s*31|gemeentelijk\s+stembureau|\bpv\b|uitkomst[\s_-]*tk[\s_-]*25|election|second\s*chamber|polling|process[-\s]?verbal", re.I)
-OVERVIEW_HINT_RE = re.compile(r"overzicht|proces[-\s]?verbaal|processen[-\s]?verbaal|kies\s+stembureau|stadsdeel|hoofdstembureau|gemeentelijk\s+stembureau|pv\s*overzicht|stemmings|uitslag\s*per\s*stembureau|uitslag\s*verkiez|model\s*na\s*31|na\s*31|na31|uitkomst[\s_-]*tk[\s_-]*25|process[-\s]?verbal|second\s*chamber", re.I)
+PDF_PAGE_HINT_RE = re.compile(r"verkiez|uitslag|proces|verbaal|stembur|tweede.*kamer|tweede-?kamerverkiez|document|download|n10|na\s*31|model\s*na\s*31|gemeentelijk\s+stembureau|\bpv\b|uitkomst[\s_-]*tk[\s_-]*25|uitkomst.*tweede.*kamer|uitslag.*tweede.*kamer|election|second\s*chamber|polling|process[-\s]?verbal", re.I)
+OVERVIEW_HINT_RE = re.compile(r"overzicht|proces[-\s]?verbaal|processen[-\s]?verbaal|kies\s+stembureau|stadsdeel|hoofdstembureau|gemeentelijk\s+stembureau|pv\s*overzicht|stemmings|uitslag\s*per\s*stembureau|uitslag\s*verkiez|model\s*na\s*31|na\s*31|na31|uitkomst[\s_-]*tk[\s_-]*25|uitkomst.*tweede.*kamer|uitslag.*tweede.*kamer|process[-\s]?verbal|second\s*chamber", re.I)
+
+
+def _looks_hashy_basename(base_no_ext: str) -> bool:
+    try:
+        b = (base_no_ext or '').strip().lower()
+        if not b:
+            return False
+        # GUID zonder streepjes of lange hex/hash (≥20 tekens)
+        import re as _re
+        if _re.fullmatch(r"[0-9a-f]{20,}", b):
+            return True
+        # Algemene lange alfanumerieke tokens (≥24) zonder woorden/scheiding
+        if _re.fullmatch(r"[0-9a-z]{24,}", b):
+            return True
+        return False
+    except Exception:
+        return False
 
 
 def simple_extract_pdf_links(html: str, base_url: str) -> list[dict]:
@@ -204,7 +221,7 @@ def simple_extract_pdf_links(html: str, base_url: str) -> list[dict]:
         path_lower = (urlparse(full_url).path or '').lower()
         txt = a.get_text(" ", strip=True) or ""
         hint = (txt + " " + (a.get('title') or '') + " " + (a.get('aria-label') or '') + " " + href).lower()
-        # Accepteer directe .pdf links, CMS file/download/document routes, of links met duidelijke PDF-indicatoren
+        # Accepteer directe .pdf links, CMS file/download/document routes, of bekende viewer/docresource patronen
         looks_like_pdf = (
             (".pdf" in path_lower)
             or ("/file/" in path_lower)
@@ -214,9 +231,6 @@ def simple_extract_pdf_links(html: str, base_url: str) -> list[dict]:
             or ("/bestand/" in path_lower)
             or ("dsresource" in full_url.lower())
             or ("type=pdf" in full_url.lower())
-            or ("pdf" in hint)
-            or ("proces" in hint and "verbaal" in hint)
-            or ("per partij" in hint) or ("per kandidaat" in hint)
         )
         if not looks_like_pdf:
             continue
@@ -226,7 +240,7 @@ def simple_extract_pdf_links(html: str, base_url: str) -> list[dict]:
         # txt staat al klaar boven
         name = os.path.basename(urlparse(full_url).path) or "document.pdf"
         base_no_ext = os.path.splitext(name)[0].lower()
-        if (base_no_ext in {"dsresource", "download", "document", "file"}) or (not name.lower().endswith('.pdf')):
+        if (base_no_ext in {"dsresource", "download", "document", "file"}) or _looks_hashy_basename(base_no_ext) or (not name.lower().endswith('.pdf')):
             if txt:
                 # Use link text as filename when endpoint is generic
                 t = txt.strip()
@@ -340,7 +354,17 @@ def find_overview_pages_from_html(html: str, base_url: str) -> list[str]:
                 seen.add(base_url); out.append(base_url)
     except Exception:
         pass
-    return out[:6]
+    # Prefer current-election-year pages (2025) over older years (e.g., 2023)
+    def _score(u: str) -> int:
+        lu = u.lower()
+        score = 0
+        if '2025' in lu or 'tk25' in lu or 'tk-25' in lu:
+            score += 2
+        if '2023' in lu or 'tk23' in lu or 'tk-23' in lu:
+            score -= 2
+        return score
+    out_sorted = sorted(out, key=lambda u: (_score(u), -len(u)), reverse=True)
+    return out_sorted[:6]
 
 
 def discover_via_sitemap(start_url: str, max_pages: int = 30) -> list[str]:
@@ -436,6 +460,8 @@ def probe_well_known_pages(start_url: str) -> list[str]:
         "/uitslagen",
         "/a-tot-z/uitslagen",
         "/uitkomsten",
+        # Veelgezien padnaam bij gemeenten: Uitkomst-Tweede-Kamerverkiezingen-2025
+        "/Verkiezingen/Uitkomst-Tweede-Kamerverkiezingen-2025",
         "/documenten",
         "/bestanden",
         "/downloads",
@@ -621,7 +647,7 @@ def download_pv_overview_page(muni: str, overview_url: str, max_items: int = 300
             r = http_get(overview_url, timeout=(10, 25))
             eps = simple_extract_pdf_links(r.text, r.url)
             for e in eps:
-                dest = stream_download(e.get('remote_url'), out_dir)
+                dest = stream_download(e.get('remote_url'), out_dir, suggested_name=(e.get('pdf_name') or e.get('text')))
                 if dest:
                     e['local_url'] = 'file://' + os.path.abspath(dest)
                     items.append(e)
@@ -657,7 +683,7 @@ def download_pv_overview_page(muni: str, overview_url: str, max_items: int = 300
             for e in direct:
                 u = e.get('remote_url')
                 if not u: continue
-                dest = stream_download(u, out_dir)
+                dest = stream_download(u, out_dir, suggested_name=(e.get('pdf_name') or e.get('text')))
                 if dest:
                     e['local_url'] = 'file://' + os.path.abspath(dest)
                     items.append(e)
@@ -892,7 +918,8 @@ def stream_download(url: str, out_dir: str, suggested_name: str | None = None) -
         with requests.get(url, headers={"User-Agent": "restzetels-compact/0.1"}, timeout=(15, 180), stream=True) as r:
             r.raise_for_status()
             ct = (r.headers.get("Content-Type") or "").lower()
-            if ("pdf" not in ct) and (not urlparse(url).path.lower().endswith(".pdf")):
+            # accepteer ook 'application/octet-stream' voor Pleio downloads
+            if ("pdf" not in ct and "octet-stream" not in ct) and (not urlparse(url).path.lower().endswith(".pdf")):
                 return None
             # probeer bestandsnaam via Content-Disposition
             cd = r.headers.get('Content-Disposition') or r.headers.get('content-disposition') or ''
@@ -903,7 +930,8 @@ def stream_download(url: str, out_dir: str, suggested_name: str | None = None) -
             # Else try header
             if not name:
                 try:
-                    _disp, params = cgi.parse_header(cd)
+                    import cgi as _cgi
+                    _disp, params = _cgi.parse_header(cd)
                     name = params.get('filename') or params.get('filename*')
                 except Exception:
                     name = None
@@ -925,6 +953,10 @@ def stream_download(url: str, out_dir: str, suggested_name: str | None = None) -
                                 name = f"{oid}.pdf"
                         except Exception:
                             pass
+            # Als de naam er nog steeds uitziet als hash/guid en er geen suggested_name is → sla over
+            base_no_ext2 = os.path.splitext(name or '')[0].lower() if name else ''
+            if (not suggested_name) and (base_no_ext2 in generic_names or _looks_hashy_basename(base_no_ext2)):
+                return None
             if not name.lower().endswith(".pdf"):
                 name += ".pdf"
             dest = os.path.join(out_dir, sanitize_filename(name))
@@ -1046,12 +1078,24 @@ def is_mijnstembureau_url(u: str) -> bool:
     except Exception:
         return False
 
-def guess_mijnstembureau_url(name: str) -> str:
+def guess_mijnstembureau_urls(name: str) -> list[str]:
     slug = re.sub(r"[^a-z0-9-]", "-", (name or '').lower().strip())
     slug = re.sub(r"-+", "-", slug).strip('-')
-    # Kies de meest gangbare host en pad voor de eerste poging
-    # We hebben elders ook fallback-guesses; hier een enkel, redelijke default.
-    return f"https://mijnstembureau-{slug}.nl/uitslagen"
+    # Probeer zowel stembureau- als mijnstembureau- en twee bekende paden
+    bases = [
+        f"https://stembureau-{slug}.nl",
+        f"https://mijnstembureau-{slug}.nl",
+    ]
+    paths = [
+        "/uitslagen/verkiezingen/tk/download-opties",
+        "/uitslagen/verkiezingen/tk/",
+        "/uitslagen",
+    ]
+    out = []
+    for b in bases:
+        for p in paths:
+            out.append(b + p)
+    return out
 
 
 def collect_mijnstembureau_pages(name: str) -> list[str]:
@@ -1089,6 +1133,13 @@ def collect_mijnstembureau_pages(name: str) -> list[str]:
                     break
             if out:
                 break
+    # Extra guesses als we nog niets hebben
+    if not out:
+        try:
+            for g in guess_mijnstembureau_urls(name):
+                out.append(g)
+        except Exception:
+            pass
     # dedup
     seen = set(); ded = []
     for u in out:
@@ -1147,60 +1198,155 @@ def pleio_enumerate_view_links(hub_url: str, headful: bool = False, max_links: i
                         links.append(urljoin(page.url, href))
             except Exception:
                 pass
-            # If none: click tiles by text and/or Files tab
-            if not links:
-                for sel in [
-                    'a:has-text("Gescande processen-verbaal stembureaus")',
-                    'a:has-text("Gescande processen-verbaal gemeentelijk stembureau")',
-                    'a:has-text("Gescande processen-verbaal")',
-                    'a:has-text("processen-verbaal")',
-                    'a:has-text("Bestanden")',
-                ]:
-                    try:
-                        loc2 = page.locator(sel)
-                        if loc2.count()==0: continue
-                        with page.expect_navigation(timeout=20000):
-                            loc2.first.click()
+            # Try infinite scroll to reveal more view links (limited attempts)
+            if len(links) < max_links:
+                try:
+                    last_count = -1
+                    attempts = 0
+                    while attempts < 8:
                         try:
-                            page.wait_for_load_state('networkidle', timeout=8000)
+                            cur = len(links)
                         except Exception:
-                            pass
+                            cur = 0
+                        if cur == last_count:
+                            attempts += 1
+                        else:
+                            attempts = 0
+                        last_count = cur
+                        page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+                        page.wait_for_timeout(500)
                         try:
-                            page.wait_for_selector("a[href*='/files/view/']", timeout=10000)
-                        except Exception:
-                            pass
-                        try:
-                            loc3 = page.locator("a[href*='/files/view/']")
-                            cnt3 = loc3.count()
-                            for i in range(min(cnt3, max_links)):
-                                href = loc3.nth(i).get_attribute('href') or ''
+                            loc = page.locator("a[href*='/files/view/']")
+                            cnt = loc.count()
+                            for i in range(min(cnt, max_links)):
+                                href = loc.nth(i).get_attribute('href') or ''
                                 if '/files/view/' in href:
-                                    links.append(urljoin(page.url, href))
+                                    u = urljoin(page.url, href)
+                                    if u not in links:
+                                        links.append(u)
                         except Exception:
                             pass
-                        # Try Files tab
-                        files_tab = page.locator('a[href$="/files"], a:has-text("Bestanden")')
-                        if files_tab.count()>0:
-                            try:
-                                with page.expect_navigation(timeout=15000):
-                                    files_tab.first.click()
-                                page.wait_for_timeout(600)
+                        if len(links) >= max_links:
+                            break
+                except Exception:
+                    pass
+            # Folder pass: klik ook expliciete mapjes (zelfs als we al links hebben),
+            # om submappen zoals 'Gescande processen‑verbaal gemeentelijk stembureau' mee te nemen.
+            folder_selectors_all = [
+                'a:has-text("Gescande processen-verbaal gemeentelijk stembureau")',
+                'a:has-text("Gemeentelijk stembureau")',
+                'a:has-text("stembureau")',
+                'a:has-text("GSB")',
+                'a:has-text("centrale stemopneming")',
+                'a:has-text("Gescande processen-verbaal stembureaus")',
+                'a:has-text("Gescande processen-verbaal")',
+                'a:has-text("processen-verbaal")',
+                'a:has-text("Bestanden")',
+            ]
+            for sel in folder_selectors_all:
+                try:
+                    loc2 = page.locator(sel)
+                    if loc2.count()==0:
+                        continue
+                    with page.expect_navigation(timeout=20000):
+                        loc2.first.click()
+                    try:
+                        page.wait_for_load_state('networkidle', timeout=8000)
+                    except Exception:
+                        pass
+                    try:
+                        page.wait_for_selector("a[href*='/files/view/']", timeout=10000)
+                    except Exception:
+                        pass
+                    try:
+                        loc3 = page.locator("a[href*='/files/view/']")
+                        cnt3 = loc3.count()
+                        for i in range(min(cnt3, max_links)):
+                            href = loc3.nth(i).get_attribute('href') or ''
+                            if '/files/view/' in href:
+                                links.append(urljoin(page.url, href))
+                    except Exception:
+                        pass
+                    # Scroll inside folder view to reveal more items
+                    if len(links) < max_links:
+                        try:
+                            last_count = -1
+                            attempts = 0
+                            while attempts < 8:
+                                cur = len(links)
+                                if cur == last_count:
+                                    attempts += 1
+                                else:
+                                    attempts = 0
+                                last_count = cur
+                                page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+                                page.wait_for_timeout(500)
                                 try:
                                     loc4 = page.locator("a[href*='/files/view/']")
                                     cnt4 = loc4.count()
                                     for i in range(min(cnt4, max_links)):
                                         href = loc4.nth(i).get_attribute('href') or ''
                                         if '/files/view/' in href:
-                                            links.append(urljoin(page.url, href))
+                                            u = urljoin(page.url, href)
+                                            if u not in links:
+                                                links.append(u)
                                 except Exception:
                                     pass
+                                if len(links) >= max_links:
+                                    break
+                        except Exception:
+                            pass
+                    # Try Files tab
+                    files_tab = page.locator('a[href$="/files"], a:has-text("Bestanden")')
+                    if files_tab.count()>0:
+                        try:
+                            with page.expect_navigation(timeout=15000):
+                                files_tab.first.click()
+                            page.wait_for_timeout(600)
+                            try:
+                                loc4 = page.locator("a[href*='/files/view/']")
+                                cnt4 = loc4.count()
+                                for i in range(min(cnt4, max_links)):
+                                    href = loc4.nth(i).get_attribute('href') or ''
+                                    if '/files/view/' in href:
+                                        links.append(urljoin(page.url, href))
                             except Exception:
                                 pass
-                        # back to hub
-                        page.goto(hub_url, wait_until='domcontentloaded', timeout=15000)
-                        page.wait_for_timeout(300)
-                    except Exception:
-                        continue
+                            # Scroll in files list
+                            if len(links) < max_links:
+                                try:
+                                    last = -1; tries = 0
+                                    while tries < 8:
+                                        cur = len(links)
+                                        if cur == last:
+                                            tries += 1
+                                        else:
+                                            tries = 0
+                                        last = cur
+                                        page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+                                        page.wait_for_timeout(500)
+                                        try:
+                                            loc5 = page.locator("a[href*='/files/view/']")
+                                            cnt5 = loc5.count()
+                                            for i in range(min(cnt5, max_links)):
+                                                href = loc5.nth(i).get_attribute('href') or ''
+                                                if '/files/view/' in href:
+                                                    u = urljoin(page.url, href)
+                                                    if u not in links:
+                                                        links.append(u)
+                                        except Exception:
+                                            pass
+                                        if len(links) >= max_links:
+                                            break
+                                except Exception:
+                                    pass
+                        except Exception:
+                            pass
+                    # back to hub
+                    page.goto(hub_url, wait_until='domcontentloaded', timeout=15000)
+                    page.wait_for_timeout(300)
+                except Exception:
+                    continue
             ctx.close(); b.close()
     except Exception:
         return []
@@ -1830,7 +1976,9 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
         
 
         # 1a.1) Compact probe van veelgebruikte paden onder dezelfde host
-        if (len(found) < 5) and (not found_place):
+        # Draai dit ook als we al veel stembureau-PV's hebben maar nog geen centrale PV hebben gezien.
+        central_present = _has_central(found)
+        if (len(found) < 5) or (not central_present):
             for u in probe_well_known_pages(start)[:8]:
                 try:
                     hP, bP = fetch_html(u, allow_render=False)
@@ -1842,6 +1990,7 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
                     central = extract_central_pv_links(hP, bP)
                     if central:
                         found.extend(central)
+                        central_present = True
                     # Kijk of deze pagina zelf een overzicht is
                     try:
                         ovP = find_overview_pages_from_html(hP, bP)
@@ -1855,36 +2004,42 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
                                 found.extend(its)
                                 found_place = True
                                 used_ovP = True
+                                # Overzicht kan ook centrale PV bevatten
+                                if _has_central(its):
+                                    central_present = True
                                 break
                         except Exception:
                             continue
                     if used_ovP:
                         break
-                    # Directe PDF-anchors
-                    epsP = simple_extract_pdf_links(hP, bP)
-                    # als deze pagina embedded dsresource/type=pdf heeft, scan die ook
-                    if (not epsP) and (('dsresource' in (hP or '').lower()) or ('type=pdf' in (hP or '').lower())):
-                        try:
-                            import re as _re
-                            ds = []
-                            for m in _re.finditer(r'(?:href|data-href|data-url)="([^"\s]*dsresource[^"\s]+)"', hP, _re.I):
-                                ds.append(urljoin(bP, m.group(1)))
-                            seen_local = set()
-                            for du in ds:
-                                if du in seen_local:
-                                    continue
-                                seen_local.add(du)
-                                nm = os.path.basename(urlparse(du).path) or 'document.pdf'
-                                if _is_current_year_pdf(nm + ' ' + du):
-                                    epsP.append({'remote_url': du, 'local_url': None, 'pdf_name': nm, 'text': nm, 'from': bP, 'score': 1})
-                        except Exception:
-                            pass
-                    if epsP:
-                        found.extend(epsP)
-                        if len(epsP) >= 5 or sum(1 for p in epsP if PV_STRONG_HINT_RE.search((p.get('text') or '') + ' ' + (p.get('pdf_name') or ''))) >= 4:
-                            found_place = True
-                            break
-                    if is_probably_complete(found):
+                    # Directe PDF-anchors: alleen toevoegen als we nog niet 'overvol' zijn
+                    # of wanneer we nadrukkelijk op zoektocht zijn naar centrale PV (dus selectief).
+                    if (len(found) < 5):
+                        epsP = simple_extract_pdf_links(hP, bP)
+                        # als deze pagina embedded dsresource/type=pdf heeft, scan die ook
+                        if (not epsP) and (('dsresource' in (hP or '').lower()) or ('type=pdf' in (hP or '').lower())):
+                            try:
+                                import re as _re
+                                ds = []
+                                for m in _re.finditer(r'(?:href|data-href|data-url)="([^"\s]*dsresource[^"\s]+)"', hP, _re.I):
+                                    ds.append(urljoin(bP, m.group(1)))
+                                seen_local = set()
+                                for du in ds:
+                                    if du in seen_local:
+                                        continue
+                                    seen_local.add(du)
+                                    nm = os.path.basename(urlparse(du).path) or 'document.pdf'
+                                    if _is_current_year_pdf(nm + ' ' + du):
+                                        epsP.append({'remote_url': du, 'local_url': None, 'pdf_name': nm, 'text': nm, 'from': bP, 'score': 1})
+                            except Exception:
+                                pass
+                        if epsP:
+                            found.extend(epsP)
+                            if len(epsP) >= 5 or sum(1 for p in epsP if PV_STRONG_HINT_RE.search((p.get('text') or '') + ' ' + (p.get('pdf_name') or ''))) >= 4:
+                                found_place = True
+                                break
+                    # Stop vroegtijdig als we intussen de centrale PV al hebben
+                    if _has_central(found):
                         break
                 except Exception:
                     continue
@@ -2027,9 +2182,9 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
             except Exception:
                 continue
         if pleio_items:
+            # Voeg toe aan gevonden en laat de generieke HTTP-downloadfase (stap 3) de directe downloads uitvoeren.
+            # Niet vroegtijdig retourneren zodat Pleio-links via stream_download (met mapping) lokaal worden opgeslagen.
             found.extend(pleio_items)
-            if is_probably_complete(found):
-                return dedup_by_remote(found)
 
         # 1c) verzamel relevante interne pagina’s uit anchors
         candidates = []
@@ -2096,8 +2251,15 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
                     its = download_pv_overview_page(name, full)
                     if its:
                         found.extend(its)
-                        # We hebben de plek gevonden; ga niet breder zoeken
-                        return dedup_by_remote(found)
+                        # Alleen vroegtijdig stoppen als er óók een centrale PV lijkt te zijn
+                        def _has_central(items: list[dict]) -> bool:
+                            for p in items or []:
+                                s = " ".join([(p.get('pdf_name') or ''), (p.get('text') or ''), (p.get('from') or '')]).lower()
+                                if ('na31' in s) or ('na 31' in s) or ('gemeentelijk stembureau' in s) or ('uitkomst' in s and s.endswith('.pdf')):
+                                    return True
+                            return False
+                        if _has_central(found):
+                            return dedup_by_remote(found)
                 except Exception:
                     pass
                 continue
@@ -2112,9 +2274,9 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
                     candidates.append(full)
             except Exception:
                 pass
-        # volg kandidaten (limiet adaptief) en extraheer PDF’s; stop als één pagina 'plek gevonden' oplevert
+        # volg kandidaten (limiet adaptief) en extraheer PDF’s; sorteer zodat 2025-pagina's prioriteit krijgen
         seen = set()
-        cand_limit = 12
+        cand_limit = 30
         try:
             host = urlparse(start).netloc.lower()
             # Heuristische uitzonderingen: sta iets meer kandidaten toe op lastigere domeinen
@@ -2122,12 +2284,21 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
                 cand_limit = 16
         except Exception:
             pass
+        def _cand_score(u: str) -> int:
+            lu = (u or '').lower()
+            sc = 0
+            if '2025' in lu or 'tk25' in lu or 'tk-25' in lu:
+                sc += 2
+            if '2023' in lu or 'tk23' in lu or 'tk-23' in lu:
+                sc -= 2
+            return sc
+        candidates = sorted(candidates, key=_cand_score, reverse=True)
         for u in candidates[:cand_limit]:
             if u in seen: continue
             seen.add(u)
             h2, b2 = fetch_html(u, allow_render=True)
             if not h2: continue
-            # Speciaal: Google Drive links op deze pagina direct downloaden
+            # Speciaal: Google Drive en MijnStembureau links op deze pagina direct verwerken
             try:
                 s2 = BeautifulSoup(h2, 'html.parser')
             except Exception:
@@ -2155,6 +2326,17 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
                             its = download_gdrive_folder(name, full2)
                             if its:
                                 found.extend(its)
+                        else:
+                            # MijnStembureau portal on this candidate page
+                            try:
+                                if is_mijnstembureau_url(full2):
+                                    its = download_mijnstembureau_portal(name, full2)
+                                    if its:
+                                        found.extend(its)
+                                        if is_probably_complete(found):
+                                            return dedup_by_remote(found)
+                            except Exception:
+                                pass
             # Probeer eerst of dit zelf een PV-overzichtspagina is of linkt naar zo'n pagina
             try:
                 ov2 = find_overview_pages_from_html(h2, b2)
@@ -2199,7 +2381,9 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
                 break
 
         # 1d) probeer sitesearch om relevante pagina's te vinden
-        if (not found_place) and (not is_probably_complete(found)):
+        # Doe dit ook als we al veel stembureau-PV's hebben maar nog geen centrale PV
+        central_present = _has_central(found)
+        if ((not found_place) or (not central_present)) and (not is_probably_complete(found)):
             try:
                 search_pages = site_search_discover_pages(start, queries=[
                     'uitslagen 2025', 'tweede kamer 2025', 'proces-verbaal', 'processen verbaal', 'pv stembureau'
@@ -2233,7 +2417,7 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
                     continue
 
         # 1e) laatste redmiddel: sitemap traverseren en PV-overzicht zoeken
-        if (not found_place) and (not is_probably_complete(found)):
+        if ((not found_place) or (not _has_central(found))) and (not is_probably_complete(found)):
             try:
                 for sp in discover_via_sitemap(start, max_pages=50):
                     try:
@@ -2253,8 +2437,9 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
                         continue
             except Exception:
                 pass
-        # 1e) beperkte BFS over interne site (alleen als nog weinig gevonden)
-        if (not found_place) and (not is_probably_complete(found)):
+        # 1e) beperkte BFS over interne site
+        # Ook toestaan als er al veel stembureau-PV's zijn maar nog geen centrale PV is gevonden
+        if ((not found_place) or (not _has_central(found))) and (not is_probably_complete(found)):
             try:
                 bfs_pages = 40
                 try:
@@ -2588,7 +2773,7 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
         except Exception:
             base_no_ext = ''
         import re as _re
-        looks_guid = bool(_re.fullmatch(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", base_no_ext))
+        looks_guid = bool(_re.fullmatch(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", base_no_ext)) or _looks_hashy_basename(base_no_ext)
         if looks_guid or base_no_ext in {"dsresource", "download", "document", "file", "unknown"} or (not sug):
             sug = p.get('text') or sug or None
         dest = stream_download(u, out_dir, sug)

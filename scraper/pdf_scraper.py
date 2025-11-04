@@ -1146,7 +1146,9 @@ def download_pv_overview_page(muni: str, portal_url: str) -> list[dict]:
                     if not u:
                         continue
                     u_norm = u.split('?')[0]
-                    if u_norm.lower().endswith('.pdf'):
+                    txt_low = (txt or '').lower()
+                    looks_pdf = u_norm.lower().endswith('.pdf') or ('pdf' in txt_low) or ('proces' in txt_low) or ('verbaal' in txt_low) or ('stembureau' in txt_low)
+                    if looks_pdf:
                         pdf_urls.add(u_norm)
                         if txt:
                             # store both normalized and raw as keys to maximize match chances later

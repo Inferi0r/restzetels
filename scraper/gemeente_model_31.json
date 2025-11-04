@@ -1,5 +1,4 @@
 {
-  "'s-Hertogenbosch": [],
   "Aa en Hunze": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/1680_uitkomst_TK25_ZH.pdf",
@@ -116,8 +115,8 @@
   ],
   "Asten": [
     {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/PV_NA_31-2_incl_bijlage_1.pdf",
-      "pdf_name": "PV_NA_31-2_incl_bijlage_1.pdf"
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/Proces_Verbaal_verkiezingsuitslag_GSB.pdf",
+      "pdf_name": "Proces_Verbaal_verkiezingsuitslag_GSB.pdf"
     }
   ],
   "Baarle-Nassau": [
@@ -157,6 +156,10 @@
     }
   ],
   "Beesel": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Beesel/na31-1-procesverbaal-gemeentelijk-stembureau-ps.pdf",
+      "pdf_name": "na31-1-procesverbaal-gemeentelijk-stembureau-ps.pdf"
+    },
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Beesel/na31-1-proces-verbaal-tk2025-gemeentelijk-stembureau.pdf",
       "pdf_name": "na31-1-proces-verbaal-tk2025-gemeentelijk-stembureau.pdf"
@@ -398,8 +401,8 @@
   ],
   "Den Haag": [
     {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Den Haag/pv_6904f1f15be312.86487545.pdf",
-      "pdf_name": "pv_6904f1f15be312.86487545.pdf"
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Den Haag/tweede_kamerverkiezing_2025_procesverbaal_van_het_gemeentelijk_stembureau_voor_tweede_kamerverkiezing.pdf",
+      "pdf_name": "tweede_kamerverkiezing_2025_procesverbaal_van_het_gemeentelijk_stembureau_voor_tweede_kamerverkiezing.pdf"
     }
   ],
   "Den Helder": [
@@ -532,6 +535,10 @@
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/na31-1-corrigendum-na14-2.pdf",
       "pdf_name": "na31-1-corrigendum-na14-2.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_uitkomst_TK2520(geanonimiseerd).pdf",
+      "pdf_name": "Eijsden-Margraten_uitkomst_TK2520(geanonimiseerd).pdf"
     }
   ],
   "Eindhoven": [
@@ -643,7 +650,12 @@
       "pdf_name": "Proces-verbaal-Na-31-2.pdf"
     }
   ],
-  "Groningen": [],
+  "Groningen": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Groningen/Proces-verbaal van het Hoofdstembureau.pdf",
+      "pdf_name": "Proces-verbaal van het Hoofdstembureau.pdf"
+    }
+  ],
   "Gulpen-Wittem": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Gulpen-Wittem/gulpen-wittem_uitkomst_tk25_zh.pdf",
@@ -656,7 +668,12 @@
       "pdf_name": "TK2025-Model-Na-31-2-deel-1.pdf"
     }
   ],
-  "Haarlem": [],
+  "Haarlem": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Haarlem/tk2025-pv-donderdag-gsb-algemeen-zonder-handtekeningen.pdf",
+      "pdf_name": "tk2025-pv-donderdag-gsb-algemeen-zonder-handtekeningen.pdf"
+    }
+  ],
   "Haarlemmermeer": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Haarlemmermeer/gemeente-haarlemmermeeruitkomsttk25.pdf",
@@ -705,7 +722,16 @@
       "pdf_name": "0396_model_Na_31-2_Heemskerk.pdf"
     }
   ],
-  "Heemstede": [],
+  "Heemstede": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Heemstede/Heemstede_controleprotocolGSB_TK25.pdf",
+      "pdf_name": "Heemstede_controleprotocolGSB_TK25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Heemstede/Heemstede_uitkomst_TK25.pdf",
+      "pdf_name": "Heemstede_uitkomst_TK25.pdf"
+    }
+  ],
   "Heerde": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Heerde/0246_GSB_Na31-2.pdf",
@@ -850,7 +876,12 @@
       "pdf_name": "Hulst_uitkomst_TK25.pdf"
     }
   ],
-  "IJsselstein": [],
+  "IJsselstein": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/IJsselstein/63128bff-f004-49b6-b900-330bbb4479ca.pdf",
+      "pdf_name": "63128bff-f004-49b6-b900-330bbb4479ca.pdf"
+    }
+  ],
   "Kaag en Braassem": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Kaag en Braassem/Kaagenbraassem_uitkomst_TK25.pdf",
@@ -893,7 +924,12 @@
       "pdf_name": "Krimpen-aan-den-IJssel-uitkomst-TK25-1.pdf"
     }
   ],
-  "Krimpenerwaard": [],
+  "Krimpenerwaard": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Krimpenerwaard/verzamel-proces-verbaal.pdf",
+      "pdf_name": "verzamel-proces-verbaal.pdf"
+    }
+  ],
   "Laarbeek": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Laarbeek/laarbeekuitkomsttk25pdf.pdf",
@@ -933,8 +969,8 @@
   ],
   "Leiden": [
     {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leiden/Leiden_Uitkomst_PV-met-bijlage-1_TK_PO.pdf",
-      "pdf_name": "Leiden_Uitkomst_PV-met-bijlage-1_TK_PO.pdf"
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leiden/Proces-verbaal-O7-Kieskring-Leiden.pdf",
+      "pdf_name": "Proces-verbaal-O7-Kieskring-Leiden.pdf"
     }
   ],
   "Leiderdorp": [
@@ -979,7 +1015,12 @@
       "pdf_name": "Lis_PV_GSB_TK25_ZH.pdf"
     }
   ],
-  "Lochem": [],
+  "Lochem": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Lochem/Publicatie_zitting_GSB_op_30oktober_2025.pdf",
+      "pdf_name": "Publicatie_zitting_GSB_op_30oktober_2025.pdf"
+    }
+  ],
   "Loon op Zand": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Loon op Zand/Proces_Verbaal_Gemeentelijk_Stembureau_CSO__zonder_handtekening_.pdf",
@@ -1071,10 +1112,30 @@
       "pdf_name": "midden-groningen_uitkomst_tk25_0.pdf"
     }
   ],
-  "Moerdijk": [],
-  "Molenlanden": [],
-  "Montferland": [],
-  "Montfoort": [],
+  "Moerdijk": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Moerdijk/Proces-Verbaal-Verzamel-pakket-AVG.pdf",
+      "pdf_name": "Proces-Verbaal-Verzamel-pakket-AVG.pdf"
+    }
+  ],
+  "Molenlanden": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Molenlanden/model-na31-2-uitkomst-tk25-molenlanden.pdf",
+      "pdf_name": "model-na31-2-uitkomst-tk25-molenlanden.pdf"
+    }
+  ],
+  "Montferland": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Montferland/montferland_uitkomst_tk25.pdf",
+      "pdf_name": "montferland_uitkomst_tk25.pdf"
+    }
+  ],
+  "Montfoort": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Montfoort/Het proces-verbaal van het gemeentelijk stembureau.pdf",
+      "pdf_name": "Het proces-verbaal van het gemeentelijk stembureau.pdf"
+    }
+  ],
   "Mook en Middelaar": [],
   "Neder-Betuwe": [
     {
@@ -1130,11 +1191,36 @@
       "pdf_name": "na31-1-pv-gsb.pdf"
     }
   ],
-  "Noordenveld": [],
-  "Noordoostpolder": [],
-  "Noordwijk": [],
-  "Nuenen": [],
-  "Nunspeet": [],
+  "Noordenveld": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Noordenveld/noordenveld_uitkomst_tk25_0.pdf",
+      "pdf_name": "noordenveld_uitkomst_tk25_0.pdf"
+    }
+  ],
+  "Noordoostpolder": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Noordoostpolder/noordoostpolderuitkomsttk25pdf.pdf",
+      "pdf_name": "noordoostpolderuitkomsttk25pdf.pdf"
+    }
+  ],
+  "Noordwijk": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Noordwijk/Noordwijk_uitkomst_TK25.pdf",
+      "pdf_name": "Noordwijk_uitkomst_TK25.pdf"
+    }
+  ],
+  "Nuenen": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Nuenen/nuenen_uitkomst_tk25_0.pdf",
+      "pdf_name": "nuenen_uitkomst_tk25_0.pdf"
+    }
+  ],
+  "Nunspeet": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Nunspeet/Na31-2_defintief.pdf",
+      "pdf_name": "Na31-2_defintief.pdf"
+    }
+  ],
   "Oegstgeest": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oegstgeest/Oegstgeest_uitkomst_TK25.pdf",
@@ -1142,6 +1228,10 @@
     }
   ],
   "Oirschot": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oirschot/oirschot_uitkomst_tk25_0.pdf",
+      "pdf_name": "oirschot_uitkomst_tk25_0.pdf"
+    },
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oirschot/pv_na_31-1_ps_gemeentelijk_stembureau_0.pdf",
       "pdf_name": "pv_na_31-1_ps_gemeentelijk_stembureau_0.pdf"
@@ -1153,7 +1243,12 @@
       "pdf_name": "proces-verbaal_van_een_gemeentelijk_stembureau.pdf"
     }
   ],
-  "Oldambt": [],
+  "Oldambt": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oldambt/pdf bestand Oldambt_uitkomst_TK25.pdf 2.76 MB.pdf",
+      "pdf_name": "pdf bestand Oldambt_uitkomst_TK25.pdf 2.76 MB.pdf"
+    }
+  ],
   "Oldebroek": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oldebroek/Oldebroek_Uitkomst_TK2025.pdf",
@@ -1172,15 +1267,54 @@
       "pdf_name": "Olst-Wijhe_Na_31-2_proces_verbaal_van_een_gemeentelijk_stembureau_in_een_gemeente_waar_een_centrale_stemopneming_wordt_verricht_TK25.pdf"
     }
   ],
-  "Ommen": [],
-  "Oost Gelre": [],
-  "Oosterhout": [],
-  "Ooststellingwerf": [],
-  "Oostzaan": [],
-  "Opmeer": [],
-  "Opsterland": [],
+  "Ommen": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Ommen/Ommen_uitkomst_TK25-1.pdf",
+      "pdf_name": "Ommen_uitkomst_TK25-1.pdf"
+    }
+  ],
+  "Oost Gelre": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oost Gelre/1586proces-verbaal-gsb-model-na-31-2tk25pdf.pdf",
+      "pdf_name": "1586proces-verbaal-gsb-model-na-31-2tk25pdf.pdf"
+    }
+  ],
+  "Oosterhout": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oosterhout/Proces verbaal Gemeentelijk Stembureau.pdf",
+      "pdf_name": "Proces verbaal Gemeentelijk Stembureau.pdf"
+    }
+  ],
+  "Ooststellingwerf": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Ooststellingwerf/ooststellingwerf_uitkomst_tk25.pdf",
+      "pdf_name": "ooststellingwerf_uitkomst_tk25.pdf"
+    }
+  ],
+  "Oostzaan": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oostzaan/Oostzaan_uitkomst_TK25.pdf",
+      "pdf_name": "Oostzaan_uitkomst_TK25.pdf"
+    }
+  ],
+  "Opmeer": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Opmeer/opmeer_uitkomst_tk25.pdf",
+      "pdf_name": "opmeer_uitkomst_tk25.pdf"
+    }
+  ],
+  "Opsterland": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Opsterland/0086_totaaluitslag_na31-2.pdf",
+      "pdf_name": "0086_totaaluitslag_na31-2.pdf"
+    }
+  ],
   "Oss": [],
   "Oude IJsselstreek": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oude IJsselstreek/gemeentenaam_uitkomst_tk25_aanpassingen.pdf",
+      "pdf_name": "gemeentenaam_uitkomst_tk25_aanpassingen.pdf"
+    },
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oude IJsselstreek/oude-ijsselstreek_uitkomst_tk25.pdf",
       "pdf_name": "oude-ijsselstreek_uitkomst_tk25.pdf"
@@ -1228,8 +1362,18 @@
       "pdf_name": "PV-Gemeentelijk-stembureau-Totaal.pdf"
     }
   ],
-  "Purmerend": [],
-  "Putten": [],
+  "Purmerend": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Purmerend/pv-tk25-na31-2_zh.pdf",
+      "pdf_name": "pv-tk25-na31-2_zh.pdf"
+    }
+  ],
+  "Putten": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Putten/75b852c3-1d7b-4f0c-b068-b9f5436174b5.pdf",
+      "pdf_name": "75b852c3-1d7b-4f0c-b068-b9f5436174b5.pdf"
+    }
+  ],
   "Raalte": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Raalte/proces-verbaal-centrale-telling-0.pdf",
@@ -1314,8 +1458,18 @@
       "pdf_name": "tweede_kamerverkiezing__2025_procesverbaal_gemeentelijk_stembureau_rotterdam_model_na_312.pdf"
     }
   ],
-  "Rozendaal": [],
-  "Rucphen": [],
+  "Rozendaal": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Rozendaal/Procesverbaal-Model-Na-31-1-GSB-2025-t.b.v.-Website.pdf",
+      "pdf_name": "Procesverbaal-Model-Na-31-1-GSB-2025-t.b.v.-Website.pdf"
+    }
+  ],
+  "Rucphen": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Rucphen/Rucphen_uitkomst_TK25.pdf",
+      "pdf_name": "Rucphen_uitkomst_TK25.pdf"
+    }
+  ],
   "Saba": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Saba/PV_-_stem_bureau_.pdf",
@@ -1334,7 +1488,12 @@
       "pdf_name": "model_na_31-1_pv_gemeentelijk_stembureau_-_zonder_handtekening.pdf"
     }
   ],
-  "Schiedam": [],
+  "Schiedam": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Schiedam/Schiedam_uitkomst_TK25_0.pdf",
+      "pdf_name": "Schiedam_uitkomst_TK25_0.pdf"
+    }
+  ],
   "Schiermonnikoog": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Schiermonnikoog/schiermonnikoog_uitkomst_tk25_na31_1.pdf",
@@ -1347,24 +1506,99 @@
       "pdf_name": "1676_TK_Na_31-1_Proces_verbaal_Gemeentelijk_Stembureau.pdf"
     }
   ],
-  "Simpelveld": [],
+  "Simpelveld": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Simpelveld/simpelveld_uitkomst_tk25.pdf",
+      "pdf_name": "simpelveld_uitkomst_tk25.pdf"
+    }
+  ],
   "Sint Eustatius": [],
   "Sint-Michielsgestel": [],
   "Sittard-Geleen": [],
-  "Sliedrecht": [],
-  "Sluis": [],
-  "Smallingerland": [],
-  "Soest": [],
-  "Someren": [],
-  "Son en Breugel": [],
-  "Stadskanaal": [],
-  "Staphorst": [],
-  "Stede Broec": [],
-  "Steenbergen": [],
-  "Steenwijkerland": [],
-  "Stein": [],
-  "Stichtse Vecht": [],
-  "Súdwest-Fryslân": [],
+  "Sliedrecht": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Sliedrecht/SLI_TK2025_NA31_1_ZHT.org.pdf",
+      "pdf_name": "SLI_TK2025_NA31_1_ZHT.org.pdf"
+    }
+  ],
+  "Sluis": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Sluis/Sluis_uitkomst_TK2025.org.pdf",
+      "pdf_name": "Sluis_uitkomst_TK2025.org.pdf"
+    }
+  ],
+  "Smallingerland": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Smallingerland/Smallingerland_uitkomst_TK25.pdf",
+      "pdf_name": "Smallingerland_uitkomst_TK25.pdf"
+    }
+  ],
+  "Soest": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Soest/Soest_uitkomst_TK25.pdf",
+      "pdf_name": "Soest_uitkomst_TK25.pdf"
+    }
+  ],
+  "Someren": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Someren/Verslag_controleprotocol.pdf",
+      "pdf_name": "Verslag_controleprotocol.pdf"
+    }
+  ],
+  "Son en Breugel": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Son en Breugel/0848_controleprotocol_gsb_0.pdf",
+      "pdf_name": "0848_controleprotocol_gsb_0.pdf"
+    }
+  ],
+  "Stadskanaal": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Stadskanaal/Stadskanaal_uitkomst_TK25.pdf",
+      "pdf_name": "Stadskanaal_uitkomst_TK25.pdf"
+    }
+  ],
+  "Staphorst": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Staphorst/proces_verbaal_gemeentelijk_stembureau_30_oktober_0.pdf",
+      "pdf_name": "proces_verbaal_gemeentelijk_stembureau_30_oktober_0.pdf"
+    }
+  ],
+  "Stede Broec": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Stede Broec/Stede-Broec_uitkomst_TK25.pdf",
+      "pdf_name": "Stede-Broec_uitkomst_TK25.pdf"
+    }
+  ],
+  "Steenbergen": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Steenbergen/gemeente_steenbergen_uitkomst_tk25_1098145.pdf",
+      "pdf_name": "gemeente_steenbergen_uitkomst_tk25_1098145.pdf"
+    }
+  ],
+  "Steenwijkerland": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Steenwijkerland/Steenwijkerland_uitkomst_TK25.pdf",
+      "pdf_name": "Steenwijkerland_uitkomst_TK25.pdf"
+    }
+  ],
+  "Stein": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Stein/stein-uitkomst-tk25-nieuw.pdf",
+      "pdf_name": "stein-uitkomst-tk25-nieuw.pdf"
+    }
+  ],
+  "Stichtse Vecht": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Stichtse Vecht/Stichtse_Vecht_uitkomst_TK25.pdf",
+      "pdf_name": "Stichtse_Vecht_uitkomst_TK25.pdf"
+    }
+  ],
+  "Súdwest-Fryslân": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Súdwest-Fryslân/Sudwest-Fryslan_uitkomst_TK25.pdf",
+      "pdf_name": "Sudwest-Fryslan_uitkomst_TK25.pdf"
+    }
+  ],
   "Terneuzen": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Terneuzen/Terneuzen_uitkomst_TK25.pdf",
@@ -1389,18 +1623,48 @@
       "pdf_name": "Tey_PV_GSB_TK25_ZH.pdf"
     }
   ],
-  "Tholen": [],
-  "Tiel": [],
+  "Tholen": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Tholen/Tholen_uitkomst_TK25.pdf",
+      "pdf_name": "Tholen_uitkomst_TK25.pdf"
+    }
+  ],
+  "Tiel": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Tiel/tiel4centrum-oosthonktk25pdf.pdf",
+      "pdf_name": "tiel4centrum-oosthonktk25pdf.pdf"
+    }
+  ],
   "Tilburg": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Tilburg/Tilburg_0__Proces-verbaal_van_een_gemeentelijk_stembureau__centrale_stemopneming__TK25_ZH_04-11-2025.pdf",
       "pdf_name": "Tilburg_0__Proces-verbaal_van_een_gemeentelijk_stembureau__centrale_stemopneming__TK25_ZH_04-11-2025.pdf"
     }
   ],
-  "Tubbergen": [],
-  "Twenterand": [],
-  "Tynaarlo": [],
-  "Tytsjerksteradiel": [],
+  "Tubbergen": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Tubbergen/tubbergen_uitkomst_tk25.pdf",
+      "pdf_name": "tubbergen_uitkomst_tk25.pdf"
+    }
+  ],
+  "Twenterand": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Twenterand/twenterand_uitkomst_tk25_1.pdf",
+      "pdf_name": "twenterand_uitkomst_tk25_1.pdf"
+    }
+  ],
+  "Tynaarlo": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Tynaarlo/tynaarlo_uitkomst_tk25.pdf",
+      "pdf_name": "tynaarlo_uitkomst_tk25.pdf"
+    }
+  ],
+  "Tytsjerksteradiel": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Tytsjerksteradiel/0737_uitkomst_tk2025_zonder_handtekeningen.pdf",
+      "pdf_name": "0737_uitkomst_tk2025_zonder_handtekeningen.pdf"
+    }
+  ],
   "Uitgeest": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Uitgeest/Uitgeest_uitkomst_TK25.pdf",
@@ -1413,10 +1677,30 @@
       "pdf_name": "Uithoorn_uitkomst_TK25.pdf"
     }
   ],
-  "Urk": [],
-  "Utrecht": [],
-  "Utrechtse Heuvelrug": [],
-  "Vaals": [],
+  "Urk": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Urk/ps_-_proces-verbaal_nieuwe_zitting_gemeentelijk_stembureau.pdf",
+      "pdf_name": "ps_-_proces-verbaal_nieuwe_zitting_gemeentelijk_stembureau.pdf"
+    }
+  ],
+  "Utrecht": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Utrecht/2025-10-PV-TWEEDE-KAMER-GEMEENTELIJK-STEMBUREAU.pdf",
+      "pdf_name": "2025-10-PV-TWEEDE-KAMER-GEMEENTELIJK-STEMBUREAU.pdf"
+    }
+  ],
+  "Utrechtse Heuvelrug": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Utrechtse Heuvelrug/uh_uitkomst_tk25_0.pdf",
+      "pdf_name": "uh_uitkomst_tk25_0.pdf"
+    }
+  ],
+  "Vaals": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Vaals/pv-na-31-2-tk2023-vaals.pdf",
+      "pdf_name": "pv-na-31-2-tk2023-vaals.pdf"
+    }
+  ],
   "Valkenburg aan de Geul": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Valkenburg aan de Geul/0994_uitslag_gemeentelijk-stembureau_tk25.pdf",
@@ -1441,25 +1725,97 @@
       "pdf_name": "Veenendaal_uitkomst_TK25.pdf"
     }
   ],
-  "Veere": [],
-  "Veldhoven": [],
-  "Velsen": [],
-  "Venlo": [],
-  "Venray": [],
-  "Vijfheerenlanden": [],
-  "Vlaardingen": [],
-  "Vlieland": [],
+  "Veere": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Veere/veere_uitkomst_tk25.pdf",
+      "pdf_name": "veere_uitkomst_tk25.pdf"
+    }
+  ],
+  "Veldhoven": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Veldhoven/veldhoven_uitkomst_tk25.pdf",
+      "pdf_name": "veldhoven_uitkomst_tk25.pdf"
+    }
+  ],
+  "Velsen": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Velsen/pdf bestand Proces verbaal gemeentelijk stembureau Model-Na31-2 tk2025.pdf 2.13 MB.pdf",
+      "pdf_name": "pdf bestand Proces verbaal gemeentelijk stembureau Model-Na31-2 tk2025.pdf 2.13 MB.pdf"
+    }
+  ],
+  "Venlo": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Venlo/venlo_uitslag_tk25_0.pdf",
+      "pdf_name": "venlo_uitslag_tk25_0.pdf"
+    }
+  ],
+  "Venray": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Venray/pdf bestand Corrigendum stembureau 4 Bibliotheek Venray 41.08 MB.pdf",
+      "pdf_name": "pdf bestand Corrigendum stembureau 4 Bibliotheek Venray 41.08 MB.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Venray/pdf bestand Proces - verbaal Gemeentelijk Stembureau 29.26 MB.pdf",
+      "pdf_name": "pdf bestand Proces - verbaal Gemeentelijk Stembureau 29.26 MB.pdf"
+    }
+  ],
+  "Vijfheerenlanden": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Vijfheerenlanden/vijfheerenlanden_26_vianenparkschool_tk25_aanpassingen.pdf",
+      "pdf_name": "vijfheerenlanden_26_vianenparkschool_tk25_aanpassingen.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Vijfheerenlanden/vijfheerenlanden_gemeentelijkstembureau_tk25.pdf",
+      "pdf_name": "vijfheerenlanden_gemeentelijkstembureau_tk25.pdf"
+    }
+  ],
+  "Vlaardingen": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Vlaardingen/Vlaardingen_uitkomst_TK25 31 oktober 2025 pdf  7MB.pdf",
+      "pdf_name": "Vlaardingen_uitkomst_TK25 31 oktober 2025 pdf  7MB.pdf"
+    }
+  ],
+  "Vlieland": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Vlieland/vlieland_uitkomst_tk25.pdf",
+      "pdf_name": "vlieland_uitkomst_tk25.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Vlieland/na_31-1.pdf",
+      "pdf_name": "na_31-1.pdf"
+    }
+  ],
   "Vlissingen": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Vlissingen/proces-verbaal_na_32-1_gsb_0.pdf",
       "pdf_name": "proces-verbaal_na_32-1_gsb_0.pdf"
     }
   ],
-  "Voerendaal": [],
-  "Voorne aan Zee": [],
+  "Voerendaal": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voerendaal/Voerendaal_Uitslag_TK25..pdf",
+      "pdf_name": "Voerendaal_Uitslag_TK25..pdf"
+    }
+  ],
+  "Voorne aan Zee": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voorne aan Zee/voorne_aan_zee_uitkomst_tk2025_1.pdf",
+      "pdf_name": "voorne_aan_zee_uitkomst_tk2025_1.pdf"
+    }
+  ],
   "Voorschoten": [],
-  "Voorst": [],
-  "Vught": [],
+  "Voorst": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voorst/Voorst_uitkomst_Model_Na_31-1_procesverbaal_van_het_GSB.pdf",
+      "pdf_name": "Voorst_uitkomst_Model_Na_31-1_procesverbaal_van_het_GSB.pdf"
+    }
+  ],
+  "Vught": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Vught/pdf bestand Vught_Uitslag_TK25.pdf 950.54 kB.pdf",
+      "pdf_name": "pdf bestand Vught_Uitslag_TK25.pdf 950.54 kB.pdf"
+    }
+  ],
   "Waadhoeke": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Waadhoeke/Waadhoeke_uitkomst_TK25.pdf",
@@ -1472,7 +1828,12 @@
       "pdf_name": "waalre_uitkomst_tk25.pdf"
     }
   ],
-  "Waalwijk": [],
+  "Waalwijk": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Waalwijk/model_na31-2_0.pdf",
+      "pdf_name": "model_na31-2_0.pdf"
+    }
+  ],
   "Waddinxveen": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Waddinxveen/Waddinxveen_uitkomst_TK25.pdf",
@@ -1481,8 +1842,8 @@
   ],
   "Wageningen": [
     {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Wageningen/Procesverbaal-gemeentelijk-stembureau-Wageningen_uitkomst_TK25.pdf",
-      "pdf_name": "Procesverbaal-gemeentelijk-stembureau-Wageningen_uitkomst_TK25.pdf"
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Wageningen/Wageningen_Overdrachtsdocument-Model-N5_ZH_TK25.pdf",
+      "pdf_name": "Wageningen_Overdrachtsdocument-Model-N5_ZH_TK25.pdf"
     }
   ],
   "Wassenaar": [
@@ -1491,10 +1852,25 @@
       "pdf_name": "proces_verbaal_gemeentelijk_stembureau.pdf"
     }
   ],
-  "Waterland": [],
+  "Waterland": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Waterland/pdf bestand waterland_uitkomst_tk25.pdf 20.36 MB.pdf",
+      "pdf_name": "pdf bestand waterland_uitkomst_tk25.pdf 20.36 MB.pdf"
+    }
+  ],
   "Weert": [],
-  "West Betuwe": [],
-  "West Maas en Waal": [],
+  "West Betuwe": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/West Betuwe/pdf bestand West Betuwe_uitkomst_TK25.pdf 3.07 MB.pdf",
+      "pdf_name": "pdf bestand West Betuwe_uitkomst_TK25.pdf 3.07 MB.pdf"
+    }
+  ],
+  "West Maas en Waal": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/West Maas en Waal/westmaasenwaal_uitkomst_tk25.pdf",
+      "pdf_name": "westmaasenwaal_uitkomst_tk25.pdf"
+    }
+  ],
   "Westerkwartier": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Westerkwartier/westerkwartier_uitkomst_tk25_zh_0.pdf",
@@ -1543,7 +1919,12 @@
       "pdf_name": "wijchen_uitkomst_tk25.pdf"
     }
   ],
-  "Wijdemeren": [],
+  "Wijdemeren": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Wijdemeren/Proces-verbaal-van-een-gemeentelijk-stembureau-2025.pdf",
+      "pdf_name": "Proces-verbaal-van-een-gemeentelijk-stembureau-2025.pdf"
+    }
+  ],
   "Wijk bij Duurstede": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Wijk bij Duurstede/Wijk_bij_Duurstede_uitkomst_TK25.pdf",
@@ -1556,7 +1937,16 @@
       "pdf_name": "Winterswijk_uitkomst_TK25.pdf"
     }
   ],
-  "Woensdrecht": [],
+  "Woensdrecht": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Woensdrecht/verslag_controleprotocol_gsb_zonder_handtekening.pdf",
+      "pdf_name": "verslag_controleprotocol_gsb_zonder_handtekening.pdf"
+    },
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Woensdrecht/woens_test.pdf",
+      "pdf_name": "woens_test.pdf"
+    }
+  ],
   "Woerden": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Woerden/Woerden_uitkomst_TK25.pdf",
@@ -1575,7 +1965,12 @@
       "pdf_name": "GSB_-_Model_Na31-2__Zonder_Handt._.pdf"
     }
   ],
-  "Zaanstad": [],
+  "Zaanstad": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zaanstad/Model Na 31-2 Proces-verbaal van een gemeentelijk stembureau (centrale stemopneming).pdf",
+      "pdf_name": "Model Na 31-2 Proces-verbaal van een gemeentelijk stembureau (centrale stemopneming).pdf"
+    }
+  ],
   "Zaltbommel": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zaltbommel/zaltbommel_uitkomst_zonder-handtekeningen_tk25.pdf",
@@ -1612,18 +2007,48 @@
       "pdf_name": "zoetermeer._tk_digitale_uitkomst_zonder_handtekening.pdf"
     }
   ],
-  "Zoeterwoude": [],
-  "Zuidplas": [],
+  "Zoeterwoude": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zoeterwoude/Zoeterwoude_uitkomst_TK25.pdf",
+      "pdf_name": "Zoeterwoude_uitkomst_TK25.pdf"
+    }
+  ],
+  "Zuidplas": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zuidplas/1892_na31-2_gsb-tk25.pdf",
+      "pdf_name": "1892_na31-2_gsb-tk25.pdf"
+    }
+  ],
   "Zundert": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zundert/Zundert_Proces-verbaal.pdf",
       "pdf_name": "Zundert_Proces-verbaal.pdf"
     }
   ],
-  "Zutphen": [],
-  "Zwartewaterland": [],
-  "Zwijndrecht": [],
-  "Zwolle": [],
+  "Zutphen": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zutphen/Zutphen_uitkomst_TK2025.pdf",
+      "pdf_name": "Zutphen_uitkomst_TK2025.pdf"
+    }
+  ],
+  "Zwartewaterland": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zwartewaterland/zwartewaterland_uitkomst_tk25_0.pdf",
+      "pdf_name": "zwartewaterland_uitkomst_tk25_0.pdf"
+    }
+  ],
+  "Zwijndrecht": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zwijndrecht/Zwijndrecht_uitkomst_TK25.pdf",
+      "pdf_name": "Zwijndrecht_uitkomst_TK25.pdf"
+    }
+  ],
+  "Zwolle": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zwolle/model-na-31-2-proces-verbaal-van-een-gemeentelijk-stembureau-centrale-stemopneming-gemeente.pdf",
+      "pdf_name": "model-na-31-2-proces-verbaal-van-een-gemeentelijk-stembureau-centrale-stemopneming-gemeente.pdf"
+    }
+  ],
   "s-Hertogenbosch": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/s-Hertogenbosch/Proces-verbaal-N31-2_s-Hertogenbosch_TK25.pdf",
