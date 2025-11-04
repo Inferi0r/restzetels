@@ -59,6 +59,8 @@ def compile_regex():
         # Generieke vangnetten (niet gebruikt voor label, alleen ter ondersteuning)
         "N10": re.compile(rf"\b(model{sep})?n{sep}10\b", re.I),
         "Na31": re.compile(rf"\b(model{sep})?na{sep}31\b", re.I),
+        # Gemeentelijk stembureau aanduiding; voor TK2025 centrale stemopneming is dit Na 31-2
+        "GSB": re.compile(r"(gemeentelijk\s+stembureau|\bgsb\b)", re.I),
     }
     return rx
 
@@ -95,6 +97,9 @@ def detect_from_strings(s: str) -> str | None:
         return "Na 31-2"
     if RX["Na 31-1"].search(s):
         return "Na 31-1"
+    # Heuristiek: 'Gemeentelijk stembureau' of 'GSB' duidt vrijwel zeker op model Na 31-2 bij TK2025
+    if RX.get("GSB") and RX["GSB"].search(s):
+        return "Na 31-2"
     return None
 
 

@@ -992,8 +992,18 @@
       "pdf_name": "proces-_verbaal.pdf"
     }
   ],
-  "Losser": [],
-  "Maasdriel": [],
+  "Losser": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Losser/Losser_Overdrachtsdocument_N5_TK25.pdf",
+      "pdf_name": "Losser_Overdrachtsdocument_N5_TK25.pdf"
+    }
+  ],
+  "Maasdriel": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maasdriel/pv-tk25-bureau-6.pdf",
+      "pdf_name": "pv-tk25-bureau-6.pdf"
+    }
+  ],
   "Maasgouw": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maasgouw/model_na31-2.pdf",
@@ -1102,7 +1112,12 @@
       "pdf_name": "20251030_0268_TK25_Na31-2.pdf"
     }
   ],
-  "Nissewaard": [],
+  "Nissewaard": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Nissewaard/1930_NA31-2.pdf",
+      "pdf_name": "1930_NA31-2.pdf"
+    }
+  ],
   "Noardeast-Fryslân": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Noardeast-Fryslân/noardeastfryslan_uitkomst_tk25.pdf",
@@ -1320,8 +1335,18 @@
     }
   ],
   "Schiedam": [],
-  "Schiermonnikoog": [],
-  "Schouwen-Duiveland": [],
+  "Schiermonnikoog": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Schiermonnikoog/schiermonnikoog_uitkomst_tk25_na31_1.pdf",
+      "pdf_name": "schiermonnikoog_uitkomst_tk25_na31_1.pdf"
+    }
+  ],
+  "Schouwen-Duiveland": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Schouwen-Duiveland/1676_TK_Na_31-1_Proces_verbaal_Gemeentelijk_Stembureau.pdf",
+      "pdf_name": "1676_TK_Na_31-1_Proces_verbaal_Gemeentelijk_Stembureau.pdf"
+    }
+  ],
   "Simpelveld": [],
   "Sint Eustatius": [],
   "Sint-Michielsgestel": [],
@@ -1366,7 +1391,12 @@
   ],
   "Tholen": [],
   "Tiel": [],
-  "Tilburg": [],
+  "Tilburg": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Tilburg/Tilburg_0__Proces-verbaal_van_een_gemeentelijk_stembureau__centrale_stemopneming__TK25_ZH_04-11-2025.pdf",
+      "pdf_name": "Tilburg_0__Proces-verbaal_van_een_gemeentelijk_stembureau__centrale_stemopneming__TK25_ZH_04-11-2025.pdf"
+    }
+  ],
   "Tubbergen": [],
   "Twenterand": [],
   "Tynaarlo": [],
@@ -1419,7 +1449,12 @@
   "Vijfheerenlanden": [],
   "Vlaardingen": [],
   "Vlieland": [],
-  "Vlissingen": [],
+  "Vlissingen": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Vlissingen/proces-verbaal_na_32-1_gsb_0.pdf",
+      "pdf_name": "proces-verbaal_na_32-1_gsb_0.pdf"
+    }
+  ],
   "Voerendaal": [],
   "Voorne aan Zee": [],
   "Voorschoten": [],
@@ -1466,7 +1501,12 @@
       "pdf_name": "westerkwartier_uitkomst_tk25_zh_0.pdf"
     }
   ],
-  "Westerveld": [],
+  "Westerveld": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Westerveld/Model_Na_31_2_Proces_verbaal_gemeentelijk_stembureau.pdf",
+      "pdf_name": "Model_Na_31_2_Proces_verbaal_gemeentelijk_stembureau.pdf"
+    }
+  ],
   "Westervoort": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Westervoort/pdf bestand Westervoort_uitkomst_TK25.pdf 20.56 MB.pdf",
@@ -1485,16 +1525,56 @@
       "pdf_name": "proces-verbaal_Na31-2.pdf"
     }
   ],
-  "Weststellingwerf": [],
-  "Wierden": [],
-  "Wijchen": [],
+  "Weststellingwerf": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weststellingwerf/weststellingwerf_uitkomst_tk25.pdf",
+      "pdf_name": "weststellingwerf_uitkomst_tk25.pdf"
+    }
+  ],
+  "Wierden": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Wierden/wierden_uitkomst_tk25_1.pdf",
+      "pdf_name": "wierden_uitkomst_tk25_1.pdf"
+    }
+  ],
+  "Wijchen": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Wijchen/wijchen_uitkomst_tk25.pdf",
+      "pdf_name": "wijchen_uitkomst_tk25.pdf"
+    }
+  ],
   "Wijdemeren": [],
-  "Wijk bij Duurstede": [],
-  "Winterswijk": [],
+  "Wijk bij Duurstede": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Wijk bij Duurstede/Wijk_bij_Duurstede_uitkomst_TK25.pdf",
+      "pdf_name": "Wijk_bij_Duurstede_uitkomst_TK25.pdf"
+    }
+  ],
+  "Winterswijk": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Winterswijk/Winterswijk_uitkomst_TK25.pdf",
+      "pdf_name": "Winterswijk_uitkomst_TK25.pdf"
+    }
+  ],
   "Woensdrecht": [],
-  "Woerden": [],
-  "Wormerland": [],
-  "Woudenberg": [],
+  "Woerden": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Woerden/Woerden_uitkomst_TK25.pdf",
+      "pdf_name": "Woerden_uitkomst_TK25.pdf"
+    }
+  ],
+  "Wormerland": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Wormerland/Wormerland_uitkomst_TK25.pdf",
+      "pdf_name": "Wormerland_uitkomst_TK25.pdf"
+    }
+  ],
+  "Woudenberg": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Woudenberg/GSB_-_Model_Na31-2__Zonder_Handt._.pdf",
+      "pdf_name": "GSB_-_Model_Na31-2__Zonder_Handt._.pdf"
+    }
+  ],
   "Zaanstad": [],
   "Zaltbommel": [
     {

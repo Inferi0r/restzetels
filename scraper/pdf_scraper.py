@@ -1122,24 +1122,36 @@ def download_pv_overview_page(muni: str, portal_url: str) -> list[dict]:
                 page.wait_for_load_state('networkidle', timeout=60000)
             except Exception:
                 pass
-            # Gather PDF URLs from options and anchors
+            # Gather PDF URLs from options and anchors, and remember anchor labels
             pdf_urls: set[str] = set()
+            labels_for_url: dict[str, str] = {}
             try:
                 vals = page.eval_on_selector('body', 'b => Array.from(b.querySelectorAll("option")).map(o=>o.value)') or []
                 for v in vals:
                     if isinstance(v, str) and v.lower().endswith('.pdf'):
-                        pdf_urls.add(v)
+                        # normalize to drop cache busting/query strings when we later look up labels
+                        vv = v.split('?')[0]
+                        pdf_urls.add(vv)
             except Exception:
                 pass
             try:
-                links = page.eval_on_selector_all('a[href]', 'els => els.map(e => e.href)')
-                for href in links:
+                anchors = page.eval_on_selector_all('a[href]', 'els => els.map(e => ({href: e.href, text: e.innerText}))') or []
+                for a in anchors:
+                    href = a.get('href') or ''
+                    txt = (a.get('text') or '').strip()
                     try:
                         u = urljoin(portal_url, href)
                     except Exception:
                         u = href
-                    if u and u.lower().split('?')[0].endswith('.pdf'):
-                        pdf_urls.add(u)
+                    if not u:
+                        continue
+                    u_norm = u.split('?')[0]
+                    if u_norm.lower().endswith('.pdf'):
+                        pdf_urls.add(u_norm)
+                        if txt:
+                            # store both normalized and raw as keys to maximize match chances later
+                            labels_for_url.setdefault(u_norm, txt)
+                            labels_for_url.setdefault(u, txt)
             except Exception:
                 pass
             # Download (filter to TK2025 before saving)
@@ -1155,11 +1167,12 @@ def download_pv_overview_page(muni: str, portal_url: str) -> list[dict]:
                             continue
                         dest = os.path.join(out_dir, sanitize_filename(fname))
                         if os.path.exists(dest):
+                            key = u.split('?')[0]
                             items.append({
                                 "remote_url": u,
                                 "local_url": "file://" + os.path.abspath(dest),
                                 "pdf_name": os.path.basename(dest),
-                                "text": os.path.basename(dest),
+                                "text": labels_for_url.get(key, labels_for_url.get(u, os.path.basename(dest))),
                                 "score": 4,
                                 "from": portal_url,
                             })
@@ -1167,11 +1180,12 @@ def download_pv_overview_page(muni: str, portal_url: str) -> list[dict]:
                         with open(dest, 'wb') as f:
                             f.write(resp.body())
                         saved += 1
+                        key = u.split('?')[0]
                         items.append({
                             "remote_url": u,
                             "local_url": "file://" + os.path.abspath(dest),
                             "pdf_name": os.path.basename(dest),
-                            "text": os.path.basename(dest),
+                            "text": labels_for_url.get(key, labels_for_url.get(u, os.path.basename(dest))),
                             "score": 4,
                             "from": portal_url,
                         })
@@ -3003,8 +3017,6 @@ def run(argv: list[str] | None = None) -> int:
     return 0
 
 
-if __name__ == "__main__":
-    sys.exit(run())
 # -------- Pleio (generic) support: enumerate view links then direct-download via HTTP --------
 
 def find_pleio_hubs_from_html(html: str, base_url: str) -> list[str]:
@@ -3145,3 +3157,7 @@ def pleio_enumerate_view_links(hub_url: str, max_links: int = 400, headful: bool
         if len(out) >= max_links:
             break
     return out
+
+
+if __name__ == "__main__":
+    sys.exit(run())
