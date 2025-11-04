@@ -8,57 +8,57 @@
     },
     "stembureau_nummer": {
       "label": "Nummer stembureau",
-      "waarde": "TBD",
+      "waarde": "11",
       "waarde_bron": "handgeschreven"
     },
     "stembureau_naam": {
       "label": "Locatie stembureau",
-      "waarde": "TBD",
+      "waarde": "Clubgebouw VZOD",
       "waarde_bron": "handgeschreven"
     }
   },
   "pagina_1": {
     "toegelaten_kiezers": {
       "A": {
-        "label": "A",
-        "waarde": "TBD",
+        "label": "Aantal geldige stempassen",
+        "waarde": "6",
         "waarde_bron": "handgeschreven"
       },
       "B": {
-        "label": "B",
-        "waarde": "TBD",
+        "label": "Aantal geldige volmachtbewijzen (schriftelijk of via ingevulde stem- of kiezerspas)",
+        "waarde": "8",
         "waarde_bron": "handgeschreven"
       },
       "C": {
-        "label": "C",
-        "waarde": "TBD",
+        "label": "Aantal geldige kiezerspassen",
+        "waarde": "00",
         "waarde_bron": "handgeschreven"
       },
       "D": {
-        "label": "D",
-        "waarde": "TBD",
+        "label": "Totaal aantal toegelaten kiezers (A+B+C)",
+        "waarde": "200",
         "waarde_bron": "handgeschreven"
       }
     },
     "uitgebrachte_stemmen": {
       "E": {
-        "label": "E",
-        "waarde": "TBD",
+        "label": "Aantal stembiljetten met een geldige stem op een kandidaat",
+        "waarde": "3",
         "waarde_bron": "handgeschreven"
       },
       "F": {
-        "label": "F",
-        "waarde": "TBD",
+        "label": "Aantal blanco stembiljetten",
+        "waarde": "10",
         "waarde_bron": "handgeschreven"
       },
       "G": {
-        "label": "G",
-        "waarde": "TBD",
+        "label": "Aantal ongeldige stembiljetten",
+        "waarde": "1",
         "waarde_bron": "handgeschreven"
       },
       "H": {
-        "label": "H",
-        "waarde": "TBD",
+        "label": "Totaal aantal uitgebrachte stemmen (E+F+G)",
+        "waarde": "150",
         "waarde_bron": "handgeschreven"
       }
     }
@@ -72,23 +72,23 @@
       },
       "hertelling": {
         "A2": {
-          "label": "A2",
-          "waarde": "TBD",
+          "label": "Aantal geldige stempassen (hertelling)",
+          "waarde": "4",
           "waarde_bron": "handgeschreven"
         },
         "B2": {
-          "label": "B2",
-          "waarde": "TBD",
+          "label": "Aantal geldige volmachtbewijzen (hertelling)",
+          "waarde": "82",
           "waarde_bron": "handgeschreven"
         },
         "C2": {
-          "label": "C2",
-          "waarde": "TBD",
+          "label": "Aantal geldige kiezerspassen (hertelling)",
+          "waarde": "02",
           "waarde_bron": "handgeschreven"
         },
         "D2": {
-          "label": "D2",
-          "waarde": "TBD",
+          "label": "Totaal aantal toegelaten kiezers (hertelling)",
+          "waarde": "02",
           "waarde_bron": "handgeschreven"
         }
       }

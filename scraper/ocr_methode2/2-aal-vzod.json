@@ -3,12 +3,12 @@
   "kop": {
     "gemeente": {
       "label": "Gemeente",
-      "waarde": "Aalsmeer",
+      "waarde": null,
       "waarde_bron": "handgeschreven"
     },
     "stembureau_nummer": {
       "label": "Nummer stembureau",
-      "waarde": 11,
+      "waarde": "11",
       "waarde_bron": "handgeschreven"
     },
     "stembureau_naam": {
@@ -78,7 +78,7 @@
         },
         "B2": {
           "label": "Aantal geldige volmachtbewijzen (hertelling)",
-          "waarde": 2,
+          "waarde": 82,
           "waarde_bron": "handgeschreven"
         },
         "C2": {
@@ -102,12 +102,6 @@
       "pagina": 2
     },
     {
-      "pagina": 3
-    },
-    {
-      "pagina": 4
-    },
-    {
       "pagina": 5,
       "lijsten": [
         {
@@ -128,12 +122,12 @@
           },
           "subtotaal_rechts": {
             "label": "Subtotaal rechts",
-            "waarde": "onleesbaar",
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "totaal_lijst": {
             "label": "Totaal lijst",
-            "waarde": "onleesbaar",
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "kandidaten": [
@@ -150,7 +144,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 2,
+                "waarde": 8,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -167,7 +161,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 2,
+                "waarde": 8,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -184,7 +178,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 2,
+                "waarde": 15,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -201,7 +195,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 151,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -235,7 +229,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 2,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -354,7 +348,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 5,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -405,7 +399,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 5,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -1000,7 +994,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 11,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             }
@@ -1024,7 +1018,7 @@
           },
           "subtotaal_links": {
             "label": "Subtotaal links",
-            "waarde": 4,
+            "waarde": 3,
             "waarde_bron": "handgeschreven"
           },
           "subtotaal_rechts": {
@@ -1034,7 +1028,7 @@
           },
           "totaal_lijst": {
             "label": "Totaal lijst",
-            "waarde": "onleesbaar",
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "kandidaten": [
@@ -1051,7 +1045,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 2,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -1085,7 +1079,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -1102,7 +1096,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -1425,7 +1419,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -1561,7 +1555,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 11,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -1607,12 +1601,12 @@
           },
           "subtotaal_rechts": {
             "label": "Subtotaal rechts",
-            "waarde": "onleesbaar",
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "totaal_lijst": {
             "label": "Totaal lijst",
-            "waarde": "leeg",
+            "waarde": 3,
             "waarde_bron": "handgeschreven"
           },
           "kandidaten": [
@@ -1629,7 +1623,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 4,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -1646,7 +1640,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 4,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -1663,7 +1657,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -1680,7 +1674,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -1697,7 +1691,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -1714,7 +1708,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 4,
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -1731,7 +1725,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 4,
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -1748,7 +1742,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -1765,7 +1759,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -1782,7 +1776,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 8,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -1816,7 +1810,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -1833,7 +1827,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 6,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -2003,7 +1997,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 2,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -2088,7 +2082,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -2122,7 +2116,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 4,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -2292,7 +2286,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -2479,7 +2473,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 11,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             }
@@ -2508,7 +2502,7 @@
           },
           "subtotaal_rechts": {
             "label": "Subtotaal rechts",
-            "waarde": 4,
+            "waarde": 3,
             "waarde_bron": "handgeschreven"
           },
           "totaal_lijst": {
@@ -2547,7 +2541,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -2564,7 +2558,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -2581,7 +2575,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -2887,7 +2881,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 11,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -3040,7 +3034,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 11,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -3081,17 +3075,17 @@
           },
           "subtotaal_links": {
             "label": "Subtotaal links",
-            "waarde": 1,
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "subtotaal_rechts": {
             "label": "Subtotaal rechts",
-            "waarde": "onleesbaar",
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "totaal_lijst": {
             "label": "Totaal lijst",
-            "waarde": "onleesbaar",
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "kandidaten": [
@@ -3108,7 +3102,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -3125,7 +3119,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 3,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -3142,7 +3136,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -3159,7 +3153,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 42,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -3176,7 +3170,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 10,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -3193,7 +3187,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 0,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -3210,7 +3204,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -3227,7 +3221,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -3261,7 +3255,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -3533,7 +3527,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 32,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             }
@@ -3567,7 +3561,7 @@
           },
           "totaal_lijst": {
             "label": "Totaal lijst",
-            "waarde": "onleesbaar",
+            "waarde": 4,
             "waarde_bron": "handgeschreven"
           },
           "kandidaten": [
@@ -3584,7 +3578,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 69,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -3601,7 +3595,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -3669,7 +3663,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 69,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -3737,7 +3731,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 2,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -4094,7 +4088,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 17,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -4135,12 +4129,12 @@
           },
           "subtotaal_links": {
             "label": "Subtotaal links",
-            "waarde": "onleesbaar",
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "subtotaal_rechts": {
             "label": "Subtotaal rechts",
-            "waarde": "onleesbaar",
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "totaal_lijst": {
@@ -4706,7 +4700,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 11,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             }
@@ -4730,7 +4724,7 @@
           },
           "subtotaal_links": {
             "label": "Subtotaal links",
-            "waarde": 2,
+            "waarde": 1,
             "waarde_bron": "handgeschreven"
           },
           "subtotaal_rechts": {
@@ -4757,7 +4751,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 7,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -4774,7 +4768,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 7,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -4791,7 +4785,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 4,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -4808,7 +4802,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -4825,7 +4819,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 3,
+                "waarde": 7,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -4842,7 +4836,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -4859,7 +4853,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 3,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -4876,7 +4870,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 3,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -4893,7 +4887,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -4961,7 +4955,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 7,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -5199,7 +5193,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -5216,7 +5210,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 32,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             }
@@ -5245,7 +5239,7 @@
           },
           "subtotaal_rechts": {
             "label": "Subtotaal rechts",
-            "waarde": "onleesbaar",
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "totaal_lijst": {
@@ -5267,7 +5261,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 10,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -5284,7 +5278,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 5,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -5301,7 +5295,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -5318,7 +5312,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 6,
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -5335,7 +5329,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 7,
+                "waarde": 5,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -5352,7 +5346,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 4,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -5437,7 +5431,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -5488,7 +5482,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 7,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -5505,7 +5499,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -5539,7 +5533,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -5624,7 +5618,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -5641,7 +5635,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -5692,7 +5686,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 3,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -5709,7 +5703,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 14,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -5726,7 +5720,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -6049,7 +6043,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 11,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -6146,12 +6140,12 @@
           },
           "subtotaal_rechts": {
             "label": "Subtotaal rechts",
-            "waarde": 2,
+            "waarde": 1,
             "waarde_bron": "handgeschreven"
           },
           "totaal_lijst": {
             "label": "Totaal lijst",
-            "waarde": "onleesbaar",
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "kandidaten": [
@@ -6168,7 +6162,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -6185,7 +6179,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -6202,7 +6196,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 0,
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -6219,7 +6213,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -6236,7 +6230,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 169,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -6253,7 +6247,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -6270,7 +6264,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -6287,7 +6281,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 4,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -6304,7 +6298,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -6321,7 +6315,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -6338,7 +6332,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -6372,7 +6366,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 17,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -6389,7 +6383,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 17,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -6406,7 +6400,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -6440,7 +6434,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -6457,7 +6451,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -6491,7 +6485,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -6576,7 +6570,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 4,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -6933,7 +6927,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 11,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -7042,7 +7036,7 @@
           },
           "subtotaal_links": {
             "label": "Subtotaal links",
-            "waarde": "onleesbaar",
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "subtotaal_rechts": {
@@ -7069,7 +7063,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 2,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -7341,7 +7335,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -7902,7 +7896,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 17,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -7955,12 +7949,12 @@
           },
           "subtotaal_links": {
             "label": "Subtotaal links",
-            "waarde": "onleesbaar",
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "subtotaal_rechts": {
             "label": "Subtotaal rechts",
-            "waarde": "onleesbaar",
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "totaal_lijst": {
@@ -7982,7 +7976,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 2,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -8152,7 +8146,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -8271,7 +8265,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -8441,7 +8435,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 11,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             }
@@ -8465,17 +8459,17 @@
           },
           "subtotaal_links": {
             "label": "Subtotaal links",
-            "waarde": 3,
+            "waarde": 2,
             "waarde_bron": "handgeschreven"
           },
           "subtotaal_rechts": {
             "label": "Subtotaal rechts",
-            "waarde": "onleesbaar",
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "totaal_lijst": {
             "label": "Totaal lijst",
-            "waarde": "onleesbaar",
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "kandidaten": [
@@ -8492,7 +8486,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -8526,7 +8520,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 7,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -9359,7 +9353,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 11,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             }
@@ -9410,7 +9404,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 6,
+                "waarde": 0,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -10090,7 +10084,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 11,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -10289,7 +10283,7 @@
           },
           "subtotaal_rechts": {
             "label": "Subtotaal rechts",
-            "waarde": "onleesbaar",
+            "waarde": 1,
             "waarde_bron": "handgeschreven"
           },
           "totaal_lijst": {
@@ -10311,7 +10305,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 2,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -10328,7 +10322,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 6,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -10345,7 +10339,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -10362,7 +10356,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 0,
+                "waarde": 11,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -11144,7 +11138,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 11,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -11190,12 +11184,12 @@
           },
           "subtotaal_rechts": {
             "label": "Subtotaal rechts",
-            "waarde": 2,
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "totaal_lijst": {
             "label": "Totaal lijst",
-            "waarde": "leeg",
+            "waarde": 4,
             "waarde_bron": "handgeschreven"
           },
           "kandidaten": [
@@ -11212,7 +11206,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 7,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -11229,7 +11223,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -11246,7 +11240,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -11263,7 +11257,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 7,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -11297,7 +11291,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 4,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -11382,7 +11376,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 6,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -11671,7 +11665,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -11892,7 +11886,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -11960,7 +11954,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 7,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -11977,7 +11971,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 11,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -11994,7 +11988,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -12062,7 +12056,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             }
@@ -12086,12 +12080,12 @@
           },
           "subtotaal_links": {
             "label": "Subtotaal links",
-            "waarde": 2,
+            "waarde": 1,
             "waarde_bron": "handgeschreven"
           },
           "subtotaal_rechts": {
             "label": "Subtotaal rechts",
-            "waarde": "onleesbaar",
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "totaal_lijst": {
@@ -12113,7 +12107,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -12130,7 +12124,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 3,
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -12147,7 +12141,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 24,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -12249,7 +12243,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 4,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -12572,7 +12566,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 4,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -12844,7 +12838,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 11,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             }
@@ -12868,7 +12862,7 @@
           },
           "subtotaal_links": {
             "label": "Subtotaal links",
-            "waarde": 1,
+            "waarde": 2,
             "waarde_bron": "handgeschreven"
           },
           "subtotaal_rechts": {
@@ -12895,7 +12889,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 3,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -12912,7 +12906,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -12929,7 +12923,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -12946,7 +12940,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -12963,7 +12957,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 113,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -12980,7 +12974,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -12997,7 +12991,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 2,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -13422,7 +13416,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 11,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -13713,12 +13707,12 @@
           },
           "subtotaal_links": {
             "label": "Subtotaal links",
-            "waarde": "onleesbaar",
+            "waarde": 2,
             "waarde_bron": "handgeschreven"
           },
           "subtotaal_rechts": {
             "label": "Subtotaal rechts",
-            "waarde": "onleesbaar",
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "totaal_lijst": {
@@ -13740,7 +13734,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 3,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -13757,7 +13751,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -13774,7 +13768,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -13791,7 +13785,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -13808,7 +13802,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 113,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -13825,7 +13819,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -13842,7 +13836,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 2,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -14301,7 +14295,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 11,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             }
@@ -14325,17 +14319,17 @@
           },
           "subtotaal_links": {
             "label": "Subtotaal links",
-            "waarde": 2,
+            "waarde": 0,
             "waarde_bron": "handgeschreven"
           },
           "subtotaal_rechts": {
             "label": "Subtotaal rechts",
-            "waarde": "onleesbaar",
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "totaal_lijst": {
             "label": "Totaal lijst",
-            "waarde": 71,
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "kandidaten": [
@@ -14352,7 +14346,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 7,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -14369,7 +14363,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 7,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -14386,7 +14380,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 7,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -14403,7 +14397,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": 10,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -14437,7 +14431,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -14454,7 +14448,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 0,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -14471,7 +14465,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -14488,7 +14482,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 0,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -14539,7 +14533,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -14556,7 +14550,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -14726,7 +14720,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -14743,7 +14737,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 3,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -14760,7 +14754,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -14845,7 +14839,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 4,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -15202,7 +15196,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 11,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             }
@@ -15226,12 +15220,12 @@
           },
           "subtotaal_links": {
             "label": "Subtotaal links",
-            "waarde": 10,
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "subtotaal_rechts": {
             "label": "Subtotaal rechts",
-            "waarde": 10,
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "totaal_lijst": {
@@ -15627,7 +15621,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 11,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             }
@@ -15651,7 +15645,7 @@
           },
           "subtotaal_links": {
             "label": "Subtotaal links",
-            "waarde": 2,
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "subtotaal_rechts": {
@@ -15695,7 +15689,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -15763,7 +15757,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 0,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -15967,7 +15961,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 32,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             }
@@ -15991,12 +15985,12 @@
           },
           "subtotaal_links": {
             "label": "Subtotaal links",
-            "waarde": "onleesbaar",
+            "waarde": 2,
             "waarde_bron": "handgeschreven"
           },
           "subtotaal_rechts": {
             "label": "Subtotaal rechts",
-            "waarde": "onleesbaar",
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "totaal_lijst": {
@@ -16018,7 +16012,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 26,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -16035,7 +16029,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 28,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -16052,7 +16046,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 2,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -16069,7 +16063,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 34,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -16086,7 +16080,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 9,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -16103,7 +16097,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 37,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -16120,7 +16114,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 38,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -16137,7 +16131,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 39,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -16154,7 +16148,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -16171,7 +16165,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": "leeg",
+                "waarde": 1,
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -16749,7 +16743,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 11,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -16892,12 +16886,12 @@
           },
           "subtotaal_links": {
             "label": "Subtotaal links",
-            "waarde": "onleesbaar",
+            "waarde": 5,
             "waarde_bron": "handgeschreven"
           },
           "subtotaal_rechts": {
             "label": "Subtotaal rechts",
-            "waarde": "leeg",
+            "waarde": 2,
             "waarde_bron": "handgeschreven"
           },
           "totaal_lijst": {
@@ -17480,7 +17474,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 11,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -17538,7 +17532,7 @@
           },
           "subtotaal_links": {
             "label": "Subtotaal links",
-            "waarde": 2,
+            "waarde": "leeg",
             "waarde_bron": "handgeschreven"
           },
           "subtotaal_rechts": {
@@ -17565,7 +17559,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 26,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -17582,7 +17576,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -17599,7 +17593,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 28,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -17616,7 +17610,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 2,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -17684,7 +17678,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 34,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -17701,7 +17695,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 9,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -17752,7 +17746,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 37,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -17769,7 +17763,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 38,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -17786,7 +17780,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 39,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             }
@@ -17832,7 +17826,7 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 1,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             },
@@ -17849,16 +17843,13 @@
               },
               "stemmen": {
                 "label": "Stemmen",
-                "waarde": 32,
+                "waarde": "leeg",
                 "waarde_bron": "handgeschreven"
               }
             }
           ]
         }
       ]
-    },
-    {
-      "pagina": 31
     }
   ]
 }

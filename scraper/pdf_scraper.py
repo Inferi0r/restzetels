@@ -16,6 +16,7 @@ import re
 import sys
 import json
 from urllib.parse import urljoin, urlparse
+from urllib.parse import parse_qs, unquote
 import argparse
 import zipfile
 import tempfile
@@ -250,11 +251,23 @@ def extract_pdf_links(html: str, base_url: str) -> list[dict]:
         classes = " ".join(a.get("class", []))
         text_raw = a.get_text(" ", strip=True)
         text = (text_raw or "").lower()
+        # Detect docReader wrappers that point to an underlying PDF via ?url=
+        is_docreader = ("docreader.readspeaker.com" in full.lower()) and ("url=" in full.lower())
+        target_pdf_url = None
+        if is_docreader:
+            try:
+                q = parse_qs(urlparse(full).query)
+                url_param = q.get("url") or q.get("doc")
+                if url_param and url_param[0]:
+                    target_pdf_url = unquote(url_param[0])
+            except Exception:
+                target_pdf_url = None
         is_pdf_like = (
             (".pdf" in p)
             or ("type=pdf" in full.lower())
             or ("type-document-pdf" in classes)
             or (text.endswith("pdf"))
+            or (is_docreader and target_pdf_url and target_pdf_url.lower().endswith('.pdf'))
         )
         if is_pdf_like:
             # score and pdf_name similar to main scraper
@@ -262,7 +275,8 @@ def extract_pdf_links(html: str, base_url: str) -> list[dict]:
             if PDF_HINT_RE.search(text_raw or "") or PDF_HINT_RE.search(full):
                 score += 3
             try:
-                orig_name = os.path.basename(urlparse(full).path)
+                use_url = target_pdf_url or full
+                orig_name = os.path.basename(urlparse(use_url).path)
             except Exception:
                 orig_name = ""
             if (not orig_name or orig_name.lower() in {"dsresource", "download", "document", "file"}):
@@ -275,7 +289,7 @@ def extract_pdf_links(html: str, base_url: str) -> list[dict]:
             if not _is_current_year_pdf(orig_name or text_raw or full):
                 continue
             found.append({
-                "remote_url": full,
+                "remote_url": target_pdf_url or full,
                 "local_url": None,
                 "text": text_raw,
                 "pdf_name": orig_name or os.path.basename(urlparse(full).path) or "document.pdf",
@@ -799,6 +813,150 @@ def find_stackstorage_shares_from_html(html: str, base_url: str) -> list[str]:
     return out
 
 
+# -------- MijnStembureau portals (generic) --------
+
+def _is_mijnstembureau_link(full_url: str, text: str | None = None) -> bool:
+    try:
+        u = urlparse(full_url)
+        if "mijnstembureau" in (u.netloc or "") and "/uitslagen/verkiezingen/tk/" in (u.path or ""):
+            return True
+    except Exception:
+        pass
+    return False
+
+
+def collect_mijnstembureau_pages(name: str, extra: dict) -> list[str]:
+    start = get_start_url(name)
+    seeds = list(extra.get(name, [])) if extra else []
+    if start:
+        seeds.insert(0, start)
+    pages: list[str] = []
+    for s in seeds[:5]:
+        try:
+            html, base = fetch_html(s, allow_render=False)
+            if not html:
+                continue
+            soup = BeautifulSoup(html, 'html.parser')
+            for a in soup.select('a[href]'):
+                href = a.get('href') or ''
+                full = urljoin(base, href)
+                if _is_mijnstembureau_link(full, a.get_text(' ', strip=True) or ''):
+                    if _is_relevant_nav_target((full + ' ' + (a.get_text(' ', strip=True) or '')).lower()):
+                        pages.append(full)
+        except Exception:
+            pass
+    # Fallback: try quick site search and sitemap if nothing found yet
+    if not pages and start:
+        try:
+            for u in quick_site_search(start):
+                if _is_mijnstembureau_link(u):
+                    if _is_relevant_nav_target(u):
+                        pages.append(u)
+        except Exception:
+            pass
+        try:
+            for u in discover_via_sitemap(start):
+                if _is_mijnstembureau_link(u):
+                    if _is_relevant_nav_target(u):
+                        pages.append(u)
+        except Exception:
+            pass
+    # Dedup preserve order
+    seen = set(); out = []
+    for u in pages:
+        if u in seen:
+            continue
+        seen.add(u)
+        out.append(u)
+    return out
+
+
+def download_mijnstembureau_portal(muni: str, page_url: str, max_items: int = 200) -> list[dict]:
+    """Download PVs from a mijnstembureau portal page by clicking the PV buttons and capturing the PDF response.
+    Saves files using the visible button text as filename.
+    """
+    if not PLAYWRIGHT_AVAILABLE:
+        return []
+    out_dir = os.path.join(OUT_BASE, sanitize_filename(muni))
+    os.makedirs(out_dir, exist_ok=True)
+    items: list[dict] = []
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context()
+        page = context.new_page()
+        try:
+            page.goto(page_url, wait_until='domcontentloaded', timeout=60000)
+            try:
+                page.wait_for_load_state('networkidle', timeout=60000)
+            except Exception:
+                pass
+            # If there is an OPEN toggle for the election, try clicking it
+            try:
+                open_btn = page.locator('button:has-text("OPEN")')
+                if open_btn.count() > 0:
+                    open_btn.first.click()
+                    page.wait_for_timeout(500)
+            except Exception:
+                pass
+            # Go to Processen Verbaal section
+            try:
+                pv_tab = page.locator('button:has-text("Processen verbaal")')
+                if pv_tab.count() > 0:
+                    pv_tab.first.click()
+                    page.wait_for_timeout(700)
+            except Exception:
+                pass
+            # Collect buttons under main that look like PV filenames (end with .pdf)
+            btns = page.locator('main button')
+            count = btns.count()
+            processed = 0
+            for i in range(count):
+                if processed >= max_items:
+                    break
+                try:
+                    label = (btns.nth(i).inner_text() or '').strip()
+                except Exception:
+                    continue
+                if not label or not label.lower().endswith('.pdf'):
+                    continue
+                # Filter and duplicate check before clicking
+                if not _is_current_year_pdf(label):
+                    continue
+                dest = os.path.join(out_dir, sanitize_filename(label))
+                if os.path.exists(dest):
+                    continue
+                # Expect the specific PDF API response when clicking
+                def is_pdf_resp(resp) -> bool:
+                    try:
+                        return ('/uitslagen/api/view-pv/' in resp.url) and (resp.status == 200) and ('application/pdf' in (resp.headers or {}).get('content-type', '').lower())
+                    except Exception:
+                        return False
+                try:
+                    with page.expect_response(is_pdf_resp, timeout=60000) as resp_ctx:
+                        btns.nth(i).click()
+                    resp = resp_ctx.value
+                    data = resp.body()
+                    if data:
+                        with open(dest, 'wb') as f:
+                            f.write(data)
+                        items.append({
+                            'remote_url': resp.url,
+                            'local_url': 'file://' + os.path.abspath(dest),
+                            'pdf_name': os.path.basename(dest),
+                            'text': label,
+                            'from': page_url,
+                            'score': 3,
+                        })
+                        processed += 1
+                except Exception:
+                    # ignore and continue on timeouts or non-PDF responses
+                    continue
+        finally:
+            context.close(); browser.close()
+    if items:
+        print(f"[mijnstembureau] {muni}: downloaded {len(items)} PVs from {page_url}")
+    return items
+
 # -------- MijnStembureau (PV portal) support --------
 
 def find_mijnstembureau_links_from_html(html: str, base_url: str) -> list[str]:
@@ -816,7 +974,7 @@ def find_mijnstembureau_links_from_html(html: str, base_url: str) -> list[str]:
         u = urlparse(full)
         host = (u.netloc or "").lower()
         path = (u.path or "")
-        if "mijnstembureau" in host and "/uitslagen/verkiezingen" in path:
+        if "mijnstembureau" in host and "/uitslagen" in path:
             # prefer explicit download options subpage
             if not path.rstrip("/").endswith("download-opties"):
                 full = urljoin(full.rstrip("/") + "/", "download-opties")
@@ -831,6 +989,185 @@ def find_mijnstembureau_links_from_html(html: str, base_url: str) -> list[str]:
         out.append(u)
     return out
 
+
+# -------- PV Overview (dynamic selects) support --------
+
+def find_pv_overview_links_from_html(html: str, base_url: str) -> list[str]:
+    """Return links that likely point to PV overview pages, e.g., 'overzicht-proces-verbalen' pages.
+    Also, when the current page text looks like an overview (mentions Kies stembureau, proces-verba(a)l, overzicht),
+    include the base_url itself as a candidate.
+    """
+    soup = BeautifulSoup(html or "", "html.parser")
+    links: list[str] = []
+    # anchor-based discovery
+    for a in soup.select("a[href]"):
+        href = a.get("href")
+        if not href:
+            continue
+        full = urljoin(base_url, href)
+        path = (urlparse(full).path or "").lower()
+        txt = (a.get_text(" ", strip=True) or "").lower()
+        if any(k in path for k in ("overzicht-proces", "processen-verbaal", "proces-verbalen")) or any(k in txt for k in ("proces-verbaal", "overzicht", "stembureau")):
+            links.append(full)
+    # page-level detection: if content itself indicates overview, include the page
+    page_text = soup.get_text(" ", strip=True).lower() if soup else ""
+    if any(k in page_text for k in ("kies stembureau", "kies stadsdeel", "overzicht proces", "proces-verbaal", "processen-verbaal")):
+        links.insert(0, base_url)
+    # Dedup preserve order
+    out: list[str] = []
+    seen: set[str] = set()
+    for u in links:
+        if u in seen:
+            continue
+        seen.add(u)
+        out.append(u)
+    return out
+
+
+def collect_pv_overview_pages(name: str, extra: dict) -> list[str]:
+    start = get_start_url(name)
+    seeds = list(extra.get(name, [])) if extra else []
+    if start:
+        seeds.insert(0, start)
+        # also probe common paths used by municipalities
+        try:
+            for u in probe_well_known_pages(start)[:8]:
+                if u not in seeds:
+                    seeds.append(u)
+        except Exception:
+            pass
+    portals: list[str] = []
+    discover_pages: list[str] = []
+    KEY_RE = re.compile(r"verkiez|uitslag|proces|verbaal|stembur|tweede.*kamer|overzicht|stadsdeel|kies", re.I)
+    for s in seeds[:6]:
+        try:
+            html, base = fetch_html(s, allow_render=("amsterdam.nl" in s))
+            if not html:
+                continue
+            portals += find_pv_overview_links_from_html(html, base)
+            soup = BeautifulSoup(html, 'html.parser')
+            pu = urlparse(base)
+            base0 = f"{pu.scheme}://{pu.netloc}"
+            for a in soup.select('a[href]'):
+                href = a.get('href'); full = urljoin(base0, href or '')
+                if not full or urlparse(full).netloc != pu.netloc:
+                    continue
+                if KEY_RE.search(full) or KEY_RE.search(a.get_text(' ', strip=True) or ''):
+                    discover_pages.append(full)
+        except Exception:
+            pass
+    # Traverse a bit deeper
+    seenp = set(); dedup = []
+    for u in discover_pages:
+        if u in seenp: continue
+        seenp.add(u); dedup.append(u)
+    for p in dedup[:15]:
+        try:
+            html2, base2 = fetch_html(p, allow_render=("amsterdam.nl" in p))
+            if not html2:
+                continue
+            portals += find_pv_overview_links_from_html(html2, base2)
+        except Exception:
+            pass
+    # Sitemap fallback
+    if start and not portals:
+        try:
+            for p in discover_via_sitemap(start, max_pages=50):
+                try:
+                    html4, base4 = fetch_html(p, allow_render=("amsterdam.nl" in p))
+                    if not html4:
+                        continue
+                    portals += find_pv_overview_links_from_html(html4, base4)
+                except Exception:
+                    continue
+        except Exception:
+            pass
+    # Dedup portals
+    out=[]; seen=set()
+    for u in portals:
+        if u in seen: continue
+        seen.add(u); out.append(u)
+    return out
+
+
+def download_pv_overview_page(muni: str, portal_url: str) -> list[dict]:
+    """Download PV PDFs from an overview page that renders selects and direct links.
+    Uses Playwright if available. Returns list of index items.
+    """
+    items: list[dict] = []
+    if not PLAYWRIGHT_AVAILABLE:
+        return items
+    out_dir = os.path.join(OUT_BASE, sanitize_filename(muni))
+    os.makedirs(out_dir, exist_ok=True)
+    saved = 0
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            ctx = browser.new_context(locale='nl-NL', user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36')
+            page = ctx.new_page()
+            page.goto(portal_url, wait_until='domcontentloaded', timeout=60000)
+            try:
+                page.wait_for_load_state('networkidle', timeout=60000)
+            except Exception:
+                pass
+            # Gather PDF URLs from options and anchors
+            pdf_urls: set[str] = set()
+            try:
+                vals = page.eval_on_selector('body', 'b => Array.from(b.querySelectorAll("option")).map(o=>o.value)') or []
+                for v in vals:
+                    if isinstance(v, str) and v.lower().endswith('.pdf'):
+                        pdf_urls.add(v)
+            except Exception:
+                pass
+            try:
+                links = page.eval_on_selector_all('a[href]', 'els => els.map(e => e.href)')
+                for href in links:
+                    try:
+                        u = urljoin(portal_url, href)
+                    except Exception:
+                        u = href
+                    if u and u.lower().split('?')[0].endswith('.pdf'):
+                        pdf_urls.add(u)
+            except Exception:
+                pass
+            # Download
+            for u in sorted(pdf_urls):
+                try:
+                    resp = ctx.request.get(u, timeout=60000)
+                    ctype = (resp.headers.get('content-type','') or '').lower()
+                    is_pdf_resp = ('application/pdf' in ctype) or u.lower().endswith('.pdf')
+                    if resp.ok and is_pdf_resp:
+                        fname = os.path.basename(urlparse(u).path) or "document.pdf"
+                        dest = os.path.join(out_dir, sanitize_filename(fname))
+                        if os.path.exists(dest):
+                            items.append({
+                                "remote_url": u,
+                                "local_url": "file://" + os.path.abspath(dest),
+                                "pdf_name": os.path.basename(dest),
+                                "text": os.path.basename(dest),
+                                "score": 4,
+                                "from": portal_url,
+                            })
+                            continue
+                        with open(dest, 'wb') as f:
+                            f.write(resp.body())
+                        saved += 1
+                        items.append({
+                            "remote_url": u,
+                            "local_url": "file://" + os.path.abspath(dest),
+                            "pdf_name": os.path.basename(dest),
+                            "text": os.path.basename(dest),
+                            "score": 4,
+                            "from": portal_url,
+                        })
+                except Exception:
+                    continue
+            ctx.close(); browser.close()
+    except Exception:
+        return items
+    if saved:
+        print(f"[pv-overview] {muni}: saved {saved} PDFs")
+    return items
 
 def collect_mijnstembureau_portals(name: str, extra: dict) -> list[str]:
     """Discover MijnStembureau portal links for a municipality by scanning start/seeds and discovered pages."""
@@ -856,6 +1193,18 @@ def collect_mijnstembureau_portals(name: str, extra: dict) -> list[str]:
                     continue
                 if KEY_RE.search(full) or KEY_RE.search(a.get_text(' ', strip=True) or ''):
                     discover_pages.append(full)
+        except Exception:
+            pass
+        # Also accept the seed itself if it points to a mijnstembureau uitslagen portal
+        try:
+            from urllib.parse import urlparse, urljoin
+            u = urlparse(s)
+            if 'mijnstembureau' in (u.netloc or '').lower() and '/uitslagen' in (u.path or ''):
+                full = s
+                # normalize to download-opties if not already
+                if not u.path.rstrip('/').endswith('download-opties'):
+                    full = urljoin(full.rstrip('/') + '/', 'download-opties')
+                portals.append(full)
         except Exception:
             pass
     # Also probe a few likely pages via quick site search
@@ -928,9 +1277,141 @@ def download_mijnstembureau_portal(muni: str, portal_url: str) -> list[dict]:
                 page.wait_for_load_state('networkidle', timeout=60000)
             except Exception:
                 pass
-            # Reveal PV list
+            # If we landed on the generic '/uitslagen' page, try to navigate to the current Tweede Kamer election
+            try:
+                cur_url = page.url
+                if '/uitslagen' in cur_url and 'download-opties' not in cur_url:
+                    # Click a tile/link that mentions 'Tweede Kamer' or 'verkiez'
+                    for t in ("Tweede Kamer", "verkiez", "2025"):
+                        try:
+                            el = page.get_by_text(t, exact=False).first
+                            if el and el.is_visible():
+                                el.click(timeout=15000)
+                                page.wait_for_timeout(800)
+                                break
+                        except Exception:
+                            continue
+                    # Try to click a 'Download' or 'Download opties' action if present
+                    for t in ("Download", "Download opties", "download-opties"):
+                        try:
+                            el = page.get_by_text(t, exact=False).first
+                            if el and el.is_visible():
+                                el.click(timeout=15000)
+                                page.wait_for_timeout(800)
+                                break
+                        except Exception:
+                            continue
+            except Exception:
+                pass
+            # If we started at a non-existing '/download-opties', go back to '/uitslagen/' root and proceed
+            try:
+                if 'download-opties' in page.url:
+                    # Navigate to root '/uitslagen/' by trimming after '/uitslagen'
+                    u = page.url
+                    i = u.lower().find('/uitslagen')
+                    if i != -1:
+                        root = u[:i] + '/uitslagen/'
+                        page.goto(root, wait_until='domcontentloaded', timeout=60000)
+                        page.wait_for_timeout(600)
+                        # Repeat election + download navigation
+                        for t in ("Tweede Kamer", "verkiez", "2025"):
+                            try:
+                                el = page.get_by_text(t, exact=False).first
+                                if el and el.is_visible():
+                                    el.click(timeout=15000)
+                                    page.wait_for_timeout(800)
+                                    break
+                            except Exception:
+                                continue
+                        for t in ("Download", "Download opties", "download-opties"):
+                            try:
+                                el = page.get_by_text(t, exact=False).first
+                                if el and el.is_visible():
+                                    el.click(timeout=15000)
+                                    page.wait_for_timeout(800)
+                                    break
+                            except Exception:
+                                continue
+            except Exception:
+                pass
+            # Try a one-shot 'download all' ZIP first (minimal requests)
+            try:
+                from tempfile import mkstemp
+                import zipfile
+                import tempfile
+                # Look for a visible control that indicates bulk download
+                bulk_texts = [
+                    "Download alle",
+                    "Alles downloaden",
+                    "Alle processen",
+                    "Alle proces",
+                    "ZIP",
+                ]
+                bulk_clicked = False
+                for t in bulk_texts:
+                    try:
+                        el = page.get_by_text(t, exact=False).first
+                        if el and el.is_visible():
+                            with page.expect_download(timeout=45000) as dl_info:
+                                el.click(timeout=15000)
+                            dl = dl_info.value
+                            # Save to temp and inspect type
+                            fd, tmpzip = tempfile.mkstemp()
+                            os.close(fd)
+                            try:
+                                dl.save_as(tmpzip)
+                            except Exception:
+                                try:
+                                    os.remove(tmpzip)
+                                except Exception:
+                                    pass
+                                tmpzip = None
+                            if tmpzip and zipfile.is_zipfile(tmpzip):
+                                z = zipfile.ZipFile(tmpzip)
+                                for nm in z.namelist():
+                                    if not nm.lower().endswith('.pdf'):
+                                        continue
+                                    try:
+                                        data = z.read(nm)
+                                        base = os.path.basename(nm) or 'document.pdf'
+                                        dest = os.path.join(out_dir, sanitize_filename(base))
+                                        if not os.path.exists(dest):
+                                            with open(dest, 'wb') as f:
+                                                f.write(data)
+                                            saved += 1
+                                        items.append({
+                                            "remote_url": None,
+                                            "local_url": "file://" + os.path.abspath(dest),
+                                            "pdf_name": os.path.basename(dest),
+                                            "text": os.path.basename(dest),
+                                            "score": 5,
+                                            "from": page.url,
+                                        })
+                                    except Exception:
+                                        continue
+                                z.close()
+                                try:
+                                    os.remove(tmpzip)
+                                except Exception:
+                                    pass
+                                bulk_clicked = True
+                                break
+                            # Not a ZIP; clean up temp file
+                            if tmpzip:
+                                try:
+                                    os.remove(tmpzip)
+                                except Exception:
+                                    pass
+                    except Exception:
+                        continue
+                if bulk_clicked:
+                    print(f"[mijnstembureau] {muni}: downloaded bulk ZIP with {saved} PDFs")
+            except Exception:
+                pass
+
+            # Reveal PV list / navigate to downloads if needed
             clicked = False
-            for t in ("Processen verbaal", "Proces-verbaal", "Proces", "verbaal"):
+            for t in ("Processen verbaal", "Proces-verbaal", "Processen-verbaal", "Procesverbaal", "Proces", "verbaal"):
                 try:
                     el = page.get_by_text(t, exact=False).first
                     if el and el.is_visible():
@@ -940,19 +1421,32 @@ def download_mijnstembureau_portal(muni: str, portal_url: str) -> list[dict]:
                 except Exception:
                     continue
             if not clicked:
-                print(f"[mijnstembureau] {muni}: couldn't find 'Processen verbaal' on {portal_url}")
-                ctx.close(); browser.close()
-                return []
+                # Try a generic 'Download' button that opens the options
+                for t in ("Download", "Download opties", "download-opties"):
+                    try:
+                        el = page.get_by_text(t, exact=False).first
+                        if el and el.is_visible():
+                            el.click(timeout=15000)
+                            page.wait_for_timeout(800)
+                            clicked = True
+                            break
+                    except Exception:
+                        continue
+            if not clicked:
+                # Proceed anyway: some portals expose direct download buttons without an explicit section/tab
+                print(f"[mijnstembureau] {muni}: proceeding without explicit downloads tab on {portal_url}")
             try:
                 page.wait_for_timeout(800)
             except Exception:
                 pass
-            buttons = page.locator('button:has-text(".pdf")')
+            # Match both buttons and anchors likely to trigger a PDF
+            buttons = page.locator('button:has-text(".pdf"), a:has-text(".pdf"), button:has-text("Download"), a:has-text("Download")')
             count = buttons.count()
             for i in range(count):
                 try:
                     btn = buttons.nth(i)
-                    label = sanitize_filename((btn.inner_text() or '').strip()) or f"pv_{i+1}.pdf"
+                    inner = (btn.inner_text() or '').strip()
+                    label = sanitize_filename(inner) or f"pv_{i+1}.pdf"
                     if not label.lower().endswith('.pdf'):
                         label += '.pdf'
                     dest = os.path.join(out_dir, label)
@@ -969,7 +1463,7 @@ def download_mijnstembureau_portal(muni: str, portal_url: str) -> list[dict]:
                     def is_pdf(resp):
                         try:
                             ct = (resp.headers.get('content-type') or '').lower()
-                            return 'application/pdf' in ct and '/uitslagen/api/' in resp.url
+                            return ('application/pdf' in ct) or resp.url.lower().endswith('.pdf')
                         except Exception:
                             return False
                     with page.expect_response(is_pdf, timeout=45000) as resp_info:
@@ -1248,16 +1742,17 @@ def quick_site_search(start_url: str) -> list[str]:
     terms = [
         "documenten verkiezing", "verkiezingsuitslag", "verkiezingen uitslag", "verkiez", "uitslag",
         "proces-verbaal", "processen-verbaal", "stembureau", "voorlopige", "N10-2", "Na 31-2", "bijlage 2",
-        "bestanden", "documenten"
+        "bestanden", "documenten", "gestemd", "zo is er gestemd"
     ]
     paths = ["zoeken", "search", "site/zoeken"]
     candidates = []
     for t in terms:
         for p in paths:
             q = requests.utils.quote(t)
-            # probeer zowel ?q= als ?search=
+            # probeer zowel ?q=, ?search= als ?trefwoord=
             candidates.append(f"{base}/{p}?q={q}")
             candidates.append(f"{base}/{p}?search={q}")
+            candidates.append(f"{base}/{p}?trefwoord={q}")
     found_pages: list[str] = []
     for u in candidates:
         try:
@@ -1295,15 +1790,21 @@ def probe_well_known_pages(start_url: str) -> list[str]:
     # Kandidaten (orde: meest algemeen eerst)
     cand = [
         "/verkiezingen",
+        "/verkiezingen/overzicht-proces-verbalen/",
+        "/verkiezingen/overzicht-proces-verbalen/processen-verbaal-25/",
         "/bestanden",
         "/tweede-kamerverkiezingen/",
         "/tweede-kamerverkiezingen",
         "/verkiezing",
         "/verkiezingsuitslag",
+        "/voorlopige-uitslag",
         "/documenten",
         "/downloads",
+        "/uitslagen",
+        "/uitslagen-verkiezingen",
+        "/zo-is-er-gestemd",
+        "/zo-is-er-gestemd-in",
         "/tk2025",
-        "/tk2023",
         "/site/zoeken?search=proces-verbaal",
         "/zoeken?search=proces-verbaal",
         "/search?q=proces-verbaal",
@@ -1315,13 +1816,9 @@ def probe_well_known_pages(start_url: str) -> list[str]:
         if u in seen:
             continue
         seen.add(u)
-        try:
-            r = http_get(u, timeout=8)
-            if 200 <= r.status_code < 400:
-                out.append(r.url)
-        except Exception:
-            continue
-    # dedup
+        # Optimistic include; actual fetching happens later with graceful handling
+        out.append(u)
+    # dedup and cap
     res = []
     seen2 = set()
     for u in out:
@@ -1329,7 +1826,7 @@ def probe_well_known_pages(start_url: str) -> list[str]:
             continue
         seen2.add(u)
         res.append(u)
-    return res[:10]
+    return res[:12]
 
 
 def discover_via_sitemap(start_url: str, max_pages: int = 30) -> list[str]:
@@ -1399,13 +1896,34 @@ def discover_via_sitemap(start_url: str, max_pages: int = 30) -> list[str]:
     return out[:max_pages]
 
 
+def _pleio_direct_url(url: str) -> str:
+    """If URL is a Pleio '/files/view/<guid>/*' view URL, convert it to the direct
+    '/file/download/<guid>' endpoint which returns the PDF via plain HTTP.
+    Otherwise return the original URL.
+    """
+    try:
+        pu = urlparse(url)
+        if pu.netloc and pu.netloc.endswith('pleio.nl') and '/files/view/' in (pu.path or ''):
+            m = re.search(r"/files/view/([0-9a-f\-]+)/", pu.path, re.I)
+            if m:
+                guid = m.group(1)
+                return f"{pu.scheme}://{pu.netloc}/file/download/{guid}"
+    except Exception:
+        pass
+    return url
+
+
 def download_pdf(url: str, out_dir: str) -> str | None:
     os.makedirs(out_dir, exist_ok=True)
     try:
-        r = requests.get(url, headers={"User-Agent": "restzetels-cleaned/0.1"}, timeout=45)
+        url = _pleio_direct_url(url)
+        # Use streaming and a higher timeout for large municipal PDFs
+        r = requests.get(url, headers={"User-Agent": "restzetels-cleaned/0.1"}, timeout=(15, 180), stream=True)
         r.raise_for_status()
-        ct = r.headers.get("Content-Type", "").lower()
-        if "application/pdf" not in ct and not urlparse(url).path.lower().endswith(".pdf"):
+        ct = (r.headers.get("Content-Type") or "").lower()
+        if ("application/pdf" not in ct and "application/octet-stream" not in ct
+                and not urlparse(url).path.lower().endswith(".pdf")):
+            r.close()
             return None
         # try filename from Content-Disposition
         cd = r.headers.get("Content-Disposition", "")
@@ -1431,7 +1949,11 @@ def download_pdf(url: str, out_dir: str) -> str | None:
         if os.path.exists(path):
             return None
         with open(path, "wb") as f:
-            f.write(r.content)
+            for chunk in r.iter_content(chunk_size=1024 * 512):
+                if not chunk:
+                    continue
+                f.write(chunk)
+        r.close()
         return path
     except Exception:
         return None
@@ -1567,7 +2089,7 @@ def collect_pdfs_for_municipality(name: str, extra: dict, force_render: bool = F
             pass
     # fetch seeds and extract pdfs + discover a small set of relevant internal pages
     discover_pages_scored: list[tuple[str,int]] = []
-    KEY_RE = re.compile(r"verkiez|uitslag|proces|stembur|tweede.*kamer|n10|na\s*31|na31|model", re.I)
+    KEY_RE = re.compile(r"verkiez|uitslag|proces|stembur|tweede.*kamer|tweede-?kamerverkiez|n10|na\s*31|na31|model", re.I)
     for s in seeds[:5]:
         try:
             allow_render = ("amsterdam.nl" in s) or ("gemeente.emmen.nl" in s) or ("ermelo.nl" in s) or force_render
@@ -1575,6 +2097,12 @@ def collect_pdfs_for_municipality(name: str, extra: dict, force_render: bool = F
             if not html:
                 continue
             urls += extract_pdf_links(html, base)
+            # Early stop if this seed already yields a strong PV set
+            try:
+                if _is_probably_complete(urls, name):
+                    break
+            except Exception:
+                pass
             soup = BeautifulSoup(html, "html.parser")
             pu = urlparse(base)
             base0 = f"{pu.scheme}://{pu.netloc}"
@@ -1613,10 +2141,15 @@ def collect_pdfs_for_municipality(name: str, extra: dict, force_render: bool = F
             if not html2:
                 continue
             urls += extract_pdf_links(html2, base2)
+            try:
+                if _is_probably_complete(urls, name):
+                    break
+            except Exception:
+                pass
         except Exception:
             pass
-    # quick site search as a fallback if still nothing
-    if not urls and start:
+    # quick site search to discover extra pages (even if some URLs already found)
+    if start:
         for p in quick_site_search(start):
             try:
                 allow_render = ("amsterdam.nl" in p) or force_render
@@ -1624,6 +2157,11 @@ def collect_pdfs_for_municipality(name: str, extra: dict, force_render: bool = F
                 if not html3:
                     continue
                 urls += extract_pdf_links(html3, base3)
+                try:
+                    if _is_probably_complete(urls, name):
+                        break
+                except Exception:
+                    pass
             except Exception:
                 pass
     # As a deeper fallback: shallow BFS on internal pages to catch hubs like '/bestanden'
@@ -1634,12 +2172,17 @@ def collect_pdfs_for_municipality(name: str, extra: dict, force_render: bool = F
                 urls += bfs
         except Exception:
             pass
-    # sitemap discovery as ultimate fallback
-    if not urls and start:
+    # sitemap discovery as additional source (news pages like 'Zo is er gestemd ...')
+    if start:
         for p in discover_via_sitemap(start):
             try:
                 r4 = http_get(p, timeout=12)
                 urls += extract_pdf_links(r4.text, r4.url)
+                try:
+                    if _is_probably_complete(urls, name):
+                        break
+                except Exception:
+                    pass
             except Exception:
                 pass
     # dedup by remote URL if present
@@ -1651,6 +2194,57 @@ def collect_pdfs_for_municipality(name: str, extra: dict, force_render: bool = F
         seen.add(u)
         out.append(entry)
     return out
+
+
+# -------- Early-stop heuristic for sufficient PV coverage --------
+
+PDF_STRONG_HINT_RE = re.compile(r"stembur|proces|verbaal|\bpv\b|\bn10\b|na\s*31|na31|uitkomst|verklaring", re.I)
+
+
+def _is_probably_complete(pdfs: list[dict], muni: str) -> bool:
+    """Return True if the current set of discovered PDFs likely covers the municipality PV set.
+    Heuristics:
+      - many PDFs (>= 40), or
+      - strong-signal PDFs (label contains stembureau/proces/verbaal/N10/Na31/PV) >= 12, or
+      - cluster by same source page or same host >= 20.
+    """
+    if not pdfs:
+        return False
+    n = len(pdfs)
+    if n >= 40:
+        return True
+    strong = 0
+    for p in pdfs:
+        s = " ".join([
+            str(p.get("pdf_name") or ""),
+            str(p.get("text") or ""),
+            str(p.get("from") or ""),
+        ])
+        if PDF_STRONG_HINT_RE.search(s):
+            strong += 1
+    if strong >= 12:
+        return True
+    # cluster by from-page or by host
+    try:
+        from collections import Counter
+        from_hosts = Counter()
+        from_pages = Counter()
+        for p in pdfs:
+            frm = p.get("from") or ""
+            if frm:
+                from_pages[frm] += 1
+                try:
+                    u = urlparse(frm)
+                    from_hosts[f"{u.scheme}://{u.netloc}"] += 1
+                except Exception:
+                    pass
+        if from_pages and max(from_pages.values()) >= 20:
+            return True
+        if from_hosts and max(from_hosts.values()) >= 20:
+            return True
+    except Exception:
+        pass
+    return False
 
 
 # -------- BFS discovery on internal site (generic) --------
@@ -1667,7 +2261,7 @@ def collect_pdfs_bfs_internal(name: str, max_depth: int = 3, max_pages: int = 12
         origin = f"{pu.scheme}://{pu.netloc}"
     except Exception:
         return []
-    KEY_RE = re.compile(r"verkiez|uitslag|proces|verbaal|stembur|tweede.*kamer|pv\b|n10|na\s*31|na31|model", re.I)
+    KEY_RE = re.compile(r"verkiez|uitslag|voorlopige|gestemd|proces|verbaal|stembur|tweede.*kamer|pv\b|n10|na\s*31|na31|model|document|download", re.I)
     visited: set[str] = set()
     queue: list[tuple[str,int]] = [(start, 0)]
     pages: list[str] = []
@@ -1733,6 +2327,7 @@ def run(argv: list[str] | None = None) -> int:
     ap.add_argument("--follow-external", action="store_true", help="Volg relevante externe links (beperkt, geheuristiceerd)")
     ap.add_argument("--generic-filehubs", action="store_true", help="Zoek algemene document-portalen (folders/files) en probeer downloads via Playwright")
     ap.add_argument("--render", action="store_true", help="Render pagina's via Playwright om dynamische lijsten te zien")
+    ap.add_argument("--pleio-headful", action="store_true", help="Open Pleio-hubs headful voor eenmalige enumeratie (stabieler)")
     args = ap.parse_args(argv)
 
     # Bepaal doellijst (initieel; kan nog aangepast worden als --complete-remote zonder selectie is opgegeven)
@@ -1756,14 +2351,7 @@ def run(argv: list[str] | None = None) -> int:
         names = get_first_n_names(5)
     extra = load_extra_seeds()
 
-    # Skip municipalities that require an API key or block scraping
-    # Amsterdam processes-verbaal are exposed behind an API that requires an API key:
-    # https://api.data.amsterdam.nl/v1/verkiezingen/processenverbaal
-    skip_map = {"Amsterdam": "https://api.data.amsterdam.nl/v1/verkiezingen/processenverbaal"}
-    for s in list(names):
-        if s in skip_map:
-            print(f"[cleaned] Skip {s}: API key required for processen-verbaal API ({skip_map[s]})")
-            names.remove(s)
+    # Previously we skipped Amsterdam due to API-only PV endpoint; now we support the public PV overview page.
 
     print(f"[cleaned] Target: {', '.join(names)}")
     total_saved = 0
@@ -2055,11 +2643,56 @@ def run(argv: list[str] | None = None) -> int:
         for n in names:
             out_dir = os.path.join(OUT_BASE, sanitize_filename(n))
             pdfs = collect_pdfs_for_municipality(n, extra, force_render=args.render)
-            # Generic BFS over internal pages to catch deeper PV pages (e.g., Olst-Wijhe)
+            # Only do BFS if we have not yet found enough direct PDF links (reduce timeouts)
+            if not pdfs or len(pdfs) < 3:
+                try:
+                    bfs_pdfs = collect_pdfs_bfs_internal(n, max_depth=2, max_pages=60, force_render=False)
+                    if bfs_pdfs:
+                        pdfs = pdfs + bfs_pdfs
+                except Exception:
+                    pass
+            # Pleio hubs: enumerate view links headless, then download via direct HTTP endpoints
             try:
-                bfs_pdfs = collect_pdfs_bfs_internal(n, max_depth=3, max_pages=120, force_render=False)
-                if bfs_pdfs:
-                    pdfs = pdfs + bfs_pdfs
+                start_url = get_start_url(n)
+                hubs = []
+                if start_url:
+                    hhtml, hbase = fetch_html(start_url, allow_render=False)
+                    if hhtml:
+                        hubs += find_pleio_hubs_from_html(hhtml, hbase)
+                if extra.get(n):
+                    for s in extra.get(n, [])[:3]:
+                        try:
+                            sh, sb = fetch_html(s, allow_render=False)
+                            if sh:
+                                hubs += find_pleio_hubs_from_html(sh, sb)
+                        except Exception:
+                            pass
+                # Dedup hubs
+                _seen_h = set(); hubs2 = []
+                for u in hubs:
+                    if u in _seen_h: continue
+                    _seen_h.add(u); hubs2.append(u)
+                pleio_items: list[dict] = []
+                for hub in hubs2[:4]:
+                    try:
+                        views = pleio_enumerate_view_links(hub, headful=args.pleio_headful)
+                        for v in views:
+                            try:
+                                base_name = os.path.basename(urlparse(v).path) or 'document.pdf'
+                            except Exception:
+                                base_name = 'document.pdf'
+                            pleio_items.append({
+                                'remote_url': v,
+                                'local_url': None,
+                                'pdf_name': base_name if base_name.lower().endswith('.pdf') else base_name + '.pdf',
+                                'text': 'Pleio',
+                                'from': hub,
+                                'score': 3,
+                            })
+                    except Exception:
+                        continue
+                if pleio_items:
+                    pdfs = pdfs + pleio_items
             except Exception:
                 pass
             # MediaFiler albums discovery + downloads
@@ -2097,7 +2730,7 @@ def run(argv: list[str] | None = None) -> int:
             if stack_items:
                 pdfs = pdfs + stack_items
             # MijnStembureau portals discovery + downloads (PV buttons -> PDF responses)
-            portals = collect_mijnstembureau_portals(n, extra)
+            portals = collect_mijnstembureau_pages(n, extra)
             msb_items: list[dict] = []
             for portal in portals:
                 try:
@@ -2108,6 +2741,18 @@ def run(argv: list[str] | None = None) -> int:
                     print(f"[mijnstembureau] {n}: error downloading portal {portal}: {e}")
             if msb_items:
                 pdfs = pdfs + msb_items
+            # PV overview dynamic pages (e.g., Amsterdam) discovery + downloads
+            pv_pages = collect_pv_overview_pages(n, extra)
+            pv_items: list[dict] = []
+            for pg in pv_pages:
+                try:
+                    its = download_pv_overview_page(n, pg)
+                    if its:
+                        pv_items.extend(its)
+                except Exception as e:
+                    print(f"[pv-overview] {n}: error downloading page {pg}: {e}")
+            if pv_items:
+                pdfs = pdfs + pv_items
             # Generic file-hubs (external portals)
             if args.generic_filehubs:
                 hubs = collect_generic_filehubs(n, extra, allow_external=args.follow_external, force_render=args.render)
@@ -2191,3 +2836,143 @@ def run(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     sys.exit(run())
+# -------- Pleio (generic) support: enumerate view links then direct-download via HTTP --------
+
+def find_pleio_hubs_from_html(html: str, base_url: str) -> list[str]:
+    """Return Pleio hub links discovered in the page HTML.
+    Heuristics: domain contains 'pleio.nl' and path contains '/groups/view/' or '/files/'.
+    Prefer anchors whose text mentions 'proces' and 'verbaal'.
+    """
+    soup = BeautifulSoup(html or "", "html.parser")
+    hubs: list[str] = []
+    prefers: list[str] = []
+    for a in soup.select('a[href]'):
+        href = a.get('href'); full = urljoin(base_url, href or '')
+        u = urlparse(full)
+        if not u.netloc or 'pleio.nl' not in u.netloc:
+            continue
+        if '/groups/view/' in u.path or '/files/' in u.path or '/verkiezingen' in u.path:
+            txt = (a.get_text(' ', strip=True) or '').lower()
+            if 'proces' in txt and 'verbaal' in txt:
+                prefers.append(full)
+            else:
+                hubs.append(full)
+    out = []
+    seen = set()
+    for lst in (prefers, hubs):
+        for u in lst:
+            if u in seen:
+                continue
+            seen.add(u); out.append(u)
+    return out[:6]
+
+
+def pleio_enumerate_view_links(hub_url: str, max_links: int = 400, headful: bool = False) -> list[str]:
+    """Use Playwright headless to open a Pleio hub and enumerate '/files/view/<guid>/' links.
+    Does not download; caller will convert to direct HTTP download endpoints.
+    """
+    if not PLAYWRIGHT_AVAILABLE:
+        return []
+    links: list[str] = []
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=(not headful))
+            context = browser.new_context(user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118 Safari/537.36', locale='nl-NL', viewport={'width': 1280, 'height': 900})
+            page = context.new_page()
+            page.goto(hub_url, wait_until='domcontentloaded', timeout=60000)
+            try:
+                page.wait_for_load_state('networkidle', timeout=15000)
+            except Exception:
+                pass
+            # Try collect directly (wait and parse DOM)
+            try:
+                page.wait_for_selector("a[href*='/files/view/']", timeout=20000)
+            except Exception:
+                pass
+            try:
+                # Locator path
+                loc = page.locator("a[href*='/files/view/']")
+                cnt = loc.count()
+                for i in range(min(cnt, max_links)):
+                    try:
+                        href = loc.nth(i).get_attribute('href') or ''
+                        if '/files/view/' in href:
+                            links.append(urljoin(page.url, href))
+                    except Exception:
+                        continue
+            except Exception:
+                pass
+            if not links:
+                try:
+                    html = page.content()
+                    import re as _re
+                    for m in _re.finditer(r"href=\"([^\"]*/files/view/[^\"]+)\"", html):
+                        links.append(urljoin(page.url, m.group(1)))
+                except Exception:
+                    pass
+            # If none, click tiles with 'Gescande processen-verbaal' variants
+            if not links:
+                # Prefer obvious tile anchors by text
+                folder_selectors = [
+                    'a:has-text("Gescande processen-verbaal")',
+                    'a:has-text("processen-verbaal")',
+                    'a:has-text("proces")',
+                    'a:has-text("Bestanden")',
+                ]
+                for sel in folder_selectors:
+                    try:
+                        loc = page.locator(sel)
+                        if loc.count() == 0:
+                            continue
+                        with page.expect_navigation(timeout=20000):
+                            loc.first.click()
+                        try:
+                            page.wait_for_load_state('networkidle', timeout=8000)
+                        except Exception:
+                            pass
+                        # Wait for any view links to appear
+                        try:
+                            page.wait_for_selector('a[href*="/files/view/"]', timeout=20000)
+                        except Exception:
+                            pass
+                        try:
+                            page.wait_for_selector("a[href*='/files/view/']", timeout=20000)
+                        except Exception:
+                            pass
+                        try:
+                            loc2 = page.locator("a[href*='/files/view/']")
+                            cnt2 = loc2.count()
+                            for i in range(min(cnt2, max_links)):
+                                try:
+                                    href = loc2.nth(i).get_attribute('href') or ''
+                                    if '/files/view/' in href:
+                                        links.append(urljoin(page.url, href))
+                                except Exception:
+                                    continue
+                        except Exception:
+                            pass
+                        if not links:
+                            try:
+                                html2 = page.content()
+                                import re as _re
+                                for m in _re.finditer(r"href=\"([^\"]*/files/view/[^\"]+)\"", html2):
+                                    links.append(urljoin(page.url, m.group(1)))
+                            except Exception:
+                                pass
+                        if links:
+                            break
+                    except Exception:
+                        continue
+            context.close(); browser.close()
+    except Exception:
+        return []
+    # Dedup and cap
+    out = []
+    seen = set()
+    for u in links:
+        if u in seen:
+            continue
+        seen.add(u); out.append(u)
+        if len(out) >= max_links:
+            break
+    return out

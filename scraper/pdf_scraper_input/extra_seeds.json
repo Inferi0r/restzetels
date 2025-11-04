@@ -5,8 +5,15 @@
   "Achtkarspelen": [
     "https://www.achtkarspelen.nl/uitslag-tweede-kamerverkiezing-2025"
   ],
+  "Leiden": [
+    "https://gemeente.leiden.nl/verkiezingen/",
+    "https://mijnstembureau-leiden.nl/uitslagen/"
+  ],
   "Dalfsen": [
     "https://www.dalfsen.nl/verkiezingen",
     "https://www.dalfsen.nl/bestanden"
+  ],
+  "Harlingen": [
+    "https://www.harlingen.nl/tweede-kamerverkiezing-2025"
   ]
 }

@@ -261,18 +261,23 @@ def split_candidate_segments(text: str) -> List[str]:
     return segs
 
 
-def _column_band_for_line(ln: Line, page_width: int) -> Tuple[int, int]:
-    """Return an x-band [x0,x1] for the stemmenkolom that corresponds to the line column.
-    Heuristiek per sjabloon:
-      - Linkerkolom namen → stemmenband ~ 62%–80% van de paginabreedte
-      - Rechterkolom namen → stemmenband ~ 90%–99% van de paginabreedte
+def _column_band_for_line(ln: Line, page_width: int, bands: Optional[Dict[str, Tuple[int,int]]] = None) -> Tuple[int, int]:
+    """Return an x-band [x0,x1] for de stemmenkolom.
+    Gekalibreerd op dezelfde waarden als ocr_votes_pdf:
+      - Linkerkolom stemmenband ~ 45%–58% van paginabreedte
+      - Rechterkolom stemmenband ~ 90%–100% van paginabreedte
     """
+    if bands:
+        if ln.left < page_width * 0.5 and 'left' in bands:
+            return bands['left']
+        if ln.left >= page_width * 0.5 and 'right' in bands:
+            return bands['right']
     if ln.left < page_width * 0.5:
-        x0 = int(page_width * 0.62)
-        x1 = int(page_width * 0.80)
+        x0 = int(page_width * 0.45)
+        x1 = int(page_width * 0.58)
     else:
         x0 = int(page_width * 0.90)
-        x1 = int(page_width * 0.99)
+        x1 = page_width - 1
     # Clamp and ensure width
     x0 = max(0, min(x0, page_width - 2))
     x1 = max(x0 + 2, min(x1, page_width - 1))
@@ -357,6 +362,33 @@ def build_from_sjabloon(pdf: Path, sjabloon: dict, headers: Optional[dict]) -> d
             page_im = None
         entry = {"pagina": pnum, "lijsten": []}
 
+        # Bepaal dynamische stemmenkolom-banden per pagina uit digits-woorden
+        bands: Dict[str, Tuple[int,int]] = {}
+        if page_im is not None:
+            W, H = page_im.size
+            digs = digits
+            if digs:
+                # Linkerkolom cluster: grof filter 35%–70% breedte
+                left_ws = [w for w in digs if (0.35*W) <= w.left <= (0.70*W) and w.top > 0.1*H and w.bottom < 0.98*H]
+                if left_ws:
+                    xs = sorted([w.left for w in left_ws])
+                    med = xs[len(xs)//2]
+                    span = int(0.06 * W)
+                    x0 = max(int(med - span), int(0.40*W))
+                    x1 = min(int(med + span), int(0.70*W))
+                    if x1 > x0:
+                        bands['left'] = (x0, x1)
+                # Rechterkolom cluster: grof filter 85%–100%
+                right_ws = [w for w in digs if (0.85*W) <= w.left <= (0.995*W) and w.top > 0.1*H and w.bottom < 0.98*H]
+                if right_ws:
+                    xs = sorted([w.left for w in right_ws])
+                    med = xs[len(xs)//2]
+                    span = int(0.03 * W)
+                    x0 = max(int(med - span), int(0.88*W))
+                    x1 = min(int(med + span), W-1)
+                    if x1 > x0:
+                        bands['right'] = (x0, x1)
+
         # Collect indices for list headers on this page
         idx_by_list: Dict[int, int] = {}
         for i, ln in enumerate(lines):
@@ -393,11 +425,7 @@ def build_from_sjabloon(pdf: Path, sjabloon: dict, headers: Optional[dict]) -> d
                 if page_im is None:
                     return None
                 W, H = page_im.size
-                x0, x1 = _column_band_for_line(ln, W)
-                # Zorg dat we rechts van het label/naam scannen en x1 > x0
-                x0 = max(x0, ln.right + 10)
-                if x1 <= x0:
-                    x1 = min(W - 1, x0 + 20)
+                x0, x1 = _column_band_for_line(ln, W, bands)
                 # 1) Crop‑OCR in de stemmenkolom (sterk signaal)
                 crop = page_im.crop((x0, max(ln.top - 8, 0), x1, min(ln.bottom + 8, H - 1)))
                 v = ocr_digit_crop(crop)

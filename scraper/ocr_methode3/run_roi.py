@@ -2,9 +2,10 @@
 import json
 import re
 import subprocess
+import tempfile
 import time
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 
 import pdfplumber
 from PIL import Image, ImageOps, ImageFilter
@@ -32,6 +33,12 @@ def render_pages_cached(pdf_path: Path, dpi: int) -> List[Path]:
     if cp.returncode != 0:
         raise RuntimeError(f'pdftoppm failed: {cp.stderr}')
     return sorted(cdir.glob('page-*.png'), key=lambda p: int(re.search(r'(\d+)', p.stem).group(1)))
+
+
+def _cache_for(pdf_path: Path) -> Path:
+    d = CACHE_DIR / pdf_path.stem
+    d.mkdir(parents=True, exist_ok=True)
+    return d
 
 
 def ocr_digits(im: Image.Image) -> Optional[str]:
@@ -119,13 +126,23 @@ def is_candidate_line(text: str) -> bool:
     return (',' in t) and ('(' in t) and (')' in t)
 
 
+def _tsv_cache_path(image_path: Path, kind: str) -> Path:
+    return image_path.with_name(f"{kind}-" + image_path.name.replace('page-','') + '.tsv')
+
+
 def tsv_lines(image_path: Path) -> List[Dict]:
-    cp = run(['tesseract', str(image_path), 'stdout', '-l', 'nld+eng', 'tsv', '--psm', '6'])
-    if cp.returncode != 0:
-        return []
+    cache = _tsv_cache_path(image_path, 'lines')
+    if cache.exists() and cache.stat().st_size > 0:
+        content = cache.read_text(encoding='utf-8', errors='ignore')
+    else:
+        cp = run(['tesseract', str(image_path), 'stdout', '-l', 'nld+eng', 'tsv', '--psm', '6'])
+        if cp.returncode != 0:
+            return []
+        content = cp.stdout
+        cache.write_text(content, encoding='utf-8')
     header = None
     lines: Dict[tuple, Dict] = {}
-    for i, row in enumerate(cp.stdout.splitlines()):
+    for i, row in enumerate(content.splitlines()):
         if i == 0:
             header = row.split('\t')
             continue
@@ -162,6 +179,201 @@ def tsv_lines(image_path: Path) -> List[Dict]:
     return [v for v in lines.values() if v.get('text')]
 
 
+def tsv_digits(image_path: Path) -> List[Dict]:
+    cache = _tsv_cache_path(image_path, 'digits')
+    if cache.exists() and cache.stat().st_size > 0:
+        content = cache.read_text(encoding='utf-8', errors='ignore')
+    else:
+        cp = run(['tesseract', str(image_path), 'stdout', 'tsv', '--psm', '6', '-l', 'eng', '-c', 'tessedit_char_whitelist=0123456789'])
+        if cp.returncode != 0:
+            return []
+        content = cp.stdout
+        cache.write_text(content, encoding='utf-8')
+    header = None
+    words: List[Dict] = []
+    for i, row in enumerate(content.splitlines()):
+        if i == 0:
+            header = row.split('\t')
+            continue
+        cols = row.split('\t')
+        if not header or len(cols) != len(header):
+            continue
+        rec = dict(zip(header, cols))
+        try:
+            level = int(rec.get('level','0'))
+        except Exception:
+            continue
+        if level != 5:
+            continue
+        text = (rec.get('text') or '').strip()
+        if not text or not re.fullmatch(r'\d+', text):
+            continue
+        try:
+            left = int(rec.get('left','0')); top = int(rec.get('top','0'))
+            width = int(rec.get('width','0')); height = int(rec.get('height','0'))
+        except Exception:
+            continue
+        words.append({'text': text, 'left': left, 'top': top, 'right': left+width, 'bottom': top+height})
+    return words
+
+
+def _digits_right_of_line(ln: Dict, digits_words: List[Dict], min_right: int, y_tol: int = 4) -> Optional[str]:
+    y0 = ln['top'] - y_tol
+    y1 = ln['bottom'] + y_tol
+    parts: List[Tuple[int,str]] = []
+    for w in digits_words:
+        if w['left'] >= min_right and not (w['bottom'] < y0 or w['top'] > y1):
+            parts.append((w['left'], w['text']))
+    if not parts:
+        return None
+    parts.sort(key=lambda x: x[0])
+    return ''.join(p for _,p in parts)
+
+
+# --- Sidecar OCR fallback (fast and robust for p1/p2 header blocks) ---
+def _run(cmd: List[str], timeout: int = 600) -> subprocess.CompletedProcess:
+    return subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=timeout)
+
+
+def _ocr_sidecar_cached(pdf_path: Path) -> Tuple[str, str]:
+    """Returns (sidecar_text, layout_text) using cache when available."""
+    cdir = _cache_for(pdf_path)
+    side_p = cdir / 'sidecar.txt'
+    layout_p = cdir / 'layout.txt'
+    if side_p.exists() and layout_p.exists():
+        return (
+            side_p.read_text(encoding='utf-8', errors='ignore'),
+            layout_p.read_text(encoding='utf-8', errors='ignore')
+        )
+    with tempfile.TemporaryDirectory(prefix='sidecar_') as td:
+        outpdf = Path(td) / 'out.pdf'
+        side = Path(td) / 'sidecar.txt'
+        cp = _run([
+            'python', '-m', 'ocrmypdf', '--language', 'nld+eng+snum',
+            '--force-ocr', '--optimize', '0', str(pdf_path), str(outpdf), '--sidecar', str(side)
+        ], timeout=1800)
+        if cp.returncode != 0:
+            raise RuntimeError(f'ocrmypdf failed: {cp.stderr}')
+        side_text = side.read_text(encoding='utf-8', errors='ignore')
+        cp2 = _run(['pdftotext', '-layout', '-q', str(outpdf), '-'])
+        layout_text = cp2.stdout if cp2.returncode == 0 else ''
+    side_p.write_text(side_text, encoding='utf-8')
+    layout_p.write_text(layout_text, encoding='utf-8')
+    return side_text, layout_text
+
+
+def _norm_digits(s: str) -> str:
+    table = str.maketrans({
+        'O': '0', 'o': '0', 'Q': '0', 'D': '0',
+        'I': '1', 'l': '1', '|': '1', '!': '1',
+        'Z': '2', 'z': '2',
+        'S': '5', 's': '5', '§': '5',
+        'B': '8',
+    })
+    s = (s or '').translate(table)
+    return re.sub(r'[^0-9]', '', s)
+
+
+def _take_tail_digits(line: str) -> Optional[str]:
+    if '|' in line:
+        tail = line.split('|')[-1].strip()
+        d = _norm_digits(tail)
+        return d or None
+    if '=' in line:
+        tail = line.split('=')[-1].strip()
+        d = _norm_digits(tail)
+        return d or None
+    tokens = (line or '').strip().split()
+    for tok in reversed(tokens):
+        if len(tok) > 7:
+            continue
+        cleaned = _norm_digits(tok)
+        if cleaned:
+            return cleaned
+    return None
+
+
+def _find_value(lines: List[str], label: str, window: int = 2) -> Optional[str]:
+    for i, ln in enumerate(lines):
+        if label in ln:
+            v = _take_tail_digits(ln)
+            if v:
+                return v
+            for j in range(1, window + 1):
+                if i + j < len(lines):
+                    v = _take_tail_digits(lines[i + j])
+                    if v:
+                        return v
+    return None
+
+
+def _extract_headers(merged_text: str) -> Dict[str, Optional[str]]:
+    lines = merged_text.splitlines()
+    out: Dict[str, Optional[str]] = {k: None for k in ('A','B','C','D','E','F','G','H')}
+    out['A'] = _find_value(lines, 'Aantal geldige stempassen')
+    out['B'] = _find_value(lines, 'Aantal geldige volmachtbewijzen')
+    out['C'] = _find_value(lines, 'Aantal geldige kiezerspassen')
+    out['D'] = _find_value(lines, 'Totaal aantal toegelaten kiezers')
+    out['E'] = _find_value(lines, 'Aantal stembiljetten met een geldige stem')
+    out['F'] = _find_value(lines, 'Aantal blanco stembiljetten')
+    out['G'] = _find_value(lines, 'Aantal ongeldige stembiljetten')
+    out['H'] = _find_value(lines, 'Totaal aantal uitgebrachte stemmen')
+    return out
+
+
+def _extract_retally(merged_text: str) -> Dict[str, Optional[str]]:
+    lines = merged_text.splitlines()
+    out: Dict[str, Optional[str]] = {k: None for k in ('A2','B2','C2','D2')}
+    def find_after_token(token: str) -> Optional[str]:
+        for idx, ln in enumerate(lines):
+            if token in ln:
+                v = _take_tail_digits(ln)
+                if v:
+                    return v
+                for j in range(1,3):
+                    if idx+j < len(lines):
+                        nxt = lines[idx+j]
+                        v = _take_tail_digits(nxt)
+                        if v:
+                            return v
+        return None
+    out['A2'] = find_after_token('A2')
+    out['B2'] = find_after_token('B2')
+    out['C2'] = find_after_token('C2')
+    out['D2'] = find_after_token('D.2') or find_after_token('D2')
+    return out
+
+
+def _extract_header_info(merged_text: str) -> Dict[str, Optional[str]]:
+    out: Dict[str, Optional[str]] = {'stembureau_nummer': None, 'stembureau_naam': None}
+    m = re.search(r'Nummer\s+stembureau\s*:?\s*([0-9OIl|!]+)', merged_text)
+    if m:
+        s = m.group(1)
+        s = s.replace('O','0').replace('I','1').replace('l','1').replace('|','1').replace('!','1')
+        out['stembureau_nummer'] = s
+    else:
+        m2 = re.search(r'Nummer\s+stembureau\s*:?\s*(.+)', merged_text)
+        if m2:
+            out['stembureau_nummer'] = m2.group(1).strip()
+    m3 = re.search(r'Locatie\s+stembureau(?:\s*\([^)]*\))?\s*(.+)', merged_text)
+    if m3:
+        out['stembureau_naam'] = m3.group(1).strip()
+    return out
+
+
+def extract_from_sidecar(pdf_path: Path) -> Dict[str, Optional[str]]:
+    side, layout = _ocr_sidecar_cached(pdf_path)
+    merged = side + '\n' + layout
+    hdr = _extract_headers(merged)
+    rtl = _extract_retally(merged)
+    inf = _extract_header_info(merged)
+    out = {}
+    out.update(hdr)
+    out.update(rtl)
+    out.update(inf)
+    return out
+
+
 def extract_page_labels_hybrid(pdf_path: Path, sjabl: Dict) -> Dict[str, str]:
     """Find labels via TSV on the scan using sjabloon.json label texts, then OCR ROI to the right."""
     dpi = 400
@@ -171,6 +383,7 @@ def extract_page_labels_hybrid(pdf_path: Path, sjabl: Dict) -> Dict[str, str]:
     if len(pages) >= 1:
         img = Image.open(pages[0])
         L = tsv_lines(pages[0])
+        D = tsv_digits(pages[0])
         W, H = img.size
         # Header
         kop = sjabl.get('kop', {})
@@ -184,12 +397,17 @@ def extract_page_labels_hybrid(pdf_path: Path, sjabl: Dict) -> Dict[str, str]:
             lab_low = lab.lower()
             for ln in L:
                 if lab_low in ln['text'].lower():
-                    # ROI to the right of this line
+                    # Try digits/text via TSV first (for nummer), then ROI OCR as fallback
+                    if name == 'stembureau_nummer':
+                        dig = _digits_right_of_line(ln, D, ln['right']+8)
+                        if dig:
+                            results[name] = dig
+                            break
+                    # ROI to the right of this line (text OCR)
                     y0, y1 = ln['top'], ln['bottom']
                     x0 = ln['right'] + 8
                     box = (max(0, x0), max(0, y0 - 3), W - 8, y1 + 3)
                     crop = img.crop(box)
-                    # text OCR
                     from pytesseract import image_to_string
                     timg = ImageOps.grayscale(crop)
                     timg = ImageOps.autocontrast(timg)
@@ -214,11 +432,14 @@ def extract_page_labels_hybrid(pdf_path: Path, sjabl: Dict) -> Dict[str, str]:
             lab_low = lab.lower()
             for ln in L:
                 if lab_low in ln['text'].lower():
-                    y0, y1 = ln['top'], ln['bottom']
-                    x0 = ln['right'] + 8
-                    box = (max(0, x0), max(0, y0 - 3), W - 8, y1 + 3)
-                    crop = img.crop(box)
-                    val = ocr_digits(crop)
+                    # Prefer TSV digits right of label; fallback to ROI OCR
+                    val = _digits_right_of_line(ln, D, ln['right']+8)
+                    if not val:
+                        y0, y1 = ln['top'], ln['bottom']
+                        x0 = ln['right'] + 8
+                        box = (max(0, x0), max(0, y0 - 3), W - 8, y1 + 3)
+                        crop = img.crop(box)
+                        val = ocr_digits(crop)
                     if val:
                         results[key] = val
                     break
@@ -226,6 +447,7 @@ def extract_page_labels_hybrid(pdf_path: Path, sjabl: Dict) -> Dict[str, str]:
     if len(pages) >= 2:
         img = Image.open(pages[1])
         L = tsv_lines(pages[1])
+        D = tsv_digits(pages[1])
         W, H = img.size
         p2 = sjabl.get('pagina_2', {}).get('verschil_toegelaten_vs_uitgebrachte', {}).get('hertelling', {})
         lab_map = {}
@@ -237,11 +459,13 @@ def extract_page_labels_hybrid(pdf_path: Path, sjabl: Dict) -> Dict[str, str]:
             lab_low = lab.lower()
             for ln in L:
                 if lab_low in ln['text'].lower():
-                    y0, y1 = ln['top'], ln['bottom']
-                    x0 = ln['right'] + 8
-                    box = (max(0, x0), max(0, y0 - 3), W - 8, y1 + 3)
-                    crop = img.crop(box)
-                    val = ocr_digits(crop)
+                    val = _digits_right_of_line(ln, D, ln['right']+8)
+                    if not val:
+                        y0, y1 = ln['top'], ln['bottom']
+                        x0 = ln['right'] + 8
+                        box = (max(0, x0), max(0, y0 - 3), W - 8, y1 + 3)
+                        crop = img.crop(box)
+                        val = ocr_digits(crop)
                     if val:
                         results[key] = val
                     break
@@ -330,22 +554,27 @@ def main():
     sjabl = json.loads(SJABL_PATH.read_text(encoding='utf-8'))
     # Hybrid: find labels on scan via TSV with sjabloon labels, then ROI OCR to the right
     values = extract_page_labels_hybrid(PDF_PATH, sjabl)
+    # Sidecar fallback for any missing header/p1/p2 values
+    try:
+        side_vals = extract_from_sidecar(PDF_PATH)
+    except Exception as e:
+        side_vals = {}
     pages = extract_candidates_via_column(PDF_PATH, coords)
     out = {
         'bron_pdf': str(PDF_PATH),
         'kop': {
             'gemeente': {'label': sjabl.get('kop',{}).get('gemeente',{}).get('label','Gemeente'), 'waarde':'TBD','waarde_bron':'handgeschreven'},
-            'stembureau_nummer': {'label': sjabl.get('kop',{}).get('stembureau_nummer',{}).get('label','Nummer stembureau'), 'waarde': values.get('stembureau_nummer','TBD'), 'waarde_bron':'handgeschreven'},
-            'stembureau_naam': {'label': sjabl.get('kop',{}).get('stembureau_naam',{}).get('label','Locatie stembureau'), 'waarde': values.get('stembureau_naam','TBD'), 'waarde_bron':'handgeschreven'},
+            'stembureau_nummer': {'label': sjabl.get('kop',{}).get('stembureau_nummer',{}).get('label','Nummer stembureau'), 'waarde': (side_vals.get('stembureau_nummer') or values.get('stembureau_nummer') or 'TBD'), 'waarde_bron':'handgeschreven'},
+            'stembureau_naam': {'label': sjabl.get('kop',{}).get('stembureau_naam',{}).get('label','Locatie stembureau'), 'waarde': (side_vals.get('stembureau_naam') or values.get('stembureau_naam') or 'TBD'), 'waarde_bron':'handgeschreven'},
         },
         'pagina_1': {
-            'toegelaten_kiezers': {k:{'label': sjabl.get('pagina_1',{}).get('toegelaten_kiezers',{}).get(k,{}).get('label',k), 'waarde':values.get(k,'TBD'),'waarde_bron':'handgeschreven'} for k in ('A','B','C','D')},
-            'uitgebrachte_stemmen': {k:{'label': sjabl.get('pagina_1',{}).get('uitgebrachte_stemmen',{}).get(k,{}).get('label',k), 'waarde':values.get(k,'TBD'),'waarde_bron':'handgeschreven'} for k in ('E','F','G','H')},
+            'toegelaten_kiezers': {k:{'label': sjabl.get('pagina_1',{}).get('toegelaten_kiezers',{}).get(k,{}).get('label',k), 'waarde':(values.get(k) or side_vals.get(k) or 'TBD'),'waarde_bron':'handgeschreven'} for k in ('A','B','C','D')},
+            'uitgebrachte_stemmen': {k:{'label': sjabl.get('pagina_1',{}).get('uitgebrachte_stemmen',{}).get(k,{}).get('label',k), 'waarde':(values.get(k) or side_vals.get(k) or 'TBD'),'waarde_bron':'handgeschreven'} for k in ('E','F','G','H')},
         },
         'pagina_2': {
             'verschil_toegelaten_vs_uitgebrachte': {
                 'keuze': {'label':'Is er een verschil (Nee/Ja ...)','waarde':'TBD','waarde_bron':'handgeschreven'},
-                'hertelling': {k:{'label': sjabl.get('pagina_2',{}).get('verschil_toegelaten_vs_uitgebrachte',{}).get('hertelling',{}).get(k,{}).get('label',k), 'waarde':values.get(k,'TBD'),'waarde_bron':'handgeschreven'} for k in ('A2','B2','C2','D2')}
+                'hertelling': {k:{'label': sjabl.get('pagina_2',{}).get('verschil_toegelaten_vs_uitgebrachte',{}).get('hertelling',{}).get(k,{}).get('label',k), 'waarde':(values.get(k) or side_vals.get(k) or 'TBD'),'waarde_bron':'handgeschreven'} for k in ('A2','B2','C2','D2')}
             }
         },
         'paginas': pages,

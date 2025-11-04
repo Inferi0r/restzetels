@@ -109,11 +109,17 @@ def read_first_page_text(local_url: str) -> str | None:
     try:
         exe = shutil.which("pdftotext")
         if exe and os.path.exists(path):
-            res = subprocess.run([exe, "-q", "-f", "1", "-l", "1", "-layout", path, "-"],
-                                 check=False, capture_output=True)
-            txt = res.stdout.decode("utf-8", errors="ignore").strip()
-            if txt:
-                return txt
+            # Eerst: layout, daarna raw; neem de langste
+            out_layout = subprocess.run([exe, "-q", "-f", "1", "-l", "1", "-layout", path, "-"],
+                                        check=False, capture_output=True)
+            txt_layout = out_layout.stdout.decode("utf-8", errors="ignore").strip()
+            if txt_layout:
+                return txt_layout
+            out_raw = subprocess.run([exe, "-q", "-f", "1", "-l", "1", "-raw", path, "-"],
+                                     check=False, capture_output=True)
+            txt_raw = out_raw.stdout.decode("utf-8", errors="ignore").strip()
+            if txt_raw:
+                return txt_raw
     except Exception:
         pass
     try:
@@ -171,6 +177,60 @@ def ocr_header_text(local_url: str) -> str | None:
     except Exception:
         return None
     return None
+
+
+def ocr_region_text(local_url: str, top_rel: float = 0.2, bottom_rel: float = 0.7, resolution: int = 350) -> str | None:
+    """OCR een verticale strook van pagina 1 (top_rel..bottom_rel)."""
+    try:
+        u = urlparse(local_url)
+        path = unquote(u.path)
+        import pdfplumber  # type: ignore
+        from PIL import ImageOps, ImageFilter  # type: ignore
+        from pytesseract import image_to_string  # type: ignore
+        with pdfplumber.open(str(path)) as pdf:
+            if not pdf.pages:
+                return None
+            page = pdf.pages[0]
+            im = page.to_image(resolution=resolution).original
+            h = im.height
+            y0 = max(0, int(h * max(0.0, min(1.0, top_rel))))
+            y1 = max(y0 + 1, int(h * max(0.0, min(1.0, bottom_rel))))
+            crop = im.crop((0, y0, im.width, y1))
+            g = ImageOps.grayscale(crop)
+            g = ImageOps.autocontrast(g)
+            g = g.filter(ImageFilter.SHARPEN)
+            for langs in ("nld+eng", "eng"):
+                try:
+                    txt = image_to_string(g, config=f"--psm 6 -l {langs}")
+                    if txt and txt.strip():
+                        return txt
+                except Exception:
+                    continue
+    except Exception:
+        return None
+    return None
+
+
+def is_bijlage_doc(local_url: str, text_hint: str | None = None, ocr_hint: str | None = None) -> bool:
+    """Herken 'Bijlage 2' / 'uitkomsten per stembureau' documenten om ze te kunnen uitsluiten."""
+    rx_bijlage = re.compile(r"\bbijlage\b", re.I)
+    rx_bijlage2 = re.compile(r"\bbijlage\s*2\b", re.I)
+    rx_uitkomsten = re.compile(r"uitkomsten\s+per\s+stembureau", re.I)
+    rx_nummer = re.compile(r"nummer\s+stembureau", re.I)
+    rx_locatie = re.compile(r"locatie\s+stembureau", re.I)
+
+    for s in (text_hint or "", ocr_hint or ""):
+        if not s:
+            continue
+        if rx_bijlage2.search(s) or (rx_bijlage.search(s) and rx_uitkomsten.search(s)) or rx_nummer.search(s) or rx_locatie.search(s):
+            return True
+
+    # Probeer uitgebreidere OCR-regio (middenstrook) om 'Bijlage 2' te vinden
+    mid = ocr_region_text(local_url, 0.2, 0.7)
+    if mid:
+        if rx_bijlage2.search(mid) or (rx_bijlage.search(mid) and rx_uitkomsten.search(mid)) or rx_nummer.search(mid) or rx_locatie.search(mid):
+            return True
+    return False
 
 
 def detect_model_for_item(p: dict) -> str:
@@ -248,11 +308,26 @@ def run(argv: list[str] | None = None) -> int:
 
         # 1) Snelle pass: alleen bestandsnaam matchen (case-insensitive)
         #    Herken: 'na31' en 'n31' (met -, _ of spatie) en specifiek '31-1' / '31-2'
+        #    Herken ook veelvoorkomende gemeentelijke naamgeving: 'uitkomst[_-]tk25' varianten
         # 'na31' moet als los 'na' voorkomen (geen deel van bv. 'Altena')
         rx_na31 = re.compile(r"(?<![A-Za-z])na[\s_\-–—]*31(?!\d)", re.I)
         rx_n31  = re.compile(r"(?<![A-Za-z])n[\s_\-–—]*31(?!\d)", re.I)
         rx_31_1 = re.compile(r"31[\s_\-–—]*1(?!\d)", re.I)
         rx_31_2 = re.compile(r"31[\s_\-–—]*2(?!\d)", re.I)
+        rx_uitkomst_tk25 = re.compile(r"uitkomst[\s_\-–—]*tk[\s_\-–—]*25", re.I)
+
+        def is_bijlage_filename(fname: str) -> bool:
+            s = (fname or "").lower()
+            if "bijlage" in s:
+                return True
+            # Heel specifiek patroon: uitkomsten per stembureau (ook met underscores/strepen)
+            has_uitkomst = ("uitkomsten" in s) or ("uitkomst" in s)
+            if has_uitkomst and "stembureau" in s:
+                return True
+            # Sommige varianten gebruiken 'nummer-<n>' i.c.m. stembureau
+            if "nummer" in s and "stembureau" in s:
+                return True
+            return False
 
         def merge_items(old_list, new_list):
             seen = set()
@@ -272,21 +347,29 @@ def run(argv: list[str] | None = None) -> int:
 
         # Optioneel bestaande bijlages wegfilteren
         if args.prune_bijlage:
-            rx_bijlage = re.compile(r"\bbijlage\b", re.I)
-            rx_bijlage2 = re.compile(r"\bbijlage\s*2\b", re.I)
-            rx_uitkomsten = re.compile(r"uitkomsten\s+per\s+stembureau", re.I)
             for name in (to_process or []):
                 items = out.get(name, [])
                 if not isinstance(items, list):
                     continue
                 new_items = []
                 for it in items:
-                    fn = (it or {}).get("pdf_name") or ""
-                    # Snel: als in bestandsnaam 'bijlage' voorkomt, skip
-                    s = fn.lower()
-                    if ("bijlage" in s):
+                    if not isinstance(it, dict):
                         continue
-                    new_items.append(it)
+                    fn = (it or {}).get("pdf_name") or ""
+                    loc = (it or {}).get("local_url") or ""
+                    # Snelle bestandsnaam check
+                    s = fn.lower()
+                    drop = False
+                    if "bijlage" in s or (("uitkomsten" in s or "uitkomst" in s) and "stembureau" in s) or ("nummer" in s and "stembureau" in s):
+                        drop = True
+                    # Inhoudelijke check met tekst/OCR indien nog niet beslist
+                    if not drop and loc:
+                        t = read_first_page_text(loc) or ""
+                        o = ocr_header_text(loc) or ""
+                        if is_bijlage_doc(loc, text_hint=t, ocr_hint=o):
+                            drop = True
+                    if not drop:
+                        new_items.append(it)
                 out[name] = new_items
 
         for name in to_process:
@@ -298,7 +381,7 @@ def run(argv: list[str] | None = None) -> int:
                 files = []
             for fn in files:
                 s = fn
-                if rx_na31.search(s) or rx_n31.search(s) or rx_31_1.search(s) or rx_31_2.search(s):
+                if (rx_na31.search(s) or rx_n31.search(s) or rx_31_1.search(s) or rx_31_2.search(s) or rx_uitkomst_tk25.search(s)) and not is_bijlage_filename(s):
                     abspath = os.path.join(gdir, fn)
                     coll.append({
                         "pdf_name": fn,
@@ -328,24 +411,87 @@ def run(argv: list[str] | None = None) -> int:
                     if t:
                         hit = detect_from_strings(t)
                         # standaard: bijlages overslaan, tenzij expliciet toegestaan
-                        if (hit in ("Na 31-1", "Na 31-2") or RX["Na31"].search(t)) and (args.include_bijlage or not (rx_bijlage.search(t) or rx_bijlage2.search(t) or rx_uitkomsten.search(t))):
-                            coll.append({
-                                "pdf_name": fn,
-                                "local_url": loc,
-                            })
-                            continue
+                        if (hit in ("Na 31-1", "Na 31-2") or RX["Na31"].search(t)):
+                            if args.include_bijlage or not is_bijlage_doc(loc, text_hint=t):
+                                coll.append({
+                                    "pdf_name": fn,
+                                    "local_url": loc,
+                                })
+                                continue
                     else:
                         # 2b. OCR van kop (alleen als tekst niets oplevert)
                         txt = ocr_header_text(loc) or ""
                         if txt:
                             hit = detect_from_strings(txt)
-                            if (hit in ("Na 31-1", "Na 31-2") or RX["Na31"].search(txt)) and (args.include_bijlage or not (rx_bijlage.search(txt) or rx_bijlage2.search(txt) or rx_uitkomsten.search(txt))):
-                                coll.append({
-                                    "pdf_name": fn,
-                                    "local_url": loc,
-                                })
+                            if (hit in ("Na 31-1", "Na 31-2") or RX["Na31"].search(txt)):
+                                if args.include_bijlage or not is_bijlage_doc(loc, ocr_hint=txt):
+                                    coll.append({
+                                        "pdf_name": fn,
+                                        "local_url": loc,
+                                    })
                 if coll:
                     out[name] = merge_items(out.get(name, []), coll)
+
+        # 3) Verfijn gemeenten met meerdere treffers: kies beste per variant (-1/-2) op basis van inhoud
+        def refine_multi_for_muni(name: str, items: list[dict]) -> list[dict]:
+            if not items or len(items) <= 1:
+                return items or []
+            # Filter op bestandsnaam (bijlage/per-stembureau) vooraf
+            prelim = [it for it in items if not (is_bijlage_filename((it or {}).get("pdf_name") or ""))]
+            if not prelim:
+                prelim = list(items)
+
+            rx_gsb = re.compile(r"gemeentelijk\s+stembureau", re.I)
+            rx_pv = re.compile(r"proces[-\s]?verbaal", re.I)
+            rx_cso = re.compile(r"centrale\s+stemopneming", re.I)
+            rx_nummer = re.compile(r"nummer\s+stembureau", re.I)
+            rx_locatie = re.compile(r"locatie\s+stembureau", re.I)
+
+            scored: list[tuple[int, str, dict]] = []
+            for it in prelim:
+                fn = (it or {}).get("pdf_name") or ""
+                loc = (it or {}).get("local_url") or ""
+                text = read_first_page_text(loc) or ""
+                ocr = None
+                score = 0
+                label = detect_from_strings(text) if text else None
+                if not label and not text:
+                    ocr = ocr_header_text(loc) or ""
+                    if ocr:
+                        label = detect_from_strings(ocr)
+                s_all = (text or "") + "\n" + (ocr or "")
+                # hoofd-PV kenmerken
+                if rx_pv.search(s_all) and rx_gsb.search(s_all):
+                    score += 5
+                if rx_cso.search(s_all):
+                    score += 1
+                # bijlage/per-stembureau signalen
+                if is_bijlage_doc(loc, text_hint=text, ocr_hint=ocr or None):
+                    score -= 10
+                if rx_nummer.search(s_all) or rx_locatie.search(s_all):
+                    score -= 3
+                if label in ("Na 31-1", "Na 31-2"):
+                    score += 2
+                scored.append((score, label or "", it))
+
+            by_var: dict[str, list[tuple[int, str, dict]]] = {}
+            for tpl in scored:
+                by_var.setdefault(tpl[1], []).append(tpl)
+            selected: list[dict] = []
+            for var in ("Na 31-2", "Na 31-1"):
+                if var in by_var:
+                    best = sorted(by_var[var], key=lambda x: x[0], reverse=True)[0]
+                    selected.append(best[2])
+            if not selected and scored:
+                best_overall = sorted(scored, key=lambda x: x[0], reverse=True)[0]
+                selected.append(best_overall[2])
+            return selected
+
+        if not args.filename_only:
+            multis = [n for n in to_process if len(out.get(n, [])) > 1]
+            for name in multis:
+                refined = refine_multi_for_muni(name, out.get(name, []))
+                out[name] = merge_items([], refined)
 
         tmp_path = output_path + ".tmp"
         with open(tmp_path, "w", encoding="utf-8") as f:
