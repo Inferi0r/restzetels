@@ -256,6 +256,26 @@ def detect_model_for_item(p: dict) -> str:
     return "overig"
 
 
+def detect_doc_kind(p: dict) -> str | None:
+    """Specifieke documentsoort naast het model, bijv. 'bijlage-2' (uitkomsten per stembureau).
+    Laat 'model' ongemoeid; dit is extra metadata voor downstream filters.
+    """
+    loc = p.get("local_url")
+    # Snelle bestandsnaam/broncheck om OCR te vermijden
+    fname = (p.get("pdf_name") or "").lower()
+    hint = (p.get("text") or "") + " " + (p.get("from") or "")
+    if any(k in fname for k in ("bijlage",)) or ("uitkomst" in fname and "stembureau" in fname):
+        return "bijlage-2"
+    # Inhoudelijk checken met tekst/OCR
+    t = read_first_page_text(loc) if loc else None
+    o = None
+    if not t:
+        o = ocr_header_text(loc) if loc else None
+    if is_bijlage_doc(loc or "", text_hint=t, ocr_hint=o):
+        return "bijlage-2"
+    return None
+
+
 def run(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Detecteer model van lokale verkiezings-PDFs en update index")
     ap.add_argument("--only", nargs='*', help="Beperk tot deze gemeenten (namen)")
@@ -312,8 +332,9 @@ def run(argv: list[str] | None = None) -> int:
         # 'na31' moet als los 'na' voorkomen (geen deel van bv. 'Altena')
         rx_na31 = re.compile(r"(?<![A-Za-z])na[\s_\-–—]*31(?!\d)", re.I)
         rx_n31  = re.compile(r"(?<![A-Za-z])n[\s_\-–—]*31(?!\d)", re.I)
-        rx_31_1 = re.compile(r"31[\s_\-–—]*1(?!\d)", re.I)
-        rx_31_2 = re.compile(r"31[\s_\-–—]*2(?!\d)", re.I)
+        # Vereis ten minste één scheidingsteken tussen '31' en '-1'/'-2' om '312' (stembureau-nummer) te vermijden
+        rx_31_1 = re.compile(r"(?<!\d)31[\s_\-–—]+1(?!\d)", re.I)
+        rx_31_2 = re.compile(r"(?<!\d)31[\s_\-–—]+2(?!\d)", re.I)
         rx_uitkomst_tk25 = re.compile(r"uitkomst[\s_\-–—]*tk[\s_\-–—]*25", re.I)
 
         def is_bijlage_filename(fname: str) -> bool:
@@ -321,7 +342,7 @@ def run(argv: list[str] | None = None) -> int:
             if "bijlage" in s:
                 return True
             # Heel specifiek patroon: uitkomsten per stembureau (ook met underscores/strepen)
-            has_uitkomst = ("uitkomsten" in s) or ("uitkomst" in s)
+            has_uitkomst = ("uitkomsten" in s) or ("uitkomst" in s) or ("uitslag" in s)
             if has_uitkomst and "stembureau" in s:
                 return True
             # Sommige varianten gebruiken 'nummer-<n>' i.c.m. stembureau
@@ -360,7 +381,11 @@ def run(argv: list[str] | None = None) -> int:
                     # Snelle bestandsnaam check
                     s = fn.lower()
                     drop = False
-                    if "bijlage" in s or (("uitkomsten" in s or "uitkomst" in s) and "stembureau" in s) or ("nummer" in s and "stembureau" in s):
+                    if (
+                        "bijlage" in s
+                        or (("uitkomsten" in s or "uitkomst" in s or "uitslag" in s) and "stembureau" in s)
+                        or ("nummer" in s and "stembureau" in s)
+                    ):
                         drop = True
                     # Inhoudelijke check met tekst/OCR indien nog niet beslist
                     if not drop and loc:
@@ -371,6 +396,27 @@ def run(argv: list[str] | None = None) -> int:
                     if not drop:
                         new_items.append(it)
                 out[name] = new_items
+
+        # Extra: verwijder bestaande items die géén Na 31-1/Na 31-2 zijn (bv. N10-2 stembureau-PV's die eerder per ongeluk zijn toegevoegd)
+        # Dit maakt 'empties' vrij voor een verse inhoudelijke scan.
+        for name in (to_process or []):
+            items = out.get(name, [])
+            if not isinstance(items, list) or not items:
+                continue
+            kept = []
+            for it in items:
+                if not isinstance(it, dict):
+                    continue
+                loc = (it or {}).get("local_url") or ""
+                t = read_first_page_text(loc) or ""
+                label = detect_from_strings(t) if t else None
+                if not label and not t:
+                    txt = ocr_header_text(loc) or ""
+                    if txt:
+                        label = detect_from_strings(txt)
+                if label in ("Na 31-1", "Na 31-2"):
+                    kept.append(it)
+            out[name] = kept
 
         for name in to_process:
             gdir = os.path.join(base_pdfs, name)
@@ -525,6 +571,13 @@ def run(argv: list[str] | None = None) -> int:
             if old_model != new_model:
                 p["model"] = new_model
                 updated += 1
+            # Extra annotatie: documentsoort (bijlage-2) indien herkend
+            try:
+                kind = detect_doc_kind(p)
+                if kind:
+                    p["doc_kind"] = kind
+            except Exception:
+                pass
         # einde entry
 
     if args.dry_run:

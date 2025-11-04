@@ -1058,20 +1058,8 @@
   ],
   "Lisse": [
     {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Lisse/Lis_PV_Stembureau_312_Gebouw___t_Speelkwartier_TK25_ZH.pdf",
-      "pdf_name": "Lis_PV_Stembureau_312_Gebouw___t_Speelkwartier_TK25_ZH.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Lisse/Lis_Uitslag_Stembureau_311_Evangelie_Gemeente_Lisse__De_Poort__TK25.pdf",
-      "pdf_name": "Lis_Uitslag_Stembureau_311_Evangelie_Gemeente_Lisse__De_Poort__TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Lisse/Lis_Uitslag_Stembureau_312_Gebouw___t_Speelkwartier_TK25.pdf",
-      "pdf_name": "Lis_Uitslag_Stembureau_312_Gebouw___t_Speelkwartier_TK25.pdf"
-    },
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Lisse/Lis_PV_Stembureau_311_Evangelie_Gemeente_Lisse__De_Poort__TK25_ZH.pdf",
-      "pdf_name": "Lis_PV_Stembureau_311_Evangelie_Gemeente_Lisse__De_Poort__TK25_ZH.pdf"
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Lisse/Lis_PV_GSB_TK25_ZH.pdf",
+      "pdf_name": "Lis_PV_GSB_TK25_ZH.pdf"
     }
   ],
   "Lochem": [],
@@ -1235,10 +1223,30 @@
   "Opmeer": [],
   "Opsterland": [],
   "Oss": [],
-  "Oude IJsselstreek": [],
-  "Ouder-Amstel": [],
-  "Oudewater": [],
-  "Overbetuwe": [],
+  "Oude IJsselstreek": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oude IJsselstreek/oude-ijsselstreek_uitkomst_tk25.pdf",
+      "pdf_name": "oude-ijsselstreek_uitkomst_tk25.pdf"
+    }
+  ],
+  "Ouder-Amstel": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Ouder-Amstel/Ouder_Amstel_uitkomst_TK25.pdf",
+      "pdf_name": "Ouder_Amstel_uitkomst_TK25.pdf"
+    }
+  ],
+  "Oudewater": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oudewater/Oudewater_uitkomst_TK25.pdf",
+      "pdf_name": "Oudewater_uitkomst_TK25.pdf"
+    }
+  ],
+  "Overbetuwe": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Overbetuwe/Overbetuwe_uitkomst_TK25.pdf",
+      "pdf_name": "Overbetuwe_uitkomst_TK25.pdf"
+    }
+  ],
   "Papendrecht": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Papendrecht/Uitkomst pdf 2392 KB.pdf",
@@ -1327,7 +1335,12 @@
   ],
   "Roerdalen": [],
   "Roermond": [],
-  "Roosendaal": [],
+  "Roosendaal": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Roosendaal/tk-2025-na-31-1-proces-verbaal-gemeentelijk-stembureau.PDF",
+      "pdf_name": "tk-2025-na-31-1-proces-verbaal-gemeentelijk-stembureau.PDF"
+    }
+  ],
   "Rotterdam": [],
   "Rozendaal": [],
   "Rucphen": [],

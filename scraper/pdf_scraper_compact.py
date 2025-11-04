@@ -27,21 +27,13 @@ import argparse
 import json
 import os
 import re
-import sys
 from urllib.parse import urljoin, urlparse
 from collections import Counter
 import requests
 from bs4 import BeautifulSoup
-try:
-    import pdf_scraper as ps  # reuse robust PV-overview helpers if available
-    HAS_PS = True
-except Exception:
-    HAS_PS = False
-try:
-    from playwright.sync_api import sync_playwright
-    PLAYWRIGHT_AVAILABLE = True
-except Exception as e:
-    PLAYWRIGHT_AVAILABLE = False
+# Do not import the generic scraper here; keep this tool self-contained.
+from playwright.sync_api import sync_playwright
+PLAYWRIGHT_AVAILABLE = True
 
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "pdf_scraper_input")
@@ -156,6 +148,35 @@ def http_get(url: str, timeout: Tuple[int, int] = (15, 30)):
     r.raise_for_status()
     return r
 
+def http_head(url: str, timeout: Tuple[int, int] = (8, 12)):
+    try:
+        r = requests.head(url, headers={"User-Agent": "restzetels-compact/0.1"}, timeout=timeout, allow_redirects=True)
+        return r
+    except Exception:
+        return None
+
+def _probe_pdf_exists(url: str) -> bool:
+    r = http_head(url)
+    try:
+        if r is not None and (200 <= r.status_code < 400):
+            ct = (r.headers.get('content-type','') or '').lower()
+            if ('pdf' in ct) or url.lower().endswith('.pdf'):
+                return True
+    except Exception:
+        pass
+    # Fallback: lightweight GET with Range
+    try:
+        rg = requests.get(url, headers={"User-Agent": "restzetels-compact/0.1", "Range": "bytes=0-0"}, timeout=(8, 12), allow_redirects=True, stream=True)
+        ok = (200 <= rg.status_code < 400) or rg.status_code == 206
+        if ok:
+            ct = (rg.headers.get('content-type','') or '').lower()
+            rg.close()
+            return ('pdf' in ct) or url.lower().endswith('.pdf')
+        rg.close()
+    except Exception:
+        pass
+    return False
+
 
 PDF_PAGE_HINT_RE = re.compile(r"verkiez|uitslag|proces|verbaal|stembur|tweede.*kamer|tweede-?kamerverkiez|document|download|n10|na\s*31", re.I)
 OVERVIEW_HINT_RE = re.compile(r"overzicht|proces[-\s]?verbaal|processen[-\s]?verbaal|kies\s+stembureau|stadsdeel|hoofdstembureau|gemeentelijk\s+stembureau|pv\s*overzicht|stemmings|uitslag\s*per\s*stembureau", re.I)
@@ -198,6 +219,12 @@ def simple_extract_pdf_links(html: str, base_url: str) -> list[dict]:
         seen.add(full_url)
         # txt staat al klaar boven
         name = os.path.basename(urlparse(full_url).path) or "document.pdf"
+        base_no_ext = os.path.splitext(name)[0].lower()
+        if (base_no_ext in {"dsresource", "download", "document", "file"}) or (not name.lower().endswith('.pdf')):
+            if txt:
+                # Use link text as filename when endpoint is generic
+                t = txt.strip()
+                name = t if t.lower().endswith('.pdf') else f"{t}.pdf"
         if not _is_current_year_pdf(name + " " + txt + " " + full_url):
             continue
         out.append({
@@ -243,6 +270,167 @@ def find_overview_pages_from_html(html: str, base_url: str) -> list[str]:
     return out[:6]
 
 
+def discover_via_sitemap(start_url: str, max_pages: int = 30) -> list[str]:
+    """Lightweight sitemap discovery for election-related pages on the same host."""
+    try:
+        pu = urlparse(start_url)
+        base = f"{pu.scheme}://{pu.netloc}"
+    except Exception:
+        return []
+    robots = f"{base}/robots.txt"
+    sitemap_urls: list[str] = []
+    try:
+        r = http_get(robots, timeout=(6, 10))
+        for line in r.text.splitlines():
+            if line.lower().startswith("sitemap:"):
+                loc = line.split(":", 1)[1].strip()
+                if loc:
+                    sitemap_urls.append(loc)
+    except Exception:
+        pass
+    if not sitemap_urls:
+        sitemap_urls = [f"{base}/sitemap.xml"]
+
+    found_pages: list[str] = []
+    KEY_RE = re.compile(r"verkiez|uitslag|tweede.*kamer|stembur|proces|result|gestemd", re.I)
+
+    def parse_sm(url: str, depth: int = 0):
+        nonlocal found_pages
+        if depth > 2 or len(found_pages) >= max_pages:
+            return
+        try:
+            rr = http_get(url, timeout=(6, 12))
+        except Exception:
+            return
+        try:
+            soup = BeautifulSoup(rr.text, "xml")
+        except Exception:
+            soup = BeautifulSoup(rr.text, "html.parser")
+        for loc in soup.select("sitemap > loc"):
+            u = (loc.get_text(strip=True) or "").strip()
+            if u:
+                parse_sm(u, depth + 1)
+                if len(found_pages) >= max_pages:
+                    return
+        for loc in soup.select("url > loc"):
+            u = (loc.get_text(strip=True) or "").strip()
+            if not u:
+                continue
+            try:
+                if urlparse(u).netloc != pu.netloc:
+                    continue
+            except Exception:
+                continue
+            if KEY_RE.search(u):
+                found_pages.append(u)
+            if len(found_pages) >= max_pages:
+                return
+
+    for sm in sitemap_urls[:3]:
+        parse_sm(sm, 0)
+        if len(found_pages) >= max_pages:
+            break
+    # dedup + cap
+    out: list[str] = []
+    seen: set[str] = set()
+    for u in found_pages:
+        if u in seen:
+            continue
+        seen.add(u)
+        out.append(u)
+    return out[:max_pages]
+
+
+def probe_well_known_pages(start_url: str) -> list[str]:
+    """Lightweight probe of a handful of common pages many municipalities use.
+    Keeps things compact: no recursion, just a small fixed set under the same host.
+    """
+    try:
+        pu = urlparse(start_url)
+        origin = f"{pu.scheme}://{pu.netloc}"
+    except Exception:
+        return []
+    candidates = [
+        "/verkiezingen",
+        "/tweede-kamerverkiezingen",
+        "/tweede-kamerverkiezing",
+        "/verkiezingsuitslag",
+        "/uitslagen",
+        "/uitkomsten",
+        "/documenten",
+        "/bestanden",
+        "/downloads",
+        "/zo-is-er-gestemd",
+    ]
+    out: list[str] = []
+    seen: set[str] = set()
+    for path in candidates:
+        u = origin.rstrip("/") + path
+        if u in seen:
+            continue
+        seen.add(u)
+        out.append(u)
+    return out[:10]
+
+
+def probe_fileadmin_paths(start_url: str) -> list[str]:
+    """Try a few common 'fileadmin' folder paths used by TYPO3/other CMSes to host PDFs.
+    This is a compact heuristic and only hits a handful of URLs.
+    """
+    try:
+        pu = urlparse(start_url)
+        origin = f"{pu.scheme}://{pu.netloc}"
+    except Exception:
+        return []
+    paths = [
+        "/fileadmin/Verkiezingen/Tweede_Kamerverkiezing_2025/",
+        "/fileadmin/Verkiezingen/Tweede_Kamerverkiezing_2025/Stembureaus/",
+        "/fileadmin/verkiezingen/Tweede_Kamerverkiezing_2025/",
+        "/fileadmin/verkiezingen/Tweede_Kamerverkiezing_2025/Stembureaus/",
+    ]
+    out = []
+    seen = set()
+    for p in paths:
+        u = origin.rstrip('/') + p
+        if u in seen:
+            continue
+        seen.add(u)
+        out.append(u)
+    return out
+
+
+def probe_numbered_pvs_under_fileadmin(start_url: str, stem: str = "Procesverbaal_stembureau_", max_n: int = 60) -> list[str]:
+    """Last-resort compact probe for municipalities that host PVs under a predictable fileadmin path with numbered files.
+    Tries a small bounded range and returns existing URLs.
+    """
+    try:
+        pu = urlparse(start_url)
+        origin = f"{pu.scheme}://{pu.netloc}"
+    except Exception:
+        return []
+    bases = [
+        f"{origin}/fileadmin/Verkiezingen/Tweede_Kamerverkiezing_2025/Stembureaus/{stem}",
+        f"{origin}/fileadmin/verkiezingen/Tweede_Kamerverkiezing_2025/Stembureaus/{stem}",
+    ]
+    found: list[str] = []
+    for base in bases:
+        hit = 0
+        for i in range(1, max_n+1):
+            url = f"{base}{i}.pdf"
+            if _probe_pdf_exists(url):
+                found.append(url)
+                hit += 1
+        # break early if we found a decent number
+        if hit >= 5:
+            break
+    # dedup
+    seen=set(); out=[]
+    for u in found:
+        if u in seen: continue
+        seen.add(u); out.append(u)
+    return out
+
+
 def download_pv_overview_page(muni: str, overview_url: str, max_items: int = 300) -> list[dict]:
     """Playwright: download PVs uit een overzichtspagina met dynamische selects of directe anchors."""
     items: list[dict] = []
@@ -277,7 +465,7 @@ def download_pv_overview_page(muni: str, overview_url: str, max_items: int = 300
             for e in direct:
                 u = e.get('remote_url')
                 if not u: continue
-                dest = stream_download(u, out_dir)
+                dest = stream_download(u, out_dir, e.get('pdf_name') or e.get('text'))
                 if dest:
                     e['local_url'] = 'file://' + os.path.abspath(dest)
                     items.append(e)
@@ -304,7 +492,7 @@ def download_pv_overview_page(muni: str, overview_url: str, max_items: int = 300
                             full_url = urljoin(page.url, val)
                             if not _is_current_year_pdf(full_url + ' ' + lab):
                                 continue
-                            dest = stream_download(full_url, out_dir)
+                            dest = stream_download(full_url, out_dir, lab)
                             if dest:
                                 items.append({'remote_url': full_url, 'local_url': 'file://' + os.path.abspath(dest), 'pdf_name': os.path.basename(dest), 'text': lab or os.path.basename(dest), 'from': overview_url, 'score': 2})
                                 if len(items) >= max_items:
@@ -321,7 +509,7 @@ def download_pv_overview_page(muni: str, overview_url: str, max_items: int = 300
                                 if not u: continue
                                 if any(it.get('remote_url') == u for it in items):
                                     continue
-                                dest = stream_download(u, out_dir)
+                                dest = stream_download(u, out_dir, e.get('pdf_name') or e.get('text'))
                                 if dest:
                                     e['local_url'] = 'file://' + os.path.abspath(dest)
                                     items.append(e)
@@ -334,6 +522,74 @@ def download_pv_overview_page(muni: str, overview_url: str, max_items: int = 300
         finally:
             ctx.close(); b.close()
     return items
+
+
+def collect_pdfs_bfs_internal(name: str, max_depth: int = 2, max_pages: int = 40, force_render: bool = True) -> list[dict]:
+    """Compact BFS over internal pages to find PDFs using our heuristics.
+    Stays on the same host; visits up to max_pages; depth-limited.
+    """
+    start = get_start_url(name)
+    if not start:
+        return []
+    try:
+        pu = urlparse(start)
+        origin_host = pu.netloc
+    except Exception:
+        return []
+    KEY_RE = re.compile(r"verkiez|uitslag|voorlopige|gestemd|proces|verbaal|stembur|tweede.*kamer|pv\b|n10|na\s*31|na31|model|document|download", re.I)
+    visited: set[str] = set()
+    queue: list[tuple[str, int]] = [(start, 0)]
+    pages: list[str] = []
+    while queue and len(pages) < max_pages:
+        u, d = queue.pop(0)
+        if u in visited:
+            continue
+        visited.add(u)
+        try:
+            html, base = fetch_html(u, allow_render=force_render)
+        except Exception:
+            html, base = None, None
+        if not html or not base:
+            continue
+        pages.append(base)
+        if d >= max_depth:
+            continue
+        s = BeautifulSoup(html, 'html.parser')
+        try:
+            pb = urlparse(base)
+            same_host = pb.netloc
+        except Exception:
+            same_host = origin_host
+        for a in s.select('a[href]'):
+            href = a.get('href') or ''
+            full = urljoin(base, href)
+            try:
+                uu = urlparse(full)
+            except Exception:
+                continue
+            if not uu.netloc or uu.netloc != origin_host:
+                continue
+            if (uu.path or '').lower().endswith('.pdf'):
+                continue
+            low = (full + ' ' + (a.get_text(' ', strip=True) or '')).lower()
+            if KEY_RE.search(low):
+                queue.append((full, d + 1))
+    # extract PDFs from collected pages
+    out: list[dict] = []
+    seen: set[str] = set()
+    for p in pages:
+        try:
+            r = http_get(p, timeout=(10, 20))
+        except Exception:
+            continue
+        eps = simple_extract_pdf_links(r.text, r.url)
+        for e in eps:
+            u = e.get('remote_url')
+            if not u or u in seen:
+                continue
+            seen.add(u)
+            out.append(e)
+    return out
 
 
 PV_STRONG_HINT_RE = re.compile(r"stembur|proces|verbaal|\bpv\b|\bn10\b|na\s*31|na31|uitkomst|verklaring", re.I)
@@ -375,7 +631,49 @@ def dedup_by_remote(items: list[dict]) -> list[dict]:
     return out
 
 
-def stream_download(url: str, out_dir: str) -> str | None:
+def enumerate_numbered_siblings(seed_url: str, max_n: int = 80) -> list[str]:
+    """If seed looks like ..._1.pdf (or ...-1.pdf), probe siblings ..._2.pdf, ..._3.pdf, ... up to max_n.
+    Uses HEAD to avoid full downloads. Returns list of existing remote URLs (excluding the seed).
+    """
+    try:
+        from urllib.parse import urlparse
+        pu = urlparse(seed_url)
+        path = pu.path or ''
+        base = seed_url[: seed_url.find(path)]
+    except Exception:
+        path = ''
+        base = ''
+    import re as _re
+    m = _re.search(r"^(.*?)([\-_])(\d{1,3})(\.pdf)(?:$|\?)", path, _re.I)
+    if not m:
+        # alternate: digits without delimiter before .pdf
+        m = _re.search(r"^(.*?)(\d{1,3})(\.pdf)(?:$|\?)", path, _re.I)
+        delim = ''
+    else:
+        delim = m.group(2)
+    if not m:
+        return []
+    prefix = m.group(1)
+    num = int(_re.sub(r"\D", "", m.group(3) if len(m.groups()) >= 3 else '1')) if m else 1
+    suffix = m.group(4)
+    dirpath = path[: path.rfind('/')+1] if '/' in path else '/'
+    out: list[str] = []
+    # probe upwards and downwards around num
+    seen = set()
+    for i in range(1, max_n+1):
+        if i == num:
+            continue
+        cand_path = f"{dirpath}{prefix}{delim if delim else ''}{i}{suffix}"
+        cand_url = f"{base}{cand_path}"
+        if cand_url in seen:
+            continue
+        seen.add(cand_url)
+        if _probe_pdf_exists(cand_url):
+            out.append(cand_url)
+    return out
+
+
+def stream_download(url: str, out_dir: str, suggested_name: str | None = None) -> str | None:
     os.makedirs(out_dir, exist_ok=True)
     try:
         # Pleio mapping: convert '/files/view/<guid>/*' to direct '/file/download/<guid>'
@@ -401,8 +699,24 @@ def stream_download(url: str, out_dir: str) -> str | None:
                 name = params.get('filename') or params.get('filename*')
             except Exception:
                 name = None
-            if not name:
-                name = os.path.basename(urlparse(url).path) or "document.pdf"
+            # fallback to suggested name when header is missing or unhelpful
+            generic_names = {"dsresource", "download", "document", "file"}
+            if not name or (os.path.splitext(name)[0].lower() in generic_names):
+                if suggested_name:
+                    name = suggested_name
+                else:
+                    name = os.path.basename(urlparse(url).path) or "document.pdf"
+                    # If still generic (e.g., 'dsresource'), try to derive from query params
+                    base_no_ext = os.path.splitext(name)[0].lower()
+                    if base_no_ext in generic_names:
+                        try:
+                            from urllib.parse import parse_qs
+                            qs = parse_qs(urlparse(url).query or "")
+                            oid = (qs.get('objectid') or qs.get('id') or qs.get('obj') or [None])[0]
+                            if oid:
+                                name = f"{oid}.pdf"
+                        except Exception:
+                            pass
             if not name.lower().endswith(".pdf"):
                 name += ".pdf"
             dest = os.path.join(out_dir, sanitize_filename(name))
@@ -829,6 +1143,115 @@ def download_stackstorage_share(muni: str, share_url: str) -> list[dict]:
     return items
 
 
+# -------- Google Drive --------
+
+_DRIVE_FILE_RE = re.compile(r"https?://drive\.google\.com/file/d/([a-zA-Z0-9_-]{10,})/", re.I)
+_DRIVE_FOLDER_RE = re.compile(r"https?://drive\.google\.com/drive/folders/([a-zA-Z0-9_-]{10,})", re.I)
+
+
+def is_gdrive_file(u: str) -> str | None:
+    m = _DRIVE_FILE_RE.search(u or '')
+    return m.group(1) if m else None
+
+
+def is_gdrive_folder(u: str) -> str | None:
+    m = _DRIVE_FOLDER_RE.search(u or '')
+    return m.group(1) if m else None
+
+
+def download_gdrive_file(muni: str, file_id: str, referer_url: str | None = None) -> dict | None:
+    out_dir = os.path.join(OUT_BASE, sanitize_filename(muni))
+    os.makedirs(out_dir, exist_ok=True)
+    uc = f"https://drive.google.com/uc?export=download&id={file_id}"
+    try:
+        headers = {"User-Agent": "restzetels-compact/0.1"}
+        if referer_url:
+            headers["Referer"] = referer_url
+        with requests.get(uc, headers=headers, timeout=(15, 180), stream=True, allow_redirects=True) as r:
+            r.raise_for_status()
+            ct = (r.headers.get("Content-Type") or "").lower()
+            if ("pdf" not in ct) and ("application/octet-stream" not in ct):
+                return None
+            # filename from Content-Disposition if present
+            cd = r.headers.get('Content-Disposition') or r.headers.get('content-disposition') or ''
+            name = None
+            try:
+                import cgi as _cgi
+                _disp, params = _cgi.parse_header(cd)
+                name = params.get('filename') or params.get('filename*')
+            except Exception:
+                name = None
+            if not name:
+                name = f"drive_{file_id}.pdf"
+            if not name.lower().endswith('.pdf'):
+                name += '.pdf'
+            dest = os.path.join(out_dir, sanitize_filename(name))
+            if os.path.exists(dest):
+                return {
+                    'remote_url': uc,
+                    'local_url': 'file://' + os.path.abspath(dest),
+                    'pdf_name': os.path.basename(dest),
+                    'text': name,
+                    'from': referer_url or uc,
+                    'score': 2,
+                }
+            with open(dest, 'wb') as f:
+                for chunk in r.iter_content(1024 * 512):
+                    if not chunk:
+                        continue
+                    f.write(chunk)
+            return {
+                'remote_url': uc,
+                'local_url': 'file://' + os.path.abspath(dest),
+                'pdf_name': os.path.basename(dest),
+                'text': name,
+                'from': referer_url or uc,
+                'score': 2,
+            }
+    except Exception:
+        return None
+
+
+def download_gdrive_folder(muni: str, folder_url: str, max_items: int = 200) -> list[dict]:
+    items: list[dict] = []
+    with sync_playwright() as p:
+        b = p.chromium.launch(headless=True)
+        ctx = b.new_context()
+        page = ctx.new_page()
+        page.goto(folder_url, wait_until='domcontentloaded', timeout=90000)
+        try:
+            page.wait_for_load_state('networkidle', timeout=90000)
+        except Exception:
+            pass
+        # Use internal Drive variable to list files
+        js = None
+        try:
+            js = page.evaluate('() => (window._DRIVE_ivd || null)')
+        except Exception:
+            js = None
+        if js:
+            try:
+                import json as _json
+                data = _json.loads(js)
+                for row in (data[0] if isinstance(data, list) and data else []):
+                    if not isinstance(row, list) or not row:
+                        continue
+                    file_id = row[0]
+                    name = (row[2] if len(row) > 2 else '') or ''
+                    mime = (row[3] if len(row) > 3 else '') or ''
+                    if 'pdf' not in (mime or '').lower() and not name.lower().endswith('.pdf'):
+                        continue
+                    di = download_gdrive_file(muni, file_id, referer_url=folder_url)
+                    if di:
+                        items.append(di)
+                        if len(items) >= max_items:
+                            break
+            except Exception:
+                pass
+        ctx.close(); b.close()
+    return items
+
+
 def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
     out_dir = os.path.join(OUT_BASE, sanitize_filename(name))
     found: list[dict] = []
@@ -872,21 +1295,123 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
             ov_pages = find_overview_pages_from_html(html, base)
         except Exception:
             ov_pages = []
-        # Also use main scraper's discovery if available (more robust)
-        if HAS_PS:
-            try:
-                ov_pages += ps.find_pv_overview_links_from_html(html, base)
-            except Exception:
-                pass
         for ov in ov_pages[:3]:
             try:
-                its = download_pv_overview_page(name, ov) if 'download_pv_overview_page' in globals() else (ps.download_pv_overview_page(name, ov) if HAS_PS else [])
+                its = download_pv_overview_page(name, ov)
                 if its:
                     found.extend(its)
-                    # We hebben de plek gevonden; ga niet breder zoeken
-                    return dedup_by_remote(found)
+                    # Alleen vroegtijdig stoppen als het waarschijnlijk compleet is
+                    if is_probably_complete(found) or len(found) >= 20:
+                        return dedup_by_remote(found)
             except Exception:
                 continue
+
+        # 1a.1) Compact probe van veelgebruikte paden onder dezelfde host
+        if (len(found) < 5) and (not found_place):
+            for u in probe_well_known_pages(start)[:8]:
+                try:
+                    hP, bP = fetch_html(u, allow_render=False)
+                    if not hP:
+                        hP, bP = fetch_html(u, allow_render=True)
+                    if not hP:
+                        continue
+                    # Kijk of deze pagina zelf een overzicht is
+                    try:
+                        ovP = find_overview_pages_from_html(hP, bP)
+                    except Exception:
+                        ovP = []
+                    used_ovP = False
+                    for ov in ovP[:2]:
+                        try:
+                            its = download_pv_overview_page(name, ov)
+                            if its:
+                                found.extend(its)
+                                found_place = True
+                                used_ovP = True
+                                break
+                        except Exception:
+                            continue
+                    if used_ovP:
+                        break
+                    # Directe PDF-anchors
+                    epsP = simple_extract_pdf_links(hP, bP)
+                    # als deze pagina embedded dsresource/type=pdf heeft, scan die ook
+                    if (not epsP) and (('dsresource' in (hP or '').lower()) or ('type=pdf' in (hP or '').lower())):
+                        try:
+                            import re as _re
+                            ds = []
+                            for m in _re.finditer(r'(?:href|data-href|data-url)="([^"\s]*dsresource[^"\s]+)"', hP, _re.I):
+                                ds.append(urljoin(bP, m.group(1)))
+                            seen_local = set()
+                            for du in ds:
+                                if du in seen_local:
+                                    continue
+                                seen_local.add(du)
+                                nm = os.path.basename(urlparse(du).path) or 'document.pdf'
+                                if _is_current_year_pdf(nm + ' ' + du):
+                                    epsP.append({'remote_url': du, 'local_url': None, 'pdf_name': nm, 'text': nm, 'from': bP, 'score': 1})
+                        except Exception:
+                            pass
+                    if epsP:
+                        found.extend(epsP)
+                        if len(epsP) >= 5 or sum(1 for p in epsP if PV_STRONG_HINT_RE.search((p.get('text') or '') + ' ' + (p.get('pdf_name') or ''))) >= 4:
+                            found_place = True
+                            break
+                    if is_probably_complete(found):
+                        break
+                except Exception:
+                    continue
+
+        # 1a.1b) Als we een 'Procesverbaal_stembureau_#.pdf' seed hebben, probeer siblings te enumereren
+        if (len(found) < 5) and (not found_place):
+            seed = next((p for p in found if isinstance(p.get('remote_url'), str) and 'stembureau' in p.get('remote_url').lower() and p.get('remote_url').lower().endswith('.pdf')), None)
+            if seed:
+                try:
+                    from urllib.parse import urlparse
+                except Exception:
+                    pass
+                sibs = enumerate_numbered_siblings(seed.get('remote_url'), max_n=120)
+                for u in sibs:
+                    try:
+                        nm = os.path.basename(urlparse(u).path)
+                    except Exception:
+                        nm = 'document.pdf'
+                    found.append({'remote_url': u, 'local_url': None, 'pdf_name': nm or 'document.pdf', 'text': nm or 'document.pdf', 'from': u, 'score': 1})
+                if len(sibs) >= 5:
+                    found_place = True
+
+        # 1a.2) Fileadmin-folder probe (compact, beperkt aantal paden)
+        if (len(found) < 5) and (not found_place):
+            for u in probe_fileadmin_paths(start):
+                try:
+                    r = http_get(u, timeout=(8, 15))
+                except Exception:
+                    continue
+                eps = simple_extract_pdf_links(r.text, r.url)
+                if eps:
+                    found.extend(eps)
+                    if len(eps) >= 5 or sum(1 for p in eps if PV_STRONG_HINT_RE.search((p.get('text') or '') + ' ' + (p.get('pdf_name') or ''))) >= 4:
+                        found_place = True
+                        break
+                if is_probably_complete(found):
+                    break
+
+        # 1a.2b) Predictable fileadmin numbered files (Procesverbaal_stembureau_#.pdf)
+        if (len(found) < 5) and (not found_place):
+            num_urls = probe_numbered_pvs_under_fileadmin(start, stem="Procesverbaal_stembureau_", max_n=80)
+            if num_urls:
+                try:
+                    from urllib.parse import urlparse
+                except Exception:
+                    pass
+                for u in num_urls:
+                    try:
+                        nm = os.path.basename(urlparse(u).path)
+                    except Exception:
+                        nm = 'document.pdf'
+                    found.append({'remote_url': u, 'local_url': None, 'pdf_name': nm or 'document.pdf', 'text': nm or 'document.pdf', 'from': u, 'score': 1})
+                if len(num_urls) >= 5:
+                    found_place = True
 
         # 1b) Verzamel Pleio hubs en enumerate view-links (download later via HTTP)
         try:
@@ -925,6 +1450,36 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
             href = a.get('href') or ''
             full = urljoin(base, href)
             # portals
+            # Google Drive direct file
+            try:
+                _gfid = is_gdrive_file(full)
+            except Exception:
+                _gfid = None
+            if _gfid:
+                try:
+                    di = download_gdrive_file(name, _gfid, referer_url=full)
+                    if di:
+                        found.append(di)
+                        if is_probably_complete(found):
+                            return dedup_by_remote(found)
+                except Exception:
+                    pass
+                continue
+            # Google Drive folder
+            try:
+                _gff = is_gdrive_folder(full)
+            except Exception:
+                _gff = None
+            if _gff:
+                try:
+                    its = download_gdrive_folder(name, full)
+                    if its:
+                        found.extend(its)
+                        if is_probably_complete(found):
+                            return dedup_by_remote(found)
+                except Exception:
+                    pass
+                continue
             if is_mijnstembureau_url(full):
                 try:
                     found.extend(download_mijnstembureau_portal(name, full))
@@ -964,9 +1519,17 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
                     candidates.append(full)
             except Exception:
                 pass
-        # volg kandidaten (max 12) en extraheer PDF’s; stop als één pagina 'plek gevonden' oplevert
+        # volg kandidaten (limiet adaptief) en extraheer PDF’s; stop als één pagina 'plek gevonden' oplevert
         seen = set()
-        for u in candidates[:12]:
+        cand_limit = 12
+        try:
+            host = urlparse(start).netloc.lower()
+            # Heuristische uitzonderingen: sta iets meer kandidaten toe op lastigere domeinen
+            if any(h in host for h in ("gemeentehulst.nl", "oostzaan.nl")):
+                cand_limit = 16
+        except Exception:
+            pass
+        for u in candidates[:cand_limit]:
             if u in seen: continue
             seen.add(u)
             h2, b2 = fetch_html(u, allow_render=True)
@@ -976,15 +1539,10 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
                 ov2 = find_overview_pages_from_html(h2, b2)
             except Exception:
                 ov2 = []
-            if HAS_PS:
-                try:
-                    ov2 += ps.find_pv_overview_links_from_html(h2, b2)
-                except Exception:
-                    pass
             used_ov = False
             for ov in ov2[:2]:
                 try:
-                    its = download_pv_overview_page(name, ov) if 'download_pv_overview_page' in globals() else (ps.download_pv_overview_page(name, ov) if HAS_PS else [])
+                    its = download_pv_overview_page(name, ov)
                     if its:
                         found.extend(its)
                         found_place = True; used_ov = True
@@ -994,6 +1552,23 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
             if used_ov:
                 break
             eps = simple_extract_pdf_links(h2, b2)
+            # Fallback: sommige subpagina's embedden PDF's via dsresource/type=pdf zonder anchor
+            if (not eps) and (("dsresource" in (h2 or "").lower()) or ("type=pdf" in (h2 or "").lower())):
+                try:
+                    import re as _re
+                    ds = []
+                    for m in _re.finditer(r'(?:href|data-href|data-url)="([^"\s]*dsresource[^"\s]+)"', h2 or '', _re.I):
+                        ds.append(urljoin(b2, m.group(1)))
+                    seen_local = set()
+                    for du in ds:
+                        if du in seen_local:
+                            continue
+                        seen_local.add(du)
+                        nm = os.path.basename(urlparse(du).path) or 'document.pdf'
+                        if _is_current_year_pdf(nm + ' ' + du):
+                            eps.append({'remote_url': du, 'local_url': None, 'pdf_name': nm, 'text': nm, 'from': b2, 'score': 1})
+                except Exception:
+                    pass
             found.extend(eps)
             # Heuristiek: als deze ene pagina ≥5 (of ≥4 sterke) items heeft, beschouwen we dit als juiste plek
             if len(eps) >= 5 or sum(1 for p in eps if PV_STRONG_HINT_RE.search((p.get('text') or '') + ' ' + (p.get('pdf_name') or ''))) >= 4:
@@ -1002,18 +1577,18 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
             if is_probably_complete(found):
                 break
 
-        # 1d) laatste redmiddel: sitemap traverseren en PV-overzicht zoeken (indien hoofd-scraper beschikbaar)
-        if HAS_PS and (len(found) < 5) and (not found_place):
+        # 1d) laatste redmiddel: sitemap traverseren en PV-overzicht zoeken
+        if (len(found) < 5) and (not found_place):
             try:
-                for sp in ps.discover_via_sitemap(start, max_pages=50):
+                for sp in discover_via_sitemap(start, max_pages=50):
                     try:
                         h3, b3 = fetch_html(sp, allow_render=True)
                         if not h3:
                             continue
-                        ovp = ps.find_pv_overview_links_from_html(h3, b3)
+                        ovp = find_overview_pages_from_html(h3, b3)
                         for ov in ovp[:2]:
                             try:
-                                its = ps.download_pv_overview_page(name, ov)
+                                its = download_pv_overview_page(name, ov)
                                 if its:
                                     found.extend(its)
                                     return dedup_by_remote(found)
@@ -1023,10 +1598,17 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
                         continue
             except Exception:
                 pass
-        # 1e) beperkte BFS over interne site met hoofd-scraper (alleen als nog weinig gevonden)
-        if HAS_PS and (len(found) < 5) and (not found_place):
+        # 1e) beperkte BFS over interne site (alleen als nog weinig gevonden)
+        if (len(found) < 5) and (not found_place):
             try:
-                bfs = ps.collect_pdfs_bfs_internal(name, max_depth=2, max_pages=40, force_render=True)
+                bfs_pages = 40
+                try:
+                    host = urlparse(start).netloc.lower()
+                    if any(h in host for h in ("gemeentehulst.nl",)):
+                        bfs_pages = 60
+                except Exception:
+                    pass
+                bfs = collect_pdfs_bfs_internal(name, max_depth=2, max_pages=bfs_pages, force_render=True)
             except Exception:
                 bfs = []
             if bfs:
@@ -1177,6 +1759,31 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
                     low = (full + ' ' + txt).lower()
                     if banned_nav.search(low):
                         continue
+                    # Google Drive detection
+                    try:
+                        _gfid = is_gdrive_file(full)
+                    except Exception:
+                        _gfid = None
+                    if _gfid:
+                        try:
+                            di = download_gdrive_file(name, _gfid, referer_url=full)
+                            if di:
+                                found.append(di)
+                        except Exception:
+                            pass
+                        continue
+                    try:
+                        _gff = is_gdrive_folder(full)
+                    except Exception:
+                        _gff = None
+                    if _gff:
+                        try:
+                            its = download_gdrive_folder(name, full)
+                            if its:
+                                found.extend(its)
+                        except Exception:
+                            pass
+                        continue
                     if is_mijnstembureau_url(full):
                         try:
                             found.extend(download_mijnstembureau_portal(name, full))
@@ -1251,6 +1858,23 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
                 if is_probably_complete(found):
                     break
 
+    # 2.9) laatste kans: enumerate numbered siblings op basis van een gevonden seed
+    if (len(found) < 5):
+        seed = next((p for p in found if isinstance(p.get('remote_url'), str) and 'stembureau' in p.get('remote_url').lower() and p.get('remote_url').lower().endswith('.pdf')), None)
+        if seed:
+            sibs = enumerate_numbered_siblings(seed.get('remote_url'), max_n=160)
+            if sibs:
+                try:
+                    from urllib.parse import urlparse
+                except Exception:
+                    pass
+                for u in sibs:
+                    try:
+                        nm = os.path.basename(urlparse(u).path)
+                    except Exception:
+                        nm = 'document.pdf'
+                    found.append({'remote_url': u, 'local_url': None, 'pdf_name': nm or 'document.pdf', 'text': nm or 'document.pdf', 'from': u, 'score': 1})
+
     # 3) download HTTP voor directe PDF’s (niet-portaal)
     out = []
     http_done = 0
@@ -1260,7 +1884,17 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
             out.append(p); continue
         if (max_http is not None) and (http_done >= max_http):
             out.append(p); continue
-        dest = stream_download(u, out_dir)
+        # Prefer a meaningful suggested name over generic endpoints
+        sug = p.get('pdf_name') or ''
+        try:
+            base_no_ext = os.path.splitext(str(sug))[0].lower()
+        except Exception:
+            base_no_ext = ''
+        import re as _re
+        looks_guid = bool(_re.fullmatch(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", base_no_ext))
+        if looks_guid or base_no_ext in {"dsresource", "download", "document", "file", "unknown"} or (not sug):
+            sug = p.get('text') or sug or None
+        dest = stream_download(u, out_dir, sug)
         if dest:
             p['local_url'] = 'file://' + os.path.abspath(dest)
             http_done += 1

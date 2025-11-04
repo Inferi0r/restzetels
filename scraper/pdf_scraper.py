@@ -269,6 +269,8 @@ def extract_pdf_links(html: str, base_url: str) -> list[dict]:
             or (text.endswith("pdf"))
             or (is_docreader and target_pdf_url and target_pdf_url.lower().endswith('.pdf'))
         )
+        is_zip_like = (".zip" in p) and any(k in (text + " " + full).lower() for k in (
+            "n10", "na 31", "proces", "verbaal", "verkiez", "verslag", "stembureau"))
         if is_pdf_like:
             # score and pdf_name similar to main scraper
             score = 1
@@ -300,6 +302,16 @@ def extract_pdf_links(html: str, base_url: str) -> list[dict]:
             # Probe common CMS endpoints even if anchor text doesn't say PDF
             if any(k in full.lower() for k in ("dsresource", "download", "document", "/file/", "/fileadmin/", "/wp-content/")) or any(k in text for k in ("pdf", "proces", "stembureau", "uitslag")):
                 maybes.append((full, text_raw or ""))
+            # Also record relevant ZIP archives that likely contain PV PDFs
+            if is_zip_like and _is_current_year_pdf(text_raw or full):
+                found.append({
+                    "remote_url": full,
+                    "local_url": None,
+                    "text": text_raw,
+                    "pdf_name": os.path.basename(urlparse(full).path) or "archive.zip",
+                    "score": 2,
+                    "from": base_url,
+                })
 
     # Light probe: check headers for suspected endpoints
     def probe_is_pdf(u: str) -> bool:
@@ -1130,7 +1142,7 @@ def download_pv_overview_page(muni: str, portal_url: str) -> list[dict]:
                         pdf_urls.add(u)
             except Exception:
                 pass
-            # Download
+            # Download (filter to TK2025 before saving)
             for u in sorted(pdf_urls):
                 try:
                     resp = ctx.request.get(u, timeout=60000)
@@ -1138,6 +1150,9 @@ def download_pv_overview_page(muni: str, portal_url: str) -> list[dict]:
                     is_pdf_resp = ('application/pdf' in ctype) or u.lower().endswith('.pdf')
                     if resp.ok and is_pdf_resp:
                         fname = os.path.basename(urlparse(u).path) or "document.pdf"
+                        # Skip non‑TK25 and other election types (EP/PS/WS/GR) early
+                        if not _is_current_year_pdf(fname + ' ' + u + ' ' + portal_url):
+                            continue
                         dest = os.path.join(out_dir, sanitize_filename(fname))
                         if os.path.exists(dest):
                             items.append({
@@ -1275,6 +1290,11 @@ def download_mijnstembureau_portal(muni: str, portal_url: str) -> list[dict]:
             page.goto(portal_url, wait_until='domcontentloaded', timeout=60000)
             try:
                 page.wait_for_load_state('networkidle', timeout=60000)
+            except Exception:
+                pass
+            try:
+                page.wait_for_selector('a,button,[role=button],[role=link]', timeout=5000)
+                page.wait_for_timeout(800)
             except Exception:
                 pass
             # If we landed on the generic '/uitslagen' page, try to navigate to the current Tweede Kamer election
@@ -1420,6 +1440,17 @@ def download_mijnstembureau_portal(muni: str, portal_url: str) -> list[dict]:
                         break
                 except Exception:
                     continue
+            # Try to navigate to 'Tweede Kamer 2025' tile first if present
+            if not clicked:
+                for t in ("Tweede Kamer", "Tweede", "2025", "verkiez", "Kamer"):
+                    try:
+                        el = page.get_by_text(t, exact=False).first
+                        if el and el.is_visible():
+                            el.click(timeout=15000)
+                            page.wait_for_timeout(800)
+                            break
+                    except Exception:
+                        continue
             if not clicked:
                 # Try a generic 'Download' button that opens the options
                 for t in ("Download", "Download opties", "download-opties"):
@@ -1440,7 +1471,11 @@ def download_mijnstembureau_portal(muni: str, portal_url: str) -> list[dict]:
             except Exception:
                 pass
             # Match both buttons and anchors likely to trigger a PDF
-            buttons = page.locator('button:has-text(".pdf"), a:has-text(".pdf"), button:has-text("Download"), a:has-text("Download")')
+            buttons = page.locator(
+                'button:has-text(".pdf"), a:has-text(".pdf"), '
+                'button:has-text("Download"), a:has-text("Download"), '
+                '[aria-label*="Download" i], [title*="Download" i]'
+            )
             count = buttons.count()
             for i in range(count):
                 try:
@@ -1484,6 +1519,54 @@ def download_mijnstembureau_portal(muni: str, portal_url: str) -> list[dict]:
                 except Exception as e:
                     print(f"[mijnstembureau] {muni}: error item {i+1}: {e}")
                     continue
+            # As a last resort, passively capture any PDF responses for a short window while clicking a few generic elements
+            if not items:
+                pdfs_captured = []
+                def on_resp(resp):
+                    try:
+                        ct = (resp.headers.get('content-type') or '').lower()
+                        if ('application/pdf' in ct) or resp.url.lower().endswith('.pdf'):
+                            pdfs_captured.append(resp)
+                    except Exception:
+                        return
+                page.on('response', on_resp)
+                # Click up to 3 generic candidates
+                gens = page.locator('a,button,[role=button],[role=link]')
+                lim = min(3, gens.count())
+                for i in range(lim):
+                    try:
+                        el = gens.nth(i)
+                        if el.is_visible():
+                            el.click(timeout=5000)
+                            page.wait_for_timeout(800)
+                    except Exception:
+                        continue
+                page.wait_for_timeout(1500)
+                # Save captured PDFs
+                for resp in pdfs_captured:
+                    try:
+                        data = resp.body()
+                        from urllib.parse import urlparse
+                        fname = os.path.basename(urlparse(resp.url).path) or 'document.pdf'
+                        dest = os.path.join(out_dir, sanitize_filename(fname))
+                        if not os.path.exists(dest):
+                            with open(dest, 'wb') as f:
+                                f.write(data)
+                            saved += 1
+                        items.append({
+                            "remote_url": resp.url,
+                            "local_url": "file://" + os.path.abspath(dest),
+                            "pdf_name": os.path.basename(dest),
+                            "text": os.path.basename(dest),
+                            "score": 5,
+                            "from": page.url,
+                        })
+                    except Exception:
+                        continue
+                try:
+                    page.off('response', on_resp)
+                except Exception:
+                    pass
             ctx.close(); browser.close()
     except Exception:
         return items
@@ -1790,6 +1873,7 @@ def probe_well_known_pages(start_url: str) -> list[str]:
     # Kandidaten (orde: meest algemeen eerst)
     cand = [
         "/verkiezingen",
+        "/verkiezingen/verslagen-verkiezingen/",
         "/verkiezingen/overzicht-proces-verbalen/",
         "/verkiezingen/overzicht-proces-verbalen/processen-verbaal-25/",
         "/bestanden",
@@ -1959,6 +2043,59 @@ def download_pdf(url: str, out_dir: str) -> str | None:
         return None
 
 
+def download_zip_and_extract_pdfs(url: str, out_dir: str) -> list[str]:
+    """Download a ZIP archive and extract contained PDFs into out_dir.
+    Returns a list of saved file paths. Minimal requests: single GET then local extract.
+    """
+    saved: list[str] = []
+    os.makedirs(out_dir, exist_ok=True)
+    try:
+        r = requests.get(url, headers={"User-Agent": "restzetels-cleaned/0.1"}, timeout=(15, 180), stream=True)
+        r.raise_for_status()
+        ct = (r.headers.get("Content-Type") or "").lower()
+        if "zip" not in ct and not urlparse(url).path.lower().endswith('.zip'):
+            r.close(); return saved
+        import tempfile, zipfile
+        fd, tmppath = tempfile.mkstemp()
+        os.close(fd)
+        with open(tmppath, 'wb') as f:
+            for chunk in r.iter_content(chunk_size=1024 * 1024):
+                if not chunk:
+                    continue
+                f.write(chunk)
+        r.close()
+        if not zipfile.is_zipfile(tmppath):
+            try:
+                os.remove(tmppath)
+            except Exception:
+                pass
+            return saved
+        z = zipfile.ZipFile(tmppath)
+        for name in z.namelist():
+            if not name.lower().endswith('.pdf'):
+                continue
+            base = os.path.basename(name) or 'document.pdf'
+            if not _is_current_year_pdf(base):
+                continue
+            dest = os.path.join(out_dir, sanitize_filename(base))
+            if os.path.exists(dest):
+                continue
+            try:
+                with z.open(name) as src, open(dest, 'wb') as f:
+                    f.write(src.read())
+                saved.append(dest)
+            except Exception:
+                continue
+        z.close()
+        try:
+            os.remove(tmppath)
+        except Exception:
+            pass
+    except Exception:
+        return saved
+    return saved
+
+
 def get_first_n_names(n: int = 5) -> list[str]:
     data = load_json(os.path.join(DATA_DIR, "municipalities.json"))
     items = data.get("items", [])
@@ -2097,6 +2234,25 @@ def collect_pdfs_for_municipality(name: str, extra: dict, force_render: bool = F
             if not html:
                 continue
             urls += extract_pdf_links(html, base)
+            # Also capture relevant ZIP archives on the page (e.g., Leiden bundles)
+            try:
+                soup_zip = BeautifulSoup(html or "", "html.parser")
+                for a2 in soup_zip.select('a[href]'):
+                    h2 = a2.get('href') or ''
+                    full2 = urljoin(base, h2)
+                    low2 = (full2 + ' ' + (a2.get_text(' ', strip=True) or '')).lower()
+                    if full2.lower().endswith('.zip') and any(k in low2 for k in ('n10','na 31','na31','proces','verbaal','stembureau','verkiez','verslag')):
+                        if _is_current_year_pdf(full2):
+                            urls.append({
+                                'remote_url': full2,
+                                'local_url': None,
+                                'text': a2.get_text(' ', strip=True) or 'ZIP',
+                                'pdf_name': os.path.basename(urlparse(full2).path) or 'archive.zip',
+                                'score': 2,
+                                'from': base,
+                            })
+            except Exception:
+                pass
             # Early stop if this seed already yields a strong PV set
             try:
                 if _is_probably_complete(urls, name):
@@ -2779,6 +2935,19 @@ def run(argv: list[str] | None = None) -> int:
                     continue
                 if "mijnstembureau" in u:
                     # handled via Playwright already
+                    continue
+                # Handle relevant ZIP archives (e.g., Leiden bundles)
+                if u.lower().endswith('.zip'):
+                    extracted = download_zip_and_extract_pdfs(u, out_dir)
+                    for path in extracted:
+                        pdfs.append({
+                            "remote_url": u + "#" + os.path.basename(path),
+                            "local_url": "file://" + os.path.abspath(path),
+                            "pdf_name": os.path.basename(path),
+                            "text": os.path.basename(path),
+                            "score": 5,
+                            "from": p.get('from') or u,
+                        })
                     continue
                 # Pre-skip if a file with the intended pdf_name already exists in this municipality dir
                 nm = p.get("pdf_name")
