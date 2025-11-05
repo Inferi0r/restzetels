@@ -296,6 +296,12 @@ def candidate_overview_paths_for_origin(origin: str) -> List[str]:
         "/verkiezingen/tweede-kamer/",
         "/verkiezingen/tweede-kamer-2025/",
         "/verkiezingen/uitslagen/",
+        # Proces-verbaal (PV) overzichten
+        "/verkiezingen/processen-verbaal",
+        "/verkiezingen/proces-verbaal",
+        "/verkiezingen/processen-verbaal-en-andere-documenten-tk25/",
+        "/processen-verbaal/",
+        "/proces-verbaal/",
         "/documenten",
         "/bestanden",
         "/downloads",
@@ -479,9 +485,10 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
     else:
         pages = []
 
-    # 2) Known extra seeds per municipality
-    for seed in EXTRA_SEEDS.get(municipality, []):
-        pages.append(seed)
+    # 2) Known extra seeds per municipality — prioritize by prepending
+    seeds = list(EXTRA_SEEDS.get(municipality, []))
+    for seed in reversed(seeds):
+        pages.insert(0, seed)
 
     # 3) (kept for symmetry) If nothing yet, also try common paths on the host
     if not pages:
@@ -523,10 +530,22 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
     # Prefer likely result overview pages early (uitslag/uitkomst/gestemd)
     def _pref_overview(u: str) -> int:
         ul = (u or '').lower()
-        if ('verkiezingsuitslag' in ul) or ('uitslag-vaststelling' in ul) or ('verkiezingsuitslagen' in ul) or ('gestemd' in ul) or ('uitkomst' in ul):
+        # Strongly prefer proces-verbaal/processen-verbaal overviews
+        if ('proces-verbaal' in ul) or ('proces_verbaal' in ul) or ('processen-verbaal' in ul) or ('processen_verbaal' in ul):
             return 0
-        return 1
+        if ('verkiezingsuitslag' in ul) or ('uitslag-vaststelling' in ul) or ('verkiezingsuitslagen' in ul) or ('gestemd' in ul) or ('uitkomst' in ul):
+            return 1
+        return 2
     pages2 = sorted(pages2, key=_pref_overview)
+
+    # Seed known platform hubs by municipality (e.g., Amsterdam API) even if start page blocked
+    try:
+        if (municipality or '').strip().lower() == 'amsterdam':
+            ams_api = 'https://api.data.amsterdam.nl/v1/verkiezingen/processenverbaal?verkiezingsjaar=2025&page_size=1000'
+            if ams_api not in platform_hubs:
+                platform_hubs.insert(0, ams_api)
+    except Exception:
+        pass
 
     # 5) Try platform-specific handlers for detected hubs (limited)
     plat_items: List[Dict] = []
@@ -691,10 +710,18 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
                 # Prefer 'gestemd/uitkomst/uitslag' links among ties
                 def _pref(u: str) -> int:
                     ul = u.lower()
-                    if ('gestemd' in ul or 'uitkomst' in ul or 'uitslag' in ul
-                        or 'proces-verbaal' in ul or 'proces_verbaal' in ul or 'stembureau' in ul):
+                    has_proc = ('proces-verbaal' in ul) or ('proces_verbaal' in ul) or ('processen-verbaal' in ul) or ('processen_verbaal' in ul)
+                    has_u = ('gestemd' in ul) or ('uitkomst' in ul) or ('uitslag' in ul)
+                    tk2025 = ('2025' in ul) or ('tk25' in ul)
+                    if has_proc and tk2025:
                         return 0
-                    return 1
+                    if has_proc:
+                        return 1
+                    if has_u and tk2025:
+                        return 2
+                    if has_u:
+                        return 3
+                    return 4
                 nested = sorted(nested, key=_pref)
                 added = 0
                 for np in nested:

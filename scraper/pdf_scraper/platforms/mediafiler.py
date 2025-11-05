@@ -16,19 +16,23 @@ def handle(hub_url: str, req, tracer, municipality: str) -> List[Dict]:
     for a in s.select('a[href]'):
         href = (a.get('href') or '').strip()
         low = href.lower()
-        # Direct PDF links
+        # Direct PDF links (absolute or relative to hub)
         if low.endswith('.pdf') or ('/file/' in low):
-            name = href.rsplit('/', 1)[-1] or 'document.pdf'
-            items.append({'remote_url': href, 'local_url': None, 'pdf_name': name, 'text': a.get_text(' ', strip=True) or 'mediafiler', 'from': r.url, 'score': 5})
+            try:
+                from urllib.parse import urljoin as _uj
+                full = _uj(r.url, href)
+            except Exception:
+                full = href
+            name = full.rsplit('/', 1)[-1] or 'document.pdf'
+            items.append({'remote_url': full, 'local_url': None, 'pdf_name': name, 'text': a.get_text(' ', strip=True) or 'mediafiler', 'from': r.url, 'score': 5})
             continue
         # javascript:downloadTab('<id>', '<filename.pdf>') pattern — extract provided filename
         if low.startswith('javascript:downloadtab') or 'downloadtab(' in low:
-            m = re.search(r"downloadTab\('\s*(\d+)\s*'\s*,\s*\"([^\"]+?\.pdf)\"\s*\)", href)
-            if not m:
-                m = re.search(r"downloadTab\('\s*(\d+)\s*'\s*,\s*'([^']+?\.pdf)'\s*\)", href)
+            # Accept both single and double quotes around filename
+            m = re.search(r"downloadTab\(\s*'(?P<fuid>\d+)'\s*,\s*(?:'(?P<fn1>[^']+?\.pdf)'|\"(?P<fn2>[^\"]+?\.pdf)\")\s*\)", href, re.I)
             if m:
-                fuid = m.group(1)
-                fname = m.group(2)
+                fuid = m.group('fuid')
+                fname = m.group('fn1') or m.group('fn2') or 'document.pdf'
                 # Encode fuid and filename in fragment so downloader can perform JS click
                 from urllib.parse import quote
                 ru = f"{r.url}#fuid={fuid}&fn={quote(fname)}"

@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import List, Dict
 
 from urllib.parse import urlparse
+import time
 
 
 API_BASE = "https://api.data.amsterdam.nl/v1/verkiezingen/processenverbaal"
@@ -22,14 +23,23 @@ def handle(hub_url: str, req, tracer, municipality: str) -> List[Dict]:
     tries = 0
     while next_url and tries < 20:
         tries += 1
+        # Use explicit JSON Accept to avoid HTML content
+        t0 = time.time()
         try:
-            r = req.get(next_url, purpose="platform:amsterdam-api", timeout=(15, 30))
+            r = req.sess.get(next_url, headers={"Accept": "application/hal+json, application/json;q=0.9, */*;q=0.5"}, timeout=(15, 30), allow_redirects=True)
+            elapsed = int((time.time() - t0) * 1000)
+            ct = (r.headers.get("content-type") or "").lower()
+            size = len(r.content or b"")
+            try:
+                tracer.record_request("GET", next_url, "platform:amsterdam-api", r.status_code, ct, size, elapsed)
+            except Exception:
+                pass
         except Exception:
             break
-        tracer.record_discovery("platform", r.url, "amsterdam-pv-api")
         try:
             data = r.json() or {}
         except Exception:
+            # Not JSON; stop
             break
         arr = (data.get('_embedded') or {}).get('processenverbaal', []) or []
         for it in arr:
@@ -55,4 +65,3 @@ def handle(hub_url: str, req, tracer, municipality: str) -> List[Dict]:
         except Exception:
             next_url = None
     return items
-
