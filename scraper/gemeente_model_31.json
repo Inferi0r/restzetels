@@ -1,1533 +1,1803 @@
 {
+  "'s-Hertogenbosch": [
+    {
+      "CBS_code": "GM0796",
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/s-Hertogenbosch/Proces-verbaal-N31-2_s-Hertogenbosch_TK25.pdf",
+      "pdf_name": "Proces-verbaal-N31-2_s-Hertogenbosch_TK25.pdf"
+    }
+  ],
   "Aa en Hunze": [
     {
+      "CBS_code": "GM1680",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aa en Hunze/1680_uitkomst_TK25_ZH.pdf",
       "pdf_name": "1680_uitkomst_TK25_ZH.pdf"
     }
   ],
   "Aalsmeer": [
     {
+      "CBS_code": "GM0358",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aalsmeer/aalsmeer_pv_gsb_tk25_zh.pdf",
       "pdf_name": "aalsmeer_pv_gsb_tk25_zh.pdf"
     }
   ],
   "Aalten": [
     {
+      "CBS_code": "GM0197",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Aalten/proces-verbaal_gemeentelijk_stembureau_openbare_zitting_0.pdf",
       "pdf_name": "proces-verbaal_gemeentelijk_stembureau_openbare_zitting_0.pdf"
     }
   ],
   "Achtkarspelen": [
     {
+      "CBS_code": "GM0059",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Achtkarspelen/achtkarspelen_uitkomst_tk25_zonder.pdf",
       "pdf_name": "achtkarspelen_uitkomst_tk25_zonder.pdf"
     }
   ],
   "Alblasserdam": [
     {
+      "CBS_code": "GM0482",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Alblasserdam/Model_Na31-1.pdf",
       "pdf_name": "Model_Na31-1.pdf"
     }
   ],
   "Albrandswaard": [
     {
+      "CBS_code": "GM0613",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Albrandswaard/PV-gemeentelijk-stembureau.pdf",
       "pdf_name": "PV-gemeentelijk-stembureau.pdf"
     }
   ],
   "Alkmaar": [
     {
+      "CBS_code": "GM0361",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Alkmaar/Alkmaar_uitkomst_TK25-1.pdf",
       "pdf_name": "Alkmaar_uitkomst_TK25-1.pdf"
     }
   ],
   "Almelo": [
     {
+      "CBS_code": "GM0141",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Almelo/almelo_uitkomst_tk25.pdf",
       "pdf_name": "almelo_uitkomst_tk25.pdf"
     }
   ],
   "Almere": [
     {
+      "CBS_code": "GM0034",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Almere/Almere_uitkomst_TK25-gecomprimeerd.pdf",
       "pdf_name": "Almere_uitkomst_TK25-gecomprimeerd.pdf"
     }
   ],
   "Alphen aan den Rijn": [
     {
+      "CBS_code": "GM0484",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Alphen aan den Rijn/Alphenaandenrijn_Uitslag_TK25.pdf",
       "pdf_name": "Alphenaandenrijn_Uitslag_TK25.pdf"
     }
   ],
   "Alphen-Chaam": [
     {
+      "CBS_code": "GM1723",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Alphen-Chaam/Alphen-Chaam_uitkomst_TK25.pdf",
       "pdf_name": "Alphen-Chaam_uitkomst_TK25.pdf"
     }
   ],
   "Altena": [
     {
+      "CBS_code": "GM1959",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Altena/Altena_uitkomst_TK25.pdf",
       "pdf_name": "Altena_uitkomst_TK25.pdf"
     }
   ],
   "Ameland": [
     {
+      "CBS_code": "GM0060",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Ameland/gemeente_ameland_uitkomst_tk25.pdf",
       "pdf_name": "gemeente_ameland_uitkomst_tk25.pdf"
     }
   ],
   "Amersfoort": [
     {
+      "CBS_code": "GM0307",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Amersfoort/amersfoort-pv-na31-gsb-tk25-30okt2025.pdf",
       "pdf_name": "amersfoort-pv-na31-gsb-tk25-30okt2025.pdf"
     }
   ],
   "Amstelveen": [
     {
+      "CBS_code": "GM0362",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Amstelveen/amstelveen_pv_gsb_tk25_zh.pdf",
       "pdf_name": "amstelveen_pv_gsb_tk25_zh.pdf"
     }
   ],
   "Amsterdam": [
     {
+      "CBS_code": "GM0363",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Amsterdam/procesverbaal_gemeentelijk_stembureau_model_na31-2.pdf",
       "pdf_name": "procesverbaal_gemeentelijk_stembureau_model_na31-2.pdf"
     }
   ],
   "Apeldoorn": [
     {
+      "CBS_code": "GM0200",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Apeldoorn/Apeldoorn_uitslag_Na31-2_TK25.pdf",
       "pdf_name": "Apeldoorn_uitslag_Na31-2_TK25.pdf"
     }
   ],
   "Arnhem": [
     {
+      "CBS_code": "GM0202",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Arnhem/Model_Na31-2_GSB_Arnhem.pdf",
       "pdf_name": "Model_Na31-2_GSB_Arnhem.pdf"
     }
   ],
   "Assen": [
     {
+      "CBS_code": "GM0106",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Assen/Proces-verbaal van een gemeentelijk stembureau (centrale stemopneming).PDF",
       "pdf_name": "Proces-verbaal van een gemeentelijk stembureau (centrale stemopneming).PDF"
     }
   ],
   "Asten": [
     {
+      "CBS_code": "GM0743",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Asten/Proces_Verbaal_verkiezingsuitslag_GSB.pdf",
       "pdf_name": "Proces_Verbaal_verkiezingsuitslag_GSB.pdf"
     }
   ],
   "Baarle-Nassau": [
     {
+      "CBS_code": "GM0744",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Baarle-Nassau/Baarle-Nassau_gemeentelijk_stembureau_TK25.pdf",
       "pdf_name": "Baarle-Nassau_gemeentelijk_stembureau_TK25.pdf"
     }
   ],
   "Baarn": [
     {
+      "CBS_code": "GM0308",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Baarn/0308_pv_zittinggsb_tk25_0.pdf",
       "pdf_name": "0308_pv_zittinggsb_tk25_0.pdf"
     }
   ],
   "Barendrecht": [
     {
+      "CBS_code": "GM0489",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Barendrecht/Barendrecht_uitkomst_TK25.pdf",
       "pdf_name": "Barendrecht_uitkomst_TK25.pdf"
     }
   ],
   "Barneveld": [
     {
+      "CBS_code": "GM0203",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Barneveld/Barneveld_uitkomst_TK25.pdf",
       "pdf_name": "Barneveld_uitkomst_TK25.pdf"
     }
   ],
   "Beek": [
     {
+      "CBS_code": "GM0888",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Beek/beek_uitkomst_tk25.pdf",
       "pdf_name": "beek_uitkomst_tk25.pdf"
     }
   ],
   "Beekdaelen": [
     {
+      "CBS_code": "GM1954",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Beekdaelen/beekdaelen_uitkomst_tk25.pdf",
       "pdf_name": "beekdaelen_uitkomst_tk25.pdf"
     }
   ],
   "Beesel": [
     {
+      "CBS_code": "GM0889",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Beesel/na31-1-procesverbaal-gemeentelijk-stembureau-ps.pdf",
       "pdf_name": "na31-1-procesverbaal-gemeentelijk-stembureau-ps.pdf"
     },
     {
+      "CBS_code": "GM0889",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Beesel/na31-1-proces-verbaal-tk2025-gemeentelijk-stembureau.pdf",
       "pdf_name": "na31-1-proces-verbaal-tk2025-gemeentelijk-stembureau.pdf"
     }
   ],
   "Berg en Dal": [
     {
+      "CBS_code": "GM1945",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Berg en Dal/1945_gsb_tk25_zh.pdf",
       "pdf_name": "1945_gsb_tk25_zh.pdf"
     }
   ],
   "Bergeijk": [
     {
+      "CBS_code": "GM1724",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bergeijk/Bergeijk_uitkomst_TK25.pdf",
       "pdf_name": "Bergeijk_uitkomst_TK25.pdf"
     }
   ],
   "Bergen (L)": [
     {
+      "CBS_code": "GM0893",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bergen (L)/bergen_l_uitkomst_tk25.pdf",
       "pdf_name": "bergen_l_uitkomst_tk25.pdf"
     }
   ],
   "Bergen (NH)": [
     {
+      "CBS_code": "GM0373",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bergen (NH)/0373_uitkomtst_TK25_ZH.pdf",
       "pdf_name": "0373_uitkomtst_TK25_ZH.pdf"
     }
   ],
   "Bergen op Zoom": [
     {
+      "CBS_code": "GM0748",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bergen op Zoom/Het proces-verbaal van het gemeentelijk stembureau (model Na 31-2 inclusief bijlage 1).pdf",
       "pdf_name": "Het proces-verbaal van het gemeentelijk stembureau (model Na 31-2 inclusief bijlage 1).pdf"
     }
   ],
   "Berkelland": [
     {
+      "CBS_code": "GM1859",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Berkelland/Berkelland_uitkomst-TK25.pdf",
       "pdf_name": "Berkelland_uitkomst-TK25.pdf"
     }
   ],
   "Bernheze": [
     {
+      "CBS_code": "GM1721",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bernheze/model_na31-2.pdf",
       "pdf_name": "model_na31-2.pdf"
     }
   ],
   "Best": [
     {
+      "CBS_code": "GM0753",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Best/best_uitkomst_tk25.pdf",
       "pdf_name": "best_uitkomst_tk25.pdf"
     }
   ],
   "Beuningen": [
     {
+      "CBS_code": "GM0209",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Beuningen/Beuningen_uitkomst_TK25_10.pdf",
       "pdf_name": "Beuningen_uitkomst_TK25_10.pdf"
     }
   ],
   "Beverwijk": [
     {
+      "CBS_code": "GM0375",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Beverwijk/beverwijk_uitkomst_tk25.pdf",
       "pdf_name": "beverwijk_uitkomst_tk25.pdf"
     }
   ],
   "Bladel": [
     {
+      "CBS_code": "GM1728",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bladel/proces-verbaal_van_het_gemeentelijk_stembureau_bladel.pdf",
       "pdf_name": "proces-verbaal_van_het_gemeentelijk_stembureau_bladel.pdf"
     }
   ],
   "Blaricum": [
     {
+      "CBS_code": "GM0376",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Blaricum/Blaricum_uitkomst_TK25.pdf",
       "pdf_name": "Blaricum_uitkomst_TK25.pdf"
     }
   ],
   "Bloemendaal": [
     {
+      "CBS_code": "GM0377",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bloemendaal/Bloemendaal_uitkomst_TK25.pdf",
       "pdf_name": "Bloemendaal_uitkomst_TK25.pdf"
     }
   ],
   "Bodegraven-Reeuwijk": [
     {
+      "CBS_code": "GM1901",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bodegraven-Reeuwijk/bodegraven-reeuwijkuitkomsttk25pdf-0.pdf",
       "pdf_name": "bodegraven-reeuwijkuitkomsttk25pdf-0.pdf"
     }
   ],
   "Boekel": [
     {
+      "CBS_code": "GM0755",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Boekel/boekel_uitkomst_tk25.pdf",
       "pdf_name": "boekel_uitkomst_tk25.pdf"
     }
   ],
   "Bonaire": [
     {
+      "CBS_code": "GM9001",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bonaire/Na_31-2_proces-verbaal_SOL_kiescollege.pdf",
       "pdf_name": "Na_31-2_proces-verbaal_SOL_kiescollege.pdf"
     }
   ],
   "Borger-Odoorn": [
     {
+      "CBS_code": "GM1681",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borger-Odoorn/proces-verbaal-gemeentelijk-stembureau-0.pdf",
       "pdf_name": "proces-verbaal-gemeentelijk-stembureau-0.pdf"
     }
   ],
   "Borne": [
     {
+      "CBS_code": "GM0147",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borne/procesverbaal-na31-gemeente-bornepdf.pdf",
       "pdf_name": "procesverbaal-na31-gemeente-bornepdf.pdf"
     }
   ],
   "Borsele": [
     {
+      "CBS_code": "GM0654",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Borsele/proces-verbaal-gemeentelijk-stembureau.pdf",
       "pdf_name": "proces-verbaal-gemeentelijk-stembureau.pdf"
     }
   ],
   "Boxtel": [
     {
+      "CBS_code": "GM0757",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Boxtel/boxtel_uitkomst_tk25.pdf",
       "pdf_name": "boxtel_uitkomst_tk25.pdf"
     }
   ],
   "Breda": [
     {
+      "CBS_code": "GM0758",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Breda/pv-gsb-31oktober2025-model-na31-2.pdf",
       "pdf_name": "pv-gsb-31oktober2025-model-na31-2.pdf"
     }
   ],
   "Bronckhorst": [
     {
+      "CBS_code": "GM1876",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bronckhorst/bronckhorst_uitkomst_tk25.pdf",
       "pdf_name": "bronckhorst_uitkomst_tk25.pdf"
     }
   ],
   "Brummen": [
     {
+      "CBS_code": "GM0213",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Brummen/Brummen_uitkomst_TK25.pdf",
       "pdf_name": "Brummen_uitkomst_TK25.pdf"
     }
   ],
   "Brunssum": [
     {
+      "CBS_code": "GM0899",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Brunssum/Na 31-2 17. Microhal 2.pdf",
       "pdf_name": "Na 31-2 17. Microhal 2.pdf"
     }
   ],
   "Bunnik": [
     {
+      "CBS_code": "GM0312",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bunnik/Bunnik_uitkomst_TK25.pdf",
       "pdf_name": "Bunnik_uitkomst_TK25.pdf"
     }
   ],
   "Bunschoten": [
     {
+      "CBS_code": "GM0313",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Bunschoten/bunschoten_uitkomst_tk25.pdf",
       "pdf_name": "bunschoten_uitkomst_tk25.pdf"
     }
   ],
   "Buren": [
     {
+      "CBS_code": "GM0214",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Buren/Definitieve-uItslag-zonder-handtekening.pdf",
       "pdf_name": "Definitieve-uItslag-zonder-handtekening.pdf"
     }
   ],
   "Capelle aan den IJssel": [
     {
+      "CBS_code": "GM0502",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Capelle aan den IJssel/pv_van_het_gemeentelijk_stembureau.pdf",
       "pdf_name": "pv_van_het_gemeentelijk_stembureau.pdf"
     }
   ],
   "Castricum": [
     {
+      "CBS_code": "GM0383",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Castricum/Castricum_uitkomst_TK25.pdf",
       "pdf_name": "Castricum_uitkomst_TK25.pdf"
     }
   ],
   "Coevorden": [
     {
+      "CBS_code": "GM0109",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Coevorden/coevordenuitslagtk25pdf.pdf",
       "pdf_name": "coevordenuitslagtk25pdf.pdf"
     }
   ],
   "Cranendonck": [
     {
+      "CBS_code": "GM1706",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Cranendonck/cranendonck_uitkomst_tk25.pdf",
       "pdf_name": "cranendonck_uitkomst_tk25.pdf"
     }
   ],
   "Culemborg": [
     {
+      "CBS_code": "GM0216",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Culemborg/culemborguitkomsttk25pdf.pdf",
       "pdf_name": "culemborguitkomsttk25pdf.pdf"
     }
   ],
   "Dalfsen": [
     {
+      "CBS_code": "GM0148",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dalfsen/proces-verbaal_gemeentelijk_stembureau_-_model_na_31-2_-_gemeente_dalfsen.pdf",
       "pdf_name": "proces-verbaal_gemeentelijk_stembureau_-_model_na_31-2_-_gemeente_dalfsen.pdf"
     }
   ],
   "Dantumadiel": [
     {
+      "CBS_code": "GM1891",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dantumadiel/proces-verbaal-na-31-2-gemeente-dantumadiel-zh.pdf",
       "pdf_name": "proces-verbaal-na-31-2-gemeente-dantumadiel-zh.pdf"
     }
   ],
   "De Bilt": [
     {
+      "CBS_code": "GM0310",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Bilt/Proces_verbaal_Na31_2_stembureau_18_Ontmoetingskerk_TK25.pdf",
       "pdf_name": "Proces_verbaal_Na31_2_stembureau_18_Ontmoetingskerk_TK25.pdf"
     }
   ],
   "De Fryske Marren": [
     {
+      "CBS_code": "GM1940",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Fryske Marren/De-Fryske-Marren_uitkomst_TK25_ZH.pdf",
       "pdf_name": "De-Fryske-Marren_uitkomst_TK25_ZH.pdf"
     }
   ],
   "De Ronde Venen": [
     {
+      "CBS_code": "GM0736",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Ronde Venen/DeRondeVenen_uitkomst_TK25.pdf",
       "pdf_name": "DeRondeVenen_uitkomst_TK25.pdf"
     }
   ],
   "De Wolden": [
     {
+      "CBS_code": "GM1690",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/De Wolden/Model_Na31-2.pdf",
       "pdf_name": "Model_Na31-2.pdf"
     }
   ],
   "Delft": [
     {
+      "CBS_code": "GM0503",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Delft/Delft_GSB_TK25_webversie.pdf",
       "pdf_name": "Delft_GSB_TK25_webversie.pdf"
     }
   ],
   "Den Haag": [
     {
+      "CBS_code": "GM0518",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Den Haag/tweede_kamerverkiezing_2025_procesverbaal_van_het_gemeentelijk_stembureau_voor_tweede_kamerverkiezing.pdf",
       "pdf_name": "tweede_kamerverkiezing_2025_procesverbaal_van_het_gemeentelijk_stembureau_voor_tweede_kamerverkiezing.pdf"
     }
   ],
   "Den Helder": [
     {
+      "CBS_code": "GM0400",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Den Helder/Den Helder uitkomst TK25 (pdf).pdf",
       "pdf_name": "Den Helder uitkomst TK25 (pdf).pdf"
     }
   ],
   "Deurne": [
     {
+      "CBS_code": "GM0762",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deurne/deurne_uitkomst_tk25_31-2_zonder_handtekening_1.pdf",
       "pdf_name": "deurne_uitkomst_tk25_31-2_zonder_handtekening_1.pdf"
     }
   ],
   "Deventer": [
     {
+      "CBS_code": "GM0150",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Deventer/Tweede_Kamer_verkiezing_-_2025-10-29_-_Proces-verbaal_centrale_stemopneming.pdf",
       "pdf_name": "Tweede_Kamer_verkiezing_-_2025-10-29_-_Proces-verbaal_centrale_stemopneming.pdf"
     }
   ],
   "Diemen": [
     {
+      "CBS_code": "GM0384",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Diemen/Diemen_uitkomst_TK25.pdf",
       "pdf_name": "Diemen_uitkomst_TK25.pdf"
     }
   ],
   "Dijk en Waard": [
     {
+      "CBS_code": "GM1980",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dijk en Waard/DijkenWaard_uitkomst_TK25-2.pdf",
       "pdf_name": "DijkenWaard_uitkomst_TK25-2.pdf"
     }
   ],
   "Dinkelland": [
     {
+      "CBS_code": "GM1774",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dinkelland/dinkelland_uitkomst_tk25.pdf",
       "pdf_name": "dinkelland_uitkomst_tk25.pdf"
     }
   ],
   "Doesburg": [
     {
+      "CBS_code": "GM0221",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doesburg/Pub-procesverbaal gemeentelijk stembureau.pdf",
       "pdf_name": "Pub-procesverbaal gemeentelijk stembureau.pdf"
     }
   ],
   "Doetinchem": [
     {
+      "CBS_code": "GM0222",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Doetinchem/Doetinchem_uitkomst_TK25.pdf",
       "pdf_name": "Doetinchem_uitkomst_TK25.pdf"
     }
   ],
   "Dongen": [
     {
+      "CBS_code": "GM0766",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dongen/PV_GSB_zonder_handtekening.pdf",
       "pdf_name": "PV_GSB_zonder_handtekening.pdf"
     }
   ],
   "Dordrecht": [
     {
+      "CBS_code": "GM0505",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dordrecht/NA31-1 -ZHT.pdf",
       "pdf_name": "NA31-1 -ZHT.pdf"
     }
   ],
   "Drechterland": [
     {
+      "CBS_code": "GM0498",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drechterland/Drechterland-Na-31-2-TK25.pdf",
       "pdf_name": "Drechterland-Na-31-2-TK25.pdf"
     }
   ],
   "Drimmelen": [
     {
+      "CBS_code": "GM1719",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Drimmelen/procesverbaal_van_een_gemeentelijk_stembureau_model_na_31-1.pdf",
       "pdf_name": "procesverbaal_van_een_gemeentelijk_stembureau_model_na_31-1.pdf"
     }
   ],
   "Dronten": [
     {
+      "CBS_code": "GM0303",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Dronten/Dronten_uitkomst_TK25.pdf",
       "pdf_name": "Dronten_uitkomst_TK25.pdf"
     }
   ],
   "Druten": [
     {
+      "CBS_code": "GM0225",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Druten/druten_uitkomst_tk25.pdf",
       "pdf_name": "druten_uitkomst_tk25.pdf"
     }
   ],
   "Duiven": [
     {
+      "CBS_code": "GM0226",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Duiven/duivenuitkomsttk25pdf.pdf",
       "pdf_name": "duivenuitkomsttk25pdf.pdf"
     }
   ],
   "Echt-Susteren": [
     {
+      "CBS_code": "GM1711",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Echt-Susteren/echt-susteren_uitkomst_tk25.pdf",
       "pdf_name": "echt-susteren_uitkomst_tk25.pdf"
     }
   ],
   "Edam-Volendam": [
     {
+      "CBS_code": "GM0385",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Edam-Volendam/edam-volendam_uitkomst_tk25.pdf",
       "pdf_name": "edam-volendam_uitkomst_tk25.pdf"
     }
   ],
   "Ede": [
     {
+      "CBS_code": "GM0228",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Ede/Ede_uitkomst_TK25_nieuw.pdf",
       "pdf_name": "Ede_uitkomst_TK25_nieuw.pdf"
     }
   ],
   "Eemnes": [
     {
+      "CBS_code": "GM0317",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eemnes/Eemnes_7_Gemeentehuiskamer027_TK25_eerste_telling.pdf",
       "pdf_name": "Eemnes_7_Gemeentehuiskamer027_TK25_eerste_telling.pdf"
     }
   ],
   "Eemsdelta": [
     {
+      "CBS_code": "GM1979",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eemsdelta/eemsdelta_uitkomst_tk25.pdf",
       "pdf_name": "eemsdelta_uitkomst_tk25.pdf"
     }
   ],
   "Eersel": [
     {
+      "CBS_code": "GM0770",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eersel/eersel_uitkomst_tk25.pdf",
       "pdf_name": "eersel_uitkomst_tk25.pdf"
     }
   ],
   "Eijsden-Margraten": [
     {
+      "CBS_code": "GM1903",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/na31-1-corrigendum-na14-2.pdf",
       "pdf_name": "na31-1-corrigendum-na14-2.pdf"
     },
     {
+      "CBS_code": "GM1903",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eijsden-Margraten/Eijsden-Margraten_uitkomst_TK2520(geanonimiseerd).pdf",
       "pdf_name": "Eijsden-Margraten_uitkomst_TK2520(geanonimiseerd).pdf"
     }
   ],
   "Eindhoven": [
     {
+      "CBS_code": "GM0772",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Eindhoven/Eindhoven_uitkomst_TK25.pdf",
       "pdf_name": "Eindhoven_uitkomst_TK25.pdf"
     }
   ],
   "Elburg": [
     {
+      "CBS_code": "GM0230",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Elburg/Elburg_uitkomst_TK25.pdf",
       "pdf_name": "Elburg_uitkomst_TK25.pdf"
     }
   ],
   "Emmen": [
     {
+      "CBS_code": "GM0114",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Emmen/Model Na 31-1.pdf",
       "pdf_name": "Model Na 31-1.pdf"
     }
   ],
   "Enkhuizen": [
     {
+      "CBS_code": "GM0388",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enkhuizen/Enkhuizen_uitkomst_TK25.pdf",
       "pdf_name": "Enkhuizen_uitkomst_TK25.pdf"
     }
   ],
   "Enschede": [
     {
+      "CBS_code": "GM0153",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Enschede/Processen verbaal.pdf",
       "pdf_name": "Processen verbaal.pdf"
     }
   ],
   "Epe": [
     {
+      "CBS_code": "GM0232",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Epe/epe_uitkomst_tk25_0.pdf",
       "pdf_name": "epe_uitkomst_tk25_0.pdf"
     }
   ],
   "Ermelo": [
     {
+      "CBS_code": "GM0233",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Ermelo/Ermelo_Uitslag_TK25_ZH.pdf",
       "pdf_name": "Ermelo_Uitslag_TK25_ZH.pdf"
     }
   ],
   "Etten-Leur": [
     {
+      "CBS_code": "GM0777",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Etten-Leur/Etten-Leur_uitkomst_TK25.pdf",
       "pdf_name": "Etten-Leur_uitkomst_TK25.pdf"
     }
   ],
   "Geertruidenberg": [
     {
+      "CBS_code": "GM0779",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Geertruidenberg/na_31-2_zonder_handtekeningen.pdf",
       "pdf_name": "na_31-2_zonder_handtekeningen.pdf"
     }
   ],
   "Geldrop-Mierlo": [
     {
+      "CBS_code": "GM1771",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Geldrop-Mierlo/geldrop-mierlo_na_31_1_tk25.pdf",
       "pdf_name": "geldrop-mierlo_na_31_1_tk25.pdf"
     }
   ],
   "Gemert-Bakel": [
     {
+      "CBS_code": "GM1652",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Gemert-Bakel/gemert-bakeluitslagep24-zonder-handtekeningpdf.pdf",
       "pdf_name": "gemert-bakeluitslagep24-zonder-handtekeningpdf.pdf"
     }
   ],
   "Gennep": [
     {
+      "CBS_code": "GM0907",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Gennep/gennep_uitkomst_tk25.pdf",
       "pdf_name": "gennep_uitkomst_tk25.pdf"
     }
   ],
   "Gilze en Rijen": [
     {
+      "CBS_code": "GM0784",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Gilze en Rijen/Gilze_en_Rijen_gemeentelijkstembureau_TK25.pdf",
       "pdf_name": "Gilze_en_Rijen_gemeentelijkstembureau_TK25.pdf"
     }
   ],
   "Goeree-Overflakkee": [
     {
+      "CBS_code": "GM1924",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goeree-Overflakkee/Goeree-Overflakkee_uitkomst_TK25.pdf",
       "pdf_name": "Goeree-Overflakkee_uitkomst_TK25.pdf"
     }
   ],
   "Goes": [
     {
+      "CBS_code": "GM0664",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goes/goes_uitkomst_tk25.pdf",
       "pdf_name": "goes_uitkomst_tk25.pdf"
     }
   ],
   "Goirle": [
     {
+      "CBS_code": "GM0785",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Goirle/PV_Gemeentelijk_Stembureau_N31_1.pdf",
       "pdf_name": "PV_Gemeentelijk_Stembureau_N31_1.pdf"
     }
   ],
   "Gooise Meren": [
     {
+      "CBS_code": "GM1942",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Gooise Meren/Gooisemeren_uitkomst_TK25.pdf",
       "pdf_name": "Gooisemeren_uitkomst_TK25.pdf"
     }
   ],
   "Gorinchem": [
     {
+      "CBS_code": "GM0512",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Gorinchem/0512_Gemeentelijk20Stembureau_TK25.pdf",
       "pdf_name": "0512_Gemeentelijk20Stembureau_TK25.pdf"
     }
   ],
   "Gouda": [
     {
+      "CBS_code": "GM0513",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Gouda/Proces-verbaal-Na-31-2.pdf",
       "pdf_name": "Proces-verbaal-Na-31-2.pdf"
     }
   ],
   "Groningen": [
     {
+      "CBS_code": "GM0014",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Groningen/Proces-verbaal van het Hoofdstembureau.pdf",
       "pdf_name": "Proces-verbaal van het Hoofdstembureau.pdf"
     }
   ],
   "Gulpen-Wittem": [
     {
+      "CBS_code": "GM1729",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Gulpen-Wittem/gulpen-wittem_uitkomst_tk25_zh.pdf",
       "pdf_name": "gulpen-wittem_uitkomst_tk25_zh.pdf"
     }
   ],
   "Haaksbergen": [
     {
+      "CBS_code": "GM0158",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Haaksbergen/TK2025-Model-Na-31-2-deel-1.pdf",
       "pdf_name": "TK2025-Model-Na-31-2-deel-1.pdf"
     }
   ],
   "Haarlem": [
     {
+      "CBS_code": "GM0392",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Haarlem/tk2025-pv-donderdag-gsb-algemeen-zonder-handtekeningen.pdf",
       "pdf_name": "tk2025-pv-donderdag-gsb-algemeen-zonder-handtekeningen.pdf"
     }
   ],
   "Haarlemmermeer": [
     {
+      "CBS_code": "GM0394",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Haarlemmermeer/gemeente-haarlemmermeeruitkomsttk25.pdf",
       "pdf_name": "gemeente-haarlemmermeeruitkomsttk25.pdf"
     }
   ],
   "Halderberge": [
     {
+      "CBS_code": "GM1655",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Halderberge/Halderberge_uitkomst_TK25.pdf",
       "pdf_name": "Halderberge_uitkomst_TK25.pdf"
     }
   ],
   "Hardenberg": [
     {
+      "CBS_code": "GM0160",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Hardenberg/Hardenberg_uitkomst_TK2025.pdf",
       "pdf_name": "Hardenberg_uitkomst_TK2025.pdf"
     }
   ],
   "Harderwijk": [
     {
+      "CBS_code": "GM0243",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Harderwijk/Harderwijk_uitkomst_TK25.pdf",
       "pdf_name": "Harderwijk_uitkomst_TK25.pdf"
     }
   ],
   "Hardinxveld-Giessendam": [
     {
+      "CBS_code": "GM0523",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Hardinxveld-Giessendam/Hardinxveld-Giessendam_uitkomst_TK25.pdf",
       "pdf_name": "Hardinxveld-Giessendam_uitkomst_TK25.pdf"
     }
   ],
   "Harlingen": [
     {
+      "CBS_code": "GM0072",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Harlingen/gemeente_harlingen_uitkomst_tk25_0.pdf",
       "pdf_name": "gemeente_harlingen_uitkomst_tk25_0.pdf"
     }
   ],
   "Hattem": [
     {
+      "CBS_code": "GM0244",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Hattem/Hattem_uitkomst_TK25.pdf",
       "pdf_name": "Hattem_uitkomst_TK25.pdf"
     }
   ],
   "Heemskerk": [
     {
+      "CBS_code": "GM0396",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Heemskerk/0396_model_Na_31-2_Heemskerk.pdf",
       "pdf_name": "0396_model_Na_31-2_Heemskerk.pdf"
     }
   ],
   "Heemstede": [
     {
+      "CBS_code": "GM0397",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Heemstede/Heemstede_controleprotocolGSB_TK25.pdf",
       "pdf_name": "Heemstede_controleprotocolGSB_TK25.pdf"
     },
     {
+      "CBS_code": "GM0397",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Heemstede/Heemstede_uitkomst_TK25.pdf",
       "pdf_name": "Heemstede_uitkomst_TK25.pdf"
     }
   ],
   "Heerde": [
     {
+      "CBS_code": "GM0246",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Heerde/0246_GSB_Na31-2.pdf",
       "pdf_name": "0246_GSB_Na31-2.pdf"
     }
   ],
   "Heerenveen": [
     {
+      "CBS_code": "GM0074",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Heerenveen/PV-GSB-zonder-handtekening.pdf",
       "pdf_name": "PV-GSB-zonder-handtekening.pdf"
     }
   ],
   "Heerlen": [
     {
+      "CBS_code": "GM0917",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Heerlen/NA31-2 zonder handtekeningen.pdf",
       "pdf_name": "NA31-2 zonder handtekeningen.pdf"
     }
   ],
   "Heeze-Leende": [
     {
+      "CBS_code": "GM1658",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Heeze-Leende/heeze-leende_uitkomst_tk2025.pdf",
       "pdf_name": "heeze-leende_uitkomst_tk2025.pdf"
     }
   ],
   "Heiloo": [
     {
+      "CBS_code": "GM0399",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Heiloo/Heiloo_uitkomst_TK25.pdf",
       "pdf_name": "Heiloo_uitkomst_TK25.pdf"
     }
   ],
   "Hellendoorn": [
     {
+      "CBS_code": "GM0163",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Hellendoorn/PV-GSB-inclusief-bijlagen-1.pdf",
       "pdf_name": "PV-GSB-inclusief-bijlagen-1.pdf"
     }
   ],
   "Helmond": [
     {
+      "CBS_code": "GM0794",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Helmond/Helmond_uitkomst_TK25.pdf",
       "pdf_name": "Helmond_uitkomst_TK25.pdf"
     }
   ],
   "Hendrik-Ido-Ambacht": [
     {
+      "CBS_code": "GM0531",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Hendrik-Ido-Ambacht/HIA_Na31_1_ZHT_Proces_verbaal_van_een_gemeentelijk_stembureau3AWGx9hdvOQYuTCitYnP4rbg.pdf",
       "pdf_name": "HIA_Na31_1_ZHT_Proces_verbaal_van_een_gemeentelijk_stembureau3AWGx9hdvOQYuTCitYnP4rbg.pdf"
     }
   ],
   "Hengelo": [
     {
+      "CBS_code": "GM0164",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Hengelo/Hengelo_uitkomst_TK25.pdf",
       "pdf_name": "Hengelo_uitkomst_TK25.pdf"
     }
   ],
   "Het Hogeland": [
     {
+      "CBS_code": "GM1966",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Het Hogeland/Het_Hogeland_uitkomst_TK25.pdf",
       "pdf_name": "Het_Hogeland_uitkomst_TK25.pdf"
     }
   ],
   "Heumen": [
     {
+      "CBS_code": "GM0252",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Heumen/0252_pv_gemeentelijk-stembureau_tk25_zh.pdf",
       "pdf_name": "0252_pv_gemeentelijk-stembureau_tk25_zh.pdf"
     }
   ],
   "Heusden": [
     {
+      "CBS_code": "GM0797",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Heusden/Model_Na31-1.pdf",
       "pdf_name": "Model_Na31-1.pdf"
     }
   ],
   "Hillegom": [
     {
+      "CBS_code": "GM0534",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Hillegom/Hil_PV_GSB_TK25_ZH.pdf",
       "pdf_name": "Hil_PV_GSB_TK25_ZH.pdf"
     }
   ],
   "Hilvarenbeek": [
     {
+      "CBS_code": "GM0798",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Hilvarenbeek/Gemeentelijk_Stembureau_Proces-verbaal_zonder_handtekening.pdf",
       "pdf_name": "Gemeentelijk_Stembureau_Proces-verbaal_zonder_handtekening.pdf"
     }
   ],
   "Hilversum": [
     {
+      "CBS_code": "GM0402",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Hilversum/Model_Na31-2.pdf",
       "pdf_name": "Model_Na31-2.pdf"
     }
   ],
   "Hoeksche Waard": [
     {
+      "CBS_code": "GM1963",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Hoeksche Waard/Proces-verbaal-gemeentelijk-stembureau-Hoeksche-Waard-centrale-stemming.pdf",
       "pdf_name": "Proces-verbaal-gemeentelijk-stembureau-Hoeksche-Waard-centrale-stemming.pdf"
     }
   ],
   "Hof van Twente": [
     {
+      "CBS_code": "GM1735",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Hof van Twente/HofvanTwente_uitkomst_TK25.pdf",
       "pdf_name": "HofvanTwente_uitkomst_TK25.pdf"
     }
   ],
   "Hollands Kroon": [
     {
+      "CBS_code": "GM1911",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Hollands Kroon/Model_Na31-1.pdf",
       "pdf_name": "Model_Na31-1.pdf"
     }
   ],
   "Hoogeveen": [
     {
+      "CBS_code": "GM0118",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Hoogeveen/NA31-2_Hoogeveen.pdf",
       "pdf_name": "NA31-2_Hoogeveen.pdf"
     }
   ],
   "Hoorn": [
     {
+      "CBS_code": "GM0405",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Hoorn/Na2031-220Procesverbaal20deel201.pdf",
       "pdf_name": "Na2031-220Procesverbaal20deel201.pdf"
     }
   ],
   "Horst aan de Maas": [
     {
+      "CBS_code": "GM1507",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Horst aan de Maas/proces-verbaal-gemeentelijk-stembureau-1.pdf",
       "pdf_name": "proces-verbaal-gemeentelijk-stembureau-1.pdf"
     }
   ],
   "Houten": [
     {
+      "CBS_code": "GM0321",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Houten/Houten_uitkomst_TK2025.pdf",
       "pdf_name": "Houten_uitkomst_TK2025.pdf"
     }
   ],
   "Huizen": [
     {
+      "CBS_code": "GM0406",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Huizen/na_31-1_-_pv_gemeente_huizen_0.pdf",
       "pdf_name": "na_31-1_-_pv_gemeente_huizen_0.pdf"
     }
   ],
   "Hulst": [
     {
+      "CBS_code": "GM0677",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Hulst/Hulst_uitkomst_TK25.pdf",
       "pdf_name": "Hulst_uitkomst_TK25.pdf"
     }
   ],
   "IJsselstein": [
     {
+      "CBS_code": "GM0353",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/IJsselstein/63128bff-f004-49b6-b900-330bbb4479ca.pdf",
       "pdf_name": "63128bff-f004-49b6-b900-330bbb4479ca.pdf"
     }
   ],
   "Kaag en Braassem": [
     {
+      "CBS_code": "GM1884",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Kaag en Braassem/Kaagenbraassem_uitkomst_TK25.pdf",
       "pdf_name": "Kaagenbraassem_uitkomst_TK25.pdf"
     }
   ],
   "Kampen": [
     {
+      "CBS_code": "GM0166",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Kampen/kampenuitkomsttk25pdf.pdf",
       "pdf_name": "kampenuitkomsttk25pdf.pdf"
     }
   ],
   "Kapelle": [
     {
+      "CBS_code": "GM0678",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Kapelle/proces-verbaal-na-31-1-gsb-zonder-handtekeningen.pdf",
       "pdf_name": "proces-verbaal-na-31-1-gsb-zonder-handtekeningen.pdf"
     }
   ],
   "Katwijk": [
     {
+      "CBS_code": "GM0537",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Katwijk/Katwijk_uitkomst_TK25.pdf",
       "pdf_name": "Katwijk_uitkomst_TK25.pdf"
     }
   ],
   "Kerkrade": [
     {
+      "CBS_code": "GM0928",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Kerkrade/tk25-gsb-na_31-1.pdf",
       "pdf_name": "tk25-gsb-na_31-1.pdf"
     }
   ],
   "Koggenland": [
     {
+      "CBS_code": "GM1598",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Koggenland/koggenland_uitkomst_tk25.pdf",
       "pdf_name": "koggenland_uitkomst_tk25.pdf"
     }
   ],
   "Krimpen aan den IJssel": [
     {
+      "CBS_code": "GM0542",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Krimpen aan den IJssel/Krimpen-aan-den-IJssel-uitkomst-TK25-1.pdf",
       "pdf_name": "Krimpen-aan-den-IJssel-uitkomst-TK25-1.pdf"
     }
   ],
   "Krimpenerwaard": [
     {
+      "CBS_code": "GM1931",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Krimpenerwaard/verzamel-proces-verbaal.pdf",
       "pdf_name": "verzamel-proces-verbaal.pdf"
     }
   ],
   "Laarbeek": [
     {
+      "CBS_code": "GM1659",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Laarbeek/laarbeekuitkomsttk25pdf.pdf",
       "pdf_name": "laarbeekuitkomsttk25pdf.pdf"
     }
   ],
   "Land van Cuijk": [
     {
+      "CBS_code": "GM1982",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Land van Cuijk/landvancuijk_1_uitkomst_tk25.pdf",
       "pdf_name": "landvancuijk_1_uitkomst_tk25.pdf"
     }
   ],
   "Landgraaf": [
     {
+      "CBS_code": "GM0882",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Landgraaf/landgraaf_uitkomst_tk25.pdf",
       "pdf_name": "landgraaf_uitkomst_tk25.pdf"
     }
   ],
   "Landsmeer": [
     {
+      "CBS_code": "GM0415",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Landsmeer/model_na31-2_256599.pdf",
       "pdf_name": "model_na31-2_256599.pdf"
     }
   ],
   "Lansingerland": [
     {
+      "CBS_code": "GM1621",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Lansingerland/Lansingerland_uitkomst_TK25.pdf",
       "pdf_name": "Lansingerland_uitkomst_TK25.pdf"
     }
   ],
   "Laren": [
     {
+      "CBS_code": "GM0417",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Laren/Laren_Uitkomst_TK25.pdf",
       "pdf_name": "Laren_Uitkomst_TK25.pdf"
     }
   ],
   "Leeuwarden": [
     {
+      "CBS_code": "GM0080",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leeuwarden/Leeuwarden_Uitkomst_TK25.pdf",
       "pdf_name": "Leeuwarden_Uitkomst_TK25.pdf"
     }
   ],
   "Leiden": [
     {
+      "CBS_code": "GM0546",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leiden/Proces-verbaal-O7-Kieskring-Leiden.pdf",
       "pdf_name": "Proces-verbaal-O7-Kieskring-Leiden.pdf"
     }
   ],
   "Leiderdorp": [
     {
+      "CBS_code": "GM0547",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leiderdorp/Leiderdorp_uitkomst_TK25.pdf",
       "pdf_name": "Leiderdorp_uitkomst_TK25.pdf"
     }
   ],
   "Leidschendam-Voorburg": [
     {
+      "CBS_code": "GM1916",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leidschendam-Voorburg/leidschendamvoorburguitkomsttk25pdf.pdf",
       "pdf_name": "leidschendamvoorburguitkomsttk25pdf.pdf"
     }
   ],
   "Lelystad": [
     {
+      "CBS_code": "GM0995",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Lelystad/Lelystad_uitkomst_TK25.pdf",
       "pdf_name": "Lelystad_uitkomst_TK25.pdf"
     }
   ],
   "Leudal": [
     {
+      "CBS_code": "GM1640",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leudal/na_31-2_proces_verbaal_gemeentelijk_stembureau_0.pdf",
       "pdf_name": "na_31-2_proces_verbaal_gemeentelijk_stembureau_0.pdf"
     }
   ],
   "Leusden": [
     {
+      "CBS_code": "GM0327",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Leusden/PV_Na_31-1_voor_publicatie-2025-11-03-11.pdf",
       "pdf_name": "PV_Na_31-1_voor_publicatie-2025-11-03-11.pdf"
     }
   ],
   "Lingewaard": [
     {
+      "CBS_code": "GM1705",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Lingewaard/lingewaard_uitkomst_tk25.pdf",
       "pdf_name": "lingewaard_uitkomst_tk25.pdf"
     }
   ],
   "Lisse": [
     {
+      "CBS_code": "GM0553",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Lisse/Lis_PV_GSB_TK25_ZH.pdf",
       "pdf_name": "Lis_PV_GSB_TK25_ZH.pdf"
     }
   ],
   "Lochem": [
     {
+      "CBS_code": "GM0262",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Lochem/Publicatie_zitting_GSB_op_30oktober_2025.pdf",
       "pdf_name": "Publicatie_zitting_GSB_op_30oktober_2025.pdf"
     }
   ],
   "Loon op Zand": [
     {
+      "CBS_code": "GM0809",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Loon op Zand/Proces_Verbaal_Gemeentelijk_Stembureau_CSO__zonder_handtekening_.pdf",
       "pdf_name": "Proces_Verbaal_Gemeentelijk_Stembureau_CSO__zonder_handtekening_.pdf"
     }
   ],
   "Lopik": [
     {
+      "CBS_code": "GM0331",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Lopik/proces-_verbaal.pdf",
       "pdf_name": "proces-_verbaal.pdf"
     }
   ],
   "Losser": [
     {
+      "CBS_code": "GM0168",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Losser/Losser_Overdrachtsdocument_N5_TK25.pdf",
       "pdf_name": "Losser_Overdrachtsdocument_N5_TK25.pdf"
     }
   ],
   "Maasdriel": [
     {
+      "CBS_code": "GM0263",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maasdriel/pv-tk25-bureau-6.pdf",
       "pdf_name": "pv-tk25-bureau-6.pdf"
     }
   ],
   "Maasgouw": [
     {
+      "CBS_code": "GM1641",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maasgouw/model_na31-2.pdf",
       "pdf_name": "model_na31-2.pdf"
     }
   ],
   "Maashorst": [
     {
+      "CBS_code": "GM1991",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maashorst/proces-verbaal-verkiezingsuitslag-maashorst-tk-2025.pdf",
       "pdf_name": "proces-verbaal-verkiezingsuitslag-maashorst-tk-2025.pdf"
     }
   ],
   "Maassluis": [
     {
+      "CBS_code": "GM0556",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maassluis/maassluis_uitkomst_tk25.pdf",
       "pdf_name": "maassluis_uitkomst_tk25.pdf"
     }
   ],
-  "Maastricht": [],
+  "Maastricht": [
+    {
+      "CBS_code": "GM0935",
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_uitkomst_TK25.pdf",
+      "pdf_name": "Maastricht_uitkomst_TK25.pdf"
+    }
+  ],
   "Medemblik": [
     {
+      "CBS_code": "GM0420",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Medemblik/pv_gsb_medemblik_verkiezingen_29_okt_2025.pdf",
       "pdf_name": "pv_gsb_medemblik_verkiezingen_29_okt_2025.pdf"
     }
   ],
   "Meerssen": [
     {
+      "CBS_code": "GM0938",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Meerssen/proces-verbaal_van_een_gemeentelijk_stembureau_(centrale__stemopneming)__822574.pdf",
       "pdf_name": "proces-verbaal_van_een_gemeentelijk_stembureau_(centrale__stemopneming)__822574.pdf"
     }
   ],
   "Meierijstad": [
     {
+      "CBS_code": "GM1948",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Meierijstad/Meierijstad_uitkomst_TK25.pdf",
       "pdf_name": "Meierijstad_uitkomst_TK25.pdf"
     }
   ],
   "Meppel": [
     {
+      "CBS_code": "GM0119",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Meppel/Meppel_Uitslag_TK25.pdf",
       "pdf_name": "Meppel_Uitslag_TK25.pdf"
     }
   ],
   "Middelburg": [
     {
+      "CBS_code": "GM0687",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Middelburg/Uitslag20gemeentelijke20stembureau20gemeente20Middelburg20TK25.pdf",
       "pdf_name": "Uitslag20gemeentelijke20stembureau20gemeente20Middelburg20TK25.pdf"
     }
   ],
   "Midden-Delfland": [
     {
+      "CBS_code": "GM1842",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Midden-Delfland/proces-verbaal_gemeentelijk_stembureau_1.pdf",
       "pdf_name": "proces-verbaal_gemeentelijk_stembureau_1.pdf"
     }
   ],
   "Midden-Drenthe": [
     {
+      "CBS_code": "GM1731",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Midden-Drenthe/Midden-Drenthe_uitkomst_TK25.pdf",
       "pdf_name": "Midden-Drenthe_uitkomst_TK25.pdf"
     }
   ],
   "Midden-Groningen": [
     {
+      "CBS_code": "GM1952",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Midden-Groningen/midden-groningen_uitkomst_tk25_0.pdf",
       "pdf_name": "midden-groningen_uitkomst_tk25_0.pdf"
     }
   ],
   "Moerdijk": [
     {
+      "CBS_code": "GM1709",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Moerdijk/Proces-Verbaal-Verzamel-pakket-AVG.pdf",
       "pdf_name": "Proces-Verbaal-Verzamel-pakket-AVG.pdf"
     }
   ],
   "Molenlanden": [
     {
+      "CBS_code": "GM1978",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Molenlanden/model-na31-2-uitkomst-tk25-molenlanden.pdf",
       "pdf_name": "model-na31-2-uitkomst-tk25-molenlanden.pdf"
     }
   ],
   "Montferland": [
     {
+      "CBS_code": "GM1955",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Montferland/montferland_uitkomst_tk25.pdf",
       "pdf_name": "montferland_uitkomst_tk25.pdf"
     }
   ],
   "Montfoort": [
     {
+      "CBS_code": "GM0335",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Montfoort/Het proces-verbaal van het gemeentelijk stembureau.pdf",
       "pdf_name": "Het proces-verbaal van het gemeentelijk stembureau.pdf"
     }
   ],
   "Mook en Middelaar": [
     {
+      "CBS_code": "GM0944",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Mook en Middelaar/model_na31-1.pdf",
       "pdf_name": "model_na31-1.pdf"
     }
   ],
   "Neder-Betuwe": [
     {
+      "CBS_code": "GM1740",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Neder-Betuwe/Neder-Betuwe_uitkomst_TK25.pdf",
       "pdf_name": "Neder-Betuwe_uitkomst_TK25.pdf"
     }
   ],
   "Nederweert": [
     {
+      "CBS_code": "GM0946",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Nederweert/model_na_31-1_zonder_handtekening_0.pdf",
       "pdf_name": "model_na_31-1_zonder_handtekening_0.pdf"
     }
   ],
   "Nieuwegein": [
     {
+      "CBS_code": "GM0356",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Nieuwegein/Nieuwegein_uitkomst_TK25.pdf",
       "pdf_name": "Nieuwegein_uitkomst_TK25.pdf"
     }
   ],
   "Nieuwkoop": [
     {
+      "CBS_code": "GM0569",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Nieuwkoop/nieuwkoop_uitkomst_tk25_0.pdf",
       "pdf_name": "nieuwkoop_uitkomst_tk25_0.pdf"
     }
   ],
   "Nijkerk": [
     {
+      "CBS_code": "GM0267",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Nijkerk/251030_proces-verbaal_van_een_gemeentelijk_stembureau_centrale_stemopneming.pdf",
       "pdf_name": "251030_proces-verbaal_van_een_gemeentelijk_stembureau_centrale_stemopneming.pdf"
     }
   ],
   "Nijmegen": [
     {
+      "CBS_code": "GM0268",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Nijmegen/20251030_0268_TK25_Na31-2.pdf",
       "pdf_name": "20251030_0268_TK25_Na31-2.pdf"
     }
   ],
   "Nissewaard": [
     {
+      "CBS_code": "GM1930",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Nissewaard/1930_NA31-2.pdf",
       "pdf_name": "1930_NA31-2.pdf"
     }
   ],
   "Noardeast-Fryslân": [
     {
+      "CBS_code": "GM1970",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Noardeast-Fryslân/noardeastfryslan_uitkomst_tk25.pdf",
       "pdf_name": "noardeastfryslan_uitkomst_tk25.pdf"
     }
   ],
   "Noord-Beveland": [
     {
+      "CBS_code": "GM1695",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Noord-Beveland/na31-1-pv-gsb.pdf",
       "pdf_name": "na31-1-pv-gsb.pdf"
     }
   ],
   "Noordenveld": [
     {
+      "CBS_code": "GM1699",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Noordenveld/noordenveld_uitkomst_tk25_0.pdf",
       "pdf_name": "noordenveld_uitkomst_tk25_0.pdf"
     }
   ],
   "Noordoostpolder": [
     {
+      "CBS_code": "GM0171",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Noordoostpolder/noordoostpolderuitkomsttk25pdf.pdf",
       "pdf_name": "noordoostpolderuitkomsttk25pdf.pdf"
     }
   ],
   "Noordwijk": [
     {
+      "CBS_code": "GM0575",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Noordwijk/Noordwijk_uitkomst_TK25.pdf",
       "pdf_name": "Noordwijk_uitkomst_TK25.pdf"
     }
   ],
   "Nuenen": [
     {
+      "CBS_code": "GM0820",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Nuenen/nuenen_uitkomst_tk25_0.pdf",
       "pdf_name": "nuenen_uitkomst_tk25_0.pdf"
     }
   ],
   "Nunspeet": [
     {
+      "CBS_code": "GM0302",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Nunspeet/Na31-2_defintief.pdf",
       "pdf_name": "Na31-2_defintief.pdf"
     }
   ],
   "Oegstgeest": [
     {
+      "CBS_code": "GM0579",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oegstgeest/Oegstgeest_uitkomst_TK25.pdf",
       "pdf_name": "Oegstgeest_uitkomst_TK25.pdf"
     }
   ],
   "Oirschot": [
     {
+      "CBS_code": "GM0823",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oirschot/oirschot_uitkomst_tk25_0.pdf",
       "pdf_name": "oirschot_uitkomst_tk25_0.pdf"
     },
     {
+      "CBS_code": "GM0823",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oirschot/pv_na_31-1_ps_gemeentelijk_stembureau_0.pdf",
       "pdf_name": "pv_na_31-1_ps_gemeentelijk_stembureau_0.pdf"
     }
   ],
   "Oisterwijk": [
     {
+      "CBS_code": "GM0824",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oisterwijk/proces-verbaal_van_een_gemeentelijk_stembureau.pdf",
       "pdf_name": "proces-verbaal_van_een_gemeentelijk_stembureau.pdf"
     }
   ],
   "Oldambt": [
     {
+      "CBS_code": "GM1895",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oldambt/pdf bestand Oldambt_uitkomst_TK25.pdf 2.76 MB.pdf",
       "pdf_name": "pdf bestand Oldambt_uitkomst_TK25.pdf 2.76 MB.pdf"
     }
   ],
   "Oldebroek": [
     {
+      "CBS_code": "GM0269",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oldebroek/Oldebroek_Uitkomst_TK2025.pdf",
       "pdf_name": "Oldebroek_Uitkomst_TK2025.pdf"
     }
   ],
   "Oldenzaal": [
     {
+      "CBS_code": "GM0173",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oldenzaal/oldenzaaluitkomsttk25.pdf",
       "pdf_name": "oldenzaaluitkomsttk25.pdf"
     }
   ],
   "Olst-Wijhe": [
     {
+      "CBS_code": "GM1773",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Olst-Wijhe/Olst-Wijhe_Na_31-2_proces_verbaal_van_een_gemeentelijk_stembureau_in_een_gemeente_waar_een_centrale_stemopneming_wordt_verricht_TK25.pdf",
       "pdf_name": "Olst-Wijhe_Na_31-2_proces_verbaal_van_een_gemeentelijk_stembureau_in_een_gemeente_waar_een_centrale_stemopneming_wordt_verricht_TK25.pdf"
     }
   ],
   "Ommen": [
     {
+      "CBS_code": "GM0175",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Ommen/Ommen_uitkomst_TK25-1.pdf",
       "pdf_name": "Ommen_uitkomst_TK25-1.pdf"
     }
   ],
   "Oost Gelre": [
     {
+      "CBS_code": "GM1586",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oost Gelre/1586proces-verbaal-gsb-model-na-31-2tk25pdf.pdf",
       "pdf_name": "1586proces-verbaal-gsb-model-na-31-2tk25pdf.pdf"
     }
   ],
   "Oosterhout": [
     {
+      "CBS_code": "GM0826",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oosterhout/Proces verbaal Gemeentelijk Stembureau.pdf",
       "pdf_name": "Proces verbaal Gemeentelijk Stembureau.pdf"
     }
   ],
   "Ooststellingwerf": [
     {
+      "CBS_code": "GM0085",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Ooststellingwerf/ooststellingwerf_uitkomst_tk25.pdf",
       "pdf_name": "ooststellingwerf_uitkomst_tk25.pdf"
     }
   ],
   "Oostzaan": [
     {
+      "CBS_code": "GM0431",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oostzaan/Oostzaan_uitkomst_TK25.pdf",
       "pdf_name": "Oostzaan_uitkomst_TK25.pdf"
     }
   ],
   "Opmeer": [
     {
+      "CBS_code": "GM0432",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Opmeer/opmeer_uitkomst_tk25.pdf",
       "pdf_name": "opmeer_uitkomst_tk25.pdf"
     }
   ],
   "Opsterland": [
     {
+      "CBS_code": "GM0086",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Opsterland/0086_totaaluitslag_na31-2.pdf",
       "pdf_name": "0086_totaaluitslag_na31-2.pdf"
     }
   ],
   "Oss": [
     {
+      "CBS_code": "GM0828",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oss/Oss uitkomst TK25.pdf",
       "pdf_name": "Oss uitkomst TK25.pdf"
     }
   ],
   "Oude IJsselstreek": [
     {
+      "CBS_code": "GM1509",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oude IJsselstreek/gemeentenaam_uitkomst_tk25_aanpassingen.pdf",
       "pdf_name": "gemeentenaam_uitkomst_tk25_aanpassingen.pdf"
     },
     {
+      "CBS_code": "GM1509",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oude IJsselstreek/oude-ijsselstreek_uitkomst_tk25.pdf",
       "pdf_name": "oude-ijsselstreek_uitkomst_tk25.pdf"
     }
   ],
   "Ouder-Amstel": [
     {
+      "CBS_code": "GM0437",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Ouder-Amstel/Ouder_Amstel_uitkomst_TK25.pdf",
       "pdf_name": "Ouder_Amstel_uitkomst_TK25.pdf"
     }
   ],
   "Oudewater": [
     {
+      "CBS_code": "GM0589",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Oudewater/Oudewater_uitkomst_TK25.pdf",
       "pdf_name": "Oudewater_uitkomst_TK25.pdf"
     }
   ],
   "Overbetuwe": [
     {
+      "CBS_code": "GM1734",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Overbetuwe/Overbetuwe_uitkomst_TK25.pdf",
       "pdf_name": "Overbetuwe_uitkomst_TK25.pdf"
     }
   ],
   "Papendrecht": [
     {
+      "CBS_code": "GM0590",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Papendrecht/Uitkomst pdf 2392 KB.pdf",
       "pdf_name": "Uitkomst pdf 2392 KB.pdf"
     }
   ],
   "Peel en Maas": [
     {
+      "CBS_code": "GM1894",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Peel en Maas/peelenmaas_uitkomst_tk25.pdf",
       "pdf_name": "peelenmaas_uitkomst_tk25.pdf"
     }
   ],
   "Pekela": [
     {
+      "CBS_code": "GM0765",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Pekela/Pekela_uitkomst TK25.pdf",
       "pdf_name": "Pekela_uitkomst TK25.pdf"
     }
   ],
   "Pijnacker-Nootdorp": [
     {
+      "CBS_code": "GM1926",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Pijnacker-Nootdorp/PV-Gemeentelijk-stembureau-Totaal.pdf",
       "pdf_name": "PV-Gemeentelijk-stembureau-Totaal.pdf"
     }
   ],
   "Purmerend": [
     {
+      "CBS_code": "GM0439",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Purmerend/pv-tk25-na31-2_zh.pdf",
       "pdf_name": "pv-tk25-na31-2_zh.pdf"
     }
   ],
   "Putten": [
     {
+      "CBS_code": "GM0273",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Putten/75b852c3-1d7b-4f0c-b068-b9f5436174b5.pdf",
       "pdf_name": "75b852c3-1d7b-4f0c-b068-b9f5436174b5.pdf"
     }
   ],
   "Raalte": [
     {
+      "CBS_code": "GM0177",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Raalte/proces-verbaal-centrale-telling-0.pdf",
       "pdf_name": "proces-verbaal-centrale-telling-0.pdf"
     }
   ],
   "Reimerswaal": [
     {
+      "CBS_code": "GM0703",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Reimerswaal/gemeente-reimerswaal_pv_gsb_tk25.pdf",
       "pdf_name": "gemeente-reimerswaal_pv_gsb_tk25.pdf"
     }
   ],
   "Renkum": [
     {
+      "CBS_code": "GM0274",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Renkum/Renkum_uitkomst_TK25.pdf",
       "pdf_name": "Renkum_uitkomst_TK25.pdf"
     }
   ],
   "Renswoude": [
     {
+      "CBS_code": "GM0339",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Renswoude/na_31-1.pdf",
       "pdf_name": "na_31-1.pdf"
     }
   ],
   "Reusel-De Mierden": [
     {
+      "CBS_code": "GM1667",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Reusel-De Mierden/proces-verbaal_van_het_gemeentelijk_stembureau_0.pdf",
       "pdf_name": "proces-verbaal_van_het_gemeentelijk_stembureau_0.pdf"
     }
   ],
   "Rheden": [
     {
+      "CBS_code": "GM0275",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Rheden/Rheden_uitkomst_TK25 Model_Na31-1.pdf",
       "pdf_name": "Rheden_uitkomst_TK25 Model_Na31-1.pdf"
     }
   ],
   "Rhenen": [
     {
+      "CBS_code": "GM0340",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Rhenen/Rhenen_uitkomst_TK25.pdf",
       "pdf_name": "Rhenen_uitkomst_TK25.pdf"
     }
   ],
   "Ridderkerk": [
     {
+      "CBS_code": "GM0597",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Ridderkerk/Ridderkerk_uitkomst_TK25.pdf",
       "pdf_name": "Ridderkerk_uitkomst_TK25.pdf"
     }
   ],
   "Rijssen-Holten": [
     {
+      "CBS_code": "GM1742",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Rijssen-Holten/Rijssen-Holten_Uitkomst_TK25.pdf",
       "pdf_name": "Rijssen-Holten_Uitkomst_TK25.pdf"
     }
   ],
   "Rijswijk": [
     {
+      "CBS_code": "GM0603",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Rijswijk/rijswijk_uitkomst_tk25.pdf",
       "pdf_name": "rijswijk_uitkomst_tk25.pdf"
     }
   ],
   "Roerdalen": [
     {
+      "CBS_code": "GM1669",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Roerdalen/roerdalen_uitkomst_tk25.pdf",
       "pdf_name": "roerdalen_uitkomst_tk25.pdf"
     }
   ],
   "Roermond": [
     {
+      "CBS_code": "GM0957",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Roermond/drive_1a5q7oS24dQa00BpVJlf-XvgzUG6ZIIJR.pdf",
       "pdf_name": "drive_1a5q7oS24dQa00BpVJlf-XvgzUG6ZIIJR.pdf"
     }
   ],
   "Roosendaal": [
     {
+      "CBS_code": "GM1674",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Roosendaal/tk-2025-na-31-1-proces-verbaal-gemeentelijk-stembureau.PDF",
       "pdf_name": "tk-2025-na-31-1-proces-verbaal-gemeentelijk-stembureau.PDF"
     }
   ],
   "Rotterdam": [
     {
+      "CBS_code": "GM0599",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Rotterdam/tweede_kamerverkiezing__2025_procesverbaal_gemeentelijk_stembureau_rotterdam_model_na_312.pdf",
       "pdf_name": "tweede_kamerverkiezing__2025_procesverbaal_gemeentelijk_stembureau_rotterdam_model_na_312.pdf"
     }
   ],
   "Rozendaal": [
     {
+      "CBS_code": "GM0277",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Rozendaal/Procesverbaal-Model-Na-31-1-GSB-2025-t.b.v.-Website.pdf",
       "pdf_name": "Procesverbaal-Model-Na-31-1-GSB-2025-t.b.v.-Website.pdf"
     }
   ],
   "Rucphen": [
     {
+      "CBS_code": "GM0840",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Rucphen/Rucphen_uitkomst_TK25.pdf",
       "pdf_name": "Rucphen_uitkomst_TK25.pdf"
     }
   ],
   "Saba": [
     {
+      "CBS_code": "GM9003",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Saba/PV_-_stem_bureau_.pdf",
       "pdf_name": "PV_-_stem_bureau_.pdf"
     }
   ],
   "Schagen": [
     {
+      "CBS_code": "GM0441",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Schagen/schagen-uitkomst-tk25.pdf",
       "pdf_name": "schagen-uitkomst-tk25.pdf"
     }
   ],
   "Scherpenzeel": [
     {
+      "CBS_code": "GM0279",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Scherpenzeel/model_na_31-1_pv_gemeentelijk_stembureau_-_zonder_handtekening.pdf",
       "pdf_name": "model_na_31-1_pv_gemeentelijk_stembureau_-_zonder_handtekening.pdf"
     }
   ],
   "Schiedam": [
     {
+      "CBS_code": "GM0606",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Schiedam/Schiedam_uitkomst_TK25_0.pdf",
       "pdf_name": "Schiedam_uitkomst_TK25_0.pdf"
     }
   ],
   "Schiermonnikoog": [
     {
+      "CBS_code": "GM0088",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Schiermonnikoog/schiermonnikoog_uitkomst_tk25_na31_1.pdf",
       "pdf_name": "schiermonnikoog_uitkomst_tk25_na31_1.pdf"
     }
   ],
   "Schouwen-Duiveland": [
     {
+      "CBS_code": "GM1676",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Schouwen-Duiveland/1676_TK_Na_31-1_Proces_verbaal_Gemeentelijk_Stembureau.pdf",
       "pdf_name": "1676_TK_Na_31-1_Proces_verbaal_Gemeentelijk_Stembureau.pdf"
     }
   ],
   "Simpelveld": [
     {
+      "CBS_code": "GM0965",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Simpelveld/simpelveld_uitkomst_tk25.pdf",
       "pdf_name": "simpelveld_uitkomst_tk25.pdf"
     }
@@ -1535,555 +1805,646 @@
   "Sint Eustatius": [],
   "Sint-Michielsgestel": [
     {
+      "CBS_code": "GM0845",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Sint-Michielsgestel/sint-michielsgestel_uitkomst_tk25.pdf",
       "pdf_name": "sint-michielsgestel_uitkomst_tk25.pdf"
     }
   ],
-  "Sittard-Geleen": [],
+  "Sittard-Geleen": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Sittard-Geleen/Sittard-Geleen_uitkomst_TK25.pdf",
+      "pdf_name": "Sittard-Geleen_uitkomst_TK25.pdf"
+    }
+  ],
   "Sliedrecht": [
     {
+      "CBS_code": "GM0610",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Sliedrecht/SLI_TK2025_NA31_1_ZHT.org.pdf",
       "pdf_name": "SLI_TK2025_NA31_1_ZHT.org.pdf"
     }
   ],
   "Sluis": [
     {
+      "CBS_code": "GM1714",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Sluis/Sluis_uitkomst_TK2025.org.pdf",
       "pdf_name": "Sluis_uitkomst_TK2025.org.pdf"
     }
   ],
   "Smallingerland": [
     {
+      "CBS_code": "GM0090",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Smallingerland/Smallingerland_uitkomst_TK25.pdf",
       "pdf_name": "Smallingerland_uitkomst_TK25.pdf"
     }
   ],
   "Soest": [
     {
+      "CBS_code": "GM0342",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Soest/Soest_uitkomst_TK25.pdf",
       "pdf_name": "Soest_uitkomst_TK25.pdf"
     }
   ],
   "Someren": [
     {
+      "CBS_code": "GM0847",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Someren/Verslag_controleprotocol.pdf",
       "pdf_name": "Verslag_controleprotocol.pdf"
     }
   ],
   "Son en Breugel": [
     {
+      "CBS_code": "GM0848",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Son en Breugel/0848_controleprotocol_gsb_0.pdf",
       "pdf_name": "0848_controleprotocol_gsb_0.pdf"
     }
   ],
   "Stadskanaal": [
     {
+      "CBS_code": "GM0037",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Stadskanaal/Stadskanaal_uitkomst_TK25.pdf",
       "pdf_name": "Stadskanaal_uitkomst_TK25.pdf"
     }
   ],
   "Staphorst": [
     {
+      "CBS_code": "GM0180",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Staphorst/proces_verbaal_gemeentelijk_stembureau_30_oktober_0.pdf",
       "pdf_name": "proces_verbaal_gemeentelijk_stembureau_30_oktober_0.pdf"
     }
   ],
   "Stede Broec": [
     {
+      "CBS_code": "GM0532",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Stede Broec/Stede-Broec_uitkomst_TK25.pdf",
       "pdf_name": "Stede-Broec_uitkomst_TK25.pdf"
     }
   ],
   "Steenbergen": [
     {
+      "CBS_code": "GM0851",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Steenbergen/gemeente_steenbergen_uitkomst_tk25_1098145.pdf",
       "pdf_name": "gemeente_steenbergen_uitkomst_tk25_1098145.pdf"
     }
   ],
   "Steenwijkerland": [
     {
+      "CBS_code": "GM1708",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Steenwijkerland/Steenwijkerland_uitkomst_TK25.pdf",
       "pdf_name": "Steenwijkerland_uitkomst_TK25.pdf"
     }
   ],
   "Stein": [
     {
+      "CBS_code": "GM0971",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Stein/stein-uitkomst-tk25-nieuw.pdf",
       "pdf_name": "stein-uitkomst-tk25-nieuw.pdf"
     }
   ],
   "Stichtse Vecht": [
     {
+      "CBS_code": "GM1904",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Stichtse Vecht/Stichtse_Vecht_uitkomst_TK25.pdf",
       "pdf_name": "Stichtse_Vecht_uitkomst_TK25.pdf"
     }
   ],
   "Súdwest-Fryslân": [
     {
+      "CBS_code": "GM1900",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Súdwest-Fryslân/Sudwest-Fryslan_uitkomst_TK25.pdf",
       "pdf_name": "Sudwest-Fryslan_uitkomst_TK25.pdf"
     }
   ],
   "Terneuzen": [
     {
+      "CBS_code": "GM0715",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Terneuzen/Terneuzen_uitkomst_TK25.pdf",
       "pdf_name": "Terneuzen_uitkomst_TK25.pdf"
     }
   ],
   "Terschelling": [
     {
+      "CBS_code": "GM0093",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Terschelling/terschelling_uitkomst_tk25.pdf",
       "pdf_name": "terschelling_uitkomst_tk25.pdf"
     }
   ],
   "Texel": [
     {
+      "CBS_code": "GM0448",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Texel/Texel_uitkomst_TK25.pdf",
       "pdf_name": "Texel_uitkomst_TK25.pdf"
     }
   ],
   "Teylingen": [
     {
+      "CBS_code": "GM1525",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Teylingen/Tey_PV_GSB_TK25_ZH.pdf",
       "pdf_name": "Tey_PV_GSB_TK25_ZH.pdf"
     }
   ],
   "Tholen": [
     {
+      "CBS_code": "GM0716",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Tholen/Tholen_uitkomst_TK25.pdf",
       "pdf_name": "Tholen_uitkomst_TK25.pdf"
     }
   ],
   "Tiel": [
     {
+      "CBS_code": "GM0281",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Tiel/tiel4centrum-oosthonktk25pdf.pdf",
       "pdf_name": "tiel4centrum-oosthonktk25pdf.pdf"
     }
   ],
   "Tilburg": [
     {
+      "CBS_code": "GM0855",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Tilburg/Tilburg_0__Proces-verbaal_van_een_gemeentelijk_stembureau__centrale_stemopneming__TK25_ZH_04-11-2025.pdf",
       "pdf_name": "Tilburg_0__Proces-verbaal_van_een_gemeentelijk_stembureau__centrale_stemopneming__TK25_ZH_04-11-2025.pdf"
     }
   ],
   "Tubbergen": [
     {
+      "CBS_code": "GM0183",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Tubbergen/tubbergen_uitkomst_tk25.pdf",
       "pdf_name": "tubbergen_uitkomst_tk25.pdf"
     }
   ],
   "Twenterand": [
     {
+      "CBS_code": "GM1700",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Twenterand/twenterand_uitkomst_tk25_1.pdf",
       "pdf_name": "twenterand_uitkomst_tk25_1.pdf"
     }
   ],
   "Tynaarlo": [
     {
+      "CBS_code": "GM1730",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Tynaarlo/tynaarlo_uitkomst_tk25.pdf",
       "pdf_name": "tynaarlo_uitkomst_tk25.pdf"
     }
   ],
   "Tytsjerksteradiel": [
     {
+      "CBS_code": "GM0737",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Tytsjerksteradiel/0737_uitkomst_tk2025_zonder_handtekeningen.pdf",
       "pdf_name": "0737_uitkomst_tk2025_zonder_handtekeningen.pdf"
     }
   ],
   "Uitgeest": [
     {
+      "CBS_code": "GM0450",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Uitgeest/Uitgeest_uitkomst_TK25.pdf",
       "pdf_name": "Uitgeest_uitkomst_TK25.pdf"
     }
   ],
   "Uithoorn": [
     {
+      "CBS_code": "GM0451",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Uithoorn/Uithoorn_uitkomst_TK25.pdf",
       "pdf_name": "Uithoorn_uitkomst_TK25.pdf"
     }
   ],
   "Urk": [
     {
+      "CBS_code": "GM0184",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Urk/ps_-_proces-verbaal_nieuwe_zitting_gemeentelijk_stembureau.pdf",
       "pdf_name": "ps_-_proces-verbaal_nieuwe_zitting_gemeentelijk_stembureau.pdf"
     }
   ],
   "Utrecht": [
     {
+      "CBS_code": "GM0344",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Utrecht/2025-10-PV-TWEEDE-KAMER-GEMEENTELIJK-STEMBUREAU.pdf",
       "pdf_name": "2025-10-PV-TWEEDE-KAMER-GEMEENTELIJK-STEMBUREAU.pdf"
     }
   ],
   "Utrechtse Heuvelrug": [
     {
+      "CBS_code": "GM1581",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Utrechtse Heuvelrug/uh_uitkomst_tk25_0.pdf",
       "pdf_name": "uh_uitkomst_tk25_0.pdf"
     }
   ],
   "Vaals": [
     {
+      "CBS_code": "GM0981",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Vaals/pv-na-31-2-gemeentelijk-stembureau-tk25-vaals.pdf",
       "pdf_name": "pv-na-31-2-gemeentelijk-stembureau-tk25-vaals.pdf"
     }
   ],
   "Valkenburg aan de Geul": [
     {
+      "CBS_code": "GM0994",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Valkenburg aan de Geul/0994_uitslag_gemeentelijk-stembureau_tk25.pdf",
       "pdf_name": "0994_uitslag_gemeentelijk-stembureau_tk25.pdf"
     }
   ],
   "Valkenswaard": [
     {
+      "CBS_code": "GM0858",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Valkenswaard/valkenswaard_uitkomst_tk25.pdf",
       "pdf_name": "valkenswaard_uitkomst_tk25.pdf"
     }
   ],
   "Veendam": [
     {
+      "CBS_code": "GM0047",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Veendam/Veendam_uitkomst_TK25.pdf",
       "pdf_name": "Veendam_uitkomst_TK25.pdf"
     }
   ],
   "Veenendaal": [
     {
+      "CBS_code": "GM0345",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Veenendaal/Veenendaal_uitkomst_TK25.pdf",
       "pdf_name": "Veenendaal_uitkomst_TK25.pdf"
     }
   ],
   "Veere": [
     {
+      "CBS_code": "GM0717",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Veere/veere_uitkomst_tk25.pdf",
       "pdf_name": "veere_uitkomst_tk25.pdf"
     }
   ],
   "Veldhoven": [
     {
+      "CBS_code": "GM0861",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Veldhoven/veldhoven_uitkomst_tk25.pdf",
       "pdf_name": "veldhoven_uitkomst_tk25.pdf"
     }
   ],
   "Velsen": [
     {
+      "CBS_code": "GM0453",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Velsen/pdf bestand Proces verbaal gemeentelijk stembureau Model-Na31-2 tk2025.pdf 2.13 MB.pdf",
       "pdf_name": "pdf bestand Proces verbaal gemeentelijk stembureau Model-Na31-2 tk2025.pdf 2.13 MB.pdf"
     }
   ],
   "Venlo": [
     {
+      "CBS_code": "GM0983",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Venlo/venlo_uitslag_tk25_0.pdf",
       "pdf_name": "venlo_uitslag_tk25_0.pdf"
     }
   ],
   "Venray": [
     {
+      "CBS_code": "GM0984",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Venray/pdf bestand Corrigendum stembureau 4 Bibliotheek Venray 41.08 MB.pdf",
       "pdf_name": "pdf bestand Corrigendum stembureau 4 Bibliotheek Venray 41.08 MB.pdf"
     },
     {
+      "CBS_code": "GM0984",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Venray/pdf bestand Proces - verbaal Gemeentelijk Stembureau 29.26 MB.pdf",
       "pdf_name": "pdf bestand Proces - verbaal Gemeentelijk Stembureau 29.26 MB.pdf"
     }
   ],
   "Vijfheerenlanden": [
     {
+      "CBS_code": "GM1961",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Vijfheerenlanden/vijfheerenlanden_26_vianenparkschool_tk25_aanpassingen.pdf",
       "pdf_name": "vijfheerenlanden_26_vianenparkschool_tk25_aanpassingen.pdf"
     },
     {
+      "CBS_code": "GM1961",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Vijfheerenlanden/vijfheerenlanden_gemeentelijkstembureau_tk25.pdf",
       "pdf_name": "vijfheerenlanden_gemeentelijkstembureau_tk25.pdf"
     }
   ],
   "Vlaardingen": [
     {
+      "CBS_code": "GM0622",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Vlaardingen/Vlaardingen_uitkomst_TK25 31 oktober 2025 pdf  7MB.pdf",
       "pdf_name": "Vlaardingen_uitkomst_TK25 31 oktober 2025 pdf  7MB.pdf"
     }
   ],
   "Vlieland": [
     {
+      "CBS_code": "GM0096",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Vlieland/vlieland_uitkomst_tk25.pdf",
       "pdf_name": "vlieland_uitkomst_tk25.pdf"
     },
     {
+      "CBS_code": "GM0096",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Vlieland/na_31-1.pdf",
       "pdf_name": "na_31-1.pdf"
     }
   ],
   "Vlissingen": [
     {
+      "CBS_code": "GM0718",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Vlissingen/proces-verbaal_na_32-1_gsb_0.pdf",
       "pdf_name": "proces-verbaal_na_32-1_gsb_0.pdf"
     }
   ],
   "Voerendaal": [
     {
+      "CBS_code": "GM0986",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voerendaal/Voerendaal_Uitslag_TK25..pdf",
       "pdf_name": "Voerendaal_Uitslag_TK25..pdf"
     }
   ],
   "Voorne aan Zee": [
     {
+      "CBS_code": "GM1992",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voorne aan Zee/voorne_aan_zee_uitkomst_tk2025_1.pdf",
       "pdf_name": "voorne_aan_zee_uitkomst_tk2025_1.pdf"
     }
   ],
   "Voorschoten": [
     {
+      "CBS_code": "GM0626",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voorschoten/scan_nkohabir_2025-10-30-17-24-48.pdf",
       "pdf_name": "scan_nkohabir_2025-10-30-17-24-48.pdf"
     }
   ],
   "Voorst": [
     {
+      "CBS_code": "GM0285",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Voorst/Voorst_uitkomst_Model_Na_31-1_procesverbaal_van_het_GSB.pdf",
       "pdf_name": "Voorst_uitkomst_Model_Na_31-1_procesverbaal_van_het_GSB.pdf"
     }
   ],
   "Vught": [
     {
+      "CBS_code": "GM0865",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Vught/pdf bestand Vught_Uitslag_TK25.pdf 950.54 kB.pdf",
       "pdf_name": "pdf bestand Vught_Uitslag_TK25.pdf 950.54 kB.pdf"
     }
   ],
   "Waadhoeke": [
     {
+      "CBS_code": "GM1949",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Waadhoeke/Waadhoeke_uitkomst_TK25.pdf",
       "pdf_name": "Waadhoeke_uitkomst_TK25.pdf"
     }
   ],
   "Waalre": [
     {
+      "CBS_code": "GM0866",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Waalre/waalre_uitkomst_tk25.pdf",
       "pdf_name": "waalre_uitkomst_tk25.pdf"
     }
   ],
   "Waalwijk": [
     {
+      "CBS_code": "GM0867",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Waalwijk/model_na31-2_0.pdf",
       "pdf_name": "model_na31-2_0.pdf"
     }
   ],
   "Waddinxveen": [
     {
+      "CBS_code": "GM0627",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Waddinxveen/Waddinxveen_uitkomst_TK25.pdf",
       "pdf_name": "Waddinxveen_uitkomst_TK25.pdf"
     }
   ],
   "Wageningen": [
     {
+      "CBS_code": "GM0289",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Wageningen/Wageningen_Overdrachtsdocument-Model-N5_ZH_TK25.pdf",
       "pdf_name": "Wageningen_Overdrachtsdocument-Model-N5_ZH_TK25.pdf"
     }
   ],
   "Wassenaar": [
     {
+      "CBS_code": "GM0629",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Wassenaar/proces_verbaal_gemeentelijk_stembureau.pdf",
       "pdf_name": "proces_verbaal_gemeentelijk_stembureau.pdf"
     }
   ],
   "Waterland": [
     {
+      "CBS_code": "GM0852",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Waterland/pdf bestand waterland_uitkomst_tk25.pdf 20.36 MB.pdf",
       "pdf_name": "pdf bestand waterland_uitkomst_tk25.pdf 20.36 MB.pdf"
     }
   ],
   "Weert": [
     {
+      "CBS_code": "GM0988",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weert/Weert_uitkomst_TK25.pdf",
       "pdf_name": "Weert_uitkomst_TK25.pdf"
     }
   ],
   "West Betuwe": [
     {
+      "CBS_code": "GM1960",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/West Betuwe/pdf bestand West Betuwe_uitkomst_TK25.pdf 3.07 MB.pdf",
       "pdf_name": "pdf bestand West Betuwe_uitkomst_TK25.pdf 3.07 MB.pdf"
     }
   ],
   "West Maas en Waal": [
     {
+      "CBS_code": "GM0668",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/West Maas en Waal/westmaasenwaal_uitkomst_tk25.pdf",
       "pdf_name": "westmaasenwaal_uitkomst_tk25.pdf"
     }
   ],
   "Westerkwartier": [
     {
+      "CBS_code": "GM1969",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Westerkwartier/westerkwartier_uitkomst_tk25_zh_0.pdf",
       "pdf_name": "westerkwartier_uitkomst_tk25_zh_0.pdf"
     }
   ],
   "Westerveld": [
     {
+      "CBS_code": "GM1701",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Westerveld/Model_Na_31_2_Proces_verbaal_gemeentelijk_stembureau.pdf",
       "pdf_name": "Model_Na_31_2_Proces_verbaal_gemeentelijk_stembureau.pdf"
     }
   ],
   "Westervoort": [
     {
+      "CBS_code": "GM0293",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Westervoort/pdf bestand Westervoort_uitkomst_TK25.pdf 20.56 MB.pdf",
       "pdf_name": "pdf bestand Westervoort_uitkomst_TK25.pdf 20.56 MB.pdf"
     }
   ],
   "Westerwolde": [
     {
+      "CBS_code": "GM1950",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Westerwolde/na-31-2-zonder-handtekeningen.pdf",
       "pdf_name": "na-31-2-zonder-handtekeningen.pdf"
     }
   ],
   "Westland": [
     {
+      "CBS_code": "GM1783",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Westland/proces-verbaal_Na31-2.pdf",
       "pdf_name": "proces-verbaal_Na31-2.pdf"
     }
   ],
   "Weststellingwerf": [
     {
+      "CBS_code": "GM0098",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Weststellingwerf/weststellingwerf_uitkomst_tk25.pdf",
       "pdf_name": "weststellingwerf_uitkomst_tk25.pdf"
     }
   ],
   "Wierden": [
     {
+      "CBS_code": "GM0189",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Wierden/wierden_uitkomst_tk25_1.pdf",
       "pdf_name": "wierden_uitkomst_tk25_1.pdf"
     }
   ],
   "Wijchen": [
     {
+      "CBS_code": "GM0296",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Wijchen/wijchen_uitkomst_tk25.pdf",
       "pdf_name": "wijchen_uitkomst_tk25.pdf"
     }
   ],
   "Wijdemeren": [
     {
+      "CBS_code": "GM1696",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Wijdemeren/Proces-verbaal-van-een-gemeentelijk-stembureau-2025.pdf",
       "pdf_name": "Proces-verbaal-van-een-gemeentelijk-stembureau-2025.pdf"
     }
   ],
   "Wijk bij Duurstede": [
     {
+      "CBS_code": "GM0352",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Wijk bij Duurstede/Wijk_bij_Duurstede_uitkomst_TK25.pdf",
       "pdf_name": "Wijk_bij_Duurstede_uitkomst_TK25.pdf"
     }
   ],
   "Winterswijk": [
     {
+      "CBS_code": "GM0294",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Winterswijk/Winterswijk_uitkomst_TK25.pdf",
       "pdf_name": "Winterswijk_uitkomst_TK25.pdf"
     }
   ],
   "Woensdrecht": [
     {
+      "CBS_code": "GM0873",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Woensdrecht/GSB_Woensdrecht.pdf",
       "pdf_name": "GSB_Woensdrecht.pdf"
     }
   ],
   "Woerden": [
     {
+      "CBS_code": "GM0632",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Woerden/Woerden_uitkomst_TK25.pdf",
       "pdf_name": "Woerden_uitkomst_TK25.pdf"
     }
   ],
   "Wormerland": [
     {
+      "CBS_code": "GM0880",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Wormerland/Wormerland_uitkomst_TK25.pdf",
       "pdf_name": "Wormerland_uitkomst_TK25.pdf"
     }
   ],
   "Woudenberg": [
     {
+      "CBS_code": "GM0351",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Woudenberg/GSB_-_Model_Na31-2__Zonder_Handt._.pdf",
       "pdf_name": "GSB_-_Model_Na31-2__Zonder_Handt._.pdf"
     }
   ],
   "Zaanstad": [
     {
+      "CBS_code": "GM0479",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zaanstad/Model Na 31-2 Proces-verbaal van een gemeentelijk stembureau (centrale stemopneming).pdf",
       "pdf_name": "Model Na 31-2 Proces-verbaal van een gemeentelijk stembureau (centrale stemopneming).pdf"
     }
   ],
   "Zaltbommel": [
     {
+      "CBS_code": "GM0297",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zaltbommel/zaltbommel_uitkomst_zonder-handtekeningen_tk25.pdf",
       "pdf_name": "zaltbommel_uitkomst_zonder-handtekeningen_tk25.pdf"
     }
   ],
   "Zandvoort": [
     {
+      "CBS_code": "GM0473",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zandvoort/TK2025-PV-Donderdag-GSB-ALGEMEEN-zonder-handtekeningen.pdf",
       "pdf_name": "TK2025-PV-Donderdag-GSB-ALGEMEEN-zonder-handtekeningen.pdf"
     }
   ],
   "Zeewolde": [
     {
+      "CBS_code": "GM0050",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zeewolde/Zeewolde_uitkomst_TK25.pdf",
       "pdf_name": "Zeewolde_uitkomst_TK25.pdf"
     }
   ],
   "Zeist": [
     {
+      "CBS_code": "GM0355",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zeist/Zeist_uitkomst_TK25.pdf",
       "pdf_name": "Zeist_uitkomst_TK25.pdf"
     }
   ],
   "Zevenaar": [
     {
+      "CBS_code": "GM0299",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zevenaar/zevenaaruitkomsttk25pdf.pdf",
       "pdf_name": "zevenaaruitkomsttk25pdf.pdf"
     }
   ],
   "Zoetermeer": [
     {
+      "CBS_code": "GM0637",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zoetermeer/zoetermeer._tk_digitale_uitkomst_zonder_handtekening.pdf",
       "pdf_name": "zoetermeer._tk_digitale_uitkomst_zonder_handtekening.pdf"
     }
   ],
   "Zoeterwoude": [
     {
+      "CBS_code": "GM0638",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zoeterwoude/Zoeterwoude_uitkomst_TK25.pdf",
       "pdf_name": "Zoeterwoude_uitkomst_TK25.pdf"
     }
   ],
   "Zuidplas": [
     {
+      "CBS_code": "GM1892",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zuidplas/1892_na31-2_gsb-tk25.pdf",
       "pdf_name": "1892_na31-2_gsb-tk25.pdf"
     }
   ],
   "Zundert": [
     {
+      "CBS_code": "GM0879",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zundert/Zundert_Proces-verbaal.pdf",
       "pdf_name": "Zundert_Proces-verbaal.pdf"
     }
   ],
   "Zutphen": [
     {
+      "CBS_code": "GM0301",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zutphen/Zutphen_uitkomst_TK2025.pdf",
       "pdf_name": "Zutphen_uitkomst_TK2025.pdf"
     }
   ],
   "Zwartewaterland": [
     {
+      "CBS_code": "GM1896",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zwartewaterland/zwartewaterland_uitkomst_tk25_0.pdf",
       "pdf_name": "zwartewaterland_uitkomst_tk25_0.pdf"
     }
   ],
   "Zwijndrecht": [
     {
+      "CBS_code": "GM0642",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zwijndrecht/Zwijndrecht_uitkomst_TK25.pdf",
       "pdf_name": "Zwijndrecht_uitkomst_TK25.pdf"
     }
   ],
   "Zwolle": [
     {
+      "CBS_code": "GM0193",
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zwolle/model-na-31-2-proces-verbaal-van-een-gemeentelijk-stembureau-centrale-stemopneming-gemeente.pdf",
       "pdf_name": "model-na-31-2-proces-verbaal-van-een-gemeentelijk-stembureau-centrale-stemopneming-gemeente.pdf"
-    }
-  ],
-  "'s-Hertogenbosch": [
-    {
-      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/s-Hertogenbosch/Proces-verbaal-N31-2_s-Hertogenbosch_TK25.pdf",
-      "pdf_name": "Proces-verbaal-N31-2_s-Hertogenbosch_TK25.pdf"
     }
   ]
 }
