@@ -37,6 +37,9 @@ def detect(url: str) -> Optional[str]:
         return 'ibabs'
     if 'decosjoin' in u or 'decos' in u or 'dsresource' in u:
         return 'decos'
+    # Amsterdam PV overview/API
+    if ('amsterdam.nl' in u and 'verkiezingen' in u and ('overzicht-proces-verbalen' in u or 'processen-verbaal' in u)) or ('api.data.amsterdam.nl' in u) or ('pv-verkiezingen.amsterdam.nl' in u):
+        return 'amsterdam-pv'
     # Municipal election subdomain portals (e.g., verkiezingen.sudwestfryslan.nl)
     try:
         from urllib.parse import urlparse as _up
@@ -70,6 +73,7 @@ from .sharepoint import handle as _sp_handle
 from .ibabs import handle as _ibabs_handle
 from .decos import handle as _decos_handle
 from .verkiezingen_portal import handle as _vz_handle
+from .amsterdam import handle as _ams_handle
 
 register('pleio', _pleio_handle)
 register('google-drive', _drive_handle)
@@ -79,3 +83,4 @@ register('sharepoint', _sp_handle)
 register('ibabs', _ibabs_handle)
 register('decos', _decos_handle)
 register('verkiezingen-portal', _vz_handle)
+register('amsterdam-pv', _ams_handle)

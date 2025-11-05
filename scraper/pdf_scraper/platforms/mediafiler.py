@@ -29,7 +29,8 @@ def handle(hub_url: str, req, tracer, municipality: str) -> List[Dict]:
             if m:
                 fuid = m.group(1)
                 fname = m.group(2)
-                # Keep remote_url as the album page with a fragment for trace clarity
-                ru = f"{r.url}#fuid={fuid}"
+                # Encode fuid and filename in fragment so downloader can perform JS click
+                from urllib.parse import quote
+                ru = f"{r.url}#fuid={fuid}&fn={quote(fname)}"
                 items.append({'remote_url': ru, 'local_url': None, 'pdf_name': fname, 'text': a.get_text(' ', strip=True) or 'mediafiler', 'from': r.url, 'score': 6})
     return items

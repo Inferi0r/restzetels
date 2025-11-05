@@ -38,6 +38,13 @@ def extract_pdf_links_from_html(html: str, base_url: str) -> List[Dict]:
         if not href:
             continue
         full_url = urljoin(base_url, href)
+        # Skip non-HTTP schemes (e.g., javascript:, mailto:, tel:)
+        try:
+            scheme = (urlparse(full_url).scheme or '').lower()
+        except Exception:
+            scheme = ''
+        if scheme in ('javascript', 'mailto', 'tel'):
+            continue
         low_href = href.lower()
         # Skip social/share hosts entirely
         try:
@@ -523,20 +530,21 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
 
     # 5) Try platform-specific handlers for detected hubs (limited)
     plat_items: List[Dict] = []
+    processed_hubs: set[str] = set()
     for hub in platform_hubs[: LIMITS.max_platform_hubs]:
         sysname = detect_platform(hub)
         handler = PLATFORM_HANDLERS.get(sysname or "")
         if not handler:
             continue
         try:
-            # Skip hub if already visited
+            # Avoid processing the same hub twice in this run
             try:
                 norm_hub = normalize_source_url(hub)
             except Exception:
                 norm_hub = hub
-            if norm_hub in visited_pages:
+            if norm_hub in processed_hubs:
                 continue
-            visited_pages.add(norm_hub)
+            processed_hubs.add(norm_hub)
             its = handler(hub, req, tracer, municipality)
             if its:
                 for it in its:
@@ -589,7 +597,19 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
                 tracer.record_found_pdf(item['remote_url'], item['from'], item['pdf_name'], item['score'])
                 # Do not break; allow scanning remaining candidate pages to collect more
         html = rr.text
-        items = extract_pdf_links_from_html(html, rr.url)
+        # If this page itself is a known platform hub, use its handler to enumerate items.
+        items = []
+        try:
+            sysname_pg = detect_platform(str(rr.url))
+            handler_pg = PLATFORM_HANDLERS.get(sysname_pg or '')
+            if handler_pg:
+                pg_items = handler_pg(str(rr.url), req, tracer, municipality)
+                if pg_items:
+                    items.extend(pg_items)
+        except Exception:
+            pass
+        if not items:
+            items = extract_pdf_links_from_html(html, rr.url)
         if not items:
             regex_items = extract_pdf_links_from_raw(html, rr.url)
             # Defer tracing to the unified logging below
