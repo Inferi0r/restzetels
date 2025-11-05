@@ -1,4 +1,10 @@
 {
+  "'s-Gravenhage": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Den Haag/pv_6904f1e64329f7.21724783.pdf",
+      "pdf_name": "pv_6904f1e64329f7.21724783.pdf"
+    }
+  ],
   "'s-Hertogenbosch": [
     {
       "CBS_code": "GM0796",
@@ -1802,7 +1808,12 @@
       "pdf_name": "simpelveld_uitkomst_tk25.pdf"
     }
   ],
-  "Sint Eustatius": [],
+  "Sint Eustatius": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Sint Eustatius/Proces-verbaal_van_een_stembureau.PDF",
+      "pdf_name": "Proces-verbaal_van_een_stembureau.PDF"
+    }
+  ],
   "Sint-Michielsgestel": [
     {
       "CBS_code": "GM0845",
@@ -2446,5 +2457,6 @@
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zwolle/model-na-31-2-proces-verbaal-van-een-gemeentelijk-stembureau-centrale-stemopneming-gemeente.pdf",
       "pdf_name": "model-na-31-2-proces-verbaal-van-een-gemeentelijk-stembureau-centrale-stemopneming-gemeente.pdf"
     }
-  ]
+  ],
+  "s-Hertogenbosch": []
 }

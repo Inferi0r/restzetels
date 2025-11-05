@@ -399,7 +399,7 @@
     },
     {
       "name": "Den Haag",
-      "start_url": "https://tellingen.stembureausindenhaag.nl/Algemeen",
+      "start_url": "https://uitslagen.denhaag.nl/tweede_kamerverkiezing_2025/voorlopige-uitslagen",
       "final_url": "https://uitslagen.denhaag.nl/tweede_kamerverkiezing_2025/voorlopige-uitslagen",
       "status": 200
     },
@@ -1534,10 +1534,9 @@
     },
     {
       "name": "Sint Eustatius",
-      "start_url": "https://www.statiagovernment.com/key-topics/elections/documents/publications/2023/11/24/verified-results-of-second-chamber-election-on-22-november-2023",
-      "final_url": null,
-      "status": null,
-      "error": "404 Client Error: Not Found for url: https://www.statiagovernment.com/key-topics/elections/documents/publications/2023/11/24/verified-results-of-second-chamber-election-on-22-november-2023"
+      "start_url": "https://www.statiagovernment.com/nieuwsoverzicht/artikel/sol-confirms-election-results-after-documentation-review",
+      "final_url": "https://www.statiagovernment.com/nieuwsoverzicht/artikel/sol-confirms-election-results-after-documentation-review",
+      "status": 200
     },
     {
       "name": "Sittard-Geleen",

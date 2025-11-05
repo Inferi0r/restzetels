@@ -17,6 +17,7 @@ Detectiestrategie (snel → robuust):
 Gebruik:
   python3 detect_model.py [--only MUNICIPALITY ...] [--dry-run] [--refresh]
   python3 detect_model.py --model31
+  python3 detect_model.py --model10
 
 """
 from __future__ import annotations
@@ -31,6 +32,7 @@ import subprocess
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "pdf_scraper_input")
 INDEX_PATH = os.path.join(DATA_DIR, "municipality_pdfs_index.json")
+NAME_MAP_PATH = os.path.join(DATA_DIR, "municipality_name_mapping.json")
 
 
 def load_index(path: str = INDEX_PATH):
@@ -45,6 +47,15 @@ def load_index(path: str = INDEX_PATH):
 def save_index(data, path: str = INDEX_PATH):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+def load_name_mapping(path: str = NAME_MAP_PATH) -> dict:
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return data if isinstance(data, dict) else {}
+    except Exception:
+        return {}
 
 
 def compile_regex():
@@ -304,6 +315,7 @@ def run(argv: list[str] | None = None) -> int:
     ap.add_argument("--dry-run", action="store_true", help="Geen wijzigingen schrijven, alleen tonen")
     ap.add_argument("--refresh", action="store_true", help="Herclassificeer alles (niet alleen ontbrekende modellen)")
     ap.add_argument("--model31", action="store_true", help="Genereer gemeente_model_31.json met alle gemeenten en hun Na 31-(-1/-2) PDFs")
+    ap.add_argument("--model10", action="store_true", help="Vul gemeente_model_10.json met stembureau-PV's (N10-1/N10-2) op basis van bestandsnaam/anchor-tekst")
     ap.add_argument("--filename-only", action="store_true", help="In --model31 modus: alleen bestandsnaam-heuristiek toepassen (geen PDF-tekst of OCR)")
     ap.add_argument("--include-bijlage", action="store_true", help="Neem ook bijlages (bijlage 2: uitkomsten per stembureau) mee in --model31")
     ap.add_argument("--prune-bijlage", action="store_true", help="Verwijder bestaande bijlage-2/uitkomsten-per-stembureau items uit de JSON (alleen in --model31)")
@@ -315,6 +327,12 @@ def run(argv: list[str] | None = None) -> int:
 
     # Speciale modus: export van alle gemeenten (afgeleid uit ./pdfs) met hun Model 31 (-1 of -2)
     if args.model31:
+        name_map = load_name_mapping()
+        def canonical(n: str) -> str:
+            try:
+                return name_map.get(n, n)
+            except Exception:
+                return n
         base_pdfs = os.path.join(os.path.dirname(__file__), "pdfs")
         if not os.path.isdir(base_pdfs):
             print(f"[model31] Map niet gevonden: {base_pdfs}")
@@ -322,6 +340,7 @@ def run(argv: list[str] | None = None) -> int:
 
         # Verzamel gemeentenamen uit submappen van ./pdfs en sorteer A→Z
         municipalities_all = [d for d in os.listdir(base_pdfs) if os.path.isdir(os.path.join(base_pdfs, d))]
+        # Ensure canonical keys exist in output space
         municipalities_all.sort(key=lambda s: s.lower())
 
         # Laad bestaande output (niet leegmaken!) en zorg dat alle gemeenten als key bestaan
@@ -336,13 +355,14 @@ def run(argv: list[str] | None = None) -> int:
         except Exception:
             out = {}
         for name in municipalities_all:
-            if name not in out or not isinstance(out.get(name), list):
-                out[name] = []
+            cn = canonical(name)
+            if cn not in out or not isinstance(out.get(cn), list):
+                out[cn] = []
 
         # Optioneel beperken tot expliciet gevraagde gemeenten of een limiet (alleen voor verwerking)
         if args.only:
             only = set(args.only)
-            to_process = [m for m in municipalities_all if m in only]
+            to_process = [m for m in municipalities_all if (m in only) or (canonical(m) in only)]
         else:
             to_process = list(municipalities_all)
         if args.limit is not None:
@@ -441,7 +461,7 @@ def run(argv: list[str] | None = None) -> int:
         # Extra: verwijder bestaande items die géén Na 31-1/Na 31-2 zijn (bv. N10-2 stembureau-PV's die eerder per ongeluk zijn toegevoegd)
         # Dit maakt 'empties' vrij voor een verse inhoudelijke scan.
         for name in (to_process or []):
-            items = out.get(name, [])
+            items = out.get(canonical(name), [])
             if not isinstance(items, list) or not items:
                 continue
             kept = []
@@ -458,7 +478,7 @@ def run(argv: list[str] | None = None) -> int:
                         label = detect_from_strings(txt) or label
                 if label in ("Na 31-1", "Na 31-2"):
                     kept.append(it)
-            out[name] = kept
+            out[canonical(name)] = kept
 
         # Regex voor GSB in bestandsnaam
         rx_gsb_name = re.compile(r"\bgsb\b", re.I)
@@ -481,10 +501,10 @@ def run(argv: list[str] | None = None) -> int:
                         "local_url": f"file://{abspath}",
                     })
             if coll:
-                out[name] = merge_items(out.get(name, []), coll)
+                out[canonical(name)] = merge_items(out.get(canonical(name), []), coll)
 
         # 2) Voor gemeenten zonder resultaten: snelle tekstextractie van pagina 1, daarna OCR‑fallback
-        empties = [n for n in to_process if not out.get(n)]
+        empties = [n for n in to_process if not out.get(canonical(n))]
         if empties and not args.filename_only:
             rx_bijlage = re.compile(r"\bbijlage\b", re.I)
             rx_bijlage2 = re.compile(r"\bbijlage\s*2\b", re.I)
@@ -522,7 +542,7 @@ def run(argv: list[str] | None = None) -> int:
                                     "local_url": loc,
                                 })
                 if coll:
-                    out[name] = merge_items(out.get(name, []), coll)
+                    out[canonical(name)] = merge_items(out.get(canonical(name), []), coll)
 
         # 3) Verfijn gemeenten met meerdere treffers: kies beste per variant (-1/-2) op basis van inhoud
         def refine_multi_for_muni(name: str, items: list[dict]) -> list[dict]:
@@ -581,16 +601,335 @@ def run(argv: list[str] | None = None) -> int:
             return selected
 
         if not args.filename_only:
-            multis = [n for n in to_process if len(out.get(n, [])) > 1]
+            multis = [n for n in to_process if len(out.get(canonical(n), [])) > 1]
             for name in multis:
-                refined = refine_multi_for_muni(name, out.get(name, []))
-                out[name] = merge_items([], refined)
+                cn = canonical(name)
+                refined = refine_multi_for_muni(cn, out.get(cn, []))
+                out[cn] = merge_items([], refined)
 
         tmp_path = output_path + ".tmp"
         with open(tmp_path, "w", encoding="utf-8") as f:
             json.dump(out, f, ensure_ascii=False, indent=2, sort_keys=True)
         os.replace(tmp_path, output_path)
         print(f"[model31] Geschreven: {output_path} (gemeenten={len(out)}, verwerkt={len(to_process)})")
+        return 0
+
+    # Speciale modus: vul gemeente_model_10.json met stembureau-PV's op basis van naam/anchor (geen OCR)
+    if args.model10:
+        # Laad index + bestaande model_10
+        idx = load_index(INDEX_PATH)
+        results = idx.get("results", [])
+        base_pdfs = os.path.join(os.path.dirname(__file__), "pdfs")
+        g10_path = os.path.join(os.path.dirname(__file__), "gemeente_model_10.json")
+        try:
+            with open(g10_path, "r", encoding="utf-8") as f:
+                g10 = json.load(f)
+        except FileNotFoundError:
+            print(f"[model10] {g10_path} ontbreekt")
+            return 2
+        except Exception as e:
+            print(f"[model10] Kan {g10_path} niet lezen: {e}")
+            return 2
+
+        # Naam-normalisatie en aliassen (om gemeente-namen te mappen tussen datasets)
+        import re as _re
+        def _norm(s: str) -> str:
+            s = (s or "").strip()
+            s = s.replace("’", "'").replace(".", "")
+            s = _re.sub(r"\s+", " ", s)
+            return s.lower()
+        aliases = {
+            "den haag": "'s-Gravenhage",
+            "hengelo": "Hengelo (O.)",
+            "laren": "Laren (NH.)",
+            "middelburg": "Middelburg (Z.)",
+            "rijswijk": "Rijswijk (ZH.)",
+            "stein": "Stein (L.)",
+            "beek": "Beek (L.)",
+            "bergen (l)": "Bergen (L.)",
+            "bergen (nh)": "Bergen (NH.)",
+            "nuenen": "Nuenen, Gerwen en Nederwetten",
+            "'s-gravenhage": "'s-Gravenhage",
+            "'s-hertogenbosch": "'s-Hertogenbosch",
+        }
+        g10_keys_norm = {_norm(k): k for k in g10.keys()}
+
+        def map_muni(name: str) -> str | None:
+            if name in g10:
+                return name
+            n = _norm(name)
+            if n in g10_keys_norm:
+                return g10_keys_norm[n]
+            if n in aliases and aliases[n] in g10:
+                return aliases[n]
+            # probeer haakjes/dubbele delen te reduceren
+            m = _re.match(r"^(.*?)(\s*\([^)]*\))$", name)
+            if m:
+                base = m.group(1).strip()
+                nb = _norm(base)
+                if nb in g10_keys_norm:
+                    return g10_keys_norm[nb]
+            if "," in name:
+                base = name.split(",", 1)[0].strip()
+                nb = _norm(base)
+                if nb in g10_keys_norm:
+                    return g10_keys_norm[nb]
+            return None
+
+        # Heuristieken om stembureau-nummer/naam uit bestandsnaam/anchor te halen
+        RX_SB_NUM = _re.compile(r"stembureau[^0-9]{0,6}(\d{1,3})", _re.I)
+        RX_BUREAU_NUM = _re.compile(r"\bbureau[^0-9]{0,6}(\d{1,3})\b", _re.I)
+        # variant met '20' of '%20' (URL/naam-artefact) tussen 'stembureau' en nummer
+        RX_SB_NUM_20 = _re.compile(r"stembureau(?:%20|20|\s|[_\-])*([0-9]{1,3})", _re.I)
+        RX_UNDERSCORE_NUM = _re.compile(r"[_\-\s]([0-9]{1,3})[_\-\s]", _re.I)
+        # suffix nummer direct voor extensie: ..._12.pdf
+        RX_SUFFIX_NUM = _re.compile(r"[_\-\s]([0-9]{1,3})(?:\.|$)", _re.I)
+        RX_TK_NUM = _re.compile(r"[_\-]([0-9]{1,3})[_\-].*?tk\s*20?25", _re.I)
+        RX_LEADING_NUM = _re.compile(r"^\s*([0-9]{1,3})\s*[\.|\-_]", _re.I)
+
+        def extract_number(s: str) -> int | None:
+            if not s:
+                return None
+            for rx in (RX_LEADING_NUM, RX_TK_NUM, RX_SB_NUM_20, RX_SB_NUM, RX_BUREAU_NUM, RX_SUFFIX_NUM, RX_UNDERSCORE_NUM):
+                m = rx.search(s)
+                if m:
+                    try:
+                        v = int(m.group(1))
+                        if 0 < v < 1000:
+                            return v
+                    except Exception:
+                        pass
+            return None
+
+        def extract_number_with_muni(s: str, muni_for_prefix: str | None = None) -> int | None:
+            if not s or not muni_for_prefix:
+                return None
+            try:
+                mn = norm_for_match(muni_for_prefix)
+                sn = norm_for_match(s)
+                import re as _re
+                m = _re.search(rf"{_re.escape(mn)}\s*([0-9]{{1,3}})", sn)
+                if m:
+                    v = int(m.group(1))
+                    if 0 < v < 1000:
+                        return v
+            except Exception:
+                return None
+            return None
+
+        def is_probable_model10(s: str, muni_for_prefix: str | None = None) -> bool:
+            if not s:
+                return False
+            s2 = s.lower()
+            # expliciete N10 detectie
+            if RX.get("N10-1").search(s) or RX.get("N10-2").search(s) or RX.get("N10").search(s):
+                return True
+            # gangbare naamgevingen: bevat 'stembureau' en een nummer, of TK25/TK2025 met nummer
+            if ("stembureau" in s2 and extract_number(s) is not None):
+                return True
+            if (("tk25" in s2 or "tk2025" in s2) and extract_number(s) is not None):
+                return True
+            # gemeente + nummer (ook aaneengeplakt) ergens in de bestandsnaam
+            if muni_for_prefix and (extract_number_with_muni(s, muni_for_prefix) is not None):
+                return True
+            # leidend nummer-formaat '1. Naam ...'
+            if RX_LEADING_NUM.search(s or ""):
+                return True
+            # Bestandsnamen in vorm '<Gemeente>_<nummer>_...' (zonder TK- of 'stembureau'-vermelding)
+            if muni_for_prefix:
+                mn = norm_for_match(muni_for_prefix)
+                sn = norm_for_match(s)
+                num = extract_number(s)
+                if mn and (num is not None):
+                    # sta prefix of algemene aanwezigheid toe (prefix het sterkst)
+                    if sn.startswith(f"{mn} {num}") or (mn in sn and f" {num} " in sn):
+                        return True
+                # Fallback: als nummer 'vastgeplakt' staat aan gemeentenaam (oldenzaal1...)
+                # probeer direct na prefix een cijferreeks te detecteren
+                if mn and (num is None):
+                    import re as _re
+                    m = _re.search(rf"^{_re.escape(mn)}\s*(\d{{1,3}})", sn)
+                    if m:
+                        return True
+            return False
+
+        def norm_for_match(x: str) -> str:
+            z = (x or "").lower()
+            z = _re.sub(r"[^a-z0-9]+", " ", z)
+            z = _re.sub(r"\s+", " ", z).strip()
+            return z
+
+        updated = 0
+        total_seen = 0
+        for entry in results:
+            muni = entry.get("name") or ""
+            key = map_muni(muni)
+            if not key or key not in g10:
+                continue
+            arr = g10.get(key) or []
+            if not isinstance(arr, list):
+                continue
+            # snel indexen op nummer en naam
+            by_num: dict[int, dict] = {}
+            by_num_mod: dict[int, list] = {}
+            by_name_norm: dict[str, dict] = {}
+            for it in arr:
+                try:
+                    n = int(it.get("stembureau_nummer"))
+                    if 0 < n < 2000:
+                        by_num[n] = it
+                        by_num_mod.setdefault(n % 100, []).append(it)
+                except Exception:
+                    pass
+                nm = norm_for_match(str(it.get("stembureau_naam") or ""))
+                if nm:
+                    by_name_norm[nm] = it
+
+            for p in (entry.get("pdfs") or []):
+                loc = p.get("local_url")
+                if not loc:
+                    continue
+                # alleen op naam/anchor/url; geen inhoudelijke OCR
+                s = norm_text(p.get("pdf_name"), p.get("text"), p.get("remote_url"))
+                # Vroege naam-match fallback: als exact één stembureaunaam in bestandsnaam zit, accepteer ook zonder 'probable' hints
+                s_match = norm_for_match(s)
+                pre_cands = [it for nm,it in by_name_norm.items() if nm and nm in s_match]
+                pre_target = pre_cands[0] if len(pre_cands) == 1 else None
+                if (not pre_target) and (not is_probable_model10(s, muni_for_prefix=muni)):
+                    continue
+                total_seen += 1
+                nr = extract_number(s)
+                if nr is None:
+                    nr = extract_number_with_muni(s, muni)
+                target = pre_target
+                if (nr is not None):
+                    if nr in by_num:
+                        target = by_num[nr]
+                    else:
+                        # Heuristiek: sommige gemeenten nummeren WMS als 101.. en bestanden als _1..; koppel op mod 100 indien uniek
+                        cands = by_num_mod.get(nr) or []
+                        if len(cands) == 1:
+                            target = cands[0]
+                else:
+                    # probeer naam-match (als pre_target niet al is gezet)
+                    if not target:
+                        cands = [it for nm,it in by_name_norm.items() if nm and nm in s_match]
+                        if len(cands) == 1:
+                            target = cands[0]
+                if not target:
+                    # Single-bureau fallback: als deze gemeente precies één stembureau heeft
+                    # en het document duidelijk een N10‑proces‑verbaal is, koppel het aan dat ene bureau.
+                    if (len(arr) == 1) and is_probable_model10(s, muni_for_prefix=muni):
+                        target = arr[0]
+                if not target:
+                    continue
+                # kies preferente bestanden (kandidaatniveau zonder 'eerste'/'tussentijdse')
+                fname = p.get("pdf_name") or ""
+                f_low = (fname or "").lower()
+                # Bepaal variant: 'eerste telling' (of tussentijds/voorlopig) vs kandidaatniveau; en 'aanpassing'-varianten
+                is_eerste = ("eerste" in f_low) or ("tussentijd" in f_low) or ("voorlop" in f_low)
+                is_adj = ("aanpassing" in f_low) or ("aanpass" in f_low)
+
+                # Sla beide varianten op: voorkeursvelden voor kandidaatniveau (local_url/pdf_name)
+                # en aparte velden voor de eerste telling (local_url_eerste/pdf_name_eerste)
+                if is_eerste:
+                    if (not target.get("local_url_eerste")):
+                        target["local_url_eerste"] = loc
+                        target["pdf_name_eerste"] = fname or (p.get("text") or "")
+                        updated += 1
+                else:
+                    already = target.get("local_url")
+                    if (already is None) or (already == ""):
+                        target["local_url"] = loc
+                        target["pdf_name"] = fname or (p.get("text") or "")
+                        updated += 1
+                    else:
+                        # alleen overschrijven als huidig bestand waarschijnlijk minder geschikt is
+                        cur = (target.get("pdf_name") or "").lower()
+                        cur_is_eerste = ("eerste" in cur) or ("tussentijd" in cur) or ("voorlop" in cur)
+                        cur_is_adj = ("aanpassing" in cur) or ("aanpass" in cur)
+                        if cur_is_eerste or (cur_is_adj and not is_adj):
+                            target["local_url"] = loc
+                            target["pdf_name"] = fname or (p.get("text") or "")
+                            updated += 1
+
+            # Fallback: scan ook de lokale map 'pdfs/<Gemeente>' om missende koppelingen bij te vullen
+            try:
+                base_dir = os.path.join(os.path.dirname(__file__), "pdfs")
+                # Probeer zowel de gemapte sleutel (bijv. 'Middelburg (Z.)') als de indexnaam (bijv. 'Middelburg')
+                candidate_dirs = [
+                    os.path.join(base_dir, key),
+                    os.path.join(base_dir, muni),
+                ]
+                files = []
+                gdir = None
+                for d in candidate_dirs:
+                    if os.path.isdir(d):
+                        gdir = d
+                        files = [f for f in os.listdir(d) if f.lower().endswith('.pdf')]
+                        if files:
+                            break
+            except Exception:
+                files = []
+            for fn in files:
+                try:
+                    abspath = os.path.join(gdir or os.path.join(os.path.dirname(__file__), "pdfs", key), fn)
+                    loc = f"file://{abspath}"
+                    s = fn
+                    # snelle naam-heuristiek
+                    nr = extract_number(s)
+                    if nr is None:
+                        nr = extract_number_with_muni(s, muni)
+                    s_norm = norm_for_match(s)
+                    # OCR/tekst fallback om N10 te bevestigen
+                    probable_name = is_probable_model10(s, muni_for_prefix=muni)
+                    probable_text = False
+                    if not probable_name:
+                        t = read_first_page_text(loc) or ""
+                        if not t:
+                            t = ocr_header_text(loc) or ""
+                        if t:
+                            probable_text = bool(detect_from_strings(t)) or ("proces" in t.lower() and "verbaal" in t.lower())
+                    if not (probable_name or probable_text):
+                        continue
+                    target = None
+                    if (nr is not None) and (nr in by_num):
+                        target = by_num.get(nr)
+                    if not target and len(arr) == 1:
+                        target = arr[0]
+                    if not target:
+                        cands = [it for nm,it in by_name_norm.items() if nm and nm in s_norm]
+                        if len(cands) == 1:
+                            target = cands[0]
+                    if not target:
+                        continue
+                    low = s.lower()
+                    is_eerste = ("eerste" in low) or ("tussentijd" in low) or ("voorlop" in low)
+                    if is_eerste:
+                        if not target.get("local_url_eerste"):
+                            target["local_url_eerste"] = loc
+                            target["pdf_name_eerste"] = fn
+                            updated += 1
+                    else:
+                        if not target.get("local_url"):
+                            target["local_url"] = loc
+                            target["pdf_name"] = fn
+                            updated += 1
+                except Exception:
+                    # bij fouten in individuele bestanden, ga door met de volgende
+                    continue
+            # einde folder fallback
+
+        if args.dry_run:
+            print(f"[model10] Done (dry-run). matched={total_seen}, updated={updated}")
+            return 0
+
+        # schrijf terug
+        tmp = g10_path + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(g10, f, ensure_ascii=False, indent=2, sort_keys=True)
+        os.replace(tmp, g10_path)
+        print(f"[model10] Done. matched={total_seen}, updated={updated} -> {g10_path}")
         return 0
 
     # Subset bepalen
