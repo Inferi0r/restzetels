@@ -7,6 +7,7 @@
 *.pyo
 *.pyd
 *.log
+*.jsonl
 
 # Ignore downloaded artifacts
 *.pdf

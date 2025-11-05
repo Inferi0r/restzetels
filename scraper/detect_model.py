@@ -622,6 +622,10 @@ def run(argv: list[str] | None = None) -> int:
         # Laad index + bestaande model_10
         idx = load_index(INDEX_PATH)
         results = idx.get("results", [])
+        # Indien --only is opgegeven, beperk de te verwerken gemeenten
+        if args.only:
+            only_set = set(args.only)
+            results = [e for e in results if (e.get("name") in only_set)]
         base_pdfs = os.path.join(os.path.dirname(__file__), "pdfs")
         g10_path = os.path.join(os.path.dirname(__file__), "gemeente_model_10.json")
         try:
@@ -689,11 +693,20 @@ def run(argv: list[str] | None = None) -> int:
         RX_UNDERSCORE_NUM = _re.compile(r"[_\-\s]([0-9]{1,3})[_\-\s]", _re.I)
         # suffix nummer direct voor extensie: ..._12.pdf
         RX_SUFFIX_NUM = _re.compile(r"[_\-\s]([0-9]{1,3})(?:\.|$)", _re.I)
-        RX_TK_NUM = _re.compile(r"[_\-]([0-9]{1,3})[_\-].*?tk\s*20?25", _re.I)
+        # Detect numbers that are part of a PV filename near 'TK25' or 'TK 2025'.
+        # Accept both 'TK25' and 'TK2025' by making the '20' optional as a group.
+        RX_TK_NUM = _re.compile(r"[_\-]([0-9]{1,3})[_\-].*?tk\s*(?:20)?25", _re.I)
         RX_LEADING_NUM = _re.compile(r"^\s*([0-9]{1,3})\s*[\.|\-_]", _re.I)
 
         # Ranges zoals '111 t/m 123', '111 tot en met 123', '111-123'
-        RX_RANGE_TEM = _re.compile(r"(\d{1,3})\s*(?:t\s*/\s*m|tm|tot(?:\s*|[-–—])en(?:\s*|[-–—])met)\s*(\d{1,3})", _re.I)
+        # Ranges, tolerant voor verschillende scheidingstekens en schrijfwijzen:
+        # - "111 t/m 123", "111 tm 123", "111-tm-123"
+        # - "111 tot en met 123", "111-tot-en-met-123"
+        # - "111-123"
+        RX_RANGE_TEM = _re.compile(
+            r"(\d{1,3})[\s_\-–—]*(?:t\s*/\s*m|t\s*m|tm|tot(?:[\s_\-–—]*?)en(?:[\s_\-–—]*?)met)[\s_\-–—]*(\d{1,3})",
+            _re.I,
+        )
         RX_RANGE_DASH = _re.compile(r"(\d{1,3})\s*[-–—]\s*(\d{1,3})")
 
         def extract_range(s: str) -> tuple[int,int] | None:
@@ -782,10 +795,60 @@ def run(argv: list[str] | None = None) -> int:
             z = _re.sub(r"\s+", " ", z).strip()
             return z
 
+        # Minder-informatieve woorden die we negeren bij naamvergelijking
+        GENERIC_WORDS = set(
+            """
+            wijkcentrum wijksteunpunt zorgcentrum woonzorgcentrum dorpshuis ontmoetingscentrum vereniging
+            serviceflat brasserie boekhandel villa gymzaal basisschool obs kbs mfc gebouw centrum school
+            verpleeghuis brede bibliotheek bibliotheekpunt
+            """.split()
+        )
+
+        def sig_tokens(s: str) -> set[str]:
+            nm = norm_for_match(s)
+            toks = [t for t in nm.split() if t and (t not in GENERIC_WORDS)]
+            return set(toks)
+
+        def best_name_candidate(filename: str, by_name_norm: dict[str, dict]) -> dict | None:
+            """Zoek beste kandidaat op basis van overlappende betekenisvolle tokens in de naam.
+            Accepteer alleen een unieke beste score > 0.
+            """
+            s_sig = sig_tokens(filename)
+            if not s_sig:
+                return None
+            scored = []
+            for nm, it in by_name_norm.items():
+                nm_sig = set([t for t in nm.split() if t and (t not in GENERIC_WORDS)])
+                if not nm_sig:
+                    continue
+                inter = len(s_sig.intersection(nm_sig))
+                if inter <= 0:
+                    continue
+                # iets meer gewicht als volledige nm substring is
+                bonus = 1 if nm in norm_for_match(filename) else 0
+                scored.append((inter + bonus, inter / max(1, len(nm_sig)), it))
+            if not scored:
+                return None
+            scored.sort(key=lambda x: (x[0], x[1]), reverse=True)
+            top = scored[0]
+            # Uniek beste score
+            if len(scored) == 1 or (top[0] > scored[1][0]):
+                return top[2]
+            return None
+
+        def shares_sig_tokens(name: str, filename: str) -> bool:
+            a = sig_tokens(name)
+            b = sig_tokens(filename)
+            return len(a.intersection(b)) > 0
+
         updated = 0
         total_seen = 0
+        # Optioneel beperken tot expliciet gevraagde gemeenten
+        only_set = set(args.only or [])
         for entry in results:
             muni = entry.get("name") or ""
+            if only_set and (muni not in only_set) and (map_muni(muni) not in only_set):
+                continue
             key = map_muni(muni)
             if not key or key not in g10:
                 continue
@@ -819,6 +882,8 @@ def run(argv: list[str] | None = None) -> int:
                 s_match = norm_for_match(s)
                 pre_cands = [it for nm,it in by_name_norm.items() if nm and nm in s_match]
                 pre_target = pre_cands[0] if len(pre_cands) == 1 else None
+                if not pre_target:
+                    pre_target = best_name_candidate(s, by_name_norm)
                 if (not pre_target) and (not is_probable_model10(s, muni_for_prefix=muni)):
                     continue
                 total_seen += 1
@@ -829,7 +894,7 @@ def run(argv: list[str] | None = None) -> int:
                     for rn in range(a, b+1):
                         tgt = by_num.get(rn)
                         if not tgt:
-                            cands = by_num_mod.get(rn) or []
+                            cands = by_num_mod.get(rn % 100) or []
                             if len(cands) == 1:
                                 tgt = cands[0]
                         if not tgt:
@@ -844,13 +909,14 @@ def run(argv: list[str] | None = None) -> int:
                 nr = extract_number(s)
                 if nr is None:
                     nr = extract_number_with_muni(s, muni)
+                # Prefer a unique name target if available; otherwise fall back to number mapping
                 target = pre_target
-                if (nr is not None):
+                if (nr is not None) and (target is None):
                     if nr in by_num:
                         target = by_num[nr]
                     else:
                         # Heuristiek: sommige gemeenten nummeren WMS als 101.. en bestanden als _1..; koppel op mod 100 indien uniek
-                        cands = by_num_mod.get(nr) or []
+                        cands = by_num_mod.get(nr % 100) or []
                         if len(cands) == 1:
                             target = cands[0]
                 else:
@@ -891,7 +957,8 @@ def run(argv: list[str] | None = None) -> int:
                         cur = (target.get("pdf_name") or "").lower()
                         cur_is_eerste = ("eerste" in cur) or ("tussentijd" in cur) or ("voorlop" in cur)
                         cur_is_adj = ("aanpassing" in cur) or ("aanpass" in cur)
-                        if cur_is_eerste or (cur_is_adj and not is_adj):
+                        cur_is_verklaring = ("verklaring" in cur)
+                        if cur_is_eerste or cur_is_verklaring or (cur_is_adj and not is_adj):
                             target["local_url"] = loc
                             target["pdf_name"] = fname or (p.get("text") or "")
                             updated += 1
@@ -919,24 +986,77 @@ def run(argv: list[str] | None = None) -> int:
                     abspath = os.path.join(gdir or os.path.join(os.path.dirname(__file__), "pdfs", key), fn)
                     loc = f"file://{abspath}"
                     s = fn
+                    s_low = s.lower()
+                    # Sla duidelijke niet-PV-bestanden over
+                    if any(k in s_low for k in ("verklaring", "ondersteuning", "ondersteuningsverklaring", "csv", "kieslijst", "stemkrant")):
+                        continue
+                    # Range-bestanden direct op alle nummers in de reeks mappen
+                    rng = extract_range(s)
+                    if rng and (("proces" in s_low and "verbaal" in s_low) or ("stembureau" in s_low) or (RX.get("N10").search(s) if RX.get("N10") else False)):
+                        a,b = rng
+                        for rn in range(a, b+1):
+                            tgt = by_num.get(rn)
+                            if not tgt:
+                                cands = by_num_mod.get(rn % 100) or []
+                                if len(cands) == 1:
+                                    tgt = cands[0]
+                            if not tgt:
+                                continue
+                            if not tgt.get('local_url'):
+                                tgt['local_url'] = loc
+                                tgt['pdf_name'] = fn
+                                updated += 1
+                        # ga naar volgende bestand; individuele nummer/naam-match niet nodig
+                        continue
                     # snelle naam-heuristiek
                     nr = extract_number(s)
                     if nr is None:
                         nr = extract_number_with_muni(s, muni)
                     s_norm = norm_for_match(s)
-                    # OCR/tekst fallback om N10 te bevestigen
+                    # Eerst speciale case: één bestand voor meerdere 'Mobiel stembureau'-entiteiten met hetzelfde nummer
+                    if ('mobiel' in s_low) and ('stembureau' in s_low):
+                        # Selecteer alle entries met naam 'Mobiel Stembureau' (mogelijk meerdere met hetzelfde nummer)
+                        mob_cands = [it for it in arr if 'mobiel stembureau' in norm_for_match(str(it.get('stembureau_naam') or ''))]
+                        nums = {int(x.get('stembureau_nummer')) for x in mob_cands if str(x.get('stembureau_nummer')).isdigit()}
+                        if len(nums) == 1 and mob_cands:
+                            for it in mob_cands:
+                                if not it.get('local_url'):
+                                    it['local_url'] = loc
+                                    it['pdf_name'] = fn
+                                    updated += 1
+                            continue
+
+                    # Daarna proberen we een sterke naam-match (zonder 'probable' vereiste)
+                    target = best_name_candidate(s, by_name_norm)
+                    # OCR/tekst fallback om N10 te bevestigen wanneer geen goede naam-match
                     probable_name = is_probable_model10(s, muni_for_prefix=muni)
                     probable_text = False
-                    if not probable_name:
+                    # Amstelveen-specifiek: 'ams-*' en '2-ams-*' zijn PV's, maar bevatten geen 'stembureau/tk25'; link op naam
+                    if (not probable_name) and (muni == "Amstelveen") and (s_low.startswith("ams-") or s_low.startswith("2-ams-")):
+                        probable_name = True
+                    if (not probable_name) and (not target):
                         t = read_first_page_text(loc) or ""
                         if not t:
                             t = ocr_header_text(loc) or ""
                         if t:
                             probable_text = bool(detect_from_strings(t)) or ("proces" in t.lower() and "verbaal" in t.lower())
-                    if not (probable_name or probable_text):
+                            # Probeer ook een nummer uit tekst te halen indien nog niet bekend
+                            if nr is None:
+                                nr_t = extract_number(t)
+                                if nr_t is None:
+                                    nr_t = extract_number_with_muni(t, muni)
+                                if nr_t is not None:
+                                    nr = nr_t
+                    # Als er geen naam-target is en ook geen sterke indicatie dat het N10 is, sla over
+                    if (not target) and (not (probable_name or probable_text)):
                         continue
-                    target = None
-                    if (nr is not None) and (nr in by_num):
+                    # Probeer sterke naam-match op basis van tekstinhoud als bestandsnaam geen unieke match gaf
+                    if (not target) and ('t' in locals() and t):
+                        cand_from_text = best_name_candidate(t, by_name_norm)
+                        if cand_from_text:
+                            target = cand_from_text
+                    # Als dat niets oplevert, en het bestand expliciet 'stembureau' of 'tk25' vermeldt, dan mag nummer leading zijn
+                    if (not target) and (nr is not None) and (("stembureau" in s_low) or ("tk25" in s_low) or ("tk2025" in s_low)) and (nr in by_num):
                         target = by_num.get(nr)
                     if not target and len(arr) == 1:
                         target = arr[0]
@@ -944,6 +1064,7 @@ def run(argv: list[str] | None = None) -> int:
                         cands = [it for nm,it in by_name_norm.items() if nm and nm in s_norm]
                         if len(cands) == 1:
                             target = cands[0]
+                    # (mobiel-stembureau special-case al eerder afgehandeld)
                     if not target:
                         continue
                     low = s.lower()
@@ -958,6 +1079,20 @@ def run(argv: list[str] | None = None) -> int:
                             target["local_url"] = loc
                             target["pdf_name"] = fn
                             updated += 1
+                        else:
+                            # Overschrijf als huidige pdf ongeschikt is (verklaring/voorlopig/aanpassing)
+                            cur = (target.get("pdf_name") or "").lower()
+                            if ("verklaring" in cur) or ("eerste" in cur) or ("tussentijd" in cur) or ("voorlop" in cur):
+                                target["local_url"] = loc
+                                target["pdf_name"] = fn
+                                updated += 1
+                            else:
+                                # Of als huidige bestandsnaam niet bij de stembureaunaam past maar de nieuwe wel
+                                sb_name = str(target.get("stembureau_naam") or "")
+                                if (not shares_sig_tokens(sb_name, cur)) and shares_sig_tokens(sb_name, fn):
+                                    target["local_url"] = loc
+                                    target["pdf_name"] = fn
+                                    updated += 1
                 except Exception:
                     # bij fouten in individuele bestanden, ga door met de volgende
                     continue
@@ -979,7 +1114,7 @@ def run(argv: list[str] | None = None) -> int:
                     for rn in range(a,b+1):
                         tgt = by_num.get(rn)
                         if not tgt:
-                            cands = by_num_mod.get(rn) or []
+                            cands = by_num_mod.get(rn % 100) or []
                             if len(cands) == 1:
                                 tgt = cands[0]
                         if not tgt:

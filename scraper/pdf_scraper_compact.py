@@ -41,12 +41,24 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), "pdf_scraper_input")
 OUT_BASE = os.path.join(os.path.dirname(__file__), "pdfs")
 INDEX_PATH = os.path.join(DATA_DIR, "municipality_pdfs_index.json")
 
-# Extra seeds per gemeente voor bekende overzichtspagina's
-EXTRA_SEEDS: dict[str, list[str]] = {
-    "Amsterdam": [
-        "https://www.amsterdam.nl/verkiezingen/overzicht-proces-verbalen/",
-    ],
-}
+# Extra seeds per gemeente voor bekende overzichtspagina's (geladen uit JSON indien aanwezig)
+# Store manual seeds under the package folder (not in input dir)
+MANUAL_SEEDS_PATH = os.path.join(os.path.dirname(__file__), "pdf_scraper", "gemeente_manual_urls.json")
+def _load_manual_seeds(path: str = MANUAL_SEEDS_PATH) -> dict[str, list[str]]:
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        if isinstance(data, dict):
+            out: dict[str, list[str]] = {}
+            for k, v in data.items():
+                if isinstance(k, str) and isinstance(v, list):
+                    out[k] = [str(x) for x in v if isinstance(x, str)]
+            return out
+    except Exception:
+        pass
+    return {}
+
+EXTRA_SEEDS: dict[str, list[str]] = _load_manual_seeds()
 
 
 def load_json(path: str):

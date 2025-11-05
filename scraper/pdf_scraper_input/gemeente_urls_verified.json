@@ -1,0 +1,67 @@
+{
+  "Amsterdam": {
+    "kiesraad": [
+      {
+        "url": "https://www.amsterdam.nl/verkiezingen",
+        "date": "2025-11-05"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.amsterdam.nl/verkiezingen/overzicht-proces-verbalen/",
+        "date": "2025-11-05"
+      }
+    ],
+    "last_kiesraad_check": "2025-11-05"
+  },
+  "Baarle-Nassau": {
+    "kiesraad": [
+      {
+        "url": "https://www.baarle-nassau.nl/tweede-kamerverkiezing/",
+        "date": "2025-11-05"
+      }
+    ],
+    "sources": [],
+    "last_kiesraad_check": "2025-11-05"
+  },
+  "Baarn": {
+    "kiesraad": [
+      {
+        "url": "https://www.baarn.nl/tweede-kamerverkiezing",
+        "date": "2025-11-05"
+      }
+    ],
+    "sources": [],
+    "last_kiesraad_check": "2025-11-05"
+  },
+  "Barendrecht": {
+    "kiesraad": [
+      {
+        "url": "https://www.barendrecht.nl/tweede-kamerverkiezing-2025/uitslag-tweede-kamerverkiezing-2025/",
+        "date": "2025-11-05"
+      }
+    ],
+    "sources": [],
+    "last_kiesraad_check": "2025-11-05"
+  },
+  "Barneveld": {
+    "kiesraad": [
+      {
+        "url": "https://www.barneveld.nl/verkiezingsuitslag",
+        "date": "2025-11-05"
+      }
+    ],
+    "sources": [],
+    "last_kiesraad_check": "2025-11-05"
+  },
+  "Beek": {
+    "kiesraad": [
+      {
+        "url": "https://www.gemeentebeek.nl/verkiezingen",
+        "date": "2025-11-05"
+      }
+    ],
+    "sources": [],
+    "last_kiesraad_check": "2025-11-05"
+  }
+}
