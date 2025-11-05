@@ -22,8 +22,10 @@ from .utils import (
     is_current_year_pdf,
     registrable_origin,
     same_registrable_domain,
+    normalize_source_url,
 )
 from .platforms import detect as detect_platform, REGISTRY as PLATFORM_HANDLERS
+from .fallback_playwright import playwright_collect_pdfs_network
 from .fetch_gemeente_urls import kiesraad_url_for
 
 
@@ -37,6 +39,15 @@ def extract_pdf_links_from_html(html: str, base_url: str) -> List[Dict]:
             continue
         full_url = urljoin(base_url, href)
         low_href = href.lower()
+        # Skip social/share hosts entirely
+        try:
+            link_host = (urlparse(full_url).netloc or '').lower()
+        except Exception:
+            link_host = ''
+        if any(soc in link_host for soc in (
+            'pinterest.com', 'facebook.com', 'twitter.com', 'linkedin.com', 'instagram.com', 'wa.me', 'whatsapp.com'
+        )):
+            continue
         # Unwrap common viewers (docreader/pdf.js/Viewer.aspx)
         if ("docreader" in low_href or "viewer" in low_href) and ("file=" in low_href or "url=" in low_href or "doc=" in low_href):
             try:
@@ -52,9 +63,7 @@ def extract_pdf_links_from_html(html: str, base_url: str) -> List[Dict]:
             (".pdf" in path_lower)
             or ("/file/" in path_lower)
             or ("/download" in path_lower)
-            or ("/document" in path_lower)
-            or ("/bestand/" in path_lower)
-            or ("dsresource" in full_url.lower())
+            or ("dsresource" in path_lower)  # only accept dsresource in path, not as a param of a share URL
             or ("type=pdf" in full_url.lower())
             or ("eid=dumpfile" in full_url.lower())
         )
@@ -65,17 +74,21 @@ def extract_pdf_links_from_html(html: str, base_url: str) -> List[Dict]:
             continue
         seen.add(key)
         name = os.path.basename(urlparse(full_url).path) or "document.pdf"
-        # Do NOT relabel non-PDFs as PDF. Only coerce name when anchor text clearly states PDF.
-        if not name.lower().endswith('.pdf') and txt:
-            t = (txt or '').strip()
-            if 'pdf' in t.lower() or 'type=pdf' in full_url.lower():
-                name = t if t.lower().endswith('.pdf') else (t + '.pdf')
+        # Prefer a clean name based on link text when endpoint is generic
+        if (not name.lower().endswith('.pdf')) or (name.lower() in {"document.pdf","download.pdf","file.pdf","dsresource.pdf"}):
+            from .utils import clean_pdf_name_from_text
+            cleaned = clean_pdf_name_from_text(txt or '')
+            if cleaned:
+                name = cleaned
         # Exclude obvious non-PDF file types by tokens in name/text/url (e.g., csv/xlsx)
         combo_low = (name + ' ' + (txt or '') + ' ' + full_url).lower()
         if any(ext in combo_low for ext in ('.csv', ' csv', '.xlsx', ' xlsx', '.xls', ' xls', '.xml', ' xml', '.json', ' json')):
             continue
-        # Also include the referring page URL in the filter so EP/other-election pages are excluded
-        if not is_current_year_pdf(name + " " + (txt or "") + " " + full_url + " " + (base_url or "")):
+        # Also include the referring page URL in the filter so EP/other-election pages are excluded.
+        # Treat Bijlage 2 (uitkomsten per stembureau) as relevant election PDFs as well.
+        _combo = name + " " + (txt or "") + " " + full_url + " " + (base_url or "")
+        _allow_bijlage = ("bijlage" in _combo.lower())
+        if not (is_current_year_pdf(_combo) or _allow_bijlage):
             continue
         out.append({
             "remote_url": full_url,
@@ -102,9 +115,33 @@ def extract_pdf_links_from_raw(html: str, base_url: str) -> List[Dict]:
             continue
         seen.add(key)
         name = os.path.basename(urlparse(key).path) or 'document.pdf'
-        if not is_current_year_pdf(name + ' ' + key + ' ' + (base_url or '')):
+        _combo2 = name + ' ' + key + ' ' + (base_url or '')
+        _allow_bijlage2 = ('bijlage' in _combo2.lower())
+        if not (is_current_year_pdf(_combo2) or _allow_bijlage2):
             continue
         out.append({'remote_url': key, 'local_url': None, 'pdf_name': name, 'text': name, 'from': base_url, 'score': 2})
+    # Relative .pdf URLs (common CMS paths like /fileadmin/..., /media/..., /downloads/...)
+    try:
+        from urllib.parse import urljoin as _uj
+    except Exception:
+        _uj = None  # type: ignore
+    for m in re.finditer(r"/(?:fileadmin|media|downloads|documenten|bestanden)[^'\"\s]+\.pdf(?:\?[^'\"\s]*)?", html, re.I):
+        rel = m.group(0)
+        if _uj:
+            u = _uj(str(base_url), rel)
+        else:
+            u = rel
+        key = u.split('#', 1)[0]
+        if key in seen:
+            continue
+        seen.add(key)
+        name = os.path.basename(urlparse(key).path) or 'document.pdf'
+        combo = name + ' ' + key + ' ' + (base_url or '')
+        allow_bijlage = ('bijlage' in combo.lower())
+        if not (is_current_year_pdf(combo) or allow_bijlage):
+            continue
+        out.append({'remote_url': key, 'local_url': None, 'pdf_name': name, 'text': name, 'from': base_url, 'score': 2})
+
     # CMS download endpoints that don't end in .pdf (e.g., eID=dumpFile, dsresource, ?download=)
     for m in re.finditer(r"https?://[^\s'\"]+?(?:eID=dumpFile|dsresource|\?download=)[^\s'\"]*", html, re.I):
         u = m.group(0)
@@ -118,7 +155,9 @@ def extract_pdf_links_from_raw(html: str, base_url: str) -> List[Dict]:
         if any(ext in low for ext in ('.csv', ' csv', '.xlsx', ' xlsx', '.xls', ' xls', '.xml', ' xml', '.json', ' json')):
             continue
         # Allow when URL suggests a file download even if name lacks .pdf
-        if not is_current_year_pdf(name + ' ' + key + ' ' + (base_url or '')):
+        _combo3 = name + ' ' + key + ' ' + (base_url or '')
+        _allow_bijlage3 = ('bijlage' in _combo3.lower())
+        if not (is_current_year_pdf(_combo3) or _allow_bijlage3):
             continue
         # Only coerce name to .pdf if query explicitly indicates PDF
         if not name.lower().endswith('.pdf') and ('type=pdf' in key.lower()):
@@ -338,6 +377,9 @@ def site_search_discover_pages(req: Requester, start_url: str, queries: List[str
 def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> List[Dict]:
     tracer.record_meta(start_url=start_url)
     found: List[Dict] = []
+    visited_pages: set[str] = set()
+    found_urls: set[str] = set()
+    probed_urls: set[str] = set()
 
     # 1) Fetch start page and look for obvious overview and PDFs
     try:
@@ -348,6 +390,10 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
     if r is not None:
         base = str(r.url)
         tracer.record_discovery("start", base)
+        try:
+            visited_pages.add(normalize_source_url(base))
+        except Exception:
+            visited_pages.add(base)
         # If start URL is itself a PDF, record immediately
         items: List[Dict] = []
         try:
@@ -362,12 +408,15 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
             items = extract_pdf_links_from_html(r.text, base)
             if not items:
                 regex_items = extract_pdf_links_from_raw(r.text, base)
-                for it in regex_items:
-                    tracer.record_found_pdf(it["remote_url"], it["from"], it["pdf_name"], it.get("score") or 0)
+                # Defer tracing to the unified logging below
                 items.extend(regex_items)
         for it in items:
-            tracer.record_found_pdf(it["remote_url"], it["from"], it["pdf_name"], it.get("score") or 0)
-        found.extend(items)
+            u = it.get("remote_url") or ""
+            if not u or u in found_urls:
+                continue
+            found_urls.add(u)
+            tracer.record_found_pdf(u, it.get("from") or base, it.get("pdf_name") or "", int(it.get("score") or 0))
+            found.append(it)
         # Prefer ranking links on the start page rather than site search
         pages = rank_overview_candidates_from_html(r.text, base)
         # Always append a few common candidate paths on the same host (ensures obvious TK pages are probed)
@@ -449,7 +498,20 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
         p = p.split('#', 1)[0]
         if p in seenp:
             continue
-        if same_registrable_domain(start_url, p):
+        # Allow same-domain pages relative to either the original start URL or the first resolved page (base),
+        # and also recognized platform hubs (e.g., mediafiler)
+        allow_same = False
+        try:
+            allow_same = same_registrable_domain(start_url, p)
+        except Exception:
+            allow_same = False
+        try:
+            # 'base' is set when the initial GET succeeded
+            if not allow_same:
+                allow_same = same_registrable_domain(base, p)  # type: ignore[name-defined]
+        except Exception:
+            pass
+        if allow_same or detect_platform(p):
             seenp.add(p); pages2.append(p)
     # Prefer likely result overview pages early (uitslag/uitkomst/gestemd)
     def _pref_overview(u: str) -> int:
@@ -467,11 +529,23 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
         if not handler:
             continue
         try:
+            # Skip hub if already visited
+            try:
+                norm_hub = normalize_source_url(hub)
+            except Exception:
+                norm_hub = hub
+            if norm_hub in visited_pages:
+                continue
+            visited_pages.add(norm_hub)
             its = handler(hub, req, tracer, municipality)
             if its:
                 for it in its:
-                    tracer.record_found_pdf(it["remote_url"], it["from"], it["pdf_name"], it.get("score") or 0)
-                plat_items.extend(its)
+                    u = it.get("remote_url") or ""
+                    if not u or u in found_urls:
+                        continue
+                    found_urls.add(u)
+                    tracer.record_found_pdf(u, it.get("from") or hub, it.get("pdf_name") or "", int(it.get("score") or 0))
+                    plat_items.append(it)
         except Exception:
             continue
     if plat_items:
@@ -486,6 +560,15 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
     i = 0
     while i < len(pages2) and i < max_pages:
         p = pages2[i]
+        # Skip visiting same page twice in one run
+        try:
+            norm_p = normalize_source_url(p)
+        except Exception:
+            norm_p = p
+        if norm_p in visited_pages:
+            i += 1
+            continue
+        visited_pages.add(norm_p)
         try:
             rr = req.get(p, purpose="overview")
         except Exception:
@@ -500,7 +583,8 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
         if ('application/pdf' in ct) or ((urlparse(str(rr.url)).path or '').lower().endswith('.pdf')):
             name = os.path.basename(urlparse(str(rr.url)).path) or 'document.pdf'
             item = {'remote_url': str(rr.url), 'local_url': None, 'pdf_name': name, 'text': name, 'from': p, 'score': 4}
-            if is_current_year_pdf(name + ' ' + item['remote_url']):
+            label = name + ' ' + item['remote_url']
+            if is_current_year_pdf(label) or ('bijlage' in label.lower()):
                 found.append(item)
                 tracer.record_found_pdf(item['remote_url'], item['from'], item['pdf_name'], item['score'])
                 # Do not break; allow scanning remaining candidate pages to collect more
@@ -508,9 +592,20 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
         items = extract_pdf_links_from_html(html, rr.url)
         if not items:
             regex_items = extract_pdf_links_from_raw(html, rr.url)
-            for it in regex_items:
-                tracer.record_found_pdf(it["remote_url"], it["from"], it["pdf_name"], it.get("score") or 0)
+            # Defer tracing to the unified logging below
             items.extend(regex_items)
+        # If the page looks like a stembureau list with PDFs but anchors are missing, try a light Playwright network capture
+        try:
+            low_html = (html or '').lower()
+            if (len(items) < 10) and ('stembureau' in low_html) and ('pdf' in low_html):
+                extra = playwright_collect_pdfs_network(tracer, municipality, str(rr.url), max_items=200,
+                                                       click_selectors=['a[download]', 'a', 'button', '[role=button]'])
+                if extra:
+                    for it in extra:
+                        it['score'] = max(5, int(it.get('score') or 0))
+                    items.extend(extra)
+        except Exception:
+            pass
         # Probe wrapper .htm links that actually serve PDFs (e.g., Oss CMS pages)
         if len(items) < LIMITS.pivot_pdf_threshold:
             try:
@@ -534,11 +629,20 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
                         or ('uitslag' in low)
                         or ('uitkomst' in low)):
                         try:
+                            # Avoid probing the same wrapper URL twice
+                            if full in probed_urls:
+                                continue
+                            probed_urls.add(full)
                             if req.probe_pdf_exists(full):
                                 name = os.path.basename(urlparse(full).path) or 'document.pdf'
+                                # Normalize wrapper names like Oss-xx-....htm to .pdf
+                                try:
+                                    from .utils import ensure_pdf_extension as _ensure_pdf
+                                    name = _ensure_pdf(name)
+                                except Exception:
+                                    pass
                                 it = {'remote_url': full, 'local_url': None, 'pdf_name': name, 'text': a.get_text(' ', strip=True) or name, 'from': str(rr.url), 'score': 4}
                                 items.append(it)
-                                tracer.record_found_pdf(it['remote_url'], it['from'], it['pdf_name'], it.get('score') or 0)
                                 existing.add(full)
                         except Exception:
                             continue
@@ -547,15 +651,21 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
         # Boost central PVs if present
         items += extract_central_pv_links(html, rr.url)
         if items:
+            # De-duplicate logging per run
+            seen_urls: set[str] = set(x.get('remote_url') for x in found if isinstance(x, dict))
             for it in items:
-                tracer.record_found_pdf(it["remote_url"], it["from"], it["pdf_name"], it.get("score") or 0)
-                print(f"[CANDIDATE] {it['remote_url']} <- {p}")
-            found.extend(items)
+                u = it.get("remote_url") or ""
+                if not u or u in seen_urls:
+                    continue
+                seen_urls.add(u)
+                tracer.record_found_pdf(u, it.get("from") or str(rr.url), it.get("pdf_name") or "", int(it.get("score") or 0))
+                print(f"[CANDIDATE] {u} <- {p}")
+                found.append(it)
             if len(items) >= LIMITS.pivot_pdf_threshold:
                 pivot_seen = True
                 print(f"[PIVOT] {p} yielded {len(items)} PDFs; focusing here.")
-        # If a ranked page yielded nothing, try the next ranked candidate; also enqueue its best nested candidates (one hop)
-        if pages and not items:
+        # If this page yielded nothing or only a few items, also enqueue its best nested candidates (one hop)
+        if pages and (not items or len(items) < LIMITS.pivot_pdf_threshold):
             try:
                 nested = rank_overview_candidates_from_html(html, rr.url)
                 # Prefer 'gestemd/uitkomst/uitslag' links among ties
@@ -570,7 +680,7 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
                 for np in nested:
                     if added >= 6:
                         break
-                    if (np not in pages2) and same_registrable_domain(start_url, np):
+                    if (np not in pages2) and (same_registrable_domain(start_url, np) or detect_platform(np)):
                         # Insert immediately after current index so we visit it next
                         pages2.insert(i + 1 + added, np)
                         added += 1
@@ -580,7 +690,18 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
             i += 1
             continue
         if pivot_seen:
-            break
+            # Only stop early if no unvisited manual seed pages remain.
+            try:
+                from .config import EXTRA_SEEDS as _EXTRA
+                seeds = set(( _EXTRA.get(municipality) or [] ))
+                # simple normalization: strip fragment and trailing slash
+                def _norm(u: str) -> str:
+                    return (u or '').split('#', 1)[0].rstrip('/')
+                remaining = set(_norm(x) for x in seeds) & set(_norm(u) for u in pages2[i+1:])
+                if not remaining:
+                    break
+            except Exception:
+                break
         i += 1
 
     return dedupe_found(found)

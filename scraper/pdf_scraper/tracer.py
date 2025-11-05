@@ -6,7 +6,7 @@ import time
 from typing import Any, Dict, List, Optional
 
 from .config import TRACES_DIR
-from .utils import sanitize_filename
+from .utils import sanitize_filename, ensure_pdf_extension, strip_size_tokens
 from urllib.parse import urlparse
 
 
@@ -40,9 +40,17 @@ class Tracer:
             base = (name or '').strip() or (urlparse(remote_url).path.rsplit('/', 1)[-1] or 'document.pdf')
         except Exception:
             base = name or 'document.pdf'
-        # Ensure .pdf extension
-        if not base.lower().endswith('.pdf'):
-            base = base + '.pdf'
+        # Apply hard naming rules globally:
+        # - Never include size tokens (e.g., "(pdf, 2.24 MB)", "124.65 kB")
+        # - Replace .htm/.html with .pdf (avoid ".htm.pdf")
+        # - Ensure it ends with .pdf
+        try:
+            base = strip_size_tokens(base)
+            base = ensure_pdf_extension(base)
+            if not base.lower().endswith('.pdf'):
+                base = base + '.pdf'
+        except Exception:
+            pass
         preferred = sanitize_filename(base)
         self._write({
             "type": "found_pdf",

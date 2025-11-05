@@ -33,7 +33,12 @@ BANNED_DOC_KEYWORDS = {
     "aansluit", "woo", "wob", "bekendmaking", "bezwaar", "registratie",
     "inspectie", "publicatie", "begroting", "jaarstukken", "beleid", "nota",
     "rapportage", "handreiking", "handleiding", "verklaring", "wet", "route",
-    "onderzoek",
+    "onderzoek", "machtig", "stempas",
+}
+
+# URL-only banned document keywords: only trigger when present inside a URL
+BANNED_DOC_URL_ONLY = {
+    "zorg",
 }
 
 # Regex patterns compiled once

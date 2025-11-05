@@ -6,17 +6,19 @@ import os
 import sys
 
 from .discovery import discover_pdfs, rank_overview_candidates_from_html
+from .platforms import detect as detect_platform, REGISTRY as PLATFORM_HANDLERS
 from .downloader import download_index_items
 from .http_client import Requester
 from .index import light_merge_index
 from .model10 import log_model10_progress
 from .tracer import Tracer
 from .utils import get_all_names, get_municipalities_slice, get_start_url
-from .utils import is_electionish, normalize_source_url
+from .utils import is_electionish, normalize_source_url, same_registrable_domain
 from .fallback_playwright import playwright_collect_pdfs, playwright_discover_and_collect
 from .verified_urls import add_source_url as verified_add_source
 from .verified_urls import record_kiesraad_url as verified_record_kiesraad
 from .fetch_gemeente_urls import kiesraad_url_for
+from .config import EXTRA_SEEDS as MANUAL_SEEDS
 
 
 def run_for_municipality(name: str, dry_run: bool = False) -> None:
@@ -34,17 +36,27 @@ def run_for_municipality(name: str, dry_run: bool = False) -> None:
             verified_record_kiesraad(name, kr)
     except Exception:
         pass
-    items = discover_pdfs(req, tracer, name, start_url)
-    print(f"[FOUND] {name}: {len(items)} PDF candidates")
-    # Ensure found PDFs are reflected in the trace explicitly (even if discovery logged them)
+    items = []
+    # If start is a mijnstembureau portal, try the platform handler first for better coverage
     try:
-        for it in items:
-            u = it.get('remote_url') or ''
-            if not u:
-                continue
-            tracer.record_found_pdf(u, it.get('from') or start_url, it.get('pdf_name') or '', int(it.get('score') or 0))
+        sysname = detect_platform(start_url)
+        if sysname == 'mijnstembureau':
+            handler = PLATFORM_HANDLERS.get(sysname)
+            if handler:
+                its = handler(start_url, req, tracer, name) or []
+                for it in its:
+                    u = it.get('remote_url') or ''
+                    if not u:
+                        continue
+                    tracer.record_found_pdf(u, it.get('from') or start_url, it.get('pdf_name') or '', int(it.get('score') or 0))
+                items.extend(its)
     except Exception:
         pass
+    # Then continue with general discovery (de-dup downstream)
+    more = discover_pdfs(req, tracer, name, start_url)
+    if more:
+        items.extend(more)
+    print(f"[FOUND] {name}: {len(items)} PDF candidates")
     # Classify known systems to help learning later
     try:
         systems = set()
@@ -95,18 +107,28 @@ def run_for_municipality(name: str, dry_run: bool = False) -> None:
             norm = normalize_source_url(src)
             if not is_electionish(norm):
                 continue
+            # Only keep sources from the same registrable domain as the start URL
+            if not same_registrable_domain(start_url, norm):
+                continue
             src_count[norm] = src_count.get(norm, 0) + 1
         if src_count:
             for src, _ in sorted(src_count.items(), key=lambda kv: (-kv[1], kv[0]))[:3]:
                 verified_add_source(name, src)
+            # Also persist any manual seed pages for this municipality (even if not visited due to early pivot)
+            for s in (MANUAL_SEEDS.get(name) or []):
+                cand = normalize_source_url(s)
+                if is_electionish(cand):
+                    verified_add_source(name, cand)
         elif not items:
             # As a fallback, rank start page links and save the top candidate
             try:
                 r = req.get(start_url, purpose="rank")
                 ranked = rank_overview_candidates_from_html(r.text, r.url)
                 if ranked:
-                    cand = normalize_source_url(ranked[0])
-                    if is_electionish(cand):
+                    # Prefer the first ranked candidate on the same registrable domain
+                    cand_raw = next((u for u in ranked if same_registrable_domain(start_url, u)), ranked[0])
+                    cand = normalize_source_url(cand_raw)
+                    if is_electionish(cand) and same_registrable_domain(start_url, cand):
                         verified_add_source(name, cand)
             except Exception:
                 pass

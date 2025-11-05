@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 
 from .config import OUT_BASE
 from .http_client import Requester
-from .utils import sanitize_filename, is_current_year_pdf
+from .utils import sanitize_filename, is_current_year_pdf, ensure_pdf_extension, strip_size_tokens
 
 
 def ensure_out_dir(municipality: str) -> str:
@@ -18,9 +18,15 @@ def ensure_out_dir(municipality: str) -> str:
 def stream_download_pdf(req: Requester, municipality: str, remote_url: str, preferred_name: Optional[str] = None) -> Optional[str]:
     out_dir = ensure_out_dir(municipality)
     name = preferred_name or (os.path.basename(urlparse(remote_url).path) or 'document.pdf')
+    # Apply global naming rules for downloads
+    try:
+        name = strip_size_tokens(name)
+        name = ensure_pdf_extension(name)
+        if not name.lower().endswith('.pdf'):
+            name += '.pdf'
+    except Exception:
+        pass
     name = sanitize_filename(name)
-    if not name.lower().endswith('.pdf'):
-        name += '.pdf'
     if not is_current_year_pdf(name + ' ' + remote_url):
         return None
     dest = os.path.join(out_dir, name)

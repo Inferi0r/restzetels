@@ -122,13 +122,26 @@ def _is_current_year_pdf(label: str) -> bool:
     if any(k in s for k in ["waterschap", "gemeenteraad", "provinciale", "europees"]):
         return False
     # Ban veelvoorkomende niet-PV documenten
-    if any(k in s for k in [
+    # document bans:
+    # - DOC_BANS_BOTH: ban if present in name/text/URL
+    # - DOC_BANS_URL_ONLY: ban only if present inside a URL
+    DOC_BANS_BOTH = [
         "volmacht",      # volmachtformulieren
+        "machtig",       # machtiging/machtigingsformulieren
+        "stempas",       # stempaspdf
         "kiezerspas",    # kiezerspas documenten
         "kennisgeving",  # openbare kennisgeving / bekendmakingen
         "kandidaat",     # kandidatenlijsten/berichten
         "voorschrift", "voorschriften",  # aansluit-/proces voorschriften
-    ]):
+    ]
+    DOC_BANS_URL_ONLY = [
+        "zorg",          # zorg/zorgcentrum (niet PV-specifiek) → URL-only
+    ]
+    if any(k in s for k in DOC_BANS_BOTH):
+        return False
+    # URL-only bans
+    urls = re.findall(r"https?://\S+", s)
+    if any(any(k in u for k in DOC_BANS_URL_ONLY) for u in urls):
         return False
     # short codes (ep24/ps23/ws25/gr22)
     if re.search(r"(?<![a-z])ep\s*[-_]?\s*(?:20)?\d{2}", s):

@@ -15,7 +15,13 @@ from typing import Optional, Callable, List, Dict
 
 def detect(url: str) -> Optional[str]:
     u = (url or "").lower()
-    if 'mijnstembureau' in u or 'stembureau-' in u:
+    # Only treat as mijnstembureau when the host matches, not just any path
+    try:
+        from urllib.parse import urlparse as _up
+        host = _up(url).netloc.lower()
+    except Exception:
+        host = ''
+    if ('mijnstembureau' in host) or host.startswith('stembureau-'):
         return 'mijnstembureau'
     if 'pleio.nl' in u:
         return 'pleio'
@@ -31,6 +37,14 @@ def detect(url: str) -> Optional[str]:
         return 'ibabs'
     if 'decosjoin' in u or 'decos' in u or 'dsresource' in u:
         return 'decos'
+    # Municipal election subdomain portals (e.g., verkiezingen.sudwestfryslan.nl)
+    try:
+        from urllib.parse import urlparse as _up
+        host = _up(url).netloc.lower()
+        if host.startswith('verkiezingen.'):
+            return 'verkiezingen-portal'
+    except Exception:
+        pass
     return None
 
 
@@ -42,7 +56,12 @@ def register(name: str, handler: Handler):
     REGISTRY[name] = handler
 
 # Register built-ins
-from .mijnstembureau import handle as _msb_handle
+try:
+    from .mijnstembureau import handle as _msb_handle
+    register('mijnstembureau', _msb_handle)
+except Exception:
+    # Platform optional; do not block others on import issues
+    pass
 from .pleio import handle as _pleio_handle
 from .drive import handle as _drive_handle
 from .stack import handle as _stack_handle
@@ -50,8 +69,8 @@ from .mediafiler import handle as _mf_handle
 from .sharepoint import handle as _sp_handle
 from .ibabs import handle as _ibabs_handle
 from .decos import handle as _decos_handle
+from .verkiezingen_portal import handle as _vz_handle
 
-register('mijnstembureau', _msb_handle)
 register('pleio', _pleio_handle)
 register('google-drive', _drive_handle)
 register('stackstorage', _stack_handle)
@@ -59,3 +78,4 @@ register('mediafiler', _mf_handle)
 register('sharepoint', _sp_handle)
 register('ibabs', _ibabs_handle)
 register('decos', _decos_handle)
+register('verkiezingen-portal', _vz_handle)

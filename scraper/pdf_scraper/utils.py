@@ -4,7 +4,15 @@ import re
 from urllib.parse import urlparse
 from typing import Any
 
-from .config import DATA_DIR, TARGET_YEAR_FULL, TARGET_YEAR_SHORT, BANNED_ELECTION_KEYWORDS, BANNED_DOC_KEYWORDS, BANNED_NAME_RES
+from .config import (
+    DATA_DIR,
+    TARGET_YEAR_FULL,
+    TARGET_YEAR_SHORT,
+    BANNED_ELECTION_KEYWORDS,
+    BANNED_DOC_KEYWORDS,
+    BANNED_DOC_URL_ONLY,
+    BANNED_NAME_RES,
+)
 from .config import OVERVIEW_HINT_RE
 from .fetch_gemeente_urls import kiesraad_url_for
 from .verified_urls import (
@@ -86,8 +94,59 @@ def get_start_url(name: str) -> str | None:
 def sanitize_filename(name: str) -> str:
     name = (name or "").strip().replace("/", "-")
     name = re.sub(r"\s+", " ", name)
-    name = re.sub(r"[^0-9A-Za-zÀ-ÖØ-öø-ÿ _\-\.()]", "", name)
+    # Allow common punctuation including ampersand for names like "B&W"
+    name = re.sub(r"[^0-9A-Za-zÀ-ÖØ-öø-ÿ _\-\.()&]", "", name)
     return name[:150] if len(name) > 150 else name
+
+
+def ensure_pdf_extension(name: str) -> str:
+    try:
+        if not isinstance(name, str):
+            return name
+        n = name.strip()
+        low = n.lower()
+        # Replace .htm/.html with .pdf
+        if low.endswith('.htm'):
+            return n[:-4] + '.pdf'
+        if low.endswith('.html'):
+            return n[:-5] + '.pdf'
+        return n
+    except Exception:
+        return name
+
+
+_SIZE_TOKEN_RE = re.compile(r"\b\d+[\d.,]*\s*(?:k|kb|mb|gb)\b", re.I)
+_PAREN_SIZE_RE = re.compile(r"\((?:\s*pdf\s*,\s*)?\s*\d+[\d.,]*\s*(?:k|kb|mb|gb)\s*\)", re.I)
+
+
+def strip_size_tokens(s: str) -> str:
+    if not isinstance(s, str):
+        return s
+    out = _PAREN_SIZE_RE.sub("", s)
+    out = _SIZE_TOKEN_RE.sub("", out)
+    out = re.sub(r"\s{2,}", " ", out)
+    out = out.strip()
+    return out
+
+
+def clean_pdf_name_from_text(txt: str) -> str | None:
+    if not isinstance(txt, str):
+        return None
+    t = txt.strip()
+    if not t:
+        return None
+    t = re.sub(r"^pdf\s*bestand\s*", "", t, flags=re.I)
+    m = re.search(r"([\wÀ-ÖØ-öø-ÿ _\-().]+?\.pdf)\b", t, re.I)
+    if m:
+        base = m.group(1)
+    else:
+        base = strip_size_tokens(re.sub(r"\([^)]*\)", "", t))
+        if not base.lower().endswith('.pdf'):
+            base = base + '.pdf'
+    # Always strip size tokens even when the anchor text already contains ".pdf"
+    # to avoid names like "… 2.24 MB.pdf"
+    base = strip_size_tokens(base)
+    return sanitize_filename(base)
 
 
 def _looks_hashy_basename(base_no_ext: str) -> bool:
@@ -113,12 +172,16 @@ def is_current_year_pdf(label: str) -> bool:
     if not isinstance(label, str):
         return True
     s = label.lower()
-    # Remove URLs for keyword checks to avoid false hits like 'ps' in 'https'
+    # Remove URLs for election keyword checks to avoid false hits like 'ps' in 'https'
     s_no_urls = re.sub(r"https?://\S+", " ", s)
-    # election types to exclude
+    # election types to exclude (check without URLs to avoid false positives)
     if any(re.search(rf"\b{re.escape(k)}\b", s_no_urls) for k in BANNED_ELECTION_KEYWORDS):
         return False
-    if any(k in s_no_urls for k in BANNED_DOC_KEYWORDS):
+    # document keywords: two categories → 'both' (name/text/URL) and 'url-only'
+    urls = re.findall(r"https?://\S+", s)
+    if any(k in s for k in BANNED_DOC_KEYWORDS):
+        return False
+    if any(any(k in u for k in BANNED_DOC_URL_ONLY) for u in urls):
         return False
     for rx in BANNED_NAME_RES:
         if rx.search(s):
