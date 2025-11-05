@@ -41,6 +41,13 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), "pdf_scraper_input")
 OUT_BASE = os.path.join(os.path.dirname(__file__), "pdfs")
 INDEX_PATH = os.path.join(DATA_DIR, "municipality_pdfs_index.json")
 
+# Extra seeds per gemeente voor bekende overzichtspagina's
+EXTRA_SEEDS: dict[str, list[str]] = {
+    "Amsterdam": [
+        "https://www.amsterdam.nl/verkiezingen/overzicht-proces-verbalen/",
+    ],
+}
+
 
 def load_json(path: str):
     with open(path, "r", encoding="utf-8") as f:
@@ -1128,14 +1135,36 @@ def expand_and_collect_pdfs(muni: str, page_url: str, max_items: int = 300) -> l
                         loc.first.click(); page.wait_for_timeout(600)
                 except Exception:
                     continue
-            # Collect anchors after expansion
+            # Collect anchors after expansion; capture nearby tile text for better filenames (e.g. Rotterdam 'Downloaden')
             hrefs = []
             try:
-                hrefs = page.eval_on_selector_all('a[href]', 'els => els.map(e => [e.href, e.innerText])') or []
+                js = """
+                (els => els.map(e => {
+                  const href = e.href || '';
+                  const label = (e.innerText || '').trim();
+                  let tile = e.closest('article, li, .card, .download, .row, .grid, div');
+                  let extra = '';
+                  if (tile && tile !== e) {
+                    extra = (tile.innerText || '').trim();
+                  } else if (e.parentElement) {
+                    extra = (e.parentElement.innerText || '').trim();
+                  }
+                  const aria = e.getAttribute('aria-label') || '';
+                  const title = e.getAttribute('title') || '';
+                  const datafn = e.getAttribute('data-filename') || '';
+                  return [href, label, extra, aria, title, datafn];
+                }))
+                """
+                hrefs = page.eval_on_selector_all('a[href]', js) or []
             except Exception:
                 hrefs = []
             seen = set(); processed = 0
-            for href, label in hrefs:
+            for item in hrefs:
+                if not item:
+                    continue
+                href = item[0] if len(item) > 0 else ''
+                label = (item[1] or '').strip() if len(item) > 1 else ''
+                extra = ' '.join([str(x or '') for x in item[2:6]]) if len(item) > 2 else ''
                 if processed >= max_items:
                     break
                 u = href or ''
@@ -1151,7 +1180,26 @@ def expand_and_collect_pdfs(muni: str, page_url: str, max_items: int = 300) -> l
                             continue
                 except Exception:
                     continue
+                # Heuristiek voor bestandsnaam
                 name = (label or os.path.basename(urlparse(u).path) or 'document.pdf').strip()
+                # Als label generiek is (Download/Downloaden), probeer uit extra tile-tekst een bestandsnaam af te leiden
+                if name.lower() in {'download', 'downloaden'}:
+                    import re as _re
+                    cand = None
+                    # zoek patroon als '001-TK25-...' of een regel die op .pdf eindigt
+                    for ln in (extra or '').splitlines():
+                        t = ln.strip()
+                        if not t:
+                            continue
+                        m = _re.search(r"\b\d{1,3}\s*-?\s*tk20?25[^\n]*", t, _re.I)
+                        if m:
+                            cand = m.group(0).strip()
+                            break
+                        if t.lower().endswith('.pdf'):
+                            cand = t
+                            break
+                    if cand:
+                        name = cand
                 if not name.lower().endswith('.pdf'):
                     name += '.pdf'
                 if not _is_current_year_pdf(name + ' ' + u):
@@ -1852,12 +1900,13 @@ def download_mijnstembureau_portal(muni: str, page_url: str, max_items: int = 20
         # 0b) Directe anchors: sommige portals hebben statische downloadpagina ('download-opties')
         #    Pak zowel href als zichtbare linktekst zodat we een nette bestandsnaam kunnen gebruiken.
         try:
-            links = page.eval_on_selector_all('a[href]', 'els => els.map(e => ({href: e.href, text: (e.innerText||"").trim()}))') or []
+            links = page.eval_on_selector_all('a[href]', 'els => els.map(e => ({href: e.href, text: (e.innerText||"").trim(), parent: (e.parentElement ? e.parentElement.innerText : "")}))') or []
         except Exception:
             links = []
         for rec in links:
             href = (rec.get('href') or '').strip()
             label = (rec.get('text') or '').strip()
+            parent_text = (rec.get('parent') or '').strip()
             try:
                 u = urljoin(page.url, href)
             except Exception:
@@ -1865,9 +1914,26 @@ def download_mijnstembureau_portal(muni: str, page_url: str, max_items: int = 20
             if not u:
                 continue
             # accepteer ook endpoints die geen .pdf tonen maar wel pdf respons geven; stream_download checkt content-type
-            if not _is_current_year_pdf(label + ' ' + u):
+            if not _is_current_year_pdf((label or '') + ' ' + (parent_text or '') + ' ' + u):
                 continue
-            dest = stream_download(u, out_dir, suggested_name=(label or None))
+            # Bepaal nette bestandsnaam uit anchor of context
+            suggested = label if (label and label.lower().endswith('.pdf')) else None
+            if not suggested and parent_text:
+                try:
+                    import re as _re
+                    m = _re.search(r"([A-Za-z0-9_\-]+_Stembureau_.*?\.pdf)", parent_text)
+                    if m:
+                        suggested = m.group(1)
+                    if not suggested:
+                        m2 = _re.search(r"(SonenBreugel_[^\s]+?\.pdf)", parent_text)
+                        if m2:
+                            suggested = m2.group(1)
+                except Exception:
+                    suggested = None
+            # Vermijd generieke 'Downloaden' als naam; laat stream_download naam bepalen via headers/URL
+            if suggested and suggested.lower() in {'download', 'downloaden'}:
+                suggested = None
+            dest = stream_download(u, out_dir, suggested_name=suggested)
             if dest:
                 items.append({'remote_url': u, 'local_url': 'file://' + os.path.abspath(dest), 'pdf_name': os.path.basename(dest), 'text': label or os.path.basename(dest), 'from': page_url, 'score': 3})
                 if len(items) >= max_items:
@@ -2445,6 +2511,19 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
                     except Exception:
                         pass
         found.extend(start_eps)
+        # Speciaal: Rotterdam portal toont 'Downloaden' knoppen met bestandsnamen in tegeltekst
+        try:
+            from urllib.parse import urlparse as _up
+            _host = (_up(base).netloc or '').lower()
+        except Exception:
+            _host = ''
+        if 'stembureausinrotterdam.nl' in _host or 'uitslagen.stembureausinrotterdam.nl' in _host:
+            try:
+                its = expand_and_collect_pdfs(name, base, max_items=500)
+                if its:
+                    found.extend(its)
+            except Exception:
+                pass
         # Als op de startpagina al ≥5 relevante PDF's staan, markeer als 'plek gevonden'
         if len(start_eps) >= 5 or sum(1 for p in start_eps if PV_STRONG_HINT_RE.search((p.get('text') or '') + ' ' + (p.get('pdf_name') or ''))) >= 4:
             found_place = True
@@ -2453,6 +2532,13 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
             ov_pages = find_overview_pages_from_html(html, base)
         except Exception:
             ov_pages = []
+        # Voeg eventuele extra seeds toe (door ons expliciet aangereikt)
+        try:
+            for extra in (EXTRA_SEEDS.get(name) or []):
+                if extra not in ov_pages:
+                    ov_pages.append(extra)
+        except Exception:
+            pass
         # Verzamel van meerdere overzichtspagina's; stop pas vroegtijdig als we óók een centrale PV denken te hebben
         def _has_central(items: list[dict]) -> bool:
             for p in items or []:

@@ -60,18 +60,18 @@ def load_name_mapping(path: str = NAME_MAP_PATH) -> dict:
 
 def compile_regex():
     # Specifieke modellen eerst (om generieke hits te vermijden)
-    # Let op: NA/Na/nA varianten toelaten, diverse scheidingstekens
-    sep = r"[-_\s–—]*"  # bindtekens inclusief en-dash/em-dash
+    # Scheidingstekens toestaan, en geen \b-grenzen gebruiken zodat _n10-2_ ook matcht
+    sep = r"[-_\s–—]*"
+    start = r"(?<![A-Za-z0-9])"
+    end = r"(?![A-Za-z0-9])"
     rx = {
-        "N10-1": re.compile(rf"\b(model{sep})?n{sep}10{sep}1\b", re.I),
-        "N10-2": re.compile(rf"\b(model{sep})?n{sep}10{sep}2\b", re.I),
-        "Na 31-2": re.compile(rf"\b(model{sep})?na{sep}31{sep}2\b", re.I),
-        "Na 31-1": re.compile(rf"\b(model{sep})?na{sep}31{sep}1\b", re.I),
-        # Generieke vangnetten (niet gebruikt voor label, alleen ter ondersteuning)
-        "N10": re.compile(rf"\b(model{sep})?n{sep}10\b", re.I),
-        "Na31": re.compile(rf"\b(model{sep})?na{sep}31\b", re.I),
-        # Let op: 'Gemeentelijk stembureau' komt ook voor in toelichtingen op N10/N5 en is dus geen betrouwbaar label
-        # (bewust geen GSB-heuristiek voor label)
+        "N10-1": re.compile(rf"{start}(?:model{sep})?n{sep}10{sep}1{end}", re.I),
+        "N10-2": re.compile(rf"{start}(?:model{sep})?n{sep}10{sep}2{end}", re.I),
+        "Na 31-2": re.compile(rf"{start}(?:model{sep})?na{sep}31{sep}2{end}", re.I),
+        "Na 31-1": re.compile(rf"{start}(?:model{sep})?na{sep}31{sep}1{end}", re.I),
+        # Generiek
+        "N10": re.compile(rf"{start}(?:model{sep})?n{sep}10{end}", re.I),
+        "Na31": re.compile(rf"{start}(?:model{sep})?na{sep}31{end}", re.I),
     }
     return rx
 
@@ -108,7 +108,10 @@ def detect_from_strings(s: str) -> str | None:
         return "Na 31-2"
     if RX["Na 31-1"].search(s):
         return "Na 31-1"
-    # Geen GSB-heuristiek meer: komt ook voor in N10/N5-teksten
+    # Default: als er wel 'N10' staat maar geen sublabel, kies N10-2 (TK-stembureaus)
+    if RX.get("N10") and RX["N10"].search(s):
+        return "N10-2"
+    # Geen GSB-heuristiek: kan ook voorkomen in toelichtingen zonder dat het model Na31 is
     return None
 
 
@@ -678,6 +681,8 @@ def run(argv: list[str] | None = None) -> int:
 
         # Heuristieken om stembureau-nummer/naam uit bestandsnaam/anchor te halen
         RX_SB_NUM = _re.compile(r"stembureau[^0-9]{0,6}(\d{1,3})", _re.I)
+        # SB-prefix varianten: 'SB1', 'SB 1', 'SB-1', 'SB_1'
+        RX_SB_PREFIX = _re.compile(r"\bsb[\s._-]*([0-9]{1,3})\b", _re.I)
         RX_BUREAU_NUM = _re.compile(r"\bbureau[^0-9]{0,6}(\d{1,3})\b", _re.I)
         # variant met '20' of '%20' (URL/naam-artefact) tussen 'stembureau' en nummer
         RX_SB_NUM_20 = _re.compile(r"stembureau(?:%20|20|\s|[_\-])*([0-9]{1,3})", _re.I)
@@ -687,10 +692,28 @@ def run(argv: list[str] | None = None) -> int:
         RX_TK_NUM = _re.compile(r"[_\-]([0-9]{1,3})[_\-].*?tk\s*20?25", _re.I)
         RX_LEADING_NUM = _re.compile(r"^\s*([0-9]{1,3})\s*[\.|\-_]", _re.I)
 
+        # Ranges zoals '111 t/m 123', '111 tot en met 123', '111-123'
+        RX_RANGE_TEM = _re.compile(r"(\d{1,3})\s*(?:t\s*/\s*m|tm|tot(?:\s*|[-–—])en(?:\s*|[-–—])met)\s*(\d{1,3})", _re.I)
+        RX_RANGE_DASH = _re.compile(r"(\d{1,3})\s*[-–—]\s*(\d{1,3})")
+
+        def extract_range(s: str) -> tuple[int,int] | None:
+            if not s:
+                return None
+            for rx in (RX_RANGE_TEM, RX_RANGE_DASH):
+                m = rx.search(s)
+                if m:
+                    try:
+                        a = int(m.group(1)); b = int(m.group(2))
+                        if 0 < a < 2000 and 0 < b < 2000 and a <= b and (b - a) <= 500:
+                            return (a, b)
+                    except Exception:
+                        continue
+            return None
+
         def extract_number(s: str) -> int | None:
             if not s:
                 return None
-            for rx in (RX_LEADING_NUM, RX_TK_NUM, RX_SB_NUM_20, RX_SB_NUM, RX_BUREAU_NUM, RX_SUFFIX_NUM, RX_UNDERSCORE_NUM):
+            for rx in (RX_LEADING_NUM, RX_TK_NUM, RX_SB_PREFIX, RX_SB_NUM_20, RX_SB_NUM, RX_BUREAU_NUM, RX_SUFFIX_NUM, RX_UNDERSCORE_NUM):
                 m = rx.search(s)
                 if m:
                     try:
@@ -791,6 +814,7 @@ def run(argv: list[str] | None = None) -> int:
                     continue
                 # alleen op naam/anchor/url; geen inhoudelijke OCR
                 s = norm_text(p.get("pdf_name"), p.get("text"), p.get("remote_url"))
+                s_low = s.lower()
                 # Vroege naam-match fallback: als exact één stembureaunaam in bestandsnaam zit, accepteer ook zonder 'probable' hints
                 s_match = norm_for_match(s)
                 pre_cands = [it for nm,it in by_name_norm.items() if nm and nm in s_match]
@@ -798,6 +822,25 @@ def run(argv: list[str] | None = None) -> int:
                 if (not pre_target) and (not is_probable_model10(s, muni_for_prefix=muni)):
                     continue
                 total_seen += 1
+                # Arnhem-achtig: 'stembureaus 111 t/m 123' → koppel hetzelfde bestand aan alle nummers in range
+                rng = extract_range(s)
+                if rng and (('proces' in s_low and 'verbaal' in s_low) or RX.get('N10').search(s)):
+                    a,b = rng
+                    for rn in range(a, b+1):
+                        tgt = by_num.get(rn)
+                        if not tgt:
+                            cands = by_num_mod.get(rn) or []
+                            if len(cands) == 1:
+                                tgt = cands[0]
+                        if not tgt:
+                            continue
+                        # schrijf hoofdvariant (niet 'eerste')
+                        fname = p.get('pdf_name') or (p.get('text') or '')
+                        if (not tgt.get('local_url')):
+                            tgt['local_url'] = loc
+                            tgt['pdf_name'] = fname
+                            updated += 1
+                    continue
                 nr = extract_number(s)
                 if nr is None:
                     nr = extract_number_with_muni(s, muni)
@@ -919,6 +962,34 @@ def run(argv: list[str] | None = None) -> int:
                     # bij fouten in individuele bestanden, ga door met de volgende
                     continue
             # einde folder fallback
+
+            # Post-processing: rangebestanden zoals 'stembureaus 111 t/m 123' → vul voor alle nummers in de range
+            try:
+                for it in arr:
+                    fn = (it or {}).get('pdf_name') or ''
+                    lu = (it or {}).get('local_url') or ''
+                    if not fn or not lu:
+                        continue
+                    rng = extract_range(fn)
+                    if not rng:
+                        rng = extract_range((it or {}).get('stembureau_naam') or '')
+                    if not rng:
+                        continue
+                    a,b = rng
+                    for rn in range(a,b+1):
+                        tgt = by_num.get(rn)
+                        if not tgt:
+                            cands = by_num_mod.get(rn) or []
+                            if len(cands) == 1:
+                                tgt = cands[0]
+                        if not tgt:
+                            continue
+                        if not tgt.get('local_url'):
+                            tgt['local_url'] = lu
+                            tgt['pdf_name'] = fn
+                            updated += 1
+            except Exception:
+                pass
 
         if args.dry_run:
             print(f"[model10] Done (dry-run). matched={total_seen}, updated={updated}")
