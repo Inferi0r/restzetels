@@ -1996,7 +1996,12 @@
       "pdf_name": "GSB_-_Model_Na31-2__Zonder_Handt._.pdf"
     }
   ],
-  "Zaanstad": [],
+  "Zaanstad": [
+    {
+      "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zaanstad/Model Na 31-2 Proces-verbaal van een gemeentelijk stembureau (centrale stemopneming).pdf",
+      "pdf_name": "Model Na 31-2 Proces-verbaal van een gemeentelijk stembureau (centrale stemopneming).pdf"
+    }
+  ],
   "Zaltbommel": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zaltbommel/zaltbommel_uitkomst_zonder-handtekeningen_tk25.pdf",
@@ -2075,7 +2080,7 @@
       "pdf_name": "model-na-31-2-proces-verbaal-van-een-gemeentelijk-stembureau-centrale-stemopneming-gemeente.pdf"
     }
   ],
-  "s-Hertogenbosch": [
+  "'s-Hertogenbosch": [
     {
       "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/s-Hertogenbosch/Proces-verbaal-N31-2_s-Hertogenbosch_TK25.pdf",
       "pdf_name": "Proces-verbaal-N31-2_s-Hertogenbosch_TK25.pdf"

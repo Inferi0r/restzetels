@@ -60062,7 +60062,864 @@
     {
       "name": "Maastricht",
       "start_url": "https://www.gemeentemaastricht.nl/verkiezingen",
-      "pdfs": []
+      "pdfs": [
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/documenten-aanvragen",
+          "local_url": null,
+          "pdf_name": "Documenten aanvragen.pdf",
+          "text": "Documenten aanvragen",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_uitkomst_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_uitkomst_TK25.pdf",
+          "pdf_name": "Maastricht_uitkomst_TK25.pdf",
+          "text": "proces-verbaal van het gemeentelijk stembureau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_1_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_1_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_1_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_01_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_01_TK25.pdf",
+          "pdf_name": "Maastricht_01_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_2_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_2_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_2_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_3_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_3_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_3_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_4_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_4_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_4_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_4_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_4_TK25.pdf",
+          "pdf_name": "Maastricht_4_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_5_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_5_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_5_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_6_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_6_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_6_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_06_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_06_TK25.pdf",
+          "pdf_name": "Maastricht_06_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_7_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_7_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_7_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_8_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_8_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_8_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_9_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_9_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_9_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_9_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_9_TK25.pdf",
+          "pdf_name": "Maastricht_9_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_10_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_10_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_10_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_11_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_11_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_11_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_11_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_11_TK25.pdf",
+          "pdf_name": "Maastricht_11_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_12_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_12_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_12_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_13_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_13_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_13_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_13_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_13_TK25.pdf",
+          "pdf_name": "Maastricht_13_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_14_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_14_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_14_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_15_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_15_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_15_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_16_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_16_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_16_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_16_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_16_TK25.pdf",
+          "pdf_name": "Maastricht_16_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_17_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_17_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_17_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_18_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_18_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_18_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_19_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_19_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_19_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_20_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_20_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_20_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_21_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_21_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_21_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_21_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_21_TK25.pdf",
+          "pdf_name": "Maastricht_21_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_23_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_23_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_23_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_23_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_23_TK25.pdf",
+          "pdf_name": "Maastricht_23_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_24_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_24_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_24_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_25_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_25_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_25_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_25_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_25_TK25.pdf",
+          "pdf_name": "Maastricht_25_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_26_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_26_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_26_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_26_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_26_TK25.pdf",
+          "pdf_name": "Maastricht_26_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_27_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_27_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_27_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_27_KT25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_27_KT25.pdf",
+          "pdf_name": "Maastricht_27_KT25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_28_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_28_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_28_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_28_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_28_TK25.pdf",
+          "pdf_name": "Maastricht_28_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_29_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_29_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_29_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_30_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_30_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_30_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_30_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_30_TK25.pdf",
+          "pdf_name": "Maastricht_30_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_31_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_31_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_31_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_31_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_31_TK25.pdf",
+          "pdf_name": "Maastricht_31_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_32_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_32_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_32_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_33_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_33_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_33_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_34_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_34_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_34_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_34_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_34_TK25.pdf",
+          "pdf_name": "Maastricht_34_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_35_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_35_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_35_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_35_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_35_TK25.pdf",
+          "pdf_name": "Maastricht_35_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_36_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_36_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_36_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_36_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_36_TK25.pdf",
+          "pdf_name": "Maastricht_36_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_37_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_37_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_37_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_37_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_37_TK25.pdf",
+          "pdf_name": "Maastricht_37_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_39_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_39_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_39_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_40_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_40_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_40_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_41_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_41_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_41_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_41_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_41_TK25.pdf",
+          "pdf_name": "Maastricht_41_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_42_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_42_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_42_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_42_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_42_TK25.pdf",
+          "pdf_name": "Maastricht_42_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_43_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_43_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_43_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_43_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_43_TK25.pdf",
+          "pdf_name": "Maastricht_43_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_45_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_45_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_45_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_45_TK25%20.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_45_TK2520.pdf",
+          "pdf_name": "Maastricht_45_TK25%20.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_46_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_46_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_46_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_46_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_46_TK25.pdf",
+          "pdf_name": "Maastricht_46_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_47_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_47_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_47_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_47_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_47_TK25.pdf",
+          "pdf_name": "Maastricht_47_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_48_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_48_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_48_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_48_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_48_TK25.pdf",
+          "pdf_name": "Maastricht_48_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_49_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_49_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_49_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_49_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_49_TK25.pdf",
+          "pdf_name": "Maastricht_49_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_50_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_50_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_50_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_50_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_50_TK25.pdf",
+          "pdf_name": "Maastricht_50_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_51_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_51_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_51_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_51_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_51_TK25.pdf",
+          "pdf_name": "Maastricht_51_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_52_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_52_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_52_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_52_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_52_TK25.pdf",
+          "pdf_name": "Maastricht_52_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_53_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_53_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_53_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_53_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_53_TK25.pdf",
+          "pdf_name": "Maastricht_53_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_54_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_54_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_54_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_54_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_54_TK25.pdf",
+          "pdf_name": "Maastricht_54_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_55_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_55_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_55_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_55_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_55_TK25.pdf",
+          "pdf_name": "Maastricht_55_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_56_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_56_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_56_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_56_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_56_TK25.pdf",
+          "pdf_name": "Maastricht_56_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_57_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_57_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_57_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_57_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_57_TK25.pdf",
+          "pdf_name": "Maastricht_57_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_58_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_58_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_58_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_58_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_58_TK25.pdf",
+          "pdf_name": "Maastricht_58_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_59_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_59_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_59_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_59_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_59_TK25.pdf",
+          "pdf_name": "Maastricht_59_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_60_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_60_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_60_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_60_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_60_TK25.pdf",
+          "pdf_name": "Maastricht_60_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_61_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_61_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_61_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_61_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_61_TK25.pdf",
+          "pdf_name": "Maastricht_61_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_62_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_62_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_62_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_62_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_62_TK25.pdf",
+          "pdf_name": "Maastricht_62_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_63_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_63_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_63_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_63_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_63_TK25.pdf",
+          "pdf_name": "Maastricht_63_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_64_TK25_eerste_telling.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_64_TK25_eerste_telling.pdf",
+          "pdf_name": "Maastricht_64_TK25_eerste_telling.pdf",
+          "text": "uitslag op lijstniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Maastricht_64_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Maastricht_64_TK25.pdf",
+          "pdf_name": "Maastricht_64_TK25.pdf",
+          "text": "uitslag op kandidaatniveau",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-11/Kieskring19_uitkomst_hoofdstembureau_TK25.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Kieskring19_uitkomst_hoofdstembureau_TK25.pdf",
+          "pdf_name": "Kieskring19_uitkomst_hoofdstembureau_TK25.pdf",
+          "text": "proces-verbaal",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        },
+        {
+          "remote_url": "https://www.gemeentemaastricht.nl/sites/default/files/2025-10/Verklaring%20onderzoek%20aansluitvoorschriften_Ea%206.pdf",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Maastricht/Verklaring20onderzoek20aansluitvoorschriften_Ea206.pdf",
+          "pdf_name": "Verklaring%20onderzoek%20aansluitvoorschriften_Ea%206.pdf",
+          "text": "verklaring onderzoek aansluitvoorschriften uitslagenprogrammatuur",
+          "from": "https://www.gemeentemaastricht.nl/verkiezingen/uitslagen-tweede-kamerverkiezing-2025",
+          "score": 1
+        }
+      ]
     },
     {
       "name": "Medemblik",
@@ -76371,6 +77228,30 @@
           "from": "https://mijnstembureau-zaanstad.nl/fileadmin/Verkiezingen/Tweede_Kamerverkiezing_2025/Stembureaus/Procesverbaal_stembureau_80.pdf",
           "score": 1,
           "model": "overig"
+        },
+        {
+          "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904b01ff07bbfef6a52cc77",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zaanstad/Model Na 31-2 Proces-verbaal van een gemeentelijk stembureau (centrale stemopneming).pdf",
+          "pdf_name": "Model Na 31-2 Proces-verbaal van een gemeentelijk stembureau (centrale stemopneming).pdf",
+          "text": "Model Na 31-2 Proces-verbaal van een gemeentelijk stembureau (centrale stemopneming).pdf",
+          "from": "https://mijnstembureau-zaanstad.nl/uitslagen/verkiezingen/tk/download-opties",
+          "score": 4
+        },
+        {
+          "remote_url": "https://mijnstembureau-zaanstad.nl/uitslagen/api/view-pv/68f8bb394afc2581c2d99540/6904aef9f07bbfef6a52c838",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zaanstad/Processen verbaal.pdf",
+          "pdf_name": "Processen verbaal.pdf",
+          "text": "Processen verbaal",
+          "from": "https://mijnstembureau-zaanstad.nl/uitslagen/verkiezingen/tk/download-opties",
+          "score": 4
+        },
+        {
+          "remote_url": "blob:https://mijnstembureau-zaanstad.nl/6a1414dc-4013-45e4-99b2-45829c568b05",
+          "local_url": "file:///Users/arcovink/Documents/restzetels/scraper/pdfs/Zaanstad/Processen verbaal.pdf",
+          "pdf_name": "Processen verbaal.pdf",
+          "text": "Processen verbaal",
+          "from": "https://mijnstembureau-zaanstad.nl/uitslagen/verkiezingen/tk/download-opties",
+          "score": 4
         }
       ]
     },
