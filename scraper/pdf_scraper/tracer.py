@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import os
 import time
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Optional
 
 from .config import TRACES_DIR
 from .utils import sanitize_filename, ensure_pdf_extension, strip_size_tokens

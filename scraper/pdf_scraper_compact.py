@@ -118,9 +118,14 @@ def _is_current_year_pdf(label: str) -> bool:
         return True
     s = label.lower()
     # ban words
-    # Ban deze verkiezingstypen onvoorwaardelijk (redundanten verwijderd)
+    # Ban deze verkiezingstypen (lang) onvoorwaardelijk (substring)
     if any(k in s for k in ["waterschap", "gemeenteraad", "provinciale", "europees"]):
         return False
+    # Korte afkortingen (ps/ep/gr/ws): alleen bannen wanneer token-achtig (dus '-ps', '_ep', '.ws', ' ws ', etc.)
+    s_no_urls = re.sub(r"https?://\S+", " ", s)
+    for k in ("ps", "ep", "gr", "ws"):
+        if re.search(rf"(?<![A-Za-z0-9]){re.escape(k)}(?![A-Za-z0-9])", s_no_urls):
+            return False
     # Ban veelvoorkomende niet-PV documenten
     # document bans:
     # - DOC_BANS_BOTH: ban if present in name/text/URL
@@ -132,6 +137,10 @@ def _is_current_year_pdf(label: str) -> bool:
         "kiezerspas",    # kiezerspas documenten
         "kennisgeving",  # openbare kennisgeving / bekendmakingen
         "kandidaat",     # kandidatenlijsten/berichten
+        "privacy",       # privacyverklaring
+        "toegankelijkheid",  # toegankelijkheidsverklaring
+        "verkiezingsposters",  # niet-PV materiaal
+        "rapport",       # rapport/rapporten
         "voorschrift", "voorschriften",  # aansluit-/proces voorschriften
     ]
     DOC_BANS_URL_ONLY = [
@@ -639,6 +648,9 @@ def find_overview_pages_from_html(html: str, base_url: str) -> list[str]:
         href = a.get('href') or ''
         full = urljoin(base_url, href)
         low = (full + ' ' + (a.get_text(' ', strip=True) or '')).lower()
+        # Filter out obvious non-current-year overview pages (e.g., "tweede kamer 2023")
+        if not _is_current_year_pdf(low):
+            continue
         if OVERVIEW_HINT_RE.search(low):
             if full not in seen:
                 seen.add(full); out.append(full)
@@ -674,7 +686,9 @@ def find_overview_pages_from_html(html: str, base_url: str) -> list[str]:
             score -= 2
         return score
     out_sorted = sorted(out, key=lambda u: (_score(u), -len(u)), reverse=True)
-    return out_sorted[:6]
+    # Final guard: drop any remaining non-current-year pages
+    out_filtered = [u for u in out_sorted if _is_current_year_pdf(u)]
+    return out_filtered[:6]
 
 
 def discover_via_sitemap(start_url: str, max_pages: int = 30) -> list[str]:
@@ -2562,6 +2576,11 @@ def scrape_one(name: str, max_http: int | None = None) -> list[dict]:
             for extra in (EXTRA_SEEDS.get(name) or []):
                 if extra not in ov_pages:
                     ov_pages.append(extra)
+        except Exception:
+            pass
+        # Filter out non-current-year overview pages (e.g., TK2023)
+        try:
+            ov_pages = [ov for ov in ov_pages if _is_current_year_pdf(ov)]
         except Exception:
             pass
         # Verzamel van meerdere overzichtspagina's; stop pas vroegtijdig als we óók een centrale PV denken te hebben

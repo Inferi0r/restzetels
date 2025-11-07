@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import os
 import re
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List
 from urllib.parse import urljoin, urlparse, parse_qs
 
 from bs4 import BeautifulSoup
@@ -11,10 +11,10 @@ import requests
 from .config import (
     LIMITS,
     EXTRA_SEEDS,
-    PDF_PAGE_HINT_RE,
     OVERVIEW_HINT_RE,
     SITE_SEARCH_QUERIES,
-    BANNED_ELECTION_KEYWORDS,
+    BANNED_ELECTION_SUBSTR,
+    BANNED_ELECTION_TOKENS,
     BANNED_NAME_RES,
 )
 from .http_client import Requester
@@ -25,7 +25,6 @@ from .utils import (
     normalize_source_url,
 )
 from .platforms import detect as detect_platform, REGISTRY as PLATFORM_HANDLERS
-from .fallback_playwright import playwright_collect_pdfs_network
 from .fetch_gemeente_urls import kiesraad_url_for
 
 
@@ -212,10 +211,19 @@ def find_overview_pages_from_html(html: str, base_url: str) -> List[str]:
             continue
         full = urljoin(base_url, href).split('#', 1)[0]
         low = (full + ' ' + (a.get_text(' ', strip=True) or '')).lower()
+        # Skip obvious non-HTML/non-PDF file endpoints (csv/xlsx/xls/xml/json)
+        if full.lower().endswith(('.csv', '.xlsx', '.xls', '.xml', '.json')):
+            continue
         # Skip overview links that clearly refer to other elections (e.g., Europees)
-        if any(k in low for k in BANNED_ELECTION_KEYWORDS):
+        if any(k in low for k in BANNED_ELECTION_SUBSTR):
+            continue
+        # Short tokens (ps/ep/gr/ws) only when token-like with non-alnum boundaries
+        if any(re.search(rf"(?<![A-Za-z0-9]){re.escape(k)}(?![A-Za-z0-9])", low) for k in BANNED_ELECTION_TOKENS):
             continue
         if any(rx.search(low) for rx in BANNED_NAME_RES):
+            continue
+        # Skip overview pages that obviously refer to another year (e.g., "tweede kamer 2023")
+        if not is_current_year_pdf(low):
             continue
         if OVERVIEW_HINT_RE.search(low):
             if full not in seen:
@@ -237,6 +245,9 @@ def rank_overview_candidates_from_html(html: str, base_url: str) -> List[str]:
         if full in seen:
             continue
         seen.add(full)
+        # Skip obvious non-HTML/non-PDF file endpoints (csv/xlsx/xls/xml/json)
+        if full.lower().endswith(('.csv', '.xlsx', '.xls', '.xml', '.json')):
+            continue
         # Normalize text and URL for hyphen/underscore separation (tweede-kamer → tweede kamer)
         txt_raw = (a.get_text(' ', strip=True) or '')
         txt = txt_raw.lower()
@@ -249,11 +260,15 @@ def rank_overview_candidates_from_html(html: str, base_url: str) -> List[str]:
             path_norm = (_up(full).path or '').lower().replace('-', ' ').replace('_', ' ')
         except Exception:
             path_norm = url_norm
-        # Drop pages that are clearly about other elections
+        # Drop pages that are clearly about other elections or years
         s_all = (path_norm + ' ' + txt_norm)
-        if any(k in s_all for k in BANNED_ELECTION_KEYWORDS):
+        if any(k in s_all for k in BANNED_ELECTION_SUBSTR):
+            continue
+        if any(re.search(rf"(?<![A-Za-z0-9]){re.escape(k)}(?![A-Za-z0-9])", s_all) for k in BANNED_ELECTION_TOKENS):
             continue
         if any(rx.search(s_all) for rx in BANNED_NAME_RES):
+            continue
+        if not is_current_year_pdf(s_all):
             continue
         score = 0
         # Strong indicators on URL or text
@@ -393,6 +408,12 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
     visited_pages: set[str] = set()
     found_urls: set[str] = set()
     probed_urls: set[str] = set()
+    # Detect whether the provided start URL is a bare domain (no path/query/fragment)
+    try:
+        _pu0 = urlparse(start_url)
+        is_bare_origin = ((_pu0.path or '/') in ('', '/')) and (not _pu0.query) and (not _pu0.fragment)
+    except Exception:
+        is_bare_origin = False
 
     # 1) Fetch start page and look for obvious overview and PDFs
     try:
@@ -423,6 +444,120 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
                 regex_items = extract_pdf_links_from_raw(r.text, base)
                 # Defer tracing to the unified logging below
                 items.extend(regex_items)
+            # Semantic probe: some CMS links don't expose .pdf in href but serve PDFs
+            try:
+                from bs4 import BeautifulSoup as _BS
+                ssp = _BS(r.text or "", "html.parser")
+                cand_anchors = []
+                # anchors with href
+                for a in ssp.select('a[href]'):
+                    txt = (a.get_text(' ', strip=True) or '').lower()
+                    if not txt:
+                        continue
+                    if (('proces' in txt and 'verbaal' in txt) or 'verklaring' in txt or 'aansluit' in txt or 'rapport' in txt):
+                        cand_anchors.append((a, a.get('href')))
+                # elements with data-* URL attributes
+                data_attr_names = ['data-file','data-href','data-url','data-download','data-link','data-document','data-doc','data-src']
+                for el in ssp.select(','.join(f"[{n}]" for n in data_attr_names)):
+                    txt = (el.get_text(' ', strip=True) or el.get('aria-label') or el.get('title') or '').lower()
+                    if not txt:
+                        continue
+                    if not (('proces' in txt and 'verbaal' in txt) or 'verklaring' in txt or 'aansluit' in txt or 'rapport' in txt):
+                        continue
+                    for n in data_attr_names:
+                        v = el.get(n)
+                        if v:
+                            cand_anchors.append((el, v))
+                            break
+                # elements with onclick containing a URL
+                for el in ssp.select('[onclick]'):
+                    oc = el.get('onclick') or ''
+                    txt = (el.get_text(' ', strip=True) or '').lower()
+                    if not txt:
+                        continue
+                    if not (('proces' in txt and 'verbaal' in txt) or 'verklaring' in txt or 'aansluit' in txt or 'rapport' in txt):
+                        continue
+                    m = re.search(r"https?://[^'\"]+", oc)
+                    if not m:
+                        m = re.search(r"'(/[^'\"]+)'|\"(/[^'\"]+)\"", oc)
+                    if m:
+                        val = m.group(0)
+                        val = val.strip("'\"")
+                        cand_anchors.append((el, val))
+                probes = 0
+                for el, href in cand_anchors:
+                    if probes >= 60:
+                        break
+                    if not href:
+                        continue
+                    full = urljoin(base, href).split('#', 1)[0]
+                    # only same registrable domain
+                    if not same_registrable_domain(base, full):
+                        continue
+                    # Pre-filter with year/keyword rules to avoid probing irrelevant anchors (e.g., privacyverklaring)
+                    try:
+                        label = ((getattr(el, 'get_text', lambda *a, **k: '')(' ', strip=True)) or '') + ' ' + full
+                        if not is_current_year_pdf(label):
+                            continue
+                    except Exception:
+                        pass
+                    probes += 1
+                    if req.probe_pdf_exists(full):
+                        from .utils import clean_pdf_name_from_text
+                        nm = clean_pdf_name_from_text((getattr(el, 'get_text', lambda *a, **k: '')(' ', strip=True)) or '')
+                        if not nm:
+                            try:
+                                import os as _os, urllib.parse as _up
+                                nm = (_os.path.basename(_up.urlparse(full).path) or 'document.pdf')
+                            except Exception:
+                                nm = 'document.pdf'
+                        items.append({
+                            'remote_url': full,
+                            'local_url': None,
+                            'pdf_name': nm,
+                            'text': (getattr(el, 'get_text', lambda *a, **k: '')(' ', strip=True)) or nm,
+                            'from': base,
+                            'score': 6,
+                        })
+            except Exception:
+                pass
+        # Immediate in-page 'uitslag' follow-up: if we see a same-domain link containing 'uitslag', visit it right away
+        try:
+            ssp2 = BeautifulSoup(r.text or "", "html.parser")
+            best_u = None
+            for a in ssp2.select('a[href]'):
+                href = (a.get('href') or '').strip()
+                if not href:
+                    continue
+                full = urljoin(base, href).split('#', 1)[0]
+                if not same_registrable_domain(base, full):
+                    continue
+                low = full.lower()
+                if 'uitslag' in low:
+                    best_u = full
+                    break
+            if best_u:
+                try:
+                    rr_u = req.get(best_u, purpose="overview")
+                    tracer.record_discovery("overview", str(rr_u.url))
+                    html_u = rr_u.text
+                    its_u = extract_pdf_links_from_html(html_u, rr_u.url)
+                    if not its_u:
+                        its_u = extract_pdf_links_from_raw(html_u, rr_u.url)
+                    if its_u:
+                        for it in its_u:
+                            uu = it.get('remote_url') or ''
+                            if not uu or uu in found_urls:
+                                continue
+                            found_urls.add(uu)
+                            tracer.record_found_pdf(uu, it.get('from') or str(rr_u.url), it.get('pdf_name') or '', int(it.get('score') or 0))
+                            found.append(it)
+                    # Ensure we also scan that page in the normal loop for additional items
+                    pages.insert(0, best_u)
+                except Exception:
+                    pass
+        except Exception:
+            pass
         for it in items:
             u = it.get("remote_url") or ""
             if not u or u in found_urls:
@@ -432,7 +567,49 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
             found.append(it)
         # Prefer ranking links on the start page rather than site search
         pages = rank_overview_candidates_from_html(r.text, base)
-        # Always append a few common candidate paths on the same host (ensures obvious TK pages are probed)
+        # Heuristic: if the start URL looks like an elections landing for TK2025, enqueue sibling '/uitslag' first
+        try:
+            pu0 = urlparse(base)
+            path0 = (pu0.path or '').rstrip('/')
+            if ('tweede-kamerverkiezing-2025' in path0) or ('tweede_kamerverkiezing_2025' in path0):
+                sibs = [path0 + '/uitslag', path0 + '/processen-verbaal', path0 + '/proces-verbaal']
+                for sp in sibs[::-1]:
+                    sib_url = f"{pu0.scheme}://{pu0.netloc}{sp}"
+                    if sib_url not in pages:
+                        pages.insert(0, sib_url)
+        except Exception:
+            pass
+        # Explicitly probe sibling '/uitslag' under TK2025 landing pages (e.g., Eindhoven)
+        try:
+            puX = urlparse(base)
+            pathX = (puX.path or '').rstrip('/').lower()
+            if ('tweede-kamerverkiezing-2025' in pathX) or ('tweede_kamerverkiezing_2025' in pathX):
+                sib = f"{puX.scheme}://{puX.netloc}{pathX}/uitslag"
+                if sib not in pages:
+                    # Try to fetch once and harvest any PDFs immediately
+                    try:
+                        r0 = req.get(sib, purpose="overview")
+                        tracer.record_discovery("overview", str(r0.url))
+                        html0 = r0.text
+                        items0 = extract_pdf_links_from_html(html0, r0.url)
+                        if not items0:
+                            items0 = extract_pdf_links_from_raw(html0, r0.url)
+                        if items0:
+                            for it in items0:
+                                u0 = it.get('remote_url') or ''
+                                if not u0 or u0 in found_urls:
+                                    continue
+                                found_urls.add(u0)
+                                tracer.record_found_pdf(u0, it.get('from') or str(r0.url), it.get('pdf_name') or '', int(it.get('score') or 0))
+                                found.append(it)
+                        # Ensure the sibling is visited early for any remaining items
+                        pages.insert(0, sib)
+                    except Exception:
+                        pass
+        except Exception:
+            pass
+        # Append a few common candidate paths on the same host (ensures obvious TK pages are probed)
+        # Only when we haven't found anything yet; avoid random 404s after success
         try:
             pu0 = urlparse(base)
             origin0 = f"{pu0.scheme}://{pu0.netloc}"
@@ -450,9 +627,10 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
                     return 3
                 return 4
             cand_sorted = sorted(cand, key=_rank)
-            # Keep ranked links first; append common candidates that aren't already present
-            tail = [c for c in cand_sorted if c not in pages]
-            pages = pages + tail
+            if not found:
+                # Keep ranked links first; append common candidates that aren't already present
+                tail = [c for c in cand_sorted if c not in pages]
+                pages = pages + tail
         except Exception:
             pass
         # If start was a direct PDF (often file host), also add Kiesraad municipality page to explore
@@ -485,13 +663,29 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
     else:
         pages = []
 
-    # 2) Known extra seeds per municipality — prioritize by prepending
-    seeds = list(EXTRA_SEEDS.get(municipality, []))
-    for seed in reversed(seeds):
-        pages.insert(0, seed)
+    # If the start URL is just the domain, prioritize site-search results first
+    if is_bare_origin:
+        try:
+            search_pages = site_search_discover_pages(req, start_url, SITE_SEARCH_QUERIES)
+        except Exception:
+            search_pages = []
+        if search_pages:
+            pages = search_pages + pages
 
-    # 3) (kept for symmetry) If nothing yet, also try common paths on the host
-    if not pages:
+    # 2) Known extra seeds per municipality — order depends on whether we start at a bare origin
+    seeds = list(EXTRA_SEEDS.get(municipality, []))
+    if is_bare_origin:
+        # When starting from a domain root, keep manual seeds after search-based pages
+        for seed in seeds:
+            if seed not in pages:
+                pages.append(seed)
+    else:
+        # Otherwise, keep existing behavior: prioritize seeds by prepending
+        for seed in reversed(seeds):
+            pages.insert(0, seed)
+
+    # 3) (kept for symmetry) If nothing yet and nothing found, also try common paths on the host
+    if not pages and not found:
         try:
             pu = urlparse(start_url)
             origin = f"{pu.scheme}://{pu.netloc}"
@@ -500,8 +694,9 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
         if origin:
             pages.extend(candidate_overview_paths_for_origin(origin))
 
-    # 4) Try site-search only if nothing obvious yet
-    if not found and not pages:
+    # 4) Try site-search only if we have no obvious candidate pages from the start page
+    #    (prefer internal links over search hits), unless we already did search-first above.
+    if not pages:
         pages.extend(site_search_discover_pages(req, start_url, SITE_SEARCH_QUERIES))
 
     # Deduplicate and constrain to same registrable domain
@@ -537,6 +732,22 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
             return 1
         return 2
     pages2 = sorted(pages2, key=_pref_overview)
+    # Strongly prefer a sibling '/uitslag' under the same verkiezing-2025 path (e.g., Eindhoven)
+    try:
+        pu_start = urlparse(start_url)
+        path_start = (pu_start.path or '').rstrip('/')
+        if ('tweede-kamerverkiezing-2025' in path_start) or ('tweede_kamerverkiezing_2025' in path_start):
+            sib = f"{pu_start.scheme}://{pu_start.netloc}{path_start}/uitslag"
+            if sib in pages2:
+                pages2.remove(sib)
+                pages2.insert(0, sib)
+    except Exception:
+        pass
+    # Filter out overview pages that clearly reference other years (e.g., TK2023)
+    try:
+        pages2 = [p for p in pages2 if is_current_year_pdf(p)]
+    except Exception:
+        pass
 
     # Seed known platform hubs by municipality (e.g., Amsterdam API) even if start page blocked
     try:
@@ -633,18 +844,79 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
             regex_items = extract_pdf_links_from_raw(html, rr.url)
             # Defer tracing to the unified logging below
             items.extend(regex_items)
-        # If the page looks like a stembureau list with PDFs but anchors are missing, try a light Playwright network capture
+        # Semantic probe on overview page as well (Doesburg-style links)
         try:
-            low_html = (html or '').lower()
-            if (len(items) < 10) and ('stembureau' in low_html) and ('pdf' in low_html):
-                extra = playwright_collect_pdfs_network(tracer, municipality, str(rr.url), max_items=200,
-                                                       click_selectors=['a[download]', 'a', 'button', '[role=button]'])
-                if extra:
-                    for it in extra:
-                        it['score'] = max(5, int(it.get('score') or 0))
-                    items.extend(extra)
+            ssp = BeautifulSoup(html or "", "html.parser")
+            cand_anchors = []
+            for a in ssp.select('a[href]'):
+                txt = (a.get_text(' ', strip=True) or '').lower()
+                if not txt:
+                    continue
+                if (('proces' in txt and 'verbaal' in txt) or 'verklaring' in txt or 'aansluit' in txt or 'rapport' in txt):
+                    cand_anchors.append((a, a.get('href')))
+            data_attr_names = ['data-file','data-href','data-url','data-download','data-link','data-document','data-doc','data-src']
+            for el in ssp.select(','.join(f"[{n}]" for n in data_attr_names)):
+                txt = (el.get_text(' ', strip=True) or el.get('aria-label') or el.get('title') or '').lower()
+                if not txt:
+                    continue
+                if not (('proces' in txt and 'verbaal' in txt) or 'verklaring' in txt or 'aansluit' in txt or 'rapport' in txt):
+                    continue
+                for n in data_attr_names:
+                    v = el.get(n)
+                    if v:
+                        cand_anchors.append((el, v))
+                        break
+            for el in ssp.select('[onclick]'):
+                oc = el.get('onclick') or ''
+                txt = (el.get_text(' ', strip=True) or '').lower()
+                if not txt:
+                    continue
+                if not (('proces' in txt and 'verbaal' in txt) or 'verklaring' in txt or 'aansluit' in txt or 'rapport' in txt):
+                    continue
+                m = re.search(r"https?://[^'\"]+", oc)
+                if not m:
+                    m = re.search(r"'(/[^'\"]+)'|\"(/[^'\"]+)\"", oc)
+                if m:
+                    val = m.group(0)
+                    val = val.strip("'\"")
+                    cand_anchors.append((el, val))
+            probes = 0
+            for el, href in cand_anchors:
+                if probes >= 80:
+                    break
+                if not href:
+                    continue
+                full = urljoin(str(rr.url), href).split('#', 1)[0]
+                if not same_registrable_domain(start_url, full):
+                    continue
+                # Pre-filter with year/keyword rules to avoid probing irrelevant anchors (e.g., privacyverklaring)
+                try:
+                    label = ((getattr(el, 'get_text', lambda *a, **k: '')(' ', strip=True)) or '') + ' ' + full
+                    if not is_current_year_pdf(label):
+                        continue
+                except Exception:
+                    pass
+                probes += 1
+                if req.probe_pdf_exists(full):
+                    from .utils import clean_pdf_name_from_text
+                    nm = clean_pdf_name_from_text((getattr(el, 'get_text', lambda *a, **k: '')(' ', strip=True)) or '')
+                    if not nm:
+                        try:
+                            import os as _os, urllib.parse as _up
+                            nm = (_os.path.basename(_up.urlparse(full).path) or 'document.pdf')
+                        except Exception:
+                            nm = 'document.pdf'
+                    items.append({
+                        'remote_url': full,
+                        'local_url': None,
+                        'pdf_name': nm,
+                        'text': (getattr(el, 'get_text', lambda *a, **k: '')(' ', strip=True)) or nm,
+                        'from': str(rr.url),
+                        'score': 6,
+                    })
         except Exception:
             pass
+        # Note: We do not use Playwright network capture here anymore; HTTP discovery only.
         # Probe wrapper .htm links that actually serve PDFs (e.g., Oss CMS pages)
         if len(items) < LIMITS.pivot_pdf_threshold:
             try:
@@ -736,19 +1008,7 @@ def discover_pdfs(req: Requester, tracer, municipality: str, start_url: str) -> 
                 pass
             i += 1
             continue
-        if pivot_seen:
-            # Only stop early if no unvisited manual seed pages remain.
-            try:
-                from .config import EXTRA_SEEDS as _EXTRA
-                seeds = set(( _EXTRA.get(municipality) or [] ))
-                # simple normalization: strip fragment and trailing slash
-                def _norm(u: str) -> str:
-                    return (u or '').split('#', 1)[0].rstrip('/')
-                remaining = set(_norm(x) for x in seeds) & set(_norm(u) for u in pages2[i+1:])
-                if not remaining:
-                    break
-            except Exception:
-                break
+        # Do not stop early on a pivot; continue scanning remaining candidates to go deeper.
         i += 1
 
     return dedupe_found(found)

@@ -19,21 +19,28 @@ TARGET_YEAR_SHORT: Final[int] = 25
 ELECTION_SLUG: Final[str] = "tk"  # used in a few endpoints/searches
 
 # Filter keywords for other elections and generic non-PV docs
-BANNED_ELECTION_KEYWORDS = {
-    "waterschap", "gemeenteraad", "provinciale", "europees",
-    # abbreviations
+# Split election bans into two categories:
+# - BANNED_ELECTION_SUBSTR: long tokens banned on substring match
+# - BANNED_ELECTION_TOKENS: short abbreviations banned only when token-like
+BANNED_ELECTION_SUBSTR = {
+    # Other elections (exclude)
+    "waterschap", "provinciale", "europees",
+    # Explicit municipal election terms (not generic site sections like 'gemeenteraad-en-college')
+    "gemeenteraadsverkiez", "gemeenteraadsverkiezing", "gemeenteraadsverkiezingen",
+}
+BANNED_ELECTION_TOKENS = {
+    # Abbreviations: PS/EP/GR/WS — ban only when token-like (non-alnum boundaries)
     "ps", "ep", "gr", "ws",
 }
 
 BANNED_DOC_KEYWORDS = {
     # common non-PV document keywords
     "volmacht", "kiezerspas", "kennisgeving", "kandidaat", "kandidaten",
-    "aanwijzing", "krant", "flyer", "afval",
-    # user-requested additional blockers for non-PV/administrative docs
-    "aansluit", "woo", "wob", "bekendmaking", "bezwaar", "registratie",
-    "inspectie", "publicatie", "begroting", "jaarstukken", "beleid", "nota",
-    "rapportage", "handreiking", "handleiding", "verklaring", "wet", "route",
-    "onderzoek", "machtig", "stempas",
+    "aanwijzing", "krant", "flyer", "afval", "aansluit", "woo", "wob", "bekendmaking", 
+    "bezwaar", "registratie", "inspectie", "publicatie", "begroting", "stukken", "beleid", "nota",
+    "rapport", "handreiking", "handleiding", "verklaring", "wet", "route",
+    "onderzoek", "machtig", "stempas", "privacy", "toegankelijk", "posters",
+    "rapport", "voorschrift",
 }
 
 # URL-only banned document keywords: only trigger when present inside a URL
@@ -43,28 +50,24 @@ BANNED_DOC_URL_ONLY = {
 
 # Regex patterns compiled once
 BANNED_NAME_RES = [
-    re.compile(r"kandidatenlijst(en)?", re.I),
     # Block explicit EP year patterns like "ep24", "ep 2024", etc.
     re.compile(r"\bep\s*[-_ ]?\s*(?:20)?\d{2}\b", re.I),
 ]
 
 # PDF page/link hints
-PDF_PAGE_HINT_RE = re.compile(  
-    r"verkiez|uitslag|proces|verbaal|stembur|tweede.*kamer|tweede-?kamerverkiez|document|download|"
-    r"n10|na\s*31|model\s*na\s*31|gemeentelijk\s+stembureau|\bpv\b|"
-    r"uitkomst[\s_-]*tk[\s_-]*25|uitkomst.*tweede.*kamer|uitslag.*tweede.*kamer|"
-    r"election|second\s*chamber|polling|process[-\s]?verbal|evenementenhal|hertelling|eerste\s+telling",
+PDF_PAGE_HINT_RE = re.compile(
+    # Simplified: rely on generic tokens; remove redundant combos
+    r"verkiez|uitslag|uitkomst|proces|verbaal|process[-\s]?verbal|"
+    r"stembureau|tweede\s*-?\s*kamer|document|download|\bpv\b|"
+    r"n10|na\s*31|election|second\s*chamber|polling|evenementenhal|telling",
     re.I,
 )
 
 OVERVIEW_HINT_RE = re.compile(
     (
-        r"overzicht|proces[-\s]?verbaal|processen[-\s]?verbaal|kies\s+stembureau|stembureaus?|stadsdeel|"
-        r"proces[-\s]?verbalen|proces\s+verbalen|"  # tolerate common typos/plural
-        r"hoofdstembureau|gemeentelijk\s+stembureau|pv\s*overzicht|stemmings|"
-        r"uitslag\s*per\s*stembureau|uitslag\s*verkiez|model\s*na\s*31|na\s*31|na31|"
-        r"uitkomst[\s_-]*tk[\s_-]*25|uitkomst.*tweede.*kamer|uitslag.*tweede.*kamer|process[-\s]?verbal|"
-        r"second\s*chamber|evenementenhal|hertelling|eerste\s+telling|"
+        r"overzicht|proces[-\s]?verbaal|processen[-\s]?verbaal|proces[-\s]?verbal(?:en)?|"
+        r"kies\s+stembureau|stembureau[s]?|stadsdeel|verkiez|uitslag|uitkomst|"
+        r"na\s*31|tweede\s*-?\s*kamer|process[-\s]?verbal|second\s*chamber|evenementenhal|telling|"
         r"zo[\s_-]*is[\s_-]*er[\s_-]*gestemd|\bgestemd\b"
     ),
     re.I,

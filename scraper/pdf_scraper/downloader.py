@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import os
 from typing import Dict, Optional
-from urllib.parse import urlparse, urlsplit, parse_qs
+from urllib.parse import urlparse, parse_qs
 
 from .config import OUT_BASE
 from .http_client import Requester

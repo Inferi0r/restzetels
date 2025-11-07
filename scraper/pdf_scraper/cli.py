@@ -14,7 +14,6 @@ from .model10 import log_model10_progress
 from .tracer import Tracer
 from .utils import get_all_names, get_municipalities_slice, get_start_url
 from .utils import is_electionish, normalize_source_url, same_registrable_domain
-from .fallback_playwright import playwright_collect_pdfs, playwright_discover_and_collect
 from .verified_urls import add_source_url as verified_add_source
 from .verified_urls import record_kiesraad_url as verified_record_kiesraad
 from .fetch_gemeente_urls import kiesraad_url_for
@@ -81,22 +80,7 @@ def run_for_municipality(name: str, dry_run: bool = False) -> None:
     except Exception:
         pass
     log_model10_progress(name, items)
-    if not items and not getattr(sys.modules.get(__name__), 'ARGS_NO_FALLBACK', False):
-        print(f"[FALLBACK] Trying Playwright on start page…")
-        cap = playwright_discover_and_collect(tracer, name, start_url, max_pages=3, max_items=250)
-        if not cap:
-            cap = playwright_collect_pdfs(tracer, name, start_url, max_items=200)
-        if cap:
-            items.extend(cap)
-            print(f"[FOUND][fallback] {len(cap)} more via Playwright")
-            try:
-                for it in cap:
-                    u = it.get('remote_url') or ''
-                    if not u:
-                        continue
-                    tracer.record_found_pdf(u, it.get('from') or start_url, it.get('pdf_name') or '', int(it.get('score') or 0))
-            except Exception:
-                pass
+    # No Playwright fallback: rely on HTTP discovery going deeper instead.
     # Determine best source pages by majority of items' 'from' field; normalize & filter; save top 3
     try:
         src_count = {}
@@ -156,6 +140,8 @@ def parse_args() -> argparse.Namespace:
     g.add_argument("--first", type=int, help="Process first N municipalities")
     ap.add_argument("--dry-run", action="store_true", help="Discover but do not download")
     ap.add_argument("--no-fallback", action="store_true", help="Do not use Playwright fallback; save best source and stop")
+    ap.add_argument("--skip-if-traced", action="store_true", help="Skip municipalities that have a recent trace file")
+    ap.add_argument("--recent-minutes", type=int, default=60, help="Recency threshold for --skip-if-traced (minutes)")
     return ap.parse_args()
 
 
@@ -176,7 +162,36 @@ def main():
         names = get_all_names()[: args.first]
     else:
         names = get_all_names()
+    # Deduplicate while preserving order (protect against accidental repeats)
+    seen = set()
+    names = [n for n in names if not (n in seen or seen.add(n))]
+
+    # Optional: skip municipalities with a very recent trace from this tool
+    skip_recent = bool(getattr(args, "skip_if_traced", False))
+    recent_secs = max(0, int(getattr(args, "recent_minutes", 60))) * 60
+    traces_dir = os.path.join(os.path.dirname(__file__), "traces")
+    def has_recent_trace(m: str) -> bool:
+        if not os.path.isdir(traces_dir):
+            return False
+        prefix = f"trace_{m}_"
+        try:
+            now = __import__("time").time()
+            for fn in os.listdir(traces_dir):
+                if not fn.startswith(prefix):
+                    continue
+                p = os.path.join(traces_dir, fn)
+                try:
+                    if (now - os.path.getmtime(p)) <= recent_secs:
+                        return True
+                except Exception:
+                    continue
+        except Exception:
+            return False
+        return False
     for name in names:
+        if skip_recent and has_recent_trace(name):
+            print(f"[SKIP][recent] {name}: trace exists within {int(recent_secs/60)} minutes")
+            continue
         try:
             run_for_municipality(name, dry_run=args.dry_run)
         except KeyboardInterrupt:

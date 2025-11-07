@@ -1,9 +1,13 @@
-{"Amsterdam":"https://www.amsterdam.nl/verkiezingen/overzicht-proces-verbalen/",
-"Achtkarspelen":"https://www.achtkarspelen.nl/uitslag-tweede-kamerverkiezing-2025",
-"Smallingerland":"https://www.smallingerland.nl/Onderwerpen/Verkiezingen/Uitslag_Tweede_Kamerverkiezing_2025",
-"Saba":"https://www.sabagov.nl/residents/voting-elections/",
-"Sint Eustatius":"https://www.statiagovernment.com/nieuwsoverzicht/artikel/sol-confirms-election-results-after-documentation-review",
-"Texel":"https://www.texel.nl/bestuur-en-organisatie/tweedekamerverkiezingen/",
-"Schouwen-Duiveland":"https://www.schouwen-duiveland.nl/verkiezingen/tweede-kamerverkiezingen",
-"Wassenaar":"https://www.wassenaar.nl/voorlopige-uitslag-tweede-kamerverkiezingen-2025",
-"Vlissingen":"https://www.vlissingen.nl/uitslag-tweede-kamerverkiezing-29-oktober-2025"}
+{
+  "Amsterdam": ["https://www.amsterdam.nl/verkiezingen/overzicht-proces-verbalen/"],
+  "Achtkarspelen": ["https://www.achtkarspelen.nl/uitslag-tweede-kamerverkiezing-2025"],
+  "Smallingerland": ["https://www.smallingerland.nl/Onderwerpen/Verkiezingen/Uitslag_Tweede_Kamerverkiezing_2025"],
+  "Saba": ["https://www.sabagov.nl/residents/voting-elections/"],
+  "Sint Eustatius": ["https://www.statiagovernment.com/nieuwsoverzicht/artikel/sol-confirms-election-results-after-documentation-review"],
+  "Texel": ["https://www.texel.nl/bestuur-en-organisatie/tweedekamerverkiezingen/"],
+  "Schouwen-Duiveland": ["https://www.schouwen-duiveland.nl/verkiezingen/tweede-kamerverkiezingen"],
+  "Wassenaar": ["https://www.wassenaar.nl/voorlopige-uitslag-tweede-kamerverkiezingen-2025"],
+  "Vlissingen": ["https://www.vlissingen.nl/uitslag-tweede-kamerverkiezing-29-oktober-2025"],
+  "Dalfsen": ["https://www.dalfsen.nl/tk2025"],
+  "Eindhoven": ["https://www.eindhoven.nl/bestuur-en-beleid/verkiezingen/tweede-kamerverkiezing-2025/uitslag"]
+}

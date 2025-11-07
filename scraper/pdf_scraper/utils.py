@@ -8,7 +8,8 @@ from .config import (
     DATA_DIR,
     TARGET_YEAR_FULL,
     TARGET_YEAR_SHORT,
-    BANNED_ELECTION_KEYWORDS,
+    BANNED_ELECTION_SUBSTR,
+    BANNED_ELECTION_TOKENS,
     BANNED_DOC_KEYWORDS,
     BANNED_DOC_URL_ONLY,
     BANNED_NAME_RES,
@@ -172,32 +173,49 @@ def is_current_year_pdf(label: str) -> bool:
     if not isinstance(label, str):
         return True
     s = label.lower()
-    # Remove URLs for election keyword checks to avoid false hits like 'ps' in 'https'
+    # Remove URLs for social/host tokens but keep meaningful path cues by extracting paths separately
     s_no_urls = re.sub(r"https?://\S+", " ", s)
-    # election types to exclude (check without URLs to avoid false positives)
-    if any(re.search(rf"\b{re.escape(k)}\b", s_no_urls) for k in BANNED_ELECTION_KEYWORDS):
+    # Normalize hyphens/underscores so tokens like 'tweede-kamer' match 'tweede kamer'
+    s_norm = s.replace('-', ' ').replace('_', ' ')
+    s_no_urls_norm = s_no_urls.replace('-', ' ').replace('_', ' ')
+    # election types to exclude (long forms by substring), but allow when explicitly TK context
+    has_tk_context = (
+        ('tweede kamer' in s_no_urls_norm)
+        or ('tweedekamer' in s_no_urls_norm)
+        or bool(re.search(r"\btk\s*[-_ ]?\s*20?25\b", s_no_urls_norm))
+        or ('kamerverkiez' in s_no_urls_norm)
+    )
+    if (not has_tk_context) and any(k in s_no_urls_norm for k in BANNED_ELECTION_SUBSTR):
         return False
+    # - short abbreviations (ps/ep/gr/ws) only when token-like with non-alnum boundaries
+    for k in BANNED_ELECTION_TOKENS:
+        if re.search(rf"(?<![A-Za-z0-9]){re.escape(k)}(?![A-Za-z0-9])", s_no_urls_norm):
+            return False
     # document keywords: two categories → 'both' (name/text/URL) and 'url-only'
     urls = re.findall(r"https?://\S+", s)
-    if any(k in s for k in BANNED_DOC_KEYWORDS):
+    if any(k in s_norm for k in BANNED_DOC_KEYWORDS):
         return False
     if any(any(k in u for k in BANNED_DOC_URL_ONLY) for u in urls):
         return False
     for rx in BANNED_NAME_RES:
-        if rx.search(s):
+        if rx.search(s_norm):
             return False
     # tk2025/tk25 accept; tk2023/tk23 reject
-    m = re.search(r"tk\s*[-_]?\s*20(\d{2})", s)
+    m = re.search(r"tk\s*[-_]?\s*20(\d{2})", s_norm)
     if m:
         return (2000 + int(m.group(1))) == TARGET_YEAR_FULL
-    m = re.search(r"tk\s*[-_]?\s*(\d{2})(?!\d)", s)
+    m = re.search(r"tk\s*[-_]?\s*(\d{2})(?!\d)", s_norm)
     if m:
         return int(m.group(1)) == TARGET_YEAR_SHORT
-    m = re.search(r"tweede\s+kamer\s+20(\d{2})", s)
+    m = re.search(r"tweede\s+kamer\s+20(\d{2})", s_no_urls_norm)
     if m:
         return (2000 + int(m.group(1))) == TARGET_YEAR_FULL
+    # General year token acceptance when paired with PV/verkiezing hints (helps pages where only the page path has 2025)
+    if re.search(r"\b2025\b", s_no_urls_norm):
+        if any(k in s_no_urls_norm for k in ("proces", "verbaal", "pv ", " stembureau", "verkiez", "uitslag", "uitkomst", "na 31", "na31")):
+            return True
     # dates dd-mm-yyyy etc.
-    for dm in re.finditer(r"(?<!\d)(\d{1,2})[-_/](\d{1,2})[-_/](\d{2,4})(?!\d)", s):
+    for dm in re.finditer(r"(?<!\d)(\d{1,2})[-_/](\d{1,2})[-_/](\d{2,4})(?!\d)", s_norm):
         y = dm.group(3)
         try:
             yi = int(y)
@@ -208,11 +226,11 @@ def is_current_year_pdf(label: str) -> bool:
         except Exception:
             pass
     # dates yyyymmdd
-    m = re.search(r"(?<!\d)(20\d{2})\d{2}\d{2}(?!\d)", s)
+    m = re.search(r"(?<!\d)(20\d{2})\d{2}\d{2}(?!\d)", s_norm)
     if m and int(m.group(1)) != TARGET_YEAR_FULL:
         return False
     # any other year token
-    for ym in re.finditer(r"\b(20\d{2})\b", s):
+    for ym in re.finditer(r"\b(20\d{2})\b", s_norm):
         if int(ym.group(1)) != TARGET_YEAR_FULL:
             return False
     return True
